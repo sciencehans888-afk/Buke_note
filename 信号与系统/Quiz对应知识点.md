@@ -29,6 +29,8 @@ $$u(t)=a_0+\sum_{k=1}^{\infty}\left(a_k\cos k\omega_0t+b_k\sin k\omega_0t\right)
 
 因此 $a_0=c_0$。有些教材把常数项写成 $a_0/2$，两种约定的 $a_0$ 相差一倍，查表或代公式前要先确认使用的是哪一种。本笔记统一使用上式。
 
+**与 Quiz 公式表保持一致。** 本笔记的记号、系数定义和常用公式均按 ELEC2302/9302 的 Quiz 2、Quiz 3 公式表书写：傅里叶基函数 $\phi_k(t)=e^{jk\omega_0t}$，系数写成内积 $c_k=\langle u,\phi_k\rangle_P$；频率响应记 $G(j\omega)$，传递函数记 $G(s)$；二阶系统用 $G(j\omega)=\dfrac{K\omega_n^2}{(j\omega)^2+2\zeta\omega_n(j\omega)+\omega_n^2}$ 与 $G(s)=\dfrac{K\omega_n^2}{s^2+2\zeta\omega_ns+\omega_n^2}$，且 $G(0)=K$；拉普拉斯变换记 $U(s)=\mathcal L\{u\}(s)$、$G(s)=\mathcal L\{h\}(s)$、$Y(s)=G(s)U(s)$。第 10 节是按公式表逐条整理的速查。
+
 ---
 
 ## 0 预备知识
@@ -454,7 +456,7 @@ $$u(t)=\sum_{k=-\infty}^{\infty}c_ke^{jk\omega_0t}.$$
 
 系数由下式给出：
 
-$$c_k=\frac{1}{T}\int_{T}u(t)e^{-jk\omega_0t}dt.$$
+$$c_k=\frac{1}{T}\int_{0}^{T}u(t)e^{-jk\omega_0t}dt=\langle u,\phi_k\rangle_P,\qquad \phi_k(t)=e^{jk\omega_0t}.$$
 
 积分区间可以取任意一个完整周期，例如 $[0,T]$ 或 $[-T/2,T/2]$。
 
@@ -489,11 +491,11 @@ $$u(t)=a_0+\sum_{k=1}^{\infty}\left(a_k\cos k\omega_0t+b_k\sin k\omega_0t\right)
 
 其中
 
-$$a_0=c_0=\frac1{T}\int_{T}u(t)dt,$$
+$$a_0=c_0=\frac1{T}\int_{0}^{T}u(t)dt,$$
 
-$$a_k=\frac{2}{T}\int_{T}u(t)\cos k\omega_0t\,dt,$$
+$$a_k=2\operatorname{Re}c_k=\frac{2}{T}\int_{0}^{T}u(t)\cos(k\omega_0t)\,dt,$$
 
-$$b_k=\frac{2}{T}\int_{T}u(t)\sin k\omega_0t\,dt.$$
+$$b_k=-2\operatorname{Im}c_k=\frac{2}{T}\int_{0}^{T}u(t)\sin(k\omega_0t)\,dt.$$
 
 #### 与复系数的换算
 
@@ -662,6 +664,17 @@ $$u(t)=a_0+\sum_{k=1}^{\infty}\left(a_k\cos k\omega_0t+b_k\sin k\omega_0t\right)
 
 以下结论均针对实信号。
 
+**公式表对照。** 把公式表中的性质、线性与时移与上面的对称性结论放在一起：
+
+| 情形 | 系数关系 |
+|---|---|
+| $u$ 实 | $c_{-k}=\overline{c_k}$ |
+| $u$ 偶 | $b_k=0$ |
+| $u$ 奇 | $a_0=a_k=0$ |
+| 线性 $\alpha u_1+\beta u_2$ | $\alpha c_{1,k}+\beta c_{2,k}$ |
+| 时移 $u(t-t_0)$ | $e^{-jk\omega_0t_0}c_k$ |
+| Parseval | $P(u)=\dfrac1T\displaystyle\int_0^T|u(t)|^2dt=\sum_{k=-\infty}^{\infty}|c_k|^2$ |
+
 #### 偶函数
 
 若 $u(-t)=u(t)$。右边唯一的奇函数部分是正弦项，它无法被常数项和余弦项抵消，所以每一项的系数都必须为零：
@@ -800,9 +813,9 @@ $$1+(-1)^k=\begin{cases}2,&k\text{ 为偶数},\\0,&k\text{ 为奇数},\end{cases
 
 #### 内积与范数
 
-把周期为 $T$ 的复信号看作向量，定义内积
+把周期为 $T$ 的复信号看作向量，定义内积（公式表写法 $c_k=\langle u,\phi_k\rangle_P$ 中的 $\langle\cdot,\cdot\rangle_P$ 即此内积）
 
-$$\langle u,v\rangle=\frac1{T}\int_{T}u(t)v^*(t)dt.$$
+$$\langle u,v\rangle_P=\frac1{T}\int_{0}^{T}u(t)v^*(t)dt.$$
 
 其中 $v^*$ 表示复共轭。内积的作用是衡量两个信号有多相似。为了看清这个定义，先从普通的向量点积说起。
 
@@ -815,28 +828,28 @@ $$\mathbf a\cdot\mathbf b=a_1b_1+a_2b_2+a_3b_3.$$
 
 令 $v=u$，自内积为
 
-$$\langle u,u\rangle=\frac1T\int_T|u(t)|^2dt,$$
+$$\langle u,u\rangle_P=\frac1T\int_T|u(t)|^2dt,$$
 
-它非负，且 $\langle u,u\rangle=0$ 当且仅当 $u$ 在一个周期内几乎处处为零。
+它非负，且 $\langle u,u\rangle_P=0$ 当且仅当 $u$ 在一个周期内几乎处处为零。
 
 由这个内积诱导的范数为
 
-$$\|u\|=\sqrt{\langle u,u\rangle}=\sqrt{\frac1T\int_T|u(t)|^2dt}.$$
+$$\|u\|=\sqrt{\langle u,u\rangle_P}=\sqrt{\frac1T\int_T|u(t)|^2dt}.$$
 
 $\|u\|$ 是信号向量的长度，它的平方
 
-$$\|u\|^2=\langle u,u\rangle=\frac1T\int_T|u(t)|^2dt$$
+$$\|u\|^2=\langle u,u\rangle_P=\frac1T\int_T|u(t)|^2dt$$
 
 就是前面我们所学习的信号的平均功率 $P$，即 $\|u\|$ 的平方是平均功率，$\|u\|$ 本身是功率的平方根（有效值）。所以后面统一使用范数记号：$\|u\|^2$ 表示总平均功率，$\|e\|^2$ 表示误差的平均功率，不要把它和能量 $\int|u|^2dt$ 混淆。
 
 
 **例**　$u(t)=\cos t$，$v(t)=\cos t$，周期 $T=2\pi$。
 
-$$\langle u,v\rangle=\frac1{2\pi}\int_0^{2\pi}\cos^2t\,dt=\frac12,$$
+$$\langle u,v\rangle_P=\frac1{2\pi}\int_0^{2\pi}\cos^2t\,dt=\frac12,$$
 
 即 $\cos t$ 的平均功率为 $1/2$。若换成 $u(t)=\cos t$、$v(t)=\sin t$，
 
-$$\langle u,v\rangle=\frac1{2\pi}\int_0^{2\pi}\cos t\sin t\,dt=0.$$
+$$\langle u,v\rangle_P=\frac1{2\pi}\int_0^{2\pi}\cos t\sin t\,dt=0.$$
 
 这说明两个信号没有共同成分。**内积为零时，称这两个信号正交**，对应向量几何里的「互相垂直」。
 
@@ -854,13 +867,13 @@ $$u(t)\approx\sum_{k\in S}c_k\phi_k(t),$$
 
 则每一项的最佳系数仍然是各自的投影系数
 
-$$c_k=\frac{\langle u,\phi_k\rangle}{\langle\phi_k,\phi_k\rangle}.$$
+$$c_k=\frac{\langle u,\phi_k\rangle_P}{\langle\phi_k,\phi_k\rangle_P}.$$
 
 保留哪些谐波由带宽或指标决定，每个保留谐波的幅度和相位由投影决定，丢弃部分的总功率就是近似误差功率。
 
 **几何图像：为什么最优时残差垂直于 $\phi$。**
 
-先把「垂直」说清楚。两个信号的内积为零（$\langle e,\phi\rangle=0$）时称它们正交，它的几何含义就是「垂直」，这是普通向量点积为零即垂直在信号上的推广。
+先把「垂直」说清楚。两个信号的内积为零（$\langle e,\phi\rangle_P=0$）时称它们正交，它的几何含义就是「垂直」，这是普通向量点积为零即垂直在信号上的推广。
 
 「残差」就是误差 $e=u-c\phi$，是近似值与原信号之间的差。
 
@@ -876,7 +889,7 @@ $$c_k=\frac{\langle u,\phi_k\rangle}{\langle\phi_k,\phi_k\rangle}.$$
 
 - $c\phi$ 的选取，就是“在直线上取一点”；
 - 误差 $e=u-c\phi$ 就是从 $u$ 连到该点的“线段”；
-- 最优的 $c\phi$ 就是垂足，此时 $e$ 与 $\phi$ 垂直，即 $\langle e,\phi\rangle=0$。
+- 最优的 $c\phi$ 就是垂足，此时 $e$ 与 $\phi$ 垂直，即 $\langle e,\phi\rangle_P=0$。
 
 反过来也能看出为什么“垂直”就是最短：若 $e$ 与 $\phi$ 不垂直，那么把 $c$ 沿直线的方向稍微挪动一点，就能让 $u$ 到 $c\phi$ 的距离变短；只有在垂直时，沿直线移动的任何一小步都只会让距离变大（或不变）。所以垂直是距离最短的标志。
 
@@ -892,29 +905,29 @@ $$e(t)=u(t)-c\phi(t).$$
 
 误差范数的平方就是误差的平均功率：
 
-$$\|e\|^2=\langle u-c\phi,u-c\phi\rangle.$$
+$$\|e\|^2=\langle u-c\phi,u-c\phi\rangle_P.$$
 
 展开：
 
-$$\|e\|^2=\|u\|^2-2\operatorname{Re}\left(c^*\langle u,\phi\rangle\right)+|c|^2\|\phi\|^2.$$
+$$\|e\|^2=\|u\|^2-2\operatorname{Re}\left(c^*\langle u,\phi\rangle_P\right)+|c|^2\|\phi\|^2.$$
 
-记 $K=\langle u,\phi\rangle$，$M=\langle\phi,\phi\rangle$。对 $c$ 配方：
+记 $K=\langle u,\phi\rangle_P$，$M=\langle\phi,\phi\rangle_P$。对 $c$ 配方：
 
 $$\|e\|^2=\|u\|^2-\frac{|K|^2}{M}+M\left|c-\frac{K}{M}\right|^2.$$
 
 前两项与 $c$ 无关，第三项非负，因此最小值在
 
-$$c=\frac{K}{M}=\frac{\langle u,\phi\rangle}{\langle\phi,\phi\rangle}$$
+$$c=\frac{K}{M}=\frac{\langle u,\phi\rangle_P}{\langle\phi,\phi\rangle_P}$$
 
 时取得。这个 $c$ 称为正交投影系数。
 
 **最优时误差与基函数正交**。把 $c$ 代回：
 
-$$\langle e,\phi\rangle=\langle u,\phi\rangle-c\langle\phi,\phi\rangle=K-cM=0.$$
+$$\langle e,\phi\rangle_P=\langle u,\phi\rangle_P-c\langle\phi,\phi\rangle_P=K-cM=0.$$
 
 这说明残差垂直于投影方向，垂足就是最优近似。
 
-**功率的勾股关系**。因为 $\langle e,\phi\rangle=0$，
+**功率的勾股关系**。因为 $\langle e,\phi\rangle_P=0$，
 
 $$\|u\|^2=\|c\phi\|^2+\|e\|^2,$$
 
@@ -924,13 +937,13 @@ $$\|u\|^2=\|c\phi\|^2+\|e\|^2,$$
 
 内积按本节定义计算。$u$、$v$ 都是实信号，$v^*=v$，所以
 
-$$\langle u,v\rangle=\frac1{T}\int_T u(t)v^*(t)dt=\frac1{2\pi}\int_0^{2\pi}u(t)v(t)\,dt.$$
+$$\langle u,v\rangle_P=\frac1{T}\int_T u(t)v^*(t)dt=\frac1{2\pi}\int_0^{2\pi}u(t)v(t)\,dt.$$
 
-**第一步：计算 $\langle u,\cos t\rangle$。** 把 $u$ 代入，利用内积的线性拆成两项：
+**第一步：计算 $\langle u,\cos t\rangle_P$。** 把 $u$ 代入，利用内积的线性拆成两项：
 
 $$
 \begin{aligned}
-\langle u,\cos t\rangle
+\langle u,\cos t\rangle_P
 &=\frac1{2\pi}\int_0^{2\pi}\left(\cos t+\frac12\cos2t\right)\cos t\,dt\\
 &=\frac1{2\pi}\int_0^{2\pi}\cos^2t\,dt
 +\frac1{2\pi}\int_0^{2\pi}\frac12\cos2t\cos t\,dt.
@@ -952,28 +965,28 @@ $$\frac1{2\pi}\int_0^{2\pi}\frac12\cos2t\cos t\,dt
 
 因为 $\cos3t$ 和 $\cos t$ 在 $[0,2\pi]$ 上都包含整数个完整周期，积分均为零——这就是“不同频率的余弦正交”。所以
 
-$$\langle u,\cos t\rangle=\frac12+0=\frac12.$$
+$$\langle u,\cos t\rangle_P=\frac12+0=\frac12.$$
 
-**第二步：计算 $\langle\cos t,\cos t\rangle$。** 与上面第一项完全相同：
+**第二步：计算 $\langle\cos t,\cos t\rangle_P$。** 与上面第一项完全相同：
 
-$$\langle\cos t,\cos t\rangle=\frac1{2\pi}\int_0^{2\pi}\cos^2t\,dt=\frac12.$$
+$$\langle\cos t,\cos t\rangle_P=\frac1{2\pi}\int_0^{2\pi}\cos^2t\,dt=\frac12.$$
 
 因此
 
-$$c=\frac{\langle u,\cos t\rangle}{\langle\cos t,\cos t\rangle}=\frac{1/2}{1/2}=1.$$
+$$c=\frac{\langle u,\cos t\rangle_P}{\langle\cos t,\cos t\rangle_P}=\frac{1/2}{1/2}=1.$$
 
 **紧凑写法。** 把 $u$ 的两项分开看：$\cos t$ 的系数是 $1$，$\cos2t$ 的系数是 $\frac12$，于是
 
-$$\langle u,\cos t\rangle=1\cdot\langle\cos t,\cos t\rangle+\frac12\cdot\langle\cos2t,\cos t\rangle
+$$\langle u,\cos t\rangle_P=1\cdot\langle\cos t,\cos t\rangle_P+\frac12\cdot\langle\cos2t,\cos t\rangle_P
 =1\cdot\frac12+\frac12\cdot0=\frac12.$$
 
-第二项因正交而消失，剩下的 $\frac12$ 正是 $\langle\cos t,\cos t\rangle$，这就是 $\frac12\cdot1$ 的来历。
+第二项因正交而消失，剩下的 $\frac12$ 正是 $\langle\cos t,\cos t\rangle_P$，这就是 $\frac12\cdot1$ 的来历。
 
 近似结果为 $\cos t$，误差为 $e=\frac12\cos2t$，误差功率
 
-$$\|e\|^2=\left\|\frac12\cos2t\right\|^2=\left(\frac12\right)^2\langle\cos2t,\cos2t\rangle=\frac14\cdot\frac12=\frac18.$$
+$$\|e\|^2=\left\|\frac12\cos2t\right\|^2=\left(\frac12\right)^2\langle\cos2t,\cos2t\rangle_P=\frac14\cdot\frac12=\frac18.$$
 
-总功率（交叉项 $\langle\cos t,\cos2t\rangle=0$，故可直接相加）
+总功率（交叉项 $\langle\cos t,\cos2t\rangle_P=0$，故可直接相加）
 
 $$\|u\|^2=\|\cos t\|^2+\left\|\frac12\cos2t\right\|^2=\frac12+\frac18=\frac58,$$
 
@@ -993,11 +1006,11 @@ $$\phi_k(t)=e^{jk\omega_0t}.$$
 
 由正交性，
 
-$$\langle\phi_k,\phi_m\rangle=\frac1{T}\int_{T}e^{j(k-m)\omega_0t}dt=\begin{cases}1,&k=m,\\0,&k\ne m.\end{cases}$$
+$$\langle\phi_k,\phi_m\rangle_P=\frac1{T}\int_{T}e^{j(k-m)\omega_0t}dt=\begin{cases}1,&k=m,\\0,&k\ne m.\end{cases}$$
 
 每个基函数的范数平方为 $1$。因此 $u$ 在第 $k$ 个基函数上的投影系数为
 
-$$c_k=\frac{\langle u,\phi_k\rangle}{\langle\phi_k,\phi_k\rangle}=\frac1{T}\int_{T}u(t)e^{-jk\omega_0t}dt,$$
+$$c_k=\frac{\langle u,\phi_k\rangle_P}{\langle\phi_k,\phi_k\rangle_P}=\frac1{T}\int_{T}u(t)e^{-jk\omega_0t}dt,$$
 
 正好是傅里叶系数的定义式。傅里叶级数展开就是把信号依次投影到各个谐波基函数上。
 
@@ -1153,7 +1166,7 @@ $$kd=1\quad\Longrightarrow\quad k=\frac1d.$$
 
 #### 2.9.4 半波整流
 
-波形：
+波形（记整流前正弦的频率为 $\omega_m$，基频为 $\omega_0$）：
 
 $$u(t)=\begin{cases}A\sin\omega_mt,&0<t<\pi/\omega_m,\\0,&\text{其余}.\end{cases}$$
 
@@ -1161,7 +1174,7 @@ $$u(t)=\begin{cases}A\sin\omega_mt,&0<t<\pi/\omega_m,\\0,&\text{其余}.\end{cas
 
 $$T=\frac{2\pi}{\omega_m},$$
 
-基频为 $\omega_0=\omega_m$。系数为
+基频为 $\omega_0=\dfrac{2\pi}{T}=\omega_m$。系数为
 
 $$c_k=\frac{\omega_m}{2\pi}\int_0^{\pi/\omega_m}A\sin(\omega_mt)e^{-jk\omega_mt}dt.$$
 
@@ -1226,23 +1239,23 @@ $$u(t)=\frac{A}{\pi}+\frac A2\sin\omega_mt-\frac{2A}{\pi}\left(\frac{\cos2\omega
 
 #### 2.9.5 全波整流
 
-波形：
+波形（公式表记作 $A\lvert\sin(\omega_0t)\rvert$，这里的 $\omega_0$ 是整流前正弦的频率）：
 
-$$u(t)=A|\sin\omega_mt|.$$
+$$u(t)=A|\sin\omega_0t|.$$
 
 周期为
 
-$$T=\frac{\pi}{\omega_m},$$
+$$T=\frac{\pi}{\omega_0},$$
 
-基频为
+整流后的基频为
 
-$$\omega_0=\frac{2\pi}{T}=2\omega_m.$$
+$$\frac{2\pi}{T}=2\omega_0.$$
 
-在一个周期 $0\le t<\pi/\omega_m$ 内，$\sin\omega_mt\ge0$，因此
+在一个周期 $0\le t<\pi/\omega_0$ 内，$\sin\omega_0t\ge0$，因此
 
-$$c_k=\frac{\omega_m}{\pi}\int_0^{\pi/\omega_m}A\sin(\omega_mt)e^{-j2k\omega_mt}dt.$$
+$$c_k=\frac{\omega_0}{\pi}\int_0^{\pi/\omega_0}A\sin(\omega_0t)e^{-j2k\omega_0t}dt.$$
 
-令 $x=\omega_mt$：
+令 $x=\omega_0t$：
 
 $$c_k=\frac{A}{\pi}\int_0^\pi\sin x\,e^{-j2kx}dx.$$
 
@@ -1252,17 +1265,17 @@ $$\int_0^\pi\sin x\,e^{-j2kx}dx=\frac{1+(-1)^{2k}}{1-(2k)^2}=\frac{2}{1-4k^2}.$$
 
 因此
 
-$$c_k=\frac{4A}{\pi(1-4k^2)}.$$
+$$c_k=\frac{2A}{\pi(1-4k^2)}.$$
 
 直流分量为
 
-$$c_0=\frac{4A}{\pi}.$$
+$$c_0=\frac{2A}{\pi}.$$
 
-对应的三角级数为
+对应的实余弦系数为 $a_0=c_0=\dfrac{2A}{\pi}$、$a_k=2c_k=\dfrac{4A}{\pi(1-4k^2)}$，三角级数为
 
-$$u(t)=\frac{4A}{\pi}-\frac{8A}{3\pi}\cos2\omega_mt-\frac{8A}{15\pi}\cos4\omega_mt-\cdots.$$
+$$u(t)=\frac{2A}{\pi}-\frac{4A}{3\pi}\cos2\omega_0t-\frac{4A}{15\pi}\cos4\omega_0t-\cdots.$$
 
-全波整流只含直流和偶次谐波，基频为 $2\omega_m$。
+全波整流只含直流和偶次谐波，基频为 $2\omega_0$。这与公式表中该行 $c_k=\dfrac{2A}{\pi(1-4k^2)}$ 完全一致。
 
 #### 2.9.6 锯齿波
 
@@ -1346,22 +1359,35 @@ $$u(t)=\frac{8A}{\pi^2}\left(\cos\omega_0t+\frac19\cos3\omega_0t+\frac1{25}\cos5
 
 下表统一使用 $\omega_0=2\pi/T$，$d=\tau/T$。$c_k$ 为复系数，实系数按 $a_k=2\operatorname{Re}c_k$、$b_k=-2\operatorname{Im}c_k$ 换算，直流项 $a_0=c_0$。
 
+公式表列出的六种波形与本表的对应关系：
+
+| 公式表中的信号 | 系数 |
+|---|---|
+| $\cos(\omega_0t)$ | $c_1=c_{-1}=\dfrac12$，其余为零 |
+| $\sin(\omega_0t)$ | $c_1=-\dfrac j2$，$c_{-1}=\dfrac j2$，其余为零 |
+| 偶对称方波 $+A$（$\lvert t\rvert<T/4$）、$-A$（$T/4<\lvert t\rvert<T/2$） | $c_k=A\operatorname{sinc}\left(\dfrac k2\right)$（$k$ 奇），$c_k=0$（$k$ 偶） |
+| 脉冲串 $Ap_\tau(t)$，$d=\tau/T$ | $c_k=Ad\operatorname{sinc}(kd)$ |
+| 三角波 $A(1-4\lvert t\rvert/T)$（$\lvert t\rvert\le T/2$） | $c_k=\dfrac{4A}{\pi^2k^2}$（$k$ 奇），$c_k=0$（$k$ 偶） |
+| 全波整流正弦 $A\lvert\sin(\omega_0t)\rvert$（$T=\pi/\omega_0$） | $c_k=\dfrac{2A}{\pi(1-4k^2)}$ |
+
+其余波形（锯齿波、半波整流、奇对称方波）是本笔记的补充，用于对照推导过程。
+
 | 波形 | 时域表达式 | 周期 | 基频 | $c_0$ | $c_k$（$k\ne0$） | 实系数 |
 |---|---|---|---|---|---|---|
 | 奇对称双极方波 | $A$（$0<t<T/2$），$-A$（$-T/2<t<0$） | $T$ | $2\pi/T$ | $0$ | $k$ 奇：$-\dfrac{2jA}{\pi k}$；$k$ 偶：$0$ | $b_k=\dfrac{4A}{\pi k}$（$k$ 奇） |
 | 偶对称双极方波 | $+A$（$\lvert t\rvert<T/4$），$-A$（$T/4<\lvert t\rvert<T/2$） | $T$ | $2\pi/T$ | $0$ | $k$ 奇：$A\operatorname{sinc}\left(\dfrac{k}{2}\right)$；$k$ 偶：$0$ | $a_k=\dfrac{4A}{\pi k}(-1)^{(k-1)/2}$（$k$ 奇） |
 | 矩形脉冲串 | $Ap_\tau(t)$，$d=\tau/T$ | $T$ | $2\pi/T$ | $Ad$ | $Ad\operatorname{sinc}(kd)$ | $a_k=2Ad\operatorname{sinc}(kd)$ |
-| 半波整流 | $A\sin\omega_m t$（$0<t<\pi/\omega_m$），其余为零 | $2\pi/\omega_m$ | $\omega_m$ | $\dfrac{A}{\pi}$ | $k=\pm1$：$\mp\dfrac{jA}{4}$；$k$ 偶且 $k\ne0$：$\dfrac{A}{\pi(1-k^2)}$；其余奇次：$0$ | $b_1=\dfrac A2$；$a_k=\dfrac{2A}{\pi(1-k^2)}$（$k$ 偶） |
-| 全波整流 | $A\lvert\sin\omega_m t\rvert$ | $\pi/\omega_m$ | $2\omega_m$ | $\dfrac{4A}{\pi}$ | $\dfrac{4A}{\pi(1-4k^2)}$ | $a_k=\dfrac{8A}{\pi(1-4k^2)}$ |
+| 半波整流 | $A\sin\omega_0 t$（$0<t<\pi/\omega_0$），其余为零 | $2\pi/\omega_0$ | $\omega_0$ | $\dfrac{A}{\pi}$ | $k=\pm1$：$\mp\dfrac{jA}{4}$；$k$ 偶且 $k\ne0$：$\dfrac{A}{\pi(1-k^2)}$；其余奇次：$0$ | $b_1=\dfrac A2$；$a_k=\dfrac{2A}{\pi(1-k^2)}$（$k$ 偶） |
+| 全波整流 | $A\lvert\sin\omega_0 t\rvert$ | $\pi/\omega_0$ | $2\omega_0$ | $\dfrac{2A}{\pi}$ | $\dfrac{2A}{\pi(1-4k^2)}$ | $a_k=\dfrac{4A}{\pi(1-4k^2)}$ |
 | 锯齿波 | $2At/T$（$\lvert t\rvert<T/2$） | $T$ | $2\pi/T$ | $0$ | $\dfrac{jA(-1)^k}{k\pi}$ | $b_k=-\dfrac{2A(-1)^k}{k\pi}$ |
-| 三角波 | $A(1-4\lvert t\rvert/T)$（$\lvert t\rvert\le T/2$） | $T$ | $2\pi/T$ | $0$ | $k$ 奇：$\dfrac{4A}{\pi^2k^2}$；$k$ 偶：$0$ | $a_k=\dfrac{8A}{\pi^2k^2}$（$k$ 奇） |
+| 三角波 | $A(1-4\lvert t\rvert/T)$（$\lvert t\rvert\le T/2$） | $T$ | $2\pi/T$ | $0$ | $k$ 奇：$\dfrac{4A}{\pi^2k^2}$；$k$ 偶：$0$ | $a_k=\dfrac{8A}{\pi^2k^2}$（$k$ 奇），即 $a_k=2c_k$，与公式表 $c_k$ 一致 |
 
 使用表格时注意：
 
-1. 全波整流的周期是 $\pi/\omega_m$，基频是 $2\omega_m$，不能把 $\omega_m$ 当作它的基频。
+1. 全波整流的周期是 $\pi/\omega_0$，基频是 $2\omega_0$，不能把整流前正弦的频率 $\omega_0$ 当作它的基频。
 2. 半波整流的 $k=\pm1$ 要单独处理，不能代入 $\dfrac{A}{\pi(1-k^2)}$。
 3. 表中的「奇次」「偶次」指谐波次数 $k$ 的奇偶，与波形本身的奇偶对称性无关。
-4. 全波整流的系数在不同资料中会出现 $c_k=\dfrac{2A}{\pi(1-4k^2)}$ 与 $c_k=\dfrac{4A}{\pi(1-4k^2)}$ 两种写法，差别来自系数定义或 $A$ 的含义不同。本表按公式表的约定取 $c_k=\dfrac{4A}{\pi(1-4k^2)}$、$c_0=\dfrac{4A}{\pi}$。做题时以题目给出的定义式为准，不要直接把两种写法的数值混用。
+4. 全波整流按公式表取 $c_k=\dfrac{2A}{\pi(1-4k^2)}$、$c_0=\dfrac{2A}{\pi}$。有些资料只列实余弦系数 $a_k=\dfrac{4A}{\pi(1-4k^2)}$，数值是 $c_k$ 的两倍，不要直接当成复系数使用。
 5. 不同教材对三角形式常数项的定义可能不同。本表按 $a_0=c_0$ 换算；若使用 $a_0/2$ 的约定，直流项要相应乘 $2$。
 
 ### 2.10 收敛性与 Gibbs 现象
@@ -1608,7 +1634,7 @@ $$\int_0^\infty e^{2t}e^{-j\omega t}dt=\int_0^\infty e^{(2-j\omega)t}dt.$$
 | $1$ | $2\pi\delta(\omega)$ | 广义 |
 | $e^{j\omega_0t}$ | $2\pi\delta(\omega-\omega_0)$ | 广义 |
 | $\cos\omega_0t$ | $\pi\left[\delta(\omega-\omega_0)+\delta(\omega+\omega_0)\right]$ | 广义 |
-| $\sin\omega_0t$ | $\dfrac{\pi}{j}\left[\delta(\omega-\omega_0)-\delta(\omega+\omega_0)\right]$ | 广义 |
+| $\sin\omega_0t$ | $-j\pi\delta(\omega-\omega_0)+j\pi\delta(\omega+\omega_0)$ | 广义 |
 | $H(t)$ | $\dfrac{1}{j\omega}+\pi\delta(\omega)$ | 广义 |
 | $e^{-at}H(t)$ | $\dfrac{1}{a+j\omega}$ | $a>0$ |
 | $e^{-a\lvert t\rvert}$ | $\dfrac{2a}{a^2+\omega^2}$ | $a>0$ |
@@ -1734,9 +1760,11 @@ $$\begin{aligned}
 &=\int_{-\infty}^{\infty}\frac{1}{2j}\left(e^{j\omega_0t}-e^{-j\omega_0t}\right)e^{-j\omega t}dt\\
 &=\frac{1}{2j}\int_{-\infty}^{\infty}e^{-j(\omega-\omega_0)t}dt
 -\frac{1}{2j}\int_{-\infty}^{\infty}e^{-j(\omega+\omega_0)t}dt\\
-&=\frac{\pi}{j}\delta(\omega-\omega_0)-\frac{\pi}{j}\delta(\omega+\omega_0)\\
-&=\frac{\pi}{j}\left[\delta(\omega-\omega_0)-\delta(\omega+\omega_0)\right].
+&=-j\pi\delta(\omega-\omega_0)+j\pi\delta(\omega+\omega_0)\\
+&=-j\pi\left[\delta(\omega-\omega_0)-\delta(\omega+\omega_0)\right].
 \end{aligned}$$
+
+这里用了 $1/j=-j$。公式表把它排成 $\sin\omega_0t\leftrightarrow -j\pi\delta(\omega-\omega_0)+j\pi\delta(\omega+\omega_0)$，两者完全等价。
 
 #### 单位阶跃
 
@@ -2019,7 +2047,7 @@ $$\int_{-\infty}^{t}\delta(\tau)d\tau=H(t)\longleftrightarrow\frac1{j\omega}+\pi
 
 与表中 $H(t)$ 一行一致，冲激项正是 $U(0)=1$ 贡献的。若换成零均值信号 $u(t)=\cos t$，$U(0)=0$：
 
-$$\int_{-\infty}^{t}\cos\tau\,d\tau=\sin t\longleftrightarrow\frac{\pi}{j}\left[\delta(\omega-1)-\delta(\omega+1)\right]=\frac{U(j\omega)}{j\omega},$$
+$$\int_{-\infty}^{t}\cos\tau\,d\tau=\sin t\longleftrightarrow -j\pi\delta(\omega-1)+j\pi\delta(\omega+1)=\frac{U(j\omega)}{j\omega},$$
 
 冲激项消失，只剩除以 $j\omega$ 的部分。
 
@@ -2489,7 +2517,11 @@ $$|G(j\omega_c)|^2=\frac{|G(0)|^2}{2}.$$
 
 $$G(j\omega)=\frac1{1+j\omega/\omega_c},$$
 
-截止频率等于极点频率 $\omega_c$。
+截止频率等于极点频率 $\omega_c$。按公式表的一阶形式
+
+$$G(s)=\frac{K}{\tau s+1},$$
+
+极点实部大小为 $1/\tau$，所以 $\omega_c=1/\tau$。它的阶跃响应在 $t=\tau$ 达到终值的 $63\%$，$10\%\to90\%$ 上升时间 $\approx2.2\tau$，$5\%$ 调节时间 $\approx3\tau$。
 
 **例**　$h(t)=e^{-3t}H(t)$，$G(j\omega)=\dfrac1{3+j\omega}$。
 
@@ -2733,9 +2765,9 @@ $$1-2\zeta^2>0\quad\Longrightarrow\quad0<\zeta<\frac1{\sqrt2}\approx0.7071.$$
 
 $$\left|G(j\omega_r)\right|=\frac{|K|}{2\zeta\sqrt{1-\zeta^2}}\qquad\left(\zeta<\frac1{\sqrt2}\right).$$
 
-峰值相对于直流增益的倍数为
+峰值相对于直流增益的倍数为（公式表写法 $\dfrac{|G(j\omega_r)|}{|K|}$）
 
-$$M_r=\frac{|G(j\omega_r)|}{K}=\frac{1}{2\zeta\sqrt{1-\zeta^2}}.$$
+$$M_r=\frac{|G(j\omega_r)|}{|K|}=\frac{1}{2\zeta\sqrt{1-\zeta^2}}.$$
 
 分贝值为
 
@@ -2782,11 +2814,27 @@ $$20\log_{10}M_r\approx8.14\ \mathrm{dB}.$$
 
 ### 5.4 时域指标
 
-二阶系统的时域指标与频域参数是同一组参数的不同表现：
+二阶系统
 
-- 阻尼振荡频率：
+$$G(s)=\frac{K\omega_n^2}{s^2+2\zeta\omega_ns+\omega_n^2},\qquad 0<\zeta<1$$
+
+的时域指标与频域参数是同一组参数的不同表现。
+
+**公式表给的指标：**
+
+- 阻尼自然频率（阻尼振荡频率）：
 
 $$\omega_d=\omega_n\sqrt{1-\zeta^2}.$$
+
+- $5\%$ 误差带下的调节时间（settling time）：
+
+$$t_s\approx\frac{3}{\zeta\omega_n}.$$
+
+- 共振峰（与幅频曲线同一公式）：
+
+$$\frac{|G(j\omega_r)|}{|K|}=\frac{1}{2\zeta\sqrt{1-\zeta^2}},\qquad \omega_r=\omega_n\sqrt{1-2\zeta^2},\quad \zeta<\frac1{\sqrt2}.$$
+
+**由标准二阶响应推出的指标：**
 
 - 超调量：
 
@@ -2796,11 +2844,15 @@ $$M_p=e^{-\pi\zeta/\sqrt{1-\zeta^2}}.$$
 
 $$t_p=\frac{\pi}{\omega_d}.$$
 
-- $2\%$ 误差带下的调节时间：
-
-$$t_s\approx\frac4{\zeta\omega_n}.$$
-
 $\zeta$ 控制振荡和超调，$\omega_n$ 控制响应速度。频域的共振峰与时域的超调都由 $\zeta$ 决定：$\zeta$ 越小，共振峰越高，超调也越大。
+
+**公式表常用数值对照**（表中 $\zeta\le0.707$；$t_s$ 按 $3/(\zeta\omega_n)$ 计算）：
+
+| $\zeta$ | 0.1 | 0.2 | 0.3 | 0.5 | 0.707 |
+|---|---|---|---|---|---|
+| 超调量 $M_p$ | $73\%$ | $53\%$ | $37\%$ | $16\%$ | $4.3\%$ |
+| 共振峰 $\lvert G(j\omega_r)\rvert/\lvert K\rvert$ | $5.03$ | $2.55$ | $1.75$ | $1.15$ | $1.00$ |
+| 共振峰高出直流的 dB 值 | $14.0$ | $8.1$ | $4.8$ | $1.2$ | $0$ |
 
 ### 5.5 二阶系统典型例题
 
@@ -3023,9 +3075,13 @@ $$G_A(j\omega)=\frac{300}{4+j\omega}$$
 
 ### 7.1 定义与收敛域
 
-单边拉普拉斯变换定义为
+公式表的拉普拉斯变换定义为
 
-$$U(s)=\int_{0^-}^{\infty}u(t)e^{-st}dt,\qquad s=\sigma+j\omega.$$
+$$U(s)=\mathcal L\{u\}(s)=\int_{0^-}^{\infty}u(t)e^{-st}dt,\qquad s=\sigma+j\omega.$$
+
+系统的输入、输出与传递函数满足
+
+$$Y(s)=G(s)U(s),\qquad G(s)=\mathcal L\{h\}(s).$$
 
 双边拉普拉斯变换的下限为 $-\infty$。积分下限写成 $0^-$ 是为了把 $t=0$ 处的冲激包含进来。
 
@@ -3060,8 +3116,12 @@ $$\frac1{s+a}$$
 | $u(t)$ | $U(s)$ | ROC |
 |---|---|---|
 | $\delta(t)$ | $1$ | 整个 $s$ 平面 |
+| $\delta(t-t_0)$（$t_0\ge0$） | $e^{-st_0}$ | 整个 $s$ 平面 |
 | $H(t)$ | $\dfrac1s$ | $\operatorname{Re}(s)>0$ |
+| $tH(t)$ | $\dfrac1{s^2}$ | $\operatorname{Re}(s)>0$ |
+| $t^nH(t)$ | $\dfrac{n!}{s^{n+1}}$ | $\operatorname{Re}(s)>0$ |
 | $e^{-at}H(t)$ | $\dfrac1{s+a}$ | $\operatorname{Re}(s)>-a$ |
+| $te^{-at}H(t)$ | $\dfrac1{(s+a)^2}$ | $\operatorname{Re}(s)>-a$ |
 | $t^ne^{-at}H(t)$ | $\dfrac{n!}{(s+a)^{n+1}}$ | $\operatorname{Re}(s)>-a$ |
 | $\cos\omega_0t\,H(t)$ | $\dfrac{s}{s^2+\omega_0^2}$ | $\operatorname{Re}(s)>0$ |
 | $\sin\omega_0t\,H(t)$ | $\dfrac{\omega_0}{s^2+\omega_0^2}$ | $\operatorname{Re}(s)>0$ |
@@ -3087,19 +3147,20 @@ $$\cos\omega_0t\,H(t)\longleftrightarrow\frac12\left(\frac1{s-j\omega_0}+\frac1{
 
 | 性质 | 时域 | $s$ 域 |
 |---|---|---|
-| 线性 | $au_1+bu_2$ | $aU_1+bU_2$ |
-| 时移 | $u(t-\tau)H(t-\tau)$ | $e^{-s\tau}U(s)$ |
-| $s$ 域移位 | $e^{at}u(t)H(t)$ | $U(s-a)$ |
+| 线性 | $\alpha u_1+\beta u_2$ | $\alpha U_1+\beta U_2$ |
+| 时移 | $u(t-t_0)H(t-t_0)$，$t_0\ge0$ | $e^{-st_0}U(s)$ |
+| $s$ 域移位 | $e^{-at}u(t)$ | $U(s+a)$ |
 | 尺度 | $u(at)$，$a>0$ | $\dfrac1aU\left(\dfrac{s}{a}\right)$ |
-| 卷积 | $u_1*u_2$ | $U_1U_2$ |
-| 一阶微分 | $\dot u(t)$ | $sU(s)-u(0^-)$ |
-| 二阶微分 | $\ddot u(t)$ | $s^2U(s)-su(0^-)-\dot u(0^-)$ |
-| 积分 | $\displaystyle\int_0^tu(\tau)d\tau$ | $\dfrac{U(s)}{s}$ |
+| 卷积 | $(h*u)(t)$ | $H(s)U(s)$ |
+| 一阶微分 | $\dfrac{d}{dt}u(t)$ | $sU(s)-u(0^-)$ |
+| 二阶微分 | $\dfrac{d^2}{dt^2}u(t)$ | $s^2U(s)-su(0^-)-\dot u(0^-)$ |
+| 积分 | $\displaystyle\int_{0^-}^{t}u(\varsigma)d\varsigma$ | $\dfrac{U(s)}{s}$ |
 | 乘 $t$ | $tu(t)$ | $-\dfrac{dU(s)}{ds}$ |
+| 调制 | $u(t)\cos(\omega_0t)$ | $\dfrac12U(s-j\omega_0)+\dfrac12U(s+j\omega_0)$ |
 
-**时移**：单边拉普拉斯变换中，时间延迟必须连同阶跃一起延迟。$u(t-\tau)$ 若在 $t<0$ 时有值，单边变换会多出 $[0^-,\tau]$ 区间的贡献。
+**时移**：单边拉普拉斯变换中，时间延迟必须连同阶跃一起延迟。$u(t-t_0)$ 若在 $t<0$ 时有值，单边变换会多出 $[0^-,t_0]$ 区间的贡献。
 
-**$s$ 域移位**：时域乘 $e^{at}$，$s$ 域用 $s-a$ 替换 $s$，即频谱向右平移。
+**$s$ 域移位**：时域乘 $e^{-at}$，$s$ 域用 $s+a$ 替换 $s$。
 
 **微分**：初始条件通过 $u(0^-)$ 进入。求传递函数时令初始条件为零，才得到
 
@@ -3109,23 +3170,23 @@ $$Y(s)=G(s)U(s).$$
 
 **初值定理**：
 
-$$y(0^+)=\lim_{s\to\infty}sY(s).$$
+$$u(0^+)=\lim_{s\to\infty}sU(s).$$
 
 **终值定理**：
 
-$$\lim_{t\to\infty}y(t)=\lim_{s\to0}sY(s).$$
+$$\lim_{t\to\infty}u(t)=\lim_{s\to0}sU(s).$$
 
-终值定理的使用前提是：$sY(s)$ 的极点全部位于开左半平面，等价地说，$Y(s)$ 的极点全部位于左半平面，或在 $s=0$ 处最多有一个单极点。若 $Y(s)$ 在虚轴上有非零极点，或在右半平面有极点，响应不会收敛到常数，终值定理失效。
+终值定理的使用前提是：$sU(s)$ 的极点全部位于开左半平面，等价地说，$U(s)$ 的极点全部位于左半平面，或在 $s=0$ 处最多有一个单极点。若 $U(s)$ 在虚轴上有非零极点，或在右半平面有极点，响应不会收敛到常数，终值定理失效。
 
-**例**　$Y(s)=\dfrac1{s(s+2)}$。
+**例**　$U(s)=\dfrac1{s(s+2)}$。
 
-$$y(\infty)=\lim_{s\to0}sY(s)=\lim_{s\to0}\frac1{s+2}=\frac12.$$
+$$u(\infty)=\lim_{s\to0}sU(s)=\lim_{s\to0}\frac1{s+2}=\frac12.$$
 
-$sY(s)=1/(s+2)$ 的极点在 $-2$，满足条件。
+$sU(s)=1/(s+2)$ 的极点在 $-2$，满足条件。
 
-**反例**　$Y(s)=\dfrac1{s^2+4}$。
+**反例**　$U(s)=\dfrac1{s^2+4}$。
 
-$sY(s)=s/(s^2+4)$ 在 $\pm j2$ 有极点，终值定理不适用。时域响应为 $\frac12\sin2t$，不趋于常数。
+$sU(s)=s/(s^2+4)$ 在 $\pm j2$ 有极点，终值定理不适用。时域响应为 $\frac12\sin2t$，不趋于常数。
 
 ### 7.5 部分分式分解
 
@@ -3333,6 +3394,22 @@ $$s\to\frac{\omega_c}{s}.$$
 
 这个替换把低频映射到高频，把低通变成同截止频率的高通。若题目出现 $s\to50/s$，说明截止频率为 $\omega_c=50$，即原型低通的参考频率与目标频率的乘积为 $50$。
 
+**公式表给出的阶次实现：**
+
+$$|G(j\omega)|^2=\frac1{1+(\omega/\omega_c)^{2n}}.$$
+
+- $n=1$：$G(s)=\dfrac{\omega_c}{s+\omega_c}$。
+- $n=2$：$G(s)=\dfrac{\omega_c^2}{s^2+\sqrt2\,\omega_cs+\omega_c^2}$。
+- $n=3$：$G(s)=\dfrac{\omega_c^3}{(s+\omega_c)(s^2+\omega_cs+\omega_c^2)}$。
+
+一般形式（$\zeta_k=\sin\dfrac{(2k-1)\pi}{2n}$）：
+
+$$n\ \text{偶}:\ G(s)=\prod_{k=1}^{n/2}\frac{\omega_c^2}{s^2+2\zeta_k\omega_cs+\omega_c^2},$$
+
+$$n\ \text{奇}:\ G(s)=\frac{\omega_c}{s+\omega_c}\prod_{k=1}^{(n-1)/2}\frac{\omega_c^2}{s^2+2\zeta_k\omega_cs+\omega_c^2}.$$
+
+每一对共轭极点按二阶标准形 $s^2+2\zeta_k\omega_cs+\omega_c^2$ 写出，对应 $\omega_n=\omega_c$、$\zeta_k=\sin\dfrac{(2k-1)\pi}{2n}$。二阶时 $\zeta_1=\sin45^\circ=1/\sqrt2$，正是 $\sqrt2\omega_cs$ 的来源。
+
 ### 8.6 滤波器典型例题
 
 **例 1（判断滤波器类型）**　$G(s)=\dfrac{s}{s+10}$。
@@ -3367,7 +3444,18 @@ $$\frac{100}{\sqrt{100^2+\omega^2}}=\frac1{\sqrt2},$$
 
 $$c(t)=\cos\omega_ct.$$
 
-调制后的信号为
+**公式表把调制分成四种：**
+
+| 类型 | 公式 |
+|---|---|
+| AM（调幅，DSB-SC） | $y(t)=u(t)\cos(\omega_ct)$，$Y(j\omega)=\frac12U(j(\omega-\omega_c))+\frac12U(j(\omega+\omega_c))$ |
+| 解调 | $z(t)=y(t)\cos(\omega_ct)=\frac12u(t)+\frac12u(t)\cos(2\omega_ct)$ |
+| FM（调频） | $y(t)=\cos\left(\omega_ct+k\displaystyle\int_{-\infty}^{t}u(\tau)d\tau\right)$ |
+| PM（调相） | $y(t)=\cos\left(\omega_ct+ku(t)\right)$ |
+
+FM 与 PM 的调制灵敏度在公式表中统一记作 $k$，不区分 $k_f$、$k_p$；本笔记后面统一用 $k$。
+
+按 AM 公式，调制后的信号为
 
 $$y(t)=u(t)\cos\omega_ct.$$
 
@@ -3436,27 +3524,27 @@ $$\omega_i(t)=\frac{d\theta(t)}{dt}.$$
 
 **相位调制（PM）**：
 
-$$y(t)=\cos\left(\omega_ct+k_pu(t)\right).$$
+$$y(t)=\cos\left(\omega_ct+ku(t)\right).$$
 
 相位为
 
-$$\theta(t)=\omega_ct+k_pu(t),$$
+$$\theta(t)=\omega_ct+ku(t),$$
 
 瞬时角频率为
 
-$$\omega_i(t)=\omega_c+k_p\dot u(t).$$
+$$\omega_i(t)=\omega_c+k\dot u(t).$$
 
 **频率调制（FM）**：
 
-$$y(t)=\cos\left(\omega_ct+k_f\int_{-\infty}^{t}u(\tau)d\tau\right).$$
+$$y(t)=\cos\left(\omega_ct+k\int_{-\infty}^{t}u(\tau)d\tau\right).$$
 
 相位为
 
-$$\theta(t)=\omega_ct+k_f\int_{-\infty}^{t}u(\tau)d\tau,$$
+$$\theta(t)=\omega_ct+k\int_{-\infty}^{t}u(\tau)d\tau,$$
 
 瞬时角频率为
 
-$$\omega_i(t)=\omega_c+k_fu(t).$$
+$$\omega_i(t)=\omega_c+ku(t).$$
 
 对比：
 
@@ -3527,77 +3615,137 @@ $$B\approx2(\Delta f+W)=2(5+1)=12\ \mathrm{kHz}.$$
 
 ### 10.1 傅里叶级数
 
-周期为 $T$、基频为 $\omega_0=2\pi/T$ 的信号：
+周期为 $T$、基频为 $\omega_0=2\pi/T$ 的信号（$\phi_k(t)=e^{jk\omega_0t}$）：
 
-$$u(t)=\sum_{k=-\infty}^{\infty}c_ke^{jk\omega_0t},\qquad c_k=\frac1T\int_Tu(t)e^{-jk\omega_0t}dt.$$
+$$u(t)=\sum_{k=-\infty}^{\infty}c_ke^{jk\omega_0t},\qquad c_k=\langle u,\phi_k\rangle_P=\frac1T\int_0^Tu(t)e^{-jk\omega_0t}dt.$$
 
 三角形式：
 
-$$u(t)=a_0+\sum_{k=1}^{\infty}\left(a_k\cos k\omega_0t+b_k\sin k\omega_0t\right),$$
+$$u(t)=a_0+\sum_{k=1}^{\infty}\left(a_k\cos(k\omega_0t)+b_k\sin(k\omega_0t)\right),$$
 
-$$a_0=c_0,\qquad a_k=2\operatorname{Re}c_k,\qquad b_k=-2\operatorname{Im}c_k.$$
+$$a_0=c_0,\qquad a_k=2\operatorname{Re}c_k=\frac2T\int_0^Tu(t)\cos(k\omega_0t)dt,\qquad b_k=-2\operatorname{Im}c_k=\frac2T\int_0^Tu(t)\sin(k\omega_0t)dt.$$
 
-常用波形系数：奇对称方波 $c_k=-\dfrac{2jA}{\pi k}$（$k$ 奇）；偶对称方波 $c_k=A\operatorname{sinc}\left(\dfrac k2\right)$（$k$ 奇）；脉冲串 $c_k=Ad\operatorname{sinc}(kd)$；三角波 $c_k=\dfrac{4A}{\pi^2k^2}$（$k$ 奇）。
+性质：
 
-Parseval：$P=\dfrac1T\int_T|u(t)|^2dt=\sum_k|c_k|^2$。
+| 性质 | 结论 |
+|---|---|
+| $u$ 实 | $c_{-k}=\overline{c_k}$ |
+| $u$ 偶 | $b_k=0$ |
+| $u$ 奇 | $a_0=a_k=0$ |
+| 线性 $\alpha u_1+\beta u_2$ | 系数 $\alpha c_{1,k}+\beta c_{2,k}$ |
+| 时移 $u(t-t_0)$ | 系数 $e^{-jk\omega_0t_0}c_k$ |
+| Parseval | $P(u)=\dfrac1T\displaystyle\int_0^T|u(t)|^2dt=\sum_{k=-\infty}^{\infty}|c_k|^2$ |
+
+公式表的常用波形：
+
+| 波形 | 系数 |
+|---|---|
+| $\cos\omega_0t$ | $c_1=c_{-1}=\dfrac12$，其余为零 |
+| $\sin\omega_0t$ | $c_1=-\dfrac j2$，$c_{-1}=\dfrac j2$，其余为零 |
+| 偶对称方波 $+A$（$\lvert t\rvert<T/4$）、$-A$（$T/4<\lvert t\rvert<T/2$） | $c_k=A\operatorname{sinc}\left(\dfrac k2\right)$（$k$ 奇），$c_k=0$（$k$ 偶） |
+| 脉冲串 $Ap_\tau(t)$，$d=\tau/T$ | $c_k=Ad\operatorname{sinc}(kd)$ |
+| 三角波 $A(1-4\lvert t\rvert/T)$（$\lvert t\rvert\le T/2$） | $c_k=\dfrac{4A}{\pi^2k^2}$（$k$ 奇），$c_k=0$（$k$ 偶） |
+| 全波整流正弦 $A\lvert\sin(\omega_0t)\rvert$，$T=\pi/\omega_0$ | $c_k=\dfrac{2A}{\pi(1-4k^2)}$ |
+
+其中 $\operatorname{sinc}(x)=\dfrac{\sin(\pi x)}{\pi x}$。
 
 ### 10.2 傅里叶变换
 
 $$U(j\omega)=\int_{-\infty}^{\infty}u(t)e^{-j\omega t}dt,\qquad u(t)=\frac1{2\pi}\int_{-\infty}^{\infty}U(j\omega)e^{j\omega t}d\omega.$$
 
-| 时域 $u(t)$ | 频域 $U(j\omega)$ |
-|---|---|
-| $\delta(t-t_0)$ | $e^{-j\omega t_0}$ |
-| $1$ | $2\pi\delta(\omega)$ |
-| $\cos\omega_0t$ | $\pi\left[\delta(\omega-\omega_0)+\delta(\omega+\omega_0)\right]$ |
-| $\sin\omega_0t$ | $\dfrac{\pi}{j}\left[\delta(\omega-\omega_0)-\delta(\omega+\omega_0)\right]$ |
-| $H(t)$ | $\dfrac{1}{j\omega}+\pi\delta(\omega)$ |
-| $e^{-at}H(t)$ | $\dfrac{1}{a+j\omega}$ |
-| $e^{-a|t|}$ | $\dfrac{2a}{a^2+\omega^2}$ |
-| $p_\tau(t)$ | $\tau\operatorname{sinc}\left(\dfrac{\omega\tau}{2\pi}\right)$ |
-| $\dfrac{\sin Wt}{\pi t}$ | $p_{2W}(\omega)$ |
+周期信号：$U(j\omega)=2\pi\displaystyle\sum_{k=-\infty}^{\infty}c_k\delta(\omega-k\omega_0)$。
 
-常用性质：时移乘 $e^{-j\omega t_0}$；尺度乘 $\dfrac{1}{|a|}$ 并把 $\omega$ 换成 $\omega/a$；时域卷积对应频域相乘；时域相乘对应频域卷积并带 $1/(2\pi)$；微分乘 $j\omega$；积分除 $j\omega$ 并加 $\pi U(0)\delta(\omega)$。
+| 时域 $u(t)$ | 频域 $U(j\omega)$ | 时域 $u(t)$ | 频域 $U(j\omega)$ |
+|---|---|---|---|
+| $\delta(t)$ | $1$ | $p_\tau(t)$ | $\tau\operatorname{sinc}\left(\dfrac{\omega\tau}{2\pi}\right)$ |
+| $\delta(t-t_0)$ | $e^{-j\omega t_0}$ | $\dfrac{\sin(Wt)}{\pi t}$ | $p_{2W}(\omega)$ |
+| $1$ | $2\pi\delta(\omega)$ | $1-\dfrac{\lvert t\rvert}{\tau}$（$\lvert t\rvert<\tau$） | $\tau\operatorname{sinc}^2\left(\dfrac{\omega\tau}{2\pi}\right)$ |
+| $e^{j\omega_0t}$ | $2\pi\delta(\omega-\omega_0)$ | $e^{-at}H(t)$（$a>0$） | $\dfrac1{a+j\omega}$ |
+| $\cos(\omega_0t)$ | $\pi\delta(\omega-\omega_0)+\pi\delta(\omega+\omega_0)$ | $te^{-at}H(t)$ | $\dfrac1{(a+j\omega)^2}$ |
+| $\sin(\omega_0t)$ | $-j\pi\delta(\omega-\omega_0)+j\pi\delta(\omega+\omega_0)$ | $e^{-a\lvert t\rvert}$ | $\dfrac{2a}{a^2+\omega^2}$ |
+| $H(t)$ | $\pi\delta(\omega)+\dfrac1{j\omega}$ | $e^{-at}\cos(\omega_0t)H(t)$ | $\dfrac{a+j\omega}{(a+j\omega)^2+\omega_0^2}$ |
+| $\operatorname{sgn}(t)$ | $\dfrac2{j\omega}$ | $e^{-at}\sin(\omega_0t)H(t)$ | $\dfrac{\omega_0}{(a+j\omega)^2+\omega_0^2}$ |
 
-Parseval：$E=\int|u(t)|^2dt=\dfrac1{2\pi}\int|U(j\omega)|^2d\omega$。
+性质：
+
+| 运算 | 时域 | 频域 |
+|---|---|---|
+| 线性 | $\alpha u_1+\beta u_2$ | $\alpha U_1+\beta U_2$ |
+| 时移 | $u(t-t_0)$ | $e^{-j\omega t_0}U(j\omega)$ |
+| 频移 | $e^{j\omega_0t}u(t)$ | $U(j(\omega-\omega_0))$ |
+| 调制 | $u(t)\cos(\omega_0t)$ | $\dfrac12U(j(\omega-\omega_0))+\dfrac12U(j(\omega+\omega_0))$ |
+| 尺度 | $u(at)$ | $\dfrac1{\lvert a\rvert}U\left(j\dfrac{\omega}{a}\right)$ |
+| 反转 | $u(-t)$ | $U(-j\omega)$ |
+| 微分 | $\dfrac{d}{dt}u(t)$ | $j\omega U(j\omega)$ |
+| 积分 | $\displaystyle\int_{-\infty}^{t}u(\varsigma)d\varsigma$ | $\dfrac{U(j\omega)}{j\omega}+\pi U(0)\delta(\omega)$ |
+| 乘 $t$ | $tu(t)$ | $j\dfrac{d}{d\omega}U(j\omega)$ |
+| 卷积 | $(h*u)(t)$ | $H(j\omega)U(j\omega)$ |
+| 相乘 | $u(t)y(t)$ | $\dfrac1{2\pi}(U*Y)(j\omega)$ |
+| 对偶 | $U(jt)$ | $2\pi u(-\omega)$ |
+
+Parseval：
+
+$$\int_{-\infty}^{\infty}u(t)\overline{y(t)}dt=\frac1{2\pi}\int_{-\infty}^{\infty}U(j\omega)\overline{Y(j\omega)}d\omega,\qquad E(u)=\int_{-\infty}^{\infty}|u(t)|^2dt=\frac1{2\pi}\int_{-\infty}^{\infty}|U(j\omega)|^2d\omega.$$
 
 ### 10.3 拉普拉斯变换
 
-$$U(s)=\int_{0^-}^{\infty}u(t)e^{-st}dt,\qquad s=\sigma+j\omega.$$
+$$U(s)=\mathcal L\{u\}(s)=\int_{0^-}^{\infty}u(t)e^{-st}dt,\qquad Y(s)=G(s)U(s),\qquad G(s)=\mathcal L\{h\}(s).$$
 
 | 时域 $u(t)$ | $s$ 域 $U(s)$ | ROC |
 |---|---|---|
 | $\delta(t)$ | $1$ | 全平面 |
+| $\delta(t-t_0)$（$t_0\ge0$） | $e^{-st_0}$ | 全平面 |
 | $H(t)$ | $\dfrac1s$ | $\operatorname{Re}s>0$ |
+| $tH(t)$ | $\dfrac1{s^2}$ | $\operatorname{Re}s>0$ |
+| $t^nH(t)$ | $\dfrac{n!}{s^{n+1}}$ | $\operatorname{Re}s>0$ |
 | $e^{-at}H(t)$ | $\dfrac{1}{s+a}$ | $\operatorname{Re}s>-a$ |
+| $te^{-at}H(t)$ | $\dfrac{1}{(s+a)^2}$ | $\operatorname{Re}s>-a$ |
 | $t^ne^{-at}H(t)$ | $\dfrac{n!}{(s+a)^{n+1}}$ | $\operatorname{Re}s>-a$ |
-| $\cos\omega_0t\,H(t)$ | $\dfrac{s}{s^2+\omega_0^2}$ | $\operatorname{Re}s>0$ |
-| $\sin\omega_0t\,H(t)$ | $\dfrac{\omega_0}{s^2+\omega_0^2}$ | $\operatorname{Re}s>0$ |
-| $e^{-at}\cos\omega_0t\,H(t)$ | $\dfrac{s+a}{(s+a)^2+\omega_0^2}$ | $\operatorname{Re}s>-a$ |
-| $e^{-at}\sin\omega_0t\,H(t)$ | $\dfrac{\omega_0}{(s+a)^2+\omega_0^2}$ | $\operatorname{Re}s>-a$ |
-| $tu(t)$ | $-\dfrac{dU}{ds}$ | — |
+| $\cos(\omega_0t)H(t)$ | $\dfrac{s}{s^2+\omega_0^2}$ | $\operatorname{Re}s>0$ |
+| $\sin(\omega_0t)H(t)$ | $\dfrac{\omega_0}{s^2+\omega_0^2}$ | $\operatorname{Re}s>0$ |
+| $e^{-at}\cos(\omega_0t)H(t)$ | $\dfrac{s+a}{(s+a)^2+\omega_0^2}$ | $\operatorname{Re}s>-a$ |
+| $e^{-at}\sin(\omega_0t)H(t)$ | $\dfrac{\omega_0}{(s+a)^2+\omega_0^2}$ | $\operatorname{Re}s>-a$ |
 
-常用性质：时移乘 $e^{-s\tau}$；$s$ 域移位对应乘 $e^{at}$；微分 $sU(s)-u(0^-)$；二阶微分 $s^2U(s)-su(0^-)-\dot u(0^-)$；积分除 $s$；卷积对应相乘。
+性质：
 
-初值定理：$y(0^+)=\lim_{s\to\infty}sY(s)$。终值定理：$y(\infty)=\lim_{s\to0}sY(s)$，前提是 $sY(s)$ 的全部极点位于开左半平面。
+| 性质 | 时域 | $s$ 域 |
+|---|---|---|
+| 线性 | $\alpha u_1+\beta u_2$ | $\alpha U_1+\beta U_2$ |
+| 时移 | $u(t-t_0)H(t-t_0)$，$t_0\ge0$ | $e^{-st_0}U(s)$ |
+| $s$ 域移位 | $e^{-at}u(t)$ | $U(s+a)$ |
+| 尺度 | $u(at)$，$a>0$ | $\dfrac1aU\left(\dfrac{s}{a}\right)$ |
+| 乘 $t$ | $tu(t)$ | $-\dfrac{dU(s)}{ds}$ |
+| 一阶微分 | $\dfrac{d}{dt}u(t)$ | $sU(s)-u(0^-)$ |
+| 二阶微分 | $\dfrac{d^2}{dt^2}u(t)$ | $s^2U(s)-su(0^-)-\dot u(0^-)$ |
+| 积分 | $\displaystyle\int_{0^-}^{t}u(\varsigma)d\varsigma$ | $\dfrac{U(s)}{s}$ |
+| 卷积 | $(h*u)(t)$ | $H(s)U(s)$ |
+| 调制 | $u(t)\cos(\omega_0t)$ | $\dfrac12U(s-j\omega_0)+\dfrac12U(s+j\omega_0)$ |
+
+初值定理：$u(0^+)=\lim_{s\to\infty}sU(s)$。
+
+终值定理：$\displaystyle\lim_{t\to\infty}u(t)=\lim_{s\to0}sU(s)$，前提是 $sU(s)$ 的全部极点位于开左半平面。
 
 ### 10.4 二阶系统
 
-$$G(j\omega)=\frac{K\omega_n^2}{(j\omega)^2+2\zeta\omega_n(j\omega)+\omega_n^2},\qquad G(0)=K.$$
+$$G(j\omega)=\frac{K\omega_n^2}{(j\omega)^2+2\zeta\omega_n(j\omega)+\omega_n^2},\qquad G(s)=\frac{K\omega_n^2}{s^2+2\zeta\omega_ns+\omega_n^2},\qquad G(0)=K.$$
 
-极点：$p_{1,2}=-\zeta\omega_n\pm j\omega_n\sqrt{1-\zeta^2}$（$\zeta<1$）。
+- $\zeta>1$：过阻尼，两个不同实极点。
+- $\zeta=1$：临界阻尼，重极点 $-\omega_n$。
+- $\zeta<1$：欠阻尼，极点 $-\zeta\omega_n\pm j\omega_d$，$\omega_d=\omega_n\sqrt{1-\zeta^2}$。
 
-共振频率（仅当 $0<\zeta<1/\sqrt2$）：$\omega_r=\omega_n\sqrt{1-2\zeta^2}$。
+共振频率与峰值（仅当 $\zeta<\dfrac1{\sqrt2}$）：
 
-共振峰：$|G(j\omega_r)|=\dfrac{|K|}{2\zeta\sqrt{1-\zeta^2}}$。
+$$\omega_r=\omega_n\sqrt{1-2\zeta^2},\qquad \left|G(j\omega_r)\right|=\frac{|K|}{2\zeta\sqrt{1-\zeta^2}}.$$
 
-时域：$\omega_d=\omega_n\sqrt{1-\zeta^2}$，$M_p=e^{-\pi\zeta/\sqrt{1-\zeta^2}}$，$t_p=\pi/\omega_d$，$t_s\approx4/(\zeta\omega_n)$。
+时域：$M_p=e^{-\pi\zeta/\sqrt{1-\zeta^2}}$，$t_p=\pi/\omega_d$，$5\%$ 调节时间 $t_s\approx\dfrac{3}{\zeta\omega_n}$。
+
+一阶系统 $G(s)=\dfrac{K}{\tau s+1}$：$t=\tau$ 达到终值的 $63\%$，$10\%\to90\%$ 上升时间 $\approx2.2\tau$，$5\%$ 调节时间 $\approx3\tau$。
 
 ### 10.5 稳定性
 
 - 指数稳定：存在 $M>0$、$a>0$，使 $|h(t)|\le Me^{-at}$（$t\ge0$）。等价于全部极点位于开左半平面。
-- 临界稳定：$h(t)$ 有界且不趋于零。等价于极点在闭左半平面，虚轴上的极点都是单根，且至少有一个虚轴极点。
-- BIBO 稳定：有界输入给出有界输出。充要条件是 $\int_{-\infty}^{\infty}|h(t)|dt<\infty$；有理因果系统等价于全部极点严格在左半平面。
+- 临界稳定：存在 $M>0$ 使 $|h(t)|\le M$（$t\ge0$），且 $h(t)\not\to0$（$t\to\infty$）。等价于极点在闭左半平面，虚轴上的极点都是单根，且至少有一个虚轴极点。
+- BIBO 稳定：对任意有界输入 $\sup_{t\ge0}|u(t)|<\infty$，输出满足 $\sup_{t\ge0}|y(t)|<\infty$。充要条件是 $\int_{-\infty}^{\infty}|h(t)|dt<\infty$；有理因果系统等价于全部极点严格在左半平面。
 - 虚轴上有重极点时，$h(t)$ 含 $t\cos\omega t$ 或 $t$ 型项，随时间增长，属于不稳定。
 
 ### 10.6 传递函数与滤波器
@@ -3630,9 +3778,9 @@ FDM：每个 DSB 信道占 $2W$，信道间留保护间隔。
 
 瞬时频率：$\omega_i(t)=\dfrac{d\theta(t)}{dt}$。
 
-PM：$\theta(t)=\omega_ct+k_pu(t)$，$\omega_i=\omega_c+k_p\dot u(t)$。
+PM：$\theta(t)=\omega_ct+ku(t)$，$\omega_i=\omega_c+k\dot u(t)$。
 
-FM：$\theta(t)=\omega_ct+k_f\int_{-\infty}^{t}u(\tau)d\tau$，$\omega_i=\omega_c+k_fu(t)$。
+FM：$\theta(t)=\omega_ct+k\int_{-\infty}^{t}u(\tau)d\tau$，$\omega_i=\omega_c+ku(t)$。
 
 窄带 FM 带宽 $B\approx2W$；宽带 FM 用 Carson 公式 $B\approx2(\Delta f+W)=2W(1+\beta)$，其中 $\beta=\Delta f/W$。
 
@@ -3665,7 +3813,7 @@ FM：$\theta(t)=\omega_ct+k_f\int_{-\infty}^{t}u(\tau)d\tau$，$\omega_i=\omega_
 | 双边指数 | $e^{-a|t|}$ | $-a<\operatorname{Re}s<a$ |
 | 有限个极点相加 | 各项之和 | 各 ROC 的交集 |
 
-ROC 边界总由极点所在的竖直线决定，ROC 内部不能有极点。因果信号的 ROC 是最右侧极点以右，反因果信号的 ROC 是最左侧极点以左。
+ROC 边界总由极点所在的竖直线决定，ROC 内部不能有极点。因果信号的 ROC 是最右侧极点以右，反因果信号的 ROC 是最左侧极点以左。这与公式表一致：$e^{-at}H(t)\leftrightarrow\dfrac1{s+a}$ 要求 $\operatorname{Re}s>-a$，$e^{-at}H(-t)\leftrightarrow-\dfrac1{s+a}$ 要求 $\operatorname{Re}s<-a$。
 
 **例**　$u(t)=3e^{-4t}H(t)-2e^{t}H(t)$。
 
@@ -3790,7 +3938,11 @@ $$\dot u(t)\longleftrightarrow sU(s)-u(0^-).$$
 
 $$G(s)=\mathcal L\{h(t)\}.$$
 
-阶跃响应是冲激响应的积分：
+公式表把输入、输出与传递函数写成
+
+$$Y(s)=G(s)U(s),\qquad G(s)=\mathcal L\{h\}(s),$$
+
+因此单位阶跃输入 $U(s)=1/s$ 时 $Y(s)=G(s)/s$，即阶跃响应是冲激响应的积分：
 
 $$y_{\text{step}}(t)=\int_0^th(\tau)d\tau,\qquad Y_{\text{step}}(s)=\frac{G(s)}{s}.$$
 
@@ -4939,13 +5091,13 @@ $u_1$ 占 $[0,W]$，调制后的 $u_2$ 占 $[\omega_{c1}-W,\omega_{c1}+W]$，合
 
 $$\omega_i(t)=\frac{d\theta(t)}{dt}.$$
 
-- PM：$\theta=\omega_ct+k_pu(t)$，$\omega_i=\omega_c+k_p\dot u(t)$。
-- FM：$\theta=\omega_ct+k_f\int_{-\infty}^{t}u(\tau)d\tau$，$\omega_i=\omega_c+k_fu(t)$。
+- PM：$\theta=\omega_ct+ku(t)$，$\omega_i=\omega_c+k\dot u(t)$。
+- FM：$\theta=\omega_ct+k\int_{-\infty}^{t}u(\tau)d\tau$，$\omega_i=\omega_c+ku(t)$。
 
 阶跃消息 $u(t)=H(t)$ 的情形（Quiz 3 第 70 题）：
 
-- FM：积分为 $t$（$t>0$），相位 $\omega_ct+k_f t$，相位连续，频率跳到 $\omega_c+k_f$。
-- PM：相位 $\omega_ct+k_p$，在 $t=0$ 跳变 $k_p$，之后导数仍为 $\omega_c$，频率不变。
+- FM：积分为 $t$（$t>0$），相位 $\omega_ct+kt$，相位连续，频率跳到 $\omega_c+k$。
+- PM：相位 $\omega_ct+k$，在 $t=0$ 跳变 $k$，之后导数仍为 $\omega_c$，频率不变。
 
 **例**（Quiz 3 第 69 题）PM，$k=0.5$ rad/V，$u=4000t$：
 

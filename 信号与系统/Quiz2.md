@@ -34,6 +34,13 @@ Is $u(t)$ periodic, and if so what is its fundamental frequency $\omega_0$?（�
 > [!success] Answer（答案）
 > (d) $\omega_0=\frac{2}{15}\ \mathrm{rad/s}$
 
+> [!abstract] 知识点讲解
+> 见 1.5 多个正弦叠加的周期与基频。
+>
+> - **周期条件**：各分量频率之比均为有理数，即 $\omega_i/\omega_j\in\mathbb{Q}$，信号才有公共周期。
+> - **基频**：把各频率通分到同一分母，对分子取最大公约数，$\omega_0=\dfrac{\gcd(\text{各分子})}{\text{公共分母}}$。
+> - **基波周期**：$T_0=\dfrac{2\pi}{\omega_0}$。
+
 > [!example] 解答
 > 写出非零角频率：$\omega_1=\frac{2}{3}$，$\omega_2=\frac{4}{5}$。
 >
@@ -75,9 +82,9 @@ Find its fundamental frequency $\omega_0$, in $\mathrm{rad/s}$.（求其基波�
 > [!abstract] 知识点讲解
 > 见 1.5 多个正弦叠加的周期与基频，例 2。
 >
-> - 常数项 $\omega=0$，不参与求基频。
-> - 三个非零频率先通分，再对分子求 $\gcd$。
-> - $T_0=2\pi/\omega_0$。
+> - **常数项**：$\omega=0$，即 $0\cdot\omega_0$，对任何 $\omega_0$ 都成立，不参与求基频。
+> - **基频**：$\omega_0=\dfrac{\gcd(\omega_1,\omega_2,\omega_3)}{\text{通分后的公共分母}}$。
+> - **基波周期**：$T_0=\dfrac{2\pi}{\omega_0}$。
 
 > [!example] 解答
 > 非零角频率：$\frac{1}{2}$、$\frac{2}{3}$、$\frac{7}{6}$。
@@ -120,9 +127,9 @@ Is $u(t)$ periodic?（判断 $u(t)$ 是否为周期信号。）
 > [!abstract] 知识点讲解
 > 见 1.5 多个正弦叠加的周期与基频。
 >
-> - 两个正弦叠加为周期信号，当且仅当频率比为有理数。
-> - 差频、拍频都不是基频。
-> - 判断周期性只看是否存在公共周期。
+> - **周期判据**：$u(t)=\cos\omega_1t+\sin\omega_2t$ 为周期信号 $\iff \dfrac{\omega_1}{\omega_2}\in\mathbb{Q}$。
+> - **公共周期**：存在 $T$ 使 $\omega_1T=2\pi m$、$\omega_2T=2\pi n$，即 $\dfrac{\omega_1}{\omega_2}=\dfrac mn$（$m,n$ 为整数）。
+> - **基频**：若有周期，$\omega_0=\gcd(\omega_1,\omega_2)$；若频率比无理，基频不存在。
 
 > [!example] 解答
 > 两频率为 $3$ 与 $\sqrt5$，比值
@@ -161,9 +168,9 @@ $$
 > [!abstract] 知识点讲解
 > 见 2.6 对称性 与 2.2 复指数形式。
 >
-> - $u(t-T/2)=-u(t)$ 叫半波反对称。
-> - 半波反对称使偶次谐波（含直流）全部消失，只留奇次谐波。
-> - 推导时把积分拆成前后两半，后半段换元。
+> - **复指数系数**：$c_k=\dfrac1T\displaystyle\int_0^T u(t)e^{-jk\omega_0t}dt$。
+> - **时移性质**：$u(t-t_0)$ 的系数为 $e^{-jk\omega_0t_0}c_k$；取 $t_0=\dfrac T2$ 得 $e^{-jk\pi}c_k=(-1)^kc_k$。
+> - **半波反对称**：$u(t-T/2)=-u(t)\Rightarrow (-1)^kc_k=-c_k\Rightarrow\big[1+(-1)^k\big]c_k=0$，故 $k$ 偶（含 $0$）时 $c_k=0$。
 
 > [!example] 解答
 > 系数定义：
@@ -203,11 +210,11 @@ $$
 > (b) 全部 $a_k=0$、$c_0=0$，所有 $c_k$ 为纯虚数
 
 > [!abstract] 知识点讲解
-> 见 2.6 对称性（含 2.6.1 奇偶函数的运算规则）与 2.9 典型周期波形的傅里叶系数。
+> 见 2.6 对称性 与 2.3 三角形式与系数换算。
 >
-> - 奇函数：余弦项与直流为零，复系数纯虚。
-> - 偶函数：正弦项为零，复系数为实。
-> - 幅度 $A$ 不影响奇偶性。
+> - **复系数定义**：$c_k=\dfrac1T\displaystyle\int_T u(t)e^{-jk\omega_0t}dt$，$c_0$ 为信号平均值。
+> - **三角换算**：$a_k=2\operatorname{Re}c_k$，$b_k=-2\operatorname{Im}c_k$，$a_0=c_0$。
+> - **奇函数**：$u(-t)=-u(t)\Rightarrow a_0=a_k=0$；由 $c_k=\dfrac{a_k-jb_k}{2}$，$a_k=0$ 时 $c_k=-j\dfrac{b_k}{2}$，为纯虚数。
 
 > [!example] 解答
 > 判断奇偶性：
@@ -250,13 +257,12 @@ $$
 > (d) 只有奇次 $a_k$ 非零
 
 > [!abstract] 知识点讲解
-> 见 2.6 对称性（含 2.6.1 奇偶函数的运算规则 与 2.6.2 半波对称与半波反对称的推导）与 2.9 典型周期波形的傅里叶系数。
+> 见 2.6 对称性 与 2.9 典型周期波形的傅里叶系数。
 >
-> 三角形式 $u=a_0+\sum_k\left(a_k\cos k\omega_0t+b_k\sin k\omega_0t\right)$ 中：
->
-> - 偶函数：$u\cos k\omega_0t$ 为偶，$u\sin k\omega_0t$ 为奇，故 $b_k=0$，只剩余弦项。
-> - 半波反对称：$c_k+c_{-k}=0$，而 $c_k+c_{-k}=a_k$，故全部 $a_k$（含 $a_0$）为零，三角形式里只剩正弦项；复系数上表现为偶数 $k$ 为零。
-> - 两条叠加：只剩奇次余弦 $a_k\cos k\omega_0t$。
+> - **偶函数**：$u(-t)=u(t)\Rightarrow b_k=0$，只剩余弦项 $a_k\cos k\omega_0t$。
+> - **半波反对称**：$\tilde u(t-T/2)=-\tilde u(t)\Rightarrow$ 偶数 $k$ 的 $c_k=0$（含 $c_0$）。
+> - **三角与复系数换算**：$a_k=2c_k$（$k\ge1$），$a_0=c_0$。
+> - **脉冲串系数**：$c_k=Ad\operatorname{sinc}(kd)$；$d=\dfrac{\tau}{T}=\dfrac12$ 时 $c_k=\dfrac12\operatorname{sinc}\dfrac k2$，$k\ge2$ 的偶数项为零。
 
 > [!example] 解答
 > 偶对称 $u(-t)=u(t)$，正弦项为零：$b_k=0$。
@@ -291,16 +297,11 @@ $$
 > $c_5=0.7639$
 
 > [!abstract] 知识点讲解
-> 见 2.9 典型周期波形的傅里叶系数 与 2.9 典型周期波形的傅里叶系数。
+> 见 2.9 典型周期波形的傅里叶系数。
 >
-> 术语拆开看：
->
-> - **方波**：在周期内只取两个电平，跳变发生在瞬间。
-> - **双极性（bipolar）**：两个电平是 $+A$ 与 $-A$，关于零轴对称，平均值 $c_0=0$；单极性方波则是 $0$ 与 $A$。
-> - **偶对称（even）**：$u(-t)=u(t)$，波形关于 $t=0$ 左右对称。对双极方波来说，就是 $+A$ 的那一段以 $t=0$ 为中心，占 $|t|<T/4$；$-A$ 占 $T/4<|t|<T/2$。
-> - $A$ 是**峰值**，峰峰值是 $2A$。
->
-> 与奇对称双极方波的区别：奇对称版在 $t<0$ 取 $-A$、$t>0$ 取 $+A$，两者相差半个周期平移，谐波只差一个 $e^{-jk\pi/2}$ 因子，所以一个系数为实、一个为纯虚，但都只含奇次谐波。
+> - **偶对称双极方波**：$c_k=A\operatorname{sinc}\left(\dfrac k2\right)$（$k$ 奇），$c_k=0$（$k$ 偶），$c_0=0$。
+> - **sinc 定义**：$\operatorname{sinc}x=\dfrac{\sin\pi x}{\pi x}$，故 $c_k=\dfrac{A\sin(k\pi/2)}{k\pi/2}$。
+> - **奇次谐波幅度**：$c_k=\dfrac{2A}{\pi k}(-1)^{(k-1)/2}$（$k$ 奇），按 $\dfrac1k$ 衰减。
 
 > [!example] 解答
 > 一个周期内：
@@ -347,11 +348,11 @@ $$
 
 ## 8. Question 8（第 8 题）｜PDF p. 3 ^q8
 
-A full-wave rectified sine $u(t)=A|\sin(\omega_m t)|$ has amplitude $A=7$. Find $c_3$, to 4 significant figures.（幅值 $A=7$ 的全波整流正弦，求 $c_3$，保留四位有效数字。）
+A full-wave rectified sine $u(t)=A|\sin(\omega_0 t)|$ has amplitude $A=7$. Find $c_3$, to 4 significant figures.（幅值 $A=7$ 的全波整流正弦，求 $c_3$，保留四位有效数字；公式表中记作 $A\lvert\sin(\omega_0t)\rvert$。）
 
 
 $$
-u(t)=7\left|\sin(\omega_m t)\right|,\qquad c_3=?
+u(t)=7\left|\sin(\omega_0 t)\right|,\qquad c_3=?
 $$
 
 > [!success] Answer（答案）
@@ -360,24 +361,25 @@ $$
 > [!abstract] 知识点讲解
 > 见 2.9 典型周期波形的傅里叶系数 与 1.4 周期信号的常见运算。
 >
-> - 全波整流使周期减半，基频加倍。
-> - 系数 $c_k=\frac{2A}{\pi(1-4k^2)}$，与 $\omega_m$ 无关。
+> - **公式表（全波整流正弦 $A\lvert\sin(\omega_0t)\rvert$）**：$c_k=\dfrac{2A}{\pi(1-4k^2)}$，周期 $T=\dfrac{\pi}{\omega_0}$，只有直流和偶次谐波。
+> - **复系数直接用公式表值**，不必再除以 $2$；对应的实余弦系数是 $a_k=2c_k=\dfrac{4A}{\pi(1-4k^2)}$。
+> - **直流**：$c_0=\dfrac{2A}{\pi}$。
 
 > [!example] 解答
-> 定周期与基频：
-> $$T_0=\frac{\pi}{\omega_m},\qquad \omega_0=\frac{2\pi}{T_0}=2\omega_m.$$
+> 按公式表的记号，输入写成 $u(t)=A\lvert\sin(\omega_0t)\rvert$。整流后周期减半：
+> $$T=\frac{\pi}{\omega_0},\qquad \text{基频}=\frac{2\pi}{T}=2\omega_0.$$
 >
-> 在 $0\le t<\frac{\pi}{\omega_m}$ 内 $u=A\sin\omega_mt$：
-> $$c_k=\frac{\omega_m}{\pi}\int_0^{\pi/\omega_m}A\sin(\omega_mt)e^{-j2k\omega_mt}dt.$$
+> 在一个半周期 $0\le t<\frac{\pi}{\omega_0}$ 内 $u=A\sin(\omega_0t)$，代入系数定义（$T$ 为整流后的周期）：
+> $$c_k=\frac{\omega_0}{\pi}\int_0^{\pi/\omega_0}A\sin(\omega_0t)e^{-j2k\omega_0t}dt.$$
 >
-> 换元 $x=\omega_mt$：
+> 换元 $x=\omega_0t$：
 > $$c_k=\frac{A}{\pi}\int_0^{\pi}\sin x\,e^{-j2kx}dx.$$
 >
 > 积分：
 > $$\int_0^\pi\sin x\,e^{-j2kx}dx=\frac{1+e^{-j2k\pi}}{1-4k^2}=\frac{2}{1-4k^2}.$$
-> 于是 $c_k=\frac{2A}{\pi(1-4k^2)}$。
->
-> 代入 $A=7$、$k=3$：
+> 于是
+> $$c_k=\frac{2A}{\pi(1-4k^2)},$$
+> 与公式表该行一致。代入 $A=7$、$k=3$：
 > $$c_3=\frac{14}{\pi(1-36)}=-\frac{2}{5\pi}=-0.12732.$$
 >
 > 四位有效数字 $-0.1273$。
@@ -402,10 +404,11 @@ $$
 > (c) $k=3$
 
 > [!abstract] 知识点讲解
-> 见 2.9 典型周期波形的傅里叶系数 中矩形脉冲串一节。
+> 见 2.9 典型周期波形的傅里叶系数。
 >
-> - $\operatorname{sinc}(x)=\frac{\sin\pi x}{\pi x}$ 在非零整数处为零。
-> - 首个零点满足 $kd=1$。
+> - **sinc 定义**：$\operatorname{sinc}x=\dfrac{\sin\pi x}{\pi x}$，零点在 $x=\pm1,\pm2,\dots$。
+> - **脉冲串系数**：$c_k=Ad\operatorname{sinc}(kd)$。
+> - **零点条件**：$c_k=0\iff kd\in\mathbb{Z}\setminus\{0\}$，首个正整数 $k=\dfrac1d$。
 
 > [!example] 解答
 > 零点条件：
@@ -437,8 +440,8 @@ $$
 > [!abstract] 知识点讲解
 > 见 2.2 复指数形式 与 2.8 Parseval 定理。
 >
-> - $c_0$ 是信号在一个周期内的时间平均值。
-> - 分段常值时按时间占比加权。
+> - **直流系数**：$c_0=\dfrac1T\displaystyle\int_T u(t)dt$，即一个周期内的平均值。
+> - **分段常值**：$c_0=\displaystyle\sum_i u_i\dfrac{T_i}{T}$，按各段时长占比加权。
 
 > [!example] 解答
 > 定义：
@@ -479,10 +482,11 @@ $$
 > (c) $c_0=0$
 
 > [!abstract] 知识点讲解
-> 见 2.2 复指数形式。
+> 见 2.2 复指数形式 与 2.3 三角形式与系数换算。
 >
-> - $c_0$ 是周期平均值。
-> - 正负对称、等时长的两段互相抵消。
+> - **直流系数**：$c_0=\dfrac1T\displaystyle\int_0^T u(t)dt$，公式表也记作 $a_0=c_0$。
+> - **奇函数**：$u(t)$ 满足 $u(-t)=-u(t)$（一个周期内正负两段等长且反号），公式表给出 $a_0=a_k=0$，故 $c_0=0$。
+> - **正负抵消**：$\displaystyle\int_0^T u\,dt=1-1=0$，与对称性结论一致。
 
 > [!example] 解答
 > 定义：
@@ -520,8 +524,8 @@ $$
 > [!abstract] 知识点讲解
 > 见 2.2 复指数形式。
 >
-> - $c_0$ 等于脉冲面积除以周期。
-> - 面积 = 高度 × 宽度。
+> - **直流系数**：$c_0=\dfrac1T\displaystyle\int_T u(t)dt=\dfrac{\text{一个周期的面积}}{T}$。
+> - **矩形面积**：$S=\text{高}\times\text{宽}=\dfrac{1}{\sqrt d}\cdot d=\sqrt d$，$T=1$ 时 $c_0=S$。
 
 > [!example] 解答
 > 面积：
@@ -558,9 +562,9 @@ of a real signal, the term with index $k=-3$ is best interpreted as:
 > [!abstract] 知识点讲解
 > 见 2.5 双边谱与负频率。
 >
-> - 实信号满足 $c_{-k}=\overline{c_k}$。
-> - 正负频率两项合成一条实余弦。
-> - 负频率不是独立物理振动。
+> - **共轭对称**：实信号满足 $c_{-k}=\overline{c_k}$。
+> - **正负频率合成**：$c_ke^{jk\omega_0t}+c_{-k}e^{-jk\omega_0t}=2|c_k|\cos(k\omega_0t+\angle c_k)$。
+> - **单项份额**：$c_ke^{jk\omega_0t}=\dfrac12\cdot2|c_k|\cos\theta+j|c_k|\sin\theta$（$\theta=k\omega_0t+\angle c_k$），故一对 $\pm k$ 项各占实余弦的一半，虚部互相抵消。
 
 > [!example] 解答
 > 由「实信号」推出共轭对称。$u(t)$ 为实数，所以 $u(t)=\overline{u(t)}$。对级数整体取共轭：
@@ -624,9 +628,9 @@ $$
 > [!abstract] 知识点讲解
 > 见 2.3 三角形式与系数换算。
 >
-> - $c_k=\frac{a_k-jb_k}{2}$。
-> - $a_k=2\operatorname{Re}c_k$，$b_k=-2\operatorname{Im}c_k$。
-> - 负号来自 $\sin$ 展开式分母 $2j$。
+> - **三角系数**：$a_k=2\operatorname{Re}c_k$，$b_k=-2\operatorname{Im}c_k$，$a_0=c_0$。
+> - **反算复系数**：$c_k=\dfrac{a_k-jb_k}{2}$。
+> - **负号来源**：$\sin$ 项写成复指数时系数为 $\dfrac1{2j}$，而 $\dfrac1j=-j$，故 $b_k$ 前带负号。
 
 > [!example] 解答
 > $c_1=2-3j$，故 $\operatorname{Re}c_1=2$，$\operatorname{Im}c_1=-3$。
@@ -657,8 +661,8 @@ $$
 > [!abstract] 知识点讲解
 > 见 2.3 三角形式与系数换算。
 >
-> - $|c_k|=\frac12\sqrt{a_k^2+b_k^2}$。
-> - 三角系数换到复系数，幅度减半。
+> - **复系数**：$c_k=\dfrac{a_k-jb_k}{2}$。
+> - **模**：$|c_k|=\dfrac12\sqrt{a_k^2+b_k^2}$，即三角形式幅度的一半。
 
 > [!example] 解答
 > 取模：
@@ -691,8 +695,9 @@ Which set of Fourier coefficients describes it?（下面哪一组傅里叶系数
 > [!abstract] 知识点讲解
 > 见 1.5 多个正弦叠加的周期与基频 与 2.3 三角形式与系数换算。
 >
-> - 基频是各频率的 $\gcd$，谐波序号 $k=\omega/\omega_0$。
-> - 余弦给 $a_k$，正弦给 $b_k$；$c_k=\frac{a_k-jb_k}{2}$。
+> - **基频**：$\omega_0=\gcd(\omega_1,\omega_2,\dots)$，谐波序号 $k=\dfrac{\omega}{\omega_0}$。
+> - **三角系数**：$u=a_0+\sum_k(a_k\cos k\omega_0t+b_k\sin k\omega_0t)$，余弦幅度给 $a_k$，正弦幅度给 $b_k$，常数项 $a_0=2c_0$。
+> - **复系数换算**：$c_k=\dfrac{a_k-jb_k}{2}$，$c_{-k}=\overline{c_k}$。
 
 > [!example] 解答
 > $\omega_0=\gcd(300,500)=100\ \mathrm{rad/s}$。
@@ -742,8 +747,8 @@ $$
 > [!abstract] 知识点讲解
 > 见 2.8 Parseval 定理。
 >
-> - 周期信号谈平均功率，不谈能量。
-> - 功率等于各谐波系数模平方之和，含负频率项。
+> - **平均功率**：$P=\dfrac1T\displaystyle\int_0^T|u(t)|^2dt$。
+> - **Parseval（周期）**：$P=\displaystyle\sum_{k=-\infty}^{\infty}|c_k|^2$，负频率项同样计入。
 
 > [!example] 解答
 > $P=\frac1T\int_T|u|^2dt$。
@@ -779,8 +784,9 @@ $$
 > [!abstract] 知识点讲解
 > 见 2.8 Parseval 定理 与 2.9 典型周期波形的傅里叶系数。
 >
-> - 基波是 $k=\pm1$ 一对，功率 $2|c_1|^2$。
-> - $|u|=A$ 时总功率为 $A^2$。
+> - **Parseval**：$P=\sum_k|c_k|^2$；实信号第 $k$ 次谐波（$\pm k$ 一对）功率为 $2|c_k|^2$。
+> - **总功率**：$|u|=A$ 时 $P=A^2$；本题 $A=1$，$P=1$。
+> - **基波系数**：奇对称方波 $c_{\pm1}=\mp\dfrac{2j}{\pi}$，$|c_1|=\dfrac2\pi$。
 
 > [!example] 解答
 > 总功率：
@@ -813,8 +819,9 @@ $$
 > [!abstract] 知识点讲解
 > 见 2.8 Parseval 定理 与 2.9 典型周期波形的傅里叶系数。
 >
-> - 总功率 $A^2d$，直流功率 $A^2d^2$。
-> - 比值等于占空比。
+> - **Parseval**：$P=\sum_k|c_k|^2$。
+> - **直流系数**：脉冲串 $c_0=Ad$。
+> - **总功率**：$P=\dfrac1T\displaystyle\int_T|u|^2dt=A^2d$，直流功率 $P_{\text{DC}}=|c_0|^2=A^2d^2$。
 
 > [!example] 解答
 > 写出总平均功率的定义：
@@ -870,8 +877,9 @@ $$
 > [!abstract] 知识点讲解
 > 见 2.7 正交投影与最佳逼近。
 >
-> - 均方误差最小的系数为内积投影 $c=\frac{\langle u,\phi\rangle_P}{\langle\phi,\phi\rangle_P}$。
-> - 这里 $\phi=e^{jt}$，$\langle\phi,\phi\rangle_P=1$，故 $c$ 就是 $c_1$。
+> - **内积**：$\langle u,v\rangle_P=\dfrac1T\displaystyle\int_T u(t)v^*(t)dt$。
+> - **最佳投影系数**：$c=\dfrac{\langle u,\phi\rangle_P}{\langle\phi,\phi\rangle_P}$，使 $\|u-c\phi\|_P^2$ 最小。
+> - **本题**：$\phi=e^{jt}$，$\langle\phi,\phi\rangle_P=1$，故 $c=\langle u,e^{jt}\rangle_P=c_1$。
 
 > [!example] 解答
 > 写出投影：
@@ -916,9 +924,9 @@ $$
 > [!abstract] 知识点讲解
 > 见 2.7 正交投影与最佳逼近。
 >
-> - 最小化 $\|u-c\phi\|_P^2$ 的最优系数是内积投影 $c=\frac{\langle u,\phi\rangle_P}{\langle\phi,\phi\rangle_P}$。
-> - 最优时残差 $e=u-c\phi$ 与投影方向 $\phi$ 正交，这正是「正交投影」的几何含义。
-> - 正交的是 $\phi$，不是 $u$。
+> - **误差范数**：$\|u-c\phi\|_P^2=\|u\|_P^2-2c\langle u,\phi\rangle_P+c^2\|\phi\|_P^2$。
+> - **最优系数**：$c=\dfrac{\langle u,\phi\rangle_P}{\langle\phi,\phi\rangle_P}$。
+> - **正交投影**：最优时 $\langle e,\phi\rangle_P=\langle u,\phi\rangle_P-c\|\phi\|_P^2=0$。
 
 > [!example] 解答
 > 展开误差范数：
@@ -969,9 +977,9 @@ Existence of the transform, and symmetry for real, even and odd signals（傅里
 > [!abstract] 知识点讲解
 > 见 2.8 Parseval 定理 与 2.7 正交投影与最佳逼近。
 >
-> - 功率是内积范数的平方：$P(x)=\langle x,x\rangle_P$。
-> - 正交使交叉项为零，功率可以直接相加。
-> - 「功率相加」不等于「有效值相加」。
+> - **范数与功率**：$P(x)=\|x\|_P^2=\langle x,x\rangle_P$。
+> - **内积展开**：$\langle u+y,u+y\rangle_P=\|u\|^2+\|y\|^2+2\operatorname{Re}\langle u,y\rangle_P$。
+> - **正交**：$\langle u,y\rangle_P=0$ 时交叉项为零，$P(u+y)=P(u)+P(y)$。
 
 > [!example] 解答
 > 按定义展开：
@@ -1008,12 +1016,12 @@ $$
 > (d) $e^{2t}H(t)$
 
 > [!abstract] 知识点讲解
-> 见 3.3 存在性（含“判据的三个层次”与“广义变换是什么”）。
+> 见 3.3 存在性。
 >
-> - **判据**：若 $u$ 绝对可积，则变换存在（古典意义，充分条件）；若不绝对可积但至多多项式增长，则 $u$ 是缓增分布，存在含冲激的广义变换；若指数增长快于任何多项式，则连广义变换也不存在。
-> - **广义变换**：积分不收敛时不直接积分，而是用分布与测试函数的配对 $\langle U,\phi\rangle=\langle u,\hat\phi\rangle$ 定义，允许频谱中出现 $\delta(\omega)$；实际操作中等价于“乘衰减因子再取极限”。
-> - **拉普拉斯对照**：只有收敛域包含虚轴时才有 $U(j\omega)=U(s)\big|_{s=j\omega}$。$e^{2t}H(t)$ 的收敛域 $\operatorname{Re}s>2$ 不含虚轴，所以 $\frac{1}{j\omega-2}$ 只是解析延拓，不能作为答案。
-> - 指数增长信号的频谱问题用拉普拉斯变换处理。
+> - **存在判据（充分）**：$\displaystyle\int_{-\infty}^{\infty}|u(t)|dt<\infty$（绝对可积）$\Rightarrow U(j\omega)$ 存在且连续。
+> - **广义变换**：不绝对可积但至多多项式增长时允许含冲激，如 $\cos\omega_0t\leftrightarrow\pi[\delta(\omega-\omega_0)+\delta(\omega+\omega_0)]$、$H(t)\leftrightarrow\dfrac1{j\omega}+\pi\delta(\omega)$、$1\leftrightarrow2\pi\delta(\omega)$。
+> - **不存在**：$|u(t)|$ 增长快于任何多项式（如 $e^{2t}$）时，$\displaystyle\int_0^\infty e^{(2-j\omega)t}dt$ 对任何 $\omega$ 发散，连广义变换也没有。
+> - **拉普拉斯对照**：$e^{2t}H(t)\leftrightarrow\dfrac1{s-2}$（$\operatorname{Re}s>2$），收敛域不含虚轴，故 $U(j\omega)=U(s)\big|_{s=j\omega}$ 不适用。
 
 > [!example] 解答
 > **一、判据是什么。** 判断傅里叶变换是否存在，分三个层次：
@@ -1079,9 +1087,9 @@ $$
 > [!abstract] 知识点讲解
 > 见 3.6 对称性。
 >
-> - 实偶信号 → 实偶频谱。
-> - 实奇信号 → 纯虚奇频谱。
-> - 判断依据是欧拉展开后奇偶函数的积分性质。
+> - **定义展开**：$U(j\omega)=\displaystyle\int_{-\infty}^{\infty}u(t)\left[\cos\omega t-j\sin\omega t\right]dt$。
+> - **奇偶积分**：$u$ 奇 × $\cos$ 偶 → 奇函数，积分为零；$u$ 奇 × $\sin$ 奇 → 偶函数，保留。
+> - **结果**：$U(j\omega)=-2j\displaystyle\int_0^\infty u(t)\sin\omega t\,dt$，为纯虚数；又 $U(-j\omega)=-U(j\omega)$，为奇函数。
 
 > [!example] 解答
 > 展开定义：
@@ -1122,9 +1130,9 @@ $$
 > [!abstract] 知识点讲解
 > 见 3.6 对称性。
 >
-> - 实信号满足共轭对称 $U(-j\omega)=U^*(j\omega)$。
-> - 取共轭不改变模，只翻转相位。
-> - 模值非负，不可能是奇函数。
+> - **共轭对称**：实信号 $U(-j\omega)=U^*(j\omega)$。
+> - **模**：$|U(-j\omega)|=|U^*(j\omega)|=|U(j\omega)|$，为偶函数。
+> - **相位**：$\arg U(-j\omega)=-\arg U(j\omega)$，为奇函数。
 
 > [!example] 解答
 > 写出共轭对称：
@@ -1159,9 +1167,9 @@ $$
 > [!abstract] 知识点讲解
 > 见 3.7 面积定理 与 3.4 常用变换对。
 >
-> - $U(0)=\int_{-\infty}^{\infty}u(t)dt$，即信号总面积。
-> - $e^{-at}H(t)\leftrightarrow\frac{1}{a+j\omega}$。
-> - 线性性质允许逐项相加。
+> - **变换对**：$e^{-at}H(t)\leftrightarrow\dfrac1{a+j\omega}$。
+> - **线性**：$au_1+bu_2\leftrightarrow aU_1+bU_2$。
+> - **面积定理**：$U(0)=\displaystyle\int_{-\infty}^{\infty}u(t)dt$。
 
 > [!example] 解答
 > 逐项求变换：
@@ -1194,8 +1202,8 @@ $$
 > [!abstract] 知识点讲解
 > 见 3.7 面积定理 与 3.2 定义。
 >
-> - $u(0)=\frac{1}{2\pi}\int U(j\omega)d\omega$。
-> - 矩形频谱的面积等于高乘宽。
+> - **逆变换**：$u(t)=\dfrac1{2\pi}\displaystyle\int_{-\infty}^{\infty}U(j\omega)e^{j\omega t}d\omega$；令 $t=0$ 得 $u(0)=\dfrac1{2\pi}\displaystyle\int U(j\omega)d\omega$。
+> - **矩形频谱面积**：$U=4$（$|\omega|<1$），面积 $=4\times2=8$。
 
 > [!example] 解答
 > 写出逆变换在 $t=0$ 的值：
@@ -1224,9 +1232,8 @@ $$
 > [!abstract] 知识点讲解
 > 见 3.4 常用变换对 与 3.7 面积定理。
 >
-> - $\frac{\sin Wt}{\pi t}\leftrightarrow p_{2W}(\omega)$。
-> - 归一化 $\operatorname{sinc}(t)=\frac{\sin\pi t}{\pi t}$ 对应 $W=\pi$，门宽为 $2\pi$。
-> - 信号积分等于频谱在零频处的值。
+> - **sinc 变换对**：$\dfrac{\sin Wt}{\pi t}\leftrightarrow p_{2W}(\omega)$；$\operatorname{sinc}t=\dfrac{\sin\pi t}{\pi t}$ 对应 $W=\pi$。
+> - **面积定理**：$\displaystyle\int_{-\infty}^{\infty}u(t)dt=U(0)$。
 
 > [!example] 解答
 > 匹配参数：由 $\operatorname{sinc}(t)=\frac{\sin\pi t}{\pi t}$ 得 $W=\pi$。
@@ -1262,8 +1269,8 @@ $$
 > [!abstract] 知识点讲解
 > 见 3.4 常用变换对 与 3.5 时移性质。
 >
-> - 冲激的筛选性质：$\int\delta(t-t_0)f(t)dt=f(t_0)$。
-> - 时移 $t_0$ 对应频域乘 $e^{-j\omega t_0}$。
+> - **时移冲激**：$\delta(t-t_0)\leftrightarrow e^{-j\omega t_0}$。
+> - **筛选性质**：$\displaystyle\int_{-\infty}^{\infty}\delta(t-t_0)\varphi(t)dt=\varphi(t_0)$。
 
 > [!example] 解答
 > 写定义：
@@ -1297,9 +1304,9 @@ $$
 > [!abstract] 知识点讲解
 > 见 3.4 常用变换对 与 3.2 定义。
 >
-> - 正变换无系数，逆变换含 $\frac{1}{2\pi}$。
-> - 冲激的权重（面积）恰好要抵消这个 $\frac{1}{2\pi}$。
-> - 不能用「信号面积」解释，因为 $\int1\,dt$ 发散。
+> - **变换对**：$1\leftrightarrow2\pi\delta(\omega)$。
+> - **逆变换**：$u(t)=\dfrac1{2\pi}\displaystyle\int U(j\omega)e^{j\omega t}d\omega$，冲激权重必须抵消 $\dfrac1{2\pi}$。
+> - **周期 FT 校验**：$c_0=1$，$U(j\omega)=2\pi c_0\delta(\omega)=2\pi\delta(\omega)$。
 
 > [!example] 解答
 > 把候选答案代回逆变换检验：
@@ -1335,9 +1342,8 @@ $$
 > [!abstract] 知识点讲解
 > 见 3.4 常用变换对。
 >
-> - 矩形与 sinc 互为傅里叶变换对。
-> - sinc 的频谱是门函数，不是另一个 sinc。
-> - 门高由 sinc 的归一化方式决定。
+> - **sinc 变换对**：$\dfrac{\sin Wt}{\pi t}\leftrightarrow p_{2W}(\omega)$。
+> - **本题**：$\operatorname{sinc}t=\dfrac{\sin\pi t}{\pi t}$，$W=\pi$，故 $U(j\omega)=p_{2\pi}(\omega)$。
 
 > [!example] 解答
 > 写成标准形式：
@@ -1375,9 +1381,8 @@ $$
 > [!abstract] 知识点讲解
 > 见 3.4 常用变换对。
 >
-> - $p_\tau(t)\leftrightarrow\tau\operatorname{sinc}\left(\frac{\omega\tau}{2\pi}\right)$。
-> - 高度等于脉冲面积 $\tau$。
-> - 自变量按 $\frac{\tau}{2\pi}$ 缩放，不只是高度。
+> - **矩形变换对**：$p_\tau(t)\leftrightarrow\tau\operatorname{sinc}\left(\dfrac{\omega\tau}{2\pi}\right)$。
+> - **本题**：$\tau=6$，$U(j\omega)=6\operatorname{sinc}\left(\dfrac{3\omega}{\pi}\right)$。
 
 > [!example] 解答
 > 代 $\tau=6$：
@@ -1407,8 +1412,8 @@ $$
 > [!abstract] 知识点讲解
 > 见 3.4 常用变换对。
 >
-> - 矩形脉冲的频谱为 sinc 包络。
-> - 首个零点满足 $\frac{\omega\tau}{2\pi}=1$，即 $\omega=\frac{2\pi}{\tau}$。
+> - **矩形变换对**：$p_\tau(t)\leftrightarrow\tau\operatorname{sinc}\left(\dfrac{\omega\tau}{2\pi}\right)$。
+> - **零点**：$\operatorname{sinc}x=0\iff x=\pm1,\pm2,\dots$，首个正零点由 $\dfrac{\omega\tau}{2\pi}=1$ 得 $\omega=\dfrac{2\pi}{\tau}$。
 
 > [!example] 解答
 > 代 $\tau=0.5$：
@@ -1441,8 +1446,8 @@ $$
 > [!abstract] 知识点讲解
 > 见 3.4 常用变换对。
 >
-> - $\tau=4$ 对应 $4\operatorname{sinc}\left(\frac{2\omega}{\pi}\right)$。
-> - $\operatorname{sinc}\frac12=\frac{\sin(\pi/2)}{\pi/2}=\frac{2}{\pi}$。
+> - **矩形变换对**：$p_\tau(t)\leftrightarrow\tau\operatorname{sinc}\left(\dfrac{\omega\tau}{2\pi}\right)$。
+> - **sinc 特殊值**：$\operatorname{sinc}\dfrac12=\dfrac{\sin(\pi/2)}{\pi/2}=\dfrac2\pi$。
 
 > [!example] 解答
 > 写频谱：
@@ -1471,7 +1476,7 @@ $$
 u_T(t)=\sum_{m\in\mathbb{Z}}p_1(t-mT),\qquad T\in\{2.5,\ 5,\ 10\}
 $$
 
-![Figure for Question 35 / 第 35 题图示占位：原 PDF 第 11 页](images/quiz2_p11_q35.png)
+![[Pasted image 20261101005719.png]]
 
 > [!success] Answer（答案）
 > (i) C　(ii) A　(iii) D　(iv) B
@@ -1479,10 +1484,10 @@ $$
 > [!abstract] 知识点讲解
 > 见 2.4 频谱与谱线 与 2.9 典型周期波形的傅里叶系数。
 >
-> - 谱线间隔为 $\omega_0=\frac{2\pi}{T}$。
-> - $T$ 越大，谱线越密。
-> - 包络只由脉宽 $\tau$ 决定，与 $T$ 无关。
-> - 单脉冲没有周期，频谱就是连续包络。
+> - **周期信号的 FT**：$U(j\omega)=2\pi\displaystyle\sum_kc_k\delta(\omega-k\omega_0)$，谱线间隔 $\omega_0=\dfrac{2\pi}{T}$。
+> - **脉冲串系数**：$c_k=Ad\operatorname{sinc}(kd)$，本题 $A=1$、$\tau=1$、$d=\dfrac1T$。
+> - **画图用的谱线高度**：$Tc_k=\operatorname{sinc}(kd)=\operatorname{sinc}\left(\dfrac{\omega_k}{2\pi}\right)$，所有谱线落在同一包络上。
+> - **单脉冲**：$p_1(t)\leftrightarrow\operatorname{sinc}\left(\dfrac{\omega}{2\pi}\right)$，连续频谱、无谱线。
 
 > [!example] 解答
 > 分别求三个周期的谱线间隔：
@@ -1517,8 +1522,8 @@ $$
 > [!abstract] 知识点讲解
 > 见 3.4 常用变换对。
 >
-> - $e^{-at}H(t)\leftrightarrow\frac{1}{a+j\omega}$。
-> - $|U(j\omega)|=\frac{1}{\sqrt{a^2+\omega^2}}$。
+> - **变换对**：$e^{-at}H(t)\leftrightarrow\dfrac1{a+j\omega}$，本题 $a=3$。
+> - **取模**：$|U(j\omega)|=\dfrac1{\sqrt{a^2+\omega^2}}$。
 
 > [!example] 解答
 > 取 $a=3$：
@@ -1547,8 +1552,8 @@ $$
 > [!abstract] 知识点讲解
 > 见 3.4 常用变换对。
 >
-> - 双边衰减指数 $e^{-a|t|}\leftrightarrow\frac{2a}{a^2+\omega^2}$。
-> - 零频峰值为 $\frac{2}{a}$，$\omega=a$ 处为其一半。
+> - **变换对**：$e^{-a|t|}\leftrightarrow\dfrac{2a}{a^2+\omega^2}$。
+> - **代入 $\omega=a$**：$U(ja)=\dfrac{2a}{a^2+a^2}=\dfrac1a$。
 
 > [!example] 解答
 > 代入 $\omega=a$：
@@ -1578,9 +1583,8 @@ $$
 > [!abstract] 知识点讲解
 > 见 4.2 计算步骤 与 3.4 常用变换对。
 >
-> - $\arg\frac{1}{z}=-\arg z$。
-> - 正实数的相位为零。
-> - 结果用度表示时要乘 $\frac{180^\circ}{\pi}$。
+> - **变换对**：$e^{-at}H(t)\leftrightarrow\dfrac1{a+j\omega}$，$G(j\omega)=\dfrac1{3+j\omega}$。
+> - **相位**：$\arg\dfrac1z=-\arg z$，$\arg(a+bj)=\arctan\dfrac ba$。
 
 > [!example] 解答
 > 代入 $\omega=4$：
@@ -1616,9 +1620,8 @@ $$
 > [!abstract] 知识点讲解
 > 见 3.5 时移性质。
 >
-> - $u(t-t_0)\leftrightarrow e^{-j\omega t_0}U(j\omega)$。
-> - 指数因子的模恒为 $1$，只改变相位。
-> - 延迟使相位呈线性变化。
+> - **时移性质**：$u(t-t_0)\leftrightarrow e^{-j\omega t_0}U(j\omega)$。
+> - **模与相位**：$|e^{-j\omega t_0}|=1$，$\arg\left(e^{-j\omega t_0}\right)=-\omega t_0$。
 
 > [!example] 解答
 > 写出延迟信号：
@@ -1656,9 +1659,8 @@ $$
 > [!abstract] 知识点讲解
 > 见 3.5 尺度性质。
 >
-> - $u(at)\leftrightarrow\frac{1}{|a|}U\left(j\frac{\omega}{a}\right)$。
-> - 时域压缩会使频谱展宽，并压低幅度。
-> - 面积守恒：宽度扩大 $a$ 倍，高度必须缩小 $a$ 倍。
+> - **尺度性质**：$u(at)\leftrightarrow\dfrac1{|a|}U\left(j\dfrac{\omega}{a}\right)$，本题 $a=3$。
+> - **读法**：$\omega\to\dfrac{\omega}{3}$ 使频谱展宽 $3$ 倍；系数 $\dfrac13$ 使峰值降为原来的三分之一。
 
 > [!example] 解答
 > 取 $a=3$：
@@ -1669,7 +1671,6 @@ $$
 > 识别高度：系数 $\frac13$ 作用在全部取值上，峰值降为原来的 $\frac13$。
 >
 > 选 (c)。
-
 
 ---
 
@@ -1688,8 +1689,10 @@ $$
 > [!abstract] 知识点讲解
 > 见 3.5 尺度与时移 与 3.4 矩形脉冲。
 >
-> - 先处理尺度，再处理延迟。
-> - $p_4(2t)\leftrightarrow\frac{1}{2}\cdot4\operatorname{sinc}\left(\frac{\omega\cdot4/2}{2\pi}\right)$。
+> - **矩形变换对**：$p_\tau(t)\leftrightarrow\tau\operatorname{sinc}\left(\dfrac{\omega\tau}{2\pi}\right)$。
+> - **尺度性质**：$u(at)\leftrightarrow\dfrac1{|a|}U\left(j\dfrac{\omega}{a}\right)$。
+> - **时移性质**：$u(t-t_0)\leftrightarrow e^{-j\omega t_0}U(j\omega)$。
+> - **配方**：$p_4(2t-4)=p_4\big(2(t-2)\big)$，先取 $a=2$，再取 $t_0=2$。
 
 > [!example] 解答
 > 配方：
@@ -1727,11 +1730,11 @@ $$
 > (b) 频域三角形
 
 > [!abstract] 知识点讲解
-> 见 3.5 对偶性质。
+> 见 3.5 对偶性质 与 3.4 常用变换对。
 >
-> - $u(t)\leftrightarrow U(j\omega)$ 时，$U(jt)\leftrightarrow 2\pi u(-\omega)$。
-> - 对偶把三角形的频谱与 sinc² 的时域互换。
-> - 三角形是偶函数，反转不影响结果。
+> - **三角形变换对**：$\left(1-\dfrac{|t|}{\tau}\right)_{\lvert t\rvert<\tau}\leftrightarrow\tau\operatorname{sinc}^2\left(\dfrac{\omega\tau}{2\pi}\right)$。
+> - **对偶性质**：$U(jt)\leftrightarrow2\pi u(-\omega)$。
+> - **对偶后右端**：$2\pi\Lambda(-\omega/\tau)=2\pi\Lambda(\omega/\tau)$（$\Lambda$ 为偶函数），频域仍为三角形。
 
 > [!example] 解答
 > 已知：
@@ -1768,9 +1771,9 @@ $$
 > [!abstract] 知识点讲解
 > 见 3.5 对偶性质 与 3.4 常用变换对。
 >
-> - 已知 $e^{-a|t|}\leftrightarrow\frac{2a}{a^2+\omega^2}$。
-> - 对偶后频域出现 $2\pi$ 因子。
-> - 绝对值不可丢，否则 $\omega<0$ 时发散。
+> - **变换对**：$e^{-a|t|}\leftrightarrow\dfrac{2a}{a^2+\omega^2}$。
+> - **对偶性质**：$U(jt)\leftrightarrow2\pi u(-\omega)$。
+> - **代入**：$\dfrac{2a}{a^2+t^2}\leftrightarrow2\pi e^{-a|-\omega|}=2\pi e^{-a|\omega|}$。
 
 > [!example] 解答
 > 从已知对开始：
@@ -1799,6 +1802,9 @@ Given that $u(t)\leftrightarrow U(j\omega)$, which of the following correctly st
 > [!abstract] 知识点讲解
 > 见 3.5 对偶性质。
 >
+> - **对偶性质**：$u(t)\leftrightarrow U(j\omega)\ \Rightarrow\ U(jt)\leftrightarrow2\pi u(-\omega)$。
+> - **$2\pi$ 来源**：逆变换中的 $\dfrac1{2\pi}$，对偶后移到正变换一侧。
+> - **负号**：右端是 $u(-\omega)$，频率反转不可省略。
 
 
 ---
@@ -1884,21 +1890,29 @@ $$
 >
 > - **微分性质**：$\dfrac{d}{dt}u(t)\longleftrightarrow j\omega U(j\omega)$，即求导一次乘 $j\omega$ 一次。
 > - **常用变换对**（3.4 表）：$\cos\omega_0t\leftrightarrow\pi\left[\delta(\omega-\omega_0)+\delta(\omega+\omega_0)\right]$。
-> - **冲激乘积**：$f(\omega)\delta(\omega-\omega_0)=f(\omega_0)\delta(\omega-\omega_0)$，所以 $\omega\delta(\omega\pm\omega_0)=\pm\omega_0\delta(\omega\pm\omega_0)$，即 $\omega\delta(\omega-\omega_0)=\omega_0\delta(\omega-\omega_0)$、$\omega\delta(\omega+\omega_0)=-\omega_0\delta(\omega+\omega_0)$。
+> - **冲激的筛选性质（乘冲激取值）**：对任意在 $\omega_0$ 处连续的函数 $f$，
+>   $$\int_{-\infty}^{\infty}f(\omega)\,\delta(\omega-\omega_0)\,d\omega=f(\omega_0)
+>   \quad\Longleftrightarrow\quad
+>   f(\omega)\,\delta(\omega-\omega_0)=f(\omega_0)\,\delta(\omega-\omega_0).$$
+>   直观理解：$\delta(\omega-\omega_0)$ 只在 $\omega=\omega_0$ 这一点非零，乘在它前面的 $f(\omega)$ 只在这一点被「取值」，其余地方的 $f(\omega)$ 都乘了零、不起作用。
+
 
 > [!example] 解答
-> 写出余弦的频谱：
-> $$X(j\omega)=\pi\left[\delta(\omega-\omega_0)+\delta(\omega+\omega_0)\right].$$
+> 由 3.4 表，
+> $$X(j\omega)=\mathcal{F}\{\cos\omega_0t\}=\pi\left[\delta(\omega-\omega_0)+\delta(\omega+\omega_0)\right].$$
 >
-> 乘 $j\omega$：
-> $$j\omega X(j\omega)=j\pi\left[\omega\delta(\omega-\omega_0)+\omega\delta(\omega+\omega_0)\right].$$
+> 用微分性质，乘以 $j\omega$：
+> $$\begin{aligned}
+> \mathcal{F}\left\{\frac{d}{dt}\cos\omega_0t\right\}
+> &=j\omega X(j\omega)\\
+> &=j\pi\left[\omega\,\delta(\omega-\omega_0)+\omega\,\delta(\omega+\omega_0)\right]\\
+> &=j\pi\left[\omega_0\,\delta(\omega-\omega_0)-\omega_0\,\delta(\omega+\omega_0)\right]\\
+> &=j\pi\omega_0\left[\delta(\omega-\omega_0)-\delta(\omega+\omega_0)\right].
+> \end{aligned}$$
 >
-> 用冲激乘积性质：$\omega\delta(\omega-\omega_0)=\omega_0\delta(\omega-\omega_0)$，$\omega\delta(\omega+\omega_0)=-\omega_0\delta(\omega+\omega_0)$。
+> 第二行到第三行，用的是**冲激的筛选性质**：$\delta(\omega-\omega_0)$ 只在 $\omega=\omega_0$ 处非零，前面的因子 $\omega$ 在该点取 $\omega_0$，即 $\omega\delta(\omega-\omega_0)=\omega_0\delta(\omega-\omega_0)$；后一根冲激在 $\omega=-\omega_0$，取 $-\omega_0$，所以两处符号相反。
 >
-> 合并：
-> $$j\pi\omega_0\left[\delta(\omega-\omega_0)-\delta(\omega+\omega_0)\right].$$
->
-> 选 (b)。亦可由 $\frac{d}{dt}\cos\omega_0t=-\omega_0\sin\omega_0t$ 直接查表验证。
+> 选 (b)。也可先求导再查表：$\frac{d}{dt}\cos\omega_0t=-\omega_0\sin\omega_0t$，而 $\sin\omega_0t\leftrightarrow\frac{\pi}{j}[\delta(\omega-\omega_0)-\delta(\omega+\omega_0)]$，乘 $-\omega_0$ 得同一结果。
 
 ---
 
@@ -1919,10 +1933,11 @@ $$
 > (d) $\frac{j\omega}{3+j\omega}$
 
 > [!abstract] 知识点讲解
-> 见 3.5 微分性质。
+> 见 3.5 微分性质 与 3.4 常用变换对。
 >
-> - $u'(t)\leftrightarrow j\omega U(j\omega)$。
-> - 也可先求导再变换，注意阶跃求导产生 $\delta(t)$。
+> - **微分性质**：$\dfrac{d}{dt}u(t)\longleftrightarrow j\omega U(j\omega)$。
+> - **变换对**：$e^{-3t}H(t)\leftrightarrow\dfrac1{3+j\omega}$，$\delta(t)\leftrightarrow1$。
+> - **直接求导校验**：$\dfrac{d}{dt}\left[e^{-3t}H(t)\right]=\delta(t)-3e^{-3t}H(t)\longleftrightarrow1-\dfrac3{3+j\omega}$。
 
 > [!example] 解答
 > 已知 $H(t)e^{-3t}\leftrightarrow\frac{1}{3+j\omega}$。
@@ -1939,7 +1954,6 @@ $$
 > 逐项变换：
 > $$1-\frac{3}{3+j\omega}=\frac{3+j\omega-3}{3+j\omega}=\frac{j\omega}{3+j\omega},$$
 > 一致。选 (d)。
-
 
 ---
 
@@ -1958,8 +1972,8 @@ $$
 > [!abstract] 知识点讲解
 > 见 3.5 微分性质。
 >
-> - 求导一次，乘 $j\omega$ 一次。
-> - 复数乘法按分配律展开。
+> - **微分性质**：$y=\dfrac{du}{dt}\Rightarrow Y(j\omega)=j\omega U(j\omega)$。
+> - **复数乘法**：$j^2=-1$。
 
 > [!example] 解答
 > 写出关系：
@@ -1996,8 +2010,9 @@ $$
 > [!abstract] 知识点讲解
 > 见 2.11 周期信号的傅里叶变换 与 3.8 周期信号的傅里叶变换。
 >
-> - 逐项变换 $e^{jk\omega_0t}\leftrightarrow2\pi\delta(\omega-k\omega_0)$。
-> - 冲激权重为 $2\pi c_k$，不是 $c_k$。
+> - **复指数变换对**：$e^{jk\omega_0t}\leftrightarrow2\pi\delta(\omega-k\omega_0)$。
+> - **线性**：$\displaystyle\sum_kc_ke^{jk\omega_0t}\leftrightarrow2\pi\sum_kc_k\delta(\omega-k\omega_0)$。
+> - **周期信号的 FT**：冲激位于 $\omega=k\omega_0$，权重为 $2\pi c_k$。
 
 > [!example] 解答
 > 写出傅里叶级数：
@@ -2029,8 +2044,8 @@ $$
 > [!abstract] 知识点讲解
 > 见 2.11 周期信号的傅里叶变换 与 2.3 系数换算。
 >
-> - 先求 $c_1$，再乘 $2\pi$ 得冲激权重。
-> - $c_1=\frac{a_1-jb_1}{2}$。
+> - **三角到复系数**：$c_k=\dfrac{a_k-jb_k}{2}$。
+> - **周期信号的 FT**：$U(j\omega)=2\pi\displaystyle\sum_kc_k\delta(\omega-k\omega_0)$，位于 $\omega=k\omega_0$ 的冲激权重为 $2\pi c_k$。
 
 > [!example] 解答
 > 读出三角系数：$a_1=4$，$b_1=-2$。
@@ -2062,8 +2077,8 @@ Find $u(0)$.（给定实周期信号的冲激频谱，求 $u(0)$。）
 > [!abstract] 知识点讲解
 > 见 2.11 周期信号的傅里叶变换。
 >
-> - 冲激权重除以 $2\pi$ 即得系数 $c_k$。
-> - $u(0)=\sum_kc_k$。
+> - **周期信号的 FT**：$U(j\omega)=2\pi\displaystyle\sum_kc_k\delta(\omega-k\omega_0)$，权重除以 $2\pi$ 即得 $c_k$。
+> - **合成式**：$u(t)=\displaystyle\sum_kc_ke^{jk\omega_0t}$，令 $t=0$ 得 $u(0)=\displaystyle\sum_kc_k$。
 
 > [!example] 解答
 > 读出 $c_k$：整体除以 $2\pi$，
@@ -2100,9 +2115,8 @@ $$
 > [!abstract] 知识点讲解
 > 见 3.9 Parseval 定理（能量形式）。
 >
-> - 傅里叶变换的帕塞瓦尔定理描述能量守恒。
-> - 频域积分前有 $\frac{1}{2\pi}$。
-> - 与周期信号的平均功率公式不是一回事。
+> - **能量 Parseval**：$E=\displaystyle\int_{-\infty}^{\infty}|u(t)|^2dt=\dfrac1{2\pi}\displaystyle\int_{-\infty}^{\infty}|U(j\omega)|^2d\omega$。
+> - **系数**：$\dfrac1{2\pi}$ 来自逆变换，不是 $\dfrac1\pi$。
 
 > [!example] 解答
 > 时域能量：
@@ -2131,8 +2145,8 @@ $$
 > [!abstract] 知识点讲解
 > 见 3.9 Parseval 定理（能量形式） 与 3.4 常用变换对。
 >
-> - $\frac{\sin Wt}{\pi t}\leftrightarrow p_{2W}(\omega)$，本题 $W=3$。
-> - 矩形频谱上的能量等于面积除以 $2\pi$。
+> - **sinc 变换对**：$\dfrac{\sin Wt}{\pi t}\leftrightarrow p_{2W}(\omega)$，$W=3$ 时 $U(j\omega)=p_6(\omega)$。
+> - **能量 Parseval**：$E=\dfrac1{2\pi}\displaystyle\int|U(j\omega)|^2d\omega=\dfrac1{2\pi}\int_{-3}^{3}1\,d\omega$。
 
 > [!example] 解答
 > 识别变换对：
@@ -2174,11 +2188,11 @@ $$
 > 幅值 $1.41421$，相位 $-15.0000^\circ$
 
 > [!abstract] 知识点讲解
-> 见 4.1 正弦稳态的核心结论，例见 4.8 例 1。
+> 见 4.1 正弦稳态的核心结论 与 4.2 计算步骤。
 >
-> - 输出频率不变，幅度乘 $|G(j\omega)|$，相位加 $\angle G(j\omega)$。
-> - 只代入输入的角频率，不要代其他值。
-> - 复数的模用 $\sqrt{\text{实部}^2+\text{虚部}^2}$，相位用 $\arctan\frac{\text{虚部}}{\text{实部}}$ 并按象限修正。
+> - **频率响应**：$G(j\omega)=\dfrac{N(j\omega)}{D(j\omega)}$，把 $j\omega$ 当复数代入，$(j\omega)^2=-\omega^2$。
+> - **正弦稳态**：$y_{ss}(t)=A|G(j\omega)|\cos\left(\omega t+\varphi+\angle G(j\omega)\right)$。
+> - **模与相位**：$|a+bj|=\sqrt{a^2+b^2}$，$\angle(a+bj)=\arctan\dfrac ba$（按象限修正）。
 
 > [!example] 解答
 > 输入角频率 $\omega=2$，代入 $j\omega=2j$：
@@ -2229,8 +2243,9 @@ $$
 > [!abstract] 知识点讲解
 > 见 4.1 正弦稳态的核心结论 与 4.2 计算步骤。
 >
-> - 频率响应必须在输入角频率处求值，不能用其他频率的增益。
-> - 相位相加，不是相减。
+> - **正弦稳态**：$y_{ss}(t)=A|G(j\omega)|\cos\left(\omega t+\varphi+\angle G(j\omega)\right)$。
+> - **商的模与相位**：$\left|\dfrac{z_1}{z_2}\right|=\dfrac{|z_1|}{|z_2|}$，$\arg\dfrac{z_1}{z_2}=\arg z_1-\arg z_2$。
+> - **代入频率**：只代输入频率 $\omega=10$。
 
 > [!example] 解答
 > 代 $\omega=10$：
@@ -2271,8 +2286,9 @@ $$
 > [!abstract] 知识点讲解
 > 见 4.3 直流输入与 RMS。
 >
-> - 正弦的 RMS 等于峰值除以 $\sqrt2$。
-> - 先求频率响应，再算峰值，最后换算 RMS。
+> - **微分方程到频率响应**：$m\ddot h+b\dot h+kh=b\dot r+kr\Rightarrow G(j\omega)=\dfrac{k+bj\omega}{k-m\omega^2+bj\omega}$。
+> - **正弦稳态**：输出峰值 $=|G(j\omega)|\times$ 输入峰值，频率不变。
+> - **RMS**：正弦 $B\cos(\omega t+\theta)$ 的 $X_{\text{RMS}}=\dfrac{B}{\sqrt2}$，平均功率 $P=\dfrac{B^2}{2}$。
 
 > [!example] 解答
 > 把方程整理成输出 $h$、输入 $r$ 的形式：
@@ -2319,8 +2335,8 @@ $$
 > [!abstract] 知识点讲解
 > 见 4.2 计算步骤。
 >
-> - 先算 $(j\omega)^2=-\omega^2$。
-> - 把 $G(j\omega)$ 化为 $a+bj$ 再取模与相位。
+> - **频率响应**：$G(j\omega)$ 中 $(j\omega)^2=-\omega^2$，$(j\omega)^3=-j\omega^3$。
+> - **模与相位**：$|a+bj|=\sqrt{a^2+b^2}$，$\arg(a+bj)=\arctan\dfrac ba$。
 
 > [!example] 解答
 > 代 $\omega=2$：
@@ -2357,10 +2373,10 @@ $$
 > $\arg G(j4)=-45.0000^\circ$
 
 > [!abstract] 知识点讲解
-> 见 4.2 计算步骤 中复数相位的求法。
+> 见 4.2 计算步骤。
 >
-> - 正实数的相位为零。
-> - $\arg\frac{1}{z}=-\arg z$。
+> - **相位**：$\arg\dfrac{z_1}{z_2}=\arg z_1-\arg z_2$。
+> - **正实数与复数**：$\arg 300=0$，$\arg(4+4j)=\arctan1=45^\circ$。
 
 > [!example] 解答
 > 代 $\omega=4$：
@@ -2394,10 +2410,10 @@ $$
 > $|G(j\omega)|=4.8$
 
 > [!abstract] 知识点讲解
-> 见 4.2 计算步骤 中乘积因式的模。
+> 见 4.2 计算步骤。
 >
-> - 多个因式相乘时，模等于各因式模的乘积。
-> - 先把分母化成 $(1+j\cdot\text{某数})$ 的形式再取模。
+> - **乘积的模**：$|z_1z_2|=|z_1||z_2|$，$\left|\dfrac{z_1}{z_2}\right|=\dfrac{|z_1|}{|z_2|}$。
+> - **一阶因子**：$|1+ja|=\sqrt{1+a^2}$。
 
 > [!example] 解答
 > 代 $\omega=\frac{1}{12}$：
@@ -2435,8 +2451,8 @@ $$
 > [!abstract] 知识点讲解
 > 见 4.3 直流输入与 RMS。
 >
-> - 常数输入等价 $\omega=0$，稳态输出为 $G(0)\times$ 输入。
-> - $G(0)$ 称直流增益。
+> - **由微分方程求频率响应**：$(j\omega)^2Y+3j\omega Y+2Y=U\Rightarrow G(j\omega)=\dfrac1{(j\omega+1)(j\omega+2)}$。
+> - **直流增益**：常数输入 $u=A$ 的稳态输出 $y_{ss}=A\,G(0)$，$G(0)$ 即 $\omega=0$ 代入。
 
 > [!example] 解答
 > 从微分方程求 $G(j\omega)$：两边变换得
@@ -2471,8 +2487,9 @@ $$
 > [!abstract] 知识点讲解
 > 见 4.1 正弦稳态的核心结论 与 4.7 系统对周期信号的作用。
 >
-> - 输出的第 $k$ 次谐波系数为 $d_k=c_kG(jk\omega_0)$。
-> - 直流分量为 $d_0=c_0G(0)$。
+> - **系统对谐波的作用**：$d_k=c_kG(jk\omega_0)$（由 $Y=GU$ 与周期信号的 FT 得出）。
+> - **直流系数**：$c_0=\dfrac1T\displaystyle\int_Tu(t)dt$；$d_0=c_0G(0)$。
+> - **直流增益**：$G(j\omega)=\dfrac1{1+3j\omega}$，$G(0)=1$。
 
 > [!example] 解答
 > 输入直流系数：
@@ -2516,8 +2533,9 @@ $$
 > [!abstract] 知识点讲解
 > 见 4.3 直流输入与 RMS 与 4.6 冲激响应与频率响应。
 >
-> - $G(0)=\int h(t)dt$。
-> - 常数输入只受直流增益影响。
+> - **冲激响应与频率响应**：$h(t)\leftrightarrow G(j\omega)$；$G(0)=\displaystyle\int_{-\infty}^{\infty}h(t)dt$。
+> - **直流输入**：$u=A$ 时 $y_{ss}=A\,G(0)$。
+> - **变换对**：$3e^{-6t}H(t)\leftrightarrow\dfrac3{6+j\omega}$。
 
 > [!example] 解答
 > 写传递函数：
@@ -2552,9 +2570,9 @@ $$
 > [!abstract] 知识点讲解
 > 见 4.4 Bode 图。
 >
-> - 一阶极点在转折频率之后使幅值按 $-20$ dB/decade 下降。
-> - 一个 decade 表示频率放大十倍。
-> - dB 值可以直接按斜率线性外推。
+> - **一阶低通渐近幅频**：$\omega\gg\omega_c$ 时每 decade 下降 $20$ dB，即 $|G|\approx\dfrac{|G(0)|}{\omega/\omega_c}$。
+> - **转折频率**：$\omega_c=200$；一个 decade 为频率乘 $10$。
+> - **dB 定义**：$20\log_{10}|G|$，dB 值可按斜率线性外推。
 
 > [!example] 解答
 > 判断转折频率：$\omega_c=200\ \mathrm{rad/s}$。
@@ -2591,9 +2609,8 @@ $$
 > [!abstract] 知识点讲解
 > 见 4.4 Bode 图 中一阶极点的相位渐近线。
 >
-> - 相位渐近线：$\frac{\omega_c}{10}$ 处为 $0^\circ$，$10\omega_c$ 处为 $-90^\circ$。
-> - 中间每 decade 下降 $45^\circ$。
-> - 题目要求「读渐近线」，不是算精确值。
+> - **渐近相频**：$\omega\le\dfrac{\omega_c}{10}$ 为 $0^\circ$；$\dfrac{\omega_c}{10}\le\omega\le10\omega_c$ 每 decade 降 $45^\circ$；$\omega\ge10\omega_c$ 为 $-90^\circ$。
+> - **精确相位**（对照）：$\arg\dfrac1{1+j\omega/\omega_c}=-\arctan\dfrac{\omega}{\omega_c}$。
 
 > [!example] 解答
 > 求渐近线的两个端点：
@@ -2625,8 +2642,8 @@ $$
 > [!abstract] 知识点讲解
 > 见 4.5 截止频率。
 >
-> - $-3$ dB 点即幅值降到直流值的 $\frac{1}{\sqrt2}$。
-> - 一阶极点的半功率点恰在极点频率处。
+> - **一阶幅频**：$|G(j\omega)|=\dfrac1{\sqrt{a^2+\omega^2}}$，$|G(0)|=\dfrac1a$。
+> - **$-3$ dB 定义**：$\dfrac{|G(j\omega_{-3\text{dB}})|}{|G(0)|}=\dfrac1{\sqrt2}$，即半功率点。
 
 > [!example] 解答
 > 写频率响应：
@@ -2673,8 +2690,9 @@ $$
 > [!abstract] 知识点讲解
 > 见 4.4 Bode 图 与 5.3 共振。
 >
-> - 高频斜率由极点个数决定：每个极点 $-20$ dB/decade。
-> - 二阶系统还要看 $\zeta$：$\zeta<\frac{1}{\sqrt2}$ 才有峰。
+> - **一阶因子**：$\dfrac1{1+j\omega/\omega_c}$，高频斜率 $-20$ dB/decade。
+> - **二阶标准形**：$\dfrac{\omega_n^2}{(j\omega)^2+2\zeta\omega_n(j\omega)+\omega_n^2}$，高频斜率 $-40$ dB/decade；$\zeta<\dfrac1{\sqrt2}$ 才有谐振峰。
+> - **读数**：由分母一次项系数 $2\zeta\omega_n$ 与常数项 $\omega_n^2$ 求 $\omega_n$、$\zeta$。
 
 > [!example] 解答
 > 数极点定斜率：
@@ -2716,9 +2734,8 @@ $$
 > [!abstract] 知识点讲解
 > 见 4.6 冲激响应与频率响应 与 3.4 常用变换对。
 >
-> - $h(t)$ 与 $G(j\omega)$ 构成傅里叶变换对。
-> - $\frac{A}{a+j\omega}\leftrightarrow Ae^{-at}H(t)$。
-> - 单边指数必须带阶跃 $H(t)$。
+> - **变换对**：$\dfrac1{a+j\omega}\leftrightarrow e^{-at}H(t)$。
+> - **线性**：$\dfrac{A}{a+j\omega}\leftrightarrow Ae^{-at}H(t)$；单边指数必须带 $H(t)$。
 
 > [!example] 解答
 > 改写：
@@ -2750,9 +2767,9 @@ $$
 > [!abstract] 知识点讲解
 > 见 4.6 冲激响应与频率响应 中的级联性质。
 >
-> - 级联：时域卷积，频域相乘。
-> - 与 $\delta(t-t_0)$ 卷积等价于整体延迟 $t_0$。
-> - 延迟指数时，指数中的 $t$ 和阶跃中的 $t$ 必须一起平移。
+> - **级联**：$h=h_1*h_2$；时域卷积对应频域乘积 $G=G_1G_2$。
+> - **与冲激卷积**：$h_1(t)*\delta(t-t_0)=h_1(t-t_0)$，频域乘 $e^{-j\omega t_0}$。
+> - **延迟指数**：$e^{-a(t-t_0)}H(t-t_0)$，指数和阶跃一起平移。
 
 > [!example] 解答
 > 级联卷积：
@@ -2792,8 +2809,8 @@ $$
 > [!abstract] 知识点讲解
 > 见 4.6 冲激响应与频率响应。
 >
-> - 分母极点位置决定衰减速率，分子决定幅度。
-> - 频域相加对应时域相加，不能合并两个不同极点。
+> - **变换对**：$\dfrac1{a+j\omega}\leftrightarrow e^{-at}H(t)$。
+> - **线性**：频域相加对应时域相加，不同极点不能合并成单一指数。
 
 > [!example] 解答
 > 拆成两项：
@@ -2830,9 +2847,9 @@ $$
 > [!abstract] 知识点讲解
 > 见 4.6 冲激响应与频率响应 与 7.2 常用变换对。
 >
-> - 阻尼正弦对：$e^{-at}\sin\omega_0t\,H(t)\leftrightarrow\frac{\omega_0}{(a+j\omega)^2+\omega_0^2}$。
-> - 阻尼余弦对：分子为 $a+j\omega$。
-> - 分子要乘以幅度。
+> - **阻尼正弦对**：$e^{-at}\sin(\omega_0t)H(t)\leftrightarrow\dfrac{\omega_0}{(a+j\omega)^2+\omega_0^2}$。
+> - **阻尼余弦对**：$e^{-at}\cos(\omega_0t)H(t)\leftrightarrow\dfrac{a+j\omega}{(a+j\omega)^2+\omega_0^2}$。
+> - **线性**：乘幅值只改分子。
 
 > [!example] 解答
 > 读出参数：$a=3$，$\omega_0=5$，幅度 $4$。
@@ -2873,8 +2890,9 @@ critically damped?（哪一阻尼比使该系统达到临界阻尼？）
 > [!abstract] 知识点讲解
 > 见 5.2 极点与阻尼。
 >
-> - 临界阻尼对应判别式为零、两极点重合，即 $\zeta=1$。
-> - $0<\zeta<1$ 欠阻尼；$\zeta>1$ 过阻尼；$\zeta=0$ 无阻尼。
+> - **二阶标准形**：$G(j\omega)=\dfrac{K\omega_n^2}{(j\omega)^2+2\zeta\omega_n(j\omega)+\omega_n^2}$，极点满足 $s^2+2\zeta\omega_ns+\omega_n^2=0$。
+> - **判别式**：$\Delta=4\omega_n^2(\zeta^2-1)$。
+> - **分类**：$\zeta>1$ 过阻尼（两实极点）；$\zeta=1$ 临界阻尼（重极点 $-\omega_n$）；$0<\zeta<1$ 欠阻尼（共轭复极点）。
 
 > [!example] 解答
 > 写出特征方程：
@@ -2910,10 +2928,11 @@ $$
 > (c) $0.707$
 
 > [!abstract] 知识点讲解
-> 见 5.2 极点与阻尼 中的几何关系。
+> 见 5.2 极点与阻尼。
 >
-> - $\omega_n$ 等于极点到原点的距离。
-> - $\zeta=\frac{|\operatorname{Re}p|}{\omega_n}$。
+> - **极点表示**：$p=-\zeta\omega_n\pm j\omega_n\sqrt{1-\zeta^2}$。
+> - **自然频率**：$\omega_n=|p|=\sqrt{(\Re p)^2+(\Im p)^2}$。
+> - **阻尼比**：$\zeta=\dfrac{|\Re p|}{\omega_n}$。
 
 > [!example] 解答
 > 极点 $p=-10^4\pm j10^4$。
@@ -2950,9 +2969,9 @@ $$
 > [!abstract] 知识点讲解
 > 见 5.3 共振。
 >
-> - 非零频率共振峰存在的条件是 $0<\zeta<\frac{1}{\sqrt2}$。
-> - 欠阻尼（$\zeta<1$）不等于有峰。
-> - 增益 $K$ 只缩放纵轴，不改变峰的存亡。
+> - **谐振频率**：$\omega_r=\omega_n\sqrt{1-2\zeta^2}$，仅当 $\zeta<\dfrac1{\sqrt2}$ 时有非零实解。
+> - **峰值**：$|G(j\omega_r)|=\dfrac{|K|}{2\zeta\sqrt{1-\zeta^2}}$。
+> - **判别**：$1-2(0.8)^2=-0.28<0$，无共振峰。
 
 > [!example] 解答
 > 写出幅频平方：
@@ -2992,8 +3011,9 @@ $$
 > [!abstract] 知识点讲解
 > 见 5.3 共振 与 5.2 RLC 电路的 $\omega_n$、$\zeta$。
 >
-> - 串联 RLC 取电容电压：$\omega_n=\frac{1}{\sqrt{LC}}$，$\zeta=\frac{R}{2}\sqrt{\frac{C}{L}}$。
-> - 峰值 $M_r=\frac{1}{2\zeta\sqrt{1-\zeta^2}}$，分贝值 $20\lg M_r$。
+> - **二阶标准形**：$G=\dfrac{K\omega_n^2}{(j\omega)^2+2\zeta\omega_n(j\omega)+\omega_n^2}$；RLC 取电容电压时 $\omega_n=\dfrac1{\sqrt{LC}}$，$\zeta=\dfrac R2\sqrt{\dfrac CL}$。
+> - **谐振**：$\omega_r=\omega_n\sqrt{1-2\zeta^2}$，$M_r=\dfrac{|K|}{2\zeta\sqrt{1-\zeta^2}}$，条件 $\zeta<\dfrac1{\sqrt2}$。
+> - **分贝值**：$20\lg M_r$。
 
 > [!example] 解答
 > 变换微分方程：
@@ -3046,8 +3066,8 @@ $$
 > [!abstract] 知识点讲解
 > 见 5.3 共振。
 >
-> - 极点 $-\alpha\pm j5$ 的实部决定阻尼。
-> - 实部越小（越靠近虚轴），阻尼越弱，峰越高越尖。
+> - **极点与阻尼**：$p=-\alpha\pm j5\Rightarrow\omega_n=\sqrt{\alpha^2+25}$，$\zeta=\dfrac{\alpha}{\omega_n}$。
+> - **峰值**：$M_r=\dfrac1{2\zeta\sqrt{1-\zeta^2}}$，$\zeta$ 越小峰越高越尖；$\zeta\ge\dfrac1{\sqrt2}$ 无峰。
 
 > [!example] 解答
 > 求 $\omega_n$：
@@ -3088,9 +3108,8 @@ Classify the system.（对该系统进行稳定性分类。）
 > [!abstract] 知识点讲解
 > 见 6.1 三种稳定性 与 6.3 极点判据速查。
 >
-> - 全部极点在左半平面：稳定。
-> - 虚轴上有单根、其余在左半平面：临界稳定，但不 BIBO。
-> - 虚轴上有重根：不稳定。
+> - **极点判据**：极点全在左半平面 → 指数稳定；虚轴上有单根且其余在左半平面 → 临界稳定；虚轴有重根或右半平面有极点 → 不稳定。
+> - **时域表现**：虚轴单极点对应常数或等幅振荡项，有界但不趋于零。
 
 > [!example] 解答
 > 分解分母：
@@ -3126,8 +3145,8 @@ Classify the system.（对该系统进行稳定性分类。）
 > [!abstract] 知识点讲解
 > 见 6.1 三种稳定性。
 >
-> - 虚轴上的重极点会产生 $t\cos\omega_0t$ 型项。
-> - 这类项随时间增长，即使没有右半平面极点也不稳定。
+> - **极点判据**：虚轴上的重极点 → 不稳定。
+> - **时域表现**：二重极点 $\pm j\omega_0$ 产生 $t\cos\omega_0t$、$t\sin\omega_0t$，幅度随 $t$ 增长。
 
 > [!example] 解答
 > 分解分母：
@@ -3161,8 +3180,9 @@ Four LTI systems are given by their transfer functions. Which one is BIBO stable
 > [!abstract] 知识点讲解
 > 见 6.2 BIBO 稳定。
 >
-> - 真有理传递函数 BIBO 稳定的充要条件：所有极点实部严格为负。
-> - 需要逐个分解分母、检验根的位置。
+> - **BIBO 判据**（真有理 $G$）：所有极点实部严格小于零。
+> - **等价条件**：$\displaystyle\int_{-\infty}^{\infty}|h(t)|dt<\infty$。
+> - **虚轴单极点**：对应常数或等幅振荡，不绝对可积，故不 BIBO。
 
 > [!example] 解答
 > (a) 的二次因子：
@@ -3203,11 +3223,11 @@ $$
 > (d) 不稳定
 
 > [!abstract] 知识点讲解
-> 见 6.3 极点判据速查 中一阶系统的判据。
+> 见 6.3 极点判据速查。
 >
-> - 一阶方程 $\tau\dot y+y=\beta u$ 的极点位于 $s=-\frac{1}{\tau}$。
-> - $\tau$ 为负时极点在右半平面，系统不稳定。
-> - 分子系数不影响稳定性。
+> - **一阶系统**：$\tau\dot y=-y+\beta u\Rightarrow G(j\omega)=\dfrac{\beta}{1+j\omega\tau}$，极点 $s=-\dfrac1{\tau}$。
+> - **稳定判据**：$\Re s<0\iff\tau>0$；$\tau<0$ 时极点在右半平面，不稳定。
+> - **分子 $\beta$**：只改增益，不改极点位置。
 
 > [!example] 解答
 > 写特征方程：
@@ -3251,8 +3271,8 @@ $$
 > [!abstract] 知识点讲解
 > 见 5.2 极点与阻尼 与 6.1 三种稳定性。
 >
-> - 极点实部为 $-\zeta\omega_n$。
-> - 实部为正时响应增长，系统不稳定。
+> - **二阶极点**：$p=-\zeta\omega_n\pm j\omega_n\sqrt{1-\zeta^2}$，实部为 $-\zeta\omega_n$。
+> - **无界条件**：实部为正，即 $\zeta<0$（$\omega_n>0$）；$\zeta\ge0$ 时响应有界或衰减。
 
 > [!example] 解答
 > 对每个 $\zeta$ 算实部 $-\zeta\omega_n$，$\omega_n=5$：
@@ -3291,8 +3311,9 @@ $$
 > [!abstract] 知识点讲解
 > 见 6.3 极点判据速查 例 4。
 >
-> - 二阶系统系数全正时两个特征根实部为负。
-> - 判别式正负只影响是否振荡，不影响收敛。
+> - **特征根**：$as^2+bs+c=0\Rightarrow s_{1,2}=\dfrac{-b\pm\sqrt{b^2-4ac}}{2a}$。
+> - **实根**：$b^2\ge4ac$ 时两根为负实数（因 $a,b,c>0$ 且 $\sqrt{b^2-4ac}<b$）。
+> - **复根**：实部 $-\dfrac b{2a}<0$，振荡衰减。两种情形都有 $y(t)\to0$。
 
 > [!example] 解答
 > 写特征根：
@@ -3327,8 +3348,8 @@ $$
 > [!abstract] 知识点讲解
 > 见 6.2 BIBO 稳定。
 >
-> - BIBO 稳定的充要条件：$\int_{-\infty}^{\infty}|h(t)|dt<\infty$。
-> - 单边非负指数可以直接去绝对值积分。
+> - **BIBO 充要条件**：$\displaystyle\int_{-\infty}^{\infty}|h(t)|dt<\infty$。
+> - **单边指数积分**：$\displaystyle\int_0^\infty Ae^{-at}dt=\dfrac Aa$。
 
 > [!example] 解答
 > 由于 $h(t)=3e^{-2t}H(t)$ 在 $t\ge0$ 非负，绝对值可去掉：
@@ -3363,9 +3384,9 @@ $$
 > [!abstract] 知识点讲解
 > 见 6.4 积分器与临界稳定。
 >
-> - 积分器的 $h(t)=H(t)$，极点在原点。
-> - 自然响应有界但不衰减，属临界稳定。
-> - 绝对可积条件不满足，故非 BIBO。
+> - **阶跃变换对**：$H(t)\leftrightarrow\dfrac1{j\omega}+\pi\delta(\omega)$，极点在 $s=0$（虚轴）。
+> - **稳定判据**：$h$ 有界但不趋于零 → 临界稳定；$\displaystyle\int|h(t)|dt=\infty$ → 不 BIBO。
+> - **反例**：有界输入 $H(t)$ 产生斜坡输出 $tH(t)$。
 
 > [!example] 解答
 > 求传递函数：$\mathcal{F}\{H(t)\}=\frac{1}{j\omega}+\pi\delta(\omega)$，极点在 $\omega=0$。
@@ -3402,8 +3423,8 @@ Which system is BIBO stable and has a frequency response $G(j\omega)$ that exist
 > [!abstract] 知识点讲解
 > 见 6.2 BIBO 稳定 与 3.3 存在性。
 >
-> - BIBO 稳定要求 $h$ 绝对可积。
-> - 频率响应存在要求 $h$ 的傅里叶积分收敛；$e^{4t}$ 型信号做不到。
+> - **BIBO 充要条件**：$\displaystyle\int_{-\infty}^{\infty}|h(t)|dt<\infty$。
+> - **变换对**：$e^{-at}H(t)\leftrightarrow\dfrac1{a+j\omega}$（$a>0$）；$e^{4t}H(t)$ 的收敛域 $\operatorname{Re}s>4$ 不含虚轴，$G(j\omega)$ 不存在。
 
 > [!example] 解答
 > 算 A 的绝对值积分：

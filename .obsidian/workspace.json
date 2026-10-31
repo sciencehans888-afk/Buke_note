@@ -50,7 +50,7 @@
             }
           }
         ],
-        "currentTab": 2
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -190,7 +190,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "信号与系统/Quiz2.md",
+                "file": "信号与系统/Quiz3.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
@@ -240,26 +240,27 @@
       "realclaudian:Open Claudian": false
     }
   },
-  "active": "cc71f6845adfec75",
+  "active": "5c970129e899b04d",
   "lastOpenFiles": [
-    "信号与系统/Quiz2.md.baiduyun.uploading.cfg",
-    "信号与系统/Quiz2.md.tmp.28528.9d482c7354b1",
-    "信号与系统/Quiz对应知识点.md",
-    "信号与系统/Quiz对应知识点.md.baiduyun.uploading.cfg",
-    "信号与系统/Quiz对应知识点.md.tmp.14276.62f16988ab11",
     "信号与系统/Quiz2.md",
-    "信号与系统/Quiz2-公式表解法.md.baiduyun.uploading.cfg",
-    "信号与系统/Quiz2-公式表解法.md",
-    "信号与系统/Quiz2.md.tmp.2824.78513e1434d1",
     "Pasted image 20261031132109.png",
+    "信号与系统/Quiz对应知识点.md.baiduyun.uploading.cfg",
+    "信号与系统/Quiz对应知识点.md.tmp.28528.e6d108e734f0",
+    "信号与系统/Quiz对应知识点.md.tmp.28528.2700c5dd49e1",
+    "信号与系统/Quiz2.md.baiduyun.uploading.cfg",
+    "信号与系统/Quiz2-公式表解法.md.baiduyun.uploading.cfg",
+    "信号与系统/Quiz2.md.tmp.28528.174e59d4e99d",
+    "信号与系统/Quiz2.md.tmp.28528.a9d163c242d5",
+    "信号与系统/Quiz对应知识点.md.tmp.28528.852990686563",
+    "信号与系统/Quiz对应知识点.md.tmp.28528.b7ab74188f5c",
+    "信号与系统/Quiz对应知识点.md.tmp.28528.47fa02a984e9",
+    "信号与系统/附件/Pasted image 20261031132109.png",
+    "信号与系统/附件/Pasted image 20261101005719.png",
+    "信号与系统/Quiz对应知识点.md",
     "信号与系统/Quiz3.md",
+    "信号与系统/Quiz2-公式表解法.md",
     "Buke_note/Quiz对应知识点.md",
-    "Buke_note/quiz3-practice-feedback.pdf",
     "Buke_note/Quiz3.md",
-    "Buke_note/quiz2-practice-feedback.pdf",
-    "Buke_note/Quiz2.md",
-    "Buke_note/formula-sheet-quiz2.pdf",
-    "信号与系统/Quiz对应知识点.md.tmp.4468.71ea056615e6",
-    "信号与系统/Quiz对应知识点.md.tmp.4468.b16d898dd2a8"
+    "Buke_note/Quiz2.md"
   ]
 }

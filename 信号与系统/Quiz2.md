@@ -1820,9 +1820,14 @@ $$
 > (b) 卷积性质
 
 > [!abstract] 知识点讲解
-> 见 3.5 卷积性质。
+> 见 3.5 各条性质。四个选项对应四条不同性质：
 >
-> $$(u_1*u_2)(t)\longleftrightarrow U_1(j\omega)U_2(j\omega)$$
+> - **微分**：$\dfrac{d}{dt}u(t)\longleftrightarrow j\omega U(j\omega)$（时域求导 = 频域乘 $j\omega$）
+> - **卷积**：$(u_1*u_2)(t)\longleftrightarrow U_1(j\omega)U_2(j\omega)$（时域卷积 = 频域乘积）✓
+> - **对偶**：$U(jt)\longleftrightarrow2\pi u(-\omega)$（时频互换，右端取负号并乘 $2\pi$）
+> - **相乘**：$u_1(t)u_2(t)\longleftrightarrow\dfrac{1}{2\pi}(U_1*U_2)(j\omega)$（时域相乘 = 频域卷积除以 $2\pi$）
+>
+> 题干问的是「时域卷积 → 频域乘积」，只有卷积性质符合。
 
 
 
@@ -1845,18 +1850,15 @@ $$
 > (c) 相乘性质
 
 > [!abstract] 知识点讲解
-> 见 3.5 相乘性质。
+> 见 3.5 各条性质。四个选项对应四条不同性质：
 >
-> - 时域相乘对应频域卷积，系数为 $\frac{1}{2\pi}$。
-> - 它与卷积定理互为对偶。
+> - **卷积**：$(u_1*u_2)(t)\longleftrightarrow U_1(j\omega)U_2(j\omega)$（时域卷积 = 频域乘积）
+> - **积分**：$\displaystyle\int_{-\infty}^{t}u(\varsigma)d\varsigma\longleftrightarrow\frac{U(j\omega)}{j\omega}+\pi U(0)\delta(\omega)$（时域积分 = 频域除以 $j\omega$，再加直流冲激项）
+> - **相乘**：$u_1(t)u_2(t)\longleftrightarrow\dfrac{1}{2\pi}(U_1*U_2)(j\omega)$（时域相乘 = 频域卷积除以 $2\pi$）✓
+> - **尺度**：$u(at)\longleftrightarrow\dfrac{1}{|a|}U\left(j\dfrac{\omega}{a}\right)$（时域压缩 = 频谱展宽并降幅，反之亦然）
+>
+> 题干问的是「时域乘积 → 频域卷积」，只有相乘性质符合；它与卷积性质互为对偶，系数 $\frac{1}{2\pi}$ 来自逆变换。
 
-> [!example] 解答
-> 写出相乘定理：
-> $$u_1(t)u_2(t)\leftrightarrow\frac{1}{2\pi}(U_1*U_2)(j\omega).$$
->
-> 对照题干「两个时域信号乘积 → 频域卷积」，正是该性质。选 (c)。
->
-> 说明 $\frac{1}{2\pi}$ 的来源：逆变换中含 $\frac{1}{2\pi}$，在推导中转移到卷积前。
 
 
 ---
@@ -1880,8 +1882,9 @@ $$
 > [!abstract] 知识点讲解
 > 见 3.5 微分性质 与 3.4 常用变换对。
 >
-> - $\cos\omega_0t\leftrightarrow\pi[\delta(\omega-\omega_0)+\delta(\omega+\omega_0)]$。
-> - 求导乘 $j\omega$，并用 $\omega\delta(\omega\pm\omega_0)=\mp\omega_0\delta(\omega\pm\omega_0)$。
+> - **微分性质**：$\dfrac{d}{dt}u(t)\longleftrightarrow j\omega U(j\omega)$，即求导一次乘 $j\omega$ 一次。
+> - **常用变换对**（3.4 表）：$\cos\omega_0t\leftrightarrow\pi\left[\delta(\omega-\omega_0)+\delta(\omega+\omega_0)\right]$。
+> - **冲激乘积**：$f(\omega)\delta(\omega-\omega_0)=f(\omega_0)\delta(\omega-\omega_0)$，所以 $\omega\delta(\omega\pm\omega_0)=\pm\omega_0\delta(\omega\pm\omega_0)$，即 $\omega\delta(\omega-\omega_0)=\omega_0\delta(\omega-\omega_0)$、$\omega\delta(\omega+\omega_0)=-\omega_0\delta(\omega+\omega_0)$。
 
 > [!example] 解答
 > 写出余弦的频谱：
@@ -1896,7 +1899,6 @@ $$
 > $$j\pi\omega_0\left[\delta(\omega-\omega_0)-\delta(\omega+\omega_0)\right].$$
 >
 > 选 (b)。亦可由 $\frac{d}{dt}\cos\omega_0t=-\omega_0\sin\omega_0t$ 直接查表验证。
-
 
 ---
 

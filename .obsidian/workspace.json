@@ -49,8 +49,7 @@
               "title": "Quiz2"
             }
           }
-        ],
-        "currentTab": 2
+        ]
       }
     ],
     "direction": "vertical"
@@ -190,7 +189,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "信号与系统/Quiz2.md",
+                "file": "信号与系统/Quiz对应知识点.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
@@ -240,8 +239,10 @@
       "realclaudian:Open Claudian": false
     }
   },
-  "active": "25b538230d70f59a",
+  "active": "2c6073db00205267",
   "lastOpenFiles": [
+    "信号与系统/Quiz2.md",
+    "Pasted image 20261031132109.png",
     "信号与系统/Quiz对应知识点.md",
     "信号与系统/Quiz3.md",
     "Buke_note/Quiz对应知识点.md",

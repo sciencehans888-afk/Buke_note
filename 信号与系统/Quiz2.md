@@ -2604,7 +2604,6 @@ $$
 
 ## 66. Question 66（第 66 题）｜PDF p. 19 ^q66
 
-**[Original PDF text truncated / 原 PDF 中题干文字被截断，无法逐字恢复]**
 
 A system has impulse response $h(t)=e^{-at}H(t)$ with $a=3$, so $G(j\omega)=1/(a+j\omega)$ … [truncated in source]（一个系统的冲激响应为 $h(t)=e^{-at}H(t)$，其中 $a=3$，因此频率响应为 $G(j\omega)=1/(a+j\omega)$；后续原文截断。根据反馈推断，题目要求求 $-3\ \mathrm{dB}$ 截止频率。）
 
@@ -2659,7 +2658,7 @@ $$
 G_1=\frac{1}{1+j\omega/10},\qquad G_2=\frac{10^4}{(j\omega)^2+10j\omega+10^4}
 $$
 
-![Figure for Question 67 / 第 67 题图示占位：原 PDF 第 20 页](images/quiz2_p20_q67.png)
+![[Pasted image 20261031132109.png]]
 
 > [!success] Answer（答案）
 > (i) B　(ii) D　(iii) A　(iv) C

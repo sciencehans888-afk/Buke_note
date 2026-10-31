@@ -1008,28 +1008,55 @@ $$
 > (d) $e^{2t}H(t)$
 
 > [!abstract] 知识点讲解
-> 见 3.3 存在性。
+> 见 3.3 存在性（含“判据的三个层次”与“广义变换是什么”）。
 >
-> - 绝对可积 $\int|u|dt<\infty$ 是傅里叶变换存在的充分条件。
-> - 常数、正弦、阶跃不绝对可积，但可在广义函数意义下用冲激表示。
-> - 指数增长且增长率超过任意衰减的信号，连广义变换也没有。
+> - **判据**：若 $u$ 绝对可积，则变换存在（古典意义，充分条件）；若不绝对可积但至多多项式增长，则 $u$ 是缓增分布，存在含冲激的广义变换；若指数增长快于任何多项式，则连广义变换也不存在。
+> - **广义变换**：积分不收敛时不直接积分，而是用分布与测试函数的配对 $\langle U,\phi\rangle=\langle u,\hat\phi\rangle$ 定义，允许频谱中出现 $\delta(\omega)$；实际操作中等价于“乘衰减因子再取极限”。
+> - **拉普拉斯对照**：只有收敛域包含虚轴时才有 $U(j\omega)=U(s)\big|_{s=j\omega}$。$e^{2t}H(t)$ 的收敛域 $\operatorname{Re}s>2$ 不含虚轴，所以 $\frac{1}{j\omega-2}$ 只是解析延拓，不能作为答案。
+> - 指数增长信号的频谱问题用拉普拉斯变换处理。
 
 > [!example] 解答
-> 写出 $e^{2t}H(t)$ 的变换积分：
+> **一、判据是什么。** 判断傅里叶变换是否存在，分三个层次：
+>
+> 1. **古典意义**：若 $u(t)$ 绝对可积，
+>    $$\int_{-\infty}^{\infty}|u(t)|dt<\infty,$$
+>    则 $U(j\omega)=\int u(t)e^{-j\omega t}dt$ 对每个 $\omega$ 都收敛，且 $U(j\omega)$ 连续。这是充分条件，不是必要条件。
+> 2. **广义意义**：绝对可积不满足时，看增长速度。若 $u(t)$ 至多多项式增长，即存在常数 $C$、$N$ 使
+>    $$|u(t)|\le C(1+|t|)^N,$$
+>    则 $u$ 是**缓增分布**，存在广义傅里叶变换，频谱中允许出现 $\delta(\omega)$ 及其导数。常数、正弦、阶跃、周期信号都属于这一层。
+> 3. **指数增长**：若 $|u(t)|$ 比任何多项式增长得都快（如 $e^{2t}$），$u$ 不是缓增分布，连广义傅里叶变换都不存在。这类信号要用拉普拉斯变换处理。
+>
+> **二、广义变换是什么。** 对 $1$、$H(t)$、$\cos5t$ 这些信号，积分 $\int u(t)e^{-j\omega t}dt$ 不收敛，不能直接算。广义变换不直接对 $u$ 积分，而是把 $u$ 看成分布（广义函数），用它对“测试函数”的作用来定义：
+> $$\langle U,\phi\rangle=\langle u,\hat\phi\rangle,\qquad
+> \hat\phi(\omega)=\int_{-\infty}^{\infty}\phi(t)e^{-j\omega t}dt,$$
+> 其中 $\phi$ 取速降的测试函数（如 $e^{-t^2}$ 一类），它的变换 $\hat\phi$ 也速降，所以右边积分一定收敛。这样定义出的 $U$ 可以含冲激：例如 $1\leftrightarrow2\pi\delta(\omega)$ 的意思是，对每个测试函数 $\phi$，
+> $$\int_{-\infty}^{\infty}1\cdot\hat\phi(\omega)\,d\omega=2\pi\phi(0),$$
+> 而右端正是 $2\pi\delta(\omega)$ 与 $\phi$ 配对的结果 $\langle2\pi\delta,\phi\rangle=2\pi\phi(0)$。实际计算中，等价的做法是给信号乘衰减因子再取极限，例如
+> $$\cos5t=\lim_{a\to0^+}e^{-a|t|}\cos5t,$$
+> 先算右边这个绝对可积信号的普通频谱，再令 $a\to0^+$，极限中出现两根冲激。
+>
+> **三、逐项判定。**
+>
+> (a) $\cos5t$：有界（$|\cos5t|\le1$），多项式增长，存在广义变换：
+> $$\cos5t\leftrightarrow\pi\left[\delta(\omega-5)+\delta(\omega+5)\right].$$
+>
+> (b) $H(t)$：有界（取 $0$ 或 $1$），多项式增长，存在广义变换：
+> $$H(t)\leftrightarrow\pi\delta(\omega)+\frac{1}{j\omega}.$$
+>
+> (c) $1$：常数，多项式增长，存在广义变换：
+> $$1\leftrightarrow2\pi\delta(\omega).$$
+>
+> (d) $e^{2t}H(t)$：写出变换积分
 > $$\int_0^\infty e^{2t}e^{-j\omega t}dt=\int_0^\infty e^{(2-j\omega)t}dt.$$
+> 被积函数的模为
+> $$\left|e^{(2-j\omega)t}\right|=e^{2t}\to\infty\quad(t\to\infty),$$
+> 与 $\omega$ 无关，所以对任何 $\omega$ 积分都发散。$e^{2t}$ 的增长快于任何多项式，不是缓增分布，连广义变换（含冲激）也不存在。
 >
-> 判断收敛性：被积函数模为 $e^{2t}$，
-> $$e^{2t}\to\infty\quad(t\to\infty),$$
-> 积分对任何 $\omega$ 都发散。
+> **四、常见陷阱：不能把 $1/(j\omega-2)$ 当答案。** 形式上积分似乎可以写成 $\frac{1}{j\omega-2}$，但原函数公式只在指数衰减时成立，即要求 $\operatorname{Re}s>2$。用拉普拉斯变换看得很清楚：
+> $$e^{2t}H(t)\longleftrightarrow\frac{1}{s-2},\qquad \operatorname{Re}s>2.$$
+> 傅里叶变换相当于在 $s=j\omega$ 处取值，而虚轴 $\operatorname{Re}s=0$ 不在收敛域 $\operatorname{Re}s>2$ 内。$\frac{1}{j\omega-2}$ 只是解析延拓，不对应任何收敛积分，也不对应一个分布的傅里叶变换。只有收敛域包含虚轴时（如 $e^{-at}H(t)$，$a>0$，收敛域 $\operatorname{Re}s>-a$），才能用 $G(j\omega)=G(s)\big|_{s=j\omega}$。
 >
-> 所以 $e^{2t}H(t)$ 不存在傅里叶变换，即使允许冲激。
->
-> 检查另外三个：
-> $$\cos5t\leftrightarrow\pi\left[\delta(\omega-5)+\delta(\omega+5)\right],$$
-> $$H(t)\leftrightarrow\pi\delta(\omega)+\frac{1}{j\omega},\qquad 1\leftrightarrow2\pi\delta(\omega),$$
-> 均存在广义变换。
->
-> 选 (d)。
+> 所以选 (d)。
 
 ---
 
@@ -1368,7 +1395,7 @@ $$
 
 ## 33. Question 33（第 33 题）｜PDF p. 10 ^q33
 
-$u(t)=p_{0.5}(t)$ (a pulse of width $0.5$) … [truncated in source]（$u(t)=p_{0.5}(t)$，宽为 $0.5$ 的脉冲……题干原文被截断；依据反馈，题意是求频谱的第一个正频率零点。）
+$u(t)=p_{0.5}(t)$ (a pulse of width $0.5$) （$u(t)=p_{0.5}(t)$，宽为 $0.5$ 的脉冲）
 
 $$
 u(t)=p_{0.5}(t)
@@ -1749,10 +1776,10 @@ $$
 > 从已知对开始：
 > $$e^{-a|t|}\leftrightarrow\frac{2a}{a^2+\omega^2}.$$
 >
-> 应用对偶 $U(jt)\leftrightarrow2\pi u(-\omega)$，其中 $U(j\omega)=\frac{2a}{a^2+\omega^2}$：
+> 应用对偶性质， $U(jt)\leftrightarrow2\pi u(-\omega)$，其中 $U(j\omega)=\frac{2a}{a^2+\omega^2}$：
 > $$\frac{2a}{a^2+t^2}\leftrightarrow2\pi e^{-a|-\omega|}=2\pi e^{-a|\omega|}.$$
 >
-> 检查因子：$2\pi$ 不可缺；绝对值保证结果为衰减函数。选 (a)。
+> 选 (a)。
 
 
 ---
@@ -1772,20 +1799,6 @@ Given that $u(t)\leftrightarrow U(j\omega)$, which of the following correctly st
 > [!abstract] 知识点讲解
 > 见 3.5 对偶性质。
 >
-> - 对偶的系数为 $2\pi$，来自逆变换的 $\frac{1}{2\pi}$。
-> - 右端自变量要反转。
-
-> [!example] 解答
-> 由定义：
-> $$U(j\omega)=\int u(t)e^{-j\omega t}dt.$$
->
-> 交换 $t$ 与 $\omega$ 的角色，得
-> $$\int u(t)e^{-jt\omega}dt=U(j\omega).$$
->
-> 把右端 $U(j\cdot t)$ 视为时间函数，其傅里叶变换为
-> $$\int U(jt)e^{-j\omega t}dt.$$
->
-> 与 $2\pi u(-\omega)$ 对照，可得因子 $2\pi$ 与自变量反转。选 (b)。
 
 
 ---
@@ -1809,16 +1822,8 @@ $$
 > [!abstract] 知识点讲解
 > 见 3.5 卷积性质。
 >
-> - 时域卷积对应频域相乘。
-> - 这是 LTI 系统分析的核心性质。
+> $$(u_1*u_2)(t)\longleftrightarrow U_1(j\omega)U_2(j\omega)$$
 
-> [!example] 解答
-> 写出卷积定理：
-> $$(u*h)(t)\leftrightarrow U(j\omega)G(j\omega).$$
->
-> 对照题干的映射：「时域卷积 → 频域乘积」，正是该性质。选 (b)。
->
-> 其余选项映射不同：微分为 $j\omega$ 乘积；对偶为两个域互换；相乘为频域卷积。
 
 
 ---

@@ -1559,6 +1559,33 @@ $$\int_{-\infty}^{\infty}|u(t)|dt<\infty,$$
 
 常数、正弦、阶跃和周期信号不满足绝对可积，但可以在广义函数意义下写出含冲激的傅里叶变换。
 
+**判据的三个层次**：
+
+1. **古典意义（充分条件）**：绝对可积 $\int|u|dt<\infty$，变换存在且连续。
+2. **广义意义**：若增长不过快，即存在常数 $C$、$N$ 使
+   $$|u(t)|\le C(1+|t|)^N,$$
+   则 $u$ 是**缓增分布**，存在含冲激（及其导数）的广义傅里叶变换。常数、正弦、阶跃、周期信号都属于这一层，它们增长有界或至多多项式增长。
+3. **指数增长**：若 $|u(t)|$ 比任何多项式增长得都快，如 $e^{2t}H(t)$，则 $u$ 不是缓增分布，连广义变换也不存在，必须改用拉普拉斯变换。
+
+**广义变换是什么**：不发散的积分不能用普通定义，改用“分布与测试函数的配对”来定义。取速降的测试函数 $\phi$，定义
+
+$$\langle U,\phi\rangle=\langle u,\hat\phi\rangle=\int_{-\infty}^{\infty}u(t)\,\hat\phi(t)\,dt,\qquad
+\hat\phi(\omega)=\int_{-\infty}^{\infty}\phi(t)e^{-j\omega t}dt.$$
+
+由于 $\hat\phi$ 速降，而 $u$ 至多多项式增长，右边积分收敛，于是 $U$ 被唯一确定。这样得到的 $U$ 里允许出现 $\delta(\omega)$。例如 $1\leftrightarrow2\pi\delta(\omega)$ 的意思是：对每个测试函数 $\phi$，
+
+$$\int_{-\infty}^{\infty}\hat\phi(\omega)\,d\omega
+=2\pi\phi(0)
+=\langle2\pi\delta,\phi\rangle,$$
+
+即用 $\delta$ 的筛选性质对 $\phi$ 取值。实际做题时不必真的引入测试函数，等价的操作是“乘衰减因子再取极限”，例如
+
+$$\cos5t=\lim_{a\to0^+}e^{-a|t|}\cos5t.$$
+
+右边是绝对可积信号，先算它的普通频谱，再令 $a\to0^+$，极限中自然出现冲激。
+
+**与拉普拉斯变换的关系**：只有收敛域包含虚轴时，才能用 $U(j\omega)=U(s)\big|_{s=j\omega}$。$e^{2t}H(t)$ 的收敛域为 $\operatorname{Re}s>2$，不含虚轴，所以形式上写出的 $\frac{1}{j\omega-2}$ 只是解析延拓，不是任何收敛积分的值，也不是一个分布的傅里叶变换。
+
 单位阶跃信号定义为
 
 $$H(t)=\begin{cases}1,&t>0,\\0,&t<0.\end{cases}$$
@@ -1571,7 +1598,7 @@ $t=0$ 处的取值不影响积分，通常取 $1/2$。它的作用是限制积�
 
 $$\int_0^\infty e^{2t}e^{-j\omega t}dt=\int_0^\infty e^{(2-j\omega)t}dt.$$
 
-被积函数的模为 $e^{2t}$，在 $t\to\infty$ 时发散，因此积分不收敛。指数增长率大于零的信号一般不能用普通傅里叶变换处理，需要拉普拉斯变换。
+被积函数的模为 $e^{2t}$，在 $t\to\infty$ 时发散，因此对任何 $\omega$ 积分都不收敛。$e^{2t}$ 的增长快于任何多项式，不是缓增分布，所以连含冲激的广义变换也不存在；这类信号需要改用拉普拉斯变换。
 
 ### 3.4 常用变换对
 
@@ -1840,11 +1867,27 @@ $$\begin{aligned}
 | 积分 | $\displaystyle\int_{-\infty}^{t}u(\tau)d\tau$ | $\dfrac{U(j\omega)}{j\omega}+\pi U(0)\delta(\omega)$ |
 | 共轭 | $u^*(t)$ | $U^*(-j\omega)$ |
 
+#### 线性
+
+$$au_1+bu_2\longleftrightarrow aU_1+bU_2.$$
+
+**例** 已知 $p_2(t)\leftrightarrow2\operatorname{sinc}\left(\frac{\omega}{\pi}\right)$，$\delta(t-1)\leftrightarrow e^{-j\omega}$，则
+
+$$2p_2(t)-3\delta(t-1)\longleftrightarrow4\operatorname{sinc}\left(\frac{\omega}{\pi}\right)-3e^{-j\omega}.$$
+
+逐项变换、逐项乘系数即可，时域怎样组合，频域就怎样组合。
+
 #### 时移
 
 $$u(t-t_0)\longleftrightarrow e^{-j\omega t_0}U(j\omega).$$
 
 时移不改变幅度谱，只给相位增加 $-\omega t_0$。
+
+**例** 仍用 $p_2(t)\leftrightarrow2\operatorname{sinc}(\omega/\pi)$，把脉冲延后 $3$：
+
+$$p_2(t-3)\longleftrightarrow2\operatorname{sinc}\left(\frac{\omega}{\pi}\right)e^{-j3\omega}.$$
+
+$|U(j\omega)|$ 完全不变；相位多了 $-3\omega$，随频率线性增加。时域延后多少，相位就减多少倍的 $\omega$。
 
 #### 频移
 
@@ -1852,11 +1895,43 @@ $$e^{j\omega_0t}u(t)\longleftrightarrow U(j(\omega-\omega_0)).$$
 
 频移把整个频谱搬到 $\omega_0$ 附近。调制就是利用这条性质。
 
+**例** 把 $p_2(t)$ 乘以 $e^{j5t}$：
+
+$$e^{j5t}p_2(t)\longleftrightarrow2\operatorname{sinc}\left(\frac{\omega-5}{\pi}\right).$$
+
+原来频谱中心在 $\omega=0$、零点在 $\pm\pi$；现在中心移到 $5$、零点移到 $5\pm\pi$，形状和高度不变。
+
 #### 尺度
 
 $$u(at)\longleftrightarrow\frac1{|a|}U\left(j\frac{\omega}{a}\right).$$
 
 时间压缩（$|a|>1$）使频谱展宽，幅度降低；时间拉伸（$|a|<1$）使频谱变窄，幅度升高。若 $a<0$，还包含时间反转，频谱也要反转。
+
+**例** 把 $p_2(t)$ 在时间上压成 $p_2(3t)$，$a=3$：
+
+$$p_2(3t)\longleftrightarrow\frac13\cdot2\operatorname{sinc}\left(\frac{\omega}{3\pi}\right)=\frac23\operatorname{sinc}\left(\frac{\omega}{3\pi}\right).$$
+
+零点从 $\pm\pi$ 移到 $\pm3\pi$：频谱展宽 $3$ 倍，峰值从 $2$ 降到 $\frac23$，仍是原来的三分之一。
+
+#### 时间反转
+
+$$u(-t)\longleftrightarrow U(-j\omega).$$
+
+**例** $e^{-2t}H(t)\leftrightarrow\frac1{2+j\omega}$，把时间反转得到 $e^{2t}H(-t)$：
+
+$$e^{2t}H(-t)\longleftrightarrow\frac1{2-j\omega}=U(-j\omega).$$
+
+频谱左右翻转。若 $U(j\omega)$ 本身是偶函数（如实偶信号的频谱），反转后频谱不变。
+
+#### 乘 $t$
+
+$$tu(t)\longleftrightarrow j\frac{d}{d\omega}U(j\omega).$$
+
+**例** $e^{-2t}H(t)\leftrightarrow\frac1{2+j\omega}$，乘上 $t$：
+
+$$te^{-2t}H(t)\longleftrightarrow j\frac{d}{d\omega}\frac1{2+j\omega}=j\cdot\frac{-j}{(2+j\omega)^2}=\frac1{(2+j\omega)^2},$$
+
+与 3.4 表中 $te^{-at}H(t)\leftrightarrow\frac1{(a+j\omega)^2}$ 一致。
 
 #### 对偶
 
@@ -1870,6 +1945,16 @@ $$U(jt)\longleftrightarrow2\pi u(-\omega).$$
 
 对偶性质中的 $2\pi$ 和负号都要保留。它是从已知变换对推出新变换对的主要工具。
 
+**例** 已知 $p_2(t)\longleftrightarrow2\operatorname{sinc}(\omega/\pi)=2\frac{\sin\omega}{\omega}$。把频谱表达式作为时间函数 $U(jt)=2\frac{\sin t}{t}$，对偶给出
+
+$$2\frac{\sin t}{t}\longleftrightarrow2\pi p_2(-\omega)=2\pi p_2(\omega).$$
+
+两边除以 $2$：
+
+$$\frac{\sin t}{t}\longleftrightarrow\pi p_2(\omega),$$
+
+即 $\frac{\sin t}{\pi t}\leftrightarrow p_2(\omega)$，正是 $\frac{\sin Wt}{\pi t}\leftrightarrow p_{2W}(\omega)$ 取 $W=1$。
+
 #### 卷积
 
 时域卷积对应频域相乘：
@@ -1878,6 +1963,18 @@ $$u_1(t)*u_2(t)\longleftrightarrow U_1(j\omega)U_2(j\omega).$$
 
 这是 LTI 系统分析的核心。系统输出等于输入与冲激响应的卷积，频域中等于输入频谱乘以频率响应。
 
+**例** $u_1=e^{-2t}H(t)$，$u_2=e^{-3t}H(t)$。频域相乘后做部分分式：
+
+$$U_1U_2=\frac1{(2+j\omega)(3+j\omega)}=\frac1{2+j\omega}-\frac1{3+j\omega}.$$
+
+逐项反变换：
+
+$$u_1*u_2=\left(e^{-2t}-e^{-3t}\right)H(t).$$
+
+直接按定义卷积验证：$t>0$ 时
+
+$$\int_0^t e^{-2\tau}e^{-3(t-\tau)}d\tau=e^{-3t}\int_0^te^{\tau}d\tau=e^{-3t}\left(e^t-1\right)=e^{-2t}-e^{-3t}.$$
+
 #### 相乘
 
 时域相乘对应频域卷积：
@@ -1885,6 +1982,16 @@ $$u_1(t)*u_2(t)\longleftrightarrow U_1(j\omega)U_2(j\omega).$$
 $$u_1(t)u_2(t)\longleftrightarrow\frac1{2\pi}(U_1*U_2)(j\omega).$$
 
 调制信号 $u(t)\cos\omega_ct$ 就是时域相乘，频域中把 $U(j\omega)$ 搬到 $\pm\omega_c$ 两侧。
+
+**例** $p_2(t)\cos(10t)$，其中 $p_2(t)\leftrightarrow2\operatorname{sinc}(\omega/\pi)$。用调制形式：
+
+$$\begin{aligned}
+p_2(t)\cos10t
+&\longleftrightarrow\frac12U(j(\omega-10))+\frac12U(j(\omega+10))\\
+&=\operatorname{sinc}\left(\frac{\omega-10}{\pi}\right)+\operatorname{sinc}\left(\frac{\omega+10}{\pi}\right).
+\end{aligned}$$
+
+原来位于零频的 sinc 被搬到 $\pm10$ 两侧，形状和宽度不变。
 
 #### 微分
 
@@ -1906,11 +2013,35 @@ $$\int_{-\infty}^{t}u(\tau)d\tau\longleftrightarrow\frac{U(j\omega)}{j\omega}+\p
 
 积分性质中的冲激项来自信号的直流分量。若 $U(0)=0$，即信号均值为零，冲激项消失。
 
+**例** $u(t)=\delta(t)$，$U(j\omega)=1$，$U(0)=1\ne0$。积分得 $H(t)$，按公式
+
+$$\int_{-\infty}^{t}\delta(\tau)d\tau=H(t)\longleftrightarrow\frac1{j\omega}+\pi\delta(\omega),$$
+
+与表中 $H(t)$ 一行一致，冲激项正是 $U(0)=1$ 贡献的。若换成零均值信号 $u(t)=\cos t$，$U(0)=0$：
+
+$$\int_{-\infty}^{t}\cos\tau\,d\tau=\sin t\longleftrightarrow\frac{\pi}{j}\left[\delta(\omega-1)-\delta(\omega+1)\right]=\frac{U(j\omega)}{j\omega},$$
+
+冲激项消失，只剩除以 $j\omega$ 的部分。
+
 #### 共轭
 
 $$u^*(t)\longleftrightarrow U^*(-j\omega).$$
 
 对实信号，$u^*(t)=u(t)$，因此 $U(j\omega)=U^*(-j\omega)$，即频谱共轭对称。
+
+**例** $u(t)=e^{(-2+j3)t}H(t)$：
+
+$$U(j\omega)=\frac1{2+j(\omega-3)}.$$
+
+取共轭得 $u^*(t)=e^{(-2-j3)t}H(t)$，其变换为
+
+$$\frac1{2+j(\omega+3)}.$$
+
+另一方面
+
+$$U^*(-j\omega)=\frac1{2-j(-3-\omega)}=\frac1{2+j(\omega+3)},$$
+
+两者一致。对实信号这一步就退化为 $U(j\omega)=U^*(-j\omega)$：实部偶、虚部奇。
 
 ### 3.6 对称性
 

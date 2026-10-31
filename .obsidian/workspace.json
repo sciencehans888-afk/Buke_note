@@ -49,7 +49,8 @@
               "title": "Quiz2"
             }
           }
-        ]
+        ],
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -189,7 +190,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "信号与系统/Quiz对应知识点.md",
+                "file": "信号与系统/Quiz2.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
@@ -239,11 +240,18 @@
       "realclaudian:Open Claudian": false
     }
   },
-  "active": "2c6073db00205267",
+  "active": "cc71f6845adfec75",
   "lastOpenFiles": [
-    "信号与系统/Quiz2.md",
-    "Pasted image 20261031132109.png",
+    "信号与系统/Quiz2.md.baiduyun.uploading.cfg",
+    "信号与系统/Quiz2.md.tmp.28528.9d482c7354b1",
     "信号与系统/Quiz对应知识点.md",
+    "信号与系统/Quiz对应知识点.md.baiduyun.uploading.cfg",
+    "信号与系统/Quiz对应知识点.md.tmp.14276.62f16988ab11",
+    "信号与系统/Quiz2.md",
+    "信号与系统/Quiz2-公式表解法.md.baiduyun.uploading.cfg",
+    "信号与系统/Quiz2-公式表解法.md",
+    "信号与系统/Quiz2.md.tmp.2824.78513e1434d1",
+    "Pasted image 20261031132109.png",
     "信号与系统/Quiz3.md",
     "Buke_note/Quiz对应知识点.md",
     "Buke_note/quiz3-practice-feedback.pdf",
@@ -252,11 +260,6 @@
     "Buke_note/Quiz2.md",
     "Buke_note/formula-sheet-quiz2.pdf",
     "信号与系统/Quiz对应知识点.md.tmp.4468.71ea056615e6",
-    "信号与系统/Quiz对应知识点.md.tmp.4468.b16d898dd2a8",
-    "信号与系统/Quiz对应知识点.md.tmp.4468.1b58713ef402",
-    "信号与系统/Quiz对应知识点.md.tmp.4468.d76cfb2306e7",
-    "信号与系统/Quiz对应知识点.md.tmp.2388.a6fc4313c618",
-    "信号与系统/Quiz对应知识点.md.baiduyun.uploading.cfg",
-    "信号与系统/Quiz对应知识点.md.tmp.2388.c8d3387618dd"
+    "信号与系统/Quiz对应知识点.md.tmp.4468.b16d898dd2a8"
   ]
 }

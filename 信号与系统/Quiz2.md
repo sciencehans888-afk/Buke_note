@@ -1993,7 +1993,9 @@ $$
 
 ## 49. Question 49（第 49 题）｜PDF p. 15 ^q49
 
-A signal $u(t)$ has Fourier transform $U(j\omega)$, and it is known that $U(j5)=2-3j$.（信号 $u(t)$ 的傅里叶变换为 $U(j\omega)$，已知 $U(j5)=2-3j$。）Let $y(t)=\dfrac{du}{dt}$. Evaluate $Y(j5)$.（令 $y(t)=\dfrac{du}{dt}$，求 $Y(j5)$。）
+A signal $u(t)$ has Fourier transform $U(j\omega)$, and it is known that $U(j5)=2-3j$.（信号 $u(t)$ 的傅里叶变换为 $U(j\omega)$，已知 $U(j5)=2-3j$。）
+
+Let $y(t)=\dfrac{du}{dt}$. Evaluate $Y(j5)$.（令 $y(t)=\dfrac{du}{dt}$，求 $Y(j5)$。）
 
 
 $$
@@ -2027,7 +2029,9 @@ $$
 
 ## 50. Question 50（第 50 题）｜PDF p. 16 ^q50
 
-$u(t)$ is periodic with period $T$, fundamental frequency $\omega_0=2\pi/T$, and Fourier series coefficients $c_k$.（$u(t)$ 为周期信号，周期 $T$，基频 $\omega_0=2\pi/T$，傅里叶级数系数为 $c_k$。）What does $U(j\omega)$ look like?（其傅里叶变换 $U(j\omega)$ 在频域是什么形式？）
+$u(t)$ is periodic with period $T$, fundamental frequency $\omega_0=2\pi/T$, and Fourier series coefficients $c_k$.（$u(t)$ 为周期信号，周期 $T$，基频 $\omega_0=2\pi/T$，傅里叶级数系数为 $c_k$。）
+
+What does $U(j\omega)$ look like?（其傅里叶变换 $U(j\omega)$ 在频域是什么形式？）
 
 $$
 u(t)=\sum_{k=-\infty}^{\infty}c_ke^{jk\omega_0t}
@@ -2065,7 +2069,9 @@ $$
 
 ## 51. Question 51（第 51 题）｜PDF p. 16 ^q51
 
-$u(t)=5+4\cos(3t)-2\sin(3t)$ is periodic with fundamental frequency $\omega_0=3\ \mathrm{rad/s}$.（$u(t)=5+4\cos(3t)-2\sin(3t)$ 为周期信号，基频 $\omega_0=3\ \mathrm{rad/s}$。）Writing $U(j\omega)$ as a sum of weighted impulses, find the complex weight of the impulse located at $\omega=3$.（把 $U(j\omega)$ 写成带权冲激之和，求位于 $\omega=3$ 处冲激的复权重。）
+$u(t)=5+4\cos(3t)-2\sin(3t)$ is periodic with fundamental frequency $\omega_0=3\ \mathrm{rad/s}$.（$u(t)=5+4\cos(3t)-2\sin(3t)$ 为周期信号，基频 $\omega_0=3\ \mathrm{rad/s}$。）
+
+Writing $U(j\omega)$ as a sum of weighted impulses, find the complex weight of the impulse located at $\omega=3$.（把 $U(j\omega)$ 写成带权重的冲激之和，求位于 $\omega=3$ 处冲激的复权重。）
 
 
 $$
@@ -2111,11 +2117,18 @@ Find $u(0)$.（给定实周期信号的冲激频谱，求 $u(0)$。）
 > [!abstract] 知识点讲解
 > 见 2.11 周期信号的傅里叶变换。
 >
-> - **周期信号的 FT**：$U(j\omega)=2\pi\displaystyle\sum_kc_k\delta(\omega-k\omega_0)$，权重除以 $2\pi$ 即得 $c_k$。
+> - **周期信号的 FT**：$U(j\omega)=2\pi\displaystyle\sum_kc_k\delta(\omega-k\omega_0)$，位于 $\omega=k\omega_0$ 的冲激其**权重**为 $W_k=2\pi c_k$。
+> - **反读系数**：把题目给出的 $U(j\omega)$ 整体除以 $2\pi$，即
+>   $$\frac{U(j\omega)}{2\pi}=\sum_kc_k\,\delta(\omega-k\omega_0),$$
+>   再逐项与 $\displaystyle\sum_kc_k\delta(\omega-k\omega_0)$ 对照，每根冲激前的系数就是对应的 $c_k$。
 > - **合成式**：$u(t)=\displaystyle\sum_kc_ke^{jk\omega_0t}$，令 $t=0$ 得 $u(0)=\displaystyle\sum_kc_k$。
 
 > [!example] 解答
-> 读出 $c_k$：整体除以 $2\pi$，
+> 把题给的频谱表达式**整体除以 $2\pi$**：
+> $$\frac{U(j\omega)}{2\pi}
+> =\frac{2\pi\left[3\delta(\omega)+(1-2j)\delta(\omega-5)+(1+2j)\delta(\omega+5)\right]}{2\pi}
+> =3\delta(\omega)+(1-2j)\delta(\omega-5)+(1+2j)\delta(\omega+5).$$
+> 把结果与标准形式 $\displaystyle\sum_kc_k\delta(\omega-k\omega_0)$ 逐项对照（$\omega_0=5$）：
 > $$c_0=3,\qquad c_1=1-2j,\qquad c_{-1}=1+2j.$$
 >
 > 写出合成式：
@@ -2126,7 +2139,6 @@ Find $u(0)$.（给定实周期信号的冲激频谱，求 $u(0)$。）
 >
 > 求和：
 > $$u(0)=3+(1-2j)+(1+2j)=5.$$
-
 
 ---
 

@@ -393,7 +393,7 @@ $$
 >
 > - **正弦变换对**：$\mathcal L\{\sin\omega_0t\,H(t)\}=\dfrac{\omega_0}{s^2+\omega_0^2}$，本题 $\omega_0=3$。
 > - **$s$ 域移位**：$\mathcal L\{e^{at}f(t)\}=F(s-a)$，即把 $F(s)$ 中的 $s$ 全部换成 $s-a$。
-> - **展开**：$(s-2)^2+9=s^2-4s+13$，也可由分母根 $-2\pm3j$ 直接校验。
+> - **展开**：$(s-2)^2+9=s^2-4s+13$；也可由分母根 $2\pm3j$（验证：$2^2+3^2=13$、$-2\cdot2=-4$）直接校验。
 > - **易混**：$e^{-2t}\sin3t$ 对应的是把 $s$ 换成 $s+2$。
 
 > [!example] 解答
@@ -857,8 +857,6 @@ $$
 G(s)=\frac{12}{s^2+4}.
 $$
 
-（原 PDF 文字层中分子丢失，依据反馈 $h(t)=6\sin2t\,H(t)$ 还原为 $12$。）
-
 (a) BIBO stable but not exponentially stable（BIBO 稳定但非指数稳定）
 (b) Marginally stable and not BIBO stable **✓**（临界稳定但不 BIBO 稳定）
 (c) Unstable（不稳定）
@@ -961,7 +959,7 @@ Which transfer function is marginally stable?（哪个传递函数是临界稳�
 Classify（对下列系统进行分类）
 
 $$
-G(s)=\frac{1}{s^4+4}.
+G(s)=\frac{12}{s^4+4}.
 $$
 
 Hint（提示）：
@@ -983,6 +981,7 @@ $$
 >
 > - **分解技巧**：$s^4+4=\left(s^2+2s+2\right)\left(s^2-2s+2\right)$。
 > - **求根**：$s^2+2s+2=0\Rightarrow s=-1\pm j$；$s^2-2s+2=0\Rightarrow s=1\pm j$。
+> - **分子作用**：$12$ 只缩放冲激响应的幅度，不改变极点位置与稳定性分类。
 > - **不稳定判据**：只要有一个极点在右半平面（$\operatorname{Re}s>0$），系统不稳定。
 > - **劳斯判据提示**：系数全正只是必要条件；缺项（$s^3,s^2,s$ 系数为零）时不可判稳。
 
@@ -1005,8 +1004,6 @@ G(s)=\frac{1}{s^2+9}
 $$
 
 with zero initial conditions, which bounded input produces an unbounded output?（零初始条件下，哪个有界输入会产生无界输出？）
-
-（原 PDF 文字层中分子丢失，依据反馈「$G$ 的极点在 $\pm3j$」还原为 $1$。）
 
 (a) $\cos(3t)H(t)$ **✓**
 (b) $H(t)$
@@ -1084,8 +1081,6 @@ Y(s)=\frac{6}{s^2(s+3)}
 $$
 
 Find $A$.（求 $A$。）
-
-（原 PDF 文字层中分子丢失，依据反馈「$6=As(s+3)+B(s+3)+Cs^2$」还原为 $6$。）
 
 > [!success] Answer（答案）
 > $A=-0.6667$
@@ -1176,9 +1171,9 @@ Find $C$.（求 $C$。）
 > [!abstract] 知识点讲解
 > 见 11.4 共轭复极点。
 >
-> - **复极点配方**：$s^2+2s+5=(s+1)^2+4$，即 $\sigma=1$、$\omega_0=2$。
+> - **复极点配方**：$s^2+2s+5=(s+1)^2+4$，即极点 $-1\pm2j$：衰减率 $\alpha=1$、振荡角频率 $\omega_0=2$。
 > - **变换对**：$\dfrac{s+a}{(s+a)^2+\omega_0^2}\leftrightarrow e^{-at}\cos\omega_0t$，$\dfrac{\omega_0}{(s+a)^2+\omega_0^2}\leftrightarrow e^{-at}\sin\omega_0t$。
-> - **系数关系**：分子写成 $D(s+a)+E$ 后，余弦系数为 $D$，正弦系数为 $\dfrac{E}{\omega_0}$。
+> - **系数关系**：把分子写成 $D(s+a)+E$ 后，$\cos$ 项系数为 $D$，$\sin$ 项系数为 $\dfrac{E}{\omega_0}$。本题 $0.5s+3.5=0.5(s+1)+3$：$\cos$ 系数 $0.5$，$\sin$ 系数 $\dfrac{3}{2}=1.5$。
 > - **求待定系数**：实极点用遮盖法，剩余部分通分比较分子系数。
 
 > [!example] 解答
@@ -1202,8 +1197,6 @@ Find $C$.（求 $C$。）
 ---
 
 ## 31. Question 31（第 31 题）^q31
-
-（原 PDF 文字层中分子丢失，依据反馈「覆盖 $s=-3.1$ 得 $\frac{-3.1+3}{-3.1+1}$」还原为 $s+3$。）
 
 $$
 G(s)=\frac{s+3}{(s+1)(s+3.1)}
@@ -1266,8 +1259,6 @@ $$
 
 ## 33. Question 33（第 33 题）^q33
 
-（原 PDF 文字层中分子丢失，依据反馈「$Y=\frac{s+4}{(s+1)(s+2)^2}$」还原为 $s+4$。）
-
 $$
 G(s)=\frac{s+4}{s^2+3s+2}
 $$
@@ -1308,8 +1299,6 @@ is driven by $u(t)=e^{-2t}H(t)$ with zero initial conditions. Find $y(1)$.（系
 
 ## 34. Question 34（第 34 题）^q34
 
-（原 PDF 文字层中分子丢失，依据反馈「$Y=\frac{3}{s(s+1)(s+3)}$」还原为 $1$。）
-
 An RC lowpass with（某 RC 低通的传递函数为）
 
 $$
@@ -1332,7 +1321,7 @@ Find $y(1)$ in volts.（求 $y(1)$，单位为 V。）
 >
 > - **输入合并**：$U(s)=\dfrac1s-\dfrac1{s+3}=\dfrac{3}{s(s+3)}$，先合并成一个分数再乘 $G(s)$。
 > - **输出变换**：$Y(s)=G(s)U(s)=\dfrac{3}{s(s+1)(s+3)}$。
-> - **遮盖法**：三个单实极点逐个求 $A=\left.\dfrac{N(s)}{(s+1)(s+3)}\right|_{s=0}$ 等。
+> - **遮盖法**：$A=\left.\dfrac{3}{(s+1)(s+3)}\right|_{s=0}=1$，$B=\left.\dfrac{3}{s(s+3)}\right|_{s=-1}=-\dfrac32$，$C=\left.\dfrac{3}{s(s+1)}\right|_{s=-3}=\dfrac12$。
 > - **反变换**：$\dfrac1s\leftrightarrow H(t)$，$\dfrac{1}{s+a}\leftrightarrow e^{-at}H(t)$。
 
 > [!example] 解答
@@ -1355,8 +1344,6 @@ Find $y(1)$ in volts.（求 $y(1)$，单位为 V。）
 ---
 
 ## 35. Question 35（第 35 题）^q35
-
-（原 PDF 文字层中分子丢失，依据反馈「$\frac{4}{s(s+2)^2}$」还原为每节 $\frac{2}{s+2}$。）
 
 Two identical RC sections, each with transfer function（两个相同的 RC 节，每节传递函数为）
 
@@ -1401,8 +1388,6 @@ A unit step is applied from rest. Find the output at $t=1$ s.（零初始状态�
 
 ## 36. Question 36（第 36 题）^q36
 
-（原 PDF 文字层中分子丢失，依据反馈「$U=\frac{s^2+2s+4}{s(s+4)}$」还原为 $4$。）
-
 A series RLC circuit ($L=1$ H, $C=0.25$ F, $R=2\ \Omega$, output across $C$, starting from rest) has（串联 RLC 电路，$L=1$ H、$C=0.25$ F、$R=2\ \Omega$，输出取自电容两端，零初始状态）
 
 $$
@@ -1429,12 +1414,11 @@ $$
 > - **反求关系**：$U(s)=\dfrac{Y(s)}{G(s)}$。
 > - **假分式除法**：分子次数 ≥ 分母次数时，先做多项式除法；**常数项**对应 $\delta(t)$。
 > - **部分分式**：真分式部分用遮盖法展开。
-> - **零极点抵消**：$Y(s)$ 的分子 $s^2+2s+4$ 与 $G(s)$ 的分母相消，输出不含系统的复极点模态。
+> - **零极点抵消**：反求输入时 $U(s)=\dfrac{Y(s)}{G(s)}$，其分子 $s^2+2s+4$ 恰为 $G(s)$ 的分母，与系统的复极点相消，因此给定的 $y(t)$ 不含振荡模态。
 
 > [!example] 解答
 > 由 $y$ 求 $Y$：
-> $$Y(s)=\frac1s-\frac{1}{s+4}=\frac{4}{s(s+4)}.$$
-> 求输入变换：
+> $$Y(s)=\frac1s-\frac{1}{s+4}=\frac{4}{s(s+4)}.$$> 求输入变换：
 > $$U(s)=\frac{Y(s)}{G(s)}
 > =\frac{4}{s(s+4)}\cdot\frac{s^2+2s+4}{4}
 > =\frac{s^2+2s+4}{s(s+4)}.$$
@@ -1508,7 +1492,7 @@ Which describes the straight-line Bode magnitude?（其渐近 Bode 幅频图如�
 >
 > - **Bode 斜率规则**：每个极点贡献 $-20$ dB/decade，每个零点贡献 $+20$ dB/decade，重数叠加。
 > - **原点极点**：$1/s$ 的极点在原点，使低频段为 $-20$ dB/decade。
-> - **转折频率**：只由有限个实数极零点决定，位于 $|p|$、$|z|$ 处。
+> - **转折频率**：由各极零点到原点的距离 $|p|$、$|z|$ 给出（一阶因子在 $\omega=|p|$ 或 $|z|$ 处转折；二阶共轭极点对的转折频率为 $\omega_n=|p|$）。
 > - **通分**：$G(s)=\dfrac{(s+2)^2}{4s}$，一个原点极点、一个二重零点。
 
 > [!example] 解答
@@ -2213,7 +2197,7 @@ At what frequency, in Hz, is its gain $-30$ dB?（在哪个频率处增益为 $-
 > - **二阶 Butterworth 高通幅频平方**：$|G|^2=\dfrac{1}{1+\left(\dfrac{f_c}{f}\right)^{4}}$。
 > - **衰减条件**：$10\log_{10}\left[1+\left(\dfrac{f_c}{f}\right)^4\right]=30$。
 > - **指数关系**：$30$ dB 对应 $\left(\dfrac{f_c}{f}\right)^4=10^{3}-1=999$。
-> - **反解频率**：$f=f_c\left(f/f_c\right)=f_c\cdot999^{-1/4}$。
+> - **反解频率**：由 $(f_c/f)^4=999$ 得 $f_c/f=999^{1/4}$，故 $f=\dfrac{f_c}{999^{1/4}}$。
 
 > [!example] 解答
 > 由
@@ -2462,7 +2446,7 @@ Which band of positive frequencies does $c(t)$ occupy?（$c(t)$ 占据哪个正�
 >
 > - **调制搬移**：乘 $\cos\omega_ct$ 后频带移到 $\omega_c\pm$ 原频段（乘 $2$ 抵消 $\frac12$）。
 > - **频带并集**：信号相加，频谱相加，占据频段取并集。
-> - **逐层分析**：先算内层 $b(t)$ 的频段，再整体搬移。
+> - **逐层分析**：先算内层 $b(t)$ 的频段，再整体搬移：$b$ 占 $[0,15\,000]$，外载频 $20\,000$ 给出 $20\,000\pm15\,000$，即 $[5\,000,35\,000]$ rad/s。
 > - **基带部分**：$u_1$ 未调制，占据 $[0,W]$。
 
 > [!example] 解答

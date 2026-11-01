@@ -1518,6 +1518,7 @@ $$
 > $$U(j\omega)=\operatorname{sinc}\left(\frac{\omega}{2\pi}\right),$$
 > 对应 (iv)，即 B。
 
+
 ---
 
 ## 36. Question 36（第 36 题）｜PDF p. 12 ^q36

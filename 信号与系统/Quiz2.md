@@ -1381,8 +1381,11 @@ $$
 > [!abstract] 知识点讲解
 > 见 3.4 常用变换对。
 >
-> - **矩形变换对**：$p_\tau(t)\leftrightarrow\tau\operatorname{sinc}\left(\dfrac{\omega\tau}{2\pi}\right)$。
-> - **本题**：$\tau=6$，$U(j\omega)=6\operatorname{sinc}\left(\dfrac{3\omega}{\pi}\right)$。
+> - **$p_\tau(t)$ 的定义**：宽度为 $\tau$、以原点为中心的矩形脉冲，
+>   $$p_\tau(t)=\begin{cases}1,&\lvert t\rvert<\tau/2,\\0,&\lvert t\rvert>\tau/2,\end{cases}$$
+>   这里的 $\tau$ 就是**脉宽**（脉冲持续的时间长度），高为 $1$，与 $t=0$ 对称，面积等于 $\tau$。
+> - **矩形变换对**：$p_\tau(t)\leftrightarrow\tau\operatorname{sinc}\left(\dfrac{\omega\tau}{2\pi}\right)$，其中 $\tau$ 同时决定频谱零点位置 $\omega=\pm\dfrac{2\pi}{\tau}$。
+> - **本题**：$u(t)=p_6(t)$，脉宽 $\tau=6$，代入得 $U(j\omega)=6\operatorname{sinc}\left(\dfrac{3\omega}{\pi}\right)$。
 
 > [!example] 解答
 > 代 $\tau=6$：
@@ -1412,8 +1415,8 @@ $$
 > [!abstract] 知识点讲解
 > 见 3.4 常用变换对。
 >
-> - **矩形变换对**：$p_\tau(t)\leftrightarrow\tau\operatorname{sinc}\left(\dfrac{\omega\tau}{2\pi}\right)$。
-> - **零点**：$\operatorname{sinc}x=0\iff x=\pm1,\pm2,\dots$，首个正零点由 $\dfrac{\omega\tau}{2\pi}=1$ 得 $\omega=\dfrac{2\pi}{\tau}$。
+> - **矩形变换对**：$p_\tau(t)\leftrightarrow\tau\operatorname{sinc}\left(\dfrac{\omega\tau}{2\pi}\right)$，$\tau$ 为**脉宽**（脉冲持续时间）。
+> - **零点**：$\operatorname{sinc}x=0\iff x=\pm1,\pm2,\dots$，首个正零点由 $\dfrac{\omega\tau}{2\pi}=1$ 得 $\omega=\dfrac{2\pi}{\tau}$。脉宽越窄，零点越远、频谱越宽。
 
 > [!example] 解答
 > 代 $\tau=0.5$：
@@ -1470,13 +1473,17 @@ A rectangular pulse train has amplitude $A=1$ and pulse width $\tau=1\ \mathrm{s
 
 $$u_T(t)=\sum_{m\in\mathbb{Z}}p_1(t-mT).$$
 
-Four signals are built this way, differing only in the period: (i) $T=2.5\ \mathrm{s}$ (ii) $T=5\ \mathrm{s}$ (iii) $T=10\ \mathrm{s}$ (iv) the single pulse $p_1(t)$, which is not periodic.（四个信号都由同一脉冲构成，仅周期不同：(i) $T=2.5\ \mathrm{s}$，(ii) $T=5\ \mathrm{s}$，(iii) $T=10\ \mathrm{s}$，(iv) 单个非周期脉冲 $p_1(t)$。）Each plot below shows the spectrum of one of these signals against $\omega$: the lines $Tc_k$ at $\omega=k\omega_0$ for the three periodic signals, and $U(j\omega)$ for the single pulse.（下面每幅图以 $\omega$ 为横轴画出其中一个信号的频谱：三个周期信号画的是 $\omega=k\omega_0$ 处的谱线 $Tc_k$，单脉冲画的是 $U(j\omega)$。）The grey curve on each plot is $\operatorname{sinc}(\omega/2\pi)$. Match each of the four signals to its plot.（每幅图中的灰色曲线为 $\operatorname{sinc}(\omega/2\pi)$。请把四个信号与各自的图匹配。）
+Four signals are built this way, differing only in the period: (i) $T=2.5\ \mathrm{s}$ (ii) $T=5\ \mathrm{s}$ (iii) $T=10\ \mathrm{s}$ (iv) the single pulse $p_1(t)$, which is not periodic.（四个信号都由同一脉冲构成，仅周期不同：(i) $T=2.5\ \mathrm{s}$，(ii) $T=5\ \mathrm{s}$，(iii) $T=10\ \mathrm{s}$，(iv) 单个非周期脉冲 $p_1(t)$。）
+
+Each plot below shows the spectrum of one of these signals against $\omega$: the lines $Tc_k$ at $\omega=k\omega_0$ for the three periodic signals, and $U(j\omega)$ for the single pulse.（下面每幅图以 $\omega$ 为横轴画出其中一个信号的频谱：三个周期信号画的是 $\omega=k\omega_0$ 处的谱线 $Tc_k$，单脉冲画的是 $U(j\omega)$。）
+
+The grey curve on each plot is $\operatorname{sinc}(\omega/2\pi)$. Match each of the four signals to its plot.（每幅图中的灰色曲线为 $\operatorname{sinc}(\omega/2\pi)$。请把四个信号与各自的图匹配。）
 
 $$
 u_T(t)=\sum_{m\in\mathbb{Z}}p_1(t-mT),\qquad T\in\{2.5,\ 5,\ 10\}
 $$
 
-![[Pasted image 20261101005719.png]]
+![[Pasted image 20261101091625.png]]
 
 > [!success] Answer（答案）
 > (i) C　(ii) A　(iii) D　(iv) B

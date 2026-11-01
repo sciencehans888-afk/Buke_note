@@ -13,7 +13,7 @@
 | $G(s)$        | 传递函数                   |
 | $H(t)$        | 单位阶跃信号                 |
 | $\delta(t)$   | 单位冲激信号                 |
-| $p_\tau(t)$   | 宽度为 $\tau$、关于原点对称的矩形脉冲 |
+| $p_\tau(t)$   | 宽度为 $\tau$（脉宽）、关于原点对称的矩形脉冲 |
 | $c_k$         | 复指数傅里叶系数               |
 | $a_0,a_k,b_k$ | 三角形式傅里叶系数              |
 | $*$           | 卷积                     |
@@ -1807,9 +1807,11 @@ te^{-at}H(t)\longleftrightarrow U(j\omega)
 
 #### 矩形脉冲
 
-宽度为 $\tau$、关于原点对称的矩形脉冲为
+高度为 $1$、脉宽为 $\tau$、关于原点对称的矩形脉冲为
 
-$$p_\tau(t)=\begin{cases}1,&|t|<\tau/2,\\0,&|t|>\tau/2.\end{cases}$$
+$$p_\tau(t)=\begin{cases}1,&|t|<\tau/2,\\0,&|t|>\tau/2,\end{cases}$$
+
+其中 $\tau$ 是**脉宽**：脉冲从 $t=-\tau/2$ 持续到 $t=\tau/2$，持续时间为 $\tau$，面积也是 $\tau$。若是脉冲串，同样的 $\tau$ 表示每个周期内脉冲的宽度，占空比则为 $d=\tau/T$。
 
 $$\begin{aligned}
 p_\tau(t)\longleftrightarrow P_\tau(j\omega)

@@ -37,9 +37,10 @@ What is the region of convergence of its Laplace transform?（求其拉普拉斯
 > [!abstract] 知识点讲解
 > 见 11.1 收敛域与信号类型 与 7.2 常用变换对。
 >
-> - 和的变换只在每一项都收敛的地方存在，所以 ROC 取各项 ROC 的**交集**。
-> - 两项都是因果信号，各自的 ROC 都是某条竖直线以右，交集仍是一条竖直线以右。
-> - 增长项 $e^{t}$ 决定最右侧边界。
+> - **单边指数变换对**：$\mathcal L\{e^{s_0t}H(t)\}=\dfrac{1}{s-s_0}$，收敛域 $\operatorname{Re}s>\operatorname{Re}s_0$。
+> - **线性**：$\mathcal L\{a u_1+b u_2\}=aU_1(s)+bU_2(s)$，和的 ROC 至少包含各 ROC 的交集。
+> - **因果信号的 ROC**：右边信号的 ROC 位于最右极点右侧，即 $\operatorname{Re}s>\max_i\operatorname{Re}p_i$。
+> - **交集判据**：每一项都收敛，和才收敛；本题两个 ROC 的交集由最右边界 $\operatorname{Re}s>1$ 决定。
 
 > [!example] 解答
 > 逐项查表：
@@ -80,9 +81,9 @@ What is its region of convergence?（求其收敛域。）
 > [!abstract] 知识点讲解
 > 见 11.1 收敛域与信号类型 与 7.2 常用变换对。
 >
-> - $e^{s_0t}H(t)$ 的 ROC 为 $\operatorname{Re}(s)>\operatorname{Re}(s_0)$。
-> - 只有指数实部影响 $|u(t)e^{-\sigma t}|$ 的增减，虚部只让信号旋转。
-> - ROC 的边界是竖直线，不是圆。
+> - **指数信号变换对**：$\mathcal L\{e^{s_0t}H(t)\}=\dfrac{1}{s-s_0}$，ROC 为 $\operatorname{Re}s>\operatorname{Re}s_0$。
+> - **绝对收敛条件**：$U(s)$ 存在要求 $\displaystyle\int_0^\infty\left|e^{s_0t}e^{-\sigma t}\right|dt=\int_0^\infty e^{(\operatorname{Re}s_0-\sigma)t}dt<\infty$。
+> - **虚部不影响 ROC**：$e^{j\operatorname{Im}(s_0)t}$ 的模恒为 $1$，只使信号旋转；ROC 边界是竖直线 $\sigma=\operatorname{Re}s_0$，不是圆。
 
 > [!example] 解答
 > 这里 $s_0=-2+5j$。取 $s=\sigma+j\omega$：
@@ -117,9 +118,10 @@ What is $U(s)$?（求 $U(s)$。）
 > [!abstract] 知识点讲解
 > 见 11.1 收敛域与信号类型 与 11.2 时移与阶跃延迟。
 >
-> - 先找出延迟后脉冲的支撑区间，再写成两个阶跃之差。
-> - 使用 $\mathcal L\{H(t-\tau)\}=\dfrac{e^{-s\tau}}{s}$。
-> - 时移因子 $e^{-s\tau}$ 中的 $\tau$ 是阶跃的起点。
+> - **矩形脉冲表示**：中心在原点、宽为 $\tau$ 的脉冲 $p_\tau(t)=H\left(t+\dfrac{\tau}{2}\right)-H\left(t-\dfrac{\tau}{2}\right)$。
+> - **阶跃变换对**：$\mathcal L\{H(t-\tau)\}=\dfrac{e^{-s\tau}}{s}$，$\operatorname{Re}s>0$。
+> - **时移性质**：$\mathcal L\{u(t-\tau)H(t-\tau)\}=e^{-s\tau}U(s)$，延迟因子 $e^{-s\tau}$ 中的 $\tau$ 是信号起点。
+> - **线性**：两个阶跃之差逐个变换后相减。
 
 > [!example] 解答
 > $p_2(t)$ 在 $|t|<1$ 内为 $1$。延迟 $3$ s 后，$p_2(t-3)$ 在
@@ -152,9 +154,10 @@ $$
 > [!abstract] 知识点讲解
 > 见 11.2 常用拉普拉斯变换的推导与核对（调制型乘积）与 7.2 常用变换对。
 >
-> - 先用积化和差把时域乘积化成同频余弦之和。
-> - $\cos A\cos B=\dfrac12\left[\cos(A+B)+\cos(A-B)\right]$，两项之间是**加号**。
-> - 变换是线性的，可以逐项查表相加；时域相乘不等于变换相乘。
+> - **积化和差**：$\cos A\cos B=\dfrac12\left[\cos(A+B)+\cos(A-B)\right]$，两项之间是**加号**。
+> - **余弦变换对**：$\mathcal L\{\cos\omega_0t\,H(t)\}=\dfrac{s}{s^2+\omega_0^2}$，$\operatorname{Re}s>0$。
+> - **线性**：时域相加对应 $s$ 域相加，可逐项查表。
+> - **易错点**：时域相乘 $\cos3t\cos t$ **不等于**变换相乘；后者对应时域卷积。
 
 > [!example] 解答
 > 积化和差：
@@ -190,9 +193,10 @@ What is its impulse response $h(t)$?（求其冲激响应 $h(t)$。）
 > [!abstract] 知识点讲解
 > 见 7.2 常用变换对 与 11.3 冲激响应与阶跃响应。
 >
-> - 冲激响应是传递函数的拉普拉斯逆变换。
-> - $\mathcal L\{\delta(t)\}=1$，所以常数 $K$ 对应 $K\delta(t)$。
-> - 静态增益系统同样有冲激响应，它就是加权冲激。
+> - **冲激变换对**：$\mathcal L\{\delta(t)\}=1$，ROC 为整个 $s$ 平面。
+> - **冲激响应的定义**：$G(s)=\mathcal L\{h(t)\}$，即 $h(t)=\mathcal L^{-1}\{G(s)\}$。
+> - **线性**：$\mathcal L\{K\delta(t)\}=K$，所以常数 $G(s)=K$ 对应 $h(t)=K\delta(t)$。
+> - **静态系统**：$y=h*u=K\delta*u=Ku$，纯增益系统同样有冲激响应。
 
 > [!example] 解答
 > 由
@@ -234,9 +238,10 @@ The result is（结果为）
 > [!abstract] 知识点讲解
 > 见 11.2 常用拉普拉斯变换的推导与核对（正弦与余弦）。
 >
-> - 取 $s_0=\pm4j$，分别查表。
-> - 通分时使用 $(s-4j)(s+4j)=s^2-(4j)^2=s^2+16$。
-> - 分子为 $\dfrac12\left[(s+4j)+(s-4j)\right]=s$。
+> - **欧拉公式**：$\cos\theta=\dfrac{e^{j\theta}+e^{-j\theta}}{2}$，把余弦拆成两个复指数。
+> - **复指数变换对**：$\mathcal L\{e^{s_0t}H(t)\}=\dfrac{1}{s-s_0}$，取 $s_0=\pm4j$。
+> - **线性与通分**：$\dfrac12\left(\dfrac{1}{s-4j}+\dfrac{1}{s+4j}\right)$，分母用 $(s-4j)(s+4j)=s^2+16$。
+> - **结果**：$\mathcal L\{\cos4t\,H(t)\}=\dfrac{s}{s^2+16}$。
 
 > [!example] 解答
 > 逐项变换：
@@ -273,9 +278,10 @@ $$
 > [!abstract] 知识点讲解
 > 见 11.2 时移与阶跃延迟。
 >
-> - $e^{-s\tau}U(s)$ 表示整个信号延迟 $\tau$。
-> - 单边拉普拉斯变换中，延迟必须让指数与阶跃**一起**平移。
-> - 先认出 $\dfrac{1}{s+1}\leftrightarrow e^{-t}H(t)$，再整体延迟 $3$ s。
+> - **时移性质（单边）**：若 $u(t)\leftrightarrow U(s)$，则 $u(t-\tau)H(t-\tau)\leftrightarrow e^{-s\tau}U(s)$。
+> - **逆用**：频谱乘以 $e^{-s\tau}$，等价于整个波形延迟 $\tau$。
+> - **基本变换对**：$\dfrac{1}{s+1}\leftrightarrow e^{-t}H(t)$。
+> - **注意**：延迟必须让指数与阶跃**一起**平移，只移动其中一个会多出常数因子。
 
 > [!example] 解答
 > 已知
@@ -312,9 +318,9 @@ What is its impulse response $h(t)$?（求其冲激响应 $h(t)$。）
 > [!abstract] 知识点讲解
 > 见 11.3 冲激响应与阶跃响应。
 >
-> - 阶跃响应是冲激响应的积分，所以冲激响应是阶跃响应的导数。
-> - $Y_{\text{step}}(s)=\dfrac{G(s)}{s}$，故 $G(s)=sY_{\text{step}}(s)$。
-> - 阶跃响应在 $t=0$ 处为 $0$，求导不产生冲激。
+> - **阶跃响应与冲激响应**：$y_{\text{step}}=h*H(t)$，所以 $Y_{\text{step}}(s)=\dfrac{G(s)}{s}$，$G(s)=sY_{\text{step}}(s)$。
+> - **时域关系**：$h(t)=\dfrac{d}{dt}y_{\text{step}}(t)$（阶跃响应连续时可逐项求导）。
+> - **无冲激条件**：若 $y_{\text{step}}(0^+)=0$，则求导不产生 $\delta(t)$；本题 $1-1=0$，满足。
 
 > [!example] 解答
 > 对 $t>0$ 求导：
@@ -347,9 +353,10 @@ Use the Laplace transform to find $y(1)$.（用拉普拉斯变换求 $y(1)$。�
 > [!abstract] 知识点讲解
 > 见 7.3 性质（卷积）与 11.4 遮盖法求单实极点。
 >
-> - 时域卷积对应 $s$ 域相乘。
-> - 得到 $Y(s)$ 后做部分分式，再逐项反变换。
-> - 注意指数项要乘 $H(t)$。
+> - **卷积定理**：$y=u*v\Rightarrow Y(s)=U(s)V(s)$，即时域卷积对应 $s$ 域相乘。
+> - **变换对**：$e^{-at}H(t)\leftrightarrow\dfrac{1}{s+a}$，本题 $U(s)=\dfrac1{s+1}$，$V(s)=\dfrac1{s+3}$。
+> - **部分分式（遮盖法）**：$\dfrac{1}{(s+1)(s+3)}=\dfrac{A}{s+1}+\dfrac{B}{s+3}$，其中 $A=\left.\dfrac{1}{s+3}\right|_{s=-1}$、$B=\left.\dfrac{1}{s+1}\right|_{s=-3}$。
+> - **反变换**：逐项用 $\dfrac{1}{s+a}\leftrightarrow e^{-at}H(t)$。
 
 > [!example] 解答
 > 时域卷积对应变换相乘：
@@ -384,9 +391,10 @@ $$
 > [!abstract] 知识点讲解
 > 见 7.3 性质（$s$ 域移位）与 7.2 常用变换对。
 >
-> - 先查 $\sin(3t)H(t)\leftrightarrow\dfrac{3}{s^2+9}$。
-> - 时域乘 $e^{2t}$，$s$ 域用 $s-2$ 替换 $s$：$F(s-2)$。
-> - $(s-2)^2+9=s^2-4s+13$。
+> - **正弦变换对**：$\mathcal L\{\sin\omega_0t\,H(t)\}=\dfrac{\omega_0}{s^2+\omega_0^2}$，本题 $\omega_0=3$。
+> - **$s$ 域移位**：$\mathcal L\{e^{at}f(t)\}=F(s-a)$，即把 $F(s)$ 中的 $s$ 全部换成 $s-a$。
+> - **展开**：$(s-2)^2+9=s^2-4s+13$，也可由分母根 $-2\pm3j$ 直接校验。
+> - **易混**：$e^{-2t}\sin3t$ 对应的是把 $s$ 换成 $s+2$。
 
 > [!example] 解答
 > 基础变换对：
@@ -420,9 +428,10 @@ $$
 > [!abstract] 知识点讲解
 > 见 11.2 积分与微分。
 >
-> - 从 $0$ 到 $t$ 的积分在 $s$ 域除以 $s$。
-> - $\cos3tH(t)\leftrightarrow\dfrac{s}{s^2+9}$。
-> - 也可以先积分得 $\frac13\sin3t$，再查表，结果相同。
+> - **积分性质**：$\mathcal L\left\{\displaystyle\int_0^t f(\tau)\,d\tau\right\}=\dfrac{F(s)}{s}$，即从 $0$ 起积分对应除以 $s$。
+> - **余弦变换对**：$\cos3t\,H(t)\leftrightarrow\dfrac{s}{s^2+9}$。
+> - **正弦变换对**（校验用）：$\sin3t\,H(t)\leftrightarrow\dfrac{3}{s^2+9}$。
+> - **易错**：积分是除以 $s$，微分是乘 $s$；本题的 $s$ 恰好与分子的 $s$ 约掉。
 
 > [!example] 解答
 > 先求被积函数的变换：
@@ -453,9 +462,10 @@ Find $q(3)$.（求 $q(3)$。）
 > [!abstract] 知识点讲解
 > 见 11.2 时移与阶跃延迟 与 11.4 有延迟因子的部分分式。
 >
-> - $e^{-2s}$ 把第二项整体延迟 $2$ s。
-> - $q(t)$ 是两项因果指数之和，在 $t=3$ 时两项都已开启。
-> - 注意第二项的指数是 $-3(t-2)$，不是 $-3t$。
+> - **时移性质**：$e^{-s\tau}F(s)\leftrightarrow f(t-\tau)H(t-\tau)$，延迟因子让整个波形平移。
+> - **变换对**：$\dfrac{1}{s+a}\leftrightarrow e^{-at}H(t)$。
+> - **延迟项**：$e^{-2s}\dfrac{1}{s+3}\leftrightarrow e^{-3(t-2)}H(t-2)$，指数与阶跃**同步**延迟。
+> - **分段信号**：每个延迟项只在自身起点之后非零，求某时刻值先判断各项是否已开启。
 
 > [!example] 解答
 > 拆成两项：
@@ -489,9 +499,10 @@ Its input is $u(t)=H(t)$. Using the integral property, find the output $y(t)$ at
 > [!abstract] 知识点讲解
 > 见 11.2 积分与微分 与 11.3 拉普拉斯变换与系统。
 >
-> - $1/s$ 在时域对应一次积分。
-> - 传递函数可拆成常数项与 $1/s$ 项，分别对应比例与斜坡。
-> - 输出为 $Y(s)=G(s)U(s)$，不要漏掉输入本身的 $1/s$。
+> - **传递函数关系**：$Y(s)=G(s)U(s)$，输入输出都要变换，不要漏掉输入本身的 $1/s$。
+> - **积分与斜坡变换对**：$\dfrac1s\leftrightarrow H(t)$，$\dfrac{1}{s^2}\leftrightarrow tH(t)$。
+> - **积分性质**：$1/s$ 相当于一次积分。
+> - **分解**：$G(s)=2+\dfrac{4}{s}$ 对应「比例环节 + 积分环节」的并联。
 
 > [!example] 解答
 > 代入参数：
@@ -536,9 +547,10 @@ What is $Y(s)$?（求 $Y(s)$。）
 > [!abstract] 知识点讲解
 > 见 11.3 解微分方程 与 7.3 性质（二阶微分）。
 >
-> - $\mathcal L\{\ddot y\}=s^2Y(s)-sy(0^-)-\dot y(0^-)$。
-> - 本题没有输入，方程右边为零；初始条件移到右边成为常数。
-> - 只有 $\dot y(0)$ 会产生右端常数，$s$ 乘的是 $y(0)$。
+> - **二阶微分性质**：$\mathcal L\{\ddot y\}=s^2Y(s)-sy(0^-)-\dot y(0^-)$。
+> - **一阶微分性质**：$\mathcal L\{\dot y\}=sY(s)-y(0^-)$。
+> - **零输入问题**：没有输入项，方程右端为零，初始条件作为常数移到右端。
+> - **本题**：$y(0)=0$ 使 $s$ 项消失，只剩 $\dot y(0)=2$ 产生的常数。
 
 > [!example] 解答
 > 对方程两边取拉普拉斯变换：
@@ -569,9 +581,10 @@ Give $y(1)$.（求 $y(1)$。）
 > [!abstract] 知识点讲解
 > 见 11.3 用拉普拉斯变换解微分方程。
 >
-> - 把输入和初始条件一起变换。
-> - $\mathcal L\{\ddot y\}=s^2Y-2s+1$，$\mathcal L\{5\dot y\}=5sY-10$。
-> - 整理后做部分分式，再反变换。
+> - **微分性质**：$\mathcal L\{\ddot y\}=s^2Y-sy(0^-)-\dot y(0^-)$，$\mathcal L\{\dot y\}=sY-y(0^-)$。
+> - **输入项**：$H(t)\leftrightarrow\dfrac1s$。
+> - **解题流程**：变换 → 代数整理 → 把初值项移到右端 → 部分分式 → 反变换。
+> - **遮盖法**：$\dfrac{N(s)}{(s+2)(s+3)}$ 中 $e^{-2t}$ 的系数为 $\left.\dfrac{N(s)}{s+3}\right|_{s=-2}$。
 
 > [!example] 解答
 > 逐项变换：
@@ -620,9 +633,10 @@ $$
 > [!abstract] 知识点讲解
 > 见 11.3 零输入响应与零状态响应。
 >
-> - 初始条件与输入同时进入 $Y(s)$。
-> - 分母为 $(s+2)^2$，看似会出现 $te^{-2t}$，但分子恰好把瞬态项约掉。
-> - 系统从平衡点出发，输入恰好维持这个平衡。
+> - **微分性质**：$\mathcal L\{\ddot y\}=s^2Y-sy(0^-)-\dot y(0^-)$，$\mathcal L\{\dot y\}=sY-y(0^-)$。
+> - **响应分解**：$Y(s)=Y_{\text{zi}}(s)+Y_{\text{zs}}(s)$，初值与输入同时进入 $Y(s)$。
+> - **重极点变换对**：$\dfrac{1}{(s+2)^2}\leftrightarrow te^{-2t}H(t)$。
+> - **约分现象**：若分子恰好含 $(s+2)^2$，瞬态项整体消失，只剩常数项。
 
 > [!example] 解答
 > 逐项变换：
@@ -653,9 +667,10 @@ A current source $u(t)=tH(t)$ A drives a capacitor $C=0.25$ F in parallel with a
 > [!abstract] 知识点讲解
 > 见 11.3 拉普拉斯变换与系统 与 7.3 性质（积分与卷积）。
 >
-> - 并联阻抗 $Z(s)=sL\parallel \dfrac{1}{sC}$。
-> - 电流源 $tH(t)$ 的变换为 $1/s^2$。
-> - 反变换后求余弦函数的最大值。
+> - **并联阻抗**：$Z(s)=\dfrac{Z_LZ_C}{Z_L+Z_C}$，$Z_L=sL$，$Z_C=\dfrac{1}{sC}$，故 $Z(s)=\dfrac{sL}{s^2LC+1}$。
+> - **斜坡变换对**：$tH(t)\leftrightarrow\dfrac{1}{s^2}$。
+> - **电压关系**：$Y(s)=Z(s)U(s)$，阻抗与电流变换相乘。
+> - **反变换变换对**：$\dfrac1s\leftrightarrow H(t)$，$\dfrac{s}{s^2+\omega_0^2}\leftrightarrow\cos\omega_0t\,H(t)$。
 
 > [!example] 解答
 > 并联阻抗：
@@ -695,9 +710,10 @@ Use the final value theorem to find $\lim_{t\to\infty}h(t)$ for the impulse resp
 > [!abstract] 知识点讲解
 > 见 11.3 初值和终值。
 >
-> - 冲激响应的变换就是 $G(s)$，所以要求 $\lim_{t\to\infty}h(t)$ 就对 $G(s)$ 用终值定理。
-> - 先检查 $sG(s)$ 的极点是否全在开左半平面。
-> - 条件是 $sG(s)$ 的全部极点在开左半平面，而不是 $G(s)$ 本身。
+> - **终值定理**：若 $sF(s)$ 的全部极点在开左半平面，则 $\displaystyle\lim_{t\to\infty}f(t)=\lim_{s\to0}sF(s)$。
+> - **冲激响应**：$h(t)\leftrightarrow G(s)$，故 $h(\infty)=\displaystyle\lim_{s\to0}sG(s)$。
+> - **适用条件**：检查的是 $sF(s)$ 的极点，不是 $F(s)$ 本身。
+> - **失效情形**：虚轴或右半平面极点使终值不存在，定理不能使用。
 
 > [!example] 解答
 > 计算
@@ -730,9 +746,10 @@ is driven by a unit step $u(t)=H(t)$ from rest. What are $y(0^+)$ and $\lim_{t\t
 > [!abstract] 知识点讲解
 > 见 11.3 初值和终值。
 >
-> - $Y(s)=G(s)/s$，因此两个定理都用 $sY(s)=G(s)$。
-> - 初值是 $G(s)$ 在 $s\to\infty$ 时的极限。
-> - 终值是 $G(0)$。
+> - **初值定理**：$\displaystyle y(0^+)=\lim_{s\to\infty}sY(s)$（$Y(s)$ 为真分式时成立）。
+> - **终值定理**：$sY(s)$ 的极点全在开左半平面时，$\displaystyle y(\infty)=\lim_{s\to0}sY(s)$。
+> - **阶跃响应**：$Y(s)=\dfrac{G(s)}{s}$，故 $sY(s)=G(s)$，于是 $y(0^+)=G(\infty)$、$y(\infty)=G(0)$。
+> - **直流增益**：终值等于 $G(0)$。
 
 > [!example] 解答
 > 阶跃响应满足
@@ -763,9 +780,10 @@ $$
 > [!abstract] 知识点讲解
 > 见 11.3 初值和终值 与 8.1 传递函数。
 >
-> - 误差 $E(s)=U(s)\left[1-G(s)\right]$。
-> - 斜坡的变换为 $1/s^2$。
-> - 对 $sE(s)$ 用终值定理前，先检查它的极点。
+> - **误差信号**：$e=u-y$，$Y(s)=G(s)U(s)$，故 $E(s)=U(s)\left[1-G(s)\right]$。
+> - **斜坡变换对**：$tH(t)\leftrightarrow\dfrac1{s^2}$。
+> - **终值定理**：$e(\infty)=\displaystyle\lim_{s\to0}sE(s)$，前提是 $sE(s)$ 的极点全在开左半平面。
+> - **一阶低通**：$\dfrac{1}{2s+1}$ 对斜坡输入有恒定稳态误差，数值等于时间常数 $2$。
 
 > [!example] 解答
 > 输入变换：
@@ -798,9 +816,10 @@ For which one of these transfer functions does the final value theorem correctly
 > [!abstract] 知识点讲解
 > 见 7.4 终值定理 与 11.3 初值和终值。
 >
-> - 终值定理成立的条件是 $sG(s)$ 的全部极点在开左半平面。
-> - 不要只看 $G(s)$ 的极点：$G(s)$ 在原点有单极点时，$sG(s)$ 反而可能满足条件。
-> - 右半平面极点或虚轴非零极点都会使极限不存在或定理失效。
+> - **终值定理**：$\displaystyle\lim_{t\to\infty}h(t)=\lim_{s\to0}sG(s)$，要求 $sG(s)$ 的所有极点在开左半平面（$\operatorname{Re}<0$）。
+> - **原点单极点可用**：$G(s)=\dfrac{N(s)}{s(s+a)}$ 时 $sG(s)=\dfrac{N(s)}{s+a}$，极点可移到左半平面。
+> - **右半平面极点**：$h(t)$ 指数增长，终值发散，定理失效。
+> - **虚轴非零极点**：$h(t)$ 持续振荡，极限不存在，定理失效。
 
 > [!example] 解答
 > 逐项检查：
@@ -851,9 +870,10 @@ $$
 > [!abstract] 知识点讲解
 > 见 6.3 极点判据速查 与 11.6 二阶系统与稳定性的补充例题。
 >
-> - 极点 $\pm2j$ 是虚轴上的**单根**，所以临界稳定。
-> - BIBO 稳定要求 $\int_0^\infty|h(t)|dt<\infty$，等幅正弦做不到。
-> - 虚轴单极点不等于不稳定，也不等于 BIBO 稳定。
+> - **极点判据**：全部极点在开左半平面 ⇔ 指数稳定；虚轴单极点且其余在左半平面 → 临界稳定。
+> - **BIBO 稳定条件**：$\displaystyle\int_0^\infty|h(t)|dt<\infty$。
+> - **正弦冲激响应**：$h(t)=A\sin\omega_0t\,H(t)$ 有界但绝对不可积，$\displaystyle\int_0^\infty|\sin\omega_0t|dt=\infty$。
+> - **结论**：临界稳定 ≠ BIBO 稳定。
 
 > [!example] 解答
 > 极点为 $s=\pm2j$，位于虚轴且互不相同，其他极点没有。冲激响应为
@@ -883,9 +903,10 @@ A transfer function $G(s)$ has poles at $0$ and $-0.2\pm j$, with no pole–zero
 > [!abstract] 知识点讲解
 > 见 6.3 极点判据速查 与 11.6 例 2（虚轴单极点与原点极点）。
 >
-> - 逐个检查极点：$-0.2\pm j$ 在开左半平面，$0$ 是虚轴上的单极点。
-> - 极点在闭左半平面、虚轴极点为单根、且至少有一个虚轴极点，就是临界稳定。
-> - 原点极点使 $h(t)$ 含非零常数项，绝对值积分发散。
+> - **临界稳定判据**：全部极点在闭左半平面（$\operatorname{Re}s\le0$），虚轴极点均为单根，且至少有一个虚轴极点。
+> - **极点贡献**：$s=0$ 的单极点对应 $h(t)$ 中的常数项 $C H(t)$；$-0.2\pm j$ 对应衰减振荡 $e^{-0.2t}\cos t$。
+> - **BIBO 条件**：常数项 $C\neq0$ 使 $\displaystyle\int_0^\infty|h(t)|dt$ 发散。
+> - **结论**：临界稳定但不 BIBO 稳定。
 
 > [!example] 解答
 > 冲激响应由各极点对应的模态叠加：
@@ -915,9 +936,10 @@ Which transfer function is marginally stable?（哪个传递函数是临界稳�
 > [!abstract] 知识点讲解
 > 见 6.3 极点判据速查。
 >
-> - 临界稳定：全部极点在闭左半平面，虚轴极点都是单根，且至少有一个虚轴极点。
-> - 虚轴上的重极点对应 $t\sin\omega_0t$ 型增长项，属不稳定。
-> - 零点不影响稳定性。
+> - **临界稳定判据**：闭左半平面 + 虚轴单根 + 至少一个虚轴极点。
+> - **重极点**：$(s^2+\omega_0^2)^2$ 对应 $t\sin\omega_0t$、$t\cos\omega_0t$，增长项 ⇒ 不稳定。
+> - **原点重极点**：$s^2$ 对应 $tH(t)$，无界 ⇒ 不稳定。
+> - **零点作用**：只改变幅度和相位，不改变稳定性分类。
 
 > [!example] 解答
 > 逐项求极点：
@@ -959,9 +981,10 @@ $$
 > [!abstract] 知识点讲解
 > 见 6.3 极点判据速查 与 11.6 例 4（四阶多项式的极点）。
 >
-> - 用提示把分母分解成两个二次因式，分别求根。
-> - 系数符号不能用来判断四阶及以上系统的稳定性。
-> - 只要有一个右半平面极点，系统就不稳定。
+> - **分解技巧**：$s^4+4=\left(s^2+2s+2\right)\left(s^2-2s+2\right)$。
+> - **求根**：$s^2+2s+2=0\Rightarrow s=-1\pm j$；$s^2-2s+2=0\Rightarrow s=1\pm j$。
+> - **不稳定判据**：只要有一个极点在右半平面（$\operatorname{Re}s>0$），系统不稳定。
+> - **劳斯判据提示**：系数全正只是必要条件；缺项（$s^3,s^2,s$ 系数为零）时不可判稳。
 
 > [!example] 解答
 > 分解：
@@ -996,9 +1019,10 @@ with zero initial conditions, which bounded input produces an unbounded output?�
 > [!abstract] 知识点讲解
 > 见 11.6 例 5（共振输入）。
 >
-> - 系统极点在 $\pm3j$，输入极点也在 $\pm3j$ 时，$Y(s)$ 出现**二重极点**。
-> - 二重极点对应 $t\sin3t$ 型项，幅度随时间线性增长。
-> - 输入频率必须与系统自然频率相同才会共振，$\cos9t$ 不会。
+> - **共振条件**：输入极点与系统极点重合，$Y(s)$ 出现**二重极点**。
+> - **二重极点响应**：$\dfrac{1}{(s^2+\omega_0^2)^2}$ 型极点产生 $t\sin\omega_0t$、$t\cos\omega_0t$。
+> - **输入变换**：$\cos\omega_0t\,H(t)\leftrightarrow\dfrac{s}{s^2+\omega_0^2}$。
+> - **有界输入**：$|G(j\omega)|$ 有界不等于 BIBO 稳定；$\cos3t$ 与系统自然频率相同才共振。
 
 > [!example] 解答
 > 输入 $\cos3tH(t)$ 的变换为
@@ -1032,9 +1056,10 @@ at $t=1$ s.（在 $t=1$ s 处的值。）
 > [!abstract] 知识点讲解
 > 见 11.4 遮盖法求单实极点。
 >
-> - 写成 $\dfrac{A}{s}+\dfrac{B}{s+1}$。
-> - 遮盖法：$A=\left.\dfrac{s+2}{s+1}\right|_{s=0}$，$B=\left.\dfrac{s+2}{s}\right|_{s=-1}$。
-> - 反变换后代入 $t=1$。
+> - **部分分式**：$G(s)=\dfrac{A}{s}+\dfrac{B}{s+1}$。
+> - **遮盖法（留数）**：$A=\left.\dfrac{s+2}{s+1}\right|_{s=0}$，$B=\left.\dfrac{s+2}{s}\right|_{s=-1}$，等于 $s$ 乘 $G(s)$ 在对应极点处的值。
+> - **变换对**：$\dfrac1s\leftrightarrow H(t)$，$\dfrac{1}{s+1}\leftrightarrow e^{-t}H(t)$。
+> - **冲激响应**：$h(t)\leftrightarrow G(s)$，直接对它做反变换。
 
 > [!example] 解答
 > 部分分式：
@@ -1068,9 +1093,10 @@ Find $A$.（求 $A$。）
 > [!abstract] 知识点讲解
 > 见 11.4 重极点。
 >
-> - $B$、$C$ 可以直接遮盖，$A$ 不能。
-> - 二重极点情形，最高次项系数用遮盖法，其余系数比较分子系数。
-> - 令 $A+C=0$ 是常用的快捷方法。
+> - **重极点展开**：$\dfrac{6}{s^2(s+3)}=\dfrac{A}{s}+\dfrac{B}{s^2}+\dfrac{C}{s+3}$。
+> - **遮盖法可求**：$B=\left.\dfrac{6}{s+3}\right|_{s=0}$，$C=\left.\dfrac{6}{s^2}\right|_{s=-3}$。
+> - **比较系数求 $A$**：通分得 $6=As(s+3)+B(s+3)+Cs^2$，右边 $s^2$ 系数为 $A+C$，左边无 $s^2$ 项，故 $A+C=0$。
+> - **反变换**：$\dfrac{1}{s^2}\leftrightarrow tH(t)$，$\dfrac{1}{s+3}\leftrightarrow e^{-3t}H(t)$。
 
 > [!example] 解答
 > 遮盖法先求 $B$、$C$：
@@ -1105,9 +1131,10 @@ $$
 > [!abstract] 知识点讲解
 > 见 11.4 重极点。
 >
-> - 分母 $(s+1)^2$ 是二重极点，展开为 $\dfrac{A}{s+1}+\dfrac{B}{(s+1)^2}$。
-> - $\dfrac{1}{(s+1)^2}\longleftrightarrow te^{-t}H(t)$。
-> - 真分式的反变换没有冲激。
+> - **重极点展开**：$\dfrac{2s+5}{(s+1)^2}=\dfrac{A}{s+1}+\dfrac{B}{(s+1)^2}$。
+> - **遮盖法求最高次项系数**：$B=\left.(2s+5)\right|_{s=-1}=3$。
+> - **重极点变换对**：$\dfrac{1}{(s+1)^2}\leftrightarrow te^{-t}H(t)$，$\dfrac{1}{s+1}\leftrightarrow e^{-t}H(t)$。
+> - **真分式判据**：分子次数低于分母次数 ⇒ 反变换中无 $\delta(t)$。
 
 > [!example] 解答
 > 分母配方：
@@ -1149,9 +1176,10 @@ Find $C$.（求 $C$。）
 > [!abstract] 知识点讲解
 > 见 11.4 共轭复极点。
 >
-> - 实极点部分用遮盖法；复极点部分配成完全平方。
-> - $\dfrac{s+a}{(s+a)^2+\omega_0^2}\leftrightarrow e^{-at}\cos\omega_0t$，$\dfrac{\omega_0}{(s+a)^2+\omega_0^2}\leftrightarrow e^{-at}\sin\omega_0t$。
-> - 正弦系数等于常数分子除以 $\omega_0$。
+> - **复极点配方**：$s^2+2s+5=(s+1)^2+4$，即 $\sigma=1$、$\omega_0=2$。
+> - **变换对**：$\dfrac{s+a}{(s+a)^2+\omega_0^2}\leftrightarrow e^{-at}\cos\omega_0t$，$\dfrac{\omega_0}{(s+a)^2+\omega_0^2}\leftrightarrow e^{-at}\sin\omega_0t$。
+> - **系数关系**：分子写成 $D(s+a)+E$ 后，余弦系数为 $D$，正弦系数为 $\dfrac{E}{\omega_0}$。
+> - **求待定系数**：实极点用遮盖法，剩余部分通分比较分子系数。
 
 > [!example] 解答
 > 遮盖法求实极点系数：
@@ -1189,9 +1217,10 @@ has a zero very close to a pole. Find the coefficient of $e^{-3.1t}$ in the impu
 > [!abstract] 知识点讲解
 > 见 11.6 例 6（零点靠近极点）。
 >
-> - 系数用遮盖法求：$A_{3.1}=\left.\dfrac{s+3}{s+1}\right|_{s=-3.1}$。
-> - 零点越靠近极点，残留系数越小；完全重合时该项消失。
-> - 数值很小时不要误以为是零。
+> - **遮盖法**：$e^{-3.1t}$ 的系数为 $A_{3.1}=\left.\dfrac{s+3}{s+1}\right|_{s=-3.1}$。
+> - **零点-极点距离**：零点 $z$ 与极点 $p$ 的距离 $|z-p|$ 决定该模态的残留幅度。
+> - **极限情形**：$z=p$ 时零点与极点完全抵消，该模态消失；$|z-p|$ 很小时系数很小但不为零。
+> - **判别**：系数非常小 ≠ 系数为零。
 
 > [!example] 解答
 > 部分分式：
@@ -1217,9 +1246,10 @@ $$
 > [!abstract] 知识点讲解
 > 见 11.4 有延迟因子的部分分式。
 >
-> - 先对有理部分做部分分式，再整体延迟 $1$ s。
-> - 延迟后每一项都带 $H(t-1)$。
-> - $t=3$ 时两项都开启。
+> - **时移性质**：$e^{-s\tau}F(s)\leftrightarrow f(t-\tau)H(t-\tau)$。
+> - **处理顺序**：先对有理部分 $F(s)$ 做部分分式、反变换得 $f(t)$，再整体延迟 $\tau$。
+> - **部分分式**：$\dfrac{4}{(s+1)(s+3)}=\dfrac{2}{s+1}-\dfrac{2}{s+3}$。
+> - **阶跃因子**：延迟后每一项都带 $H(t-1)$，$t=3$ 时两项都已开启。
 
 > [!example] 解答
 > 有理部分：
@@ -1250,9 +1280,10 @@ is driven by $u(t)=e^{-2t}H(t)$ with zero initial conditions. Find $y(1)$.（系
 > [!abstract] 知识点讲解
 > 见 11.5 例 1（系统极点与输入极点重合）。
 >
-> - 输入极点 $-2$ 与系统极点 $-2$ 重合，$Y(s)$ 出现二重极点。
-> - 二重极点产生 $te^{-2t}$ 项。
-> - 系数要分别用遮盖法与求导或比较系数求。
+> - **输出变换**：$Y(s)=G(s)U(s)$，输入极点与系统极点重合时出现重极点。
+> - **重极点响应**：重极点 $s=-2$ 对应 $te^{-2t}$ 项。
+> - **部分分式**：展开为 $\dfrac{A}{s+1}+\dfrac{B}{s+2}+\dfrac{C}{(s+2)^2}$。
+> - **求系数**：$A$、$C$ 用遮盖法 $\left.\dfrac{s+4}{(s+2)^2}\right|_{s=-1}$、$\left.\dfrac{s+4}{s+1}\right|_{s=-2}$；$B$ 比较 $s^2$ 系数。
 
 > [!example] 解答
 > 系统分母分解：
@@ -1299,9 +1330,10 @@ Find $y(1)$ in volts.（求 $y(1)$，单位为 V。）
 > [!abstract] 知识点讲解
 > 见 11.4 遮盖法求单实极点 与 11.5 拉普拉斯变换与系统。
 >
-> - 先把输入合并成一个分数，再乘传递函数。
-> - $U(s)=\frac1s-\frac1{s+3}=\frac{3}{s(s+3)}$。
-> - 三阶分母、三个单实极点，全部用遮盖法。
+> - **输入合并**：$U(s)=\dfrac1s-\dfrac1{s+3}=\dfrac{3}{s(s+3)}$，先合并成一个分数再乘 $G(s)$。
+> - **输出变换**：$Y(s)=G(s)U(s)=\dfrac{3}{s(s+1)(s+3)}$。
+> - **遮盖法**：三个单实极点逐个求 $A=\left.\dfrac{N(s)}{(s+1)(s+3)}\right|_{s=0}$ 等。
+> - **反变换**：$\dfrac1s\leftrightarrow H(t)$，$\dfrac{1}{s+a}\leftrightarrow e^{-at}H(t)$。
 
 > [!example] 解答
 > 输入变换：
@@ -1346,9 +1378,10 @@ A unit step is applied from rest. Find the output at $t=1$ s.（零初始状态�
 > [!abstract] 知识点讲解
 > 见 11.4 重极点 与 11.6 例 7（级联不是同阶 Butterworth）。
 >
-> - 级联传递函数相乘。
-> - 单位阶跃使 $Y(s)$ 多一个 $1/s$ 极点。
-> - 二重极点产生 $te^{-2t}$ 项。
+> - **级联性质**：$G=G_1G_2$，传递函数相乘。
+> - **阶跃响应**：$Y(s)=\dfrac{G(s)}{s}$，多一个原点极点。
+> - **重极点变换对**：$\dfrac{1}{(s+2)^2}\leftrightarrow te^{-2t}H(t)$。
+> - **求系数**：$A=\left.\dfrac{4}{(s+2)^2}\right|_{s=0}$，$C=\left.\dfrac{4}{s}\right|_{s=-2}$，$B$ 比较 $s^2$ 系数。
 
 > [!example] 解答
 > 输出：
@@ -1393,9 +1426,10 @@ $$
 > [!abstract] 知识点讲解
 > 见 11.5 例 3（由输出反求输入）与 12.4 由输出反求输入（假分式先做除法）。
 >
-> - $U(s)=\dfrac{Y(s)}{G(s)}$。
-> - 若 $U(s)$ 是假分式，先做多项式除法，常数项对应 $\delta(t)$。
-> - 分子中的 $s^2+2s+4$ 会约掉系统的复极点，输出不振荡。
+> - **反求关系**：$U(s)=\dfrac{Y(s)}{G(s)}$。
+> - **假分式除法**：分子次数 ≥ 分母次数时，先做多项式除法；**常数项**对应 $\delta(t)$。
+> - **部分分式**：真分式部分用遮盖法展开。
+> - **零极点抵消**：$Y(s)$ 的分子 $s^2+2s+4$ 与 $G(s)$ 的分母相消，输出不含系统的复极点模态。
 
 > [!example] 解答
 > 由 $y$ 求 $Y$：
@@ -1432,9 +1466,10 @@ $G(s)$ has poles at $-2$ and $-5$, a single zero at $-1$, and DC gain $3$. The i
 > [!abstract] 知识点讲解
 > 见 11.5 例 2（零点抵消输入极点）。
 >
-> - 先由直流增益定系数：$G(0)=\dfrac{k}{2\cdot5}=3$，故 $k=30$。
-> - 零点 $-1$ 与输入极点 $-1$ 抵消，输出不含 $e^{-t}$。
-> - 但系统的两个自然模态仍被激励。
+> - **一般形式**：$G(s)=\dfrac{k(s+1)}{(s+2)(s+5)}$（极点、零点、待定增益）。
+> - **直流增益**：$G(0)=\dfrac{k}{2\cdot5}$，由 $G(0)=3$ 定出 $k$。
+> - **零点抵消输入极点**：输入极点 $s=-1$ 被零点 $s=-1$ 约掉，$Y(s)$ 不含 $\dfrac{1}{s+1}$ 项。
+> - **系统模态**：$-2$、$-5$ 两个极点仍被激励，输出含 $e^{-2t}$、$e^{-5t}$。
 
 > [!example] 解答
 > 一般形式：
@@ -1471,9 +1506,10 @@ Which describes the straight-line Bode magnitude?（其渐近 Bode 幅频图如�
 > [!abstract] 知识点讲解
 > 见 4.4 Bode 图 与 8.1 传递函数。
 >
-> - 通分并因式分解，找出极点和零点。
-> - 每个极点贡献 $-20$ dB/dec；每个零点贡献 $+20$ dB/dec。
-> - 原点处的极点使低频斜率为 $-20$ dB/dec。
+> - **Bode 斜率规则**：每个极点贡献 $-20$ dB/decade，每个零点贡献 $+20$ dB/decade，重数叠加。
+> - **原点极点**：$1/s$ 的极点在原点，使低频段为 $-20$ dB/decade。
+> - **转折频率**：只由有限个实数极零点决定，位于 $|p|$、$|z|$ 处。
+> - **通分**：$G(s)=\dfrac{(s+2)^2}{4s}$，一个原点极点、一个二重零点。
 
 > [!example] 解答
 > 通分：
@@ -1507,9 +1543,10 @@ has DC gain $1$ and must have a high-frequency gain of $-30$ dB. Where must the 
 > [!abstract] 知识点讲解
 > 见 8.1 传递函数 与 4.4 Bode 图。
 >
-> - 直流增益 $G(0)$ 由低频极限得到。
-> - 高频增益由 $s\to\infty$ 的比值决定，等于 $K$。
-> - $-30$ dB 对应 $K=10^{-30/20}$。
+> - **直流增益**：$G(0)=\displaystyle\lim_{s\to0}K\dfrac{z}{5}$。
+> - **高频增益**：$\displaystyle\lim_{s\to\infty}G(s)=K$（同阶时等于系数比）。
+> - **dB 换算**：$-30$ dB 对应 $K=10^{-30/20}$。
+> - **零点位置**：$s=-z$，$z$ 同时决定转折频率与低频到高频的抬升量。
 
 > [!example] 解答
 > 低频极限：
@@ -1539,9 +1576,10 @@ Find $\left|G(j\omega)\right|$ at 25 Hz.（求 25 Hz 处的幅值。）
 > [!abstract] 知识点讲解
 > 见 11.7 例 7（Notch 滤波器）。
 >
-> - $25$ Hz 对应 $\omega=\omega_n/2$。
-> - 分母的实部、虚部都按 $\omega_n^2$ 的倍数化简。
-> - 分子的 $s^2+\omega_n^2$ 在 $s=j\omega$ 时等于 $\omega_n^2-\omega^2$。
+> - **陷波器形式**：$G(s)=\dfrac{s^2+\omega_n^2}{s^2+2\zeta\omega_ns+\omega_n^2}$，在 $\omega=\omega_n$ 处 $|G|=0$。
+> - **分母模**：$|s^2+2\zeta\omega_ns+\omega_n^2|_{s=j\omega}=\left(\omega_n^2-\omega^2\right)+j2\zeta\omega_n\omega$。
+> - **归一化**：把 $\omega=\omega_n/2$ 代入，分子分母都化为 $\omega_n^2$ 的倍数，便于约分。
+> - **比率换算**：$25$ Hz 对应 $\omega=\dfrac{1}{2}\omega_n$。
 
 > [!example] 解答
 > 取 $\omega=\omega_n/2$，即 $\omega^2=\omega_n^2/4$。分子：
@@ -1576,9 +1614,10 @@ Why can an ideal lowpass filter $G(j\omega)=p_{2\omega_c}(\omega)$ not be built 
 > [!abstract] 知识点讲解
 > 见 8.3 理想低通滤波器。
 >
-> - 实时系统必须因果：$h(t)=0$（$t<0$）。
-> - 理想低通频谱是矩形，反变换得到 sinc 型冲激响应，延伸到 $t\to-\infty$。
-> - 幅值是 $1$ 或 $0$，有界；相位为零，是线性的；它不是有理函数，没有极点。
+> - **因果性判据**：实时系统的冲激响应必须满足 $h(t)=0$（$t<0$）。
+> - **理想低通频响**：$G(j\omega)=p_{2\omega_c}(\omega)$，截止频率 $\omega_c$。
+> - **反变换**：$\mathcal F^{-1}\{p_{2\omega_c}(\omega)\}=\dfrac{\sin\omega_ct}{\pi t}$，由傅里叶变换对 $\dfrac{\sin Wt}{\pi t}\leftrightarrow p_{2W}(\omega)$ 取 $W=\omega_c$。
+> - **性质**：幅值有界（$0$ 或 $1$），相位为零（线性），非有理函数，无极点；但冲激响应向 $t<0$ 延伸，非因果。
 
 > [!example] 解答
 > 反变换：
@@ -1606,9 +1645,10 @@ At the $-3$ dB frequency of a first-order RC lowpass, compared with DC, the outp
 > [!abstract] 知识点讲解
 > 见 8.4 $-3$ dB 截止频率 与 4.4 Bode 图。
 >
-> - $-3$ dB 的幅值比例为 $1/\sqrt2\approx0.707$。
-> - 功率与幅值平方成正比，所以功率比例为 $1/2$。
-> - 幅值 $1/2$ 对应 $-6$ dB。
+> - **dB 定义**：$20\log_{10}|G|$，$-3$ dB $\iff|G|=10^{-3/20}=\dfrac{1}{\sqrt2}$。
+> - **精确换算**：$20\log_{10}\dfrac{1}{\sqrt2}=-10\log_{10}2\approx-3.01$ dB。
+> - **功率比例**：功率 $\propto|G|^2$，$|G|^2=\dfrac12$ 对应功率减半。
+> - **对照**：$|G|=\dfrac12$ 对应 $-6$ dB。
 
 > [!example] 解答
 > 分贝定义：
@@ -1636,9 +1676,10 @@ Which transfer function is a bandpass filter?（哪个传递函数是带通滤�
 > [!abstract] 知识点讲解
 > 见 8.2 典型滤波器 与 10.6 传递函数与滤波器。
 >
-> - 看 $\omega=0$ 与 $\omega\to\infty$ 两端增益。
-> - 带通：两端都为零，中间通。
-> - 带阻：两端都非零，中间有一个零点。
+> - **滤波器分类判据**：看 $\omega=0$ 与 $\omega\to\infty$ 两端增益。
+> - **低通**：$G(0)\ne0$、$G(\infty)=0$；**高通**：$G(0)=0$、$G(\infty)\ne0$。
+> - **带通**：两端都为零，中间通；**带阻**：两端都非零，中间有零点。
+> - **分子阶数**：分子含 $s$ 因子 ⇒ $G(0)=0$；分子分母同阶 ⇒ 高频有限非零。
 
 > [!example] 解答
 > 逐项检查两端增益：
@@ -1673,9 +1714,10 @@ in rad/s.
 > [!abstract] 知识点讲解
 > 见 11.7 例 2（二阶低通的截止频率）与 8.4 $-3$ dB 截止频率。
 >
-> - 与标准形式对照：$\omega_n^2=400$，$2\zeta\omega_n=20$。
-> - 令 $x=(\omega/\omega_n)^2$，把 $|G|^2=1/2$ 化成 $x$ 的二次方程。
-> - 二阶低通的 $-3$ dB 频率不等于 $\omega_n$。
+> - **二阶标准形**：$G(s)=\dfrac{\omega_n^2}{s^2+2\zeta\omega_ns+\omega_n^2}$，本题 $\omega_n=20$、$\zeta=0.5$。
+> - **幅频平方**：$|G(j\omega)|^2=\dfrac{1}{(1-x)^2+(2\zeta)^2x}$，其中 $x=\left(\dfrac{\omega}{\omega_n}\right)^2$。
+> - **半功率条件**：$|G|^2=\dfrac12$，化为 $x$ 的二次方程。
+> - **结论**：二阶低通的 $\omega_{-3\mathrm{dB}}\ne\omega_n$，与 $\zeta$ 有关。
 
 > [!example] 解答
 > 对照标准形式：
@@ -1710,9 +1752,10 @@ is used to suppress a 50 Hz hum. By how many dB is the 50 Hz hum attenuated? (Gi
 > [!abstract] 知识点讲解
 > 见 11.7 例 3（一阶高通的衰减）。
 >
-> - 把频率比化成 $f/f_c$，避免每步都带 $2\pi$。
-> - $|G(j\omega)|=\dfrac{\omega/\omega_c}{\sqrt{1+(\omega/\omega_c)^2}}$。
-> - 衰减量 $=-20\log_{10}|G|$。
+> - **一阶高通**：$G(s)=\dfrac{s}{s+\omega_c}$，幅频 $|G(j\omega)|=\dfrac{\omega/\omega_c}{\sqrt{1+(\omega/\omega_c)^2}}$。
+> - **频率比**：用 $f/f_c=\omega/\omega_c$ 计算，两边的 $2\pi$ 约掉。
+> - **衰减量**：$A=-20\log_{10}|G|$ dB。
+> - **低频渐近**：$\omega\ll\omega_c$ 时 $|G|\approx\omega/\omega_c$，按 $+20$ dB/decade 上升。
 
 > [!example] 解答
 > 频率比：
@@ -1741,9 +1784,10 @@ must have DC gain $+12$ dB and a gain 3 dB below the DC gain at $f=1$ kHz. Find 
 > [!abstract] 知识点讲解
 > 见 11.7 例 4（由指标反求参数）。
 >
-> - 一阶低通的 $-3$ dB 频率等于极点频率，即 $\omega=a$。
-> - 直流增益 $G(0)=k/a$。
-> - $+12$ dB 对应 $10^{12/20}=3.981$。
+> - **一阶低通标准形**：$G(s)=\dfrac{k}{s+a}$，$-3$ dB 频率 $\omega_c=a$。
+> - **直流增益**：$G(0)=\dfrac{k}{a}$。
+> - **dB 换算**：$+12$ dB 对应 $\dfrac{k}{a}=10^{12/20}=10^{0.6}$。
+> - **角频率换算**：$\omega_c=2\pi f_c$，注意 $f$ 用 Hz。
 
 > [!example] 解答
 > $-3$ dB 点：
@@ -1770,9 +1814,10 @@ Which transfer function is an exponentially stable allpass filter ($|G(j\omega)|
 > [!abstract] 知识点讲解
 > 见 11.7 例 5（全通滤波器的相移）与 8.2 典型滤波器。
 >
-> - 全通：零点与极点关于虚轴对称，且成镜像。
-> - 一阶全通形式为 $\dfrac{s-a}{s+a}$。
-> - 指数稳定要求极点在开左半平面。
+> - **一阶全通形式**：$G(s)=\dfrac{s-a}{s+a}$，零点与极点关于虚轴对称。
+> - **全通性质**：$|G(j\omega)|=1$，对所有 $\omega$ 成立。
+> - **稳定性**：极点在开左半平面（$s=-a$，$a>0$）⇔ 指数稳定。
+> - **对照**：$\dfrac{s+3}{s-3}$ 幅值也为 $1$，但极点 $+3$ 在右半平面，不稳定。
 
 > [!example] 解答
 > 检查 (d)：
@@ -1807,9 +1852,10 @@ is driven by the input $u(t)=\cos(10t)$, applied for all time. The output is（�
 > [!abstract] 知识点讲解
 > 见 11.7 例 5（全通滤波器的相移）与 4.1 正弦稳态的核心结论。
 >
-> - 正弦稳态：输出为 $|G(j\omega)|\cos(\omega t+\angle G(j\omega))$。
-> - $G(j10)=\dfrac{10-10j}{10+10j}=-j$。
-> - $-j$ 的相位是 $-90^\circ$，模为 $1$。
+> - **正弦稳态**：$u=A\cos\omega t$ 时 $y=A|G(j\omega)|\cos\left(\omega t+\angle G(j\omega)\right)$。
+> - **全通幅值**：$|G(j\omega)|=1$，只改变相位。
+> - **特殊复数值**：$-j$ 的模为 $1$、相位为 $-90^\circ$。
+> - **相位移动**：$\cos(\theta-90^\circ)=\sin\theta$。
 
 > [!example] 解答
 > 代入 $\omega=10$：
@@ -1845,9 +1891,10 @@ has transfer function $G(s)=e^{-2s}$. Which describes its frequency response?（
 > [!abstract] 知识点讲解
 > 见 11.7 例 6（延迟线）。
 >
-> - $G(j\omega)=e^{-j2\omega}$，模恒为 $1$。
-> - 相位 $-2\omega$ 与频率成正比，称为线性相位。
-> - 指数函数不是有理函数，没有极点。
+> - **延迟的传递函数**：$y(t)=u(t-T)\Rightarrow G(s)=e^{-sT}$，$T=2$。
+> - **频率响应**：$G(j\omega)=e^{-j2\omega}$，$|e^{j\theta}|=1$。
+> - **线性相位**：$\angle G(j\omega)=-2\omega$，相位与频率成正比，对应纯延迟。
+> - **无极点**：指数函数不是有理函数，没有极点，Bode 幅频为 $0$ dB 水平线。
 
 > [!example] 解答
 > 代入 $s=j\omega$：
@@ -1883,9 +1930,10 @@ has cutoff $1$ rad/s. Replacing $s$ by $50/s$ gives（截止频率为 $1$ rad/s�
 > [!abstract] 知识点讲解
 > 见 11.8 例 2（Butterworth 原型到高通）与 8.5 Butterworth 滤波器。
 >
-> - 低通到高通：$s\to\omega_c/s$。
-> - 代入后分子分母同乘 $s^2$。
-> - 中间项变为 $\omega_c\sqrt2$，常数项变为 $\omega_c^2$。
+> - **低通到高通变换**：$s\to\dfrac{\omega_c}{s}$，$\omega_c=50$。
+> - **原型**：$G_{LP}(s)=\dfrac{1}{s^2+\sqrt2\,s+1}$（二阶 Butterworth，$\zeta=\dfrac{1}{\sqrt2}$）。
+> - **代数整理**：代入后分子分母同乘 $s^2$。
+> - **系数**：中间项 $\omega_c\sqrt2$，常数项 $\omega_c^2$。
 
 > [!example] 解答
 > 代入 $s=50/s$：
@@ -1914,9 +1962,10 @@ Find $C$ in $\mu$F so the $-3$ dB frequency is 3 kHz.（求使 $-3$ dB 频率为
 > [!abstract] 知识点讲解
 > 见 8.4 $-3$ dB 截止频率 与 8.2 典型滤波器。
 >
-> - 一阶高通写成标准形式 $\dfrac{s}{s+\omega_c}$ 后，$\omega_c=1/(4C)$。
-> - $-3$ dB 频率等于极点频率。
-> - 由 $\omega_c=2\pi f_c$ 反解 $C$。
+> - **一阶高通标准形**：$G_H(s)=\dfrac{s}{s+\omega_c}$，本题 $G_H(s)=\dfrac{4Cs}{4Cs+1}=\dfrac{s}{s+\frac{1}{4C}}$。
+> - **极点与截止频率**：$\omega_c=\dfrac{1}{4C}$，$-3$ dB 频率等于极点频率。
+> - **角频率换算**：$\omega_c=2\pi f_c$。
+> - **反解电容**：$C=\dfrac{1}{4\omega_c}=\dfrac{1}{8\pi f_c}$。
 
 > [!example] 解答
 > 整理为标准形式：
@@ -1947,9 +1996,10 @@ Find $|G(j100)|$.（求 $|G(j100)|$。）
 > [!abstract] 知识点讲解
 > 见 8.2 典型滤波器 与 0.1 复数与相量。
 >
-> - 并联相加是**复数相加**，不是幅值相加。
-> - 先把每一项有理化，写成 $a+jb$。
-> - 虚部可能相互抵消，只剩实部。
+> - **并联相加**：$G=G_1+G_2$，是**复数相加**，不是幅值相加。
+> - **有理化**：$\dfrac{a}{b+jc}=\dfrac{a(b-jc)}{b^2+c^2}$，写成 $x+jy$。
+> - **模的计算**：$|G|=\sqrt{\operatorname{Re}^2G+\operatorname{Im}^2G}$。
+> - **虚部抵消**：互补的低通与高通在 $\omega_c$ 处虚部大小相等、符号相反，相加只剩实部。
 
 > [!example] 解答
 > 第一项：
@@ -1992,9 +2042,10 @@ with the same cutoff are connected in parallel and summed, $G=G_L+G_H$. What is 
 > [!abstract] 知识点讲解
 > 见 8.2 典型滤波器 与 0.1 复数与相量。
 >
-> - 同一分母的分式可以直接相加。
-> - 并联相加是复数值相加，不是模相加。
-> - 互补的低通与高通并联，幅值合起来恒为 $1$。
+> - **并联相加**：$G=G_L+G_H$，同一分母可直接通分。
+> - **互补滤波器**：$G_L+G_H=\dfrac{\omega_c}{s+\omega_c}+\dfrac{s}{s+\omega_c}=1$。
+> - **复数相加 ≠ 模相加**：$\left|G_L(j\omega_c)\right|+\left|G_H(j\omega_c)\right|=\sqrt2$，但复数和为 $1$。
+> - **全通结论**：$|G(j\omega)|=1$ 对所有 $\omega$ 成立。
 
 > [!example] 解答
 > 通分相加：
@@ -2021,9 +2072,10 @@ A second-order lowpass with no zeros has poles at $-10^4\pm j10^4$ rad/s and uni
 > [!abstract] 知识点讲解
 > 见 11.8 例 4（由极点求二阶 Butterworth 的截止频率）与 8.5 Butterworth 滤波器。
 >
-> - 极点到原点的距离为 $\omega_n$。
-> - 二阶 Butterworth 的阻尼比固定为 $\zeta=1/\sqrt2$。
-> - Butterworth 的 $-3$ dB 频率等于 $\omega_n$。
+> - **二阶 Butterworth 极点**：$s=-\omega_c e^{\pm j45^\circ}$ 形式，极点到原点距离为 $\omega_c$。
+> - **极点到原点距离**：$\omega_n=|p|=\sqrt{\operatorname{Re}^2p+\operatorname{Im}^2p}$。
+> - **阻尼比**：$\zeta=\dfrac{\left|\operatorname{Re}p\right|}{\omega_n}$，二阶 Butterworth 固定为 $\dfrac{1}{\sqrt2}$。
+> - **截止频率**：Butterworth 的 $\omega_{-3\mathrm{dB}}$ 就是 $\omega_n=\omega_c$。
 
 > [!example] 解答
 > 由极点求 $\omega_n$：
@@ -2054,9 +2106,10 @@ Find $a$ in rad/s.（求 $a$，单位 rad/s。）
 > [!abstract] 知识点讲解
 > 见 11.8 例 3（二阶 Butterworth 的阻尼比）。
 >
-> - 二阶 Butterworth 分母为 $s^2+\sqrt2\,\omega_cs+\omega_c^2$。
-> - 因此 $a=\sqrt2\,\omega_c$。
-> - 注意 $\omega_c$ 要用 rad/s，不是 Hz。
+> - **二阶 Butterworth 分母标准形**：$s^2+\sqrt2\,\omega_cs+\omega_c^2$。
+> - **系数对照**：$a=\sqrt2\,\omega_c$，常数项必须等于 $\omega_c^2$。
+> - **角频率**：$\omega_c=2\pi f_c$，不能用 Hz。
+> - **与一般二阶比较**：$2\zeta\omega_n=\sqrt2\,\omega_n\Rightarrow\zeta=\dfrac{1}{\sqrt2}$。
 
 > [!example] 解答
 > 截止频率：
@@ -2076,9 +2129,10 @@ A fifth-order Butterworth lowpass has $\omega_c=1000$ rad/s. Find the real part 
 > [!abstract] 知识点讲解
 > 见 11.8 例 5（高阶 Butterworth 的极点）。
 >
-> - $n$ 阶 Butterworth 的极点均匀分布在左半平面半径为 $\omega_c$ 的圆上。
-> - 从正实轴量起，角度为 $90^\circ+\dfrac{180^\circ(2k+1)}{2n}$。
-> - 最靠近虚轴的极点角度最接近 $90^\circ$。
+> - **极点分布**：$n$ 阶 Butterworth 的极点均匀分布在左半平面半径 $\omega_c$ 的圆上。
+> - **角度公式**：从正实轴量起，$\theta_k=90^\circ+\dfrac{180^\circ(2k+1)}{2n}$，$k=0,1,\dots,n-1$。
+> - **实部**：$\operatorname{Re}p_k=\omega_c\cos\theta_k$。
+> - **最靠近虚轴**：角度最接近 $90^\circ$ 或 $270^\circ$ 的那一对极点。
 
 > [!example] 解答
 > 五阶的极点角度间隔为 $180^\circ/5=36^\circ$，左半平面内的五个角度为
@@ -2098,9 +2152,10 @@ A third-order Butterworth highpass filter with cutoff frequency 100 Hz is used t
 > [!abstract] 知识点讲解
 > 见 11.8 例 6（Butterworth 衰减计算）。
 >
-> - $n$ 阶 Butterworth 高通：$|G|^2=\dfrac{1}{1+\left(f_c/f\right)^{2n}}$。
-> - 这里 $f_c/f=2$，$2n=6$。
-> - 衰减量 $=10\log_{10}\left[1+\left(f_c/f\right)^{2n}\right]$。
+> - **$n$ 阶 Butterworth 高通幅频平方**：$|G|^2=\dfrac{1}{1+\left(\dfrac{f_c}{f}\right)^{2n}}$。
+> - **衰减量**：$A=10\log_{10}\left[1+\left(\dfrac{f_c}{f}\right)^{2n}\right]$ dB。
+> - **代入**：$f_c/f=2$，$2n=6$，即 $A=10\log_{10}\left(1+2^6\right)$。
+> - **高频渐近**：每十倍频程衰减 $20n$ dB。
 
 > [!example] 解答
 > 幅频平方：
@@ -2125,9 +2180,10 @@ Two identical second-order Butterworth lowpass sections, each with cutoff $\omeg
 > [!abstract] 知识点讲解
 > 见 11.8 例 7（级联不是同阶 Butterworth）。
 >
-> - 级联时增益相乘，$T$ 形同频叠加。
-> - 每节在 $\omega_c$ 处为 $-3.01$ dB，两节共 $-6.02$ dB。
-> - $n$ 阶 Butterworth 有 $n$ 个**互不相同**的极点；级联系统的极点是二重的。
+> - **级联**：$G=G_1G_2$，幅频相乘、相频相加，即 $|G|=|G_1||G_2|$。
+> - **在 $\omega_c$ 处**：每节为 $-3.01$ dB，两节共 $-6.02$ dB。
+> - **极点结论**：$n$ 阶 Butterworth 有 $n$ 个互不相同的极点；级联后每个极点的重数加倍。
+> - **判据**：重极点不等于同阶 Butterworth，两者在 $\omega_c$ 处的衰减也不同。
 
 > [!example] 解答
 > 每节在 $\omega_c$ 处：
@@ -2154,9 +2210,10 @@ At what frequency, in Hz, is its gain $-30$ dB?（在哪个频率处增益为 $-
 > [!abstract] 知识点讲解
 > 见 11.8 例 6（Butterworth 衰减计算）。
 >
-> - 设衰减量等于 $30$ dB：$10\log_{10}\left[1+\left(f_c/f\right)^4\right]=30$。
-> - 得到 $\left(f_c/f\right)^4=10^3-1=999$。
-> - 再开四次方。
+> - **二阶 Butterworth 高通幅频平方**：$|G|^2=\dfrac{1}{1+\left(\dfrac{f_c}{f}\right)^{4}}$。
+> - **衰减条件**：$10\log_{10}\left[1+\left(\dfrac{f_c}{f}\right)^4\right]=30$。
+> - **指数关系**：$30$ dB 对应 $\left(\dfrac{f_c}{f}\right)^4=10^{3}-1=999$。
+> - **反解频率**：$f=f_c\left(f/f_c\right)=f_c\cdot999^{-1/4}$。
 
 > [!example] 解答
 > 由
@@ -2180,9 +2237,10 @@ A fourth-order Butterworth lowpass must lose at most 1 dB at 1 kHz. What is the 
 > [!abstract] 知识点讲解
 > 见 11.8 例 9（由通带指标求截止频率）。
 >
-> - $n$ 阶 Butterworth 低通：$|G|^2=\dfrac{1}{1+\left(f/f_c\right)^{2n}}$。
-> - 通带指标给出不等式，解出 $f_c$ 的下界。
-> - 这里 $2n=8$。
+> - **$n$ 阶 Butterworth 低通幅频平方**：$|G|^2=\dfrac{1}{1+\left(\dfrac{f}{f_c}\right)^{2n}}$。
+> - **通带指标**：$10\log_{10}\left[1+\left(\dfrac{f}{f_c}\right)^{2n}\right]\le A_p$，本题 $A_p=1$ dB、$2n=8$。
+> - **解不等式**：$\left(\dfrac{f}{f_c}\right)^8\le10^{0.1}-1$，得 $f_c$ 的下界。
+> - **结论**：衰减越小，所需截止频率越高。
 
 > [!example] 解答
 > 要求
@@ -2205,9 +2263,10 @@ A Butterworth lowpass filter with cutoff frequency 2 kHz must attenuate a 6 kHz 
 > [!abstract] 知识点讲解
 > 见 11.8 例 8（由衰减指标求阶数）。
 >
-> - 频率比 $6/2=3$。
-> - 衰减量 $=10\log_{10}\left(1+3^{2n}\right)$。
-> - 逐个试算 $n$，取刚好满足条件的最小值。
+> - **阻带衰减公式**：$A=10\log_{10}\left[1+\left(\dfrac{f}{f_c}\right)^{2n}\right]$ dB。
+> - **频率比**：$\dfrac{f}{f_c}=\dfrac{6}{2}=3$，故 $A(n)=10\log_{10}\left(1+3^{2n}\right)$。
+> - **求解方法**：$A(n)$ 随 $n$ 单调增加，从小到大试算取最小满足者。
+> - **渐近对照**：每增加一阶，$6$ kHz 处衰减约增加 $20\log_{10}3=9.54$ dB。
 
 > [!example] 解答
 > 频率比：
@@ -2235,9 +2294,10 @@ An antenna's length must be comparable to the wavelength $\lambda=c/f$ of the si
 > [!abstract] 知识点讲解
 > 见 11.9 例 1（波长与载波）。
 >
-> - $\lambda=c/f$。
-> - 音频频率很低，波长极长，天线无法实现。
-> - 这正是需要用高频载波进行调制的原因。
+> - **波速关系**：$\lambda=\dfrac{c}{f}$，$c=3\times10^8$ m/s。
+> - **天线尺度**：天线长度需与波长可比（通常 $\lambda/4$ 或 $\lambda/2$）。
+> - **调制动机**：音频频率低 ⇒ 波长极长 ⇒ 天线无法实现，故需搬移到高频载波。
+> - **单位换算**：$10^5$ m $=100$ km。
 
 > [!example] 解答
 > $$\lambda=\frac{c}{f}=\frac{3\times10^8}{3\times10^3}=10^5\ \mathrm{m}=100\ \mathrm{km}.$$
@@ -2272,9 +2332,10 @@ Which list gives the positive frequencies (rad/s) in $y(t)$ with the amplitudes 
 > [!abstract] 知识点讲解
 > 见 11.9 例 2（DSB-SC 的频谱）与 9.1 调制的基本概念。
 >
-> - 对每一项用 $\cos a\cos b=\frac12\left[\cos(a-b)+\cos(a+b)\right]$。
-> - 乘积频谱不含载波频率本身。
-> - 振幅要乘上积化和差带来的 $\frac12$。
+> - **积化和差**：$\cos a\cos b=\dfrac12\left[\cos(a-b)+\cos(a+b)\right]$，产生上下边带。
+> - **DSB-SC 频谱**：$u(t)\cos\omega_ct\leftrightarrow\dfrac12\left[U(j(\omega-\omega_c))+U(j(\omega+\omega_c))\right]$，不含载波 $\pm\omega_c$ 谱线。
+> - **频移性质**：时域乘载波 ⇔ 频谱左右各平移 $\omega_c$ 并乘 $\frac12$。
+> - **振幅关系**：每个边带分量的振幅等于原分量振幅的 $\frac12$（含信道幅度因子）。
 
 > [!example] 解答
 > 第一项：
@@ -2304,9 +2365,10 @@ A speech scrambler multiplies $u(t)$, bandlimited to 15 kHz, by $2\cos(2\pi\cdot
 > [!abstract] 知识点讲解
 > 见 11.9 例 3（单边带滤波）。
 >
-> - 积化和差得到 $15\pm4$ kHz 两个分量。
-> - 低通滤掉超出 $15$ kHz 的上边带。
-> - 载波幅度 $2$ 恰好抵消 $\frac12$，振幅保持 $3$。
+> - **调制（乘法）**：$m(t)\cdot2\cos\omega_ct$ 产生 $\omega_c\pm\omega_m$ 两个分量。
+> - **积化和差**：$2\cos a\cos b=\cos(a-b)+\cos(a+b)$，乘 $2$ 正好抵消 $\frac12$。
+> - **理想低通**：$|f|<f_c$ 保留，$|f|>f_c$ 滤除；本题 $f_c=15$ kHz。
+> - **单边带**：保留一个边带得到 SSB，本题留下下边带 $15-4=11$ kHz。
 
 > [!example] 解答
 > 乘积：
@@ -2330,9 +2392,10 @@ A radio band runs from 3.000 MHz to 3.400 MHz. Each telephone message has bandwi
 > [!abstract] 知识点讲解
 > 见 11.9 例 4（FDM 信道数）与 9.4 频分复用。
 >
-> - 每个 DSB-SC 信道占用 $2W$ 带宽。
-> - 总带宽除以单信道带宽后向下取整。
-> - 不能四舍五入。
+> - **DSB-SC 带宽**：每个信道占 $2W$，$W$ 为消息带宽。
+> - **FDM 总带宽**：$N$ 路无保护间隔时需 $N\cdot2W$。
+> - **信道数**：$N=\left\lfloor\dfrac{B}{2W}\right\rfloor$，向下取整。
+> - **频段宽度**：$3.400-3.000=0.400$ MHz $=400$ kHz。
 
 > [!example] 解答
 > 单信道带宽：
@@ -2355,9 +2418,10 @@ Four messages, each bandlimited to 3 kHz, are sent by DSB-SC on carriers $f_1<f_
 > [!abstract] 知识点讲解
 > 见 11.9 例 5（FDM 载频安排）。
 >
-> - 每个 DSB-SC 信道宽 $2W=6$ kHz，以载频为中心。
-> - 第一路的下边沿在 100 kHz，所以 $f_1=100+W$。
-> - 相邻载频间隔为 $2W+$ 保护间隔。
+> - **DSB-SC 频谱结构**：每个信道宽 $2W$，以载频 $f_i$ 为中心，占据 $[f_i-W,\,f_i+W]$。
+> - **起点条件**：第一路下边沿 $f_1-W=100$ kHz $\Rightarrow f_1=103$ kHz。
+> - **相邻间隔**：$f_{i+1}-f_i=2W+\text{保护间隔}=6+5=11$ kHz。
+> - **等差数列**：$f_N=f_1+(N-1)\times11$。
 
 > [!example] 解答
 > 第一路载频：
@@ -2396,9 +2460,10 @@ Which band of positive frequencies does $c(t)$ occupy?（$c(t)$ 占据哪个正�
 > [!abstract] 知识点讲解
 > 见 11.9 例 6（多层调制）。
 >
-> - 先求内层信号 $b(t)$ 的频段，再整体搬移。
-> - 调制把频段平移到 $\omega_c\pm$ 原频段。
-> - 基带部分与已调部分相加，频段取并集。
+> - **调制搬移**：乘 $\cos\omega_ct$ 后频带移到 $\omega_c\pm$ 原频段（乘 $2$ 抵消 $\frac12$）。
+> - **频带并集**：信号相加，频谱相加，占据频段取并集。
+> - **逐层分析**：先算内层 $b(t)$ 的频段，再整体搬移。
+> - **基带部分**：$u_1$ 未调制，占据 $[0,W]$。
 
 > [!example] 解答
 > $u_1$ 占据 $0$ 到 $5000$ rad/s。
@@ -2425,9 +2490,10 @@ The signal $y(t)=\cos(t^2)$ is a sinusoid with variable frequency, $y(t)=\cos(\o
 > [!abstract] 知识点讲解
 > 见 9.5 瞬时频率 与 11.9 例 7（瞬时频率）。
 >
-> - 瞬时频率是**整个相位**的导数。
-> - 不能把 $\omega(t)=t$ 直接当成瞬时频率。
-> - $\theta(t)=t^2$，$\omega_i=2t$。
+> - **瞬时角频率定义**：$\omega_i(t)=\dfrac{d\theta(t)}{dt}$，其中 $\theta(t)$ 是**整个**瞬时相位。
+> - **相位与频率**：$\theta(t)=\displaystyle\int_{-\infty}^{t}\omega_i(\tau)d\tau$。
+> - **易错点**：写成 $\cos(\omega(t)t)$ 时不能用 $\omega(t)$ 当作瞬时频率，必须对相位求导。
+> - **本题**：$\theta(t)=t^2\Rightarrow\omega_i(t)=2t$。
 
 > [!example] 解答
 > 相位：
@@ -2462,9 +2528,10 @@ By how many Hz is the instantaneous frequency shifted from the carrier during th
 > [!abstract] 知识点讲解
 > 见 9.6 PM 与 FM 与 11.9 例 8（PM 的频偏）。
 >
-> - PM 的瞬时频率为 $\omega_c+k\dot u(t)$。
-> - 频偏是 $k\dot u$，与消息本身 $u$ 无关。
-> - 换算：$\Delta f=\Delta\omega/(2\pi)$。
+> - **PM 信号**：$y(t)=\cos\left(\omega_ct+ku(t)\right)$。
+> - **瞬时频率**：$\omega_i=\dfrac{d}{dt}\left[\omega_ct+ku(t)\right]=\omega_c+k\dot u(t)$。
+> - **频偏**：$\Delta\omega=k\dot u$，只与消息**导数**有关，与 $u$ 本身无关。
+> - **单位换算**：$\Delta f=\dfrac{\Delta\omega}{2\pi}$。
 
 > [!example] 解答
 > 斜坡导数：
@@ -2503,9 +2570,10 @@ Which description of the two signals for $t>0$ is correct?（下列对 $t>0$ 时
 > [!abstract] 知识点讲解
 > 见 9.6 PM 与 FM 与 11.9 例 9（FM 与 PM 的区别）。
 >
-> - FM 对消息积分：阶跃积分成斜坡，相位连续，频率跳变。
-> - PM 直接乘消息：阶跃使相位跳变，导数在 $t>0$ 为零，频率不变。
-> - 两者都只改变相位，不改变幅度。
+> - **FM 定义**：$y=\cos\left(\omega_ct+k\displaystyle\int_{-\infty}^{t}u(\tau)d\tau\right)$，相位对消息积分。
+> - **PM 定义**：$y=\cos\left(\omega_ct+ku(t)\right)$，相位直接随消息变化。
+> - **瞬时频率**：FM $\omega_i=\omega_c+ku(t)$；PM $\omega_i=\omega_c+k\dot u(t)$。
+> - **阶跃响应**：FM 的相位连续、频率跳变；PM 的相位跳变、频率在稳态恢复为 $\omega_c$。
 
 > [!example] 解答
 > FM：$t>0$ 时
@@ -2541,9 +2609,10 @@ For small but nonzero $k$, the spectrum of $y(t)$ consists of（当 $k$ 很小�
 > [!abstract] 知识点讲解
 > 见 9.7 窄带 FM 与宽带 FM 与 11.9 例 10（窄带 FM 的频谱）。
 >
-> - 小 $k$ 时展开 $\cos(\omega_ct+\theta)\approx\cos\omega_ct-\theta\sin\omega_ct$。
-> - 第二项是 $\sin\omega_ct$ 被积分消息调幅，频带为 $\omega_c\pm W$。
-> - 只有当 $k$ 很大时带宽才会明显超过 $2W$。
+> - **小调制指数展开**：$k$ 很小时 $\theta(t)=k\displaystyle\int u\ll1$，可用 $\cos(\omega_ct+\theta)\approx\cos\omega_ct-\theta\sin\omega_ct$。
+> - **AM 型边带**：第二项是 $\sin\omega_ct$ 被 $\theta(t)$ 调幅，频谱在 $\omega_c\pm W$ 内。
+> - **载波谱线**：第一项 $\cos\omega_ct$ 保留 $\pm\omega_c$ 处的谱线。
+> - **条件**：只有 $k$ 大到 $k\max|\int u|$ 不可忽略时，带宽才明显超过 $2W$（宽带 FM）。
 
 > [!example] 解答
 > 记

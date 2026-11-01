@@ -1,8 +1,8 @@
 {
   "userName": "",
-  "permissionMode": "auto",
+  "permissionMode": "acceptEdits",
   "model": "haiku",
-  "effortLevel": "high",
+  "effortLevel": "medium",
   "serviceTier": "default",
   "enableAutoTitleGeneration": true,
   "titleGenerationLocale": "",
@@ -34,12 +34,13 @@
       "cliPath": "",
       "cliPathsByHost": {},
       "loadUserSettings": true,
-      "enableChrome": false,
+      "enableChrome": true,
       "visibleModels": [
-        "opus",
-        "sonnet",
         "haiku",
-        "mimo-v2.5-pro"
+        "opus[1m]",
+        "sonnet",
+        "fable",
+        "opus"
       ],
       "modelAliases": {},
       "environmentVariables": "",
@@ -48,8 +49,21 @@
       "selectedModels": [
         {
           "value": "opus",
-          "label": "deepseek-flash",
-          "description": "Custom Opus model (1M context)",
+          "label": "deepseek-v4-pro",
+          "description": "Custom Opus model",
+          "reasoningMetadataResolved": true,
+          "supportedEffortLevels": [
+            "low",
+            "medium",
+            "high",
+            "xhigh",
+            "max"
+          ]
+        },
+        {
+          "value": "fable",
+          "label": "deepseek-v4-pro",
+          "description": "Custom Fable model",
           "reasoningMetadataResolved": true,
           "supportedEffortLevels": [
             "low",
@@ -62,7 +76,7 @@
         {
           "value": "sonnet",
           "label": "deepseek-flash",
-          "description": "Custom Sonnet model (1M context)",
+          "description": "Custom Sonnet model",
           "reasoningMetadataResolved": true,
           "supportedEffortLevels": [
             "low",
@@ -85,7 +99,11 @@
             "max"
           ]
         }
-      ]
+      ],
+      "installationMethodsByHost": {
+        "device-b06c993f4a40a1f660b595ee461c17854c9926bfa67c028ba799b6d090355d56": "native-windows"
+      },
+      "wslDistroOverridesByHost": {}
     },
     "codex": {
       "enabled": false,
@@ -116,9 +134,18 @@
       "visibleModels": [],
       "modelAliases": {},
       "preferredReasoningByModel": {},
-      "selectedModels": []
+      "selectedModels": [],
+      "installationMethodsByHost": {
+        "device-b06c993f4a40a1f660b595ee461c17854c9926bfa67c028ba799b6d090355d56": "native-windows"
+      },
+      "wslDistroOverridesByHost": {}
     },
     "grok": {
+      "installationMethodsByHost": {
+        "device-b06c993f4a40a1f660b595ee461c17854c9926bfa67c028ba799b6d090355d56": "native-windows"
+      },
+      "wslDistroOverridesByHost": {},
+      "sessionEnvironmentHash": "",
       "cliPath": "",
       "cliPathsByHost": {},
       "enabled": false,
@@ -139,9 +166,17 @@
       "preferredThinkingByModel": {},
       "thinkingOptionsByModel": {},
       "visibleModels": [],
-      "selectedModels": []
+      "selectedModels": [],
+      "installationMethodsByHost": {
+        "device-b06c993f4a40a1f660b595ee461c17854c9926bfa67c028ba799b6d090355d56": "native-windows"
+      },
+      "wslDistroOverridesByHost": {}
     },
     "pi": {
+      "installationMethodsByHost": {
+        "device-b06c993f4a40a1f660b595ee461c17854c9926bfa67c028ba799b6d090355d56": "native-windows"
+      },
+      "wslDistroOverridesByHost": {},
       "cliPath": "",
       "cliPathsByHost": {},
       "enabled": false,
@@ -155,17 +190,20 @@
     }
   },
   "settingsProvider": "claude",
-  "lastSelectedChatModel": null,
+  "lastSelectedChatModel": {
+    "providerId": "claude",
+    "model": "haiku"
+  },
   "inlineEditModel": null,
   "savedProviderModel": {
     "claude": "haiku"
   },
   "savedProviderEffort": {
-    "claude": "high"
+    "claude": "medium"
   },
   "savedProviderServiceTier": {},
   "savedProviderPermissionMode": {
-    "claude": "auto"
+    "claude": "acceptEdits"
   },
   "pendingProviderSessionInvalidations": {},
   "enableAutoScroll": true,

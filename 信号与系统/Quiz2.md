@@ -1741,13 +1741,16 @@ $$
 
 ## 42. Question 42（第 42 题）｜PDF p. 13 ^q42
 
-The width-$\tau$ triangle $1-|t|/\tau$ $(|t|<\tau)$ has transform $\tau\operatorname{sinc}^2\!\left(\dfrac{\omega\tau}{2\pi}\right)$.（宽为 $\tau$ 的三角形 $1-|t|/\tau$（$|t|<\tau$）的变换为 $\tau\operatorname{sinc}^2\!\left(\dfrac{\omega\tau}{2\pi}\right)$。）
-
-Applying the duality property to this pair, what kind of function of $\omega$ is the Fourier transform of a time-domain signal shaped like $\operatorname{sinc}^2(t/\tau)$?（对这一对应用对偶性质，形如 $\operatorname{sinc}^2(t/\tau)$ 的时域信号，其傅里叶变换在频域是什么形状？）
+The width-$\tau$ triangle（宽为 $\tau$ 的三角形）has the Fourier transform pair（其傅里叶变换对为）：
 
 $$
-\left(1-\frac{|t|}{\tau}\right)_{|t|<\tau}\ \longleftrightarrow\ \tau\operatorname{sinc}^2\!\left(\frac{\omega\tau}{2\pi}\right)
+u(t)=\left(1-\frac{|t|}{\tau}\right)_{\!|t|<\tau}
+\quad\longleftrightarrow\quad
+U(j\omega)=\tau\operatorname{sinc}^2\!\left(\frac{\omega\tau}{2\pi}\right)
 $$
+
+Applying the duality property to this pair, what kind of function of $\omega$ is the Fourier transform of a time-domain signal shaped like $\operatorname{sinc}^2(t/\tau)$?
+（对这一对变换应用对偶性质，形如 $\operatorname{sinc}^2(t/\tau)$ 的时域信号，其傅里叶变换在频域是什么形状？）
 
 (a) A rectangular pulse in $\omega$（频域中的矩形脉冲）
 (b) A triangular function of $\omega$ **✓**（频域中的三角函数）
@@ -1760,9 +1763,12 @@ $$
 > [!abstract] 知识点讲解
 > 见 3.5 对偶性质 与 3.4 常用变换对。
 >
-> - **三角形变换对**：$\left(1-\dfrac{|t|}{\tau}\right)_{\lvert t\rvert<\tau}\leftrightarrow\tau\operatorname{sinc}^2\left(\dfrac{\omega\tau}{2\pi}\right)$。
+> - **三角形函数记号**：$\Lambda(x)$ 是三角（帐篷）脉冲，
+>   $$\Lambda(x)=\begin{cases}1-|x|,&|x|<1,\\0,&|x|\ge1,\end{cases}$$
+>   于是 $\Lambda\!\left(\dfrac{t}{\tau}\right)=1-\dfrac{|t|}{\tau}$（$|t|<\tau$），正是本题的三角形。
+> - **三角形变换对**：$\Lambda\!\left(\dfrac{t}{\tau}\right)\leftrightarrow\tau\operatorname{sinc}^2\left(\dfrac{\omega\tau}{2\pi}\right)$。
 > - **对偶性质**：$U(jt)\leftrightarrow2\pi u(-\omega)$。
-> - **对偶后右端**：$2\pi\Lambda(-\omega/\tau)=2\pi\Lambda(\omega/\tau)$（$\Lambda$ 为偶函数），频域仍为三角形。
+> - **对偶后右端**：$2\pi\Lambda(-\omega/\tau)=2\pi\Lambda(\omega/\tau)$（$\Lambda$ 为偶函数，$\Lambda(-x)=\Lambda(x)$），频谱仍是三角形。
 
 > [!example] 解答
 > 已知：

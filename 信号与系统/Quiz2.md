@@ -1741,7 +1741,9 @@ $$
 
 ## 42. Question 42（第 42 题）｜PDF p. 13 ^q42
 
-The width-$\tau$ triangle $1-|t|/\tau$ $(|t|<\tau)$ has transform $\tau\operatorname{sinc}^2\!\left(\dfrac{\omega\tau}{2\pi}\right)$.（宽为 $\tau$ 的三角形 $1-|t|/\tau$（$|t|<\tau$）的变换为 $\tau\operatorname{sinc}^2\!\left(\dfrac{\omega\tau}{2\pi}\right)$。）Applying the duality property to this pair, what kind of function of $\omega$ is the Fourier transform of a time-domain signal shaped like $\operatorname{sinc}^2(t/\tau)$?（对这一对应用对偶性质，形如 $\operatorname{sinc}^2(t/\tau)$ 的时域信号，其傅里叶变换在频域是什么形状？）
+The width-$\tau$ triangle $1-|t|/\tau$ $(|t|<\tau)$ has transform $\tau\operatorname{sinc}^2\!\left(\dfrac{\omega\tau}{2\pi}\right)$.（宽为 $\tau$ 的三角形 $1-|t|/\tau$（$|t|<\tau$）的变换为 $\tau\operatorname{sinc}^2\!\left(\dfrac{\omega\tau}{2\pi}\right)$。）
+
+Applying the duality property to this pair, what kind of function of $\omega$ is the Fourier transform of a time-domain signal shaped like $\operatorname{sinc}^2(t/\tau)$?（对这一对应用对偶性质，形如 $\operatorname{sinc}^2(t/\tau)$ 的时域信号，其傅里叶变换在频域是什么形状？）
 
 $$
 \left(1-\frac{|t|}{\tau}\right)_{|t|<\tau}\ \longleftrightarrow\ \tau\operatorname{sinc}^2\!\left(\frac{\omega\tau}{2\pi}\right)

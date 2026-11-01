@@ -1403,7 +1403,7 @@ $$
 
 ## 33. Question 33（第 33 题）｜PDF p. 10 ^q33
 
-$u(t)=p_{0.5}(t)$ (a pulse of width $0.5$) （$u(t)=p_{0.5}(t)$，宽为 $0.5$ 的脉冲）
+$u(t)=p_{0.5}(t)$ (a pulse of width $0.5$) （$u(t)=p_{0.5}(t)$，宽为 $0.5$ 的脉冲） pdf中题目不全没法做
 
 $$
 u(t)=p_{0.5}(t)
@@ -1436,7 +1436,9 @@ $$
 
 ## 34. Question 34（第 34 题）｜PDF p. 11 ^q34
 
-$u(t)=p_4(t)$.（已知矩形脉冲 $u(t)=p_4(t)$。）Evaluate $U(j\pi/4)$.（求 $\omega=\pi/4$ 处的 $U(j\omega)$。）
+$u(t)=p_4(t)$.（已知矩形脉冲 $u(t)=p_4(t)$。）
+
+Evaluate $U(j\pi/4)$.（求 $\omega=\pi/4$ 处的 $U(j\omega)$。）
 
 
 $$
@@ -1553,7 +1555,9 @@ $$
 
 ## 37. Question 37（第 37 题）｜PDF p. 12 ^q37
 
-$u(t)=e^{-a|t|}$ has Fourier transform $U(j\omega)=\dfrac{2a}{a^2+\omega^2}$.（$u(t)=e^{-a|t|}$ 的傅里叶变换为 $U(j\omega)=\dfrac{2a}{a^2+\omega^2}$。）For $a=5000\ \mathrm{s^{-1}}$, find $|U(j\omega)|$ at $\omega=a=5000\ \mathrm{rad/s}$.（取 $a=5000\ \mathrm{s^{-1}}$，求 $\omega=a=5000\ \mathrm{rad/s}$ 处的 $|U(j\omega)|$。）
+$u(t)=e^{-a|t|}$ has Fourier transform $U(j\omega)=\dfrac{2a}{a^2+\omega^2}$.（$u(t)=e^{-a|t|}$ 的傅里叶变换为 $U(j\omega)=\dfrac{2a}{a^2+\omega^2}$。）
+
+For $a=5000\ \mathrm{s^{-1}}$, find $|U(j\omega)|$ at $\omega=a=5000\ \mathrm{rad/s}$.（取 $a=5000\ \mathrm{s^{-1}}$，求 $\omega=a=5000\ \mathrm{rad/s}$ 处的 $|U(j\omega)|$。）
 
 
 $$
@@ -1584,7 +1588,9 @@ $$
 
 ## 38. Question 38（第 38 题）｜PDF p. 12 ^q38
 
-A system has $G(j\omega)=\dfrac{1}{3+j\omega}$.（某系统的频率响应为 $G(j\omega)=\dfrac{1}{3+j\omega}$。）Find the phase of $G(j4)$ in degrees.（求 $G(j4)$ 的相位，单位为度。）
+A system has $G(j\omega)=\dfrac{1}{3+j\omega}$.（某系统的频率响应为 $G(j\omega)=\dfrac{1}{3+j\omega}$。）
+
+Find the phase of $G(j4)$ in degrees.（求 $G(j4)$ 的相位，单位为度。）
 
 
 $$
@@ -1617,7 +1623,9 @@ $$
 
 ## 39. Question 39（第 39 题）｜PDF p. 12 ^q39
 
-$u(t)=p_2(t)$. Compare $U(j\omega)$ with the transform of the delayed pulse $u(t-5)$.（$u(t)=p_2(t)$。比较其频谱 $U(j\omega)$ 与延迟脉冲 $u(t-5)$ 的频谱。）Which statement is correct?（哪一项正确？）
+$u(t)=p_2(t)$. Compare $U(j\omega)$ with the transform of the delayed pulse $u(t-5)$.（$u(t)=p_2(t)$。比较其频谱 $U(j\omega)$ 与延迟脉冲 $u(t-5)$ 的频谱。）
+
+Which statement is correct?（哪一项正确？）
 
 $$
 u(t)=p_2(t),\qquad y(t)=u(t-5)
@@ -1656,7 +1664,9 @@ $$
 
 ## 40. Question 40（第 40 题）｜PDF p. 12 ^q40
 
-$u(t)$ has spectrum $U(j\omega)$. The signal is compressed in time by a factor of $3$, giving $u(3t)$.（$u(t)$ 的频谱为 $U(j\omega)$。把信号在时间上压缩为原来的三分之一，得到 $u(3t)$。）How do the width and the peak height of the spectrum change?（频谱的宽度与峰值高度如何变化？）
+$u(t)$ has spectrum $U(j\omega)$. The signal is compressed in time by a factor of $3$, giving $u(3t)$.（$u(t)$ 的频谱为 $U(j\omega)$。把信号在时间上压缩为原来的三分之一，得到 $u(3t)$。）
+
+How do the width and the peak height of the spectrum change?（频谱的宽度与峰值高度如何变化？）
 
 $$
 y(t)=u(3t)
@@ -1674,7 +1684,7 @@ $$
 > 见 3.5 尺度性质。
 >
 > - **尺度性质**：$u(at)\leftrightarrow\dfrac1{|a|}U\left(j\dfrac{\omega}{a}\right)$，本题 $a=3$。
-> - **读法**：$\omega\to\dfrac{\omega}{3}$ 使频谱展宽 $3$ 倍；系数 $\dfrac13$ 使峰值降为原来的三分之一。
+
 
 > [!example] 解答
 > 取 $a=3$：
@@ -1683,7 +1693,9 @@ $$
 > 识别展宽：自变量变为 $\omega/3$，原来的频率点 $\omega_0$ 移到 $3\omega_0$，频谱展宽 $3$ 倍。
 >
 > 识别高度：系数 $\frac13$ 作用在全部取值上，峰值降为原来的 $\frac13$。
->
+> 
+>$\omega\to\dfrac{\omega}{3}$ 使频谱展宽 $3$ 倍；系数 $\dfrac13$ 使峰值降为原来的三分之一。
+> 
 > 选 (c)。
 
 ---

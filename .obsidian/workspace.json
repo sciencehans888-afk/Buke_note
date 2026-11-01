@@ -34,6 +34,20 @@
               "icon": "lucide-file",
               "title": "Quiz2"
             }
+          },
+          {
+            "id": "0e26cda92b0abab8",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "信号与系统/Quiz3.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Quiz3"
+            }
           }
         ],
         "currentTab": 1
@@ -175,6 +189,7 @@
             "state": {
               "type": "outline",
               "state": {
+                "file": "信号与系统/Quiz2.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
@@ -194,9 +209,7 @@
                   "openTabs": [
                     {
                       "tabId": "tab-1793463920929-mu11kdi",
-                      "conversationId": null,
-                      "draftModel": "opus",
-                      "providerId": "claude"
+                      "conversationId": "conv-1793533247665-jru9roprf"
                     }
                   ],
                   "activeTabId": "tab-1793463920929-mu11kdi"
@@ -228,6 +241,14 @@
   },
   "active": "3043f3754dc34359",
   "lastOpenFiles": [
+    "信号与系统/Quiz3.md",
+    "信号与系统/Quiz2.md",
+    "信号与系统/教材/formula-sheet-quiz3.pdf",
+    "信号与系统/教材/formula-sheet-quiz2.pdf",
+    "信号与系统/教材/quiz3-practice-feedback.pdf",
+    "信号与系统/教材/quiz2-practice-feedback.pdf",
+    "信号与系统/教材",
+    "信号与系统/新建文件夹",
     "信号与系统/Quiz对应知识点.md",
     "Pasted image 20261031132109.png",
     "Quiz2.md",
@@ -235,9 +256,6 @@
     "信号与系统/附件",
     "信号与系统/quiz3-practice-feedback.pdf",
     "信号与系统/quiz2-practice-feedback.pdf",
-    "信号与系统/Quiz3.md",
-    "信号与系统/Quiz2.md",
-    "信号与系统/formula-sheet-quiz2.pdf",
-    "信号与系统"
+    "信号与系统/formula-sheet-quiz2.pdf"
   ]
 }

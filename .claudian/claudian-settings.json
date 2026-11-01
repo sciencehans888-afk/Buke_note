@@ -2,7 +2,7 @@
   "userName": "",
   "permissionMode": "auto",
   "model": "haiku",
-  "effortLevel": "low",
+  "effortLevel": "high",
   "serviceTier": "default",
   "enableAutoTitleGeneration": true,
   "titleGenerationLocale": "",
@@ -34,12 +34,12 @@
       "cliPath": "",
       "cliPathsByHost": {},
       "loadUserSettings": true,
-      "enableChrome": true,
+      "enableChrome": false,
       "visibleModels": [
         "opus",
-        "fable",
         "sonnet",
-        "haiku"
+        "haiku",
+        "mimo-v2.5-pro"
       ],
       "modelAliases": {},
       "environmentVariables": "",
@@ -48,21 +48,8 @@
       "selectedModels": [
         {
           "value": "opus",
-          "label": "deepseek-v4-flash",
-          "description": "Custom Opus model",
-          "reasoningMetadataResolved": true,
-          "supportedEffortLevels": [
-            "low",
-            "medium",
-            "high",
-            "xhigh",
-            "max"
-          ]
-        },
-        {
-          "value": "fable",
-          "label": "deepseek-v4-pro",
-          "description": "Custom Fable model",
+          "label": "deepseek-flash",
+          "description": "Custom Opus model (1M context)",
           "reasoningMetadataResolved": true,
           "supportedEffortLevels": [
             "low",
@@ -74,8 +61,8 @@
         },
         {
           "value": "sonnet",
-          "label": "deepseek-v4-flash",
-          "description": "Custom Sonnet model",
+          "label": "deepseek-flash",
+          "description": "Custom Sonnet model (1M context)",
           "reasoningMetadataResolved": true,
           "supportedEffortLevels": [
             "low",
@@ -87,7 +74,7 @@
         },
         {
           "value": "haiku",
-          "label": "deepseek-v4-flash",
+          "label": "deepseek-flash",
           "description": "Custom Haiku model",
           "reasoningMetadataResolved": true,
           "supportedEffortLevels": [
@@ -168,16 +155,13 @@
     }
   },
   "settingsProvider": "claude",
-  "lastSelectedChatModel": {
-    "providerId": "claude",
-    "model": "sonnet"
-  },
+  "lastSelectedChatModel": null,
   "inlineEditModel": null,
   "savedProviderModel": {
     "claude": "haiku"
   },
   "savedProviderEffort": {
-    "claude": "low"
+    "claude": "high"
   },
   "savedProviderServiceTier": {},
   "savedProviderPermissionMode": {

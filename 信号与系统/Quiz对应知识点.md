@@ -575,16 +575,30 @@ $$u(t)=\frac{a_0}{2}+\sum_{k=1}^{\infty}\left(a_k\cos k\omega_0t+b_k\sin k\omega
 
 #### 频谱的定义
 
-频谱用来描述一个信号由哪些频率成分组成，以及每个成分的幅度和相位。它通常画成两张图：
+频谱用来描述信号的频域结构。对周期信号，频域结构是一组离散的谐波；对非周期信号，频域结构是一条连续的频率函数。它通常画成两张图：
 
-- **幅度谱**：横轴为频率 $\omega$，纵轴为该频率成分的幅度。
-- **相位谱**：横轴为频率 $\omega$，纵轴为该频率成分的相位。
+- **幅度谱（幅频特性）**：横坐标为角频率 $\omega$（单位 rad/s）；纵坐标为谱线或曲线的幅度——周期信号取 $|c_k|$ 或归一化谱线高度 $|Tc_k|$，非周期信号取 $|U(j\omega)|$。
+- **相位谱（相频特性）**：横坐标为角频率 $\omega$（单位 rad/s）；纵坐标为相角——周期信号取 $\angle c_k$，非周期信号取 $\arg U(j\omega)$，单位用 rad 或度。
 
-对周期为 $T$ 的信号，频率成分只出现在基频的整数倍处：
+**「频谱」和「谱线」分别指什么**：
+
+- **频谱**是总称，指信号在频域的完整表示，可以是一条连续曲线（非周期信号），也可以是一组离散竖线（周期信号）。
+- **谱线**（spectral line，又称**线谱分量**）专指周期信号频谱里的每一根离散竖线：第 $k$ 次谐波的位置在 $\omega=k\omega_0$，高度是 $|c_k|$（幅度谱）或 $\angle c_k$（相位谱）。谱线在频率轴上没有宽度，所以画成竖线而不画成曲线。
+
+对周期信号，谱线只出现在第 $k$ 次谐波 $\omega=k\omega_0$ 处：
 
 $$\omega=k\omega_0,\qquad \omega_0=\frac{2\pi}{T},\quad k=0,\pm1,\pm2,\dots$$
 
-因此频谱是一组离散的竖线，称为**线谱**，每根竖线对应一个谐波。复指数形式下，第 $k$ 根谱线的位置是 $k\omega_0$，高度是 $|c_k|$，相位是 $\angle c_k$。
+因此频谱是一组离散的竖线，称为**线谱（line spectrum）**。复指数形式下，第 $k$ 根谱线的位置是 $k\omega_0$，高度是 $|c_k|$，相位是 $\angle c_k$；第 $k$ 次谐波也可用三角形式的余弦表示，其振幅为 $A_k=2|c_k|$。
+
+**两种画法的对比**：
+
+| 信号 | 横坐标 | 纵坐标 | 图形 |
+|---|---|---|---|
+| 周期信号 $u_T(t)$ | 角频率 $\omega$（rad/s） | 谱线高度 $\lvert Tc_k\rvert$ 或 $\lvert c_k\rvert$ | 只在 $k\omega_0$ 处的离散谱线（线谱） |
+| 非周期信号 $u(t)$ | 角频率 $\omega$（rad/s） | $\lvert U(j\omega)\rvert$（幅度谱）或 $\arg U(j\omega)$（相位谱） | 连续谱曲线 |
+
+周期信号之所以有谱线，是因为 $U(j\omega)=2\pi\sum_kc_k\delta(\omega-k\omega_0)$：冲激在频域画出来就是一根竖线；非周期信号的 $U(j\omega)$ 处处有值，所以是连续曲线。
 
 #### 画频谱的步骤
 
@@ -1432,6 +1446,39 @@ $$U(j\omega)=2\pi\sum_{k=-\infty}^{\infty}c_k\delta(\omega-k\omega_0).$$
 $$2\pi c_k=\omega_0\,Tc_k,\qquad \omega_0=\frac{2\pi}{T}.$$
 
 冲激权重除以谱线间隔 $\omega_0$，等于归一化谱线高度 $Tc_k$。做题时要先看清题目画的是哪一种谱。
+
+#### 频谱和谱线到底画什么
+
+**画的坐标系**：横坐标是角频率 $\omega$（rad/s）；纵坐标在幅度谱中是谱线/曲线的幅度（周期信号为 $\lvert Tc_k\rvert$ 或 $\lvert c_k\rvert$，非周期信号为 $\lvert U(j\omega)\rvert$），在相位谱中是相角（$\angle c_k$ 或 $\arg U(j\omega)$）。
+
+**周期信号画的是「谱线」**：
+
+- 谱线（spectral line，也称线谱分量）只出现在第 $k$ 次谐波的位置 $\omega=k\omega_0$ 处，$k=0,\pm1,\pm2,\dots$；
+- 每根谱线是一条从横轴竖起的线段（频率轴上没有宽度，所以不画成曲线），位置为 $k\omega_0$，高度为 $|c_k|$（双边幅度谱）；
+- 相邻谱线的间隔就是 $\omega_0=\dfrac{2\pi}{T}$。
+
+**非周期信号画的是「连续谱」**：$U(j\omega)$ 对所有 $\omega$ 都有值，画成连续谱曲线而不是离散谱线。
+
+**题目画 $Tc_k$ 而不是 $c_k$ 的原因**：核心目的是让**谱线高度与周期 $T$ 无关**，这样不同周期的周期信号才能放在同一纵轴尺度上比较。
+
+- 若画 $|c_k|$：同一个脉冲以不同周期重复时，$c_k=Ad\operatorname{sinc}(kd)$ 中含 $d=1/T$，周期越大，谱线越矮，几幅图的高低尺度都不同，无法直接比较；
+- 若画 $|Tc_k|$：
+$$Tc_k=T\cdot Ad\operatorname{sinc}(kd)=AT\frac1T\operatorname{sinc}\left(\frac kT\right)=A\operatorname{sinc}\left(\frac kT\right),$$
+这里 $T$ 与 $d=1/T$ 恰好抵消，结果**只与 $\dfrac kT=\dfrac{\omega_k}{2\pi}$ 有关，与 $T$ 无关**。同一脉冲串无论周期取 $2.5$、$5$ 还是 $10$，谱线顶端都落在同一条曲线上，四幅图的唯一差别就只剩「谱线间隔 $\omega_0=2\pi/T$」——这正是题目要比较的特征。
+
+更一般的写法：
+$$Tc_k=\frac{T}{T}\int_0^Tu(t)e^{-jk\omega_0t}dt=\int_0^Tu(t)e^{-jk\omega_0t}dt,$$
+当 $T\to\infty$（周期趋于无穷，脉冲串退化为单脉冲）时，这个积分正好趋于单脉冲的连续频谱 $U(j\omega)$。所以 $Tc_k$ 是「与连续频谱同一条包络上的离散采样点」，既可以跨周期比较，又可以和灰色包络比较。本题 $A=1$、$\tau=1$、$d=1/T$：
+
+$$Tc_k=T\cdot\frac1T\operatorname{sinc}\left(\frac kT\right)=\operatorname{sinc}\left(\frac kT\right),\qquad \frac{\omega_k}{2\pi}=\frac{k\omega_0}{2\pi}=\frac kT,$$
+
+所以 $Tc_k=\operatorname{sinc}\!\left(\dfrac{\omega_k}{2\pi}\right)$，所有谱线的顶端都落在同一条灰色曲线 $\operatorname{sinc}\!\left(\dfrac{\omega}{2\pi}\right)$ 上。
+
+**单脉冲 $p_1(t)$**：没有周期，它的频谱就是连续曲线
+
+$$p_1(t)\longleftrightarrow\operatorname{sinc}\!\left(\frac{\omega}{2\pi}\right),$$
+
+也就是图中那条灰色曲线本身，只有曲线、没有竖线。$T\to\infty$ 时谱线间隔 $\omega_0\to0$，离散谱线便连续成这条曲线。
 
 $2\pi$ 因子的来源是逆变换前的 $1/(2\pi)$。把 $U(j\omega)$ 代回逆变换：
 

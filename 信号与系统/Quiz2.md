@@ -1489,12 +1489,18 @@ $$
 > (i) C　(ii) A　(iii) D　(iv) B
 
 > [!abstract] 知识点讲解
-> 见 2.4 频谱与谱线 与 2.9 典型周期波形的傅里叶系数。
+> 见 2.4 频谱与谱线 与 2.9 典型周期波形的傅里叶系数（2.11 节末尾有「频谱和谱线到底画什么」）。
 >
-> - **周期信号的 FT**：$U(j\omega)=2\pi\displaystyle\sum_kc_k\delta(\omega-k\omega_0)$，谱线间隔 $\omega_0=\dfrac{2\pi}{T}$。
+> - **频谱的坐标系**：横坐标是角频率 $\omega$（单位 rad/s）；纵坐标在幅度谱中是谱线（或曲线）的幅度，即 $|c_k|$ 或 $\left|U(j\omega)\right|$，在相位谱中是相角 $\angle c_k$ 或 $\arg U(j\omega)$（单位 rad 或 $^\circ$）。题中画的 $Tc_k$ 谱线，纵坐标就是该归一化傅里叶系数的模 $\lvert Tc_k\rvert$。
+> - **周期信号画谱线**：谱线（spectral line，也称线谱分量）只出现在第 $k$ 次谐波 $\omega=k\omega_0$ 处，每根是从横轴竖起的线段，高度为该次谐波的复傅里叶系数之模，相邻谱线间隔 $\omega_0=\dfrac{2\pi}{T}$。
+> - **非周期信号画连续曲线**：$U(j\omega)$ 对所有 $\omega$ 有值，画成连续谱（continuous spectrum），没有离散谱线。
 > - **脉冲串系数**：$c_k=Ad\operatorname{sinc}(kd)$，本题 $A=1$、$\tau=1$、$d=\dfrac1T$。
-> - **画图用的谱线高度**：$Tc_k=\operatorname{sinc}(kd)=\operatorname{sinc}\left(\dfrac{\omega_k}{2\pi}\right)$，所有谱线落在同一包络上。
-> - **单脉冲**：$p_1(t)\leftrightarrow\operatorname{sinc}\left(\dfrac{\omega}{2\pi}\right)$，连续频谱、无谱线。
+> - **为什么画 $Tc_k$ 而不是 $c_k$**：同一个脉冲以不同周期重复时，$c_k=Ad\operatorname{sinc}(kd)$ 随 $T$ 变化（$d=1/T$），谱线高度不同，四幅图无法直接比较。乘 $T$ 后
+>   $$Tc_k=T\cdot\frac1T\operatorname{sinc}\left(\frac kT\right)=\operatorname{sinc}\left(\frac kT\right),$$
+>   只与 $\dfrac kT=\dfrac{\omega_k}{2\pi}$ 有关，**与周期 $T$ 无关**：同一个脉冲串无论周期取多少，谱线的包络高度都相同，四幅图才能真正比较「谱线密度」这一个差别。
+> - **为什么能落在灰色曲线上**：灰色曲线是单脉冲 $p_1(t)$ 的连续频谱 $\operatorname{sinc}\left(\dfrac{\omega}{2\pi}\right)$。由于 $Tc_k=\operatorname{sinc}\left(\dfrac{\omega_k}{2\pi}\right)$，每条谱线的顶端正好是这条连续谱在 $\omega_k$ 处的取值，所以所有谱线顶端都落在灰色包络上；$T\to\infty$ 时谱线间隔趋于 0，离散谱线就连续成这条曲线。
+> - **单脉冲**：$p_1(t)\leftrightarrow\operatorname{sinc}\left(\dfrac{\omega}{2\pi}\right)$，就是那条灰色曲线本身，只有曲线、没有竖线。
+
 
 > [!example] 解答
 > 分别求三个周期的谱线间隔：

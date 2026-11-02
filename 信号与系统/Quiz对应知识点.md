@@ -3745,21 +3745,12 @@ $$y(t)=\cos\left(\omega_ct+ku(t)\right).$$
 - 效果：消息直接改变波形的「位置」；频率是相位的导数，因此随 $\dot u(t)$ 变化。
 - 例：$u(t)=H(t)$ 时，$t=0$ 处相位突然多出 $k$（波形错位），之后 $\dot u=0$，频率回到 $\omega_c$。
 
-**（4）FM 与 PM 的联系与区别：为什么一个积分、一个不积分**
-
-两者确实同属角度调制，形式都是 $y(t)=\cos\left(\omega_ct+\varphi(t)\right)$，区别只在于规定哪个量与消息成正比：
-
-- PM 规定「相位偏离」正比于消息：$\varphi(t)=k\,u(t)$，于是 $\omega_i=\omega_c+k\dot u(t)$；消息直接进相位，不积分。
-- FM 规定「频率偏离」正比于消息：$\omega_i(t)-\omega_c=k\,u(t)$；但 $\omega_i-\omega_c=\dot\varphi$，要反推相位就必须先积分，$\varphi(t)=k\int u$。
-
-由此可以互相转换：FM 用 $u$ 等价于 PM 用 $\int u$（差常数 $k$）；PM 用 $u$ 等价于 FM 用 $\dot u$。电路上，PM 调制器前加积分器得 FM，FM 调制器前加微分器得 PM。
 
 | 调制方式 | 时域公式 | 消息控制谁 | 瞬时角频率 | 直观效果 |
 |---|---|---|---|---|
 | AM | $[A_0+u(t)]\cos\omega_ct$ | 振幅（余弦外的倍数） | $\omega_c$（不变） | 高矮随消息变 |
 | FM（调频） | $\cos\left(\omega_ct+k\int_{-\infty}^{t}u(\tau)d\tau\right)$ | 频率（余弦内相位的导数） | $\omega_c+ku(t)$ | 疏密随消息变 |
 | PM（调相） | $\cos\left(\omega_ct+ku(t)\right)$ | 相位（余弦内的加项） | $\omega_c+k\dot u(t)$ | 位置随消息变 |
-
 
 ### 9.2 相干解调
 
@@ -3776,7 +3767,9 @@ $$\frac12u(t).$$
 
 ### 9.3 标准 AM（DSB-LC，大载波双边带调幅）
 
-**名称说明**：这种调幅的正式名称是 DSB-LC（Double-SideBand with Large Carrier，大载波双边带调幅），也叫标准 AM（standard AM）；中文教材常称「普通调幅」或只叫「调幅」。9.1 节中的 DSB-SC（抑制载波双边带调幅）是它的特例（把载波幅度 $A_0$ 取为 $0$）。两者都属于调幅 AM。
+**名称说明**：这种调幅的正式名称是 DSB-LC（Double-SideBand with Large Carrier，大载波双边带调幅），也叫标准 AM（standard AM）；中文教材常称「普通调幅」或只叫「调幅」。
+
+9.1 节中的 DSB-SC（抑制载波双边带调幅）是它的特例（把载波幅度 $A_0$ 取为 $0$）。两者都属于调幅 AM。
 
 **信号表达式**：标准 AM 信号为
 
@@ -3785,7 +3778,42 @@ $$y(t)=\left[A_0+u(t)\right]\cos\omega_ct,\qquad A_0>0\ \text{为未调载波幅
 - $A_0\cos\omega_ct$：未调载波，即「载波分量」；
 - $u(t)\cos\omega_ct$：消息与载波的乘积，即双边带部分（与 DSB-SC 完全相同）。
 
-**与 DSB-SC 的区别**：DSB-SC 的频谱只有 $\pm\omega_c$ 两侧的边带，载波被抑制；标准 AM 的频谱在 $\pm\omega_c$ 处多出两根载波冲激（权重由 $A_0$ 决定）。代价是载波不携带信息，发射功率中有一部分白白用于载波；好处是接收端可以直接用包络检波（二极管检波），不需要本地载波，电路简单、成本低，所以 AM 广播都用它。
+**求它的傅里叶变换。** 由线性性，两项分别变换后相加。载波项用频移性质（或直接查表 $\cos\omega_ct\leftrightarrow\pi\left[\delta(\omega-\omega_c)+\delta(\omega+\omega_c)\right]$）：
+
+$$
+\mathcal F\{A_0\cos\omega_ct\}
+=A_0\pi\left[\delta(\omega-\omega_c)+\delta(\omega+\omega_c)\right].
+$$
+
+消息项乘载波，用相乘/调制性质：
+
+$$
+\mathcal F\{u(t)\cos\omega_ct\}
+=\frac12\left[U(j(\omega-\omega_c))+U(j(\omega+\omega_c))\right].
+$$
+
+合并，得标准 AM 的频谱：
+
+$$
+Y(j\omega)
+=\underbrace{A_0\pi\left[\delta(\omega-\omega_c)+\delta(\omega+\omega_c)\right]}_{\text{载波冲激（两处）}}
++\underbrace{\frac12\left[U(j(\omega-\omega_c))+U(j(\omega+\omega_c))\right]}_{\text{边带（DSB）}}.
+$$
+
+**与 $A_0=0$（DSB-SC）对比：**
+
+$$
+Y_{\text{DSB-SC}}(j\omega)
+=\frac12\left[U(j(\omega-\omega_c))+U(j(\omega+\omega_c))\right].
+$$
+
+也就是说，标准 AM 的频谱就是 DSB-SC 的频谱再加上两根载波冲激。
+
+正是这两根载波冲激（权重 $A_0\pi$）在时域提供了一个不随消息过零的「载波基准」，使包络 $A_0+u(t)$ 始终非负，从而可以直接用包络检波；代价是牺牲一部分发射功率。
+
+$A_0$ 越大，载波冲激越强、包络检波越不容易失真，但功率利用率越低；
+
+$A_0=0$ 时退化为 DSB-SC，没有载波冲激，包络检波完全失效，必须改用相干解调。
 
 **过调制条件**：包络为 $A_0+u(t)$，要能从包络中恢复 $u(t)$，必须保证包络始终不为负，否则包络会「折叠」，检波后失真：
 

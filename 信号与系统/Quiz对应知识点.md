@@ -1,6 +1,6 @@
 # 信号与系统知识点笔记
 
-> 配套练习：[[Quiz2]]、[[Quiz3]]。本笔记按课程内容的逻辑顺序整理：先讨论周期信号与基波频率，再建立傅里叶级数、傅里叶变换和频率响应，最后讨论二阶系统、稳定性、拉普拉斯变换、滤波器和调制。Quiz2、Quiz3 中每道题的「知识点讲解」会注明对应的小节编号和名称，可按编号在本笔记中查找。第 12 节专门补充 Quiz 3 涉及、但前面各节没有展开的内容：s 域电路阻抗、斜坡稳态误差、互补滤波器、全通与延迟线、分频器、Bode 斜率读法和增益指标反求。
+> 配套练习：[[Quiz2]]、[[Quiz3]]。本笔记按课程内容的逻辑顺序整理：先讨论周期信号与基波频率，再建立傅里叶级数、傅里叶变换和频率响应，最后讨论二阶系统、稳定性、拉普拉斯变换、滤波器和调制。Quiz2、Quiz3 中每道题的「知识点讲解」会注明对应的小节编号和名称，可按编号在本笔记中查找。
 
 ## 符号约定
 
@@ -1615,19 +1615,63 @@ $$2|c_1|^2=2\left(\frac2\pi\right)^2=\frac8{\pi^2}\approx0.8106.$$
 
 ### 3.1 从傅里叶级数到傅里叶变换
 
-周期信号的谱线间隔为
+**周期信号的谱线：位置、高度和间隔。**
 
-$$\omega_0=\frac{2\pi}{T}.$$
+**谱线的位置。** 周期信号的傅里叶级数用基函数 $e^{jk\omega_0t}$ 展开。要让这组基函数真正以 $T$ 为周期，必须满足
 
-周期越大，谱线越密。把周期趋于无穷大，信号在一个周期内不再重复，变成非周期信号；谱线间隔趋于零，离散谱线连成连续频谱。傅里叶变换可以看作傅里叶级数在 $T\to\infty$ 时的极限。
+$$e^{jk\omega_0(t+T)}=e^{jk\omega_0t}
+\quad\Longleftrightarrow\quad
+e^{jk\omega_0T}=1.$$
+
+而 $e^{j\theta}=1$ 当且仅当 $\theta=2\pi m$（$m$ 为整数），所以
+
+$$k\omega_0T=2\pi m.$$
+
+取 $k=1$（基波）、$m=1$，就得到
+
+$$\omega_0=\frac{2\pi}{T},\qquad f_0=\frac1T.$$
+
+各次谐波的频率为 $k\omega_0$，所以谱线出现在 $\omega=k\omega_0$ 处（$k=0,\pm1,\pm2,\dots$）。周期信号只有这些离散的谱线，没有别的频率成分。
+
+**谱线的高度。** 第 $k$ 根谱线的高度由傅里叶系数给出：
+
+$$c_k=\frac1T\int_0^Tu(t)e^{-jk\omega_0t}dt.$$
+
+注意这里是一个周期上的积分再除以 $T$，不是对无穷长时间积分。双边谱线画的是 $|c_k|$，三角形式的余弦幅度为 $A_k=2|c_k|$（$k\ge1$），直流分量为 $c_0$。
+
+**谱线的间隔。** 第 $k$ 根谱线在 $k\omega_0$，第 $k+1$ 根在 $(k+1)\omega_0$，两者相差
+
+$$(k+1)\omega_0-k\omega_0=\omega_0=\frac{2\pi}{T},$$
+
+所以**谱线间隔就是 $\omega_0$**。换成普通频率（Hz）：
+
+$$\Delta f=\frac{\Delta\omega}{2\pi}=\frac1T=f_0.$$
+
+**位置和间隔只由 $T$ 决定，高度由波形决定。** 换一个周期 $T$，谱线位置和疏密随之改变；同样的 $T$ 下换一个波形，谱线位置不变，只是各根谱线的高低不同。
+
+**例**　$u(t)=\cos4\pi t$。
+
+与 $\cos\omega_0t$ 对照，$\omega_0=4\pi\approx12.57\ \mathrm{rad/s}$，所以
+
+$$T=\frac{2\pi}{\omega_0}=0.5\ \mathrm{s},\qquad f_0=\frac1T=2\ \mathrm{Hz}.$$
+
+由欧拉公式，
+
+$$\cos4\pi t=\frac12e^{j4\pi t}+\frac12e^{-j4\pi t},$$
+
+所以 $c_{\pm1}=\frac12$，$c_0=0$，其余 $c_k=0$。谱线只有两根：$\omega=-4\pi$ 和 $\omega=4\pi$，高度都是 $\frac12$，间隔为 $4\pi$，正好等于 $\omega_0$；$\omega=0$ 处没有谱线，因为信号没有直流分量。
+
+**为什么谱线越密对应周期越大，以及怎么过渡到傅里叶变换。**
+
+周期越大，谱线间隔 $\omega_0=2\pi/T$ 越小，谱线越密。把周期推向无穷大，信号在一个周期内不再重复，变成非周期信号；谱线间隔趋于零，离散谱线连成连续频谱。傅里叶变换可以看作傅里叶级数在 $T\to\infty$ 时的极限。
 
 > 下面推导：傅里叶变换是傅里叶级数在 $T\to\infty$ 时的极限，且 $Tc_k\to U(jk\omega_0)$。
 
-设 $u(t)$ 只在某个有限区间内非零，把它看作周期 $T$ 的周期信号的片段。其傅里叶系数为
+设 $u(t)$ 只在某个有限区间内非零，把它以 $T$ 为周期延拓成 $u_T(t)$。其傅里叶系数为
 
-$$c_k=\frac1{T}\int_{-T/2}^{T/2}u(t)e^{-jk\omega_0t}dt.$$
+$$c_k=\frac1{T}\int_{-T/2}^{T/2}u_T(t)e^{-jk\omega_0t}dt.$$
 
-当 $T$ 足够大时，积分近似为整个傅里叶变换在 $\omega=k\omega_0$ 处的值：
+当 $T$ 足够大时，一个周期已经包含了 $u(t)$ 的全部非零部分，积分近似为整个傅里叶变换在 $\omega=k\omega_0$ 处的值：
 
 $$Tc_k\approx U(jk\omega_0).$$
 
@@ -2044,7 +2088,7 @@ $$e^{j5t}p_2(t)\longleftrightarrow2\operatorname{sinc}\left(\frac{\omega-5}{\pi}
 
 原来频谱中心在 $\omega=0$、零点在 $\pm\pi$；现在中心移到 $5$、零点移到 $5\pm\pi$，形状和高度不变。
 
-#### 尺度
+#### 时间尺度
 
 $$u(at)\longleftrightarrow\frac1{|a|}U\left(j\frac{\omega}{a}\right).$$
 
@@ -2185,6 +2229,43 @@ $$\frac1{2+j(\omega+3)}.$$
 $$U^*(-j\omega)=\frac1{2-j(-3-\omega)}=\frac1{2+j(\omega+3)},$$
 
 两者一致。对实信号这一步就退化为 $U(j\omega)=U^*(-j\omega)$：实部偶、虚部奇。
+
+#### 傅里叶变换性质速查
+
+下表把常用性质集中列出，前面的各小段已逐条给出了推导和例子。
+
+| 性质 | 时域 | 频域 |
+|---|---|---|
+| 线性 | $au_1+bu_2$ | $aU_1+bU_2$ |
+| 时移 | $u(t-t_0)$ | $e^{-j\omega t_0}U(j\omega)$ |
+| 频移 | $e^{j\omega_0t}u(t)$ | $U(j(\omega-\omega_0))$ |
+| 尺度 | $u(at)$ | $\dfrac1{\lvert a\rvert}U\left(j\dfrac{\omega}{a}\right)$ |
+| 卷积 | $u_1(t)*u_2(t)$ | $U_1(j\omega)U_2(j\omega)$ |
+| 相乘 | $u_1(t)u_2(t)$ | $\dfrac1{2\pi}(U_1*U_2)(j\omega)$ |
+| 微分 | $\dfrac{du}{dt}$ | $j\omega U(j\omega)$ |
+| 积分 | $\displaystyle\int_{-\infty}^{t}u(\tau)d\tau$ | $\dfrac{U(j\omega)}{j\omega}+\pi U(0)\delta(\omega)$ |
+| 乘 $t$ | $tu(t)$ | $j\dfrac{d}{d\omega}U(j\omega)$ |
+| 对偶 | $U(jt)$ | $2\pi u(-\omega)$ |
+
+**微分**：$u'(t)\leftrightarrow j\omega U(j\omega)$。若 $u(t)$ 有跳变，求导会产生冲激。例如
+
+$$\frac{d}{dt}\left[e^{-3t}H(t)\right]=\delta(t)-3e^{-3t}H(t),$$
+
+变换为
+
+$$1-\frac3{3+j\omega}=\frac{j\omega}{3+j\omega},$$
+
+与直接用微分性质一致。忽略 $\delta(t)$ 会漏掉高频部分。
+
+**积分**：$\displaystyle\int_{-\infty}^{t}u(\tau)d\tau\longleftrightarrow\frac{U(j\omega)}{j\omega}+\pi U(0)\delta(\omega)$。冲激项来自信号的直流分量；若 $U(0)=0$（零均值），冲激项消失。例如 $u(t)=\delta(t)$ 时 $U(0)=1$，积分得
+
+$$H(t)\longleftrightarrow\frac1{j\omega}+\pi\delta(\omega).$$
+
+若换成 $u(t)=\cos t$，$U(0)=0$，则
+
+$$\int_{-\infty}^{t}\cos\tau\,d\tau=\sin t\longleftrightarrow\frac{U(j\omega)}{j\omega},$$
+
+只剩除以 $j\omega$ 的部分。
 
 ### 3.6 对称性
 
@@ -2795,6 +2876,37 @@ $$G(j\omega)=\frac{20}{(3+j\omega)^2+25}.$$
 
 $$c_0=\frac2\pi,\qquad G(0)=1,\qquad y_{0}=\frac2\pi\approx0.6366.$$
 
+### 4.9 相位、群延迟与测量
+
+相位对测量的影响，可以用两个简单系统说明。
+
+**恒定增益系统。** $G(s)=K$，$G(j\omega)=K$：幅值为 $K$，相位为 $0$。输入 $\cos\omega t$ 时输出
+
+$$y(t)=K\cos\omega t,$$
+
+与输入同相，没有延迟。
+
+**纯延迟系统。** $G(s)=e^{-sT}$，$G(j\omega)=e^{-j\omega T}$：幅值为 $1$，相位为 $-\omega T$。输出
+
+$$y(t)=\cos\left(\omega(t-T)\right),$$
+
+相当于输入被推迟了 $T$ 秒。相位斜率就是延迟时间：
+
+$$\tau_g=-\frac{d\angle G(j\omega)}{d\omega}=T.$$
+
+这个量称为**群延迟**，线性相位对应恒定延迟，是无失真传输的条件之一。
+
+**相位与测量。** 用相位差测距离、速度或时间，本质是把时间延迟换成相位延迟。同一延迟对不同频率对应不同的相位：
+
+$$\Delta\varphi=-\omega T.$$
+
+所以：
+
+- **单频测量**只能得到 $\bmod 2\pi$ 的相位，存在多值性（距离模糊）。
+- **宽带测量**中不同频率的相位斜率给出唯一的 $T$，这正是线性相位对测量的价值。
+
+Quiz 3 第 49 题的延迟线 $e^{-2s}$ 是最简模型：$|G|=1$ 不损失信号，$\angle G=-2\omega$ 携带 $2$ s 的延迟信息。一阶滤波器的相位不是直线，相位斜率随频率变化，所以群延迟不是常数，宽带信号通过后会失真。
+
 ---
 
 ## 5 二阶系统
@@ -3059,6 +3171,47 @@ $$M_r=\frac{1}{2(0.3714)\sqrt{1-0.3714^2}}=\frac{1}{0.7428\sqrt{0.8621}}=\frac{1
 
 极点越靠近虚轴，$\alpha$ 越小，$\zeta$ 越小，峰值越高。
 
+### 5.6 二阶低通的 $-3$ dB 频率
+
+第 4.5 节只给了一阶的规则「截止频率等于极点频率」。二阶低通要解方程。
+
+> 下面推导：二阶低通的 $-3$ dB 频率公式 $\omega_c=\omega_n\sqrt{1-2\zeta^2+\sqrt{(1-2\zeta^2)^2+1}}$。
+
+二阶低通
+
+$$G(s)=\frac{K\omega_n^2}{s^2+2\zeta\omega_ns+\omega_n^2}$$
+
+的幅频平方为
+
+$$|G|^2=\frac{K^2}{\left(1-x\right)^2+4\zeta^2x},\qquad x=\left(\frac{\omega}{\omega_n}\right)^2.$$
+
+令 $|G|^2=K^2/2$：
+
+$$\left(1-x\right)^2+4\zeta^2x=2.$$
+
+展开：
+
+$$x^2+\left(4\zeta^2-2\right)x-1=0.$$
+
+取正根：
+
+$$x=\frac{2-4\zeta^2+\sqrt{\left(4\zeta^2-2\right)^2+4}}{2}
+=1-2\zeta^2+\sqrt{\left(1-2\zeta^2\right)^2+1}.$$
+
+于是
+
+$$\omega_c=\omega_n\sqrt{x}.$$
+
+$\zeta=1/\sqrt2$（Butterworth）：$1-2\zeta^2=0$，$x=\sqrt1=1$，所以 $\omega_c=\omega_n$，这正是 Butterworth 的定义。
+
+**例（Quiz 3 第 44 题）**　$\omega_n=20$，$\zeta=0.5$：$4\zeta^2=1$，方程化为
+
+$$x^2-x-1=0\quad\Longrightarrow\quad x=1.618,$$
+
+$$\omega_c=20\sqrt{1.618}=25.44\ \mathrm{rad/s}.$$
+
+$\zeta<1/\sqrt2$ 时 $x>1$，截止频率高于 $\omega_n$，同时存在共振峰（5.3 节）；$\zeta>1/\sqrt2$ 时 $x<1$，截止频率低于 $\omega_n$。二阶的 $-3$ dB 点不能用 $\omega_n$ 代替，这是与一阶最大的区别。
+
 ---
 
 ## 6 稳定性
@@ -3241,6 +3394,46 @@ $$G_A(j\omega)=\frac{300}{4+j\omega}$$
 
 存在。
 
+### 6.7 稳定性补充例题
+
+**例 1（虚轴单极点与原点极点）**　极点在 $0$ 和 $-0.2\pm j$。
+
+$-0.2\pm j$ 在开左半平面，$0$ 是虚轴上的单极点，所以系统临界稳定。$h(t)$ 中含一个非零常数项，积分
+
+$$\int_0^\infty|h(t)|dt$$
+
+发散，因此不是 BIBO 稳定。
+
+**例 2（判断临界稳定）**
+
+- $\dfrac{s+2}{(s^2+4)(s+1)}$：极点为 $\pm2j$（单根）和 $-1$，临界稳定。
+- $\dfrac{s-2}{(s+1)(s+3)}$：两个极点都在开左半平面，指数稳定；零点 $+2$ 不影响稳定性。
+- $\dfrac{s+2}{s^2(s+3)}$：$s=0$ 是二重极点，$h(t)$ 含 $t$ 型项，不稳定。
+- $\dfrac{s+2}{(s^2+4)^2}$：$\pm2j$ 是二重极点，$h(t)$ 含 $t\sin2t$，不稳定。
+
+**例 3（四阶多项式的极点）**　$G(s)=\dfrac{1}{s^4+4}$。
+
+利用 $s^4+4=(s^2+2s+2)(s^2-2s+2)$。两个二次因子的根分别为 $-1\pm j$ 和 $1\pm j$。后一对在右半平面，所以系统不稳定。
+
+所有系数为正不代表稳定。这个例子中 $s^3$、$s^2$、$s$ 的系数都是零，只看系数符号会漏掉右半平面的极点。
+
+**例 4（共振输入）**　$G(s)=\dfrac{1}{s^2+9}$，输入 $\cos3t\,H(t)$。
+
+输入极点 $\pm3j$ 与系统极点重合：
+
+$$Y(s)=\frac{s}{(s^2+9)^2},\qquad y(t)=\frac{t}{6}\sin3t\,H(t).$$
+
+输出随时间增长，无界。输入振幅有界，输出却无界，这是因为系统不满足 BIBO 稳定（虚轴上单极点）。
+
+**例 5（零点靠近极点）**　$G(s)=\dfrac{s+3}{(s+1)(s+3.1)}$。
+
+零点 $-3$ 非常靠近极点 $-3.1$。求 $e^{-3.1t}$ 项的系数，用遮盖法：
+
+$$A_{3.1}=\left.\frac{s+3}{s+1}\right|_{s=-3.1}
+=\frac{-0.1}{-2.1}\approx0.04762.$$
+
+零点越靠近极点，对应模态的系数越小。若零点与极点完全重合，该模态会被完全抵消。这个例子也说明：判断稳定性看的是极点位置，零点只影响各模态的幅度。
+
 ---
 
 ## 7 拉普拉斯变换
@@ -3255,9 +3448,21 @@ $$U(s)=\mathcal L\{u\}(s)=\int_{0^-}^{\infty}u(t)e^{-st}dt,\qquad s=\sigma+j\ome
 
 $$Y(s)=G(s)U(s),\qquad G(s)=\mathcal L\{h\}(s).$$
 
-双边拉普拉斯变换的下限为 $-\infty$。积分下限写成 $0^-$ 是为了把 $t=0$ 处的冲激包含进来。
+双边拉普拉斯变换的下限为 $-\infty$：
 
-拉普拉斯变换比傅里叶变换多了一个实部 $\sigma$。指数因子 $e^{-\sigma t}$ 可以在傅里叶积分发散时把信号压住，因此傅里叶变换无法处理的指数增长信号可以用拉普拉斯变换处理。
+$$U(s)=\mathcal L\{u\}(s)=\int_{-\infty}^{\infty}u(t)e^{-st}dt,\qquad s=\sigma+j\omega.$$
+
+积分下限写成 $0^-$ 就是单边拉普拉斯变换，目的是把 $t=0$ 处的冲激包含进来。
+
+两者的区别只在 $t<0$ 的部分：
+
+因果信号的 $u(t)$ 在 $t<0$ 恒为零，此时双边与单边结果相同；非因果信号（如 $e^{-at}H(-t)$、$e^{-a\lvert t\rvert}$）必须用双边定义，否则会丢掉左半时间轴上的信息。
+
+拉普拉斯变换比傅里叶变换多了一个实部 $\sigma$。
+
+在傅里叶变换中，我们遇到有无法满足收敛条件的信号，无法变换的信号。
+
+而在拉普拉斯变换中，指数因子 $e^{-\sigma t}$ 可以在傅里叶积分发散时把信号压住，因此，对于傅里叶变换无法处理的指数增长信号，可以用拉普拉斯变换处理。
 
 **与傅里叶变换的关系**：若收敛域包含虚轴 $s=j\omega$，则
 
@@ -3267,7 +3472,119 @@ $$U(j\omega)=U(s)\big|_{s=j\omega}.$$
 
 #### 收敛域
 
-收敛域（ROC）是使积分收敛的 $s$ 的集合。
+收敛域（ROC）是使拉普拉斯变换的积分
+
+$$U(s)=\int u(t)e^{-st}dt$$
+
+「绝对收敛」的 $s$ 的集合，也就是让积分
+
+$$\int |u(t)|\,e^{-\sigma t}dt\qquad(s=\sigma+j\omega)$$
+
+收敛（结果是有限值）的那些 $s=\sigma+j\omega$。
+
+这里只取决于实部 $\sigma$。把 $s=\sigma+j\omega$ 代进指数：
+
+$$e^{-st}=e^{-(\sigma+j\omega)t}=e^{-\sigma t}\cdot e^{-j\omega t}.$$
+
+两个因子分工不同：
+
+- $e^{-\sigma t}$ 是正实数，改变大小：$\sigma>0$ 时随时间衰减，$\sigma<0$ 时随时间增长。
+- $e^{-j\omega t}=\cos\omega t-j\sin\omega t$，模为
+  $$|e^{-j\omega t}|=\sqrt{\cos^2\omega t+\sin^2\omega t}=1,$$
+  所以它只改变相位（在复平面上把数旋转一个角度），不改变大小。
+
+> [!note]+ 什么叫「只改变相位」
+> 一个复数 $z$ 可以写成 $z=|z|e^{j\theta}$：$|z|$ 是长度，$\theta$ 是相位（方向）。
+>
+> 乘上 $e^{j\varphi}$ 后：
+> $$z\cdot e^{j\varphi}=|z|e^{j(\theta+\varphi)}.$$
+> 长度仍是 $|z|$，相位从 $\theta$ 变成 $\theta+\varphi$。所以「只改变相位」就是长度不变、只把方向转一个角度。
+>
+> 例子：$j=e^{j90^\circ}$。乘 $j$ 就是把复数逆时针转 $90^\circ$：
+> $$1\cdot j=j,\qquad j\cdot j=-1,\qquad (-1)\cdot j=-j.$$
+> 三个数的长度都是 $1$，只是方向依次转了 $90^\circ$。这里 $e^{-j\omega t}$ 的模恒为 $1$，作用与此相同，只是转的角度是 $-\omega t$。
+
+取模时相位这一步不起作用，只剩下实部的大小因子：
+
+$$|u(t)e^{-st}|=|u(t)|\cdot e^{-\sigma t}\cdot\underbrace{|e^{-j\omega t}|}_{1}=|u(t)|e^{-\sigma t}.$$
+
+结果里没有 $\omega$。也就是说，固定 $\sigma$ 后，无论 $\omega$ 取多少，被积函数的模都完全一样；积分收不收敛只由 $\sigma$ 决定。
+
+满足收敛条件的 $\sigma$ 在实轴上构成一个区间（或半个实轴），把它沿竖直方向拉满，就是 $s$ 平面上的 ROC——竖直的带或半平面。
+
+**例**　$u(t)=e^{-2t}H(t)$。被积函数的模为
+
+$$|u(t)|e^{-\sigma t}=e^{-2t}e^{-\sigma t}=e^{-(2+\sigma)t}.$$
+
+$t\to\infty$ 时要让它衰减到零，需要 $2+\sigma>0$，即 $\sigma>-2$，与 $\omega$ 无关。所以 ROC 是右半平面 $\operatorname{Re}s>-2$，边界正好是过极点 $s=-2$ 的竖直线。
+
+**积分收敛到底是在检查什么。** 上面把被积函数的模化简成 $|u(t)|e^{-\sigma t}$，所以收敛性就是看积分
+
+$$\int_{-\infty}^{\infty}|u(t)|e^{-\sigma t}dt$$
+
+能不能算出一个有限值。它是否收敛，由 $t\to+\infty$ 和 $t\to-\infty$ 两头的行为决定。
+
+两头各用一个基本积分判断：
+
+$$\int_0^\infty e^{-ct}dt\ \text{收敛}\iff c>0,\qquad
+\int_{-\infty}^0 e^{-ct}dt\ \text{收敛}\iff c<0.$$
+
+$c>0$ 时 $e^{-ct}$ 在 $t>0$ 上越来越小，面积有限；$c\le0$ 时它不衰减，面积无限。左半边同理，只是符号反过来。
+
+下面按信号在时间轴上的位置分几种情况算。
+
+**（1）只在 $t\ge0$ 有值的信号。** 例如 $u(t)=e^{-2t}H(t)$。左半边 $u=0$，不用管；右半边
+
+$$\int_0^\infty e^{-2t}e^{-\sigma t}dt=\int_0^\infty e^{-(2+\sigma)t}dt.$$
+
+对照上面的基本积分，$c=2+\sigma$，所以收敛条件是
+
+$$2+\sigma>0\quad\Longrightarrow\quad\sigma>-2.$$
+
+若 $\sigma=-2$，被积函数变成 $1$，积分发散；若 $\sigma<-2$，被积函数越来越大，更发散。收敛的 $\sigma$ 只有 $\sigma>-2$ 这一段。
+
+**（2）只在 $t\le0$ 有值的信号。** 例如 $u(t)=e^{2t}H(-t)$。右半边 $u=0$；左半边 $t<0$ 时 $|u|=e^{2t}$，
+
+$$\int_{-\infty}^0 e^{2t}e^{-\sigma t}dt=\int_{-\infty}^0 e^{(2-\sigma)t}dt.$$
+
+这里 $t$ 是负的，要让 $e^{(2-\sigma)t}$ 在 $t\to-\infty$ 时趋于零，指数必须是正的，即
+
+$$2-\sigma>0\quad\Longrightarrow\quad\sigma<2.$$
+
+若 $\sigma=2$，被积函数为 $1$，左半边面积无限；若 $\sigma>2$，被积函数增长，也发散。所以这段信号的 ROC 是 $\sigma<2$。
+
+**（3）两边都有值的信号。** 例如 $u(t)=e^{-2t}H(t)+e^{t}H(-t)$。积分拆成左右两段，两段都要收敛：
+
+- 右半边 $e^{-2t}H(t)$ 要求 $\sigma>-2$（与（1）相同）；
+- 左半边 $e^{t}H(-t)$ 要求 $\sigma<1$（与（2）相同，把 $2$ 换成 $1$）。
+
+两个条件同时成立，得到
+
+$$-2<\sigma<1.$$
+
+这是 $s$ 平面上夹在两条竖直线之间的一条带，带内收敛，带外至少有一边发散。只有一条边有值时（情况（1）（2）），ROC 是半平面而不是带。
+
+**（4）两边的条件没有交集。** 例如 $u(t)=e^{-2t}H(t)+e^{-5t}H(-t)$：
+
+- 右半边要求 $\sigma>-2$；
+- 左半边 $|u|=e^{-5t}$，积分 $\int_{-\infty}^0 e^{-(5+\sigma)t}dt$，要求 $5+\sigma<0$，即 $\sigma<-5$。
+
+一个要求 $\sigma>-2$，另一个要求 $\sigma<-5$，没有同时满足的 $\sigma$。这时 ROC 为空，拉普拉斯变换不存在。
+
+**（5）只在有限时间区间内非零的信号。** 例如宽为 $2$、中心在 $t=3$ 的脉冲 $p_2(t-3)$，非零区间是 $2<t<4$。积分只在 $[2,4]$ 上进行：
+
+$$\int_2^4|u(t)|e^{-\sigma t}dt.$$
+
+无论 $\sigma$ 取多大或多小，$|u(t)|e^{-\sigma t}$ 在 $[2,4]$ 上都是普通的有界函数，在有限区间上的积分一定是有限值。所以不需要对 $\sigma$ 加任何限制，ROC 是整个 $s$ 平面（个别情况下要挖掉某个点）。
+
+**把上面的结论合起来看：**
+
+- 只看 $t\to+\infty$ 的衰减要求，得到左边界（$\sigma>某个值$）；
+- 只看 $t\to-\infty$ 的衰减要求，得到右边界（$\sigma<某个值$）；
+- 两边都有值时要同时满足，所以是带；只有一边有值时是半平面；两边条件矛盾时为空；
+- 信号只存在于有限时间内时没有端点问题，得到整个平面。
+
+这就是 ROC 总是竖直带或半平面、并且只由 $\sigma$ 决定的具体来历。
 
 | 信号类型 | ROC |
 |---|---|
@@ -3277,11 +3594,83 @@ $$U(j\omega)=U(s)\big|_{s=j\omega}.$$
 | 有限时长信号 | 整个 $s$ 平面（可能去掉 $s=0$ 或无穷远） |
 | 多个信号相加 | 各 ROC 的交集 |
 
-ROC 内不能有极点。同一个 $U(s)$ 配上不同的 ROC，对应不同的时域信号。例如
+**ROC 内不能有极点。** 极点是使 $U(s)$ 分母为零的点，在那里 $|U(s)|\to\infty$。而 ROC 的定义是「积分收敛、结果有限」的 $s$，所以极点本身不可能落在 ROC 内。极点只决定 ROC 的边界：以每个极点为竖直线，ROC 是这些竖直线划分出来的、不含极点的某一块区域。
 
-$$\frac1{s+a}$$
+**为什么同一个 $U(s)$ 配上不同 ROC 会对应不同信号。** 直接算两个不同信号的变换，对比结果。
 
-在 $\operatorname{Re}(s)>-a$ 时对应 $e^{-at}H(t)$，在 $\operatorname{Re}(s)<-a$ 时对应 $-e^{-at}H(-t)$。只写 $U(s)$ 而不写 ROC，逆变换不唯一。
+先看右向的指数 $u_1(t)=e^{-at}H(t)$。积分只在 $t\ge0$ 上：
+
+$$U_1(s)=\int_0^\infty e^{-at}e^{-st}dt=\int_0^\infty e^{-(s+a)t}dt=\frac1{s+a}.$$
+
+上限代入要为零，需要 $e^{-(s+a)t}$ 在 $t\to+\infty$ 时衰减，即 $\operatorname{Re}(s+a)>0$，也就是
+
+$$\operatorname{Re}s>-a.$$
+
+再看左向的指数 $u_2(t)=-e^{-at}H(-t)$。积分只在 $t\le0$ 上：
+
+$$U_2(s)=\int_{-\infty}^{0}\left(-e^{-at}\right)e^{-st}dt=-\int_{-\infty}^{0}e^{-(s+a)t}dt.$$
+
+下限代入要为零，需要 $e^{-(s+a)t}$ 在 $t\to-\infty$ 时衰减，即 $\operatorname{Re}(s+a)<0$，也就是
+
+$$\operatorname{Re}s<-a.$$
+
+在这个条件下算出来：
+
+$$-\int_{-\infty}^{0}e^{-(s+a)t}dt=-\left[\frac{-e^{-(s+a)t}}{s+a}\right]_{-\infty}^{0}=\frac1{s+a}.$$
+
+两个信号的代数表达式都是 $1/(s+a)$，但 ROC 一个在极点 $s=-a$ 的右边，一个在左边。
+
+**这说明什么。** 只给出 $U(s)=1/(s+a)$ 而不说 ROC，就不知道它来自 $e^{-at}H(t)$ 还是 $-e^{-at}H(-t)$。这两个是完全不同的信号（一个 $t<0$ 时为零，一个 $t>0$ 时为零）。所以完整的拉普拉斯变换要同时写两样：
+
+- 表达式 $U(s)$；
+- 收敛域 ROC。
+
+**怎么用 ROC 判断信号在时间轴上的方向。** 极点 $s=-a$ 把平面分成左右两块：
+
+- ROC 取极点右边（$\operatorname{Re}s>-a$）：信号在 $t<0$ 时为零，是右向（因果）信号；
+- ROC 取极点左边（$\operatorname{Re}s<-a$）：信号在 $t>0$ 时为零，是左向（反因果）信号；
+- ROC 夹在两个极点之间：两边都有值，是双边信号。
+
+**具体数字的例子**　取 $a=2$：
+
+$$e^{-2t}H(t)\longleftrightarrow\frac1{s+2},\qquad\operatorname{Re}s>-2,$$
+
+$$-e^{-2t}H(-t)\longleftrightarrow\frac1{s+2},\qquad\operatorname{Re}s<-2.$$
+
+
+本课程大多数题目处理的是因果信号（$t<0$ 时为零），单边拉普拉斯变换的下限自动取 $0^-$，ROC 通常是某个极点的右边，所以做题时往往不单独写 ROC。
+
+**例**　$u(t)=3e^{-4t}H(t)-2e^{t}H(t)$。
+
+第一项要求 $\operatorname{Re}s>-4$，第二项要求 $\operatorname{Re}s>1$。两项之和只在交集上收敛：
+
+$$\operatorname{Re}s>1.$$
+
+两个指数一项衰减、一项增长，增长的指数要求更大的实部才能压住，所以 ROC 由增长项决定。
+
+**例**　$u(t)=e^{-2t}H(t)+e^{-5t}H(-t)$。
+
+第一项要求 $\operatorname{Re}s>-2$，第二项是反因果信号，要求 $\operatorname{Re}s<-5$。两个条件没有交集，所以这个信号不存在拉普拉斯变换，对应的 ROC 为空。
+
+**例**　$u(t)=e^{(-2+5j)t}H(t)$。
+
+指数的实部为 $-2$，虚部 $5j$ 不改变它的大小（$|e^{j5t}|=1$），只影响相位。判断收敛性只看实部的增长或衰减：
+
+$$|u(t)e^{-\sigma t}|=e^{(-2-\sigma)t},$$
+
+当 $\sigma>-2$ 时衰减，所以 ROC 为 $\operatorname{Re}s>-2$。极点位于 $s=-2+5j$，ROC 是过该极点实部的竖直线以右。
+
+**例**　$u(t)=p_2(t-3)$，即宽为 $2$、中心在 $t=3$ 的矩形脉冲。
+
+脉冲在 $2<t<4$ 内为 $1$，写成阶跃之差：
+
+$$u(t)=H(t-2)-H(t-4).$$
+
+逐项变换：
+
+$$U(s)=\frac{e^{-2s}-e^{-4s}}{s}.$$
+
+有限长信号在 $s=0$ 处有可去奇点，在整个 $s$ 平面上收敛。
 
 ### 7.2 常用变换对
 
@@ -3300,20 +3689,153 @@ $$\frac1{s+a}$$
 | $e^{-at}\cos\omega_0t\,H(t)$ | $\dfrac{s+a}{(s+a)^2+\omega_0^2}$ | $\operatorname{Re}(s)>-a$ |
 | $e^{-at}\sin\omega_0t\,H(t)$ | $\dfrac{\omega_0}{(s+a)^2+\omega_0^2}$ | $\operatorname{Re}(s)>-a$ |
 
-余弦和正弦的变换可以由 $e^{-at}H(t)$ 配合 $s$ 域移位得到。例如
+
+表里每一行都可以直接由定义算出来。下面按表逐条写积分过程，并说明收敛条件（ROC）从哪里来。
+
+**1. 冲激 $\delta(t)$ 与 $\delta(t-t_0)$。** 用筛选性质 $\int\delta(t)\varphi(t)dt=\varphi(0)$：
+
+$$\delta(t)\longleftrightarrow\int_{0^-}^{\infty}\delta(t)e^{-st}dt=e^{-s\cdot0}=1.$$
+
+延迟冲激同理：
+
+$$\delta(t-t_0)\longleftrightarrow\int_{0^-}^{\infty}\delta(t-t_0)e^{-st}dt=e^{-st_0}.$$
+
+这里要求 $t_0\ge0$，否则冲激落在积分区间外，单边变换为 $0$。两个结果对任何 $s$ 都是有限值，所以 ROC 是整个 $s$ 平面。
+
+**2. 阶跃 $H(t)$。** 直接积分：
+
+$$H(t)\longleftrightarrow\int_0^\infty e^{-st}dt
+=\left[\frac{e^{-st}}{-s}\right]_0^\infty
+=\frac1s.$$
+
+上限代入要为零：$|e^{-st}|=e^{-\sigma t}$，只有 $\sigma=\operatorname{Re}s>0$ 时它才随 $t\to\infty$ 衰减到零。所以 ROC 为 $\operatorname{Re}s>0$。
+
+**3. 斜坡 $tH(t)$。** 分部积分，取 $u=t$、$dv=e^{-st}dt$，则 $v=-e^{-st}/s$：
+
+$$\int_0^\infty te^{-st}dt
+=\left[-\frac{te^{-st}}{s}\right]_0^\infty
++\frac1s\int_0^\infty e^{-st}dt.$$
+
+$\sigma>0$ 时边界项 $te^{-\sigma t}\to0$，剩下
+
+$$\frac1s\cdot\frac1s=\frac1{s^2},\qquad\operatorname{Re}s>0.$$
+
+**4. $t^nH(t)$。** 把上面的分部积分重复 $n$ 次，每做一次 $t$ 的幂降一次、多出一个 $1/s$：
+
+$$\int_0^\infty t^ne^{-st}dt
+=\frac{n}{s}\int_0^\infty t^{n-1}e^{-st}dt
+=\cdots
+=\frac{n!}{s^{n+1}},\qquad\operatorname{Re}s>0.$$
+
+也可以把乘 $t$ 性质（$tu\leftrightarrow-dU/ds$）对 $1/s$ 连续用 $n$ 次，结果相同。
+
+**5. 单边指数 $e^{-at}H(t)$。** 合并指数：
+
+$$e^{-at}e^{-st}=e^{-(s+a)t},$$
+
+积分得
+
+$$\int_0^\infty e^{-(s+a)t}dt
+=\left[\frac{e^{-(s+a)t}}{-(s+a)}\right]_0^\infty
+=\frac1{s+a}.$$
+
+上限为零要求 $\operatorname{Re}(s+a)>0$，即
+
+$$\operatorname{Re}s>-a.$$
+
+**6. $te^{-at}H(t)$。** 与第 3 条完全相同的分部积分，只是把 $s$ 换成 $s+a$：
+
+$$\int_0^\infty te^{-(s+a)t}dt=\frac1{(s+a)^2},\qquad\operatorname{Re}s>-a.$$
+
+**7. $t^ne^{-at}H(t)$。** 重复第 6 条的分部积分 $n$ 次：
+
+$$\int_0^\infty t^ne^{-(s+a)t}dt=\frac{n!}{(s+a)^{n+1}},\qquad\operatorname{Re}s>-a.$$
+
+$e^{-at}$ 的作用就是把所有 $s$ 换成 $s+a$，收敛边界也从 $\operatorname{Re}s>0$ 平移成 $\operatorname{Re}s>-a$。
+
+**8. 余弦 $\cos\omega_0t$。** 先用欧拉公式拆成两个复指数：
 
 $$\cos\omega_0t=\frac12e^{j\omega_0t}+\frac12e^{-j\omega_0t}.$$
 
-由 $s$ 域移位，
+第一项把指数写成 $e^{-(-j\omega_0)t}$，套第 5 条（取 $a=-j\omega_0$）：
 
-$$e^{j\omega_0t}H(t)\longleftrightarrow\frac1{s-j\omega_0},\qquad
-e^{-j\omega_0t}H(t)\longleftrightarrow\frac1{s+j\omega_0}.$$
+$$e^{j\omega_0t}H(t)\longleftrightarrow\frac1{s-(-j\omega_0)}=\frac1{s-j\omega_0},\qquad
+\operatorname{Re}s>\operatorname{Re}(-j\omega_0)=0.$$
 
-相加得
+第二项取 $a=j\omega_0$：
 
-$$\cos\omega_0t\,H(t)\longleftrightarrow\frac12\left(\frac1{s-j\omega_0}+\frac1{s+j\omega_0}\right)=\frac{s}{s^2+\omega_0^2}.$$
+$$e^{-j\omega_0t}H(t)\longleftrightarrow\frac1{s+j\omega_0},\qquad\operatorname{Re}s>0.$$
 
-同理可得正弦的变换。
+两项相加，先通分：
+
+$$\frac12\left(\frac1{s-j\omega_0}+\frac1{s+j\omega_0}\right)
+=\frac12\cdot\frac{(s+j\omega_0)+(s-j\omega_0)}{(s-j\omega_0)(s+j\omega_0)}
+=\frac{s}{s^2+\omega_0^2}.$$
+
+分母 $(s-j\omega_0)(s+j\omega_0)=s^2+\omega_0^2$。两项的收敛域都是 $\operatorname{Re}s>0$，交集仍是 $\operatorname{Re}s>0$。
+
+**9. 正弦 $\sin\omega_0t$。** 欧拉公式这次是差：
+
+$$\sin\omega_0t=\frac{1}{2j}\left(e^{j\omega_0t}-e^{-j\omega_0t}\right).$$
+
+逐项变换后通分：
+
+$$\frac{1}{2j}\left(\frac1{s-j\omega_0}-\frac1{s+j\omega_0}\right)
+=\frac{1}{2j}\cdot\frac{(s+j\omega_0)-(s-j\omega_0)}{s^2+\omega_0^2}
+=\frac{1}{2j}\cdot\frac{2j\omega_0}{s^2+\omega_0^2}
+=\frac{\omega_0}{s^2+\omega_0^2}.$$
+
+ROC 同样为 $\operatorname{Re}s>0$。
+
+**10. 衰减余弦 $e^{-at}\cos\omega_0t$。** 方法一：先拆欧拉公式，再逐项套第 5 条。
+
+$$e^{-at}\cos\omega_0t
+=\frac12e^{-(a-j\omega_0)t}+\frac12e^{-(a+j\omega_0)t}.$$
+
+两项的指数分别是 $e^{-(s+a-j\omega_0)t}$、$e^{-(s+a+j\omega_0)t}$，所以
+
+$$\frac12\left(\frac{1}{s+a-j\omega_0}+\frac{1}{s+a+j\omega_0}\right)
+=\frac12\cdot\frac{2(s+a)}{(s+a)^2+\omega_0^2}
+=\frac{s+a}{(s+a)^2+\omega_0^2}.$$
+
+收敛域要求 $\operatorname{Re}(s+a)>0$，即 $\operatorname{Re}s>-a$。
+
+方法二：从第 8 条出发，时域乘 $e^{-at}$ 对应 $s$ 域用 $s+a$ 替换 $s$（$s$ 域移位），直接把 $\dfrac{s}{s^2+\omega_0^2}$ 中的 $s$ 全换成 $s+a$，结果相同。
+
+**11. 衰减正弦 $e^{-at}\sin\omega_0t$。** 同样拆欧拉公式：
+
+$$e^{-at}\sin\omega_0t
+=\frac{1}{2j}\left[e^{-(a-j\omega_0)t}-e^{-(a+j\omega_0)t}\right],$$
+
+$$\frac{1}{2j}\left(\frac{1}{s+a-j\omega_0}-\frac{1}{s+a+j\omega_0}\right)
+=\frac{1}{2j}\cdot\frac{2j\omega_0}{(s+a)^2+\omega_0^2}
+=\frac{\omega_0}{(s+a)^2+\omega_0^2},\qquad\operatorname{Re}s>-a.$$
+
+从第 9 条用 $s$ 域移位也能直接得到同样的结果。
+
+**怎么记这些结果。** 真正需要直接积分记住的只有第 2、5 条（$1/s$ 与 $1/(s+a)$）；第 3、4、6、7 条是分部积分或乘 $t$；第 8、9 条是欧拉公式加第 5 条；第 10、11 条是第 8、9 条的 $s$ 域移位。每一步的 ROC 都跟着积分上限或下限的收敛要求走。
+
+#### 乘 $t$ 与调制型乘积
+
+> 下面推导：乘 $t$ 对应 $-\dfrac{dU(s)}{ds}$，以及 $\cos3t\cos t\,H(t)$ 的变换（先积化和差，再逐项查表）。
+
+乘 $t$ 性质来自
+
+$$\frac{d}{ds}\frac1{s+a}=-\frac1{(s+a)^2},$$
+
+即
+
+$$tu(t)\longleftrightarrow-\frac{dU(s)}{ds}.$$
+
+求 $\cos3t\cos t\,H(t)$ 这类乘积，先用积化和差把乘积化成两个同频余弦之和：
+
+$$\cos3t\cos t=\frac12\cos4t+\frac12\cos2t.$$
+
+逐项变换：
+
+$$\cos3t\cos t\,H(t)\longleftrightarrow\frac12\cdot\frac{s}{s^2+16}+\frac12\cdot\frac{s}{s^2+4}.$$
+
+注意不能把两个变换直接相乘。时域相乘对应的是 $s$ 域卷积，不是乘积。
 
 ### 7.3 性质
 
@@ -3330,13 +3852,26 @@ $$\cos\omega_0t\,H(t)\longleftrightarrow\frac12\left(\frac1{s-j\omega_0}+\frac1{
 | 乘 $t$ | $tu(t)$ | $-\dfrac{dU(s)}{ds}$ |
 | 调制 | $u(t)\cos(\omega_0t)$ | $\dfrac12U(s-j\omega_0)+\dfrac12U(s+j\omega_0)$ |
 
-**时移**：单边拉普拉斯变换中，时间延迟必须连同阶跃一起延迟。$u(t-t_0)$ 若在 $t<0$ 时有值，单边变换会多出 $[0^-,t_0]$ 区间的贡献。
+**时移**：单边拉普拉斯变换中，时间延迟必须连同阶跃一起延迟。$u(t-t_0)$ 若在 $t<0$ 时有值，单边变换会多出 $[0^-,t_0]$ 区间的贡献。反过来，看到 $e^{-3s}/(s+1)$，应认出这是 $e^{-t}H(t)$ 延迟 $3$：
+
+$$e^{-(t-3)}H(t-3).$$
+
+若误写成 $e^{-t}H(t-3)$，只延迟了阶跃没有延迟指数；若写成 $e^{-(t+3)}H(t)$，只把指数前移了，都不是原来的信号。
 
 **$s$ 域移位**：时域乘 $e^{-at}$，$s$ 域用 $s+a$ 替换 $s$。
 
 **微分**：初始条件通过 $u(0^-)$ 进入。求传递函数时令初始条件为零，才得到
 
 $$Y(s)=G(s)U(s).$$
+
+**微分与积分**：微分对应乘 $s$ 并减去初始值，$0$ 到 $t$ 的积分对应除以 $s$：
+
+$$\dot u(t)\longleftrightarrow sU(s)-u(0^-),\qquad
+\int_0^tu(\tau)d\tau\longleftrightarrow\frac{U(s)}{s}.$$
+
+例如 $\cos3t\,H(t)$ 的变换为 $s/(s^2+9)$，积分后为
+
+$$\int_0^t\cos3\tau\,d\tau=\frac13\sin3t\longleftrightarrow\frac{s}{s^2+9}\cdot\frac1s=\frac1{s^2+9}.$$
 
 ### 7.4 初值定理与终值定理
 
@@ -3359,6 +3894,30 @@ $sU(s)=1/(s+2)$ 的极点在 $-2$，满足条件。
 **反例**　$U(s)=\dfrac1{s^2+4}$。
 
 $sU(s)=s/(s^2+4)$ 在 $\pm j2$ 有极点，终值定理不适用。时域响应为 $\frac12\sin2t$，不趋于常数。
+
+**例（阶跃输入的初值与终值）**　$G(s)=\dfrac{s+1}{s+10}$，输入为单位阶跃。
+
+$$Y(s)=\frac{s+1}{s(s+10)},\qquad sY(s)=\frac{s+1}{s+10}.$$
+
+初值：
+
+$$y(0^+)=\lim_{s\to\infty}\frac{s+1}{s+10}=1.$$
+
+终值：
+
+$$y(\infty)=\lim_{s\to0}\frac{s+1}{s+10}=\frac1{10}.$$
+
+阶跃刚加上时，电容来不及充电，输出跳到 $1$，这是分子分母同阶造成的直通；最终趋于直流增益 $G(0)=0.1$。
+
+**例（冲激响应的终值）**　$G(s)=\dfrac{120}{s^2+6s}$，输入为冲激。
+
+$$sG(s)=\frac{120}{s+6},$$
+
+极点在 $-6$，满足终值定理。于是
+
+$$h(\infty)=\lim_{s\to0}\frac{120}{s+6}=20.$$
+
+**例（终值定理失效）**　$G(s)=\dfrac{3}{s^2+4}$ 的冲激响应为 $\frac32\sin2t$，没有极限。原因在于 $sG(s)=\dfrac{3s}{s^2+4}$ 在 $\pm2j$ 有极点，不满足终值定理的条件。此时直接代数计算会得到 $0$，这是错误结果。
 
 ### 7.5 部分分式分解
 
@@ -3424,7 +3983,42 @@ $$\frac{\omega_0}{(s+a)^2+\omega_0^2}\longleftrightarrow e^{-at}\sin\omega_0t\,H
 
 $$y(t)=\frac12e^{-t}\sin2t\,H(t).$$
 
-若分子含 $s$ 项，可以拆成 $s+a$ 与常数两部分，分别对应余弦和正弦。
+若分子含 $s$ 项，可以拆成 $s+a$ 与常数两部分，分别对应余弦和正弦。例如
+
+$$Y(s)=\frac{3s+1}{(s+1)(s^2+2s+5)}.$$
+
+先用遮盖法求实极点部分：
+
+$$A=\left.\frac{3s+1}{s^2+2s+5}\right|_{s=-1}=\frac{-2}{4}=-0.5.$$
+
+剩下的部分配成完全平方：
+
+$$Y(s)=-\frac{0.5}{s+1}+\frac{0.5s+3.5}{(s+1)^2+4}.$$
+
+再把分子拆成 $(s+a)$ 项和常数项：
+
+$$\frac{0.5s+3.5}{(s+1)^2+4}
+=0.5\frac{s+1}{(s+1)^2+4}+1.5\frac{2}{(s+1)^2+4}.$$
+
+逐项反变换：
+
+$$y(t)=-0.5e^{-t}+0.5e^{-t}\cos2t+1.5e^{-t}\sin2t\qquad(t\ge0).$$
+
+这里 $1.5$ 这个系数来自常数项除以 $\omega_0=2$。
+
+#### 有延迟因子的部分分式
+
+$$Y(s)=\frac{4e^{-s}}{(s+1)(s+3)}.$$
+
+先不管 $e^{-s}$，对有理部分分式：
+
+$$\frac{4}{(s+1)(s+3)}=\frac{2}{s+1}-\frac{2}{s+3}.$$
+
+再整体延迟 $1$：
+
+$$y(t)=\left[2e^{-(t-1)}-2e^{-3(t-1)}\right]H(t-1).$$
+
+延迟因子乘在整个信号上，所以每一项都延迟，阶跃也一起延迟。
 
 ### 7.6 零极点抵消
 
@@ -3440,7 +4034,16 @@ $$Y(s)=\frac{s-1}{(s-1)(s+2)}\cdot\frac1{s+3}=\frac1{(s+2)(s+3)}.$$
 
 输入中的 $e^{-t}$ 项被系统零点抵消，输出只含 $e^{-2t}$ 和 $e^{-3t}$。
 
-零极点抵消改变的是输入输出关系，不改变系统内部的自然模态。若被抵消的极点位于右半平面，系统内部仍然不稳定。
+零极点抵消改变的是输入输出关系，不改变系统内部的自然模态。若被抵消的极点位于右半平面，系统内部仍然不稳定。例如
+
+$$G(s)=\frac{s-a}{s-a}\cdot\frac1{s+2}$$
+
+约分后只剩 $1/(s+2)$，输入中的 $e^{at}$ 模态不出现在输出中，但系统内部仍有 $s=a$ 这个模态。
+
+- 输入输出 BIBO 稳定性看约分后的传递函数极点。
+- 内部稳定性看约分前的全部自然模态。
+
+题目若只给出 $G(s)$，通常按未约分的极点判断系统稳定性；题目若强调零极点抵消，需要区分输入输出稳定和内部稳定。
 
 ### 7.7 拉普拉斯变换典型例题
 
@@ -3485,6 +4088,148 @@ $$y(t)=\frac12e^{-t}\sin2t\,H(t).$$
 
 $sY(s)=1/(s^2+4)$ 在 $\pm j2$ 有极点，终值定理不能使用。时域响应含等幅正弦项，不趋于常数。
 
+### 7.8 用拉普拉斯变换解微分方程
+
+含初始条件时，把各项一起变换。以
+
+$$\ddot y+5\dot y+6y=6u(t),\qquad u(t)=H(t),\quad y(0^-)=2,\quad\dot y(0^-)=-1$$
+
+为例。
+
+逐项变换：
+
+$$s^2Y-2s+1+5(sY-2)+6Y=\frac6s.$$
+
+整理左边：
+
+$$(s^2+5s+6)Y-2s-9=\frac6s.$$
+
+把初始条件项移到右边：
+
+$$(s^2+5s+6)Y=\frac6s+2s+9.$$
+
+部分分式：
+
+$$Y=\frac{2s^2+9s+6}{s(s+2)(s+3)}
+=\frac1s+\frac{2}{s+2}-\frac1{s+3}.$$
+
+反变换：
+
+$$y(t)=1+2e^{-2t}-e^{-3t}\qquad(t\ge0).$$
+
+代入 $t=1$：
+
+$$y(1)=1+2e^{-2}-e^{-3}\approx1.221.$$
+
+#### 零输入响应与零状态响应
+
+线性系统可以分开处理：
+
+$$Y(s)=\underbrace{\frac{\text{初始条件项}}{\text{特征多项式}}}_{Y_{zi}(s)}
++\underbrace{\frac{\text{输入项}}{\text{特征多项式}}}_{Y_{zs}(s)}.$$
+
+零输入响应的形式由极点决定，系数由初始条件决定；零状态响应的形式由系统极点和输入极点共同决定。
+
+若两者恰好抵消，输出可能只剩常数。例如
+
+$$\ddot y+4\dot y+4y=2H(t),\qquad y(0^-)=0.5,\quad\dot y(0^-)=0,$$
+
+变换后
+
+$$(s+2)^2Y=\frac2s+0.5s+2=\frac{0.5(s+2)^2}{s},$$
+
+所以 $Y=0.5/s$，输出为常数 $0.5$。系统从平衡点出发，输入正好维持这个平衡，瞬态项全部抵消。
+
+### 7.9 系统分析典型例题
+
+**例 1（系统极点与输入极点重合）**　$G(s)=\dfrac{s+4}{s^2+3s+2}$，输入 $u(t)=e^{-2t}H(t)$。
+
+系统极点为 $-1,-2$，输入极点为 $-2$，与系统极点重合，所以 $Y(s)$ 中会出现二重极点：
+
+$$Y(s)=\frac{s+4}{(s+1)(s+2)^2}
+=\frac{3}{s+1}-\frac{3}{s+2}-\frac{2}{(s+2)^2}.$$
+
+反变换：
+
+$$y(t)=3e^{-t}-3e^{-2t}-2te^{-2t}\qquad(t\ge0).$$
+
+二重极点对应 $te^{-2t}$ 项，这是共振在拉普拉斯域的表现。输入频率与系统自然频率相同时，响应会多出一个随时间线性增长的项。
+
+**例 2（零点抵消输入极点）**　$G(s)$ 的极点在 $-2,-5$，零点在 $-1$，直流增益为 $3$，输入 $u(t)=e^{-t}H(t)$。
+
+先定增益：
+
+$$G(s)=\frac{k(s+1)}{(s+2)(s+5)},\qquad G(0)=\frac{k}{10}=3\quad\Longrightarrow\quad k=30.$$
+
+于是
+
+$$Y(s)=G(s)U(s)=\frac{30(s+1)}{(s+2)(s+5)}\cdot\frac1{s+1}
+=\frac{30}{(s+2)(s+5)}.$$
+
+零点把输入极点抵消了，输出中不含 $e^{-t}$ 项：
+
+$$Y(s)=\frac{10}{s+2}-\frac{10}{s+5},\qquad y(t)=10\left(e^{-2t}-e^{-5t}\right)H(t).$$
+
+这说明系统可以完全抑制某一个输入模态。
+
+**例 3（由输出反求输入）**　$G(s)=\dfrac{4}{s^2+2s+4}$，希望输出为 $y(t)=\left(1-e^{-4t}\right)H(t)$，求输入。
+
+先写出输出的变换：
+
+$$Y(s)=\frac1s-\frac1{s+4}=\frac4{s(s+4)}.$$
+
+由 $Y(s)=G(s)U(s)$ 解出输入：
+
+$$U(s)=\frac{Y(s)}{G(s)}
+=\frac{4}{s(s+4)}\cdot\frac{s^2+2s+4}{4}
+=\frac{s^2+2s+4}{s(s+4)}.$$
+
+分子次数等于分母次数，先做多项式除法：
+
+$$U(s)=1+\frac{s^2+2s+4-s(s+4)}{s(s+4)}
+=1+\frac{-2s+4}{s(s+4)}.$$
+
+再对真分式部分做部分分式：
+
+$$\frac{-2s+4}{s(s+4)}=\frac{1}{s}-\frac{3}{s+4}.$$
+
+反变换：
+
+$$u(t)=\delta(t)+\left(1-3e^{-4t}\right)H(t).$$
+
+这里的冲激来自 $U(s)$ 中的常数项，省略它会导致反变换出来的信号缺少一部分。商中的常数项对应时域的 $\delta(t)$，$s$ 的一次项对应 $\delta'(t)$，代表「输入必须含冲激才能让输出瞬间跳变」。
+
+**例 4（斜坡输入的稳态误差）**　$G(s)=\dfrac{1}{2s+1}$，$u(t)=tH(t)$。
+
+误差定义为 $e(t)=u(t)-y(t)$，在零初始条件下
+
+$$E(s)=U(s)-Y(s)=U(s)\left[1-G(s)\right].$$
+
+斜坡输入 $U(s)=1/s^2$，所以
+
+$$E(s)=\frac{1}{s^2}\left(1-\frac{1}{2s+1}\right)
+=\frac{2}{s(2s+1)}.$$
+
+由终值定理
+
+$$e(\infty)=\lim_{s\to0}sE(s)=\lim_{s\to0}\frac{2}{2s+1}=2\ \mathrm{V}.$$
+
+一阶低通对斜坡输入始终有常数误差。直观理解：系统跟不上斜坡，落后固定的一段时间；误差 $2$ V 对应时间延迟 $\tau=2$ s（斜坡斜率 $1\ \mathrm{V/s}$），恰好等于系统的时间常数。
+
+**一般情形与群延迟。** 只要系统稳定、$G(0)=1$，在 $s=0$ 附近把 $G(s)$ 展开：
+
+$$G(s)\approx1+G'(0)s,$$
+
+代入 $E(s)$：
+
+$$E(s)\approx\frac{-G'(0)s}{s^2}=\frac{-G'(0)}{s},$$
+
+反变换得
+
+$$e(\infty)=-G'(0).$$
+
+这个值恰好等于系统在零频的群延迟（4.9 节）。若 $G(0)\neq1$，误差中含 $(1-G(0))/s$ 项，反变换为随时间增长的斜坡，稳态误差无界。若 $G$ 在原点有积分器（$G(s)$ 含 $1/s$ 因子），直流增益无穷大，斜坡误差可以为零或为常数，这时 $sE(s)$ 在 $s=0$ 的取值要用洛必达法则。
+
 ---
 
 ## 8 传递函数与滤波器
@@ -3505,6 +4250,75 @@ $$G(s)=\mathcal L\{h(t)\}.$$
 
 直流增益为 $G(0)$。高频增益为 $s\to\infty$ 时的极限，它决定系统对高频分量的放大或衰减。
 
+**冲激响应与阶跃响应。**
+
+$$G(s)=\mathcal L\{h(t)\}.$$
+
+公式表把输入、输出与传递函数写成
+
+$$Y(s)=G(s)U(s),\qquad G(s)=\mathcal L\{h\}(s),$$
+
+因此单位阶跃输入 $U(s)=1/s$ 时 $Y(s)=G(s)/s$，即阶跃响应是冲激响应的积分：
+
+$$y_{\text{step}}(t)=\int_0^th(\tau)d\tau,\qquad Y_{\text{step}}(s)=\frac{G(s)}{s}.$$
+
+所以反过来，
+
+$$h(t)=\frac{d}{dt}y_{\text{step}}(t).$$
+
+若阶跃响应为 $(e^{-t}-e^{-2t})H(t)$，求导得冲激响应：
+
+$$h(t)=\left(-e^{-t}+2e^{-2t}\right)H(t).$$
+
+阶跃响应在 $t=0$ 处从零开始，没有冲激，所以求导只需对 $t>0$ 的表达式求导。
+
+**s 域电路与阻抗。** 零初始条件下，电容、电感的时域关系取拉普拉斯变换后，可以用与电阻相同的形式写「阻抗」：
+
+$$Z_R=R,\qquad Z_L(s)=sL,\qquad Z_C(s)=\frac{1}{sC}.$$
+
+- 电感：频率越高阻抗越大，是低通元件。
+- 电容：频率越高阻抗越小，是高通元件。
+
+若初始储能不为零，初始电压或电流会以 $1/s$ 项出现，相当于额外的电源；题目写「初始储能为零」时直接用上面三个阻抗。
+
+串联阻抗相加，并联与电阻相同：
+
+$$Z_{\text{series}}=Z_1+Z_2+\cdots,\qquad
+Z_{\text{parallel}}=\frac{Z_1Z_2}{Z_1+Z_2}\quad(\text{两个元件}).$$
+
+电感与电容并联：
+
+$$Z_{L\parallel C}=\frac{sL\cdot\dfrac{1}{sC}}{sL+\dfrac{1}{sC}}
+=\frac{sL}{s^2LC+1}.$$
+
+分母 $s^2LC+1=0$ 给出 $s=\pm j\dfrac{1}{\sqrt{LC}}$，正好是谐振频率。
+
+**电流源驱动的并联电路**：输入是电流源、输出是端电压时，按欧姆定律的 s 域形式
+
+$$Y(s)=U(s)Z(s).$$
+
+形式上仍是 LTI 关系，$Z(s)$ 就是「电流到电压」的传递函数。
+
+**例**（Quiz 3 第 17 题）$u(t)=tH(t)$，$L=1$ H，$C=0.25$ F 并联，求端电压最大值。
+
+$$U(s)=\frac{1}{s^2},\qquad Z(s)=\frac{s}{0.25s^2+1}=\frac{4s}{s^2+4},$$
+
+$$Y(s)=\frac{4}{s(s^2+4)}=\frac1s-\frac{s}{s^2+4},$$
+
+$$y(t)=1-\cos2t\quad(t\ge0).$$
+
+余弦的最小值为 $-1$，所以最大电压为 $1-(-1)=2$ V。这类题最后一步往往是「时域表达式的极值」，不要停在 $Y(s)$。
+
+**串联 RLC**：输出取电容电压时，分压公式与纯电阻相同，只是把电阻换成阻抗：
+
+$$\frac{Y(s)}{U(s)}=\frac{Z_C}{Z_R+Z_L+Z_C}
+=\frac{\dfrac{1}{sC}}{R+sL+\dfrac{1}{sC}}
+=\frac{1}{LCs^2+RCs+1}.$$
+
+与标准形式对照，得
+
+$$\omega_n=\frac{1}{\sqrt{LC}},\qquad \zeta=\frac{R}{2}\sqrt{\frac{C}{L}}.$$
+
 ### 8.2 典型滤波器
 
 | 类型 | 通带 | 阻带 | 一阶形式 |
@@ -3521,7 +4335,55 @@ $$G(s)=\mathcal L\{h(t)\}.$$
 
 $$|G(j\omega)|=\text{常数}.$$
 
-它的极点和零点关于虚轴对称。全通滤波器不改变幅度，只改变相位，常用于相位补偿。
+**一阶全通的形式**为
+
+$$G(s)=\frac{s-a}{s+a}.$$
+
+零点在 $+a$，极点在 $-a$，关于虚轴对称。令 $s=j\omega$：
+
+$$|G(j\omega)|=\frac{|j\omega-a|}{|j\omega+a|}=1\quad\text{对所有 }\omega.$$
+
+若 $a>0$，极点在左半平面，系统指数稳定。若写成 $\dfrac{s+a}{s-a}$，幅值仍为 $1$，但极点在右半平面，不稳定。
+
+一般地，$n$ 阶全通的零点与极点关于虚轴镜像对称：每个左半平面极点 $p_i$ 对应一个右半平面零点 $-p_i^*$。全通不改变幅频，只改变相频，用于相位补偿和延迟均衡。
+
+**理想延迟线**为
+
+$$G(s)=e^{-sT},\qquad G(j\omega)=e^{-j\omega T}.$$
+
+- 幅值恒为 $1$，是全通。
+- 相位 $-\omega T$，与频率成线性关系。
+- 群延迟恒为 $T$。
+
+延迟线无法用有限阶有理传递函数精确实现，但可以用全通级联或数字滤波器逼近。
+
+**相位延迟与群延迟。** 对一般的频率响应，定义两种延迟：
+
+$$\tau_p(\omega)=-\frac{\angle G(j\omega)}{\omega},\qquad
+\tau_g(\omega)=-\frac{d\angle G(j\omega)}{d\omega}.$$
+
+- 相位延迟：单频正弦的等效延迟，决定某条谱线的相位。
+- 群延迟：包络或宽带信号的延迟，决定波形是否失真。
+
+只有线性相位时两者相等且为常数。
+
+**例（全通在某一频率的相位）**　$G(s)=\dfrac{10-s}{s+10}$，输入 $\cos10t$。
+
+$$G(j10)=\frac{10-10j}{10+10j}=-j.$$
+
+模为 $1$，相位 $-90^\circ$，所以
+
+$$y(t)=\cos(10t-90^\circ)=\sin10t.$$
+
+这里 $\cos(\theta-90^\circ)=\sin\theta$，符号为正。若相位写成 $+90^\circ$，结果就会变成 $-\sin$，这是选项 (d) 的错误来源。
+
+**例（延迟线）**　$y(t)=u(t-2)$，$G(s)=e^{-2s}$。
+
+$$G(j\omega)=e^{-j2\omega},\qquad |G(j\omega)|=1,\quad \angle G(j\omega)=-2\omega.$$
+
+幅度恒定，相位与频率成线性关系，所以这是全通系统，相位延迟为 $2$ 秒。第 49 题把「全通」与「线性相位」两个概念合在一起考：幅值为 $1$ 且相位线性，说明是延迟，而不是普通有理全通。
+
+**带阻的并联构造。** 带阻可以这样搭：低通截止频率**低于**高通截止频率，并联相加。两者之间有一个交叉区，虚部在交叉区内相互抵消，形成陷波。Quiz 3 第 52 题的 $10$ rad/s 低通与 $1000$ rad/s 高通就是这种结构，陷波中心在几何平均附近。
 
 滤波器的阶数等于分母的最高次数。阶数越高，过渡带越陡，但实现越复杂。
 
@@ -3584,6 +4446,87 @@ $$n\ \text{奇}:\ G(s)=\frac{\omega_c}{s+\omega_c}\prod_{k=1}^{(n-1)/2}\frac{\om
 
 每一对共轭极点按二阶标准形 $s^2+2\zeta_k\omega_cs+\omega_c^2$ 写出，对应 $\omega_n=\omega_c$、$\zeta_k=\sin\dfrac{(2k-1)\pi}{2n}$。二阶时 $\zeta_1=\sin45^\circ=1/\sqrt2$，正是 $\sqrt2\omega_cs$ 的来源。
 
+#### 阶数与衰减
+
+$n$ 阶 Butterworth 低通的幅频平方：
+
+$$|G|^2=\frac{1}{1+\left(\frac{f}{f_c}\right)^{2n}}.$$
+
+高通则把比值倒过来：
+
+$$|G|^2=\frac{1}{1+\left(\frac{f_c}{f}\right)^{2n}}.$$
+
+频带外的衰减量：
+
+$$A=10\log_{10}\left[1+\left(\frac{f}{f_c}\right)^{2n}\right].$$
+
+**例**（Quiz 3 第 61 题）$f_c=2$ kHz，要求 $6$ kHz 处衰减 $35$ dB。频率比 $3$，试算：
+
+$$n=3:\ 10\log_{10}(1+3^6)=28.6\ \mathrm{dB},$$
+
+$$n=4:\ 10\log_{10}(1+3^8)=38.2\ \mathrm{dB}.$$
+
+最小阶数为 $4$。试算时代入的是 $2n$，不是 $n$：三阶指数为 $6$，四阶为 $8$，这是最容易出错的地方。
+
+#### 由通带指标定截止频率
+
+**例**（Quiz 3 第 60 题）四阶、$1$ kHz 处损失不超过 $1$ dB：
+
+$$10\log_{10}\left[1+\left(\frac{1}{f_c}\right)^8\right]\le1,$$
+
+$$\left(\frac{1}{f_c}\right)^8\le10^{0.1}-1=0.2589,$$
+
+开八次方得 $1/f_c\le0.8446$，即 $f_c\ge1.184$ kHz。注意 $10^{0.1}-1$ 中的 $0.1$ 来自 $1\ \mathrm{dB}=10\times0.1$；如果先算 $|G|^2$ 再取分贝，容易把 $20$ 和 $10$ 两个系数混用。
+
+#### 由衰减倒推频率
+
+**例**（Quiz 3 第 59 题）二阶高通，$f_c=6$ kHz，要求 $-30$ dB：
+
+$$10\log_{10}\left[1+\left(\frac{f_c}{f}\right)^4\right]=30
+\quad\Longrightarrow\quad\left(\frac{f_c}{f}\right)^4=999.$$
+
+$$f=\frac{6000}{999^{1/4}}=1067\ \mathrm{Hz}.$$
+
+#### 极点圆
+
+$n$ 阶 Butterworth 的极点在左半平面圆上均匀分布，半径为 $\omega_c$，角度（从正实轴量起）
+
+$$\theta_k=90^\circ+\frac{180^\circ(2k+1)}{2n},\qquad k=0,1,\dots,n-1.$$
+
+相邻极点相隔 $180^\circ/n$。最靠近虚轴的一对角度最接近 $90^\circ$。
+
+**例**（Quiz 3 第 56 题）五阶，$\omega_c=1000$：
+
+$$\theta=108^\circ,\ 144^\circ,\ 180^\circ,\ 216^\circ,\ 252^\circ.$$
+
+最近的实部为 $1000\cos108^\circ=-309.0$ rad/s。角度用「起点 $90^\circ$、间隔 $36^\circ$」也可以直接数出来。
+
+#### 二阶 Butterworth 的特征
+
+二阶 Butterworth 分母固定为
+
+$$s^2+\sqrt2\,\omega_cs+\omega_c^2,$$
+
+所以
+
+$$\omega_n=\omega_c,\qquad \zeta=\frac{1}{\sqrt2}.$$
+
+由极点反推时（Quiz 3 第 54 题）：极点到原点的距离为 $\omega_n$，实部与 $\omega_n$ 之比为 $\zeta$。若得到 $\zeta=1/\sqrt2$，它必然是 Butterworth，且 $\omega_c=\omega_n$。
+
+#### 级联不是高阶 Butterworth
+
+两个相同的二阶 Butterworth 级联，得到的是
+
+$$G(s)=\left[\frac{\omega_c^2}{s^2+\sqrt2\omega_cs+\omega_c^2}\right]^2,$$
+
+极点是二重的，而四阶 Butterworth 的四个极点在 $112.5^\circ,157.5^\circ,202.5^\circ,247.5^\circ$，互不相同。两者在 $\omega_c$ 处的增益也不一样：级联为 $-6.02$ dB（两节各 $-3.01$ dB），真正的四阶 Butterworth 仍为 $-3.01$ dB。因此级联系统的 $-3$ dB 截止频率低于 $\omega_c$，过渡带也更深：在 $\omega=\sqrt2\omega_c$ 处，级联为 $1/(1+2x^4+x^8)$，四阶 Butterworth 为 $1/(1+x^8)$，前者衰减更多。Quiz 3 第 58 题正是考「增益不能单独说明是几阶 Butterworth，极点结构才决定滤波器类型」。
+
+两个相同的一阶低通 $\dfrac{\omega_c}{s+\omega_c}$ 级联同理：
+
+$$G(s)=\left(\frac{\omega_c}{s+\omega_c}\right)^2,$$
+
+极点是二重极点，不是两阶 Butterworth 的两个不同极点。增益相同不等于滤波器相同。
+
 ### 8.6 滤波器典型例题
 
 **例 1（判断滤波器类型）**　$G(s)=\dfrac{s}{s+10}$。
@@ -3607,6 +4550,227 @@ $$|G(j\omega)|=\frac{100}{\sqrt{100^2+\omega^2}},\qquad|G(0)|=1.$$
 $$\frac{100}{\sqrt{100^2+\omega^2}}=\frac1{\sqrt2},$$
 
 解得 $\omega=100\ \mathrm{rad/s}$，即截止频率等于极点频率。
+
+**例 4（一阶高通在低频的衰减）**　$G(s)=\dfrac{s}{s+\omega_c}$，$\omega_c=2\pi\times100$，输入为 $50$ Hz。
+
+$$\frac{\omega}{\omega_c}=\frac{50}{100}=0.5,\qquad |G|=\frac{0.5}{\sqrt{1+0.5^2}}=0.4472.$$
+
+衰减量为
+
+$$-20\log_{10}0.4472\approx6.99\ \mathrm{dB}.$$
+
+**例 5（三阶 Butterworth 高通）**　$f_c=100$ Hz，输入 $50$ Hz。
+
+高通幅频平方为
+
+$$|G|^2=\frac{1}{1+(f_c/f)^6}.$$
+
+$f_c/f=2$，所以
+
+$$|G|^2=\frac1{1+64}=\frac1{65},$$
+
+$$-10\log_{10}\frac1{65}=10\log_{10}65\approx18.13\ \mathrm{dB}.$$
+
+### 8.7 一阶与二阶滤波器的频率变换
+
+**例 1（一阶低通到高通）**　$G(s)=\dfrac{1}{s+1}$ 是高通还是低通？换成 $s\to1/s$ 后是什么？
+
+原式 $G(0)=1$、高频趋于 $0$，是低通。做替换：
+
+$$G\left(\frac1s\right)=\frac{1}{1/s+1}=\frac{s}{s+1}.$$
+
+$G(0)=0$、高频趋于 $1$，是高通，截止频率仍为 $1\ \mathrm{rad/s}$。
+
+**例 2（Butterworth 原型到高通）**　二阶 Butterworth 低通原型
+
+$$G_{LP}(s)=\frac{1}{s^2+\sqrt2s+1}.$$
+
+把 $s$ 换成 $50/s$：
+
+$$G_{HP}(s)=\frac{1}{\dfrac{2500}{s^2}+\dfrac{50\sqrt2}{s}+1}
+=\frac{s^2}{s^2+50\sqrt2s+2500}.$$
+
+分子分母同乘 $s^2$，得到分母中间项 $50\sqrt2\approx70.71$，常数项 $50^2=2500$。
+
+**例 3（由极点求二阶 Butterworth 的截止频率）**　极点 $-10^4\pm j10^4$。
+
+$$\omega_n=\sqrt{(10^4)^2+(10^4)^2}=\sqrt2\times10^4,\qquad
+\zeta=\frac{10^4}{\sqrt2\times10^4}=\frac1{\sqrt2}.$$
+
+这正好是二阶 Butterworth 的极点位置，所以 $\omega_c=\omega_n=\sqrt2\times10^4\approx1.414\times10^4\ \mathrm{rad/s}$。
+
+### 8.8 分频器、衰减量与由指标反求参数
+
+**分频器。** 音箱二分频中，高音单元通过串联电容获得一阶高通：
+
+$$G_H(s)=\frac{4Cs}{4Cs+1}=\frac{s}{s+\dfrac{1}{4C}},$$
+
+截止频率
+
+$$\omega_c=\frac{1}{4C}.$$
+
+**例**（Quiz 3 第 51 题）要求 $f_c=3$ kHz：
+
+$$C=\frac{1}{4\cdot2\pi\cdot3000}=13.26\ \mu\mathrm{F}.$$
+
+数值上 $4C=1/\omega_c$，单位是秒；$C$ 算出来后乘 $10^6$ 换成 $\mu$F。分频器题常见的两个坑：
+
+- 把 $4\Omega$ 当成 $4C$ 中的系数来源：系数 $4$ 来自阻值，若扬声器阻抗为 $8\ \Omega$，分频公式变为 $\omega_c=1/(8C)$。
+- 把 $f_c$ 直接代入 $\omega_c$：必须先乘 $2\pi$。
+
+**衰减量换算。** 一阶滤波器在频率比 $x=f/f_c$ 处的幅值：
+
+- 低通：$|G|=\dfrac{1}{\sqrt{1+x^2}}$。
+- 高通：$|G|=\dfrac{x}{\sqrt{1+x^2}}$。
+
+衰减量用 $-20\log_{10}|G|$。例如高通在 $-3$ dB 频率的一半处（$x=0.5$）：
+
+$$|G|=\frac{0.5}{\sqrt{1.25}}=0.4472,\qquad -20\log_{10}0.4472=6.99\ \mathrm{dB}.$$
+
+**由指标反求参数。** $G(s)=\dfrac{k}{s+a}$，要求直流增益 $+12$ dB，且在 $1$ kHz 处下降 $3$ dB。
+
+$+12$ dB 对应
+
+$$\frac{k}{a}=10^{12/20}=3.981.$$
+
+$3$ dB 下降出现在 $\omega=a$，所以
+
+$$a=2\pi\times1000=6283\ \mathrm{rad/s},\qquad k=3.981\times6283=2.501\times10^4.$$
+
+### 8.9 互补滤波器与并联相加
+
+#### 复数相加，不是模相加
+
+两个系统并联，传递函数相加：
+
+$$G(s)=G_1(s)+G_2(s).$$
+
+求 $|G(j\omega)|$ 时，必须先把复数加完再取模。先取模再相加一般会得到错误结果：
+
+$$|G_1+G_2|\neq|G_1|+|G_2|.$$
+
+**例**（Quiz 3 第 52 题）$G(s)=\dfrac{10}{s+10}+\dfrac{s}{s+1000}$，求 $|G(j100)|$。
+
+$$G_1(j100)=\frac{10}{10+100j}=0.0099-0.0990j,$$
+
+$$G_2(j100)=\frac{100j}{1000+100j}=0.0099+0.0990j.$$
+
+虚部恰好抵消：
+
+$$G(j100)=0.0198,\qquad |G(j100)|=0.01980.$$
+
+若错误地按模相加，会得 $0.0995+0.0995=0.199$，差一个数量级。带阻滤波器的「谷」正是靠两个分量的虚部相互抵消形成的。
+
+#### 互补低通与高通
+
+若
+
+$$G_L(s)=\frac{\omega_c}{s+\omega_c},\qquad G_H(s)=\frac{s}{s+\omega_c},$$
+
+则
+
+$$G_L(s)+G_H(s)=\frac{s+\omega_c}{s+\omega_c}=1.$$
+
+两条曲线互补：任何频率的能量必经过其一，幅值合起来恒为 $1$。注意这是**复数**相加为 $1$，但单独看 $|G_L|^2+|G_H|^2=1$ 也成立（因为两者相位差恒为 $90^\circ$）：
+
+$$|G_L(j\omega)|^2=\frac{\omega_c^2}{\omega_c^2+\omega^2},\qquad
+|G_H(j\omega)|^2=\frac{\omega^2}{\omega_c^2+\omega^2}.$$
+
+这和功率互补（Linkwitz-Riley 分频的思想）有关。Quiz 3 第 53 题的错误选项 (c) 就是把 $\omega_c$ 处的模相加：正确做法是
+
+$$G_L(j\omega_c)=\frac{1-j}{2},\qquad G_H(j\omega_c)=\frac{1+j}{2},$$
+
+相加得 $1$，而不是 $\sqrt2$。
+
+#### 带阻的并联构造
+
+带阻可以这样搭：低通截止频率**低于**高通截止频率，并联相加。两者之间有一个交叉区，虚部在交叉区内相互抵消，形成陷波。Quiz 3 第 52 题的 $10$ rad/s 低通与 $1000$ rad/s 高通就是这种结构，陷波中心在几何平均附近。
+
+**例（Notch 滤波器）**
+
+$$G(s)=\frac{s^2+\omega_n^2}{s^2+2\zeta\omega_ns+\omega_n^2},\qquad \omega_n=2\pi\times50,\quad\zeta=0.5.$$
+
+求 $25$ Hz 处的幅度。令 $\omega=\omega_n/2$：
+
+$$G(j\omega_n/2)=\frac{0.75\omega_n^2}{0.75\omega_n^2+j0.5\omega_n^2}.$$
+
+$$|G|=\frac{0.75}{\sqrt{0.75^2+0.5^2}}=\frac{0.75}{\sqrt{0.8125}}\approx0.8321.$$
+
+在 $\omega=\omega_n$ 处分子为零，幅度为零，正好滤掉 $50$ Hz。
+
+### 8.10 读 Bode 斜率与由指标反求参数
+
+#### 斜率由极零点个数决定
+
+把 $G(s)$ 写成因式分解后的形式：
+
+$$G(s)=K\frac{(s-z_1)\cdots(s-z_m)}{(s-p_1)\cdots(s-p_n)}.$$
+
+对 Bode 幅频图的渐近线：
+
+- 每个极点在超过其转折频率后贡献 $-20$ dB/dec。
+- 每个零点在超过其转折频率后贡献 $+20$ dB/dec。
+- 原点处的极点贡献 $-20$ dB/dec（对所有频率），原点处的零点贡献 $+20$ dB/dec。
+
+**例**（Quiz 3 第 38 题）$G(s)=1+\dfrac1s+0.25s$。
+
+通分：
+
+$$G(s)=\frac{4s+s^2+4}{4s}=\frac{(s+2)^2}{4s}.$$
+
+- 原点极点：低频斜率 $-20$ dB/dec。
+- 二重零点在 $2$ rad/s：过 $2$ rad/s 后斜率加 $40$ dB/dec。
+
+所以斜率从 $-20$ 变为 $+20$ dB/dec。选项里容易错的是「$-20$ 变 $0$」：那是只把二重零点当成一重；「$-20$ 变 $+40$」是忘了原点极点在高频依然存在。
+
+#### 从左到右累加斜率
+
+画渐近线的步骤：
+
+1. 把 $G(s)$ 因式分解，标出所有极零点频率。
+2. 从最低频开始：原点极点或零点决定初始斜率；若没有，初始斜率为 $0$。
+3. 每经过一个极点，斜率减 $20$ dB/dec；每经过一个零点，斜率加 $20$ dB/dec。
+4. 用某个已知点（如直流增益或高频增益）确定整条线的高度。
+
+#### 由增益指标反求参数
+
+先用低频极限定 $K$：
+
+$$G(0)=K\frac{z_1\cdots z_m}{p_1\cdots p_n}.$$
+
+再用高频极限定另一个关系。若分子分母同阶，
+
+$$\lim_{s\to\infty}G(s)=K.$$
+
+**例**（Quiz 3 第 39 题）$G(s)=K\dfrac{s+z}{s+5}$，直流增益 $1$，高频增益 $-30$ dB。
+
+低频：
+
+$$G(0)=K\frac{z}{5}=1.$$
+
+高频：
+
+$$K=10^{-30/20}=0.03162.$$
+
+两式联立：
+
+$$z=\frac{5}{K}=158.1\ \mathrm{rad/s}.$$
+
+注意高频增益是 $K$ 而不是 $Kz/5$：高频时 $s$ 主导分子分母，$z$ 和 $5$ 都被忽略。
+
+#### dB 换算速查
+
+| 幅值比 | dB |
+|---|---|
+| $2$ | $+6.02$ |
+| $10$ | $+20$ |
+| $\sqrt2$ | $+3.01$ |
+| $1/\sqrt2$ | $-3.01$ |
+| $1/2$ | $-6.02$ |
+| $1/10$ | $-20$ |
+| $1/1000$ | $-60$ |
+
+$a$ dB 对应幅值比 $10^{a/20}$。功率用 $10\log_{10}$，幅值用 $20\log_{10}$；滤波器题几乎都用幅值定义。
 
 ---
 
@@ -3850,6 +5014,18 @@ $$|u(t)|\le A_0\quad\text{（即 }A_0+u(t)\ge0\text{）}.$$
 - 相邻信道之间留保护间隔，防止频谱重叠。
 - 接收端用带通滤波器选出目标信道，再解调。
 
+**两个计数公式。** 信道数（无保护间隔）：
+
+$$N=\left\lfloor\frac{B_{\text{band}}}{2W}\right\rfloor.$$
+
+载频安排（有保护间隔 $g$）：每路带宽 $2W$、相邻载频间隔 $2W+g$，第一路载频在频带下沿上方 $W$ 处：
+
+$$f_1=f_{\text{low}}+W,\qquad f_k=f_1+(k-1)(2W+g).$$
+
+**例**（Quiz 3 第 66 题）$W=3$ kHz，$g=5$ kHz，从 $100$ kHz 开始：
+
+$$f_1=103,\qquad f_4=103+3\times11=136\ \mathrm{kHz}.$$
+
 广播电台、有线电视和载波电话系统都使用频分复用。
 
 ### 9.5 瞬时频率与 PM、FM
@@ -3964,10 +5140,12 @@ $$y(t)=\cos\left(\omega_ct+5\sin(2\pi\cdot1000t)\right).$$
   - 频谱基本只有「载波 + 一对边带」，形状和 AM 几乎一样。
   - 带宽近似为 $B\approx2W$。
   - 与 AM 的差别在相位关系：AM 边带与载波同相或反相；窄带 FM 边带与载波差 $90^\circ$（正交）。
+  - 注意这里的 $B$ 是**已调信号**占用的双边带宽，不是消息带宽 $W$：乘载波后消息频谱被复制到 $f_c$ 两侧，正频率处占 $[f_c-W,f_c+W]$，所以是 $2W$（只有单边带 SSB 才能压到 $W$）。若完全没有调制（$u=0$），信号是纯载波，带宽为 $0$；$B\approx2W$ 说的是有消息、但频偏很小的情形。
 - **宽带 FM**（$\beta\gg1$）
   - 频偏远大于消息带宽，波形疏密变化剧烈。
   - 频谱展开成很多对边带（幅度由 Bessel 函数决定）。
   - 带宽用 Carson 公式估计：$B\approx2(\Delta f+W)=2W(1+\beta)$。
+  - 瞬时频率在 $f_c\pm\Delta f$ 内摆动，每个瞬时频率上还带着宽 $W$ 的边带，所以总范围是 $[f_c-\Delta f-W,f_c+\Delta f+W]$，宽 $2(\Delta f+W)$。
   - 带宽比 AM 的 $2W$ 宽得多，换来更强的抗噪能力（用带宽换信噪比）。
 
 **一句话区别**
@@ -4017,6 +5195,102 @@ $$\beta=\frac{\Delta f}{W}=5.$$
 由 Carson 公式，
 
 $$B\approx2(\Delta f+W)=2(5+1)=12\ \mathrm{kHz}.$$
+
+**例 5（波长与载波）**　$3$ kHz 音频直接作为电磁波发送，$c=3\times10^8\ \mathrm{m/s}$。
+
+$$\lambda=\frac{c}{f}=\frac{3\times10^8}{3\times10^3}=10^5\ \mathrm{m}=100\ \mathrm{km}.$$
+
+波长太长，天线无法做这么长，所以需要把信号调制到高频载波上。
+
+**例 6（DSB-SC 的频谱）**　$u(t)=2\cos1000t+\cos2000t$，载波 $\cos10000t$。
+
+逐项使用 $\cos a\cos b=\frac12[\cos(a-b)+\cos(a+b)]$：
+
+$$2\cos1000t\cos10000t=\cos9000t+\cos11000t,$$
+
+$$\cos2000t\cos10000t=\frac12\cos8000t+\frac12\cos12000t.$$
+
+正频率分量为
+
+$$8000\ (0.5),\quad9000\ (1),\quad11000\ (1),\quad12000\ (0.5).$$
+
+调制把每个频率搬到载波两侧，幅度减半，且不含载波本身。
+
+**例 7（单边带滤波）**　$u(t)$ 带宽 $15$ kHz，乘 $2\cos(2\pi\cdot15000t)$ 后低通到 $15$ kHz。
+
+输入一个 $4$ kHz 分量：
+
+$$3\cos(2\pi\cdot4000t)\cdot2\cos(2\pi\cdot15000t)
+=3\cos(2\pi\cdot11000t)+3\cos(2\pi\cdot19000t).$$
+
+低通保留 $11$ kHz 项，滤掉 $19$ kHz 项。载波幅度 $2$ 恰好抵消积化和差的 $\frac12$，所以幅度仍为 $3$。
+
+**例 8（FDM 信道数）**　频带 $3.000$ 到 $3.400$ MHz，每个 DSB-SC 信道 $2W=6.8$ kHz。
+
+总带宽 $400$ kHz，信道数：
+
+$$\left\lfloor\frac{400}{6.8}\right\rfloor=58.$$
+
+**例 9（FDM 载频安排）**　四路 $3$ kHz 消息，DSB-SC，频带从 $100$ kHz 开始，相邻信道留 $5$ kHz 保护间隔。
+
+每个信道占 $6$ kHz，相邻载频间隔为 $6+5=11$ kHz。第一个载频：
+
+$$f_1=100+3=103\ \mathrm{kHz}.$$
+
+第四个载频：
+
+$$f_4=103+3\times11=136\ \mathrm{kHz}.$$
+
+**多层调制的一般规则：** 先把内层载波处理完，求出合成信号 $b(t)$ 的整个频段，再整体搬移。频段取各分量的并集：
+
+$$b(t)=u_1(t)+u_2(t)\cdot2\cos(\omega_{c1}t).$$
+
+$u_1$ 占 $[0,W]$，调制后的 $u_2$ 占 $[\omega_{c1}-W,\omega_{c1}+W]$，合并后 $b$ 占 $[0,\omega_{c1}+W]$。再乘 $2\cos\omega_{c2}t$，频段搬到 $\omega_{c2}\pm(\omega_{c1}+W)$。
+
+**例 10（多层调制）**　$u_1,u_2$ 带宽均为 $5000$ rad/s，先组成
+
+$$b(t)=u_1(t)+u_2(t)\cdot2\cos10000t,$$
+
+再发送
+
+$$c(t)=b(t)\cdot2\cos20000t.$$
+
+$u_1$ 占据 $0$ 到 $5000$；$u_2$ 调制后占据 $10000\pm5000$，即 $5000$ 到 $15000$。所以 $b(t)$ 占据 $0$ 到 $15000$。再乘 $2\cos20000t$，频带搬到 $20000\pm15000$，即 $5000$ 到 $35000$。
+
+**例 11（瞬时频率）**　$y(t)=\cos(t^2)$。
+
+相位 $\theta(t)=t^2$，瞬时角频率：
+
+$$\omega_i=\frac{d\theta}{dt}=2t.$$
+
+$t=5$ s 时为 $10$ rad/s。
+
+**例 12（PM 的频偏）**　$y(t)=\cos(\omega_ct+0.5u(t))$，$u(t)=4000t$。
+
+瞬时频率：
+
+$$\omega_i=\omega_c+0.5\times4000=\omega_c+2000.$$
+
+频偏换算成赫兹：
+
+$$\frac{2000}{2\pi}\approx318.3\ \mathrm{Hz}.$$
+
+**例 13（FM 与 PM 的区别）**　输入 $u(t)=H(t)$。
+
+FM 的相位为 $\omega_ct+k\int_{-\infty}^{t}u(\tau)d\tau$。$t>0$ 时积分等于 $t$，相位为 $\omega_ct+kt$，瞬时频率为 $\omega_c+k$，相位连续。
+
+PM 的相位为 $\omega_ct+kH(t)$。$t>0$ 时相位为 $\omega_ct+k$，瞬时频率为 $\omega_c$，但相位在 $t=0$ 处跳变 $k$。
+
+**例 14（窄带 FM 的频谱）**　$u(t)$ 带宽 $W$，无直流，FM 信号
+
+$$y(t)=\cos\left(\omega_ct+k\int_{-\infty}^{t}u(\tau)d\tau\right).$$
+
+$k$ 很小，展开：
+
+$$y(t)\approx\cos\omega_ct-k\sin\omega_ct\int_{-\infty}^{t}u(\tau)d\tau.$$
+
+第二项是 $\sin\omega_ct$ 被积分信号调幅，频带为 $\omega_c-W$ 到 $\omega_c+W$，与 AM 相同。只有 $k$ 很大时带宽才会明显超过 $2W$。这就是窄带 FM 的频谱：载波加一对边带，形状和 AM 几乎一样，但边带与载波正交（差 $90^\circ$）。
+
 
 ---
 
@@ -4207,1352 +5481,15 @@ FM：$\theta(t)=\omega_ct+k\int_{-\infty}^{t}u(\tau)d\tau$，$\omega_i=\omega_c+
 
 **判断稳定性**：求全部极点；检查右半平面极点；检查虚轴极点是否重根；需要 BIBO 判定时检查是否全部严格在左半平面。
 
-## 11 拉普拉斯变换补充
+**s 域电路**：把 $R$、$L$、$C$ 换成阻抗 $R$、$sL$、$1/(sC)$，串并联公式与电阻电路相同；电流源驱动时 $Y(s)=U(s)Z(s)$。串联 RLC 取电容电压时
 
-### 11.1 收敛域与信号类型
+$$\frac{Y(s)}{U(s)}=\frac{1}{LCs^2+RCs+1},$$
 
-同一个 $U(s)$ 配上不同的收敛域，对应不同的时域信号。这张表把常见情形集中列出，方便对照。
-
-| 信号类型 | 例子 | ROC |
-|---|---|---|
-| 向右的有限长信号 | $H(t)-H(t-1)$ | 整个 $s$ 平面 |
-| 向右的指数衰减 | $e^{-at}H(t)$ | $\operatorname{Re}s>-a$ |
-| 向右的指数增长 | $e^{at}H(t)$（$a>0$） | $\operatorname{Re}s>a$ |
-| 向左的指数信号 | $-e^{-at}H(-t)$ | $\operatorname{Re}s<-a$ |
-| 双边指数 | $e^{-a|t|}$ | $-a<\operatorname{Re}s<a$ |
-| 有限个极点相加 | 各项之和 | 各 ROC 的交集 |
-
-ROC 边界总由极点所在的竖直线决定，ROC 内部不能有极点。因果信号的 ROC 是最右侧极点以右，反因果信号的 ROC 是最左侧极点以左。这与公式表一致：$e^{-at}H(t)\leftrightarrow\dfrac1{s+a}$ 要求 $\operatorname{Re}s>-a$，$e^{-at}H(-t)\leftrightarrow-\dfrac1{s+a}$ 要求 $\operatorname{Re}s<-a$。
-
-**例**　$u(t)=3e^{-4t}H(t)-2e^{t}H(t)$。
-
-第一项要求 $\operatorname{Re}s>-4$，第二项要求 $\operatorname{Re}s>1$。两项之和只在交集上收敛：
-
-$$\operatorname{Re}s>1.$$
-
-两个指数一项衰减、一项增长，增长的指数要求更大的实部才能压住，所以 ROC 由增长项决定。
-
-**例**　$u(t)=e^{-2t}H(t)+e^{-5t}H(-t)$。
-
-第一项要求 $\operatorname{Re}s>-2$，第二项是反因果信号，要求 $\operatorname{Re}s<-5$。
-
-两个条件没有交集，所以这个信号不存在拉普拉斯变换，对应的 ROC 为空。
-
-**例**　$u(t)=e^{(-2+5j)t}H(t)$。
-
-指数的实部为 $-2$，虚部 $5j$ 只让信号旋转，不改变它的增长或衰减。判断收敛性只看实部：
-
-$$|u(t)e^{-\sigma t}|=e^{(-2-\sigma)t},$$
-
-当 $\sigma>-2$ 时衰减，所以 ROC 为 $\operatorname{Re}s>-2$。极点位于 $s=-2+5j$，ROC 是过该极点实部的竖直线以右。
-
-**例**　$u(t)=p_2(t-3)$，即宽为 $2$、中心在 $t=3$ 的矩形脉冲。
-
-脉冲在 $2<t<4$ 内为 $1$，写成阶跃之差：
-
-$$u(t)=H(t-2)-H(t-4).$$
-
-逐项变换：
-
-$$U(s)=\frac{e^{-2s}-e^{-4s}}{s}.$$
-
-有限长信号在 $s=0$ 处有可去奇点，在整个 $s$ 平面上收敛。
-
-### 11.2 常用拉普拉斯变换的推导与核对
-
-#### 阶跃与指数
-
-> 下面推导：$H(t)\leftrightarrow\dfrac1s$ 与 $e^{-at}H(t)\leftrightarrow\dfrac{1}{s+a}$ 的积分过程（含 ROC）。
-
-阶跃：
-
-$$H(t)\longleftrightarrow\int_0^\infty e^{-st}dt=\frac1s,\qquad\operatorname{Re}s>0.$$
-
-单边指数：
-
-$$e^{-at}H(t)\longleftrightarrow\int_0^\infty e^{-(s+a)t}dt=\frac1{s+a},\qquad\operatorname{Re}s>-a.$$
-
-#### 正弦与余弦
-
-> 下面推导：$\cos\omega_0t$、$\sin\omega_0t$ 的拉普拉斯变换（欧拉公式 + 复指数变换对）。
-
-由欧拉公式和 $s$ 域移位，
-
-$$\cos\omega_0t\,H(t)=\frac12\left(e^{j\omega_0t}+e^{-j\omega_0t}\right)H(t)
-\longleftrightarrow\frac12\left(\frac1{s-j\omega_0}+\frac1{s+j\omega_0}\right)=\frac{s}{s^2+\omega_0^2}.$$
-
-同理，
-
-$$\sin\omega_0t\,H(t)\longleftrightarrow\frac1{2j}\left(\frac1{s-j\omega_0}-\frac1{s+j\omega_0}\right)=\frac{\omega_0}{s^2+\omega_0^2}.$$
-
-分母写成 $s^2+\omega_0^2$，是因为 $(s-j\omega_0)(s+j\omega_0)=s^2+\omega_0^2$。若写成 $s^2-\omega_0^2$，说明把 $\omega_0^2$ 前面的符号弄反了。
-
-#### 乘 $t$ 与 $t^n$
-
-> 下面推导：乘 $t$ 对应 $-\dfrac{dU(s)}{ds}$，重复使用得 $t^ne^{-at}H(t)\leftrightarrow\dfrac{n!}{(s+a)^{n+1}}$。
-
-由
-
-$$\frac{d}{ds}\frac1{s+a}=-\frac1{(s+a)^2},$$
-
-以及
-
-$$te^{-at}H(t)\longleftrightarrow\frac1{(s+a)^2},$$
-
-得到乘 $t$ 性质：
-
-$$tu(t)\longleftrightarrow-\frac{dU(s)}{ds}.$$
-
-重复使用 $n$ 次：
-
-$$t^ne^{-at}H(t)\longleftrightarrow\frac{n!}{(s+a)^{n+1}}.$$
-
-#### 调制型乘积
-
-> 下面推导：$\cos3t\cos t\,H(t)$ 的变换（先积化和差，再逐项查表）。
-
-求 $\cos3t\cos t\,H(t)$ 这类乘积，先用积化和差把乘积化成两个同频余弦之和：
-
-$$\cos3t\cos t=\frac12\cos4t+\frac12\cos2t.$$
-
-逐项变换：
-
-$$\cos3t\cos t\,H(t)\longleftrightarrow\frac12\cdot\frac{s}{s^2+16}+\frac12\cdot\frac{s}{s^2+4}.$$
-
-注意不能把两个变换直接相乘。时域相乘对应的是 $s$ 域卷积，不是乘积。
-
-#### 时移与阶跃延迟
-
-> 下面推导：$u(t-\tau)H(t-\tau)\leftrightarrow e^{-s\tau}U(s)$ 的正反两个方向。
-
-若 $u(t)$ 的变换为 $U(s)$，则
-
-$$u(t-\tau)H(t-\tau)\longleftrightarrow e^{-s\tau}U(s).$$
-
-时移时阶跃也要一起延迟，否则 $u(t-\tau)$ 在 $t<0$ 时的取值会被截掉。
-
-反过来，看到 $e^{-3s}/(s+1)$，应当认出这是 $e^{-t}H(t)$ 延迟 $3$：
-
-$$e^{-(t-3)}H(t-3).$$
-
-若误写成 $e^{-t}H(t-3)$，只延迟了阶跃没有延迟指数；若写成 $e^{-(t+3)}H(t)$，只把指数前移了，都不是原来的信号。
-
-#### 积分与微分
-
-> 下面推导：$0$ 到 $t$ 的积分对应除以 $s$，微分对应乘 $s$ 并减初值。
-
-在 $0$ 到 $t$ 上积分，$s$ 域除以 $s$：
-
-$$\int_0^tu(\tau)d\tau\longleftrightarrow\frac{U(s)}{s}.$$
-
-例如 $\cos3t\,H(t)$ 的变换为 $s/(s^2+9)$，积分后为
-
-$$\int_0^t\cos3\tau\,d\tau=\frac13\sin3t\longleftrightarrow\frac{s}{s^2+9}\cdot\frac1s=\frac1{s^2+9}.$$
-
-微分则乘 $s$ 并减去初始值：
-
-$$\dot u(t)\longleftrightarrow sU(s)-u(0^-).$$
-
-### 11.3 拉普拉斯变换与系统
-
-#### 冲激响应与阶跃响应
-
-$$G(s)=\mathcal L\{h(t)\}.$$
-
-公式表把输入、输出与传递函数写成
-
-$$Y(s)=G(s)U(s),\qquad G(s)=\mathcal L\{h\}(s),$$
-
-因此单位阶跃输入 $U(s)=1/s$ 时 $Y(s)=G(s)/s$，即阶跃响应是冲激响应的积分：
-
-$$y_{\text{step}}(t)=\int_0^th(\tau)d\tau,\qquad Y_{\text{step}}(s)=\frac{G(s)}{s}.$$
-
-所以反过来，
-
-$$h(t)=\frac{d}{dt}y_{\text{step}}(t).$$
-
-若阶跃响应为 $(e^{-t}-e^{-2t})H(t)$，求导得冲激响应：
-
-$$h(t)=\left(-e^{-t}+2e^{-2t}\right)H(t).$$
-
-阶跃响应在 $t=0$ 处从零开始，没有冲激，所以求导只需对 $t>0$ 的表达式求导。
-
-#### 用拉普拉斯变换解微分方程
-
-含初始条件时，把各项一起变换。以
-
-$$\ddot y+5\dot y+6y=6u(t),\qquad u(t)=H(t),\quad y(0^-)=2,\quad\dot y(0^-)=-1$$
-
-为例。
-
-逐项变换：
-
-$$s^2Y-2s+1+5(sY-2)+6Y=\frac6s.$$
-
-整理左边：
-
-$$(s^2+5s+6)Y-2s-9=\frac6s.$$
-
-把初始条件项移到右边：
-
-$$(s^2+5s+6)Y=\frac6s+2s+9.$$
-
-部分分式：
-
-$$Y=\frac{2s^2+9s+6}{s(s+2)(s+3)}
-=\frac1s+\frac{2}{s+2}-\frac1{s+3}.$$
-
-反变换：
-
-$$y(t)=1+2e^{-2t}-e^{-3t}\qquad(t\ge0).$$
-
-代入 $t=1$：
-
-$$y(1)=1+2e^{-2}-e^{-3}\approx1.221.$$
-
-#### 零输入响应与零状态响应
-
-线性系统可以分开处理：
-
-$$Y(s)=\underbrace{\frac{\text{初始条件项}}{\text{特征多项式}}}_{Y_{zi}(s)}
-+\underbrace{\frac{\text{输入项}}{\text{特征多项式}}}_{Y_{zs}(s)}.$$
-
-零输入响应的形式由极点决定，系数由初始条件决定；零状态响应的形式由系统极点和输入极点共同决定。
-
-若两者恰好抵消，输出可能只剩常数。例如
-
-$$\ddot y+4\dot y+4y=2H(t),\qquad y(0^-)=0.5,\quad\dot y(0^-)=0,$$
-
-变换后
-
-$$(s+2)^2Y=\frac2s+0.5s+2=\frac{0.5(s+2)^2}{s},$$
-
-所以 $Y=0.5/s$，输出为常数 $0.5$。系统从平衡点出发，输入正好维持这个平衡，瞬态项全部抵消。
-
-#### 初值和终值
-
-初值定理：
-
-$$y(0^+)=\lim_{s\to\infty}sY(s).$$
-
-终值定理：
-
-$$y(\infty)=\lim_{s\to0}sY(s),$$
-
-前提是 $sY(s)$ 的极点全部在开左半平面。
-
-**例**　$G(s)=\dfrac{s+1}{s+10}$，输入为单位阶跃。
-
-$$Y(s)=\frac{s+1}{s(s+10)},\qquad sY(s)=\frac{s+1}{s+10}.$$
-
-初值：
-
-$$y(0^+)=\lim_{s\to\infty}\frac{s+1}{s+10}=1.$$
-
-终值：
-
-$$y(\infty)=\lim_{s\to0}\frac{s+1}{s+10}=\frac1{10}.$$
-
-阶跃刚加上时，电容来不及充电，输出跳到 $1$，这是分子分母同阶造成的直通；最终趋于直流增益 $G(0)=0.1$。
-
-**例**　$G(s)=\dfrac{120}{s^2+6s}$，输入为冲激。
-
-$$sG(s)=\frac{120}{s+6},$$
-
-极点在 $-6$，满足终值定理。于是
-
-$$h(\infty)=\lim_{s\to0}\frac{120}{s+6}=20.$$
-
-**例（终值定理失效）**　$G(s)=\dfrac{3}{s^2+4}$ 的冲激响应为 $\frac32\sin2t$，没有极限。原因在于 $sG(s)=\dfrac{3s}{s^2+4}$ 在 $\pm2j$ 有极点，不满足终值定理的条件。此时直接代数计算会得到 $0$，这是错误结果。
-
-### 11.4 部分分式
-
-#### 遮盖法求单实极点
-
-> 下面推导：遮盖法（留数）公式的来历——两边乘 $(s-p_i)$ 后令 $s=p_i$。
-
-$$Y(s)=\frac{N(s)}{\prod_i(s-p_i)}.$$
-
-对于单极点 $p_i$，两边乘以 $(s-p_i)$ 再令 $s=p_i$：
-
-$$A_i=\left.(s-p_i)Y(s)\right|_{s=p_i}.$$
-
-例如
-
-$$\frac{s+2}{s(s+1)}=\frac{A}{s}+\frac{B}{s+1},$$
-
-$$A=\left.\frac{s+2}{s+1}\right|_{s=0}=2,\qquad B=\left.\frac{s+2}{s}\right|_{s=-1}=-1.$$
-
-反变换：
-
-$$h(t)=\left(2-e^{-t}\right)H(t).$$
-
-#### 重极点
-
-> 下面推导：重极点部分分式的系数怎么求——最高次项遮盖，其余求导或比系数。
-
-$$Y(s)=\frac{1}{(s+1)^2(s+2)}=\frac{A}{s+1}+\frac{B}{(s+1)^2}+\frac{C}{s+2}.$$
-
-$C$ 和 $B$ 可以直接遮盖：
-
-$$C=\left.\frac1{(s+1)^2}\right|_{s=-2}=1,\qquad B=\left.\frac1{s+2}\right|_{s=-1}=1.$$
-
-$A$ 需要求导：
-
-$$A=\left.\frac{d}{ds}\frac1{s+2}\right|_{s=-1}=\left.-\frac1{(s+2)^2}\right|_{s=-1}=-1.$$
-
-反变换：
-
-$$y(t)=\left(-e^{-t}+te^{-t}+e^{-2t}\right)H(t).$$
-
-重极点对应 $t^ne^{pt}$ 型项。若极点重数为 $m$，部分分式里要写出 $(s-p)^{-1}$ 到 $(s-p)^{-m}$ 的所有项。
-
-#### 共轭复极点
-
-> 下面推导：复极点部分拆成「余弦项 + 正弦项」，正弦系数等于常数项除以 $\omega_0$。
-
-$$Y(s)=\frac{3s+1}{(s+1)(s^2+2s+5)}.$$
-
-先用遮盖法求实极点部分：
-
-$$A=\left.\frac{3s+1}{s^2+2s+5}\right|_{s=-1}=\frac{-2}{4}=-0.5.$$
-
-剩下的部分配成完全平方：
-
-$$Y(s)=-\frac{0.5}{s+1}+\frac{0.5s+3.5}{(s+1)^2+4}.$$
-
-再把分子拆成 $(s+a)$ 项和常数项：
-
-$$\frac{0.5s+3.5}{(s+1)^2+4}
-=0.5\frac{s+1}{(s+1)^2+4}+1.5\frac{2}{(s+1)^2+4}.$$
-
-逐项反变换：
-
-$$y(t)=-0.5e^{-t}+0.5e^{-t}\cos2t+1.5e^{-t}\sin2t\qquad(t\ge0).$$
-
-这里 $1.5$ 这个系数来自常数项除以 $\omega_0=2$。
-
-#### 有延迟因子的部分分式
-
-> 下面推导：先对有理部分做部分分式、反变换，再整体延迟——延迟因子让每一项同时平移。
-
-$$Y(s)=\frac{4e^{-s}}{(s+1)(s+3)}.$$
-
-先不管 $e^{-s}$，对有理部分分式：
-
-$$\frac{4}{(s+1)(s+3)}=\frac{2}{s+1}-\frac{2}{s+3}.$$
-
-再整体延迟 $1$：
-
-$$y(t)=\left[2e^{-(t-1)}-2e^{-3(t-1)}\right]H(t-1).$$
-
-延迟因子乘在整个信号上，所以每一项都延迟，阶跃也一起延迟。
-
-### 11.5 系统分析典型例题
-
-**例 1（系统极点与输入极点重合）**　$G(s)=\dfrac{s+4}{s^2+3s+2}$，输入 $u(t)=e^{-2t}H(t)$。
-
-系统极点为 $-1,-2$，输入极点为 $-2$，与系统极点重合，所以 $Y(s)$ 中会出现二重极点：
-
-$$Y(s)=\frac{s+4}{(s+1)(s+2)^2}
-=\frac{3}{s+1}-\frac{3}{s+2}-\frac{2}{(s+2)^2}.$$
-
-反变换：
-
-$$y(t)=3e^{-t}-3e^{-2t}-2te^{-2t}\qquad(t\ge0).$$
-
-二重极点对应 $te^{-2t}$ 项，这是共振在拉普拉斯域的表现。输入频率与系统自然频率相同时，响应会多出一个随时间线性增长的项。
-
-**例 2（零点抵消输入极点）**　$G(s)$ 的极点在 $-2,-5$，零点在 $-1$，直流增益为 $3$，输入 $u(t)=e^{-t}H(t)$。
-
-先定增益：
-
-$$G(s)=\frac{k(s+1)}{(s+2)(s+5)},\qquad G(0)=\frac{k}{10}=3\quad\Longrightarrow\quad k=30.$$
-
-于是
-
-$$Y(s)=G(s)U(s)=\frac{30(s+1)}{(s+2)(s+5)}\cdot\frac1{s+1}
-=\frac{30}{(s+2)(s+5)}.$$
-
-零点把输入极点抵消了，输出中不含 $e^{-t}$ 项：
-
-$$Y(s)=\frac{10}{s+2}-\frac{10}{s+5},\qquad y(t)=10\left(e^{-2t}-e^{-5t}\right)H(t).$$
-
-这说明系统可以完全抑制某一个输入模态。
-
-**例 3（由输出反求输入）**　$G(s)=\dfrac{4}{s^2+2s+4}$，希望输出为 $y(t)=\left(1-e^{-4t}\right)H(t)$，求输入。
-
-先写出输出的变换：
-
-$$Y(s)=\frac1s-\frac1{s+4}=\frac4{s(s+4)}.$$
-
-由 $Y(s)=G(s)U(s)$ 解出输入：
-
-$$U(s)=\frac{Y(s)}{G(s)}
-=\frac{4}{s(s+4)}\cdot\frac{s^2+2s+4}{4}
-=\frac{s^2+2s+4}{s(s+4)}.$$
-
-分子次数等于分母次数，先做多项式除法：
-
-$$U(s)=1+\frac{s^2+2s+4-s(s+4)}{s(s+4)}
-=1+\frac{-2s+4}{s(s+4)}.$$
-
-再对真分式部分分式：
-
-$$\frac{-2s+4}{s(s+4)}=\frac{1}{s}-\frac{3}{s+4}.$$
-
-反变换：
-
-$$u(t)=\delta(t)+\left(1-3e^{-4t}\right)H(t).$$
-
-这里的冲激来自 $U(s)$ 中的常数项，省略它会导致反变换出来的信号缺少一部分。
-
-### 11.6 二阶系统与稳定性的补充例题
-
-**例 1（由极点判断稳定类型）**　$G(s)=\dfrac{6}{s^2+4}$。
-
-极点为 $\pm2j$，是虚轴上的单极点。冲激响应为
-
-$$h(t)=3\sin2t\,H(t),$$
-
-有界但不衰减，也不绝对可积。所以系统临界稳定，但不是 BIBO 稳定。
-
-**例 2（虚轴单极点与原点极点）**　极点在 $0$ 和 $-0.2\pm j$。
-
-$-0.2\pm j$ 在开左半平面，$0$ 是虚轴上的单极点，所以系统临界稳定。$h(t)$ 中含一个非零常数项，积分
-
-$$\int_0^\infty|h(t)|dt$$
-
-发散，因此不是 BIBO 稳定。
-
-**例 3（判断临界稳定）**
-
-- $\dfrac{s+2}{(s^2+4)(s+1)}$：极点为 $\pm2j$（单根）和 $-1$，临界稳定。
-- $\dfrac{s-2}{(s+1)(s+3)}$：两个极点都在开左半平面，指数稳定；零点 $+2$ 不影响稳定性。
-- $\dfrac{s+2}{s^2(s+3)}$：$s=0$ 是二重极点，$h(t)$ 含 $t$ 型项，不稳定。
-- $\dfrac{s+2}{(s^2+4)^2}$：$\pm2j$ 是二重极点，$h(t)$ 含 $t\sin2t$，不稳定。
-
-**例 4（四阶多项式的极点）**　$G(s)=\dfrac{1}{s^4+4}$。
-
-利用 $s^4+4=(s^2+2s+2)(s^2-2s+2)$。两个二次因子的根分别为 $-1\pm j$ 和 $1\pm j$。后一对在右半平面，所以系统不稳定。
-
-所有系数为正不代表稳定。这个例子中 $s^3$、$s^2$、$s$ 的系数都是零，只看系数符号会漏掉右半平面的极点。
-
-**例 5（共振输入）**　$G(s)=\dfrac{1}{s^2+9}$，输入 $\cos3t\,H(t)$。
-
-输入极点 $\pm3j$ 与系统极点重合：
-
-$$Y(s)=\frac{s}{(s^2+9)^2},\qquad y(t)=\frac{t}{6}\sin3t\,H(t).$$
-
-输出随时间增长，无界。输入振幅有界，输出却无界，这是因为系统不满足 BIBO 稳定（虚轴上单极点）。
-
-**例 6（零点靠近极点）**　$G(s)=\dfrac{s+3}{(s+1)(s+3.1)}$。
-
-零点 $-3$ 非常靠近极点 $-3.1$。求 $e^{-3.1t}$ 项的系数，用遮盖法：
-
-$$A_{3.1}=\left.\frac{s+3}{s+1}\right|_{s=-3.1}
-=\frac{-0.1}{-2.1}\approx0.04762.$$
-
-零点越靠近极点，对应模态的系数越小。若零点与极点完全重合，该模态会被完全抵消。
-
-### 11.7 频率响应与滤波器的补充
-
-**例 1（一阶系统幅频曲线）**　$G(s)=\dfrac{1}{s+2}$。
-
-$$|G(j\omega)|=\frac1{\sqrt{4+\omega^2}},\qquad G(0)=\frac12.$$
-
-$-3$ dB 频率满足
-
-$$\frac{|G(j\omega_c)|}{|G(0)|}=\frac{2}{\sqrt{4+\omega_c^2}}=\frac1{\sqrt2},$$
-
-解得 $\omega_c=2$。一阶低通的截止频率等于极点频率。
-
-**例 2（二阶低通的截止频率）**　$G(s)=\dfrac{400}{s^2+20s+400}$。
-
-这里 $\omega_n=20$，$\zeta=0.5$。令 $x=(\omega/\omega_n)^2$，幅频平方为
-
-$$|G|^2=\frac{1}{(1-x)^2+0.25x}.$$
-
-令 $|G|^2=1/2$，数值求解得 $x\approx1.618$。于是
-
-$$\omega_c=\omega_n\sqrt{x}=20\sqrt{1.618}\approx25.44\ \mathrm{rad/s}.$$
-
-二阶低通的 $-3$ dB 频率与 $\omega_n$ 不同，不能直接取 $\omega_n$。
-
-**例 3（一阶高通的衰减）**　$G(s)=\dfrac{s}{s+\omega_c}$，$\omega_c=2\pi\times100$，输入为 $50$ Hz。
-
-$$\frac{\omega}{\omega_c}=\frac{50}{100}=0.5,\qquad |G|=\frac{0.5}{\sqrt{1+0.5^2}}=0.4472.$$
-
-衰减量为
-
-$$-20\log_{10}0.4472\approx6.99\ \mathrm{dB}.$$
-
-**例 4（由指标反求参数）**　$G(s)=\dfrac{k}{s+a}$，要求直流增益 $+12$ dB，且在 $1$ kHz 处下降 $3$ dB。
-
-$+12$ dB 对应
-
-$$\frac{k}{a}=10^{12/20}=3.981.$$
-
-$3$ dB 下降出现在 $\omega=a$，所以
-
-$$a=2\pi\times1000=6283\ \mathrm{rad/s},\qquad k=3.981\times6283=2.501\times10^4.$$
-
-**例 5（全通滤波器的相移）**　$G(s)=\dfrac{10-s}{s+10}$，输入 $\cos10t$。
-
-$$G(j10)=\frac{10-10j}{10+10j}=-j.$$
-
-模为 $1$，相位为 $-90^\circ$，所以输出为
-
-$$y(t)=\cos(10t-90^\circ)=\sin10t.$$
-
-全通滤波器不改变幅度，只改变相位。在 $\omega=10$ 处相位恰好为 $-90^\circ$。
-
-**例 6（延迟线）**　$y(t)=u(t-2)$，$G(s)=e^{-2s}$。
-
-$$G(j\omega)=e^{-j2\omega},\qquad |G(j\omega)|=1,\quad \angle G(j\omega)=-2\omega.$$
-
-幅度恒定，相位与频率成线性关系，所以这是全通系统，相位延迟为 $2$ 秒。
-
-**例 7（Notch 滤波器）**
-
-$$G(s)=\frac{s^2+\omega_n^2}{s^2+2\zeta\omega_ns+\omega_n^2},\qquad \omega_n=2\pi\times50,\quad\zeta=0.5.$$
-
-求 $25$ Hz 处的幅度。令 $\omega=\omega_n/2$：
-
-$$G(j\omega_n/2)=\frac{0.75\omega_n^2}{0.75\omega_n^2+j0.5\omega_n^2}.$$
-
-$$|G|=\frac{0.75}{\sqrt{0.75^2+0.5^2}}=\frac{0.75}{\sqrt{0.8125}}\approx0.8321.$$
-
-在 $\omega=\omega_n$ 处分子为零，幅度为零，正好滤掉 $50$ Hz。
-
-### 11.8 滤波器设计补充
-
-**例 1（一阶低通到高通）**　$G(s)=\dfrac{1}{s+1}$ 是高通还是低通？换成 $s\to1/s$ 后是什么？
-
-原式 $G(0)=1$、高频趋于 $0$，是低通。
-
-做替换：
-
-$$G\left(\frac1s\right)=\frac{1}{1/s+1}=\frac{s}{s+1}.$$
-
-$G(0)=0$、高频趋于 $1$，是高通，截止频率仍为 $1\ \mathrm{rad/s}$。
-
-**例 2（Butterworth 原型到高通）**　二阶 Butterworth 低通原型
-
-$$G_{LP}(s)=\frac{1}{s^2+\sqrt2s+1}.$$
-
-把 $s$ 换成 $50/s$：
-
-$$G_{HP}(s)=\frac{1}{\dfrac{2500}{s^2}+\dfrac{50\sqrt2}{s}+1}
-=\frac{s^2}{s^2+50\sqrt2s+2500}.$$
-
-分子分母同乘 $s^2$ 得到分母中间项 $50\sqrt2\approx70.71$，常数项 $50^2=2500$。
-
-**例 3（二阶 Butterworth 的阻尼比）**　二阶 Butterworth 分母
-
-$$s^2+\sqrt2\omega_cs+\omega_c^2.$$
-
-与标准形式 $s^2+2\zeta\omega_ns+\omega_n^2$ 对照：
-
-$$\omega_n=\omega_c,\qquad 2\zeta\omega_n=\sqrt2\omega_c\quad\Longrightarrow\quad\zeta=\frac1{\sqrt2}.$$
-
-所以 Butterworth 二阶系统的阻尼比固定为 $1/\sqrt2\approx0.7071$。这也是它没有共振峰的分界值。
-
-**例 4（由极点求二阶 Butterworth 的截止频率）**　极点 $-10^4\pm j10^4$。
-
-$$\omega_n=\sqrt{(10^4)^2+(10^4)^2}=\sqrt2\times10^4,\qquad
-\zeta=\frac{10^4}{\sqrt2\times10^4}=\frac1{\sqrt2}.$$
-
-这正好是二阶 Butterworth 的极点位置，所以 $\omega_c=\omega_n=\sqrt2\times10^4\approx1.414\times10^4\ \mathrm{rad/s}$。
-
-**例 5（高阶 Butterworth 的极点）**　五阶 Butterworth 低通，$\omega_c=1000$。
-
-五个极点在左半平面圆上均匀分布，角度为 $108^\circ,144^\circ,180^\circ,216^\circ,252^\circ$（从正实轴量起）。最靠近虚轴的极点在 $108^\circ$ 和 $252^\circ$，实部为
-
-$$1000\cos108^\circ\approx-309.0.$$
-
-**例 6（Butterworth 衰减计算）**　三阶 Butterworth 高通，$f_c=100$ Hz，输入 $50$ Hz。
-
-高通幅频平方为
-
-$$|G|^2=\frac{1}{1+(f_c/f)^6}.$$
-
-$f_c/f=2$，所以
-
-$$|G|^2=\frac1{1+64}=\frac1{65}.$$
-
-衰减量：
-
-$$-10\log_{10}\frac1{65}=10\log_{10}65\approx18.13\ \mathrm{dB}.$$
-
-**例 7（级联不是同阶 Butterworth）**　两个相同的一阶低通 $\dfrac{\omega_c}{s+\omega_c}$ 级联。
-
-$$G(s)=\left(\frac{\omega_c}{s+\omega_c}\right)^2.$$
-
-在 $\omega=\omega_c$ 处，每节下降 $3.01$ dB，两节共下降 $6.02$ dB。级联后的极点是一个二重极点，与原二阶 Butterworth 的两个不同极点不同。所以增益相同不等于滤波器相同。
-
-**例 8（由衰减指标求阶数）**　Butterworth 低通，$f_c=2$ kHz，要求在 $6$ kHz 处衰减至少 $35$ dB。
-
-频率比为 $3$，衰减为
-
-$$10\log_{10}\left(1+3^{2n}\right).$$
-
-$n=3$ 时为 $28.6$ dB，$n=4$ 时为 $38.2$ dB，所以最小阶数为 $4$。
-
-**例 9（由通带指标求截止频率）**　四阶 Butterworth 低通，在 $1$ kHz 处衰减不超过 $1$ dB。
-
-$$10\log_{10}\left(1+\left(\frac{1000}{f_c}\right)^8\right)\le1.$$
-
-$$\left(\frac{1000}{f_c}\right)^8\le10^{0.1}-1=0.2589,$$
-
-$$\frac{1000}{f_c}\le0.8446\quad\Longrightarrow\quad f_c\ge1.184\ \mathrm{kHz}.$$
-
-### 11.9 调制补充
-
-**例 1（波长与载波）**　$3$ kHz 音频直接作为电磁波发送，$c=3\times10^8\ \mathrm{m/s}$。
-
-$$\lambda=\frac{c}{f}=\frac{3\times10^8}{3\times10^3}=10^5\ \mathrm{m}=100\ \mathrm{km}.$$
-
-波长太长，天线无法做这么长，所以需要把信号调制到高频载波上。
-
-**例 2（DSB-SC 的频谱）**　$u(t)=2\cos1000t+\cos2000t$，载波 $\cos10000t$。
-
-逐项使用 $\cos a\cos b=\frac12[\cos(a-b)+\cos(a+b)]$：
-
-$$2\cos1000t\cos10000t=\cos9000t+\cos11000t,$$
-
-$$\cos2000t\cos10000t=\frac12\cos8000t+\frac12\cos12000t.$$
-
-正频率分量为
-
-$$8000\ (0.5),\quad9000\ (1),\quad11000\ (1),\quad12000\ (0.5).$$
-
-调制把每个频率搬到载波两侧，幅度减半，且不含载波本身。
-
-**例 3（单边带滤波）**　$u(t)$ 带宽 $15$ kHz，乘 $2\cos(2\pi\cdot15000t)$ 后低通到 $15$ kHz。
-
-输入一个 $4$ kHz 分量：
-
-$$3\cos(2\pi\cdot4000t)\cdot2\cos(2\pi\cdot15000t)
-=3\cos(2\pi\cdot11000t)+3\cos(2\pi\cdot19000t).$$
-
-低通保留 $11$ kHz 项，滤掉 $19$ kHz 项。载波幅度 $2$ 恰好抵消积化和差的 $\frac12$，所以幅度仍为 $3$。
-
-**例 4（FDM 信道数）**　频带 $3.000$ 到 $3.400$ MHz，每个 DSB-SC 信道 $2W=6.8$ kHz。
-
-总带宽 $400$ kHz，信道数：
-
-$$\left\lfloor\frac{400}{6.8}\right\rfloor=58.$$
-
-**例 5（FDM 载频安排）**　四路 $3$ kHz 消息，DSB-SC，频带从 $100$ kHz 开始，相邻信道留 $5$ kHz 保护间隔。
-
-每个信道占 $6$ kHz，相邻载频间隔为 $6+5=11$ kHz。第一个载频：
-
-$$f_1=100+3=103\ \mathrm{kHz}.$$
-
-第四个载频：
-
-$$f_4=103+3\times11=136\ \mathrm{kHz}.$$
-
-**例 6（多层调制）**　$u_1,u_2$ 带宽均为 $5000$ rad/s，先组成
-
-$$b(t)=u_1(t)+u_2(t)\cdot2\cos10000t,$$
-
-再发送
-
-$$c(t)=b(t)\cdot2\cos20000t.$$
-
-$u_1$ 占据 $0$ 到 $5000$；$u_2$ 调制后占据 $10000\pm5000$，即 $5000$ 到 $15000$。所以 $b(t)$ 占据 $0$ 到 $15000$。
-
-再乘 $2\cos20000t$，频带搬到 $20000\pm15000$，即 $5000$ 到 $35000$。
-
-**例 7（瞬时频率）**　$y(t)=\cos(t^2)$。
-
-相位 $\theta(t)=t^2$，瞬时角频率：
-
-$$\omega_i=\frac{d\theta}{dt}=2t.$$
-
-$t=5$ s 时为 $10$ rad/s。
-
-**例 8（PM 的频偏）**　$y(t)=\cos(\omega_ct+0.5u(t))$，$u(t)=4000t$。
-
-瞬时频率：
-
-$$\omega_i=\omega_c+0.5\times4000=\omega_c+2000.$$
-
-频偏换算成赫兹：
-
-$$\frac{2000}{2\pi}\approx318.3\ \mathrm{Hz}.$$
-
-**例 9（FM 与 PM 的区别）**　输入 $u(t)=H(t)$。
-
-FM 的相位为 $\omega_ct+k\int_{-\infty}^{t}u(\tau)d\tau$。$t>0$ 时积分等于 $t$，相位为 $\omega_ct+kt$，瞬时频率为 $\omega_c+k$，相位连续。
-
-PM 的相位为 $\omega_ct+kH(t)$。$t>0$ 时相位为 $\omega_ct+k$，瞬时频率为 $\omega_c$，但相位在 $t=0$ 处跳变 $k$。
-
-**例 10（窄带 FM 的频谱）**　$u(t)$ 带宽 $W$，无直流，FM 信号
-
-$$y(t)=\cos\left(\omega_ct+k\int_{-\infty}^{t}u(\tau)d\tau\right).$$
-
-$k$ 很小，展开：
-
-$$y(t)\approx\cos\omega_ct-k\sin\omega_ct\int_{-\infty}^{t}u(\tau)d\tau.$$
-
-第二项是 $\sin\omega_ct$ 被积分信号调幅，频带为 $\omega_c-W$ 到 $\omega_c+W$，与 AM 相同。只有 $k$ 很大时带宽才会明显超过 $2W$。
-
----
-
-## 12 Quiz 3 补充：s 域电路与滤波器设计细节
-
-本节补充 Quiz 3 用到、但第 7—11 节没有展开的内容。书写顺序与做题顺序一致：先讲 s 域电路怎么建模（阻抗、并联、电流源驱动），再讲系统指标（斜坡稳态误差、测量延迟、输入反求、零极点抵消），然后进入滤波器细节（互补相加、斜率读图、分频器、全通与延迟线），最后是 Butterworth 与调制的小细节。
-
-### 12.1 s 域电路与阻抗
-
-#### 三种元件的 s 域阻抗
-
-把电容、电感的时域关系取拉普拉斯变换（零初始条件），可以得到它们与电阻同形式的「阻抗」：
-
-$$Z_R=R,\qquad Z_L(s)=sL,\qquad Z_C(s)=\frac{1}{sC}.$$
-
-- 电阻：电压电流同相，阻抗为常数。
-- 电感：$\dfrac{v}{i}=sL$，频率越高阻抗越大，所以电感对高频「阻力大」，是低通元件。
-- 电容：$\dfrac{v}{i}=\dfrac{1}{sC}$，频率越高阻抗越小，对高频「阻力小」，是高通元件。
-
-若初始储能不为零，电容、电感的初始电压或电流会以 $1/s$ 项的形式出现，相当于额外的电源。题目写「初始储能为零」时，直接用上面三个阻抗即可。
-
-#### 串联与并联
-
-串联阻抗相加：
-
-$$Z_{\text{series}}=Z_1+Z_2+\cdots$$
-
-并联跟电阻一样：
-
-$$Z_{\text{parallel}}=\frac{Z_1Z_2}{Z_1+Z_2}\qquad(\text{两个元件}),$$
-
-多个元件时用倒数相加再取倒数。电感和电容并联是最常见的一种：
-
-$$Z_{L\parallel C}=\frac{sL\cdot\dfrac{1}{sC}}{sL+\dfrac{1}{sC}}
-=\frac{sL}{s^2LC+1}.$$
-
-分母的 $s^2LC+1=0$ 给出 $s=\pm j\dfrac{1}{\sqrt{LC}}$，正好是谐振频率。电流源驱动并联 LC 时，端电压会以这个频率振荡。
-
-**例**　$L=1$ H，$C=0.25$ F 的并联阻抗。
-
-$$Z(s)=\frac{s}{0.25s^2+1}=\frac{4s}{s^2+4}.$$
-
-#### 电流源驱动的并联电路
-
-电路题常给「电流源 $u(t)$ 驱动某网络，求端电压」。按欧姆定律的 s 域形式：
-
-$$Y(s)=U(s)Z(s).$$
-
-注意输入是电流源，输出是电压，中间乘的是阻抗，不是传递函数 $G(s)$。但形式上仍是一个 LTI 关系：$Z(s)$ 就是「电流到电压」的传递函数。
-
-**例**（Quiz 3 第 17 题）$u(t)=tH(t)$，$L=1$ H，$C=0.25$ F 并联，求端电压最大值。
-
-$$U(s)=\frac{1}{s^2},\qquad Z(s)=\frac{4s}{s^2+4},$$
-
-$$Y(s)=\frac{4}{s(s^2+4)}=\frac1s-\frac{s}{s^2+4},$$
-
-$$y(t)=1-\cos2t\quad(t\ge0).$$
-
-余弦的最小值为 $-1$，所以最大电压为 $1-(-1)=2$ V。这类题最后一步往往是「时域表达式的极值」，不要停在 $Y(s)$。
-
-#### 串联 RLC 回顾
-
-第 5.3 节从微分方程出发求过 RLC 的 $\omega_n$、$\zeta$。用阻抗重做一遍，可以更快：
-
-输出取电容电压时，分压关系为
-
-$$\frac{Y(s)}{U(s)}=\frac{Z_C}{Z_R+Z_L+Z_C}
-=\frac{\dfrac{1}{sC}}{R+sL+\dfrac{1}{sC}}
-=\frac{1}{LCs^2+RCs+1}.$$
-
-与标准形式对照，分母乘以 $1/LC$ 的系数给出
+与二阶标准形式对照：
 
 $$\omega_n=\frac{1}{\sqrt{LC}},\qquad \zeta=\frac{R}{2}\sqrt{\frac{C}{L}}.$$
 
-这与 5.3 节的结果一致。用阻抗法时记住：分压公式和纯电阻相同，只是每个「电阻」换成对应的阻抗。
-
-### 12.2 斜坡（ramp）输入的稳态误差
-
-#### 误差传递函数
-
-控制系统常关心「输入与输出的差」。定义误差
-
-$$e(t)=u(t)-y(t),$$
-
-则
-
-$$E(s)=U(s)-Y(s)=U(s)\left[1-G(s)\right].$$
-
-这里使用了 $Y(s)=G(s)U(s)$，要求系统稳定且零初始条件。$1-G(s)$ 称为误差传递函数。
-
-#### 终值定理求稳态误差
-
-斜坡输入的变换为 $U(s)=\dfrac{1}{s^2}$。所以
-
-$$E(s)=\frac{1}{s^2}\left[1-G(s)\right].$$
-
-终值定理给出
-
-$$e(\infty)=\lim_{s\to0}sE(s)=\lim_{s\to0}\frac{1-G(s)}{s},$$
-
-前提是 $sE(s)$ 的全部极点在开左半平面。如果 $1-G(0)=0$，即直流增益为 $1$，上式是 $0/0$ 型，需要用洛必达法则或直接展开 $G(s)$ 的低频近似。
-
-**例**（Quiz 3 第 20 题）$G(s)=\dfrac{1}{2s+1}$，$u(t)=tH(t)$。
-
-$$E(s)=\frac{1}{s^2}\left(1-\frac{1}{2s+1}\right)
-=\frac{2}{s(2s+1)}.$$
-
-$$sE(s)=\frac{2}{2s+1},\qquad\text{极点在 }s=-\frac12.$$
-
-终值：
-
-$$e(\infty)=\frac{2}{1}=2\ \mathrm{V}.$$
-
-一阶低通对斜坡输入始终有常数误差。直观理解：系统跟不上斜坡，落后固定的一段时间。误差 $2$ V 对应时间延迟 $\tau=2$ s（斜坡斜率 $1\ \mathrm{V/s}$），恰好等于系统的时间常数。
-
-#### 一般情形与低频群延迟
-
-> 下面推导：斜坡稳态误差 $e(\infty)=-G'(0)$，并与群延迟对应。
-
-一般地，只要系统稳定、$G(0)=1$，在 $s=0$ 附近把 $G(s)$ 展开：
-
-$$G(s)\approx1+G'(0)s,$$
-
-代入
-
-$$E(s)\approx\frac{-G'(0)s}{s^2}=\frac{-G'(0)}{s},$$
-
-反变换得
-
-$$e(\infty)=-G'(0).$$
-
-这个值恰好等于系统在零频的群延迟（12.10 节）。直观理解：输出落后输入一个固定时间，斜坡斜率乘上这个时间就是恒定误差。一阶低通的时间常数 $\tau$ 就是 $-G'(0)$，所以误差为 $\tau$。
-
-若 $G(0)\neq1$，误差中含 $(1-G(0))/s$ 项，反变换为随时间增长的斜坡，稳态误差无界。若 $G$ 在原点有积分器（$G(s)$ 含 $1/s$ 因子），直流增益无穷大，斜坡误差可以为零或为常数，这时 $sE(s)$ 在 $s=0$ 的取值要用洛必达法则。
-
-### 12.3 测量的延迟效应
-
-系统相频特性对测量的影响，可以用两个简单结论概括。
-
-#### 恒定增益系统
-
-$G(s)=K$，$G(j\omega)=K$：幅值为 $K$，相位为 $0$。输出
-
-$$y(t)=K\cos\omega t,$$
-
-与输入同相，没有延迟。
-
-#### 纯延迟系统
-
-$G(s)=e^{-sT}$，$G(j\omega)=e^{-j\omega T}$：幅值为 $1$，相位为 $-\omega T$。输出
-
-$$y(t)=\cos\left(\omega(t-T)\right),$$
-
-相当于输入被推迟了 $T$ 秒。相位与频率的**斜率**就是延迟时间：
-
-$$\tau_g=-\frac{d\angle G(j\omega)}{d\omega}=T.$$
-
-这个量称为群延迟。线性相位对应恒定延迟，是「无失真传输」的条件之一。
-
-#### 相位与测量
-
-用相位差测量距离、速度或时间，本质是把「时间延迟」换成「相位延迟」。同一延迟对不同频率对应不同的相位：
-
-$$\Delta\varphi=-\omega T.$$
-
-所以：
-
-- 单频测量：只能得到 $\bmod 2\pi$ 的相位，存在多值性（距离模糊）。
-- 宽带测量：不同频率的相位斜率给出唯一的 $T$，这就是线性相位对测量的价值。
-
-Quiz 3 第 49 题的延迟线 $e^{-2s}$ 正是这一原理的最简模型：$|G|=1$ 不损失信号，$\angle G=-2\omega$ 携带了 $2$ s 的延迟信息。
-
-### 12.4 由输出反求输入
-
-若已知期望输出 $y(t)$ 和系统 $G(s)$，求输入：
-
-$$U(s)=\frac{Y(s)}{G(s)}.$$
-
-步骤与 11.5 例 3 相同：
-
-1. 求 $Y(s)$。
-2. 除以 $G(s)$。
-3. 若 $U(s)$ 是假分式（分子次数不低于分母），先做多项式除法。
-4. 真分式部分做部分分式，逐项反变换。
-
-**多项式除法的意义**：商中的常数项对应时域的 $\delta(t)$，$s$ 的一次项对应 $\delta'(t)$。这类冲激项在物理上代表「输入必须含冲激才能让输出瞬间跳变」。
-
-**例**（Quiz 3 第 36 题）$G(s)=\dfrac{4}{s^2+2s+4}$，要求 $y(t)=\left(1-e^{-4t}\right)H(t)$。
-
-$$Y(s)=\frac1s-\frac{1}{s+4}=\frac{4}{s(s+4)},$$
-
-$$U(s)=\frac{Y(s)}{G(s)}=\frac{s^2+2s+4}{s(s+4)}
-=1+\frac{-2s+4}{s(s+4)}.$$
-
-假分式化为「常数 + 真分式」，常数 $1$ 就是 $\delta(t)$ 的拉普拉斯变换。继续部分分式：
-
-$$\frac{-2s+4}{s(s+4)}=\frac1s-\frac{3}{s+4},$$
-
-$$u(t)=\delta(t)+\left(1-3e^{-4t}\right)H(t).$$
-
-校验：把 $u$ 代回 $G$ 计算输出，$s^2+2s+4$ 与分母的复极点约掉，输出只剩 $4/[s(s+4)]$，与题设一致。题目 (c) 说「欠阻尼电路不可能」正是忽略了这种零极点抵消。
-
-### 12.5 输入极点与系统极点重合的二重极点
-
-当输入极点恰好等于系统的某个极点时，$Y(s)=G(s)U(s)$ 中该极点变为二重，时域出现 $te^{pt}$ 项。这是 11.5 例 1 的一般情形，做题时要检查分子是否恰好有零点抵消它。
-
-**例**（Quiz 3 第 33 题）$G(s)=\dfrac{s+4}{s^2+3s+2}$，$u(t)=e^{-2t}H(t)$。
-
-$$Y(s)=\frac{s+4}{(s+1)(s+2)^2}.$$
-
-输入极点 $-2$ 与系统极点 $-2$ 重合，$s=-2$ 是二重极点。部分分式：
-
-$$Y(s)=\frac{3}{s+1}-\frac{3}{s+2}-\frac{2}{(s+2)^2},$$
-
-$$y(t)=3e^{-t}-3e^{-2t}-2te^{-2t}\quad(t\ge0).$$
-
-$te^{-2t}$ 项是「共振」在 s 域的表现：输入频率与系统自然频率相同，响应会多出一个随时间线性增长的包络。数值代入 $t=1$ 得 $y(1)=0.4270$。
-
-### 12.6 零点靠近极点与零点抵消
-
-#### 零点靠近极点
-
-极点 $p$ 对应的模态系数，等于 $G(s)$ 去掉该极点因子后在 $s=p$ 处的值（遮盖法）。若分子有一个零点 $z$ 非常靠近 $p$，则这个值很小。
-
-**例**（Quiz 3 第 31 题）$G(s)=\dfrac{s+3}{(s+1)(s+3.1)}$。
-
-$$A_{3.1}=\left.\frac{s+3}{s+1}\right|_{s=-3.1}=\frac{-0.1}{-2.1}=0.04762.$$
-
-零点 $-3$ 与极点 $-3.1$ 只差 $0.1$，$e^{-3.1t}$ 项几乎被消掉，冲激响应近似为只含 $e^{-t}$ 的慢模态。
-
-#### 零点抵消输入极点
-
-输入 $u(t)=e^{-t}H(t)$ 的极点在 $-1$。若 $G$ 的零点也在 $-1$，则
-
-$$Y(s)=G(s)U(s)=\frac{k(s+1)}{(s+2)(s+5)}\cdot\frac{1}{s+1}=\frac{k}{(s+2)(s+5)}.$$
-
-输出中**没有** $e^{-t}$ 项，但系统的自然模态 $e^{-2t}$、$e^{-5t}$ 仍然被激发（初始状态为零也会被输入「激励」出这些模态）。
-
-**例**（Quiz 3 第 37 题）极点在 $-2,-5$，零点 $-1$，直流增益 $3$：
-
-$$G(0)=\frac{k}{10}=3\quad\Longrightarrow\quad k=30,$$
-
-$$y(t)=10\left(e^{-2t}-e^{-5t}\right)H(t).$$
-
-#### 两个易错点
-
-- 零点不能「阻断」整个输出，它只去掉一个模态。
-- 直流增益用来定 $k$ 时，分母是各极点绝对值之积（这里 $2\times5=10$），分子是各零点绝对值之积（这里 $1$）。
-
-### 12.7 互补滤波器与并联相加
-
-#### 复数相加，不是模相加
-
-两个系统并联，传递函数相加：
-
-$$G(s)=G_1(s)+G_2(s).$$
-
-求 $|G(j\omega)|$ 时，必须先把复数加完再取模。先取模再相加一般会得到错误结果：
-
-$$|G_1+G_2|\neq|G_1|+|G_2|.$$
-
-**例**（Quiz 3 第 52 题）$G(s)=\dfrac{10}{s+10}+\dfrac{s}{s+1000}$，求 $|G(j100)|$。
-
-$$G_1(j100)=\frac{10}{10+100j}=0.0099-0.0990j,$$
-
-$$G_2(j100)=\frac{100j}{1000+100j}=0.0099+0.0990j.$$
-
-虚部恰好抵消：
-
-$$G(j100)=0.0198,\qquad |G(j100)|=0.01980.$$
-
-若错误地按模相加，会得 $0.0995+0.0995=0.199$，差一个数量级。带阻滤波器的「谷」正是靠两个分量的虚部相互抵消形成的。
-
-#### 互补低通与高通
-
-若
-
-$$G_L(s)=\frac{\omega_c}{s+\omega_c},\qquad G_H(s)=\frac{s}{s+\omega_c},$$
-
-则
-
-$$G_L(s)+G_H(s)=\frac{s+\omega_c}{s+\omega_c}=1.$$
-
-两条曲线互补：任何频率的能量必经过其一，幅值合起来恒为 $1$。注意这是**复数**相加为 $1$，但单独看 $|G_L|^2+|G_H|^2=1$ 也成立（因为两者相位差恒为 $90^\circ$）：
-
-$$|G_L(j\omega)|^2=\frac{\omega_c^2}{\omega_c^2+\omega^2},\qquad
-|G_H(j\omega)|^2=\frac{\omega^2}{\omega_c^2+\omega^2}.$$
-
-这和功率互补（Linkwitz-Riley 分频的思想）有关。Quiz 3 第 53 题的错误选项 (c) 就是把 $\omega_c$ 处的模相加：正确做法是
-
-$$G_L(j\omega_c)=\frac{1-j}{2},\qquad G_H(j\omega_c)=\frac{1+j}{2},$$
-
-相加得 $1$，而不是 $\sqrt2$。
-
-#### 带阻的并联构造
-
-带阻可以这样搭：低通截止频率**低于**高通截止频率，并联相加。两者之间有一个交叉区，虚部在交叉区内相互抵消，形成陷波。Quiz 3 第 52 题的 $10$ rad/s 低通与 $1000$ rad/s 高通就是这种结构，陷波中心在几何平均附近。
-
-### 12.8 读 Bode 斜率与由指标反求参数
-
-#### 斜率由极零点个数决定
-
-把 $G(s)$ 写成因式分解后的形式：
-
-$$G(s)=K\frac{(s-z_1)\cdots(s-z_m)}{(s-p_1)\cdots(s-p_n)}.$$
-
-对 Bode 幅频图的渐近线：
-
-- 每个极点在超过其转折频率后贡献 $-20$ dB/dec。
-- 每个零点在超过其转折频率后贡献 $+20$ dB/dec。
-- 原点处的极点贡献 $-20$ dB/dec（对所有频率），原点处的零点贡献 $+20$ dB/dec。
-
-**例**（Quiz 3 第 38 题）$G(s)=1+\dfrac1s+0.25s$。
-
-通分：
-
-$$G(s)=\frac{4s+s^2+4}{4s}=\frac{(s+2)^2}{4s}.$$
-
-- 原点极点：低频斜率 $-20$ dB/dec。
-- 二重零点在 $2$ rad/s：过 $2$ rad/s 后斜率加 $40$ dB/dec。
-
-所以斜率从 $-20$ 变为 $+20$ dB/dec。选项里容易错的是「$-20$ 变 $0$」：那是只把二重零点当成一重；「$-20$ 变 $+40$」是忘了原点极点在高频依然存在。
-
-#### 从左到右累加斜率
-
-画渐近线的步骤：
-
-1. 把 $G(s)$ 因式分解，标出所有极零点频率。
-2. 从最低频开始：原点极点或零点决定初始斜率；若没有，初始斜率为 $0$。
-3. 每经过一个极点，斜率减 $20$ dB/dec；每经过一个零点，斜率加 $20$ dB/dec。
-4. 用某个已知点（如直流增益或高频增益）确定整条线的高度。
-
-#### 由增益指标反求参数
-
-先用低频极限定 $K$：
-
-$$G(0)=K\frac{z_1\cdots z_m}{p_1\cdots p_n}.$$
-
-再用高频极限定另一个关系。若分子分母同阶，
-
-$$\lim_{s\to\infty}G(s)=K.$$
-
-**例**（Quiz 3 第 39 题）$G(s)=K\dfrac{s+z}{s+5}$，直流增益 $1$，高频增益 $-30$ dB。
-
-低频：
-
-$$G(0)=K\frac{z}{5}=1.$$
-
-高频：
-
-$$K=10^{-30/20}=0.03162.$$
-
-两式联立：
-
-$$z=\frac{5}{K}=158.1\ \mathrm{rad/s}.$$
-
-注意高频增益是 $K$ 而不是 $Kz/5$：高频时 $s$ 主导分子分母，$z$ 和 $5$ 都被忽略。
-
-#### dB 换算速查
-
-| 幅值比 | dB |
-|---|---|
-| $2$ | $+6.02$ |
-| $10$ | $+20$ |
-| $\sqrt2$ | $+3.01$ |
-| $1/\sqrt2$ | $-3.01$ |
-| $1/2$ | $-6.02$ |
-| $1/10$ | $-20$ |
-| $1/1000$ | $-60$ |
-
-$a$ dB 对应幅值比 $10^{a/20}$。功率用 $10\log_{10}$，幅值用 $20\log_{10}$；滤波器题几乎都用幅值定义。
-
-### 12.9 分频器与斜率
-
-音箱二分频中，高音单元通过串联电容获得一阶高通：
-
-$$G_H(s)=\frac{4Cs}{4Cs+1}.$$
-
-标准化：
-
-$$G_H(s)=\frac{s}{s+\dfrac{1}{4C}}.$$
-
-截止频率
-
-$$\omega_c=\frac{1}{4C}.$$
-
-**例**（Quiz 3 第 51 题）要求 $f_c=3$ kHz：
-
-$$C=\frac{1}{4\cdot2\pi\cdot3000}=13.26\ \mu\mathrm{F}.$$
-
-数值上 $4C=1/\omega_c$，单位是秒；$C$ 算出来后乘 $10^6$ 换成 $\mu$F。分频器题常见的两个坑：
-
-- 把 $4\Omega$ 当成 $4C$ 中的系数来源：系数 $4$ 来自阻值，若扬声器阻抗为 $8\ \Omega$，分频公式变为 $\omega_c=1/(8C)$。
-- 把 $f_c$ 直接代入 $\omega_c$：必须先乘 $2\pi$。
-
-#### 衰减量换算
-
-一阶滤波器在频率比 $x=f/f_c$ 处的幅值：
-
-- 低通：$|G|=\dfrac{1}{\sqrt{1+x^2}}$。
-- 高通：$|G|=\dfrac{x}{\sqrt{1+x^2}}$。
-
-衰减量用 $-20\log_{10}|G|$。例如高通在 $-3$ dB 频率的一半处（$x=0.5$）：
-
-$$|G|=\frac{0.5}{\sqrt{1.25}}=0.4472,\qquad -20\log_{10}0.4472=6.99\ \mathrm{dB}.$$
-
-### 12.10 全通与延迟线
-
-#### 一阶全通的形式
-
-$$G(s)=\frac{s-a}{s+a}.$$
-
-零点在 $+a$，极点在 $-a$，关于虚轴对称。令 $s=j\omega$：
-
-$$|G(j\omega)|=\frac{|j\omega-a|}{|j\omega+a|}=1\quad\text{对所有 }\omega.$$
-
-若 $a>0$，极点在左半平面，系统指数稳定。若写成 $\dfrac{s+a}{s-a}$，幅值仍为 $1$，但极点在右半平面，不稳定。
-
-一般地，$n$ 阶全通的零点与极点关于虚轴镜像对称：每个左半平面极点 $p_i$ 对应一个右半平面零点 $-p_i^*$。全通不改变幅频，只改变相频，用于相位补偿和延迟均衡。
-
-#### 全通在某一频率的相位
-
-**例**（Quiz 3 第 48 题）$G(s)=\dfrac{10-s}{s+10}$，输入 $\cos10t$。
-
-$$G(j10)=\frac{10-10j}{10+10j}=-j.$$
-
-模为 $1$，相位 $-90^\circ$，所以
-
-$$y(t)=\cos(10t-90^\circ)=\sin10t.$$
-
-这里 $\cos(\theta-90^\circ)=\sin\theta$，符号为正。若相位写成 $+90^\circ$，结果就会变成 $-\sin$，这是选项 (d) 的错误来源。
-
-#### 延迟线
-
-理想延迟 $T$：
-
-$$G(s)=e^{-sT},\qquad G(j\omega)=e^{-j\omega T}.$$
-
-- 幅值恒为 $1$，是全通。
-- 相位 $-\omega T$，与频率成**线性**关系。
-- 群延迟恒为 $T$。
-
-延迟线无法用有限阶有理传递函数精确实现，但可以用全通级联或数字滤波器逼近。第 49 题把「全通」与「线性相位」两个概念合在一起考：幅值为 $1$ 且相位线性，说明是延迟，而不是普通有理全通。
-
-#### 相位延迟与群延迟
-
-对一般的频率响应，定义两种延迟：
-
-$$\tau_p(\omega)=-\frac{\angle G(j\omega)}{\omega},\qquad
-\tau_g(\omega)=-\frac{d\angle G(j\omega)}{d\omega}.$$
-
-- 相位延迟：单频正弦的等效延迟，决定某条谱线的相位。
-- 群延迟：包络或宽带信号的延迟，决定波形是否失真。
-
-只有线性相位时两者相等且为常数。Bode 相位图上，一阶极点的相位从 $0^\circ$ 缓慢减到 $-90^\circ$，相位斜率不是常数，所以群延迟随频率变化，会造成相位失真。
-
-### 12.11 二阶低通的 -3 dB 频率
-
-第 8.4 节只给了一阶的规则「截止频率等于极点频率」。二阶低通要解方程。
-
-> 下面推导：二阶低通的 $-3$ dB 频率公式 $\omega_c=\omega_n\sqrt{1-2\zeta^2+\sqrt{(1-2\zeta^2)^2+1}}$。
-
-二阶低通
-
-$$G(s)=\frac{K\omega_n^2}{s^2+2\zeta\omega_ns+\omega_n^2}$$
-
-的幅频平方为
-
-$$|G|^2=\frac{K^2}{\left(1-x\right)^2+4\zeta^2x},\qquad x=\left(\frac{\omega}{\omega_n}\right)^2.$$
-
-令 $|G|^2=K^2/2$：
-
-$$\left(1-x\right)^2+4\zeta^2x=2.$$
-
-展开：
-
-$$x^2+\left(4\zeta^2-2\right)x-1=0.$$
-
-取正根：
-
-$$x=\frac{2-4\zeta^2+\sqrt{\left(4\zeta^2-2\right)^2+4}}{2}
-=1-2\zeta^2+\sqrt{\left(1-2\zeta^2\right)^2+1}.$$
-
-于是
-
-$$\omega_c=\omega_n\sqrt{x}.$$
-
-#### 两个例子
-
-$\zeta=1/\sqrt2$（Butterworth）：$1-2\zeta^2=0$，$x=\sqrt{1}=1$，所以 $\omega_c=\omega_n$。这正是 Butterworth 的定义。
-
-**例**（Quiz 3 第 44 题）$\omega_n=20$，$\zeta=0.5$：$4\zeta^2=1$，方程化为
-
-$$x^2-x-1=0\quad\Longrightarrow\quad x=1.618,$$
-
-$$\omega_c=20\sqrt{1.618}=25.44\ \mathrm{rad/s}.$$
-
-$\zeta<1/\sqrt2$ 时 $x>1$，截止频率高于 $\omega_n$，同时存在共振峰（5.3 节）。$\zeta>1/\sqrt2$ 时 $x<1$，截止频率低于 $\omega_n$。二阶的 $-3$ dB 点不能用 $\omega_n$ 代替，这是与一阶最大的区别。
-
-### 12.12 Butterworth 细节补充
-
-#### 阶数与衰减
-
-$n$ 阶 Butterworth 低通的幅频平方：
-
-$$|G|^2=\frac{1}{1+\left(\frac{f}{f_c}\right)^{2n}}.$$
-
-高通则把比值倒过来：
-
-$$|G|^2=\frac{1}{1+\left(\frac{f_c}{f}\right)^{2n}}.$$
-
-频带外的衰减量：
-
-$$A=10\log_{10}\left[1+\left(\frac{f}{f_c}\right)^{2n}\right].$$
-
-**例**（Quiz 3 第 61 题）$f_c=2$ kHz，要求 $6$ kHz 处衰减 $35$ dB。频率比 $3$，试算：
-
-$$n=3:\ 10\log_{10}(1+3^6)=28.6\ \mathrm{dB},$$
-
-$$n=4:\ 10\log_{10}(1+3^8)=38.2\ \mathrm{dB}.$$
-
-最小阶数为 $4$。试算时代入的是 $2n$，不是 $n$：三阶指数为 $6$，四阶为 $8$，这是最容易出错的地方。
-
-#### 由通带指标定截止频率
-
-**例**（Quiz 3 第 60 题）四阶、$1$ kHz 处损失不超过 $1$ dB：
-
-$$10\log_{10}\left[1+\left(\frac{1}{f_c}\right)^8\right]\le1,$$
-
-$$\left(\frac{1}{f_c}\right)^8\le10^{0.1}-1=0.2589,$$
-
-开八次方得 $1/f_c\le0.8446$，即 $f_c\ge1.184$ kHz。注意 $10^{0.1}-1$ 中的 $0.1$ 来自 $1\ \mathrm{dB}=10\times0.1$；如果先算 $|G|^2$ 再取分贝，容易把 $20$ 和 $10$ 两个系数混用。
-
-#### 由衰减倒推频率
-
-**例**（Quiz 3 第 59 题）二阶高通，$f_c=6$ kHz，要求 $-30$ dB：
-
-$$10\log_{10}\left[1+\left(\frac{f_c}{f}\right)^4\right]=30
-\quad\Longrightarrow\quad\left(\frac{f_c}{f}\right)^4=999.$$
-
-$$f=\frac{6000}{999^{1/4}}=1067\ \mathrm{Hz}.$$
-
-#### 极点圆
-
-$n$ 阶 Butterworth 的极点在左半平面圆上均匀分布，半径为 $\omega_c$，角度（从正实轴量起）
-
-$$\theta_k=90^\circ+\frac{180^\circ(2k+1)}{2n},\qquad k=0,1,\dots,n-1.$$
-
-相邻极点相隔 $180^\circ/n$。最靠近虚轴的一对角度最接近 $90^\circ$。
-
-**例**（Quiz 3 第 56 题）五阶，$\omega_c=1000$：
-
-$$\theta=108^\circ,\ 144^\circ,\ 180^\circ,\ 216^\circ,\ 252^\circ.$$
-
-最近的实部为 $1000\cos108^\circ=-309.0$ rad/s。角度用「起点 $90^\circ$、间隔 $36^\circ$」也可以直接数出来。
-
-#### 二阶 Butterworth 的特征
-
-二阶 Butterworth 分母固定为
-
-$$s^2+\sqrt2\,\omega_cs+\omega_c^2,$$
-
-所以
-
-$$\omega_n=\omega_c,\qquad \zeta=\frac{1}{\sqrt2}.$$
-
-由极点反推时（Quiz 3 第 54 题）：极点到原点的距离为 $\omega_n$，实部与 $\omega_n$ 之比为 $\zeta$。若得到 $\zeta=1/\sqrt2$，它必然是 Butterworth，且 $\omega_c=\omega_n$。
-
-#### 级联不是高阶级联 Butterworth
-
-两个相同的二阶 Butterworth 级联，得到的是
-
-$$G(s)=\left[\frac{\omega_c^2}{s^2+\sqrt2\omega_cs+\omega_c^2}\right]^2,$$
-
-极点是二重的，而四阶 Butterworth 的四个极点在 $112.5^\circ,157.5^\circ,202.5^\circ,247.5^\circ$，互不相同。两者在 $\omega_c$ 处的增益也不一样：级联为 $-6.02$ dB（两节各 $-3.01$ dB），真正的四阶 Butterworth 仍为 $-3.01$ dB。因此级联系统的 $-3$ dB 截止频率低于 $\omega_c$，过渡带也更深：在 $\omega=\sqrt2\omega_c$ 处，级联为 $1/(1+2x^4+x^8)$，四阶 Butterworth 为 $1/(1+x^8)$，前者衰减更多。Quiz 3 第 58 题正是考「增益不能单独说明是几阶 Butterworth，极点结构才决定滤波器类型」。
-
-### 12.13 调制细节补充
-
-#### 积化和差是解调/调制题的核心
-
-$$\cos a\cos b=\frac12\left[\cos(a-b)+\cos(a+b)\right].$$
-
-调制乘载波：频谱搬家，每边幅度乘 $\frac12$（载波幅度为 $2$ 时抵消）。
-
-相干解调：再乘一次载波，产生原来的低频项与 $2\omega_c$ 项，低通滤掉后者。
-
-#### 单边带滤波
-
-**例**（Quiz 3 第 64 题）载波 $2\cos(2\pi\cdot15000t)$，消息分量 $3\cos(2\pi\cdot4000t)$：
-
-$$3\cos(2\pi\cdot4000t)\cdot2\cos(2\pi\cdot15000t)
-=3\cos(2\pi\cdot11000t)+3\cos(2\pi\cdot19000t).$$
-
-低通截止 $15$ kHz，保留 $11$ kHz，滤掉 $19$ kHz。载波幅度 $2$ 恰好抵消 $\frac12$，输出幅度仍为 $3$。
-
-#### FDM 的两个计数公式
-
-信道数（无保护间隔）：
-
-$$N=\left\lfloor\frac{B_{\text{band}}}{2W}\right\rfloor.$$
-
-载频安排（有保护间隔 $g$）：每路带宽 $2W$、相邻载频间隔 $2W+g$，第一路载频在频带下沿上方 $W$ 处：
-
-$$f_1=f_{\text{low}}+W,\qquad f_k=f_1+(k-1)(2W+g).$$
-
-**例**（Quiz 3 第 66 题）$W=3$ kHz，$g=5$ kHz，从 $100$ kHz 开始：
-
-$$f_1=103,\qquad f_4=103+3\times11=136\ \mathrm{kHz}.$$
-
-#### 多层调制
-
-先把内层载波处理完，求出合成信号 $b(t)$ 的整个频段，再整体搬移。频段取各分量的并集：
-
-$$b(t)=u_1(t)+u_2(t)\cdot2\cos(\omega_{c1}t).$$
-
-$u_1$ 占 $[0,W]$，调制后的 $u_2$ 占 $[\omega_{c1}-W,\omega_{c1}+W]$，合并后 $b$ 占 $[0,\omega_{c1}+W]$。再乘 $2\cos\omega_{c2}t$，频段搬到 $\omega_{c2}\pm(\omega_{c1}+W)$。
-
-**例**（Quiz 3 第 67 题）$W=5000$，$\omega_{c1}=10\,000$，$\omega_{c2}=20\,000$：$b$ 占 $0$ 到 $15\,000$，$c$ 占 $5000$ 到 $35\,000$ rad/s。
-
-#### 瞬时频率、PM 与 FM
-
-$$\omega_i(t)=\frac{d\theta(t)}{dt}.$$
-
-- PM：$\theta=\omega_ct+ku(t)$，$\omega_i=\omega_c+k\dot u(t)$。
-- FM：$\theta=\omega_ct+k\int_{-\infty}^{t}u(\tau)d\tau$，$\omega_i=\omega_c+ku(t)$。
-
-阶跃消息 $u(t)=H(t)$ 的情形（Quiz 3 第 70 题）：
-
-- FM：积分为 $t$（$t>0$），相位 $\omega_ct+kt$，相位连续，频率跳到 $\omega_c+k$。
-- PM：相位 $\omega_ct+k$，在 $t=0$ 跳变 $k$，之后导数仍为 $\omega_c$，频率不变。
-
-**例**（Quiz 3 第 69 题）PM，$k=0.5$ rad/V，$u=4000t$：
-
-$$\omega_i=\omega_c+0.5\times4000=\omega_c+2000\ \mathrm{rad/s},$$
-
-$$\Delta f=\frac{2000}{2\pi}=318.3\ \mathrm{Hz}.$$
-
-#### 窄带 FM 的带宽
-
-$k$ 小时
-
-$$y\approx\cos\omega_ct-k\sin\omega_ct\int u,$$
-
-第二项是 $\sin\omega_ct$ 被积分信号调幅，频带 $\omega_c\pm W$，与 AM 相同。调制指数
-
-$$\beta=\frac{\Delta f}{W},$$
-
-$\beta\ll1$ 为窄带 FM，$B\approx2W$；$\beta\gg1$ 用 Carson 公式 $B\approx2(\Delta f+W)$。
-
-#### 波长的数量级
-
-$$\lambda=\frac{c}{f}=\frac{3\times10^8}{f}.$$
-
-$3$ kHz 音频对应 $100$ km，$100$ MHz 载波对应 $3$ m。天线尺寸与波长可比，这就是音频必须调制到高频的原因。
+**找参数**：直流增益用 $G(0)$，高频增益用 $\lim_{s\to\infty}G(s)$；Bode 斜率按「每个极点 $-20$ dB/dec、每个零点 $+20$ dB/dec」从左到右累加；Butterworth 的阶数用 $f/f_c$ 代入 $2n$ 次方试算。
 
 ---
 

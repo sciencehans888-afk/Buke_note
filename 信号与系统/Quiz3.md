@@ -35,7 +35,7 @@ What is the region of convergence of its Laplace transform?（求其拉普拉斯
 > (a) $\operatorname{Re}(s)>1$
 
 > [!abstract] 知识点讲解
-> 见 11.1 收敛域与信号类型 与 7.2 常用变换对。
+> 见 [[信号与系统/Quiz对应知识点.md|Quiz对应知识点]] 11.1 收敛域与信号类型 与 7.2 常用变换对。
 >
 > - **单边指数变换对**：$\mathcal L\{e^{s_0t}H(t)\}=\dfrac{1}{s-s_0}$，收敛域 $\operatorname{Re}s>\operatorname{Re}s_0$。
 > - **线性**：$\mathcal L\{a u_1+b u_2\}=aU_1(s)+bU_2(s)$，和的 ROC 至少包含各 ROC 的交集。
@@ -79,7 +79,7 @@ What is its region of convergence?（求其收敛域。）
 > (b) $\operatorname{Re}(s)>-2$
 
 > [!abstract] 知识点讲解
-> 见 11.1 收敛域与信号类型 与 7.2 常用变换对。
+> 见 [[信号与系统/Quiz对应知识点.md|Quiz对应知识点]] 11.1 收敛域与信号类型 与 7.2 常用变换对。
 >
 > - **指数信号变换对**：$\mathcal L\{e^{s_0t}H(t)\}=\dfrac{1}{s-s_0}$，ROC 为 $\operatorname{Re}s>\operatorname{Re}s_0$。
 > - **绝对收敛条件**：$U(s)$ 存在要求 $\displaystyle\int_0^\infty\left|e^{s_0t}e^{-\sigma t}\right|dt=\int_0^\infty e^{(\operatorname{Re}s_0-\sigma)t}dt<\infty$。
@@ -116,7 +116,7 @@ What is $U(s)$?（求 $U(s)$。）
 > (d) $\dfrac{e^{-2s}-e^{-4s}}{s}$
 
 > [!abstract] 知识点讲解
-> 见 11.1 收敛域与信号类型 与 11.2 时移与阶跃延迟。
+> 见 [[信号与系统/Quiz对应知识点.md|Quiz对应知识点]] 11.1 收敛域与信号类型 与 11.2 时移与阶跃延迟。
 >
 > - **矩形脉冲表示**：中心在原点、宽为 $\tau$ 的脉冲 $p_\tau(t)=H\left(t+\dfrac{\tau}{2}\right)-H\left(t-\dfrac{\tau}{2}\right)$。
 > - **阶跃变换对**：$\mathcal L\{H(t-\tau)\}=\dfrac{e^{-s\tau}}{s}$，$\operatorname{Re}s>0$。
@@ -152,7 +152,7 @@ $$
 > (c) $\dfrac12\left(\dfrac{s}{s^2+16}+\dfrac{s}{s^2+4}\right)$
 
 > [!abstract] 知识点讲解
-> 见 11.2 常用拉普拉斯变换的推导与核对（调制型乘积）与 7.2 常用变换对。
+> 见 [[信号与系统/Quiz对应知识点.md|Quiz对应知识点]] 11.2 常用拉普拉斯变换的推导与核对（调制型乘积）与 7.2 常用变换对。
 >
 > - **积化和差**：$\cos A\cos B=\dfrac12\left[\cos(A+B)+\cos(A-B)\right]$，两项之间是**加号**。
 > - **余弦变换对**：$\mathcal L\{\cos\omega_0t\,H(t)\}=\dfrac{s}{s^2+\omega_0^2}$，$\operatorname{Re}s>0$。
@@ -191,7 +191,7 @@ What is its impulse response $h(t)$?（求其冲激响应 $h(t)$。）
 > (d) $h(t)=5\delta(t)$
 
 > [!abstract] 知识点讲解
-> 见 7.2 常用变换对 与 11.3 冲激响应与阶跃响应。
+> 见 [[信号与系统/Quiz对应知识点.md|Quiz对应知识点]] 7.2 常用变换对 与 11.3 冲激响应与阶跃响应。
 >
 > - **冲激变换对**：$\mathcal L\{\delta(t)\}=1$，ROC 为整个 $s$ 平面。
 > - **冲激响应的定义**：$G(s)=\mathcal L\{h(t)\}$，即 $h(t)=\mathcal L^{-1}\{G(s)\}$。
@@ -236,7 +236,7 @@ The result is（结果为）
 > (c) $\dfrac{s}{s^2+16}$
 
 > [!abstract] 知识点讲解
-> 见 11.2 常用拉普拉斯变换的推导与核对（正弦与余弦）。
+> 见 [[信号与系统/Quiz对应知识点.md|Quiz对应知识点]] 11.2 常用拉普拉斯变换的推导与核对（正弦与余弦）。
 >
 > - **欧拉公式**：$\cos\theta=\dfrac{e^{j\theta}+e^{-j\theta}}{2}$，把余弦拆成两个复指数。
 > - **复指数变换对**：$\mathcal L\{e^{s_0t}H(t)\}=\dfrac{1}{s-s_0}$，取 $s_0=\pm4j$。
@@ -276,7 +276,7 @@ $$
 > (b) $e^{-(t-3)}H(t-3)$
 
 > [!abstract] 知识点讲解
-> 见 11.2 时移与阶跃延迟。
+> 见 [[信号与系统/Quiz对应知识点.md|Quiz对应知识点]] 11.2 时移与阶跃延迟。
 >
 > - **时移性质（单边）**：若 $u(t)\leftrightarrow U(s)$，则 $u(t-\tau)H(t-\tau)\leftrightarrow e^{-s\tau}U(s)$。
 > - **逆用**：频谱乘以 $e^{-s\tau}$，等价于整个波形延迟 $\tau$。
@@ -316,7 +316,7 @@ What is its impulse response $h(t)$?（求其冲激响应 $h(t)$。）
 > (b) $h(t)=\left(2e^{-2t}-e^{-t}\right)H(t)$
 
 > [!abstract] 知识点讲解
-> 见 11.3 冲激响应与阶跃响应。
+> 见 [[信号与系统/Quiz对应知识点.md|Quiz对应知识点]] 11.3 冲激响应与阶跃响应。
 >
 > - **阶跃响应与冲激响应**：$y_{\text{step}}=h*H(t)$，所以 $Y_{\text{step}}(s)=\dfrac{G(s)}{s}$，$G(s)=sY_{\text{step}}(s)$。
 > - **时域关系**：$h(t)=\dfrac{d}{dt}y_{\text{step}}(t)$（阶跃响应连续时可逐项求导）。
@@ -351,7 +351,7 @@ Use the Laplace transform to find $y(1)$.（用拉普拉斯变换求 $y(1)$。�
 > $y(1)=0.1590$
 
 > [!abstract] 知识点讲解
-> 见 7.3 性质（卷积）与 11.4 遮盖法求单实极点。
+> 见 [[信号与系统/Quiz对应知识点.md|Quiz对应知识点]] 7.3 性质（卷积）与 11.4 遮盖法求单实极点。
 >
 > - **卷积定理**：$y=u*v\Rightarrow Y(s)=U(s)V(s)$，即时域卷积对应 $s$ 域相乘。
 > - **变换对**：$e^{-at}H(t)\leftrightarrow\dfrac{1}{s+a}$，本题 $U(s)=\dfrac1{s+1}$，$V(s)=\dfrac1{s+3}$。
@@ -389,7 +389,7 @@ $$
 > (b) $\dfrac{3}{s^2-4s+13}$
 
 > [!abstract] 知识点讲解
-> 见 7.3 性质（$s$ 域移位）与 7.2 常用变换对。
+> 见 [[信号与系统/Quiz对应知识点.md|Quiz对应知识点]] 7.3 性质（$s$ 域移位）与 7.2 常用变换对。
 >
 > - **正弦变换对**：$\mathcal L\{\sin\omega_0t\,H(t)\}=\dfrac{\omega_0}{s^2+\omega_0^2}$，本题 $\omega_0=3$。
 > - **$s$ 域移位**：$\mathcal L\{e^{at}f(t)\}=F(s-a)$，即把 $F(s)$ 中的 $s$ 全部换成 $s-a$。
@@ -426,7 +426,7 @@ $$
 > (a) $\dfrac{1}{s^2+9}$
 
 > [!abstract] 知识点讲解
-> 见 11.2 积分与微分。
+> 见 [[信号与系统/Quiz对应知识点.md|Quiz对应知识点]] 11.2 积分与微分。
 >
 > - **积分性质**：$\mathcal L\left\{\displaystyle\int_0^t f(\tau)\,d\tau\right\}=\dfrac{F(s)}{s}$，即从 $0$ 起积分对应除以 $s$。
 > - **余弦变换对**：$\cos3t\,H(t)\leftrightarrow\dfrac{s}{s^2+9}$。
@@ -460,7 +460,7 @@ Find $q(3)$.（求 $q(3)$。）
 > $q(3)=-0.1989$
 
 > [!abstract] 知识点讲解
-> 见 11.2 时移与阶跃延迟 与 11.4 有延迟因子的部分分式。
+> 见 [[信号与系统/Quiz对应知识点.md|Quiz对应知识点]] 11.2 时移与阶跃延迟 与 11.4 有延迟因子的部分分式。
 >
 > - **时移性质**：$e^{-s\tau}F(s)\leftrightarrow f(t-\tau)H(t-\tau)$，延迟因子让整个波形平移。
 > - **变换对**：$\dfrac{1}{s+a}\leftrightarrow e^{-at}H(t)$。
@@ -497,7 +497,7 @@ Its input is $u(t)=H(t)$. Using the integral property, find the output $y(t)$ at
 > $y(3)=14.00$
 
 > [!abstract] 知识点讲解
-> 见 11.2 积分与微分 与 11.3 拉普拉斯变换与系统。
+> 见 [[信号与系统/Quiz对应知识点.md|Quiz对应知识点]] 11.2 积分与微分 与 11.3 拉普拉斯变换与系统。
 >
 > - **传递函数关系**：$Y(s)=G(s)U(s)$，输入输出都要变换，不要漏掉输入本身的 $1/s$。
 > - **积分与斜坡变换对**：$\dfrac1s\leftrightarrow H(t)$，$\dfrac{1}{s^2}\leftrightarrow tH(t)$。
@@ -545,7 +545,7 @@ What is $Y(s)$?（求 $Y(s)$。）
 > (c) $Y(s)=\dfrac{2}{s^2+16}$
 
 > [!abstract] 知识点讲解
-> 见 11.3 解微分方程 与 7.3 性质（二阶微分）。
+> 见 [[信号与系统/Quiz对应知识点.md|Quiz对应知识点]] 11.3 解微分方程 与 7.3 性质（二阶微分）。
 >
 > - **二阶微分性质**：$\mathcal L\{\ddot y\}=s^2Y(s)-sy(0^-)-\dot y(0^-)$。
 > - **一阶微分性质**：$\mathcal L\{\dot y\}=sY(s)-y(0^-)$。
@@ -579,7 +579,7 @@ Give $y(1)$.（求 $y(1)$。）
 > $y(1)=1.221$
 
 > [!abstract] 知识点讲解
-> 见 11.3 用拉普拉斯变换解微分方程。
+> 见 [[信号与系统/Quiz对应知识点.md|Quiz对应知识点]] 11.3 用拉普拉斯变换解微分方程。
 >
 > - **微分性质**：$\mathcal L\{\ddot y\}=s^2Y-sy(0^-)-\dot y(0^-)$，$\mathcal L\{\dot y\}=sY-y(0^-)$。
 > - **输入项**：$H(t)\leftrightarrow\dfrac1s$。
@@ -631,7 +631,7 @@ $$
 > (c) $y(t)=0.5$
 
 > [!abstract] 知识点讲解
-> 见 11.3 零输入响应与零状态响应。
+> 见 [[信号与系统/Quiz对应知识点.md|Quiz对应知识点]] 11.3 零输入响应与零状态响应。
 >
 > - **微分性质**：$\mathcal L\{\ddot y\}=s^2Y-sy(0^-)-\dot y(0^-)$，$\mathcal L\{\dot y\}=sY-y(0^-)$。
 > - **响应分解**：$Y(s)=Y_{\text{zi}}(s)+Y_{\text{zs}}(s)$，初值与输入同时进入 $Y(s)$。
@@ -665,7 +665,7 @@ A current source $u(t)=tH(t)$ A drives a capacitor $C=0.25$ F in parallel with a
 > $2.000$ V
 
 > [!abstract] 知识点讲解
-> 见 11.3 拉普拉斯变换与系统 与 7.3 性质（积分与卷积）。
+> 见 [[信号与系统/Quiz对应知识点.md|Quiz对应知识点]] 11.3 拉普拉斯变换与系统 与 7.3 性质（积分与卷积）。
 >
 > - **并联阻抗**：$Z(s)=\dfrac{Z_LZ_C}{Z_L+Z_C}$，$Z_L=sL$，$Z_C=\dfrac{1}{sC}$，故 $Z(s)=\dfrac{sL}{s^2LC+1}$。
 > - **斜坡变换对**：$tH(t)\leftrightarrow\dfrac{1}{s^2}$。
@@ -708,7 +708,7 @@ Use the final value theorem to find $\lim_{t\to\infty}h(t)$ for the impulse resp
 > $\displaystyle\lim_{t\to\infty}h(t)=20.00$
 
 > [!abstract] 知识点讲解
-> 见 11.3 初值和终值。
+> 见 [[信号与系统/Quiz对应知识点.md|Quiz对应知识点]] 11.3 初值和终值。
 >
 > - **终值定理**：若 $sF(s)$ 的全部极点在开左半平面，则 $\displaystyle\lim_{t\to\infty}f(t)=\lim_{s\to0}sF(s)$。
 > - **冲激响应**：$h(t)\leftrightarrow G(s)$，故 $h(\infty)=\displaystyle\lim_{s\to0}sG(s)$。
@@ -744,7 +744,7 @@ is driven by a unit step $u(t)=H(t)$ from rest. What are $y(0^+)$ and $\lim_{t\t
 > (d) $y(0^+)=1,\quad y(\infty)=0.1$
 
 > [!abstract] 知识点讲解
-> 见 11.3 初值和终值。
+> 见 [[信号与系统/Quiz对应知识点.md|Quiz对应知识点]] 11.3 初值和终值。
 >
 > - **初值定理**：$\displaystyle y(0^+)=\lim_{s\to\infty}sY(s)$（$Y(s)$ 为真分式时成立）。
 > - **终值定理**：$sY(s)$ 的极点全在开左半平面时，$\displaystyle y(\infty)=\lim_{s\to0}sY(s)$。
@@ -778,7 +778,7 @@ $$
 > $2.000$ V
 
 > [!abstract] 知识点讲解
-> 见 11.3 初值和终值 与 8.1 传递函数。
+> 见 [[信号与系统/Quiz对应知识点.md|Quiz对应知识点]] 11.3 初值和终值 与 8.1 传递函数。
 >
 > - **误差信号**：$e=u-y$，$Y(s)=G(s)U(s)$，故 $E(s)=U(s)\left[1-G(s)\right]$。
 > - **斜坡变换对**：$tH(t)\leftrightarrow\dfrac1{s^2}$。
@@ -814,7 +814,7 @@ For which one of these transfer functions does the final value theorem correctly
 > (d) $G(s)=\dfrac{12}{s(s+4)}$
 
 > [!abstract] 知识点讲解
-> 见 7.4 终值定理 与 11.3 初值和终值。
+> 见 [[信号与系统/Quiz对应知识点.md|Quiz对应知识点]] 7.4 终值定理 与 11.3 初值和终值。
 >
 > - **终值定理**：$\displaystyle\lim_{t\to\infty}h(t)=\lim_{s\to0}sG(s)$，要求 $sG(s)$ 的所有极点在开左半平面（$\operatorname{Re}<0$）。
 > - **原点单极点可用**：$G(s)=\dfrac{N(s)}{s(s+a)}$ 时 $sG(s)=\dfrac{N(s)}{s+a}$，极点可移到左半平面。
@@ -866,7 +866,7 @@ $$
 > (b) 临界稳定，但不 BIBO 稳定
 
 > [!abstract] 知识点讲解
-> 见 6.3 极点判据速查 与 11.6 二阶系统与稳定性的补充例题。
+> 见 [[信号与系统/Quiz对应知识点.md|Quiz对应知识点]] 6.3 极点判据速查 与 11.6 二阶系统与稳定性的补充例题。
 >
 > - **极点判据**：全部极点在开左半平面 ⇔ 指数稳定；虚轴单极点且其余在左半平面 → 临界稳定。
 > - **BIBO 稳定条件**：$\displaystyle\int_0^\infty|h(t)|dt<\infty$。
@@ -899,7 +899,7 @@ A transfer function $G(s)$ has poles at $0$ and $-0.2\pm j$, with no pole–zero
 > (a) 临界稳定，但不 BIBO 稳定
 
 > [!abstract] 知识点讲解
-> 见 6.3 极点判据速查 与 11.6 例 2（虚轴单极点与原点极点）。
+> 见 [[信号与系统/Quiz对应知识点.md|Quiz对应知识点]] 6.3 极点判据速查 与 11.6 例 2（虚轴单极点与原点极点）。
 >
 > - **临界稳定判据**：全部极点在闭左半平面（$\operatorname{Re}s\le0$），虚轴极点均为单根，且至少有一个虚轴极点。
 > - **极点贡献**：$s=0$ 的单极点对应 $h(t)$ 中的常数项 $C H(t)$；$-0.2\pm j$ 对应衰减振荡 $e^{-0.2t}\cos t$。
@@ -932,7 +932,7 @@ Which transfer function is marginally stable?（哪个传递函数是临界稳�
 > (a) $\dfrac{s+2}{(s^2+4)(s+1)}$
 
 > [!abstract] 知识点讲解
-> 见 6.3 极点判据速查。
+> 见 [[信号与系统/Quiz对应知识点.md|Quiz对应知识点]] 6.3 极点判据速查。
 >
 > - **临界稳定判据**：闭左半平面 + 虚轴单根 + 至少一个虚轴极点。
 > - **重极点**：$(s^2+\omega_0^2)^2$ 对应 $t\sin\omega_0t$、$t\cos\omega_0t$，增长项 ⇒ 不稳定。
@@ -977,7 +977,7 @@ $$
 > (d) 不稳定
 
 > [!abstract] 知识点讲解
-> 见 6.3 极点判据速查 与 11.6 例 4（四阶多项式的极点）。
+> 见 [[信号与系统/Quiz对应知识点.md|Quiz对应知识点]] 6.3 极点判据速查 与 11.6 例 4（四阶多项式的极点）。
 >
 > - **分解技巧**：$s^4+4=\left(s^2+2s+2\right)\left(s^2-2s+2\right)$。
 > - **求根**：$s^2+2s+2=0\Rightarrow s=-1\pm j$；$s^2-2s+2=0\Rightarrow s=1\pm j$。
@@ -1014,7 +1014,7 @@ with zero initial conditions, which bounded input produces an unbounded output?�
 > (a) $\cos(3t)H(t)$
 
 > [!abstract] 知识点讲解
-> 见 11.6 例 5（共振输入）。
+> 见 [[信号与系统/Quiz对应知识点.md|Quiz对应知识点]] 11.6 例 5（共振输入）。
 >
 > - **共振条件**：输入极点与系统极点重合，$Y(s)$ 出现**二重极点**。
 > - **二重极点响应**：$\dfrac{1}{(s^2+\omega_0^2)^2}$ 型极点产生 $t\sin\omega_0t$、$t\cos\omega_0t$。
@@ -1051,7 +1051,7 @@ at $t=1$ s.（在 $t=1$ s 处的值。）
 > $h(1)=1.632$
 
 > [!abstract] 知识点讲解
-> 见 11.4 遮盖法求单实极点。
+> 见 [[信号与系统/Quiz对应知识点.md|Quiz对应知识点]] 11.4 遮盖法求单实极点。
 >
 > - **部分分式**：$G(s)=\dfrac{A}{s}+\dfrac{B}{s+1}$。
 > - **遮盖法（留数）**：$A=\left.\dfrac{s+2}{s+1}\right|_{s=0}$，$B=\left.\dfrac{s+2}{s}\right|_{s=-1}$，等于 $s$ 乘 $G(s)$ 在对应极点处的值。
@@ -1086,7 +1086,7 @@ Find $A$.（求 $A$。）
 > $A=-0.6667$
 
 > [!abstract] 知识点讲解
-> 见 11.4 重极点。
+> 见 [[信号与系统/Quiz对应知识点.md|Quiz对应知识点]] 11.4 重极点。
 >
 > - **重极点展开**：$\dfrac{6}{s^2(s+3)}=\dfrac{A}{s}+\dfrac{B}{s^2}+\dfrac{C}{s+3}$。
 > - **遮盖法可求**：$B=\left.\dfrac{6}{s+3}\right|_{s=0}$，$C=\left.\dfrac{6}{s^2}\right|_{s=-3}$。
@@ -1124,7 +1124,7 @@ $$
 > (b) $(2+3t)e^{-t}H(t)$
 
 > [!abstract] 知识点讲解
-> 见 11.4 重极点。
+> 见 [[信号与系统/Quiz对应知识点.md|Quiz对应知识点]] 11.4 重极点。
 >
 > - **重极点展开**：$\dfrac{2s+5}{(s+1)^2}=\dfrac{A}{s+1}+\dfrac{B}{(s+1)^2}$。
 > - **遮盖法求最高次项系数**：$B=\left.(2s+5)\right|_{s=-1}=3$。
@@ -1169,7 +1169,7 @@ Find $C$.（求 $C$。）
 > $C=1.5$
 
 > [!abstract] 知识点讲解
-> 见 11.4 共轭复极点。
+> 见 [[信号与系统/Quiz对应知识点.md|Quiz对应知识点]] 11.4 共轭复极点。
 >
 > - **复极点配方**：$s^2+2s+5=(s+1)^2+4$，即极点 $-1\pm2j$：衰减率 $\alpha=1$、振荡角频率 $\omega_0=2$。
 > - **变换对**：$\dfrac{s+a}{(s+a)^2+\omega_0^2}\leftrightarrow e^{-at}\cos\omega_0t$，$\dfrac{\omega_0}{(s+a)^2+\omega_0^2}\leftrightarrow e^{-at}\sin\omega_0t$。
@@ -1208,7 +1208,7 @@ has a zero very close to a pole. Find the coefficient of $e^{-3.1t}$ in the impu
 > $0.04762$
 
 > [!abstract] 知识点讲解
-> 见 11.6 例 6（零点靠近极点）。
+> 见 [[信号与系统/Quiz对应知识点.md|Quiz对应知识点]] 11.6 例 6（零点靠近极点）。
 >
 > - **遮盖法**：$e^{-3.1t}$ 的系数为 $A_{3.1}=\left.\dfrac{s+3}{s+1}\right|_{s=-3.1}$。
 > - **零点-极点距离**：零点 $z$ 与极点 $p$ 的距离 $|z-p|$ 决定该模态的残留幅度。
@@ -1237,7 +1237,7 @@ $$
 > $y(3)=0.2657$
 
 > [!abstract] 知识点讲解
-> 见 11.4 有延迟因子的部分分式。
+> 见 [[信号与系统/Quiz对应知识点.md|Quiz对应知识点]] 11.4 有延迟因子的部分分式。
 >
 > - **时移性质**：$e^{-s\tau}F(s)\leftrightarrow f(t-\tau)H(t-\tau)$。
 > - **处理顺序**：先对有理部分 $F(s)$ 做部分分式、反变换得 $f(t)$，再整体延迟 $\tau$。
@@ -1269,7 +1269,7 @@ is driven by $u(t)=e^{-2t}H(t)$ with zero initial conditions. Find $y(1)$.（系
 > $y(1)=0.4270$
 
 > [!abstract] 知识点讲解
-> 见 11.5 例 1（系统极点与输入极点重合）。
+> 见 [[信号与系统/Quiz对应知识点.md|Quiz对应知识点]] 11.5 例 1（系统极点与输入极点重合）。
 >
 > - **输出变换**：$Y(s)=G(s)U(s)$，输入极点与系统极点重合时出现重极点。
 > - **重极点响应**：重极点 $s=-2$ 对应 $te^{-2t}$ 项。
@@ -1317,7 +1317,7 @@ Find $y(1)$ in volts.（求 $y(1)$，单位为 V。）
 > $y(1)=0.4731$ V
 
 > [!abstract] 知识点讲解
-> 见 11.4 遮盖法求单实极点 与 11.5 拉普拉斯变换与系统。
+> 见 [[信号与系统/Quiz对应知识点.md|Quiz对应知识点]] 11.4 遮盖法求单实极点 与 11.5 拉普拉斯变换与系统。
 >
 > - **输入合并**：$U(s)=\dfrac1s-\dfrac1{s+3}=\dfrac{3}{s(s+3)}$，先合并成一个分数再乘 $G(s)$。
 > - **输出变换**：$Y(s)=G(s)U(s)=\dfrac{3}{s(s+1)(s+3)}$。
@@ -1363,7 +1363,7 @@ A unit step is applied from rest. Find the output at $t=1$ s.（零初始状态�
 > $y(1)=0.5940$
 
 > [!abstract] 知识点讲解
-> 见 11.4 重极点 与 11.6 例 7（级联不是同阶 Butterworth）。
+> 见 [[信号与系统/Quiz对应知识点.md|Quiz对应知识点]] 11.4 重极点 与 11.6 例 7（级联不是同阶 Butterworth）。
 >
 > - **级联性质**：$G=G_1G_2$，传递函数相乘。
 > - **阶跃响应**：$Y(s)=\dfrac{G(s)}{s}$，多一个原点极点。
@@ -1409,7 +1409,7 @@ $$
 > (a) $u(t)=\delta(t)+\left(1-3e^{-4t}\right)H(t)$
 
 > [!abstract] 知识点讲解
-> 见 11.5 例 3（由输出反求输入）与 12.4 由输出反求输入（假分式先做除法）。
+> 见 [[信号与系统/Quiz对应知识点.md|Quiz对应知识点]] 11.5 例 3（由输出反求输入）与 12.4 由输出反求输入（假分式先做除法）。
 >
 > - **反求关系**：$U(s)=\dfrac{Y(s)}{G(s)}$。
 > - **假分式除法**：分子次数 ≥ 分母次数时，先做多项式除法；**常数项**对应 $\delta(t)$。
@@ -1448,7 +1448,7 @@ $G(s)$ has poles at $-2$ and $-5$, a single zero at $-1$, and DC gain $3$. The i
 > (c) $y(t)=10\left(e^{-2t}-e^{-5t}\right)H(t)$
 
 > [!abstract] 知识点讲解
-> 见 11.5 例 2（零点抵消输入极点）。
+> 见 [[信号与系统/Quiz对应知识点.md|Quiz对应知识点]] 11.5 例 2（零点抵消输入极点）。
 >
 > - **一般形式**：$G(s)=\dfrac{k(s+1)}{(s+2)(s+5)}$（极点、零点、待定增益）。
 > - **直流增益**：$G(0)=\dfrac{k}{2\cdot5}$，由 $G(0)=3$ 定出 $k$。
@@ -1488,7 +1488,7 @@ Which describes the straight-line Bode magnitude?（其渐近 Bode 幅频图如�
 > (b) 2 rad/s 以下为 $-20$ dB/decade，之后为 $+20$ dB/decade
 
 > [!abstract] 知识点讲解
-> 见 4.4 Bode 图 与 8.1 传递函数。
+> 见 [[信号与系统/Quiz对应知识点.md|Quiz对应知识点]] 4.4 Bode 图 与 8.1 传递函数。
 >
 > - **Bode 斜率规则**：每个极点贡献 $-20$ dB/decade，每个零点贡献 $+20$ dB/decade，重数叠加。
 > - **原点极点**：$1/s$ 的极点在原点，使低频段为 $-20$ dB/decade。
@@ -1525,7 +1525,7 @@ has DC gain $1$ and must have a high-frequency gain of $-30$ dB. Where must the 
 > $z=158.1$ rad/s
 
 > [!abstract] 知识点讲解
-> 见 8.1 传递函数 与 4.4 Bode 图。
+> 见 [[信号与系统/Quiz对应知识点.md|Quiz对应知识点]] 8.1 传递函数 与 4.4 Bode 图。
 >
 > - **直流增益**：$G(0)=\displaystyle\lim_{s\to0}K\dfrac{z}{5}$。
 > - **高频增益**：$\displaystyle\lim_{s\to\infty}G(s)=K$（同阶时等于系数比）。
@@ -1558,7 +1558,7 @@ Find $\left|G(j\omega)\right|$ at 25 Hz.（求 25 Hz 处的幅值。）
 > $|G|=0.8321$
 
 > [!abstract] 知识点讲解
-> 见 11.7 例 7（Notch 滤波器）。
+> 见 [[信号与系统/Quiz对应知识点.md|Quiz对应知识点]] 11.7 例 7（Notch 滤波器）。
 >
 > - **陷波器形式**：$G(s)=\dfrac{s^2+\omega_n^2}{s^2+2\zeta\omega_ns+\omega_n^2}$，在 $\omega=\omega_n$ 处 $|G|=0$。
 > - **分母模**：$|s^2+2\zeta\omega_ns+\omega_n^2|_{s=j\omega}=\left(\omega_n^2-\omega^2\right)+j2\zeta\omega_n\omega$。
@@ -1596,7 +1596,7 @@ Why can an ideal lowpass filter $G(j\omega)=p_{2\omega_c}(\omega)$ not be built 
 > (c) 冲激响应在 $t<0$ 时非零，非因果
 
 > [!abstract] 知识点讲解
-> 见 8.3 理想低通滤波器。
+> 见 [[信号与系统/Quiz对应知识点.md|Quiz对应知识点]] 8.3 理想低通滤波器。
 >
 > - **因果性判据**：实时系统的冲激响应必须满足 $h(t)=0$（$t<0$）。
 > - **理想低通频响**：$G(j\omega)=p_{2\omega_c}(\omega)$，截止频率 $\omega_c$。
@@ -1627,7 +1627,7 @@ At the $-3$ dB frequency of a first-order RC lowpass, compared with DC, the outp
 > (b) 幅值 $1/\sqrt2$，功率 $1/2$
 
 > [!abstract] 知识点讲解
-> 见 8.4 $-3$ dB 截止频率 与 4.4 Bode 图。
+> 见 [[信号与系统/Quiz对应知识点.md|Quiz对应知识点]] 8.4 $-3$ dB 截止频率 与 4.4 Bode 图。
 >
 > - **dB 定义**：$20\log_{10}|G|$，$-3$ dB $\iff|G|=10^{-3/20}=\dfrac{1}{\sqrt2}$。
 > - **精确换算**：$20\log_{10}\dfrac{1}{\sqrt2}=-10\log_{10}2\approx-3.01$ dB。
@@ -1658,7 +1658,7 @@ Which transfer function is a bandpass filter?（哪个传递函数是带通滤�
 > (a) $\dfrac{10s}{s^2+10s+100}$
 
 > [!abstract] 知识点讲解
-> 见 8.2 典型滤波器 与 10.6 传递函数与滤波器。
+> 见 [[信号与系统/Quiz对应知识点.md|Quiz对应知识点]] 8.2 典型滤波器 与 10.6 传递函数与滤波器。
 >
 > - **滤波器分类判据**：看 $\omega=0$ 与 $\omega\to\infty$ 两端增益。
 > - **低通**：$G(0)\ne0$、$G(\infty)=0$；**高通**：$G(0)=0$、$G(\infty)\ne0$。
@@ -1696,7 +1696,7 @@ in rad/s.
 > $25.44$ rad/s
 
 > [!abstract] 知识点讲解
-> 见 11.7 例 2（二阶低通的截止频率）与 8.4 $-3$ dB 截止频率。
+> 见 [[信号与系统/Quiz对应知识点.md|Quiz对应知识点]] 11.7 例 2（二阶低通的截止频率）与 8.4 $-3$ dB 截止频率。
 >
 > - **二阶标准形**：$G(s)=\dfrac{\omega_n^2}{s^2+2\zeta\omega_ns+\omega_n^2}$，本题 $\omega_n=20$、$\zeta=0.5$。
 > - **幅频平方**：$|G(j\omega)|^2=\dfrac{1}{(1-x)^2+(2\zeta)^2x}$，其中 $x=\left(\dfrac{\omega}{\omega_n}\right)^2$。
@@ -1734,7 +1734,7 @@ is used to suppress a 50 Hz hum. By how many dB is the 50 Hz hum attenuated? (Gi
 > $6.990$ dB
 
 > [!abstract] 知识点讲解
-> 见 11.7 例 3（一阶高通的衰减）。
+> 见 [[信号与系统/Quiz对应知识点.md|Quiz对应知识点]] 11.7 例 3（一阶高通的衰减）。
 >
 > - **一阶高通**：$G(s)=\dfrac{s}{s+\omega_c}$，幅频 $|G(j\omega)|=\dfrac{\omega/\omega_c}{\sqrt{1+(\omega/\omega_c)^2}}$。
 > - **频率比**：用 $f/f_c=\omega/\omega_c$ 计算，两边的 $2\pi$ 约掉。
@@ -1766,7 +1766,7 @@ must have DC gain $+12$ dB and a gain 3 dB below the DC gain at $f=1$ kHz. Find 
 > $k=2.501\times10^4$ rad/s
 
 > [!abstract] 知识点讲解
-> 见 11.7 例 4（由指标反求参数）。
+> 见 [[信号与系统/Quiz对应知识点.md|Quiz对应知识点]] 11.7 例 4（由指标反求参数）。
 >
 > - **一阶低通标准形**：$G(s)=\dfrac{k}{s+a}$，$-3$ dB 频率 $\omega_c=a$。
 > - **直流增益**：$G(0)=\dfrac{k}{a}$。
@@ -1796,7 +1796,7 @@ Which transfer function is an exponentially stable allpass filter ($|G(j\omega)|
 > (d) $\dfrac{s-3}{s+3}$
 
 > [!abstract] 知识点讲解
-> 见 11.7 例 5（全通滤波器的相移）与 8.2 典型滤波器。
+> 见 [[信号与系统/Quiz对应知识点.md|Quiz对应知识点]] 11.7 例 5（全通滤波器的相移）与 8.2 典型滤波器。
 >
 > - **一阶全通形式**：$G(s)=\dfrac{s-a}{s+a}$，零点与极点关于虚轴对称。
 > - **全通性质**：$|G(j\omega)|=1$，对所有 $\omega$ 成立。
@@ -1834,7 +1834,7 @@ is driven by the input $u(t)=\cos(10t)$, applied for all time. The output is（�
 > (c) $\sin(10t)$
 
 > [!abstract] 知识点讲解
-> 见 11.7 例 5（全通滤波器的相移）与 4.1 正弦稳态的核心结论。
+> 见 [[信号与系统/Quiz对应知识点.md|Quiz对应知识点]] 11.7 例 5（全通滤波器的相移）与 4.1 正弦稳态的核心结论。
 >
 > - **正弦稳态**：$u=A\cos\omega t$ 时 $y=A|G(j\omega)|\cos\left(\omega t+\angle G(j\omega)\right)$。
 > - **全通幅值**：$|G(j\omega)|=1$，只改变相位。
@@ -1873,7 +1873,7 @@ has transfer function $G(s)=e^{-2s}$. Which describes its frequency response?（
 > (b) $|G(j\omega)|=1$，$\angle G(j\omega)=-2\omega$ rad，是全通系统
 
 > [!abstract] 知识点讲解
-> 见 11.7 例 6（延迟线）。
+> 见 [[信号与系统/Quiz对应知识点.md|Quiz对应知识点]] 11.7 例 6（延迟线）。
 >
 > - **延迟的传递函数**：$y(t)=u(t-T)\Rightarrow G(s)=e^{-sT}$，$T=2$。
 > - **频率响应**：$G(j\omega)=e^{-j2\omega}$，$|e^{j\theta}|=1$。
@@ -1912,7 +1912,7 @@ has cutoff $1$ rad/s. Replacing $s$ by $50/s$ gives（截止频率为 $1$ rad/s�
 > (b) $\dfrac{s^2}{s^2+70.71s+2500}$
 
 > [!abstract] 知识点讲解
-> 见 11.8 例 2（Butterworth 原型到高通）与 8.5 Butterworth 滤波器。
+> 见 [[信号与系统/Quiz对应知识点.md|Quiz对应知识点]] 11.8 例 2（Butterworth 原型到高通）与 8.5 Butterworth 滤波器。
 >
 > - **低通到高通变换**：$s\to\dfrac{\omega_c}{s}$，$\omega_c=50$。
 > - **原型**：$G_{LP}(s)=\dfrac{1}{s^2+\sqrt2\,s+1}$（二阶 Butterworth，$\zeta=\dfrac{1}{\sqrt2}$）。
@@ -1944,7 +1944,7 @@ Find $C$ in $\mu$F so the $-3$ dB frequency is 3 kHz.（求使 $-3$ dB 频率为
 > $C=13.26\ \mu$F
 
 > [!abstract] 知识点讲解
-> 见 8.4 $-3$ dB 截止频率 与 8.2 典型滤波器。
+> 见 [[信号与系统/Quiz对应知识点.md|Quiz对应知识点]] 8.4 $-3$ dB 截止频率 与 8.2 典型滤波器。
 >
 > - **一阶高通标准形**：$G_H(s)=\dfrac{s}{s+\omega_c}$，本题 $G_H(s)=\dfrac{4Cs}{4Cs+1}=\dfrac{s}{s+\frac{1}{4C}}$。
 > - **极点与截止频率**：$\omega_c=\dfrac{1}{4C}$，$-3$ dB 频率等于极点频率。
@@ -1978,7 +1978,7 @@ Find $|G(j100)|$.（求 $|G(j100)|$。）
 > $|G(j100)|=0.01980$
 
 > [!abstract] 知识点讲解
-> 见 8.2 典型滤波器 与 0.1 复数与相量。
+> 见 [[信号与系统/Quiz对应知识点.md|Quiz对应知识点]] 8.2 典型滤波器 与 0.1 复数与相量。
 >
 > - **并联相加**：$G=G_1+G_2$，是**复数相加**，不是幅值相加。
 > - **有理化**：$\dfrac{a}{b+jc}=\dfrac{a(b-jc)}{b^2+c^2}$，写成 $x+jy$。
@@ -2024,7 +2024,7 @@ with the same cutoff are connected in parallel and summed, $G=G_L+G_H$. What is 
 > (d) $G(s)=1$
 
 > [!abstract] 知识点讲解
-> 见 8.2 典型滤波器 与 0.1 复数与相量。
+> 见 [[信号与系统/Quiz对应知识点.md|Quiz对应知识点]] 8.2 典型滤波器 与 0.1 复数与相量。
 >
 > - **并联相加**：$G=G_L+G_H$，同一分母可直接通分。
 > - **互补滤波器**：$G_L+G_H=\dfrac{\omega_c}{s+\omega_c}+\dfrac{s}{s+\omega_c}=1$。
@@ -2054,7 +2054,7 @@ A second-order lowpass with no zeros has poles at $-10^4\pm j10^4$ rad/s and uni
 > $\omega_c=1.414\times10^4$ rad/s
 
 > [!abstract] 知识点讲解
-> 见 11.8 例 4（由极点求二阶 Butterworth 的截止频率）与 8.5 Butterworth 滤波器。
+> 见 [[信号与系统/Quiz对应知识点.md|Quiz对应知识点]] 11.8 例 4（由极点求二阶 Butterworth 的截止频率）与 8.5 Butterworth 滤波器。
 >
 > - **二阶 Butterworth 极点**：$s=-\omega_c e^{\pm j45^\circ}$ 形式，极点到原点距离为 $\omega_c$。
 > - **极点到原点距离**：$\omega_n=|p|=\sqrt{\operatorname{Re}^2p+\operatorname{Im}^2p}$。
@@ -2088,7 +2088,7 @@ Find $a$ in rad/s.（求 $a$，单位 rad/s。）
 > $a=888.6$ rad/s
 
 > [!abstract] 知识点讲解
-> 见 11.8 例 3（二阶 Butterworth 的阻尼比）。
+> 见 [[信号与系统/Quiz对应知识点.md|Quiz对应知识点]] 11.8 例 3（二阶 Butterworth 的阻尼比）。
 >
 > - **二阶 Butterworth 分母标准形**：$s^2+\sqrt2\,\omega_cs+\omega_c^2$。
 > - **系数对照**：$a=\sqrt2\,\omega_c$，常数项必须等于 $\omega_c^2$。
@@ -2111,7 +2111,7 @@ A fifth-order Butterworth lowpass has $\omega_c=1000$ rad/s. Find the real part 
 > $-309.0$ rad/s
 
 > [!abstract] 知识点讲解
-> 见 11.8 例 5（高阶 Butterworth 的极点）。
+> 见 [[信号与系统/Quiz对应知识点.md|Quiz对应知识点]] 11.8 例 5（高阶 Butterworth 的极点）。
 >
 > - **极点分布**：$n$ 阶 Butterworth 的极点均匀分布在左半平面半径 $\omega_c$ 的圆上。
 > - **角度公式**：从正实轴量起，$\theta_k=90^\circ+\dfrac{180^\circ(2k+1)}{2n}$，$k=0,1,\dots,n-1$。
@@ -2134,7 +2134,7 @@ A third-order Butterworth highpass filter with cutoff frequency 100 Hz is used t
 > $18.13$ dB
 
 > [!abstract] 知识点讲解
-> 见 11.8 例 6（Butterworth 衰减计算）。
+> 见 [[信号与系统/Quiz对应知识点.md|Quiz对应知识点]] 11.8 例 6（Butterworth 衰减计算）。
 >
 > - **$n$ 阶 Butterworth 高通幅频平方**：$|G|^2=\dfrac{1}{1+\left(\dfrac{f_c}{f}\right)^{2n}}$。
 > - **衰减量**：$A=10\log_{10}\left[1+\left(\dfrac{f_c}{f}\right)^{2n}\right]$ dB。
@@ -2162,7 +2162,7 @@ Two identical second-order Butterworth lowpass sections, each with cutoff $\omeg
 > (d) $\omega_c$ 处增益 $-6.02$ dB，级联不是四阶 Butterworth
 
 > [!abstract] 知识点讲解
-> 见 11.8 例 7（级联不是同阶 Butterworth）。
+> 见 [[信号与系统/Quiz对应知识点.md|Quiz对应知识点]] 11.8 例 7（级联不是同阶 Butterworth）。
 >
 > - **级联**：$G=G_1G_2$，幅频相乘、相频相加，即 $|G|=|G_1||G_2|$。
 > - **在 $\omega_c$ 处**：每节为 $-3.01$ dB，两节共 $-6.02$ dB。
@@ -2192,7 +2192,7 @@ At what frequency, in Hz, is its gain $-30$ dB?（在哪个频率处增益为 $-
 > $1067$ Hz
 
 > [!abstract] 知识点讲解
-> 见 11.8 例 6（Butterworth 衰减计算）。
+> 见 [[信号与系统/Quiz对应知识点.md|Quiz对应知识点]] 11.8 例 6（Butterworth 衰减计算）。
 >
 > - **二阶 Butterworth 高通幅频平方**：$|G|^2=\dfrac{1}{1+\left(\dfrac{f_c}{f}\right)^{4}}$。
 > - **衰减条件**：$10\log_{10}\left[1+\left(\dfrac{f_c}{f}\right)^4\right]=30$。
@@ -2219,7 +2219,7 @@ A fourth-order Butterworth lowpass must lose at most 1 dB at 1 kHz. What is the 
 > $1.184$ kHz
 
 > [!abstract] 知识点讲解
-> 见 11.8 例 9（由通带指标求截止频率）。
+> 见 [[信号与系统/Quiz对应知识点.md|Quiz对应知识点]] 11.8 例 9（由通带指标求截止频率）。
 >
 > - **$n$ 阶 Butterworth 低通幅频平方**：$|G|^2=\dfrac{1}{1+\left(\dfrac{f}{f_c}\right)^{2n}}$。
 > - **通带指标**：$10\log_{10}\left[1+\left(\dfrac{f}{f_c}\right)^{2n}\right]\le A_p$，本题 $A_p=1$ dB、$2n=8$。
@@ -2245,7 +2245,7 @@ A Butterworth lowpass filter with cutoff frequency 2 kHz must attenuate a 6 kHz 
 > $n=4$
 
 > [!abstract] 知识点讲解
-> 见 11.8 例 8（由衰减指标求阶数）。
+> 见 [[信号与系统/Quiz对应知识点.md|Quiz对应知识点]] 11.8 例 8（由衰减指标求阶数）。
 >
 > - **阻带衰减公式**：$A=10\log_{10}\left[1+\left(\dfrac{f}{f_c}\right)^{2n}\right]$ dB。
 > - **频率比**：$\dfrac{f}{f_c}=\dfrac{6}{2}=3$，故 $A(n)=10\log_{10}\left(1+3^{2n}\right)$。
@@ -2276,7 +2276,7 @@ An antenna's length must be comparable to the wavelength $\lambda=c/f$ of the si
 > $100$ km
 
 > [!abstract] 知识点讲解
-> 见 11.9 例 1（波长与载波）。
+> 见 [[信号与系统/Quiz对应知识点.md|Quiz对应知识点]] 11.9 例 1（波长与载波）。
 >
 > - **波速关系**：$\lambda=\dfrac{c}{f}$，$c=3\times10^8$ m/s。
 > - **天线尺度**：天线长度需与波长可比（通常 $\lambda/4$ 或 $\lambda/2$）。
@@ -2285,7 +2285,7 @@ An antenna's length must be comparable to the wavelength $\lambda=c/f$ of the si
 
 > [!example] 解答
 > $$\lambda=\frac{c}{f}=\frac{3\times10^8}{3\times10^3}=10^5\ \mathrm{m}=100\ \mathrm{km}.$$
-> 波长太长，天线长度要几十公里，因此基带音频必须先调制到高频载波上。
+> 波长太长，天线长度要几十公里，因此音频信号必须先调制到高频载波上。
 
 ---
 
@@ -2314,7 +2314,7 @@ Which list gives the positive frequencies (rad/s) in $y(t)$ with the amplitudes 
 > (c) 8000 (0.5), 9000 (1), 11 000 (1), 12 000 (0.5)
 
 > [!abstract] 知识点讲解
-> 见 11.9 例 2（DSB-SC 的频谱）与 9.1 调制的基本概念。
+> 见 [[信号与系统/Quiz对应知识点.md|Quiz对应知识点]] 11.9 例 2（DSB-SC 的频谱）与 9.1 调制的基本概念。
 >
 > - **积化和差**：$\cos a\cos b=\dfrac12\left[\cos(a-b)+\cos(a+b)\right]$，产生上下边带。
 > - **DSB-SC 频谱**：$u(t)\cos\omega_ct\leftrightarrow\dfrac12\left[U(j(\omega-\omega_c))+U(j(\omega+\omega_c))\right]$，不含载波 $\pm\omega_c$ 谱线。
@@ -2347,7 +2347,7 @@ A speech scrambler multiplies $u(t)$, bandlimited to 15 kHz, by $2\cos(2\pi\cdot
 > (c) $3\cos(2\pi\cdot11\,000t)$
 
 > [!abstract] 知识点讲解
-> 见 11.9 例 3（单边带滤波）。
+> 见 [[信号与系统/Quiz对应知识点.md|Quiz对应知识点]] 11.9 例 3（单边带滤波）。
 >
 > - **调制（乘法）**：$m(t)\cdot2\cos\omega_ct$ 产生 $\omega_c\pm\omega_m$ 两个分量。
 > - **积化和差**：$2\cos a\cos b=\cos(a-b)+\cos(a+b)$，乘 $2$ 正好抵消 $\frac12$。
@@ -2374,7 +2374,7 @@ A radio band runs from 3.000 MHz to 3.400 MHz. Each telephone message has bandwi
 > $58$
 
 > [!abstract] 知识点讲解
-> 见 11.9 例 4（FDM 信道数）与 9.4 频分复用。
+> 见 [[信号与系统/Quiz对应知识点.md|Quiz对应知识点]] 11.9 例 4（FDM 信道数）与 9.4 频分复用。
 >
 > - **DSB-SC 带宽**：每个信道占 $2W$，$W$ 为消息带宽。
 > - **FDM 总带宽**：$N$ 路无保护间隔时需 $N\cdot2W$。
@@ -2400,7 +2400,7 @@ Four messages, each bandlimited to 3 kHz, are sent by DSB-SC on carriers $f_1<f_
 > $136.0$ kHz
 
 > [!abstract] 知识点讲解
-> 见 11.9 例 5（FDM 载频安排）。
+> 见 [[信号与系统/Quiz对应知识点.md|Quiz对应知识点]] 11.9 例 5（FDM 载频安排）。
 >
 > - **DSB-SC 频谱结构**：每个信道宽 $2W$，以载频 $f_i$ 为中心，占据 $[f_i-W,\,f_i+W]$。
 > - **起点条件**：第一路下边沿 $f_1-W=100$ kHz $\Rightarrow f_1=103$ kHz。
@@ -2435,19 +2435,19 @@ Which band of positive frequencies does $c(t)$ occupy?（$c(t)$ 占据哪个正�
 
 (a) 5000 to 35 000 rad/s **✓**
 (b) 10 000 to 30 000 rad/s（只搬移了内层载频）
-(c) 0 to 35 000 rad/s（误以为搬移后仍保留基带）
+(c) 0 to 35 000 rad/s（误以为搬移后仍保留原来的低频分量）
 (d) 15 000 to 25 000 rad/s（只用 $u_1$ 的频段计算）
 
 > [!success] Answer（答案）
 > (a) 5000 到 35 000 rad/s
 
 > [!abstract] 知识点讲解
-> 见 11.9 例 6（多层调制）。
+> 见 [[信号与系统/Quiz对应知识点.md|Quiz对应知识点]] 11.9 例 6（多层调制）。
 >
 > - **调制搬移**：乘 $\cos\omega_ct$ 后频带移到 $\omega_c\pm$ 原频段（乘 $2$ 抵消 $\frac12$）。
 > - **频带并集**：信号相加，频谱相加，占据频段取并集。
 > - **逐层分析**：先算内层 $b(t)$ 的频段，再整体搬移：$b$ 占 $[0,15\,000]$，外载频 $20\,000$ 给出 $20\,000\pm15\,000$，即 $[5\,000,35\,000]$ rad/s。
-> - **基带部分**：$u_1$ 未调制，占据 $[0,W]$。
+> - **未调制部分**：$u_1$ 未调制，占据 $[0,W]$。
 
 > [!example] 解答
 > $u_1$ 占据 $0$ 到 $5000$ rad/s。
@@ -2472,7 +2472,7 @@ The signal $y(t)=\cos(t^2)$ is a sinusoid with variable frequency, $y(t)=\cos(\o
 > $10$ rad/s
 
 > [!abstract] 知识点讲解
-> 见 9.5 瞬时频率 与 11.9 例 7（瞬时频率）。
+> 见 [[信号与系统/Quiz对应知识点.md|Quiz对应知识点]] 9.5 瞬时频率 与 11.9 例 7（瞬时频率）。
 >
 > - **瞬时角频率定义**：$\omega_i(t)=\dfrac{d\theta(t)}{dt}$，其中 $\theta(t)$ 是**整个**瞬时相位。
 > - **相位与频率**：$\theta(t)=\displaystyle\int_{-\infty}^{t}\omega_i(\tau)d\tau$。
@@ -2510,7 +2510,7 @@ By how many Hz is the instantaneous frequency shifted from the carrier during th
 > $318.3$ Hz
 
 > [!abstract] 知识点讲解
-> 见 9.6 PM 与 FM 与 11.9 例 8（PM 的频偏）。
+> 见 [[信号与系统/Quiz对应知识点.md|Quiz对应知识点]] 9.6 PM 与 FM 与 11.9 例 8（PM 的频偏）。
 >
 > - **PM 信号**：$y(t)=\cos\left(\omega_ct+ku(t)\right)$。
 > - **瞬时频率**：$\omega_i=\dfrac{d}{dt}\left[\omega_ct+ku(t)\right]=\omega_c+k\dot u(t)$。
@@ -2552,7 +2552,7 @@ Which description of the two signals for $t>0$ is correct?（下列对 $t>0$ 时
 > (c) FM 相位连续、频率为 $\omega_c+k$；PM 相位跳变、频率回到 $\omega_c$
 
 > [!abstract] 知识点讲解
-> 见 9.6 PM 与 FM 与 11.9 例 9（FM 与 PM 的区别）。
+> 见 [[信号与系统/Quiz对应知识点.md|Quiz对应知识点]] 9.6 PM 与 FM 与 11.9 例 9（FM 与 PM 的区别）。
 >
 > - **FM 定义**：$y=\cos\left(\omega_ct+k\displaystyle\int_{-\infty}^{t}u(\tau)d\tau\right)$，相位对消息积分。
 > - **PM 定义**：$y=\cos\left(\omega_ct+ku(t)\right)$，相位直接随消息变化。
@@ -2585,13 +2585,13 @@ For small but nonzero $k$, the spectrum of $y(t)$ consists of（当 $k$ 很小�
 (a) lines at $\pm\omega_c$ plus sidebands in $\omega_c-W<|\omega|<\omega_c+W$, the same band as AM **✓**（$\pm\omega_c$ 处的谱线加上 $\omega_c-W<|\omega|<\omega_c+W$ 内的边带，与 AM 频段相同）
 (b) components spread over a band much wider than $2W$ around $\pm\omega_c$（比 $2W$ 宽得多的频带）
 (c) lines at $\pm\omega_c$ only（只有 $\pm\omega_c$ 谱线）
-(d) the baseband spectrum $|\omega|<W$ plus lines at $\pm\omega_c$（基带频谱加上载波谱线）
+(d) the baseband spectrum $|\omega|<W$ plus lines at $\pm\omega_c$（原来的低频频谱加上载波谱线）
 
 > [!success] Answer（答案）
 > (a) 载波谱线加与 AM 同带宽的边带
 
 > [!abstract] 知识点讲解
-> 见 9.7 窄带 FM 与宽带 FM 与 11.9 例 10（窄带 FM 的频谱）。
+> 见 [[信号与系统/Quiz对应知识点.md|Quiz对应知识点]] 9.7 窄带 FM 与宽带 FM 与 11.9 例 10（窄带 FM 的频谱）。
 >
 > - **小调制指数展开**：$k$ 很小时 $\theta(t)=k\displaystyle\int u\ll1$，可用 $\cos(\omega_ct+\theta)\approx\cos\omega_ct-\theta\sin\omega_ct$。
 > - **AM 型边带**：第二项是 $\sin\omega_ct$ 被 $\theta(t)$ 调幅，频谱在 $\omega_c\pm W$ 内。

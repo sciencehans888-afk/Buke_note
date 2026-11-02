@@ -49,8 +49,7 @@
               "title": "Quiz3"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -189,7 +188,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "信号与系统/Quiz2.md",
+                "file": "信号与系统/Quiz对应知识点.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
@@ -224,7 +223,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 432.83331298828125
+    "width": 457.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -239,21 +238,23 @@
       "bases:新建数据库": false
     }
   },
-  "active": "3043f3754dc34359",
+  "active": "a7b07f636312de84",
   "lastOpenFiles": [
-    "信号与系统/Quiz3.md",
+    "信号与系统/Quiz对应知识点.md.tmp.9368.549bbc98cad7",
+    "信号与系统/Quiz对应知识点.md.tmp.9368.03efb484f55a",
+    "信号与系统/Quiz对应知识点.md.tmp.9368.5449096baf27",
+    "信号与系统/Quiz对应知识点.md.tmp.9368.0d721245fd32",
+    "信号与系统/Quiz对应知识点.md.tmp.9368.729e24f2f8f4",
+    "信号与系统/Quiz对应知识点.md.tmp.9368.2b6a00332edc",
+    "信号与系统/Quiz3.md.tmp.9368.f448440c2a5e",
+    "信号与系统/附件/Pasted image 20261102124348.png",
     "信号与系统/Quiz2.md",
-    "信号与系统/Quiz3.md.tmp.31216.fd8e13bb4c33",
-    "电路/教材/电路原理-逐章节拆分/电路原理 (于歆杰, 朱桂萍, 陆文娟) (z-library.sk, 1lib.sk, z-lib.sk)/电路原理 (于歆杰, 朱桂萍, 陆文娟) (z-library.sk, 1lib.sk, z-lib.sk)_18-43.pdf",
-    "电路/教材/电路原理-逐章节拆分/电路原理 (于歆杰, 朱桂萍, 陆文娟) (z-library.sk, 1lib.sk, z-lib.sk)/电路原理 (于歆杰, 朱桂萍, 陆文娟) (z-library.sk, 1lib.sk, z-lib.sk)_44-116.pdf",
-    "电路/教材/电路原理-逐章节拆分/电路原理 (于歆杰, 朱桂萍, 陆文娟) (z-library.sk, 1lib.sk, z-lib.sk)/电路原理 (于歆杰, 朱桂萍, 陆文娟) (z-library.sk, 1lib.sk, z-lib.sk)_204-284.pdf",
-    "电路/教材/电路原理-逐章节拆分/电路原理 (于歆杰, 朱桂萍, 陆文娟) (z-library.sk, 1lib.sk, z-lib.sk)/电路原理 (于歆杰, 朱桂萍, 陆文娟) (z-library.sk, 1lib.sk, z-lib.sk)_377-425.pdf",
-    "电路/教材/电路原理-逐章节拆分/电路原理 (于歆杰, 朱桂萍, 陆文娟) (z-library.sk, 1lib.sk, z-lib.sk)/电路原理 (于歆杰, 朱桂萍, 陆文娟) (z-library.sk, 1lib.sk, z-lib.sk)_285-376.pdf",
-    "电路/教材/电路原理-逐章节拆分/电路原理 (于歆杰, 朱桂萍, 陆文娟) (z-library.sk, 1lib.sk, z-lib.sk)/电路原理 (于歆杰, 朱桂萍, 陆文娟) (z-library.sk, 1lib.sk, z-lib.sk)_13-17.pdf",
-    "电路/教材/电路原理-逐章节拆分/电路原理 (于歆杰, 朱桂萍, 陆文娟) (z-library.sk, 1lib.sk, z-lib.sk)/电路原理 (于歆杰, 朱桂萍, 陆文娟) (z-library.sk, 1lib.sk, z-lib.sk)_172-203.pdf",
-    "电路/教材/电路原理-逐章节拆分/电路原理 (于歆杰, 朱桂萍, 陆文娟) (z-library.sk, 1lib.sk, z-lib.sk)/电路原理 (于歆杰, 朱桂萍, 陆文娟) (z-library.sk, 1lib.sk, z-lib.sk)_117-171.pdf",
-    "电路/教材/电路原理-逐章节拆分/电路原理 (于歆杰, 朱桂萍, 陆文娟) (z-library.sk, 1lib.sk, z-lib.sk)",
+    "信号与系统/Quiz2.md.tmp.26736.0177264d99d2",
     "信号与系统/Quiz对应知识点.md",
+    "信号与系统/Quiz对应知识点.md.tmp.27592.99e12504ac08",
+    "信号与系统/Quiz对应知识点.md.tmp.27592.f91393aa5780",
+    "信号与系统/Quiz对应知识点.md.tmp.27592.9c545cd86767",
+    "信号与系统/Quiz3.md",
     "Pasted image 20261031132109.png",
     "Quiz2.md",
     "信号与系统/附件/Pasted image 20261101091625.png"

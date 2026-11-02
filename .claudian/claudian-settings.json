@@ -1,6 +1,6 @@
 {
   "userName": "",
-  "permissionMode": "acceptEdits",
+  "permissionMode": "yolo",
   "model": "haiku",
   "effortLevel": "medium",
   "serviceTier": "default",
@@ -203,7 +203,7 @@
   },
   "savedProviderServiceTier": {},
   "savedProviderPermissionMode": {
-    "claude": "acceptEdits"
+    "claude": "yolo"
   },
   "pendingProviderSessionInvalidations": {},
   "enableAutoScroll": true,

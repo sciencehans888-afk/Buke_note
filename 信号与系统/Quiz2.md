@@ -35,7 +35,7 @@ Is $u(t)$ periodic, and if so what is its fundamental frequency $\omega_0$?（�
 > (d) $\omega_0=\frac{2}{15}\ \mathrm{rad/s}$
 
 > [!abstract] 知识点讲解
-> 见 1.5 多个正弦叠加的周期与基频。
+> 见 [[信号与系统/Quiz对应知识点.md|Quiz对应知识点]] 1.5 多个正弦叠加的周期与基频。
 >
 > - **周期条件**：各分量频率之比均为有理数，即 $\omega_i/\omega_j\in\mathbb{Q}$，信号才有公共周期。
 > - **基频**：把各频率通分到同一分母，对分子取最大公约数，$\omega_0=\dfrac{\gcd(\text{各分子})}{\text{公共分母}}$。
@@ -80,7 +80,7 @@ Find its fundamental frequency $\omega_0$, in $\mathrm{rad/s}$.（求其基波�
 > $\omega_0=0.1667\ \mathrm{rad/s}$（即 $\frac{1}{6}$）
 
 > [!abstract] 知识点讲解
-> 见 1.5 多个正弦叠加的周期与基频，例 2。
+> 见 [[信号与系统/Quiz对应知识点.md|Quiz对应知识点]] 1.5 多个正弦叠加的周期与基频，例 2。
 >
 > - **常数项**：$\omega=0$，即 $0\cdot\omega_0$，对任何 $\omega_0$ 都成立，不参与求基频。
 > - **基频**：$\omega_0=\dfrac{\gcd(\omega_1,\omega_2,\omega_3)}{\text{通分后的公共分母}}$。
@@ -125,7 +125,7 @@ Is $u(t)$ periodic?（判断 $u(t)$ 是否为周期信号。）
 > (d) 非周期
 
 > [!abstract] 知识点讲解
-> 见 1.5 多个正弦叠加的周期与基频。
+> 见 [[信号与系统/Quiz对应知识点.md|Quiz对应知识点]] 1.5 多个正弦叠加的周期与基频。
 >
 > - **周期判据**：$u(t)=\cos\omega_1t+\sin\omega_2t$ 为周期信号 $\iff \dfrac{\omega_1}{\omega_2}\in\mathbb{Q}$。
 > - **公共周期**：存在 $T$ 使 $\omega_1T=2\pi m$、$\omega_2T=2\pi n$，即 $\dfrac{\omega_1}{\omega_2}=\dfrac mn$（$m,n$ 为整数）。
@@ -166,7 +166,7 @@ $$
 > (b) 所有偶数 $k$（含 $c_0$）的系数为零
 
 > [!abstract] 知识点讲解
-> 见 2.6 对称性 与 2.2 复指数形式。
+> 见 [[信号与系统/Quiz对应知识点.md|Quiz对应知识点]] 2.6 对称性 与 2.2 复指数形式。
 >
 > - **复指数系数**：$c_k=\dfrac1T\displaystyle\int_0^T u(t)e^{-jk\omega_0t}dt$。
 > - **时移性质**：$u(t-t_0)$ 的系数为 $e^{-jk\omega_0t_0}c_k$；取 $t_0=\dfrac T2$ 得 $e^{-jk\pi}c_k=(-1)^kc_k$。
@@ -210,7 +210,7 @@ $$
 > (b) 全部 $a_k=0$、$c_0=0$，所有 $c_k$ 为纯虚数
 
 > [!abstract] 知识点讲解
-> 见 2.6 对称性 与 2.3 三角形式与系数换算。
+> 见 [[信号与系统/Quiz对应知识点.md|Quiz对应知识点]] 2.6 对称性 与 2.3 三角形式与系数换算。
 >
 > - **复系数定义**：$c_k=\dfrac1T\displaystyle\int_T u(t)e^{-jk\omega_0t}dt$，$c_0$ 为信号平均值。
 > - **三角换算**：$a_k=2\operatorname{Re}c_k$，$b_k=-2\operatorname{Im}c_k$，$a_0=c_0$。
@@ -257,7 +257,7 @@ $$
 > (d) 只有奇次 $a_k$ 非零
 
 > [!abstract] 知识点讲解
-> 见 2.6 对称性 与 2.9 典型周期波形的傅里叶系数。
+> 见 [[信号与系统/Quiz对应知识点.md|Quiz对应知识点]] 2.6 对称性 与 2.9 典型周期波形的傅里叶系数。
 >
 > - **偶函数**：$u(-t)=u(t)\Rightarrow b_k=0$，只剩余弦项 $a_k\cos k\omega_0t$。
 > - **半波反对称**：$\tilde u(t-T/2)=-\tilde u(t)\Rightarrow$ 偶数 $k$ 的 $c_k=0$（含 $c_0$）。
@@ -297,7 +297,7 @@ $$
 > $c_5=0.7639$
 
 > [!abstract] 知识点讲解
-> 见 2.9 典型周期波形的傅里叶系数。
+> 见 [[信号与系统/Quiz对应知识点.md|Quiz对应知识点]] 2.9 典型周期波形的傅里叶系数。
 >
 > - **偶对称双极方波**：$c_k=A\operatorname{sinc}\left(\dfrac k2\right)$（$k$ 奇），$c_k=0$（$k$ 偶），$c_0=0$。
 > - **sinc 定义**：$\operatorname{sinc}x=\dfrac{\sin\pi x}{\pi x}$，故 $c_k=\dfrac{A\sin(k\pi/2)}{k\pi/2}$。
@@ -359,7 +359,7 @@ $$
 > $c_3=-0.1273$
 
 > [!abstract] 知识点讲解
-> 见 2.9 典型周期波形的傅里叶系数 与 1.4 周期信号的常见运算。
+> 见 [[信号与系统/Quiz对应知识点.md|Quiz对应知识点]] 2.9 典型周期波形的傅里叶系数 与 1.4 周期信号的常见运算。
 >
 > - **公式表（全波整流正弦 $A\lvert\sin(\omega_0t)\rvert$）**：$c_k=\dfrac{2A}{\pi(1-4k^2)}$，周期 $T=\dfrac{\pi}{\omega_0}$，只有直流和偶次谐波。
 > - **复系数直接用公式表值**，不必再除以 $2$；对应的实余弦系数是 $a_k=2c_k=\dfrac{4A}{\pi(1-4k^2)}$。
@@ -404,7 +404,7 @@ $$
 > (c) $k=3$
 
 > [!abstract] 知识点讲解
-> 见 2.9 典型周期波形的傅里叶系数。
+> 见 [[信号与系统/Quiz对应知识点.md|Quiz对应知识点]] 2.9 典型周期波形的傅里叶系数。
 >
 > - **sinc 定义**：$\operatorname{sinc}x=\dfrac{\sin\pi x}{\pi x}$，零点在 $x=\pm1,\pm2,\dots$。
 > - **脉冲串系数**：$c_k=Ad\operatorname{sinc}(kd)$。
@@ -438,7 +438,7 @@ $$
 > $c_0=0.5$
 
 > [!abstract] 知识点讲解
-> 见 2.2 复指数形式 与 2.8 Parseval 定理。
+> 见 [[信号与系统/Quiz对应知识点.md|Quiz对应知识点]] 2.2 复指数形式 与 2.8 Parseval 定理。
 >
 > - **直流系数**：$c_0=\dfrac1T\displaystyle\int_T u(t)dt$，即一个周期内的平均值。
 > - **分段常值**：$c_0=\displaystyle\sum_i u_i\dfrac{T_i}{T}$，按各段时长占比加权。
@@ -482,7 +482,7 @@ $$
 > (c) $c_0=0$
 
 > [!abstract] 知识点讲解
-> 见 2.2 复指数形式 与 2.3 三角形式与系数换算。
+> 见 [[信号与系统/Quiz对应知识点.md|Quiz对应知识点]] 2.2 复指数形式 与 2.3 三角形式与系数换算。
 >
 > - **直流系数**：$c_0=\dfrac1T\displaystyle\int_0^T u(t)dt$，公式表也记作 $a_0=c_0$。
 > - **奇函数**：$u(t)$ 满足 $u(-t)=-u(t)$（一个周期内正负两段等长且反号），公式表给出 $a_0=a_k=0$，故 $c_0=0$。
@@ -522,7 +522,7 @@ $$
 > (b) $0.1$
 
 > [!abstract] 知识点讲解
-> 见 2.2 复指数形式。
+> 见 [[信号与系统/Quiz对应知识点.md|Quiz对应知识点]] 2.2 复指数形式。
 >
 > - **直流系数**：$c_0=\dfrac1T\displaystyle\int_T u(t)dt=\dfrac{\text{一个周期的面积}}{T}$。
 > - **矩形面积**：$S=\text{高}\times\text{宽}=\dfrac{1}{\sqrt d}\cdot d=\sqrt d$，$T=1$ 时 $c_0=S$。
@@ -560,7 +560,7 @@ of a real signal, the term with index $k=-3$ is best interpreted as:
 > (c) 频率 $3\omega_0$ 处实正弦分量的一半
 
 > [!abstract] 知识点讲解
-> 见 2.5 双边谱与负频率。
+> 见 [[信号与系统/Quiz对应知识点.md|Quiz对应知识点]] 2.5 双边谱与负频率。
 >
 > - **共轭对称**：实信号满足 $c_{-k}=\overline{c_k}$。
 > - **正负频率合成**：$c_ke^{jk\omega_0t}+c_{-k}e^{-jk\omega_0t}=2|c_k|\cos(k\omega_0t+\angle c_k)$。
@@ -626,7 +626,7 @@ $$
 > (c) $(4,6)$
 
 > [!abstract] 知识点讲解
-> 见 2.3 三角形式与系数换算。
+> 见 [[信号与系统/Quiz对应知识点.md|Quiz对应知识点]] 2.3 三角形式与系数换算。
 >
 > - **三角系数**：$a_k=2\operatorname{Re}c_k$，$b_k=-2\operatorname{Im}c_k$，$a_0=c_0$。
 > - **反算复系数**：$c_k=\dfrac{a_k-jb_k}{2}$。
@@ -659,7 +659,7 @@ $$
 > $|c_2|=2.500$
 
 > [!abstract] 知识点讲解
-> 见 2.3 三角形式与系数换算。
+> 见 [[信号与系统/Quiz对应知识点.md|Quiz对应知识点]] 2.3 三角形式与系数换算。
 >
 > - **复系数**：$c_k=\dfrac{a_k-jb_k}{2}$。
 > - **模**：$|c_k|=\dfrac12\sqrt{a_k^2+b_k^2}$，即三角形式幅度的一半。
@@ -693,7 +693,7 @@ Which set of Fourier coefficients describes it?（下面哪一组傅里叶系数
 > (c)
 
 > [!abstract] 知识点讲解
-> 见 1.5 多个正弦叠加的周期与基频 与 2.3 三角形式与系数换算。
+> 见 [[信号与系统/Quiz对应知识点.md|Quiz对应知识点]] 1.5 多个正弦叠加的周期与基频 与 2.3 三角形式与系数换算。
 >
 > - **基频**：$\omega_0=\gcd(\omega_1,\omega_2,\dots)$，谐波序号 $k=\dfrac{\omega}{\omega_0}$。
 > - **三角系数**：$u=a_0+\sum_k(a_k\cos k\omega_0t+b_k\sin k\omega_0t)$，余弦幅度给 $a_k$，正弦幅度给 $b_k$，常数项 $a_0=2c_0$。
@@ -745,7 +745,7 @@ $$
 > (d) $\displaystyle\sum_{k=-\infty}^{\infty}|c_k|^2$
 
 > [!abstract] 知识点讲解
-> 见 2.8 Parseval 定理。
+> 见 [[信号与系统/Quiz对应知识点.md|Quiz对应知识点]] 2.8 Parseval 定理。
 >
 > - **平均功率**：$P=\dfrac1T\displaystyle\int_0^T|u(t)|^2dt$。
 > - **Parseval（周期）**：$P=\displaystyle\sum_{k=-\infty}^{\infty}|c_k|^2$，负频率项同样计入。
@@ -782,7 +782,7 @@ $$
 > 基波占 $81.06\%$
 
 > [!abstract] 知识点讲解
-> 见 2.8 Parseval 定理 与 2.9 典型周期波形的傅里叶系数。
+> 见 [[信号与系统/Quiz对应知识点.md|Quiz对应知识点]] 2.8 Parseval 定理 与 2.9 典型周期波形的傅里叶系数。
 >
 > - **Parseval**：$P=\sum_k|c_k|^2$；实信号第 $k$ 次谐波（$\pm k$ 一对）功率为 $2|c_k|^2$。
 > - **总功率**：$|u|=A$ 时 $P=A^2$；本题 $A=1$，$P=1$。
@@ -817,7 +817,7 @@ $$
 > $\dfrac{P_{\mathrm{DC}}}{P_{\mathrm{total}}}=0.25$
 
 > [!abstract] 知识点讲解
-> 见 2.8 Parseval 定理 与 2.9 典型周期波形的傅里叶系数。
+> 见 [[信号与系统/Quiz对应知识点.md|Quiz对应知识点]] 2.8 Parseval 定理 与 2.9 典型周期波形的傅里叶系数。
 >
 > - **Parseval**：$P=\sum_k|c_k|^2$。
 > - **直流系数**：脉冲串 $c_0=Ad$。
@@ -875,7 +875,7 @@ $$
 > $c=-0.6366j$
 
 > [!abstract] 知识点讲解
-> 见 2.7 正交投影与最佳逼近。
+> 见 [[信号与系统/Quiz对应知识点.md|Quiz对应知识点]] 2.7 正交投影与最佳逼近。
 >
 > - **内积**：$\langle u,v\rangle_P=\dfrac1T\displaystyle\int_T u(t)v^*(t)dt$。
 > - **最佳投影系数**：$c=\dfrac{\langle u,\phi\rangle_P}{\langle\phi,\phi\rangle_P}$，使 $\|u-c\phi\|_P^2$ 最小。
@@ -922,7 +922,7 @@ $$
 > (b) 误差与 $\phi$ 正交：$\langle e,\phi\rangle_P=0$
 
 > [!abstract] 知识点讲解
-> 见 2.7 正交投影与最佳逼近。
+> 见 [[信号与系统/Quiz对应知识点.md|Quiz对应知识点]] 2.7 正交投影与最佳逼近。
 >
 > - **误差范数**：$\|u-c\phi\|_P^2=\|u\|_P^2-2c\langle u,\phi\rangle_P+c^2\|\phi\|_P^2$。
 > - **最优系数**：$c=\dfrac{\langle u,\phi\rangle_P}{\langle\phi,\phi\rangle_P}$。
@@ -975,7 +975,7 @@ Existence of the transform, and symmetry for real, even and odd signals（傅里
 > (c) $P(u)+P(y)$
 
 > [!abstract] 知识点讲解
-> 见 2.8 Parseval 定理 与 2.7 正交投影与最佳逼近。
+> 见 [[信号与系统/Quiz对应知识点.md|Quiz对应知识点]] 2.8 Parseval 定理 与 2.7 正交投影与最佳逼近。
 >
 > - **范数与功率**：$P(x)=\|x\|_P^2=\langle x,x\rangle_P$。
 > - **内积展开**：$\langle u+y,u+y\rangle_P=\|u\|^2+\|y\|^2+2\operatorname{Re}\langle u,y\rangle_P$。
@@ -1016,7 +1016,7 @@ $$
 > (d) $e^{2t}H(t)$
 
 > [!abstract] 知识点讲解
-> 见 3.3 存在性。
+> 见 [[信号与系统/Quiz对应知识点.md|Quiz对应知识点]] 3.3 存在性。
 >
 > - **存在判据（充分）**：$\displaystyle\int_{-\infty}^{\infty}|u(t)|dt<\infty$（绝对可积）$\Rightarrow U(j\omega)$ 存在且连续。
 > - **广义变换**：不绝对可积但至多多项式增长时允许含冲激，如 $\cos\omega_0t\leftrightarrow\pi[\delta(\omega-\omega_0)+\delta(\omega+\omega_0)]$、$H(t)\leftrightarrow\dfrac1{j\omega}+\pi\delta(\omega)$、$1\leftrightarrow2\pi\delta(\omega)$。
@@ -1085,7 +1085,7 @@ $$
 > (b) 纯虚，且关于 $\omega$ 为奇函数
 
 > [!abstract] 知识点讲解
-> 见 3.6 对称性。
+> 见 [[信号与系统/Quiz对应知识点.md|Quiz对应知识点]] 3.6 对称性。
 >
 > - **定义展开**：$U(j\omega)=\displaystyle\int_{-\infty}^{\infty}u(t)\left[\cos\omega t-j\sin\omega t\right]dt$。
 > - **奇偶积分**：$u$ 奇 × $\cos$ 偶 → 奇函数，积分为零；$u$ 奇 × $\sin$ 奇 → 偶函数，保留。
@@ -1128,7 +1128,7 @@ $$
 > (c) 幅值为偶函数，相位为奇函数
 
 > [!abstract] 知识点讲解
-> 见 3.6 对称性。
+> 见 [[信号与系统/Quiz对应知识点.md|Quiz对应知识点]] 3.6 对称性。
 >
 > - **共轭对称**：实信号 $U(-j\omega)=U^*(j\omega)$。
 > - **模**：$|U(-j\omega)|=|U^*(j\omega)|=|U(j\omega)|$，为偶函数。
@@ -1165,7 +1165,7 @@ $$
 > $U(0)=1.1$
 
 > [!abstract] 知识点讲解
-> 见 3.7 面积定理 与 3.4 常用变换对。
+> 见 [[信号与系统/Quiz对应知识点.md|Quiz对应知识点]] 3.7 面积定理 与 3.4 常用变换对。
 >
 > - **变换对**：$e^{-at}H(t)\leftrightarrow\dfrac1{a+j\omega}$。
 > - **线性**：$au_1+bu_2\leftrightarrow aU_1+bU_2$。
@@ -1200,7 +1200,7 @@ $$
 > $u(0)=\frac{4}{\pi}=1.2732$
 
 > [!abstract] 知识点讲解
-> 见 3.7 面积定理 与 3.2 定义。
+> 见 [[信号与系统/Quiz对应知识点.md|Quiz对应知识点]] 3.7 面积定理 与 3.2 定义。
 >
 > - **逆变换**：$u(t)=\dfrac1{2\pi}\displaystyle\int_{-\infty}^{\infty}U(j\omega)e^{j\omega t}d\omega$；令 $t=0$ 得 $u(0)=\dfrac1{2\pi}\displaystyle\int U(j\omega)d\omega$。
 > - **矩形频谱面积**：$U=4$（$|\omega|<1$），面积 $=4\times2=8$。
@@ -1230,7 +1230,7 @@ $$
 > $1$
 
 > [!abstract] 知识点讲解
-> 见 3.4 常用变换对 与 3.7 面积定理。
+> 见 [[信号与系统/Quiz对应知识点.md|Quiz对应知识点]] 3.4 常用变换对 与 3.7 面积定理。
 >
 > - **sinc 变换对**：$\dfrac{\sin Wt}{\pi t}\leftrightarrow p_{2W}(\omega)$；$\operatorname{sinc}t=\dfrac{\sin\pi t}{\pi t}$ 对应 $W=\pi$。
 > - **面积定理**：$\displaystyle\int_{-\infty}^{\infty}u(t)dt=U(0)$。
@@ -1267,7 +1267,7 @@ $$
 > (a) $e^{-j5\omega}$
 
 > [!abstract] 知识点讲解
-> 见 3.4 常用变换对 与 3.5 时移性质。
+> 见 [[信号与系统/Quiz对应知识点.md|Quiz对应知识点]] 3.4 常用变换对 与 3.5 时移性质。
 >
 > - **时移冲激**：$\delta(t-t_0)\leftrightarrow e^{-j\omega t_0}$。
 > - **筛选性质**：$\displaystyle\int_{-\infty}^{\infty}\delta(t-t_0)\varphi(t)dt=\varphi(t_0)$。
@@ -1302,7 +1302,7 @@ $$
 > (a) $U(j\omega)=2\pi\delta(\omega)$
 
 > [!abstract] 知识点讲解
-> 见 3.4 常用变换对 与 3.2 定义。
+> 见 [[信号与系统/Quiz对应知识点.md|Quiz对应知识点]] 3.4 常用变换对 与 3.2 定义。
 >
 > - **变换对**：$1\leftrightarrow2\pi\delta(\omega)$。
 > - **逆变换**：$u(t)=\dfrac1{2\pi}\displaystyle\int U(j\omega)e^{j\omega t}d\omega$，冲激权重必须抵消 $\dfrac1{2\pi}$。
@@ -1340,7 +1340,7 @@ $$
 > (c) $U(j\omega)=p_{2\pi}(\omega)$
 
 > [!abstract] 知识点讲解
-> 见 3.4 常用变换对。
+> 见 [[信号与系统/Quiz对应知识点.md|Quiz对应知识点]] 3.4 常用变换对。
 >
 > - **sinc 变换对**：$\dfrac{\sin Wt}{\pi t}\leftrightarrow p_{2W}(\omega)$。
 > - **本题**：$\operatorname{sinc}t=\dfrac{\sin\pi t}{\pi t}$，$W=\pi$，故 $U(j\omega)=p_{2\pi}(\omega)$。
@@ -1379,7 +1379,7 @@ $$
 > (b) $6\operatorname{sinc}\left(\frac{3\omega}{\pi}\right)$
 
 > [!abstract] 知识点讲解
-> 见 3.4 常用变换对。
+> 见 [[信号与系统/Quiz对应知识点.md|Quiz对应知识点]] 3.4 常用变换对。
 >
 > - **$p_\tau(t)$ 的定义**：宽度为 $\tau$、以原点为中心的矩形脉冲，
 >   $$p_\tau(t)=\begin{cases}1,&\lvert t\rvert<\tau/2,\\0,&\lvert t\rvert>\tau/2,\end{cases}$$
@@ -1413,7 +1413,7 @@ $$
 > 首个正零点 $\omega=4\pi=12.566\ \mathrm{rad/s}$
 
 > [!abstract] 知识点讲解
-> 见 3.4 常用变换对。
+> 见 [[信号与系统/Quiz对应知识点.md|Quiz对应知识点]] 3.4 常用变换对。
 >
 > - **矩形变换对**：$p_\tau(t)\leftrightarrow\tau\operatorname{sinc}\left(\dfrac{\omega\tau}{2\pi}\right)$，$\tau$ 为**脉宽**（脉冲持续时间）。
 > - **零点**：$\operatorname{sinc}x=0\iff x=\pm1,\pm2,\dots$，首个正零点由 $\dfrac{\omega\tau}{2\pi}=1$ 得 $\omega=\dfrac{2\pi}{\tau}$。脉宽越窄，零点越远、频谱越宽。
@@ -1449,7 +1449,7 @@ $$
 > $U(j\pi/4)=\frac{8}{\pi}=2.5465$
 
 > [!abstract] 知识点讲解
-> 见 3.4 常用变换对。
+> 见 [[信号与系统/Quiz对应知识点.md|Quiz对应知识点]] 3.4 常用变换对。
 >
 > - **矩形变换对**：$p_\tau(t)\leftrightarrow\tau\operatorname{sinc}\left(\dfrac{\omega\tau}{2\pi}\right)$。
 > - **sinc 特殊值**：$\operatorname{sinc}\dfrac12=\dfrac{\sin(\pi/2)}{\pi/2}=\dfrac2\pi$。
@@ -1491,7 +1491,7 @@ $$
 > (i) C　(ii) A　(iii) D　(iv) B
 
 > [!abstract] 知识点讲解
-> 见 2.4 频谱与谱线 与 2.9 典型周期波形的傅里叶系数（2.11 节末尾有「频谱和谱线到底画什么」）。
+> 见 [[信号与系统/Quiz对应知识点.md|Quiz对应知识点]] 2.4 频谱与谱线 与 2.9 典型周期波形的傅里叶系数（2.11 节末尾有「频谱和谱线到底画什么」）。
 >
 > - **频谱的坐标系**：横坐标是角频率 $\omega$（单位 rad/s）；纵坐标在幅度谱中是谱线（或曲线）的幅度，即 $|c_k|$ 或 $\left|U(j\omega)\right|$，在相位谱中是相角 $\angle c_k$ 或 $\arg U(j\omega)$（单位 rad 或 $^\circ$）。题中画的 $Tc_k$ 谱线，纵坐标就是该归一化傅里叶系数的模 $\lvert Tc_k\rvert$。
 > - **周期信号画谱线**：谱线（spectral line，也称线谱分量）只出现在第 $k$ 次谐波 $\omega=k\omega_0$ 处，每根是从横轴竖起的线段，高度为该次谐波的复傅里叶系数之模，相邻谱线间隔 $\omega_0=\dfrac{2\pi}{T}$。
@@ -1536,7 +1536,7 @@ $$
 > $|U(j4)|=0.2$
 
 > [!abstract] 知识点讲解
-> 见 3.4 常用变换对。
+> 见 [[信号与系统/Quiz对应知识点.md|Quiz对应知识点]] 3.4 常用变换对。
 >
 > - **变换对**：$e^{-at}H(t)\leftrightarrow\dfrac1{a+j\omega}$，本题 $a=3$。
 > - **取模**：$|U(j\omega)|=\dfrac1{\sqrt{a^2+\omega^2}}$。
@@ -1568,7 +1568,7 @@ $$
 > $|U(ja)|=2.00000\times10^{-4}$
 
 > [!abstract] 知识点讲解
-> 见 3.4 常用变换对。
+> 见 [[信号与系统/Quiz对应知识点.md|Quiz对应知识点]] 3.4 常用变换对。
 >
 > - **变换对**：$e^{-a|t|}\leftrightarrow\dfrac{2a}{a^2+\omega^2}$。
 > - **代入 $\omega=a$**：$U(ja)=\dfrac{2a}{a^2+a^2}=\dfrac1a$。
@@ -1601,7 +1601,7 @@ $$
 > $\arg G(j4)=-53.1301^\circ$
 
 > [!abstract] 知识点讲解
-> 见 4.2 计算步骤 与 3.4 常用变换对。
+> 见 [[信号与系统/Quiz对应知识点.md|Quiz对应知识点]] 4.2 计算步骤 与 3.4 常用变换对。
 >
 > - **变换对**：$e^{-at}H(t)\leftrightarrow\dfrac1{a+j\omega}$，$G(j\omega)=\dfrac1{3+j\omega}$。
 > - **相位**：$\arg\dfrac1z=-\arg z$，$\arg(a+bj)=\arctan\dfrac ba$。
@@ -1640,7 +1640,7 @@ $$
 > (c) 幅值不变，相位增加 $-5\omega$
 
 > [!abstract] 知识点讲解
-> 见 3.5 时移性质。
+> 见 [[信号与系统/Quiz对应知识点.md|Quiz对应知识点]] 3.5 时移性质。
 >
 > - **时移性质**：$u(t-t_0)\leftrightarrow e^{-j\omega t_0}U(j\omega)$。
 > - **模与相位**：$|e^{-j\omega t_0}|=1$，$\arg\left(e^{-j\omega t_0}\right)=-\omega t_0$。
@@ -1681,7 +1681,7 @@ $$
 > (c) 频谱展宽三倍，峰值变为 $\frac13$
 
 > [!abstract] 知识点讲解
-> 见 3.5 尺度性质。
+> 见 [[信号与系统/Quiz对应知识点.md|Quiz对应知识点]] 3.5 尺度性质。
 >
 > - **尺度性质**：$u(at)\leftrightarrow\dfrac1{|a|}U\left(j\dfrac{\omega}{a}\right)$，本题 $a=3$。
 
@@ -1713,7 +1713,7 @@ $$
 > $Y(j\pi/2)=-1.2732$
 
 > [!abstract] 知识点讲解
-> 见 3.5 尺度与时移 与 3.4 矩形脉冲。
+> 见 [[信号与系统/Quiz对应知识点.md|Quiz对应知识点]] 3.5 尺度与时移 与 3.4 矩形脉冲。
 >
 > - **矩形变换对**：$p_\tau(t)\leftrightarrow\tau\operatorname{sinc}\left(\dfrac{\omega\tau}{2\pi}\right)$。
 > - **尺度性质**：$u(at)\leftrightarrow\dfrac1{|a|}U\left(j\dfrac{\omega}{a}\right)$。
@@ -1761,7 +1761,7 @@ Applying the duality property to this pair, what kind of function of $\omega$ is
 > (b) 频域三角形
 
 > [!abstract] 知识点讲解
-> 见 3.5 对偶性质 与 3.4 常用变换对。
+> 见 [[信号与系统/Quiz对应知识点.md|Quiz对应知识点]] 3.5 对偶性质 与 3.4 常用变换对。
 >
 > - **三角形函数记号**：$\Lambda(x)$ 是三角（帐篷）脉冲，
 >   $$\Lambda(x)=\begin{cases}1-|x|,&|x|<1,\\0,&|x|\ge1,\end{cases}$$
@@ -1803,7 +1803,7 @@ $$
 > (a) $2\pi e^{-a|\omega|}$
 
 > [!abstract] 知识点讲解
-> 见 3.5 对偶性质 与 3.4 常用变换对。
+> 见 [[信号与系统/Quiz对应知识点.md|Quiz对应知识点]] 3.5 对偶性质 与 3.4 常用变换对。
 >
 > - **变换对**：$e^{-a|t|}\leftrightarrow\dfrac{2a}{a^2+\omega^2}$。
 > - **对偶性质**：$U(jt)\leftrightarrow2\pi u(-\omega)$。
@@ -1834,7 +1834,7 @@ Given that $u(t)\leftrightarrow U(j\omega)$, which of the following correctly st
 > (b) $U(jt)\leftrightarrow2\pi u(-\omega)$
 
 > [!abstract] 知识点讲解
-> 见 3.5 对偶性质。
+> 见 [[信号与系统/Quiz对应知识点.md|Quiz对应知识点]] 3.5 对偶性质。
 >
 > - **对偶性质**：$u(t)\leftrightarrow U(j\omega)\ \Rightarrow\ U(jt)\leftrightarrow2\pi u(-\omega)$。
 > - **$2\pi$ 来源**：逆变换中的 $\dfrac1{2\pi}$，对偶后移到正变换一侧。
@@ -1860,7 +1860,7 @@ $$
 > (b) 卷积性质
 
 > [!abstract] 知识点讲解
-> 见 3.5 各条性质。四个选项对应四条不同性质：
+> 见 [[信号与系统/Quiz对应知识点.md|Quiz对应知识点]] 3.5 各条性质。四个选项对应四条不同性质：
 >
 > - **微分**：$\dfrac{d}{dt}u(t)\longleftrightarrow j\omega U(j\omega)$（时域求导 = 频域乘 $j\omega$）
 > - **卷积**：$(u_1*u_2)(t)\longleftrightarrow U_1(j\omega)U_2(j\omega)$（时域卷积 = 频域乘积）✓
@@ -1890,7 +1890,7 @@ $$
 > (c) 相乘性质
 
 > [!abstract] 知识点讲解
-> 见 3.5 各条性质。四个选项对应四条不同性质：
+> 见 [[信号与系统/Quiz对应知识点.md|Quiz对应知识点]] 3.5 各条性质。四个选项对应四条不同性质：
 >
 > - **卷积**：$(u_1*u_2)(t)\longleftrightarrow U_1(j\omega)U_2(j\omega)$（时域卷积 = 频域乘积）
 > - **积分**：$\displaystyle\int_{-\infty}^{t}u(\varsigma)d\varsigma\longleftrightarrow\frac{U(j\omega)}{j\omega}+\pi U(0)\delta(\omega)$（时域积分 = 频域除以 $j\omega$，再加直流冲激项）
@@ -1920,7 +1920,7 @@ $$
 > (b) $j\pi\omega_0\left[\delta(\omega-\omega_0)-\delta(\omega+\omega_0)\right]$
 
 > [!abstract] 知识点讲解
-> 见 3.5 微分性质 与 3.4 常用变换对。
+> 见 [[信号与系统/Quiz对应知识点.md|Quiz对应知识点]] 3.5 微分性质 与 3.4 常用变换对。
 >
 > - **微分性质**：$\dfrac{d}{dt}u(t)\longleftrightarrow j\omega U(j\omega)$，即求导一次乘 $j\omega$ 一次。
 > - **常用变换对**（3.4 表）：$\cos\omega_0t\leftrightarrow\pi\left[\delta(\omega-\omega_0)+\delta(\omega+\omega_0)\right]$。
@@ -1967,7 +1967,7 @@ $$
 > (d) $\frac{j\omega}{3+j\omega}$
 
 > [!abstract] 知识点讲解
-> 见 3.5 微分性质 与 3.4 常用变换对。
+> 见 [[信号与系统/Quiz对应知识点.md|Quiz对应知识点]] 3.5 微分性质 与 3.4 常用变换对。
 >
 > - **微分性质**：$\dfrac{d}{dt}u(t)\longleftrightarrow j\omega U(j\omega)$。
 > - **变换对**：$e^{-3t}H(t)\leftrightarrow\dfrac1{3+j\omega}$，$\delta(t)\leftrightarrow1$。
@@ -2006,7 +2006,7 @@ $$
 > $Y(j5)=15+10j$
 
 > [!abstract] 知识点讲解
-> 见 3.5 微分性质。
+> 见 [[信号与系统/Quiz对应知识点.md|Quiz对应知识点]] 3.5 微分性质。
 >
 > - **微分性质**：$y=\dfrac{du}{dt}\Rightarrow Y(j\omega)=j\omega U(j\omega)$。
 > - **复数乘法**：$j^2=-1$。
@@ -2046,7 +2046,7 @@ $$
 > (a) $2\pi\displaystyle\sum_kc_k\delta(\omega-k\omega_0)$
 
 > [!abstract] 知识点讲解
-> 见 2.11 周期信号的傅里叶变换 与 3.8 周期信号的傅里叶变换。
+> 见 [[信号与系统/Quiz对应知识点.md|Quiz对应知识点]] 2.11 周期信号的傅里叶变换 与 3.8 周期信号的傅里叶变换。
 >
 > - **复指数变换对**：$e^{jk\omega_0t}\leftrightarrow2\pi\delta(\omega-k\omega_0)$。
 > - **线性**：$\displaystyle\sum_kc_ke^{jk\omega_0t}\leftrightarrow2\pi\sum_kc_k\delta(\omega-k\omega_0)$。
@@ -2082,7 +2082,7 @@ $$
 > 位于 $\omega=3$ 的冲激权重为 $12.566+6.283j$
 
 > [!abstract] 知识点讲解
-> 见 2.11 周期信号的傅里叶变换 与 2.3 系数换算。
+> 见 [[信号与系统/Quiz对应知识点.md|Quiz对应知识点]] 2.11 周期信号的傅里叶变换 与 2.3 系数换算。
 >
 > - **三角到复系数**：$c_k=\dfrac{a_k-jb_k}{2}$。
 > - **周期信号的 FT**：$U(j\omega)=2\pi\displaystyle\sum_kc_k\delta(\omega-k\omega_0)$，位于 $\omega=k\omega_0$ 的冲激权重为 $2\pi c_k$。
@@ -2100,7 +2100,6 @@ $$
 > $$4\pi=12.5664,\qquad 2\pi=6.2832,$$
 > 故权重约为 $12.566+6.283j$。
 
-
 ---
 
 ## 52. Question 52（第 52 题）｜PDF p. 16 ^q52
@@ -2115,7 +2114,7 @@ Find $u(0)$.（给定实周期信号的冲激频谱，求 $u(0)$。）
 > $u(0)=5$
 
 > [!abstract] 知识点讲解
-> 见 2.11 周期信号的傅里叶变换。
+> 见 [[信号与系统/Quiz对应知识点.md|Quiz对应知识点]] 2.11 周期信号的傅里叶变换。
 >
 > - **周期信号的 FT**：$U(j\omega)=2\pi\displaystyle\sum_kc_k\delta(\omega-k\omega_0)$，位于 $\omega=k\omega_0$ 的冲激其**权重**为 $W_k=2\pi c_k$。
 > - **反读系数**：把题目给出的 $U(j\omega)$ 整体除以 $2\pi$，即
@@ -2159,7 +2158,7 @@ $$
 > (a) $\displaystyle\int|u(t)|^2dt=\frac{1}{2\pi}\int|U(j\omega)|^2d\omega$
 
 > [!abstract] 知识点讲解
-> 见 3.9 Parseval 定理（能量形式）。
+> 见 [[信号与系统/Quiz对应知识点.md|Quiz对应知识点]] 3.9 Parseval 定理（能量形式）。
 >
 > - **能量 Parseval**：$E=\displaystyle\int_{-\infty}^{\infty}|u(t)|^2dt=\dfrac1{2\pi}\displaystyle\int_{-\infty}^{\infty}|U(j\omega)|^2d\omega$。
 > - **系数**：$\dfrac1{2\pi}$ 来自逆变换，不是 $\dfrac1\pi$。
@@ -2189,7 +2188,7 @@ $$
 > $E=0.9549$
 
 > [!abstract] 知识点讲解
-> 见 3.9 Parseval 定理（能量形式） 与 3.4 常用变换对。
+> 见 [[信号与系统/Quiz对应知识点.md|Quiz对应知识点]] 3.9 Parseval 定理（能量形式） 与 3.4 常用变换对。
 >
 > - **sinc 变换对**：$\dfrac{\sin Wt}{\pi t}\leftrightarrow p_{2W}(\omega)$，$W=3$ 时 $U(j\omega)=p_6(\omega)$。
 > - **能量 Parseval**：$E=\dfrac1{2\pi}\displaystyle\int|U(j\omega)|^2d\omega=\dfrac1{2\pi}\int_{-3}^{3}1\,d\omega$。
@@ -2207,7 +2206,6 @@ $$
 >
 > 化简：
 > $$E=\frac{3}{\pi}=0.9549.$$
-
 
 ---
 
@@ -2234,7 +2232,7 @@ $$
 > 幅值 $1.41421$，相位 $-15.0000^\circ$
 
 > [!abstract] 知识点讲解
-> 见 4.1 正弦稳态的核心结论 与 4.2 计算步骤。
+> 见 [[信号与系统/Quiz对应知识点.md|Quiz对应知识点]] 4.1 正弦稳态的核心结论 与 4.2 计算步骤。
 >
 > - **频率响应**：$G(j\omega)=\dfrac{N(j\omega)}{D(j\omega)}$，把 $j\omega$ 当复数代入，$(j\omega)^2=-\omega^2$。
 > - **正弦稳态**：$y_{ss}(t)=A|G(j\omega)|\cos\left(\omega t+\varphi+\angle G(j\omega)\right)$。
@@ -2287,7 +2285,7 @@ $$
 > (b) $0.894\cos(10t-24.0^\circ)$
 
 > [!abstract] 知识点讲解
-> 见 4.1 正弦稳态的核心结论 与 4.2 计算步骤。
+> 见 [[信号与系统/Quiz对应知识点.md|Quiz对应知识点]] 4.1 正弦稳态的核心结论 与 4.2 计算步骤。
 >
 > - **正弦稳态**：$y_{ss}(t)=A|G(j\omega)|\cos\left(\omega t+\varphi+\angle G(j\omega)\right)$。
 > - **商的模与相位**：$\left|\dfrac{z_1}{z_2}\right|=\dfrac{|z_1|}{|z_2|}$，$\arg\dfrac{z_1}{z_2}=\arg z_1-\arg z_2$。
@@ -2330,7 +2328,7 @@ $$
 > $h_{\mathrm{RMS}}=0.707107$
 
 > [!abstract] 知识点讲解
-> 见 4.3 直流输入与 RMS。
+> 见 [[信号与系统/Quiz对应知识点.md|Quiz对应知识点]] 4.3 直流输入与 RMS。
 >
 > - **微分方程到频率响应**：$m\ddot h+b\dot h+kh=b\dot r+kr\Rightarrow G(j\omega)=\dfrac{k+bj\omega}{k-m\omega^2+bj\omega}$。
 > - **正弦稳态**：输出峰值 $=|G(j\omega)|\times$ 输入峰值，频率不变。
@@ -2379,7 +2377,7 @@ $$
 > $|G(j2)|=0.500000$，$\arg G(j2)=90.0000^\circ$
 
 > [!abstract] 知识点讲解
-> 见 4.2 计算步骤。
+> 见 [[信号与系统/Quiz对应知识点.md|Quiz对应知识点]] 4.2 计算步骤。
 >
 > - **频率响应**：$G(j\omega)$ 中 $(j\omega)^2=-\omega^2$，$(j\omega)^3=-j\omega^3$。
 > - **模与相位**：$|a+bj|=\sqrt{a^2+b^2}$，$\arg(a+bj)=\arctan\dfrac ba$。
@@ -2419,7 +2417,7 @@ $$
 > $\arg G(j4)=-45.0000^\circ$
 
 > [!abstract] 知识点讲解
-> 见 4.2 计算步骤。
+> 见 [[信号与系统/Quiz对应知识点.md|Quiz对应知识点]] 4.2 计算步骤。
 >
 > - **相位**：$\arg\dfrac{z_1}{z_2}=\arg z_1-\arg z_2$。
 > - **正实数与复数**：$\arg 300=0$，$\arg(4+4j)=\arctan1=45^\circ$。
@@ -2456,7 +2454,7 @@ $$
 > $|G(j\omega)|=4.8$
 
 > [!abstract] 知识点讲解
-> 见 4.2 计算步骤。
+> 见 [[信号与系统/Quiz对应知识点.md|Quiz对应知识点]] 4.2 计算步骤。
 >
 > - **乘积的模**：$|z_1z_2|=|z_1||z_2|$，$\left|\dfrac{z_1}{z_2}\right|=\dfrac{|z_1|}{|z_2|}$。
 > - **一阶因子**：$|1+ja|=\sqrt{1+a^2}$。
@@ -2474,7 +2472,6 @@ $$
 >
 > 相乘：
 > $$|G|=\frac{10}{\frac54\cdot\frac53}=\frac{10}{\frac{25}{12}}=\frac{120}{25}=4.8.$$
-
 
 ---
 
@@ -2495,10 +2492,11 @@ $$
 > $y_{ss}=0.500000$
 
 > [!abstract] 知识点讲解
-> 见 4.3 直流输入与 RMS。
+> 见 [[信号与系统/Quiz对应知识点.md|Quiz对应知识点]] 4.3 直流输入与 RMS。
 >
 > - **由微分方程求频率响应**：$(j\omega)^2Y+3j\omega Y+2Y=U\Rightarrow G(j\omega)=\dfrac1{(j\omega+1)(j\omega+2)}$。
-> - **直流增益**：常数输入 $u=A$ 的稳态输出 $y_{ss}=A\,G(0)$，$G(0)$ 即 $\omega=0$ 代入。
+> - **直流增益**：$G(0)$ 就是把 $\omega=0$（即 $s=0$）代入 $G(j\omega)$ 得到的实数，表示系统对不随时间变化的输入的放大倍数。
+
 
 > [!example] 解答
 > 从微分方程求 $G(j\omega)$：两边变换得
@@ -2531,13 +2529,26 @@ $$
 > $y_{\mathrm{DC}}=0.636620$
 
 > [!abstract] 知识点讲解
-> 见 4.1 正弦稳态的核心结论 与 4.7 系统对周期信号的作用。
+> 见 [[信号与系统/Quiz对应知识点.md|Quiz对应知识点]] 4.1 正弦稳态的核心结论 与 4.7 系统对周期信号的作用。
 >
 > - **系统对谐波的作用**：$d_k=c_kG(jk\omega_0)$（由 $Y=GU$ 与周期信号的 FT 得出）。
 > - **直流系数**：$c_0=\dfrac1T\displaystyle\int_Tu(t)dt$；$d_0=c_0G(0)$。
 > - **直流增益**：$G(j\omega)=\dfrac1{1+3j\omega}$，$G(0)=1$。
 
 > [!example] 解答
+> **一、为什么输出的直流分量是 $c_0G(0)$。**
+>
+> 输入是周期信号，先按傅里叶级数拆成各次谐波：
+> $$u(t)=\sum_kc_ke^{jk\omega_0t}=c_0+\sum_{k\ne0}c_ke^{jk\omega_0t}.$$
+> LTI 系统对每一项复指数的响应是「原频率不变、幅度乘以该系统在该频率的 $G$」：$e^{jk\omega_0t}\to G(jk\omega_0)e^{jk\omega_0t}$。由线性性，各项响应相加：
+> $$y(t)=\sum_kc_kG(jk\omega_0)e^{jk\omega_0t}
+> =\underbrace{c_0G(0)}_{\text{直流项}}+\sum_{k\ne0}c_kG(jk\omega_0)e^{jk\omega_0t}.$$
+> 可见输出中与时间无关的那一项就是 $c_0G(0)$：输入的直流（常数）分量 $c_0$ 经过系统，被乘上系统在零频的增益 $G(0)$，仍是常数，不随 $t$ 变化。因为系统是 LTI 的，各谐波互不混合，所以可以逐项算、再取出 $k=0$ 一项；它就是「输出的直流分量」$d_0$。对实信号，用三角形式看也是同一件事：输入直流是 $c_0$，输出直流是 $c_0|G(0)|\cos\angle G(0)=c_0G(0)$。
+>
+> 也可以直接从时域理解：常数输入 $u=A$，系统稳定、瞬态衰减后，输出必为常数（否则不是稳态），而常数就是 $\omega=0$ 的正弦，故 $y_{ss}=A\,G(0)$。
+>
+> **二、本题数值计算。**
+>
 > 输入直流系数：
 > $$c_0=\frac{1}{T}\int_0^Tu\,dt=\frac{1}{\pi}\int_0^{\pi}\sin t\,dt.$$
 >
@@ -2552,6 +2563,24 @@ $$
 >
 > 输出直流：
 > $$d_0=c_0G(0)=\frac{2}{\pi}=0.636620.$$
+>
+> **这个公式是一阶低通滤波器吗？** 是。把它写成标准形式：
+> $$G(j\omega)=\frac{1}{1+3j\omega}=\frac{1}{1+j\dfrac{\omega}{\omega_c}},\qquad \omega_c=\frac13\ \mathrm{rad/s},$$
+> 这正是标准的一阶低通 $\dfrac{K}{1+j\omega/\omega_c}$，其中 $K=1$（直流增益）、$\omega_c=1/3$ rad/s（即时间常数 $\tau=3$ s、$f_c=\dfrac{1}{6\pi}\approx0.053$ Hz）。
+> 对应的 $s$ 域形式为 $G(s)=\dfrac{1}{1+3s}=\dfrac{1/3}{s+1/3}$，分母只有一次因式，所以是**一阶**。
+>
+> **怎么体现「低通」：**
+> - **幅频呈单调下降**：
+>   $$|G(j\omega)|=\frac{1}{\sqrt{1+(3\omega)^2}}.$$
+>   $\omega=0$ 时 $|G|=1$，直流原样通过；$\omega=1/3$ 时 $|G|=1/\sqrt2$（$-3$ dB 截止点）；$\omega\to\infty$ 时 $|G|\to0$。频率越低增益越接近 $1$，频率越高增益越接近 $0$——低频通、高频阻，这就是低通。
+> - **斜率体现阶数**：$\omega\ll\omega_c$ 时是 $0$ dB 的水平线，$\omega\gg\omega_c$ 时每十倍频程下降 $20$ dB；一个极点对应 $-20$ dB/dec，故为**一阶**。
+> - **相位随频率变负**：$\angle G(j\omega)=-\arctan(3\omega)$，从 $0^\circ$ 降到 $-90^\circ$，高频输出滞后更多。
+> - **时域只有一个衰减模态**：反变换
+>   $$h(t)=\mathcal L^{-1}\left\{\frac{1/3}{s+1/3}\right\}=\frac13e^{-t/3}H(t),$$
+>   只含一个指数项，说明只有一个储能元件、一阶系统。
+> - **放到本题看**：输入 $u=|\sin t|$（周期 $\pi$，基频 $\omega_0=2$）含有 $2,4,6,\dots$ rad/s 的谐波。滤波器对它们的衰减依次为
+>   $$|G(j2)|=\frac{1}{\sqrt{1+36}}\approx0.164,\qquad |G(j4)|=\frac{1}{\sqrt{1+144}}\approx0.083,$$
+>   谐波频率越高被压得越狠，输出只剩下近似的直流 $\dfrac{2}{\pi}$ 加很小的纹波——低通滤波在这里的作用就是把整流后的纹波滤掉、保留直流分量。
 
 
 ---
@@ -2577,7 +2606,7 @@ $$
 > (d) $y=2.00$
 
 > [!abstract] 知识点讲解
-> 见 4.3 直流输入与 RMS 与 4.6 冲激响应与频率响应。
+> 见 [[信号与系统/Quiz对应知识点.md|Quiz对应知识点]] 4.3 直流输入与 RMS 与 4.6 冲激响应与频率响应。
 >
 > - **冲激响应与频率响应**：$h(t)\leftrightarrow G(j\omega)$；$G(0)=\displaystyle\int_{-\infty}^{\infty}h(t)dt$。
 > - **直流输入**：$u=A$ 时 $y_{ss}=A\,G(0)$。
@@ -2614,7 +2643,7 @@ $$
 > $20\log_{10}|G(j2000)|=-8.00000\ \mathrm{dB}$
 
 > [!abstract] 知识点讲解
-> 见 4.4 Bode 图。
+> 见 [[信号与系统/Quiz对应知识点.md|Quiz对应知识点]] 4.4 Bode 图。
 >
 > - **一阶低通渐近幅频**：$\omega\gg\omega_c$ 时每 decade 下降 $20$ dB，即 $|G|\approx\dfrac{|G(0)|}{\omega/\omega_c}$。
 > - **转折频率**：$\omega_c=200$；一个 decade 为频率乘 $10$。
@@ -2653,7 +2682,7 @@ $$
 > (a) $-90^\circ$
 
 > [!abstract] 知识点讲解
-> 见 4.4 Bode 图 中一阶极点的相位渐近线。
+> 见 [[信号与系统/Quiz对应知识点.md|Quiz对应知识点]] 4.4 Bode 图 中一阶极点的相位渐近线。
 >
 > - **渐近相频**：$\omega\le\dfrac{\omega_c}{10}$ 为 $0^\circ$；$\dfrac{\omega_c}{10}\le\omega\le10\omega_c$ 每 decade 降 $45^\circ$；$\omega\ge10\omega_c$ 为 $-90^\circ$。
 > - **精确相位**（对照）：$\arg\dfrac1{1+j\omega/\omega_c}=-\arctan\dfrac{\omega}{\omega_c}$。
@@ -2686,7 +2715,7 @@ $$
 > $\omega_{-3\mathrm{dB}}=3.00000\ \mathrm{rad/s}$
 
 > [!abstract] 知识点讲解
-> 见 4.5 截止频率。
+> 见 [[信号与系统/Quiz对应知识点.md|Quiz对应知识点]] 4.5 截止频率。
 >
 > - **一阶幅频**：$|G(j\omega)|=\dfrac1{\sqrt{a^2+\omega^2}}$，$|G(0)|=\dfrac1a$。
 > - **$-3$ dB 定义**：$\dfrac{|G(j\omega_{-3\text{dB}})|}{|G(0)|}=\dfrac1{\sqrt2}$，即半功率点。
@@ -2734,7 +2763,7 @@ $$
 > (i) B　(ii) D　(iii) A　(iv) C
 
 > [!abstract] 知识点讲解
-> 见 4.4 Bode 图 与 5.3 共振。
+> 见 [[信号与系统/Quiz对应知识点.md|Quiz对应知识点]] 4.4 Bode 图 与 5.3 共振。
 >
 > - **一阶因子**：$\dfrac1{1+j\omega/\omega_c}$，高频斜率 $-20$ dB/decade。
 > - **二阶标准形**：$\dfrac{\omega_n^2}{(j\omega)^2+2\zeta\omega_n(j\omega)+\omega_n^2}$，高频斜率 $-40$ dB/decade；$\zeta<\dfrac1{\sqrt2}$ 才有谐振峰。
@@ -2778,7 +2807,7 @@ $$
 > $h(t)=4e^{-2t}H(t)$
 
 > [!abstract] 知识点讲解
-> 见 4.6 冲激响应与频率响应 与 3.4 常用变换对。
+> 见 [[信号与系统/Quiz对应知识点.md|Quiz对应知识点]] 4.6 冲激响应与频率响应 与 3.4 常用变换对。
 >
 > - **变换对**：$\dfrac1{a+j\omega}\leftrightarrow e^{-at}H(t)$。
 > - **线性**：$\dfrac{A}{a+j\omega}\leftrightarrow Ae^{-at}H(t)$；单边指数必须带 $H(t)$。
@@ -2811,7 +2840,7 @@ $$
 > $h(t)=2e^{-5(t-3)}H(t-3)$
 
 > [!abstract] 知识点讲解
-> 见 4.6 冲激响应与频率响应 中的级联性质。
+> 见 [[信号与系统/Quiz对应知识点.md|Quiz对应知识点]] 4.6 冲激响应与频率响应 中的级联性质。
 >
 > - **级联**：$h=h_1*h_2$；时域卷积对应频域乘积 $G=G_1G_2$。
 > - **与冲激卷积**：$h_1(t)*\delta(t-t_0)=h_1(t-t_0)$，频域乘 $e^{-j\omega t_0}$。
@@ -2853,7 +2882,7 @@ $$
 > (d) $3e^{-t}H(t)+2e^{-4t}H(t)$
 
 > [!abstract] 知识点讲解
-> 见 4.6 冲激响应与频率响应。
+> 见 [[信号与系统/Quiz对应知识点.md|Quiz对应知识点]] 4.6 冲激响应与频率响应。
 >
 > - **变换对**：$\dfrac1{a+j\omega}\leftrightarrow e^{-at}H(t)$。
 > - **线性**：频域相加对应时域相加，不同极点不能合并成单一指数。
@@ -2891,7 +2920,7 @@ $$
 > (d) $\dfrac{20}{(3+j\omega)^2+25}$
 
 > [!abstract] 知识点讲解
-> 见 4.6 冲激响应与频率响应 与 7.2 常用变换对。
+> 见 [[信号与系统/Quiz对应知识点.md|Quiz对应知识点]] 4.6 冲激响应与频率响应 与 7.2 常用变换对。
 >
 > - **阻尼正弦对**：$e^{-at}\sin(\omega_0t)H(t)\leftrightarrow\dfrac{\omega_0}{(a+j\omega)^2+\omega_0^2}$。
 > - **阻尼余弦对**：$e^{-at}\cos(\omega_0t)H(t)\leftrightarrow\dfrac{a+j\omega}{(a+j\omega)^2+\omega_0^2}$。
@@ -2934,7 +2963,7 @@ critically damped?（哪一阻尼比使该系统达到临界阻尼？）
 > (c) $\zeta=1.0$
 
 > [!abstract] 知识点讲解
-> 见 5.2 极点与阻尼。
+> 见 [[信号与系统/Quiz对应知识点.md|Quiz对应知识点]] 5.2 极点与阻尼。
 >
 > - **二阶标准形**：$G(j\omega)=\dfrac{K\omega_n^2}{(j\omega)^2+2\zeta\omega_n(j\omega)+\omega_n^2}$，极点满足 $s^2+2\zeta\omega_ns+\omega_n^2=0$。
 > - **判别式**：$\Delta=4\omega_n^2(\zeta^2-1)$。
@@ -2974,7 +3003,7 @@ $$
 > (c) $0.707$
 
 > [!abstract] 知识点讲解
-> 见 5.2 极点与阻尼。
+> 见 [[信号与系统/Quiz对应知识点.md|Quiz对应知识点]] 5.2 极点与阻尼。
 >
 > - **极点表示**：$p=-\zeta\omega_n\pm j\omega_n\sqrt{1-\zeta^2}$。
 > - **自然频率**：$\omega_n=|p|=\sqrt{(\Re p)^2+(\Im p)^2}$。
@@ -3013,7 +3042,7 @@ $$
 > (a) 不出现，因为 $\zeta=0.8>\frac{1}{\sqrt2}\approx0.7071$
 
 > [!abstract] 知识点讲解
-> 见 5.3 共振。
+> 见 [[信号与系统/Quiz对应知识点.md|Quiz对应知识点]] 5.3 共振。
 >
 > - **谐振频率**：$\omega_r=\omega_n\sqrt{1-2\zeta^2}$，仅当 $\zeta<\dfrac1{\sqrt2}$ 时有非零实解。
 > - **峰值**：$|G(j\omega_r)|=\dfrac{|K|}{2\zeta\sqrt{1-\zeta^2}}$。
@@ -3055,7 +3084,7 @@ $$
 > $\omega_r=959.166\ \mathrm{rad/s}$，$|G(j\omega_r)|=2.55155$，即 $8.13609\ \mathrm{dB}$
 
 > [!abstract] 知识点讲解
-> 见 5.3 共振 与 5.2 RLC 电路的 $\omega_n$、$\zeta$。
+> 见 [[信号与系统/Quiz对应知识点.md|Quiz对应知识点]] 5.3 共振 与 5.2 RLC 电路的 $\omega_n$、$\zeta$。
 >
 > - **二阶标准形**：$G=\dfrac{K\omega_n^2}{(j\omega)^2+2\zeta\omega_n(j\omega)+\omega_n^2}$；RLC 取电容电压时 $\omega_n=\dfrac1{\sqrt{LC}}$，$\zeta=\dfrac R2\sqrt{\dfrac CL}$。
 > - **谐振**：$\omega_r=\omega_n\sqrt{1-2\zeta^2}$，$M_r=\dfrac{|K|}{2\zeta\sqrt{1-\zeta^2}}$，条件 $\zeta<\dfrac1{\sqrt2}$。
@@ -3110,7 +3139,7 @@ $$
 > (c) $\alpha=0.05$
 
 > [!abstract] 知识点讲解
-> 见 5.3 共振。
+> 见 [[信号与系统/Quiz对应知识点.md|Quiz对应知识点]] 5.3 共振。
 >
 > - **极点与阻尼**：$p=-\alpha\pm j5\Rightarrow\omega_n=\sqrt{\alpha^2+25}$，$\zeta=\dfrac{\alpha}{\omega_n}$。
 > - **峰值**：$M_r=\dfrac1{2\zeta\sqrt{1-\zeta^2}}$，$\zeta$ 越小峰越高越尖；$\zeta\ge\dfrac1{\sqrt2}$ 无峰。
@@ -3152,7 +3181,7 @@ Classify the system.（对该系统进行稳定性分类。）
 > (a) 临界稳定：右半平面无极点，虚轴极点互异
 
 > [!abstract] 知识点讲解
-> 见 6.1 三种稳定性 与 6.3 极点判据速查。
+> 见 [[信号与系统/Quiz对应知识点.md|Quiz对应知识点]] 6.1 三种稳定性 与 6.3 极点判据速查。
 >
 > - **极点判据**：极点全在左半平面 → 指数稳定；虚轴上有单根且其余在左半平面 → 临界稳定；虚轴有重根或右半平面有极点 → 不稳定。
 > - **时域表现**：虚轴单极点对应常数或等幅振荡项，有界但不趋于零。
@@ -3189,7 +3218,7 @@ Classify the system.（对该系统进行稳定性分类。）
 > (b) 不稳定：右半平面无极点，但虚轴上有重极点
 
 > [!abstract] 知识点讲解
-> 见 6.1 三种稳定性。
+> 见 [[信号与系统/Quiz对应知识点.md|Quiz对应知识点]] 6.1 三种稳定性。
 >
 > - **极点判据**：虚轴上的重极点 → 不稳定。
 > - **时域表现**：二重极点 $\pm j\omega_0$ 产生 $t\cos\omega_0t$、$t\sin\omega_0t$，幅度随 $t$ 增长。
@@ -3224,7 +3253,7 @@ Four LTI systems are given by their transfer functions. Which one is BIBO stable
 > (c)
 
 > [!abstract] 知识点讲解
-> 见 6.2 BIBO 稳定。
+> 见 [[信号与系统/Quiz对应知识点.md|Quiz对应知识点]] 6.2 BIBO 稳定。
 >
 > - **BIBO 判据**（真有理 $G$）：所有极点实部严格小于零。
 > - **等价条件**：$\displaystyle\int_{-\infty}^{\infty}|h(t)|dt<\infty$。
@@ -3269,7 +3298,7 @@ $$
 > (d) 不稳定
 
 > [!abstract] 知识点讲解
-> 见 6.3 极点判据速查。
+> 见 [[信号与系统/Quiz对应知识点.md|Quiz对应知识点]] 6.3 极点判据速查。
 >
 > - **一阶系统**：$\tau\dot y=-y+\beta u\Rightarrow G(j\omega)=\dfrac{\beta}{1+j\omega\tau}$，极点 $s=-\dfrac1{\tau}$。
 > - **稳定判据**：$\Re s<0\iff\tau>0$；$\tau<0$ 时极点在右半平面，不稳定。
@@ -3315,7 +3344,7 @@ $$
 > (b) $\zeta=-0.1$
 
 > [!abstract] 知识点讲解
-> 见 5.2 极点与阻尼 与 6.1 三种稳定性。
+> 见 [[信号与系统/Quiz对应知识点.md|Quiz对应知识点]] 5.2 极点与阻尼 与 6.1 三种稳定性。
 >
 > - **二阶极点**：$p=-\zeta\omega_n\pm j\omega_n\sqrt{1-\zeta^2}$，实部为 $-\zeta\omega_n$。
 > - **无界条件**：实部为正，即 $\zeta<0$（$\omega_n>0$）；$\zeta\ge0$ 时响应有界或衰减。
@@ -3355,7 +3384,7 @@ $$
 > (c) 无论 $a,b,c$ 的相对大小，均有 $y(t)\to0$
 
 > [!abstract] 知识点讲解
-> 见 6.3 极点判据速查 例 4。
+> 见 [[信号与系统/Quiz对应知识点.md|Quiz对应知识点]] 6.3 极点判据速查 例 4。
 >
 > - **特征根**：$as^2+bs+c=0\Rightarrow s_{1,2}=\dfrac{-b\pm\sqrt{b^2-4ac}}{2a}$。
 > - **实根**：$b^2\ge4ac$ 时两根为负实数（因 $a,b,c>0$ 且 $\sqrt{b^2-4ac}<b$）。
@@ -3392,7 +3421,7 @@ $$
 > $\displaystyle\int_{-\infty}^{\infty}|h(t)|dt=1.50000$，系统 BIBO 稳定
 
 > [!abstract] 知识点讲解
-> 见 6.2 BIBO 稳定。
+> 见 [[信号与系统/Quiz对应知识点.md|Quiz对应知识点]] 6.2 BIBO 稳定。
 >
 > - **BIBO 充要条件**：$\displaystyle\int_{-\infty}^{\infty}|h(t)|dt<\infty$。
 > - **单边指数积分**：$\displaystyle\int_0^\infty Ae^{-at}dt=\dfrac Aa$。
@@ -3428,7 +3457,7 @@ $$
 > (c) 原点极点；临界稳定；不 BIBO
 
 > [!abstract] 知识点讲解
-> 见 6.4 积分器与临界稳定。
+> 见 [[信号与系统/Quiz对应知识点.md|Quiz对应知识点]] 6.4 积分器与临界稳定。
 >
 > - **阶跃变换对**：$H(t)\leftrightarrow\dfrac1{j\omega}+\pi\delta(\omega)$，极点在 $s=0$（虚轴）。
 > - **稳定判据**：$h$ 有界但不趋于零 → 临界稳定；$\displaystyle\int|h(t)|dt=\infty$ → 不 BIBO。
@@ -3467,7 +3496,7 @@ Which system is BIBO stable and has a frequency response $G(j\omega)$ that exist
 > (b) 只有系统 A
 
 > [!abstract] 知识点讲解
-> 见 6.2 BIBO 稳定 与 3.3 存在性。
+> 见 [[信号与系统/Quiz对应知识点.md|Quiz对应知识点]] 6.2 BIBO 稳定 与 3.3 存在性。
 >
 > - **BIBO 充要条件**：$\displaystyle\int_{-\infty}^{\infty}|h(t)|dt<\infty$。
 > - **变换对**：$e^{-at}H(t)\leftrightarrow\dfrac1{a+j\omega}$（$a>0$）；$e^{4t}H(t)$ 的收敛域 $\operatorname{Re}s>4$ 不含虚轴，$G(j\omega)$ 不存在。

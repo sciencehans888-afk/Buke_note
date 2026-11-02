@@ -105,7 +105,9 @@ $$x(t)=A\cos(\omega t+\varphi),$$
 
 $$A=\sqrt{a^2+b^2},\qquad \varphi=-\arctan\frac{b}{a}.$$
 
-这两个公式可以自己推一遍。把右边的目标形式展开：
+> 下面推导：由 $a\cos\omega t+b\sin\omega t$ 求合成幅度 $A=\sqrt{a^2+b^2}$ 与初相 $\varphi=-\arctan(b/a)$。
+
+把右边的目标形式展开：
 
 $$A\cos(\omega t+\varphi)=A\cos\varphi\cos\omega t-A\sin\varphi\sin\omega t.$$
 
@@ -229,7 +231,9 @@ $$T=\frac{2\pi}{|\omega|}.$$
 
 时间乘上 $a$ 相当于把时间轴压缩或拉伸。
 
-证明：令 $T'=T/\lvert a\rvert$，则
+> 下面证明：$u(at)$ 的周期为 $T/\lvert a\rvert$。
+
+令 $T'=T/\lvert a\rvert$，则
 
 $$u\left(a\left(t+T'\right)\right)=u\left(at\pm T\right)=u(at),$$
 
@@ -274,6 +278,8 @@ $$\sin t\cos t=\frac12\sin2t,$$
 
 #### 四、平方与取绝对值：周期不会变长，可能变短
 
+> 下面说明：平方与取绝对值后周期不会变长，只可能缩到 $T/2$。
+
 若 $u(t+T)=u(t)$，那么显然
 
 $$u^2(t+T)=u^2(t),\qquad \lvert u(t+T)\rvert=\lvert u(t)\rvert.$$
@@ -302,6 +308,8 @@ $$u^2(t)=\frac32+2\cos t+\frac12\cos2t,$$
 设
 
 $$u(t)=A_0+\sum_{i=1}^{N}A_i\cos(\omega_it+\varphi_i).$$
+
+> 下面推导：多个正弦叠加存在公共周期时，各频率之比必须为有理数。
 
 要让这个和成为周期信号，需要存在一个公共周期 $T$，使每个非零频率分量都同时完成整数个周期：
 
@@ -499,6 +507,8 @@ $$b_k=-2\operatorname{Im}c_k=\frac{2}{T}\int_{0}^{T}u(t)\sin(k\omega_0t)\,dt.$$
 
 #### 与复系数的换算
 
+> 下面推导：三角系数与复系数的换算 $c_k=\dfrac{a_k-jb_k}{2}$、$a_k=2\operatorname{Re}c_k$。
+
 由欧拉公式
 
 $$\cos k\omega_0t=\frac{e^{jk\omega_0t}+e^{-jk\omega_0t}}{2},\qquad \sin k\omega_0t=\frac{e^{jk\omega_0t}-e^{-jk\omega_0t}}{2j},$$
@@ -518,6 +528,8 @@ $$a_0=c_0.$$
 注意 $a_0$ 不带因子 $2$，因为直流项在复指数形式中只有 $k=0$ 一项，没有正负频率配对。
 
 #### 幅度相位形式
+
+> 下面推导：$a_k\cos k\omega_0t+b_k\sin k\omega_0t$ 合成单边幅度 $A_k=2|c_k|$ 与相位 $\varphi_k$。
 
 第 $k$ 次谐波可以写成
 
@@ -646,6 +658,8 @@ $$|c_{-k}|=|c_k|,\qquad \angle c_{-k}=-\angle c_k.$$
 
 双边幅度谱关于 $\omega=0$ 偶对称，双边相位谱关于 $\omega=0$ 奇对称。
 
+> 下面推导：$\pm k$ 两项复指数合成为实余弦，并给出第 $k$ 次谐波的平均功率。
+
 正负频率两项合起来为
 
 $$c_ke^{jk\omega_0t}+c_{-k}e^{-jk\omega_0t}=2|c_k|\cos(k\omega_0t+\angle c_k).$$
@@ -770,6 +784,8 @@ $$u(t)=\begin{cases}A,&0<t<T/2,\\-A,&-T/2<t<0\end{cases}$$
 
 
 #### 2.6.2 半波对称与半波反对称的推导
+
+> 下面推导：半波对称 $\Rightarrow$ 只含偶次谐波；半波反对称 $\Rightarrow$ 只含奇次谐波。
 
 两种情况的推导思路相同：从复系数定义出发，把积分区间拆成前后两半，后半段换元，再代入各自的对称条件。
 
@@ -913,7 +929,9 @@ $$\|u\|^2=\|c\phi\|^2+\|e\|^2.$$
 
 这里的 $\|u\|^2$ 就是平均功率，所以总功率等于投影功率加误差功率。
 
-**推导**。用 $c\phi$ 逼近 $u$ 所产生的误差定义为
+> 下面推导：最佳投影系数 $c=\dfrac{\langle u,\phi\rangle_P}{\langle\phi,\phi\rangle_P}$，以及最优时误差与 $\phi$ 正交。
+
+用 $c\phi$ 逼近 $u$ 所产生的误差定义为
 
 $$e(t)=u(t)-c\phi(t).$$
 
@@ -1080,6 +1098,8 @@ $$c_k=\frac1{T}\int_{T}u(t)e^{-jk\omega_0t}dt,\qquad \omega_0=\frac{2\pi}{T}.$$
 
 #### 2.9.1 奇对称双极方波
 
+> 下面推导：奇对称双极方波的复系数（只含奇次正弦，按 $1/k$ 衰减）。
+
 波形：
 
 $$u(t)=\begin{cases}A,&0<t<T/2,\\-A,&-T/2<t<0.\end{cases}$$
@@ -1112,6 +1132,8 @@ $$u(t)=\frac{4A}{\pi}\left(\sin\omega_0t+\frac13\sin3\omega_0t+\frac15\sin5\omeg
 
 #### 2.9.2 偶对称双极方波
 
+> 下面推导：偶对称双极方波的复系数 $c_k=A\operatorname{sinc}(k/2)$（只含奇次余弦）。
+
 波形：
 
 $$u(t)=\begin{cases}+A,&|t|<T/4,\\-A,&T/4<|t|<T/2.\end{cases}$$
@@ -1141,6 +1163,8 @@ $k$ 为偶数时 $\sin(k\pi/2)=0$，$c_k=0$，因此只有奇次谐波。前几�
 $$u(t)=\frac{4A}{\pi}\left(\cos\omega_0t-\frac13\cos3\omega_0t+\frac15\cos5\omega_0t-\cdots\right).$$
 
 #### 2.9.3 矩形脉冲串
+
+> 下面推导：矩形脉冲串的复系数 $c_k=Ad\operatorname{sinc}(kd)$，并求首个零点 $k=1/d$。
 
 波形：在一个周期内
 
@@ -1179,6 +1203,8 @@ $$kd=1\quad\Longrightarrow\quad k=\frac1d.$$
 若 $d=1/3$，第一个零点在 $k=3$。
 
 #### 2.9.4 半波整流
+
+> 下面推导：半波整流的复系数，重点处理 $k=\pm1$ 分母为零的单独情形。
 
 波形（记整流前正弦的频率为 $\omega_m$，基频为 $\omega_0$）：
 
@@ -1253,6 +1279,8 @@ $$u(t)=\frac{A}{\pi}+\frac A2\sin\omega_mt-\frac{2A}{\pi}\left(\frac{\cos2\omega
 
 #### 2.9.5 全波整流
 
+> 下面推导：全波整流的复系数 $c_k=\dfrac{2A}{\pi(1-4k^2)}$，确认基频变为 $2\omega_0$。
+
 波形（公式表记作 $A\lvert\sin(\omega_0t)\rvert$，这里的 $\omega_0$ 是整流前正弦的频率）：
 
 $$u(t)=A|\sin\omega_0t|.$$
@@ -1292,6 +1320,8 @@ $$u(t)=\frac{2A}{\pi}-\frac{4A}{3\pi}\cos2\omega_0t-\frac{4A}{15\pi}\cos4\omega_
 全波整流只含直流和偶次谐波，基频为 $2\omega_0$。这与公式表中该行 $c_k=\dfrac{2A}{\pi(1-4k^2)}$ 完全一致。
 
 #### 2.9.6 锯齿波
+
+> 下面推导：锯齿波的复系数 $c_k=\dfrac{jA(-1)^k}{k\pi}$（分部积分）。
 
 波形：
 
@@ -1333,6 +1363,8 @@ $$b_k=-2\operatorname{Im}c_k=-\frac{2A(-1)^k}{k\pi}.$$
 $$u(t)=\frac{2A}{\pi}\left(\sin\omega_0t-\frac12\sin2\omega_0t+\frac13\sin3\omega_0t-\cdots\right).$$
 
 #### 2.9.7 三角波
+
+> 下面推导：三角波的复系数 $c_k=\dfrac{4A}{\pi^2k^2}$（$k$ 奇），按 $1/k^2$ 衰减。
 
 波形：
 
@@ -1480,6 +1512,8 @@ $$p_1(t)\longleftrightarrow\operatorname{sinc}\!\left(\frac{\omega}{2\pi}\right)
 
 也就是图中那条灰色曲线本身，只有曲线、没有竖线。$T\to\infty$ 时谱线间隔 $\omega_0\to0$，离散谱线便连续成这条曲线。
 
+> 下面推导：周期信号冲激谱的权重为什么是 $2\pi c_k$——把 $U(j\omega)$ 代回逆变换验证。
+
 $2\pi$ 因子的来源是逆变换前的 $1/(2\pi)$。把 $U(j\omega)$ 代回逆变换：
 
 $$u(t)=\frac1{2\pi}\int_{-\infty}^{\infty}2\pi\sum_kc_k\delta(\omega-k\omega_0)e^{j\omega t}d\omega
@@ -1587,6 +1621,8 @@ $$\omega_0=\frac{2\pi}{T}.$$
 
 周期越大，谱线越密。把周期趋于无穷大，信号在一个周期内不再重复，变成非周期信号；谱线间隔趋于零，离散谱线连成连续频谱。傅里叶变换可以看作傅里叶级数在 $T\to\infty$ 时的极限。
 
+> 下面推导：傅里叶变换是傅里叶级数在 $T\to\infty$ 时的极限，且 $Tc_k\to U(jk\omega_0)$。
+
 设 $u(t)$ 只在某个有限区间内非零，把它看作周期 $T$ 的周期信号的片段。其傅里叶系数为
 
 $$c_k=\frac1{T}\int_{-T/2}^{T/2}u(t)e^{-jk\omega_0t}dt.$$
@@ -1692,7 +1728,11 @@ $$\int_0^\infty e^{2t}e^{-j\omega t}dt=\int_0^\infty e^{(2-j\omega)t}dt.$$
 | $\operatorname{sgn}(t)$ | $\dfrac{2}{j\omega}$ | 广义 |
 | $1-\dfrac{\lvert t\rvert}{\tau}$（$\lvert t\rvert<\tau$） | $\tau\operatorname{sinc}^2\left(\dfrac{\omega\tau}{2\pi}\right)$ | — |
 
-下面给出表中每个变换对的完整积分推导。每一步都写在同一个多行等式里；常数、正弦、阶跃、符号函数不绝对可积，相关结果按广义函数理解，推导中会用到两个标准极限：
+下面给出表中每个变换对的完整积分推导。
+
+> 下面各部分依次推导：冲激、单边指数、双边指数、常数、复指数、正余弦、阶跃、符号函数、$te^{-at}$、矩形脉冲、sinc 脉冲、对偶指数、三角脉冲。
+
+每一步都写在同一个多行等式里；常数、正弦、阶跃、符号函数不绝对可积，相关结果按广义函数理解，推导中会用到两个标准极限：
 
 $$\int_{-\infty}^{\infty}e^{-j\Omega t}dt=2\pi\delta(\Omega),\qquad
 \lim_{\epsilon\to0^+}\frac{\epsilon}{\epsilon^2+\omega^2}=\pi\delta(\omega).$$
@@ -1700,6 +1740,8 @@ $$\int_{-\infty}^{\infty}e^{-j\Omega t}dt=2\pi\delta(\Omega),\qquad
 为便于复用前面的积分结果，推导次序与表中次序略有不同。
 
 #### 冲激信号
+
+> 下面推导：$\delta(t-t_0)\leftrightarrow e^{-j\omega t_0}$（用筛选性质）。
 
 $$\begin{aligned}
 \delta(t-t_0)\longleftrightarrow U(j\omega)
@@ -1714,6 +1756,8 @@ $$\begin{aligned}
 
 #### 单边指数
 
+> 下面推导：$e^{-at}H(t)\leftrightarrow\dfrac{1}{a+j\omega}$（$a>0$）。
+
 $$\begin{aligned}
 e^{-at}H(t)\longleftrightarrow U(j\omega)
 &=\int_{-\infty}^{\infty}e^{-at}H(t)e^{-j\omega t}dt\\
@@ -1725,6 +1769,8 @@ e^{-at}H(t)\longleftrightarrow U(j\omega)
 因为 $|e^{-(a+j\omega)t}|=e^{-at}$，$a>0$ 时上限代入为零。
 
 #### 双边指数
+
+> 下面推导：$e^{-a|t|}\leftrightarrow\dfrac{2a}{a^2+\omega^2}$（拆成左右两个积分）。
 
 $$\begin{aligned}
 e^{-a|t|}\longleftrightarrow U(j\omega)
@@ -1738,6 +1784,8 @@ e^{-a|t|}\longleftrightarrow U(j\omega)
 \end{aligned}$$
 
 #### 常数
+
+> 下面推导：$1\leftrightarrow2\pi\delta(\omega)$（截断积分取极限，并用另一种算法交叉验证）。
 
 按定义直接计算时，被积函数 $e^{-j\omega t}$ 在 $t\to\pm\infty$ 处不衰减，这个积分要在广义函数意义下理解。常规做法是先把积分截断到有限区间，算出结果再让区间长度趋于无穷：
 
@@ -1781,6 +1829,8 @@ $$\begin{aligned}
 
 #### 复指数
 
+> 下面推导：$e^{j\omega_0t}\leftrightarrow2\pi\delta(\omega-\omega_0)$。
+
 $$\begin{aligned}
 e^{j\omega_0t}\longleftrightarrow U(j\omega)
 &=\int_{-\infty}^{\infty}e^{j\omega_0t}e^{-j\omega t}dt\\
@@ -1791,6 +1841,8 @@ e^{j\omega_0t}\longleftrightarrow U(j\omega)
 最后一个等号用 $\int e^{-j\Omega t}dt=2\pi\delta(\Omega)$，其中 $\Omega=\omega-\omega_0$。
 
 #### 正弦与余弦
+
+> 下面推导：$\cos\omega_0t$ 与 $\sin\omega_0t$ 的冲激谱（欧拉公式拆成复指数后逐项变换）。
 
 $$\begin{aligned}
 \cos\omega_0t\longleftrightarrow U(j\omega)
@@ -1815,6 +1867,8 @@ $$\begin{aligned}
 
 #### 单位阶跃
 
+> 下面推导：$H(t)\leftrightarrow\pi\delta(\omega)+\dfrac{1}{j\omega}$（加衰减因子取极限）。
+
 $$\begin{aligned}
 H(t)\longleftrightarrow U(j\omega)
 &=\int_{-\infty}^{\infty}H(t)e^{-j\omega t}dt
@@ -1830,6 +1884,8 @@ H(t)\longleftrightarrow U(j\omega)
 
 #### 符号函数
 
+> 下面推导：$\operatorname{sgn}(t)\leftrightarrow\dfrac{2}{j\omega}$（左右两半分别加衰减因子）。
+
 $$\begin{aligned}
 \operatorname{sgn}(t)\longleftrightarrow U(j\omega)
 &=\int_{-\infty}^{\infty}\operatorname{sgn}(t)e^{-j\omega t}dt\\
@@ -1843,6 +1899,8 @@ $$\begin{aligned}
 
 #### 乘 $t$ 的指数信号
 
+> 下面推导：$te^{-at}H(t)\leftrightarrow\dfrac{1}{(a+j\omega)^2}$（分部积分）。
+
 $$\begin{aligned}
 te^{-at}H(t)\longleftrightarrow U(j\omega)
 &=\int_{0}^{\infty}te^{-(a+j\omega)t}dt\\
@@ -1853,6 +1911,8 @@ te^{-at}H(t)\longleftrightarrow U(j\omega)
 \end{aligned}$$
 
 #### 矩形脉冲
+
+> 下面推导：$p_\tau(t)\leftrightarrow\tau\operatorname{sinc}\left(\dfrac{\omega\tau}{2\pi}\right)$，并求首个零点。
 
 高度为 $1$、脉宽为 $\tau$、关于原点对称的矩形脉冲为
 
@@ -1880,6 +1940,8 @@ $$\frac{\omega\tau}{2}=\pi\quad\Longrightarrow\quad\omega=\frac{2\pi}{\tau}.$$
 
 #### sinc 脉冲
 
+> 下面推导 $\dfrac{\sin Wt}{\pi t}\leftrightarrow p_{2W}(\omega)$：从矩形脉冲的变换对出发，用对偶性质。
+
 取矩形脉冲的 $\tau=2W$，再对结果应用对偶性质 $U(jt)\leftrightarrow2\pi u(-\omega)$：
 
 $$\begin{aligned}
@@ -1895,6 +1957,8 @@ p_{2W}(t)\longleftrightarrow2W\operatorname{sinc}\left(\frac{\omega W}{\pi}\righ
 
 #### 对偶指数
 
+> 下面推导 $\dfrac{2a}{t^2+a^2}\leftrightarrow2\pi e^{-a|\omega|}$：对 $e^{-a|t|}$ 的变换对用对偶性质。
+
 把双边指数的结果再用一次对偶性质：
 
 $$\begin{aligned}
@@ -1904,6 +1968,8 @@ e^{-a|t|}&\longleftrightarrow\frac{2a}{a^2+\omega^2}\\
 \end{aligned}$$
 
 #### 三角脉冲
+
+> 下面推导：三角脉冲的变换 $\tau\operatorname{sinc}^2\left(\dfrac{\omega\tau}{2\pi}\right)$（用偶对称化二次积分，再分部积分）。
 
 $$\begin{aligned}
 \left(1-\frac{|t|}{\tau}\right)\quad(\lvert t\rvert<\tau)
@@ -2033,7 +2099,7 @@ $$\frac{\sin t}{t}\longleftrightarrow\pi p_2(\omega),$$
 即 $\frac{\sin t}{\pi t}\leftrightarrow p_2(\omega)$，正是 $\frac{\sin Wt}{\pi t}\leftrightarrow p_{2W}(\omega)$ 取 $W=1$。
 
 #### 卷积
-
+![[Pasted image 20261102124348.png]]
 时域卷积对应频域相乘：
 
 $$u_1(t)*u_2(t)\longleftrightarrow U_1(j\omega)U_2(j\omega).$$
@@ -2132,6 +2198,8 @@ $$U^*(-j\omega)=\frac1{2-j(-3-\omega)}=\frac1{2+j(\omega+3)},$$
 
 实奇信号的推导：
 
+> 下面推导：实奇信号的 $U(j\omega)$ 为纯虚数且关于 $\omega$ 为奇函数。
+
 $$U(j\omega)=\int_{-\infty}^{\infty}u(t)\left[\cos\omega t-j\sin\omega t\right]dt.$$
 
 若 $u(t)$ 为奇函数，则 $u(t)\cos\omega t$ 为奇函数，积分为零；$u(t)\sin\omega t$ 为偶函数，积分保留：
@@ -2147,6 +2215,8 @@ $$U(-j\omega)=-U(j\omega),$$
 类似的推导可以得到其余几行。实偶信号的频谱为实偶函数，这一点在判断矩形脉冲、三角脉冲等偶信号的频谱时很有用。
 
 ### 3.7 面积定理
+
+> 下面推导：面积定理的两个关系式（对定义式令 $\omega=0$，对逆变换令 $t=0$）。
 
 由傅里叶变换定义，令 $\omega=0$：
 
@@ -2375,6 +2445,8 @@ $$y_{ss}(t)=A|G(j\omega)|\cos\left(\omega t+\varphi+\angle G(j\omega)\right).$$
 频率保持不变。
 
 **为什么输出是这个结果：完整推导。**
+
+> 下面推导：复指数输入下输出为 $G(j\omega)e^{j\omega t}$，再合成实余弦，得到 $A|G|\cos(\omega t+\varphi+\angle G)$。
 
 **第一步：复指数是 LTI 系统的特征函数。** 设输入 $u(t)=e^{j\omega t}$，由卷积
 
@@ -2791,6 +2863,8 @@ $$\zeta=\frac{10^4}{\sqrt2\times10^4}=\frac1{\sqrt2}\approx0.707.$$
 
 $$|G(j\omega)|=\frac{K}{\sqrt{\left(1-\frac{\omega^2}{\omega_n^2}\right)^2+\left(2\zeta\frac{\omega}{\omega_n}\right)^2}}.$$
 
+> 下面推导：共振频率 $\omega_r=\omega_n\sqrt{1-2\zeta^2}$ 及其存在条件 $0<\zeta<1/\sqrt2$。
+
 令 $x=\omega/\omega_n$，根号内的函数为
 
 $$f(x)=(1-x^2)^2+4\zeta^2x^2.$$
@@ -2804,11 +2878,13 @@ $$\frac{df}{d(x^2)}=-2(1-x^2)+4\zeta^2=0
 
 $$\omega_r=\omega_n\sqrt{1-2\zeta^2}.$$
 
-该频率为正实数的条件是
+存在共振频率的条件，也就是要求上面的式子，共振频率为正实数，所以可以得到
 
 $$1-2\zeta^2>0\quad\Longrightarrow\quad0<\zeta<\frac1{\sqrt2}\approx0.7071.$$
 
 若 $\zeta\ge1/\sqrt2$，幅频曲线没有非零频率的峰值，最大值在 $\omega=0$ 处。
+
+> 下面推导：共振峰高度 $M_r=\dfrac{1}{2\zeta\sqrt{1-\zeta^2}}$（把 $\omega_r$ 代回幅频表达式）。
 
 把 $\omega_r$ 代回幅频表达式，得到共振峰处的幅值：
 
@@ -2875,9 +2951,12 @@ $$G(s)=\frac{K\omega_n^2}{s^2+2\zeta\omega_ns+\omega_n^2},\qquad 0<\zeta<1$$
 
 $$\omega_d=\omega_n\sqrt{1-\zeta^2}.$$
 
-- $5\%$ 误差带下的调节时间（settling time）：
+- $5\%$ 误差带下的调节时间（settling time）：响应进入并此后始终保持在稳态值 $\pm5\%$ 误差带内所需的最短时间。
+    （欠阻尼 $0<\zeta<1$ 时）：阶跃响应为 $y(t)=K\left[1-\dfrac{e^{-\zeta\omega_nt}}{\sqrt{1-\zeta^2}}\sin(\omega_dt+\varphi)\right]$，故相对误差为 $-\dfrac{e^{-\zeta\omega_nt}}{\sqrt{1-\zeta^2}}\sin(\omega_dt+\varphi)$。由 $|\sin|\le1$，误差曲线夹在 $\pm\dfrac{e^{-\zeta\omega_nt}}{\sqrt{1-\zeta^2}}$ 之间，这条衰减指数曲线就是包络（误差振幅的上界，不是某个时刻的误差值）。当误差降到 $0.05$，所需的时间就是5%误差带下的调节时间：
 
-$$t_s\approx\frac{3}{\zeta\omega_n}.$$
+$$\frac{e^{-\zeta\omega_nt_s}}{\sqrt{1-\zeta^2}}=0.05
+\ \Longrightarrow\
+t_s=\frac{\ln\left(20/\sqrt{1-\zeta^2}\right)}{\zeta\omega_n}\approx\frac{\ln20}{\zeta\omega_n}\approx\frac{3}{\zeta\omega_n}.$$
 
 - 共振峰（与幅频曲线同一公式）：
 
@@ -2885,15 +2964,25 @@ $$\frac{|G(j\omega_r)|}{|K|}=\frac{1}{2\zeta\sqrt{1-\zeta^2}},\qquad \omega_r=\o
 
 **由标准二阶响应推出的指标：**
 
-- 超调量：
+- 超调量（overshoot）：响应第一次越过稳态值后达到的最大峰值，超出稳态值的部分与稳态值之比（常写成百分数）：
+
+$$M_p=\frac{y_{\max}-y(\infty)}{y(\infty)}\times100\%.$$
+
+代入欠阻尼阶跃响应在第一个峰值处 $y_{\max}=K\left(1+e^{-\pi\zeta/\sqrt{1-\zeta^2}}\right)$，得
 
 $$M_p=e^{-\pi\zeta/\sqrt{1-\zeta^2}}.$$
 
-- 峰值时间：
+- 峰值时间（peak time）：第一次达到峰值的时刻，$t_p=\dfrac{\pi}{\omega_d}$。
 
-$$t_p=\frac{\pi}{\omega_d}.$$
+- 调节时间（settling time）：响应进入并此后始终保持在稳态值 $\pm5\%$ 误差带内所需的最短时间（推导见上），$t_s\approx\dfrac{3}{\zeta\omega_n}$。
 
-$\zeta$ 控制振荡和超调，$\omega_n$ 控制响应速度。频域的共振峰与时域的超调都由 $\zeta$ 决定：$\zeta$ 越小，共振峰越高，超调也越大。
+$\zeta$ 控制振荡和超调，$\omega_n$ 控制响应速度。
+
+**时域的超调：** 阶跃响应 $y(t)$ 越过稳态值 $y(\infty)$ 后到达最高点 $y_{\max}$ 再回落，这一时间轴上的过冲即超调，$M_p=\dfrac{y_{\max}-y(\infty)}{y(\infty)}\times100\%$。
+
+**与共振峰的区别：** 共振峰是频域概念，指幅频 $|G(j\omega)|$ 在 $\omega_r$ 处高于直流增益，横轴是频率、不涉及时间；超调看 $y(t)$、共振峰看 $|G(j\omega)|$。
+
+共振峰在 $\zeta\ge1/\sqrt2\approx0.707$ 时不存在，超调量在 $\zeta\ge1$（临界/过阻尼的情况下）不存在。
 
 **公式表常用数值对照**（表中 $\zeta\le0.707$；$t_s$ 按 $3/(\zeta\omega_n)$ 计算）：
 
@@ -2921,20 +3010,52 @@ $$\omega_r=\omega_n\sqrt{1-2(0.8)^2}=\omega_n\sqrt{-0.28},$$
 
 **例 3（RLC 串联，取电容电压）**　$R=200\ \Omega$，$L=0.5\ \mathrm H$，$C=2\ \mu\mathrm F$。
 
-$$\omega_n=1000\ \mathrm{rad/s},\qquad \zeta=0.2,$$
+由 5.3 例，$G(s)=\dfrac{1}{LCs^2+RCs+1}$，故
 
-$$\omega_r=959.2\ \mathrm{rad/s},\qquad M_r=2.5516,\qquad 20\log_{10}M_r=8.14\ \mathrm{dB}.$$
+$$\omega_n=\frac1{\sqrt{LC}},\qquad \zeta=\frac R2\sqrt{\frac CL}.$$
 
-**例 4（极点位置与峰高）**　极点 $-\alpha\pm j5$。
+代入数值：
 
-$$\omega_n=\sqrt{\alpha^2+25},\qquad \zeta=\frac{\alpha}{\omega_n}.$$
+$$LC=0.5\times2\times10^{-6}=10^{-6}\quad\Longrightarrow\quad\omega_n=\frac1{\sqrt{10^{-6}}}=1000\ \mathrm{rad/s},$$
 
-| $\alpha$ | $\zeta$ | $M_r$ |
-|---|---|---|
-| 5 | 0.707 | 无峰 |
-| 2 | 0.371 | 1.45 |
-| 0.5 | 0.0995 | 5.05 |
-| 0.05 | 0.0100 | 50.0 |
+$$\zeta=\frac{200}{2}\sqrt{\frac{2\times10^{-6}}{0.5}}=100\sqrt{4\times10^{-6}}=100\times2\times10^{-3}=0.2.$$
+
+判断：$\zeta=0.2<\dfrac1{\sqrt2}$，存在共振峰。峰值频率
+
+$$\omega_r=\omega_n\sqrt{1-2\zeta^2}=1000\sqrt{1-2(0.2)^2}=1000\sqrt{0.92}=959.2\ \mathrm{rad/s},$$
+
+峰高
+
+$$M_r=\frac{1}{2\zeta\sqrt{1-\zeta^2}}=\frac{1}{2(0.2)\sqrt{1-0.2^2}}=\frac{1}{0.4\sqrt{0.96}}=\frac{1}{0.3919}=2.5516,$$
+
+$$20\log_{10}M_r=20\log_{10}2.5516=8.14\ \mathrm{dB}.$$
+
+**例 4（极点位置与峰高）**　极点 $p_{1,2}=-\alpha\pm j5$。
+
+由极点求参数：
+
+$$\omega_n=|p|=\sqrt{\alpha^2+5^2},\qquad \zeta=\frac{|\operatorname{Re}p|}{\omega_n}=\frac{\alpha}{\sqrt{\alpha^2+25}}.$$
+
+判断：仅当 $\zeta<\dfrac1{\sqrt2}$ 时有峰，否则 $M_r=1$（无峰）。有峰时
+
+$$\omega_r=\omega_n\sqrt{1-2\zeta^2},\qquad M_r=\frac{1}{2\zeta\sqrt{1-\zeta^2}}.$$
+
+以 $\alpha=2$ 为例：
+
+$$\omega_n=\sqrt{2^2+5^2}=\sqrt{29}=5.385,\qquad \zeta=\frac{2}{5.385}=0.3714,$$
+
+$$\zeta=0.3714<0.7071\ \text{（有峰）},\qquad \omega_r=5.385\sqrt{1-2(0.3714)^2}=5.385\sqrt{0.7241}=4.582\ \mathrm{rad/s},$$
+
+$$M_r=\frac{1}{2(0.3714)\sqrt{1-0.3714^2}}=\frac{1}{0.7428\sqrt{0.8621}}=\frac{1}{0.6897}=1.45.$$
+
+其余各点同法代入，汇总如下：
+
+| $\alpha$ | $\omega_n=\sqrt{\alpha^2+25}$ | $\zeta=\alpha/\omega_n$ | $M_r$ |
+|---|---|---|---|
+| 5 | 7.071 | 0.7071 | 无峰（$\zeta=1/\sqrt2$） |
+| 2 | 5.385 | 0.3714 | 1.45 |
+| 0.5 | 5.025 | 0.0995 | 5.05 |
+| 0.05 | 5.000 | 0.0100 | 50.0 |
 
 极点越靠近虚轴，$\alpha$ 越小，$\zeta$ 越小，峰值越高。
 
@@ -2976,6 +3097,8 @@ $$|u(t)|\le M_u<\infty\quad\forall t
 \quad\Longrightarrow\quad|y(t)|\le M_y<\infty\quad\forall t.$$
 
 连续时间 LTI 系统 BIBO 稳定的充要条件是冲激响应绝对可积：
+
+> 下面证明：必要性取 $u(t)=\operatorname{sgn}(h(-t))$，充分性用 $|y(t)|\le M_u\int|h|$。
 
 $$\int_{-\infty}^{\infty}|h(t)|dt<\infty.$$
 
@@ -3248,6 +3371,8 @@ $sU(s)=s/(s^2+4)$ 在 $\pm j2$ 有极点，终值定理不适用。时域响应�
 
 #### 单实极点
 
+> 下面推导：遮盖法的系数公式 $A_i=\left.(s-p_i)Y(s)\right|_{s=p_i}$ 的来历。
+
 $$\frac1{(s+1)(s+2)}=\frac{A}{s+1}+\frac{B}{s+2}.$$
 
 用遮盖法求 $A$：两边乘 $(s+1)$，令 $s=-1$：
@@ -3489,7 +3614,28 @@ $$\frac{100}{\sqrt{100^2+\omega^2}}=\frac1{\sqrt2},$$
 
 ### 9.1 调制的基本概念
 
-基带信号 $u(t)$ 的频谱集中在低频附近。要把信号通过无线信道传输，需要把频谱搬到较高的载波频率附近。这个过程称为调制，载波通常取
+**标准定义。**
+
+调制（modulation）：用携带信息的低频信号（消息信号）$u(t)$ 去控制一个高频周期信号（载波 $c(t)$）的某个参数——幅度、频率或相位——使载波随消息变化，得到已调信号 $y(t)$ 的过程。
+
+被控制的参数不同，就分别叫调幅（AM）、调频（FM）、调相（PM）。
+
+相应地，解调（demodulation）：从已调信号 $y(t)$ 中把原来的消息信号 $u(t)$ 恢复出来的过程，是调制的逆过程；解调方式必须与调制方式配套。
+
+**为什么调制。** 三个理由：
+
+1. **天线尺寸**：天线长度要与波长 $\lambda=c/f$ 可比（通常 $\lambda/4$ 左右）。$3$ kHz 音频的波长是 $100$ km，天线无法实现；搬到 $100$ MHz 载波上波长只有 $3$ m。这是最直接的原因。
+2. **频分复用**：把不同信道的消息搬到不同的载波频率 $\omega_{c1},\omega_{c2},\dots$，各频谱占据不同频段、互不重叠，就能在同一条信道上同时传输多路信号。
+3. **抗噪声与功率**：FM/PM 的包络恒定，对幅度噪声不敏感；某些调制方式也便于放大和辐射（高频信号更容易由天线有效辐射）。
+
+**怎么理解。** 把载波想成「运载工具」，消息想成「货物」：调制是装货（把低频消息装上高频载波），解调是卸货（从高频载波里取回消息）。
+
+数学上，调制最核心的操作就是**乘载波**：$y(t)=u(t)\cos\omega_ct$，频域里它把 $U(j\omega)$ 复制并搬到 $\pm\omega_c$ 两侧（搬移频谱）；载波本身不携带信息（DSB-SC 中载波被抑制），只负责「运」。
+
+解调则再乘一次同频同相载波，把频谱搬回原来的低频位置，再用低通滤掉 $2\omega_c$ 处的高频复制品。
+
+
+消息信号 $u(t)$ 的频谱集中在低频附近，把它搬到较高的载波频率附近，这个过程称为调制。载波通常取
 
 $$c(t)=\cos\omega_ct.$$
 
@@ -3497,12 +3643,11 @@ $$c(t)=\cos\omega_ct.$$
 
 | 类型 | 公式 |
 |---|---|
-| AM（调幅，DSB-SC） | $y(t)=u(t)\cos(\omega_ct)$，$Y(j\omega)=\frac12U(j(\omega-\omega_c))+\frac12U(j(\omega+\omega_c))$ |
+| DSB-SC（抑制载波双边带调幅） | $y(t)=u(t)\cos(\omega_ct)$，$Y(j\omega)=\frac12U(j(\omega-\omega_c))+\frac12U(j(\omega+\omega_c))$ |
 | 解调 | $z(t)=y(t)\cos(\omega_ct)=\frac12u(t)+\frac12u(t)\cos(2\omega_ct)$ |
 | FM（调频） | $y(t)=\cos\left(\omega_ct+k\displaystyle\int_{-\infty}^{t}u(\tau)d\tau\right)$ |
 | PM（调相） | $y(t)=\cos\left(\omega_ct+ku(t)\right)$ |
 
-FM 与 PM 的调制灵敏度在公式表中统一记作 $k$，不区分 $k_f$、$k_p$；本笔记后面统一用 $k$。
 
 按 AM 公式，调制后的信号为
 
@@ -3516,11 +3661,105 @@ $$Y(j\omega)=\frac1{2\pi}\left[U(j\omega)*\pi\delta(\omega-\omega_c)+\pi\delta(\
 
 $$Y(j\omega)=\frac12\left[U(j(\omega-\omega_c))+U(j(\omega+\omega_c))\right].$$
 
-基带频谱被搬到 $\pm\omega_c$ 两侧，每侧保留原带宽 $W$，总带宽为
+消息的频谱被搬到 $\pm\omega_c$ 两侧，每侧保留原带宽 $W$，总带宽为
 
 $$B=2W.$$
 
-这是双边带抑制载波（DSB-SC）调制。由于载波本身不传输，发射功率全部用于边带。
+这是抑制载波双边带调制（DSB-SC）。由于载波本身不传输，发射功率全部用于边带。
+
+#### 三种基本调制方式的时域公式（AM / FM / PM）
+
+载波的统一写法是
+
+$$c(t)=\cos\left(\omega_ct+\varphi(t)\right).$$
+
+调制就是用消息 $u(t)$ 去控制这个式子里的某个量。
+
+**（1）AM：让幅度跟消息走。**
+
+想要振幅随 $u(t)$ 变，就把 $u(t)$ 加在振幅上：
+
+$$y(t)=\left[A_0+u(t)\right]\cos\omega_ct.$$
+
+- 效果：调制信号（这个余弦函数）的幅值随消息$u(t)$起伏，相邻波峰的间距不变（频率不变）。
+- 例：$u(t)=0.5\cos\omega_mt$、$A_0=1$ 时，包络在 $0.5$ 与 $1.5$ 之间缓慢起伏。
+- 特例：$A_0=0$ 即 DSB-SC，$y(t)=u(t)\cos\omega_ct$；$A_0>0$ 的标准 AM 见 9.3 节。
+
+**（2）FM：让疏密（频率）跟消息走。**
+
+想要「瞬时频率 $=\omega_c+ku(t)$」：$u>0$ 时波形变密，$u<0$ 时变疏，$u=0$ 时回到 $\omega_c$。
+
+频率和相位的关系是
+
+$$\omega_i(t)=\frac{d\theta}{dt},$$
+
+反过来，相位是瞬时频率的累积（以 $t=0$ 为起点，相差一个初始相位常数）：
+
+$$\theta(t)=\theta(0)+\int_0^t\omega_i(\tau)\,d\tau.$$
+
+FM 的目标是把消息，写到载波的频率当中，让瞬时频率随消息变化：
+
+$$\omega_i(t)=\omega_c+k\,u(t).$$
+
+**把 $\omega_c$ 也并进积分里。** 因为 $\omega_c$ 是常数，可以写成
+
+$$\omega_ct=\int_0^t\omega_c\,d\tau,$$
+
+所以相位可以用一个积分完整表示（取 $\theta(0)=0$，即以 $t=0$ 时的载波相位为参考零点）：
+
+$$\theta(t)=\int_0^t\left[\omega_c+k\,u(\tau)\right]d\tau.$$
+
+于是 FM 信号写成单个积分的形式，展开即成常见写法：
+
+$$\begin{aligned}
+y(t)&=\cos\left(\int_0^t\left[\omega_c+k\,u(\tau)\right]d\tau\right)\\[4pt]
+&=\cos\left(\int_0^t\omega_c\,d\tau+k\int_0^tu(\tau)\,d\tau\right)\\[4pt]
+&=\cos\left(\omega_ct+k\int_0^tu(\tau)\,d\tau\right).
+\end{aligned}$$
+
+被积函数正好是瞬时角频率 $\omega_i(\tau)=\omega_c+k\,u(\tau)$，所以第一行就是「把瞬时频率从 $0$ 累积到 $t$ 得到相位，再取余弦」；对它求导立即回到 FM 的定义：
+
+$$\frac{d}{dt}\int_0^t\left[\omega_c+k\,u(\tau)\right]d\tau=\omega_c+k\,u(t)=\omega_i(t).$$
+
+若积分从一般时刻 $t_0$ 起算，需加上初始相位：
+
+$$y(t)=\cos\left(\theta(t_0)+\int_{t_0}^{t}\left[\omega_c+k\,u(\tau)\right]d\tau\right).$$
+
+若消息在 $t<0$ 时为零，则 $\displaystyle\int_0^tu=\int_{-\infty}^{t}u$，于是回到常见写法
+
+$$y(t)=\cos\left(\omega_ct+k\int_{-\infty}^{t}u(\tau)\,d\tau\right).$$
+
+- 效果：波形疏密随 $u$ 变化，幅度恒为 $1$。
+- 例：$u(t)=H(t)$ 时，$t<0$ 频率为 $\omega_c$，$t>0$ 起频率跳到 $\omega_c+k$，而相位始终连续（波形不「错位」，只是变得疏密不同）。
+- 这就是 FM 里出现积分的原因：频率必须先积成相位，才能写进余弦。
+
+**（3）PM：让相位跟消息走。**
+
+PM 的目标是把消息，写到载波的相位当中，让瞬时相位随消息变化：
+
+
+「相位 $=\omega_ct+ku(t)$」，就直接把 $u(t)$ 加进载波的相位：
+
+$$y(t)=\cos\left(\omega_ct+ku(t)\right).$$
+
+- 效果：消息直接改变波形的「位置」；频率是相位的导数，因此随 $\dot u(t)$ 变化。
+- 例：$u(t)=H(t)$ 时，$t=0$ 处相位突然多出 $k$（波形错位），之后 $\dot u=0$，频率回到 $\omega_c$。
+
+**（4）FM 与 PM 的联系与区别：为什么一个积分、一个不积分**
+
+两者确实同属角度调制，形式都是 $y(t)=\cos\left(\omega_ct+\varphi(t)\right)$，区别只在于规定哪个量与消息成正比：
+
+- PM 规定「相位偏离」正比于消息：$\varphi(t)=k\,u(t)$，于是 $\omega_i=\omega_c+k\dot u(t)$；消息直接进相位，不积分。
+- FM 规定「频率偏离」正比于消息：$\omega_i(t)-\omega_c=k\,u(t)$；但 $\omega_i-\omega_c=\dot\varphi$，要反推相位就必须先积分，$\varphi(t)=k\int u$。
+
+由此可以互相转换：FM 用 $u$ 等价于 PM 用 $\int u$（差常数 $k$）；PM 用 $u$ 等价于 FM 用 $\dot u$。电路上，PM 调制器前加积分器得 FM，FM 调制器前加微分器得 PM。
+
+| 调制方式 | 时域公式 | 消息控制谁 | 瞬时角频率 | 直观效果 |
+|---|---|---|---|---|
+| AM | $[A_0+u(t)]\cos\omega_ct$ | 振幅（余弦外的倍数） | $\omega_c$（不变） | 高矮随消息变 |
+| FM（调频） | $\cos\left(\omega_ct+k\int_{-\infty}^{t}u(\tau)d\tau\right)$ | 频率（余弦内相位的导数） | $\omega_c+ku(t)$ | 疏密随消息变 |
+| PM（调相） | $\cos\left(\omega_ct+ku(t)\right)$ | 相位（余弦内的加项） | $\omega_c+k\dot u(t)$ | 位置随消息变 |
+
 
 ### 9.2 相干解调
 
@@ -3529,23 +3768,30 @@ $$B=2W.$$
 $$y(t)\cos\omega_ct=u(t)\cos^2\omega_ct
 =\frac{u(t)}{2}+\frac{u(t)\cos2\omega_ct}{2}.$$
 
-第一项是基带信号，第二项的频谱位于 $\pm2\omega_c$ 附近。用低通滤波器滤除第二项，得到
+第一项是原来的消息信号，第二项的频谱位于 $\pm2\omega_c$ 附近。用低通滤波器滤除第二项，得到
 
 $$\frac12u(t).$$
 
 再乘 $2$ 即可恢复原信号。相干解调要求接收端产生与发射端同频同相的载波。
 
-### 9.3 带载波 AM
+### 9.3 标准 AM（DSB-LC，大载波双边带调幅）
 
-带载波调幅信号为
+**名称说明**：这种调幅的正式名称是 DSB-LC（Double-SideBand with Large Carrier，大载波双边带调幅），也叫标准 AM（standard AM）；中文教材常称「普通调幅」或只叫「调幅」。9.1 节中的 DSB-SC（抑制载波双边带调幅）是它的特例（把载波幅度 $A_0$ 取为 $0$）。两者都属于调幅 AM。
 
-$$y(t)=\left[A+u(t)\right]\cos\omega_ct.$$
+**信号表达式**：标准 AM 信号为
 
-频谱中除了 $\pm\omega_c$ 两侧的边带，还有 $\pm\omega_c$ 处的载波冲激。可以用包络检波解调，电路简单，但载波本身不携带信息，功率利用率较低。
+$$y(t)=\left[A_0+u(t)\right]\cos\omega_ct,\qquad A_0>0\ \text{为未调载波幅度，}u(t)\ \text{为消息}$$
 
-为避免过调制，要求
+- $A_0\cos\omega_ct$：未调载波，即「载波分量」；
+- $u(t)\cos\omega_ct$：消息与载波的乘积，即双边带部分（与 DSB-SC 完全相同）。
 
-$$|u(t)|\le A.$$
+**与 DSB-SC 的区别**：DSB-SC 的频谱只有 $\pm\omega_c$ 两侧的边带，载波被抑制；标准 AM 的频谱在 $\pm\omega_c$ 处多出两根载波冲激（权重由 $A_0$ 决定）。代价是载波不携带信息，发射功率中有一部分白白用于载波；好处是接收端可以直接用包络检波（二极管检波），不需要本地载波，电路简单、成本低，所以 AM 广播都用它。
+
+**过调制条件**：包络为 $A_0+u(t)$，要能从包络中恢复 $u(t)$，必须保证包络始终不为负，否则包络会「折叠」，检波后失真：
+
+$$|u(t)|\le A_0\quad\text{（即 }A_0+u(t)\ge0\text{）}.$$
+
+这时调制指数 $m=\dfrac{\max|u|}{A_0}\le1$。若 $m>1$（过调制），包络出现反相段，包络检波无法恢复原信号。
 
 ### 9.4 频分复用
 
@@ -3821,7 +4067,7 @@ DSB-SC：$y(t)=u(t)\cos\omega_ct$，频谱搬移到 $\pm\omega_c$，占用带宽
 
 相干解调：乘 $\cos\omega_ct$ 后得到 $\frac12u(t)+\frac12u(t)\cos2\omega_ct$，再低通滤波。
 
-AM：$y(t)=[A+u(t)]\cos\omega_ct$，在 $\pm\omega_c$ 处多出载波冲激，可用包络检波。
+AM（标准调幅，DSB-LC）：$y(t)=[A_0+u(t)]\cos\omega_ct$，在 $\pm\omega_c$ 处多出载波冲激，可用包络检波。
 
 FDM：每个 DSB 信道占 $2W$，信道间留保护间隔。
 
@@ -3902,6 +4148,8 @@ $$U(s)=\frac{e^{-2s}-e^{-4s}}{s}.$$
 
 #### 阶跃与指数
 
+> 下面推导：$H(t)\leftrightarrow\dfrac1s$ 与 $e^{-at}H(t)\leftrightarrow\dfrac{1}{s+a}$ 的积分过程（含 ROC）。
+
 阶跃：
 
 $$H(t)\longleftrightarrow\int_0^\infty e^{-st}dt=\frac1s,\qquad\operatorname{Re}s>0.$$
@@ -3911,6 +4159,8 @@ $$H(t)\longleftrightarrow\int_0^\infty e^{-st}dt=\frac1s,\qquad\operatorname{Re}
 $$e^{-at}H(t)\longleftrightarrow\int_0^\infty e^{-(s+a)t}dt=\frac1{s+a},\qquad\operatorname{Re}s>-a.$$
 
 #### 正弦与余弦
+
+> 下面推导：$\cos\omega_0t$、$\sin\omega_0t$ 的拉普拉斯变换（欧拉公式 + 复指数变换对）。
 
 由欧拉公式和 $s$ 域移位，
 
@@ -3924,6 +4174,8 @@ $$\sin\omega_0t\,H(t)\longleftrightarrow\frac1{2j}\left(\frac1{s-j\omega_0}-\fra
 分母写成 $s^2+\omega_0^2$，是因为 $(s-j\omega_0)(s+j\omega_0)=s^2+\omega_0^2$。若写成 $s^2-\omega_0^2$，说明把 $\omega_0^2$ 前面的符号弄反了。
 
 #### 乘 $t$ 与 $t^n$
+
+> 下面推导：乘 $t$ 对应 $-\dfrac{dU(s)}{ds}$，重复使用得 $t^ne^{-at}H(t)\leftrightarrow\dfrac{n!}{(s+a)^{n+1}}$。
 
 由
 
@@ -3943,6 +4195,8 @@ $$t^ne^{-at}H(t)\longleftrightarrow\frac{n!}{(s+a)^{n+1}}.$$
 
 #### 调制型乘积
 
+> 下面推导：$\cos3t\cos t\,H(t)$ 的变换（先积化和差，再逐项查表）。
+
 求 $\cos3t\cos t\,H(t)$ 这类乘积，先用积化和差把乘积化成两个同频余弦之和：
 
 $$\cos3t\cos t=\frac12\cos4t+\frac12\cos2t.$$
@@ -3954,6 +4208,8 @@ $$\cos3t\cos t\,H(t)\longleftrightarrow\frac12\cdot\frac{s}{s^2+16}+\frac12\cdot
 注意不能把两个变换直接相乘。时域相乘对应的是 $s$ 域卷积，不是乘积。
 
 #### 时移与阶跃延迟
+
+> 下面推导：$u(t-\tau)H(t-\tau)\leftrightarrow e^{-s\tau}U(s)$ 的正反两个方向。
 
 若 $u(t)$ 的变换为 $U(s)$，则
 
@@ -3968,6 +4224,8 @@ $$e^{-(t-3)}H(t-3).$$
 若误写成 $e^{-t}H(t-3)$，只延迟了阶跃没有延迟指数；若写成 $e^{-(t+3)}H(t)$，只把指数前移了，都不是原来的信号。
 
 #### 积分与微分
+
+> 下面推导：$0$ 到 $t$ 的积分对应除以 $s$，微分对应乘 $s$ 并减初值。
 
 在 $0$ 到 $t$ 上积分，$s$ 域除以 $s$：
 
@@ -4097,6 +4355,8 @@ $$h(\infty)=\lim_{s\to0}\frac{120}{s+6}=20.$$
 
 #### 遮盖法求单实极点
 
+> 下面推导：遮盖法（留数）公式的来历——两边乘 $(s-p_i)$ 后令 $s=p_i$。
+
 $$Y(s)=\frac{N(s)}{\prod_i(s-p_i)}.$$
 
 对于单极点 $p_i$，两边乘以 $(s-p_i)$ 再令 $s=p_i$：
@@ -4115,6 +4375,8 @@ $$h(t)=\left(2-e^{-t}\right)H(t).$$
 
 #### 重极点
 
+> 下面推导：重极点部分分式的系数怎么求——最高次项遮盖，其余求导或比系数。
+
 $$Y(s)=\frac{1}{(s+1)^2(s+2)}=\frac{A}{s+1}+\frac{B}{(s+1)^2}+\frac{C}{s+2}.$$
 
 $C$ 和 $B$ 可以直接遮盖：
@@ -4132,6 +4394,8 @@ $$y(t)=\left(-e^{-t}+te^{-t}+e^{-2t}\right)H(t).$$
 重极点对应 $t^ne^{pt}$ 型项。若极点重数为 $m$，部分分式里要写出 $(s-p)^{-1}$ 到 $(s-p)^{-m}$ 的所有项。
 
 #### 共轭复极点
+
+> 下面推导：复极点部分拆成「余弦项 + 正弦项」，正弦系数等于常数项除以 $\omega_0$。
 
 $$Y(s)=\frac{3s+1}{(s+1)(s^2+2s+5)}.$$
 
@@ -4155,6 +4419,8 @@ $$y(t)=-0.5e^{-t}+0.5e^{-t}\cos2t+1.5e^{-t}\sin2t\qquad(t\ge0).$$
 这里 $1.5$ 这个系数来自常数项除以 $\omega_0=2$。
 
 #### 有延迟因子的部分分式
+
+> 下面推导：先对有理部分做部分分式、反变换，再整体延迟——延迟因子让每一项同时平移。
 
 $$Y(s)=\frac{4e^{-s}}{(s+1)(s+3)}.$$
 
@@ -4636,6 +4902,8 @@ $$e(\infty)=\frac{2}{1}=2\ \mathrm{V}.$$
 
 #### 一般情形与低频群延迟
 
+> 下面推导：斜坡稳态误差 $e(\infty)=-G'(0)$，并与群延迟对应。
+
 一般地，只要系统稳定、$G(0)=1$，在 $s=0$ 附近把 $G(s)$ 展开：
 
 $$G(s)\approx1+G'(0)s,$$
@@ -4977,7 +5245,7 @@ $$\tau_p(\omega)=-\frac{\angle G(j\omega)}{\omega},\qquad
 
 第 8.4 节只给了一阶的规则「截止频率等于极点频率」。二阶低通要解方程。
 
-#### 推导
+> 下面推导：二阶低通的 $-3$ dB 频率公式 $\omega_c=\omega_n\sqrt{1-2\zeta^2+\sqrt{(1-2\zeta^2)^2+1}}$。
 
 二阶低通
 
@@ -5101,7 +5369,7 @@ $$\cos a\cos b=\frac12\left[\cos(a-b)+\cos(a+b)\right].$$
 
 调制乘载波：频谱搬家，每边幅度乘 $\frac12$（载波幅度为 $2$ 时抵消）。
 
-相干解调：再乘一次载波，产生基带项与 $2\omega_c$ 项，低通滤掉后者。
+相干解调：再乘一次载波，产生原来的低频项与 $2\omega_c$ 项，低通滤掉后者。
 
 #### 单边带滤波
 

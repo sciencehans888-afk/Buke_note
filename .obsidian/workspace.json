@@ -49,7 +49,8 @@
               "title": "Quiz3"
             }
           }
-        ]
+        ],
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -188,7 +189,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "信号与系统/Quiz对应知识点.md",
+                "file": "信号与系统/Quiz3.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
@@ -240,6 +241,8 @@
   },
   "active": "a7b07f636312de84",
   "lastOpenFiles": [
+    "信号与系统/Quiz2.md",
+    "信号与系统/Quiz对应知识点.md",
     "信号与系统/Quiz对应知识点.md.tmp.6904.1b8106d2dfa1",
     "信号与系统/Quiz对应知识点.md.tmp.6904.ce8c2d8d1872",
     "信号与系统/Quiz对应知识点.md.tmp.6904.aac097d52fd6",
@@ -250,10 +253,7 @@
     "信号与系统/Quiz对应知识点.md.tmp.9368.5449096baf27",
     "信号与系统/Quiz对应知识点.md.tmp.9368.0d721245fd32",
     "信号与系统/Quiz对应知识点.md.tmp.9368.729e24f2f8f4",
-    "信号与系统/Quiz对应知识点.md.tmp.9368.2b6a00332edc",
     "信号与系统/附件/Pasted image 20261102124348.png",
-    "信号与系统/Quiz2.md",
-    "信号与系统/Quiz对应知识点.md",
     "信号与系统/Quiz3.md",
     "Pasted image 20261031132109.png",
     "Quiz2.md",

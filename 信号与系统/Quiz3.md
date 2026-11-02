@@ -2268,7 +2268,7 @@ A Butterworth lowpass filter with cutoff frequency 2 kHz must attenuate a 6 kHz 
 
 ### 4. Modulation (week 11)（调制，第 11 周）
 
-Amplitude modulation and demodulation（调幅与解调）
+Amplitude/frequency/phase modulation, FDM and instantaneous frequency（调幅、调频、调相、频分复用与瞬时频率）
 
 An antenna's length must be comparable to the wavelength $\lambda=c/f$ of the signal it transmits, with $c=3\times10^8$ m/s. Find the wavelength of a 3 kHz telephone audio signal sent directly as an electromagnetic wave, in km.（天线长度须与所发信号的波长 $\lambda=c/f$ 可比，$c=3\times10^8$ m/s。求 3 kHz 电话音频信号直接作为电磁波发送时的波长，单位 km。）
 
@@ -2276,12 +2276,11 @@ An antenna's length must be comparable to the wavelength $\lambda=c/f$ of the si
 > $100$ km
 
 > [!abstract] 知识点讲解
-> 见 [[信号与系统/Quiz对应知识点.md|Quiz对应知识点]] 11.9 例 1（波长与载波）。
+> 见 [[信号与系统/Quiz对应知识点.md|Quiz对应知识点]] 9.1 调制的基本概念 与 11.9 例 1（波长与载波）。
 >
-> - **波速关系**：$\lambda=\dfrac{c}{f}$，$c=3\times10^8$ m/s。
-> - **天线尺度**：天线长度需与波长可比（通常 $\lambda/4$ 或 $\lambda/2$）。
-> - **调制动机**：音频频率低 ⇒ 波长极长 ⇒ 天线无法实现，故需搬移到高频载波。
-> - **单位换算**：$10^5$ m $=100$ km。
+> - **为什么调制**：天线长度要与波长 $\lambda=c/f$ 可比；音频频率只有 kHz，波长约 $100$ km，天线做不出来，所以要把频谱搬到高频载波附近。
+> - **波长关系**：$\lambda=\dfrac{c}{f}$，$c=3\times10^8$ m/s。
+> - **数量级记忆**：$3$ kHz ↔ $100$ km；$100$ MHz ↔ $3$ m。
 
 > [!example] 解答
 > $$\lambda=\frac{c}{f}=\frac{3\times10^8}{3\times10^3}=10^5\ \mathrm{m}=100\ \mathrm{km}.$$
@@ -2314,12 +2313,11 @@ Which list gives the positive frequencies (rad/s) in $y(t)$ with the amplitudes 
 > (c) 8000 (0.5), 9000 (1), 11 000 (1), 12 000 (0.5)
 
 > [!abstract] 知识点讲解
-> 见 [[信号与系统/Quiz对应知识点.md|Quiz对应知识点]] 11.9 例 2（DSB-SC 的频谱）与 9.1 调制的基本概念。
+> 见 [[信号与系统/Quiz对应知识点.md|Quiz对应知识点]] 9.1 调制的基本概念（DSB-SC 频谱）与 11.9 例 2。
 >
-> - **积化和差**：$\cos a\cos b=\dfrac12\left[\cos(a-b)+\cos(a+b)\right]$，产生上下边带。
-> - **DSB-SC 频谱**：$u(t)\cos\omega_ct\leftrightarrow\dfrac12\left[U(j(\omega-\omega_c))+U(j(\omega+\omega_c))\right]$，不含载波 $\pm\omega_c$ 谱线。
-> - **频移性质**：时域乘载波 ⇔ 频谱左右各平移 $\omega_c$ 并乘 $\frac12$。
-> - **振幅关系**：每个边带分量的振幅等于原分量振幅的 $\frac12$（含信道幅度因子）。
+> - **积化和差**：$\cos a\cos b=\dfrac12\left[\cos(a-b)+\cos(a+b)\right]$，每项产生上下两个边带。
+> - **DSB-SC**：$y(t)=u(t)\cos\omega_ct$，频谱是 $u$ 的频谱搬移到 $\pm\omega_c$，每份乘 $\frac12$；载波本身被抑制。
+> - **只有双边带**：正频率处只出现 $8000,9000,11000,12000$，没有 $10\,000$ 的谱线。
 
 > [!example] 解答
 > 第一项：
@@ -2347,12 +2345,11 @@ A speech scrambler multiplies $u(t)$, bandlimited to 15 kHz, by $2\cos(2\pi\cdot
 > (c) $3\cos(2\pi\cdot11\,000t)$
 
 > [!abstract] 知识点讲解
-> 见 [[信号与系统/Quiz对应知识点.md|Quiz对应知识点]] 11.9 例 3（单边带滤波）。
+> 见 [[信号与系统/Quiz对应知识点.md|Quiz对应知识点]] 9.1 调制的基本概念（乘载波搬移频谱）与 11.9 例 3。
 >
-> - **调制（乘法）**：$m(t)\cdot2\cos\omega_ct$ 产生 $\omega_c\pm\omega_m$ 两个分量。
-> - **积化和差**：$2\cos a\cos b=\cos(a-b)+\cos(a+b)$，乘 $2$ 正好抵消 $\frac12$。
-> - **理想低通**：$|f|<f_c$ 保留，$|f|>f_c$ 滤除；本题 $f_c=15$ kHz。
-> - **单边带**：保留一个边带得到 SSB，本题留下下边带 $15-4=11$ kHz。
+> - **乘载波 = 频谱搬移**：乘 $2\cos\omega_ct$ 后，每个频率分量 $f$ 变成 $\omega_c-f$ 与 $\omega_c+f$，幅度不变（$2$ 抵消 $\frac12$）。
+> - **低通筛选**：本题载频 $15$ kHz、低通截止也是 $15$ kHz，只有下边带 $15-4=11$ kHz 留在通带内。
+> - **单边带（SSB）**：滤掉一个边带，带宽减半，这就是单边带调制。
 
 > [!example] 解答
 > 乘积：
@@ -2374,12 +2371,11 @@ A radio band runs from 3.000 MHz to 3.400 MHz. Each telephone message has bandwi
 > $58$
 
 > [!abstract] 知识点讲解
-> 见 [[信号与系统/Quiz对应知识点.md|Quiz对应知识点]] 11.9 例 4（FDM 信道数）与 9.4 频分复用。
+> 见 [[信号与系统/Quiz对应知识点.md|Quiz对应知识点]] 9.4 频分复用 与 11.9 例 4。
 >
-> - **DSB-SC 带宽**：每个信道占 $2W$，$W$ 为消息带宽。
-> - **FDM 总带宽**：$N$ 路无保护间隔时需 $N\cdot2W$。
-> - **信道数**：$N=\left\lfloor\dfrac{B}{2W}\right\rfloor$，向下取整。
-> - **频段宽度**：$3.400-3.000=0.400$ MHz $=400$ kHz。
+> - **每个 DSB-SC 信道占 $2W$**：$W$ 是消息带宽（单边），本题 $2W=6.8$ kHz。
+> - **N 路首尾相接**：总带宽 $N\cdot2W$，所以 $N=\left\lfloor\dfrac{B_{\text{band}}}{2W}\right\rfloor$（向下取整）。
+> - **不能四舍五入**：多出来的 $0.8$ 个信道放不下，只能舍去。
 
 > [!example] 解答
 > 单信道带宽：
@@ -2400,12 +2396,12 @@ Four messages, each bandlimited to 3 kHz, are sent by DSB-SC on carriers $f_1<f_
 > $136.0$ kHz
 
 > [!abstract] 知识点讲解
-> 见 [[信号与系统/Quiz对应知识点.md|Quiz对应知识点]] 11.9 例 5（FDM 载频安排）。
+> 见 [[信号与系统/Quiz对应知识点.md|Quiz对应知识点]] 9.4 频分复用（含保护间隔的载频安排）与 11.9 例 5。
 >
-> - **DSB-SC 频谱结构**：每个信道宽 $2W$，以载频 $f_i$ 为中心，占据 $[f_i-W,\,f_i+W]$。
-> - **起点条件**：第一路下边沿 $f_1-W=100$ kHz $\Rightarrow f_1=103$ kHz。
-> - **相邻间隔**：$f_{i+1}-f_i=2W+\text{保护间隔}=6+5=11$ kHz。
-> - **等差数列**：$f_N=f_1+(N-1)\times11$。
+> - **DSB-SC 频谱以载频为中心**：第 $i$ 路占 $[f_i-W,\,f_i+W]$。
+> - **第一路起点**：$f_1-W=100$ kHz $\Rightarrow f_1=100+W$。
+> - **相邻载频间隔**：$2W+g$，$g$ 是保护间隔；本题 $6+5=11$ kHz。
+> - **等差排列**：$f_k=f_1+(k-1)(2W+g)$。
 
 > [!example] 解答
 > 第一路载频：
@@ -2442,12 +2438,11 @@ Which band of positive frequencies does $c(t)$ occupy?（$c(t)$ 占据哪个正�
 > (a) 5000 到 35 000 rad/s
 
 > [!abstract] 知识点讲解
-> 见 [[信号与系统/Quiz对应知识点.md|Quiz对应知识点]] 11.9 例 6（多层调制）。
+> 见 [[信号与系统/Quiz对应知识点.md|Quiz对应知识点]] 9.1 调制的基本概念（频谱搬移、多层调制）与 11.9 例 6。
 >
-> - **调制搬移**：乘 $\cos\omega_ct$ 后频带移到 $\omega_c\pm$ 原频段（乘 $2$ 抵消 $\frac12$）。
-> - **频带并集**：信号相加，频谱相加，占据频段取并集。
-> - **逐层分析**：先算内层 $b(t)$ 的频段，再整体搬移：$b$ 占 $[0,15\,000]$，外载频 $20\,000$ 给出 $20\,000\pm15\,000$，即 $[5\,000,35\,000]$ rad/s。
-> - **未调制部分**：$u_1$ 未调制，占据 $[0,W]$。
+> - **乘载波 = 把整个频谱搬到 $\omega_c$ 两侧**：乘 $2\cos\omega_ct$ 后频段变成 $[\omega_c-W_b,\ \omega_c+W_b]$（$W_b$ 是调制前信号的最高频率）。
+> - **相加 = 频谱取并集**：先算内层 $b(t)$ 占多大频段，再整体外搬。
+> - **先内后外**：$b(t)$ 占 $[0,15\,000]$，所以 $c(t)$ 占 $20\,000\pm15\,000$。
 
 > [!example] 解答
 > $u_1$ 占据 $0$ 到 $5000$ rad/s。
@@ -2472,11 +2467,11 @@ The signal $y(t)=\cos(t^2)$ is a sinusoid with variable frequency, $y(t)=\cos(\o
 > $10$ rad/s
 
 > [!abstract] 知识点讲解
-> 见 [[信号与系统/Quiz对应知识点.md|Quiz对应知识点]] 9.5 瞬时频率 与 11.9 例 7（瞬时频率）。
+> 见 [[信号与系统/Quiz对应知识点.md|Quiz对应知识点]] 9.5 瞬时频率与 PM、FM 与 11.9 例 7。
 >
 > - **瞬时角频率定义**：$\omega_i(t)=\dfrac{d\theta(t)}{dt}$，其中 $\theta(t)$ 是**整个**瞬时相位。
-> - **相位与频率**：$\theta(t)=\displaystyle\int_{-\infty}^{t}\omega_i(\tau)d\tau$。
-> - **易错点**：写成 $\cos(\omega(t)t)$ 时不能用 $\omega(t)$ 当作瞬时频率，必须对相位求导。
+> - **常见误区**：不要把 $\cos(\omega(t)t)$ 里的 $\omega(t)$ 当成瞬时频率；要看相位表达式 $t^2$，再求导。
+> - **相位与频率的关系**：频率是相位的导数，相位是频率的积分。
 > - **本题**：$\theta(t)=t^2\Rightarrow\omega_i(t)=2t$。
 
 > [!example] 解答
@@ -2510,12 +2505,12 @@ By how many Hz is the instantaneous frequency shifted from the carrier during th
 > $318.3$ Hz
 
 > [!abstract] 知识点讲解
-> 见 [[信号与系统/Quiz对应知识点.md|Quiz对应知识点]] 9.6 PM 与 FM 与 11.9 例 8（PM 的频偏）。
+> 见 [[信号与系统/Quiz对应知识点.md|Quiz对应知识点]] 9.5 瞬时频率与 PM、FM（PM 部分）与 11.9 例 8。
 >
 > - **PM 信号**：$y(t)=\cos\left(\omega_ct+ku(t)\right)$。
-> - **瞬时频率**：$\omega_i=\dfrac{d}{dt}\left[\omega_ct+ku(t)\right]=\omega_c+k\dot u(t)$。
-> - **频偏**：$\Delta\omega=k\dot u$，只与消息**导数**有关，与 $u$ 本身无关。
-> - **单位换算**：$\Delta f=\dfrac{\Delta\omega}{2\pi}$。
+> - **PM 的瞬时频率**：$\omega_i=\dfrac{d}{dt}\left[\omega_ct+ku(t)\right]=\omega_c+k\dot u(t)$。
+> - **频偏只由导数决定**：斜坡 $u=At$ 的导数恒为 $A$，所以整段斜坡频率偏移恒定，与 $u$ 自己有多大无关。
+> - **角频率换算频率**：$\Delta f=\dfrac{\Delta\omega}{2\pi}$。
 
 > [!example] 解答
 > 斜坡导数：
@@ -2552,12 +2547,11 @@ Which description of the two signals for $t>0$ is correct?（下列对 $t>0$ 时
 > (c) FM 相位连续、频率为 $\omega_c+k$；PM 相位跳变、频率回到 $\omega_c$
 
 > [!abstract] 知识点讲解
-> 见 [[信号与系统/Quiz对应知识点.md|Quiz对应知识点]] 9.6 PM 与 FM 与 11.9 例 9（FM 与 PM 的区别）。
+> 见 [[信号与系统/Quiz对应知识点.md|Quiz对应知识点]] 9.5 瞬时频率与 PM、FM 与 11.9 例 9。
 >
-> - **FM 定义**：$y=\cos\left(\omega_ct+k\displaystyle\int_{-\infty}^{t}u(\tau)d\tau\right)$，相位对消息积分。
-> - **PM 定义**：$y=\cos\left(\omega_ct+ku(t)\right)$，相位直接随消息变化。
-> - **瞬时频率**：FM $\omega_i=\omega_c+ku(t)$；PM $\omega_i=\omega_c+k\dot u(t)$。
-> - **阶跃响应**：FM 的相位连续、频率跳变；PM 的相位跳变、频率在稳态恢复为 $\omega_c$。
+> - **FM 的相位是消息的积分**：$y=\cos\left(\omega_ct+k\displaystyle\int_{-\infty}^{t}u(\tau)d\tau\right)$，所以瞬时频率 $\omega_i=\omega_c+ku(t)$。
+> - **PM 的相位直接是消息**：$y=\cos\left(\omega_ct+ku(t)\right)$，所以瞬时频率 $\omega_i=\omega_c+k\dot u(t)$。
+> - **阶跃输入的两面**：FM 相位连续、频率跳到 $\omega_c+k$；PM 相位在 $t=0$ 跳 $k$，之后 $\dot u=0$，频率回到 $\omega_c$。
 
 > [!example] 解答
 > FM：$t>0$ 时
@@ -2591,12 +2585,12 @@ For small but nonzero $k$, the spectrum of $y(t)$ consists of（当 $k$ 很小�
 > (a) 载波谱线加与 AM 同带宽的边带
 
 > [!abstract] 知识点讲解
-> 见 [[信号与系统/Quiz对应知识点.md|Quiz对应知识点]] 9.7 窄带 FM 与宽带 FM 与 11.9 例 10（窄带 FM 的频谱）。
+> 见 [[信号与系统/Quiz对应知识点.md|Quiz对应知识点]] 9.6 窄带 FM 与宽带 FM 与 11.9 例 10。
 >
-> - **小调制指数展开**：$k$ 很小时 $\theta(t)=k\displaystyle\int u\ll1$，可用 $\cos(\omega_ct+\theta)\approx\cos\omega_ct-\theta\sin\omega_ct$。
-> - **AM 型边带**：第二项是 $\sin\omega_ct$ 被 $\theta(t)$ 调幅，频谱在 $\omega_c\pm W$ 内。
-> - **载波谱线**：第一项 $\cos\omega_ct$ 保留 $\pm\omega_c$ 处的谱线。
-> - **条件**：只有 $k$ 大到 $k\max|\int u|$ 不可忽略时，带宽才明显超过 $2W$（宽带 FM）。
+> - **窄带 FM 的条件**：调制指数 $\beta=\dfrac{\Delta f}{W}\ll1$，等价于 $k$ 很小、相位摆动 $k\displaystyle\int u$ 很小。
+> - **小角度展开**：$\cos(\omega_ct+\theta)\approx\cos\omega_ct-\theta\sin\omega_ct$。
+> - **频谱组成**：$\pm\omega_c$ 的载波谱线 + $\omega_c\pm W$ 内的一对边带，带宽 $2W$，与 AM 相同（边带相位不同）。
+> - **什么时候变宽**：只有 $\beta\gg1$ 时才用 Carson 公式 $B\approx2(\Delta f+W)$。
 
 > [!example] 解答
 > 记

@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "信号与系统/Quiz对应知识点.md",
+                "file": "信号与系统/傅里叶变换知识点.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Quiz对应知识点"
+              "title": "傅里叶变换知识点"
             }
           },
           {
@@ -48,9 +48,22 @@
               "icon": "lucide-file",
               "title": "Quiz3"
             }
+          },
+          {
+            "id": "d4a8d1ee284e79a9",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "信号与系统/Quiz对应知识点.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Quiz对应知识点"
+            }
           }
-        ],
-        "currentTab": 2
+        ]
       }
     ],
     "direction": "vertical"
@@ -189,7 +202,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "信号与系统/Quiz3.md",
+                "file": "信号与系统/傅里叶变换知识点.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
@@ -220,7 +233,7 @@
             }
           }
         ],
-        "currentTab": 5
+        "currentTab": 4
       }
     ],
     "direction": "horizontal",
@@ -239,10 +252,15 @@
       "bases:新建数据库": false
     }
   },
-  "active": "a7b07f636312de84",
+  "active": "de5eef75e474a7d7",
   "lastOpenFiles": [
-    "信号与系统/Quiz2.md",
     "信号与系统/Quiz对应知识点.md",
+    "信号与系统/傅里叶变换知识点.md",
+    "信号与系统/Quiz3.md",
+    "信号与系统/Quiz2.md",
+    "信号与系统/Quiz3.md.tmp.24012.fb21ad2a1208",
+    "信号与系统/Quiz3.md.tmp.24012.2bc70d2429b0",
+    "信号与系统/调制与解调.md.tmp.24012.7242b4aca075",
     "信号与系统/Quiz对应知识点.md.tmp.6904.1b8106d2dfa1",
     "信号与系统/Quiz对应知识点.md.tmp.6904.ce8c2d8d1872",
     "信号与系统/Quiz对应知识点.md.tmp.6904.aac097d52fd6",
@@ -250,11 +268,7 @@
     "信号与系统/Quiz对应知识点.md.tmp.9368.446016428786",
     "信号与系统/Quiz对应知识点.md.tmp.9368.549bbc98cad7",
     "信号与系统/Quiz对应知识点.md.tmp.9368.03efb484f55a",
-    "信号与系统/Quiz对应知识点.md.tmp.9368.5449096baf27",
-    "信号与系统/Quiz对应知识点.md.tmp.9368.0d721245fd32",
-    "信号与系统/Quiz对应知识点.md.tmp.9368.729e24f2f8f4",
     "信号与系统/附件/Pasted image 20261102124348.png",
-    "信号与系统/Quiz3.md",
     "Pasted image 20261031132109.png",
     "Quiz2.md",
     "信号与系统/附件/Pasted image 20261101091625.png"

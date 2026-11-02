@@ -3657,6 +3657,16 @@ $$y(t)=u(t)\cos\omega_ct.$$
 
 $$Y(j\omega)=\frac1{2\pi}\left[U(j\omega)*\pi\delta(\omega-\omega_c)+\pi\delta(\omega+\omega_c)\right],$$
 
+> **和冲激信号做卷积是什么：** 冲激在卷积里相当于「复制并平移」。一般地
+> $$f(t)*\delta(t-t_0)=f(t-t_0).$$
+> 频域里同理，把 $f$ 换成 $U$、$t$ 换成 $\omega$：
+> $$U(j\omega)*\delta(\omega-\omega_c)=U(j(\omega-\omega_c)),$$
+> 即把整个频谱 $U(j\omega)$ 原样搬到 $\omega_c$ 处。推导用冲激的筛选性质：
+> $$U(j\omega)*\delta(\omega-\omega_c)=\int_{-\infty}^{\infty}U(j\Omega)\,\delta\big((\omega-\Omega)-\omega_c\big)\,d\Omega=U(j(\omega-\omega_c)),$$
+> 相当于在「$\omega-\Omega=\omega_c$」即 $\Omega=\omega-\omega_c$ 处取值。所以
+> $$Y(j\omega)=\frac1{2\pi}\Big[\pi U(j(\omega-\omega_c))+\pi U(j(\omega+\omega_c))\Big],$$
+> 系数 $\pi$ 与 $\dfrac{1}{2\pi}$ 相消后得 $\dfrac12$。
+
 即
 
 $$Y(j\omega)=\frac12\left[U(j(\omega-\omega_c))+U(j(\omega+\omega_c))\right].$$

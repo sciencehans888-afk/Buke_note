@@ -152,7 +152,7 @@ $$
 > (c) $\dfrac12\left(\dfrac{s}{s^2+16}+\dfrac{s}{s^2+4}\right)$
 
 > [!abstract] 知识点讲解
-> 见 [[信号与系统/Quiz对应知识点.md|Quiz对应知识点]] 7.2 常用变换对（乘 t 与调制型乘积）。
+> 见 [[信号与系统/Quiz对应知识点.md|Quiz对应知识点]] 7.2 常用变换对（乘积信号的变换）。
 >
 > - **积化和差**：$\cos A\cos B=\dfrac12\left[\cos(A+B)+\cos(A-B)\right]$，两项之间是**加号**。
 > - **余弦变换对**：$\mathcal L\{\cos\omega_0t\,H(t)\}=\dfrac{s}{s^2+\omega_0^2}$，$\operatorname{Re}s>0$。

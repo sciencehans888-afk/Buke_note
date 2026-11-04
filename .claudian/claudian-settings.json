@@ -101,7 +101,8 @@
         }
       ],
       "installationMethodsByHost": {
-        "device-b06c993f4a40a1f660b595ee461c17854c9926bfa67c028ba799b6d090355d56": "native-windows"
+        "device-b06c993f4a40a1f660b595ee461c17854c9926bfa67c028ba799b6d090355d56": "native-windows",
+        "device-ac4915ca45d65068efb1f114674f86091dbe0f22891f1db2c0b6fcd8b810dfa0": "native-windows"
       },
       "wslDistroOverridesByHost": {}
     },
@@ -136,13 +137,15 @@
       "preferredReasoningByModel": {},
       "selectedModels": [],
       "installationMethodsByHost": {
-        "device-b06c993f4a40a1f660b595ee461c17854c9926bfa67c028ba799b6d090355d56": "native-windows"
+        "device-b06c993f4a40a1f660b595ee461c17854c9926bfa67c028ba799b6d090355d56": "native-windows",
+        "device-ac4915ca45d65068efb1f114674f86091dbe0f22891f1db2c0b6fcd8b810dfa0": "native-windows"
       },
       "wslDistroOverridesByHost": {}
     },
     "grok": {
       "installationMethodsByHost": {
-        "device-b06c993f4a40a1f660b595ee461c17854c9926bfa67c028ba799b6d090355d56": "native-windows"
+        "device-b06c993f4a40a1f660b595ee461c17854c9926bfa67c028ba799b6d090355d56": "native-windows",
+        "device-ac4915ca45d65068efb1f114674f86091dbe0f22891f1db2c0b6fcd8b810dfa0": "native-windows"
       },
       "wslDistroOverridesByHost": {},
       "sessionEnvironmentHash": "",
@@ -168,13 +171,15 @@
       "visibleModels": [],
       "selectedModels": [],
       "installationMethodsByHost": {
-        "device-b06c993f4a40a1f660b595ee461c17854c9926bfa67c028ba799b6d090355d56": "native-windows"
+        "device-b06c993f4a40a1f660b595ee461c17854c9926bfa67c028ba799b6d090355d56": "native-windows",
+        "device-ac4915ca45d65068efb1f114674f86091dbe0f22891f1db2c0b6fcd8b810dfa0": "native-windows"
       },
       "wslDistroOverridesByHost": {}
     },
     "pi": {
       "installationMethodsByHost": {
-        "device-b06c993f4a40a1f660b595ee461c17854c9926bfa67c028ba799b6d090355d56": "native-windows"
+        "device-b06c993f4a40a1f660b595ee461c17854c9926bfa67c028ba799b6d090355d56": "native-windows",
+        "device-ac4915ca45d65068efb1f114674f86091dbe0f22891f1db2c0b6fcd8b810dfa0": "native-windows"
       },
       "wslDistroOverridesByHost": {},
       "cliPath": "",

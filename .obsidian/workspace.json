@@ -55,12 +55,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "信号与系统/Quiz对应知识点.md",
+                "file": "电路/第1章 绪论.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Quiz对应知识点"
+              "title": "第1章 绪论"
             }
           },
           {
@@ -140,7 +140,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200
+    "width": 200,
+    "collapsed": true
   },
   "right": {
     "id": "cb69e1b565ff8054",
@@ -237,9 +238,7 @@
                   "openTabs": [
                     {
                       "tabId": "tab-1793798920871-l84ij9z",
-                      "conversationId": null,
-                      "draftModel": "haiku",
-                      "providerId": "claude"
+                      "conversationId": "conv-1793840160879-7ale5qe8m"
                     }
                   ],
                   "activeTabId": "tab-1793798920871-l84ij9z"
@@ -254,7 +253,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 457.5
+    "width": 200,
+    "collapsed": true
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -269,22 +269,32 @@
       "realclaudian:Open Claudian": false
     }
   },
-  "active": "a7b07f636312de84",
+  "active": "d4a8d1ee284e79a9",
   "lastOpenFiles": [
+    "电路/附件/Pasted image 20261105101149.png",
+    "电路/附件/Pasted image 20261105101136.png",
+    "电路/附件/Pasted image 20261105101115.png",
+    "电路/附件/Pasted image 20261105101102.png",
+    "电路/附件/Pasted image 20261105101053.png",
+    "电路/附件/Pasted image 20261105101043.png",
+    "电路/附件/Pasted image 20261105101035.png",
+    "电路/附件/Pasted image 20261105101021.png",
+    "电路/附件/Pasted image 20261105101006.png",
+    "电路/附件/Pasted image 20261105100953.png",
+    "电路/附件/Pasted image 20261105100931.png",
+    "电路/附件",
+    "电路/目录.md",
+    "电路/第1章 绪论.md",
+    "信号与系统/Quiz对应知识点.md",
     "信号与系统/Quiz对应知识点.md.tmp.28628.ed4ac022d456",
     "信号与系统/Quiz对应知识点.md.tmp.28628.d7fcd7810393",
     "信号与系统/Quiz对应知识点.md.tmp.28628.0edd4620b256",
-    "电路/电路原理_18-43.md",
-    "信号与系统/Quiz对应知识点.md",
-    "电路/电路原理_13-17.md",
     "信号与系统/教材/formula-sheet-quiz3.pdf",
     "信号与系统/Quiz对应知识点.md.tmp.30968.24a02b2d32e8",
     "信号与系统/Quiz对应知识点.md.tmp.30968.bc6ae5d30fa2",
     "信号与系统/Quiz对应知识点.md.tmp.30968.152665093f59",
     "信号与系统/Quiz对应知识点.md.tmp.30968.4f81a613803a",
     "信号与系统/Quiz对应知识点.md.tmp.30968.da2b884d419a",
-    "信号与系统/Quiz对应知识点.md.tmp.30968.2c6be7a84080",
-    "信号与系统/Quiz对应知识点.md.tmp.30968.f046c88a2e87",
     "电路/教材/电路原理-逐章节拆分/电路原理 (于歆杰, 朱桂萍, 陆文娟) (z-library.sk, 1lib.sk, z-lib.sk)/电路原理_377-425.md",
     "电路/教材/电路原理-逐章节拆分/电路原理 (于歆杰, 朱桂萍, 陆文娟) (z-library.sk, 1lib.sk, z-lib.sk)/电路原理_285-376.md",
     "电路/教材/电路原理-逐章节拆分/电路原理 (于歆杰, 朱桂萍, 陆文娟) (z-library.sk, 1lib.sk, z-lib.sk)/电路原理_204-284.md",
@@ -296,9 +306,6 @@
     "信号与系统/傅里叶变换知识点.md",
     "信号与系统/Quiz3.md",
     "信号与系统/Quiz2.md",
-    "信号与系统/附件/Pasted image 20261102124348.png",
-    "Pasted image 20261031132109.png",
-    "Quiz2.md",
-    "信号与系统/附件/Pasted image 20261101091625.png"
+    "Quiz2.md"
   ]
 }

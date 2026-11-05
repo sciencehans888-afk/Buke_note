@@ -28,6 +28,7 @@
       "discoveredOutputStyles": [
         "default",
         "Proactive",
+        "Concise",
         "Explanatory",
         "Learning"
       ],
@@ -49,8 +50,9 @@
       "selectedModels": [
         {
           "value": "opus",
-          "label": "deepseek-v4-pro",
-          "description": "Custom Opus model",
+          "label": "deepseek-flash",
+          "description": "Custom Opus model (1M context)",
+          "resolvedModel": "deepseek-flash[1M]",
           "reasoningMetadataResolved": true,
           "supportedEffortLevels": [
             "low",
@@ -62,8 +64,9 @@
         },
         {
           "value": "fable",
-          "label": "deepseek-v4-pro",
+          "label": "deepseek-flash",
           "description": "Custom Fable model",
+          "resolvedModel": "deepseek-flash[1M]",
           "reasoningMetadataResolved": true,
           "supportedEffortLevels": [
             "low",
@@ -76,7 +79,8 @@
         {
           "value": "sonnet",
           "label": "deepseek-flash",
-          "description": "Custom Sonnet model",
+          "description": "Custom Sonnet model (1M context)",
+          "resolvedModel": "deepseek-flash[1M]",
           "reasoningMetadataResolved": true,
           "supportedEffortLevels": [
             "low",
@@ -90,6 +94,7 @@
           "value": "haiku",
           "label": "deepseek-flash",
           "description": "Custom Haiku model",
+          "resolvedModel": "deepseek-flash[1M]",
           "reasoningMetadataResolved": true,
           "supportedEffortLevels": [
             "low",

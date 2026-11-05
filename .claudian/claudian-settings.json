@@ -48,9 +48,9 @@
       "sessionEnvironmentHash": "",
       "selectedModels": [
         {
-          "value": "opus",
+          "value": "fable",
           "label": "deepseek-v4-pro",
-          "description": "Custom Opus model",
+          "description": "Custom Fable model",
           "reasoningMetadataResolved": true,
           "supportedEffortLevels": [
             "low",
@@ -61,9 +61,9 @@
           ]
         },
         {
-          "value": "fable",
+          "value": "opus",
           "label": "deepseek-v4-pro",
-          "description": "Custom Fable model",
+          "description": "Custom Opus model",
           "reasoningMetadataResolved": true,
           "supportedEffortLevels": [
             "low",

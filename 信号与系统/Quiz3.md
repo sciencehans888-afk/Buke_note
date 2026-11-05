@@ -83,12 +83,20 @@ What is its region of convergence?（求其收敛域。）
 >
 > - **指数信号变换对**：$\mathcal L\{e^{s_0t}H(t)\}=\dfrac{1}{s-s_0}$，ROC 为 $\operatorname{Re}s>\operatorname{Re}s_0$。
 > - **绝对收敛条件**：$U(s)$ 存在要求 $\displaystyle\int_0^\infty\left|e^{s_0t}e^{-\sigma t}\right|dt=\int_0^\infty e^{(\operatorname{Re}s_0-\sigma)t}dt<\infty$。
-> - **虚部不影响 ROC**：$e^{j\operatorname{Im}(s_0)t}$ 的模恒为 $1$，只使信号旋转；ROC 边界是竖直线 $\sigma=\operatorname{Re}s_0$，不是圆。
+> - **虚部不影响 ROC**：$e^{j\operatorname{Im}(s_0)t}$ 的模恒为 $1$，只改变相位、不改变大小；ROC 边界是竖直线 $\sigma=\operatorname{Re}s_0$，不是圆。
 
 > [!example] 解答
-> 这里 $s_0=-2+5j$。取 $s=\sigma+j\omega$：
-> $$\left|u(t)e^{-st}\right|=\left|e^{(-2+5j-\sigma-j\omega)t}\right|
-> =e^{(-2-\sigma)t}.$$
+> 这里 $s_0=-2+5j$。取 $s=\sigma+j\omega$，先合并指数：
+> $$u(t)e^{-st}=e^{(-2+5j)t}e^{-(\sigma+j\omega)t}
+> =e^{[(-2-\sigma)+j(5-\omega)]t}.$$
+> 取模时把实部和虚部分开：
+> $$\begin{aligned}
+> \left|u(t)e^{-st}\right|
+> &=\left|e^{(-2-\sigma)t}\right|\cdot\left|e^{j(5-\omega)t}\right|\\
+> &=e^{(-2-\sigma)t}\cdot1\\
+> &=e^{(-2-\sigma)t}.
+> \end{aligned}$$
+> 
 > 上式在 $t\to\infty$ 时衰减，当且仅当
 > $$-2-\sigma<0\quad\Longrightarrow\quad\sigma>-2.$$
 > 所以
@@ -199,15 +207,40 @@ What is its impulse response $h(t)$?（求其冲激响应 $h(t)$。）
 > - **静态系统**：$y=h*u=K\delta*u=Ku$，纯增益系统同样有冲激响应。
 
 > [!example] 解答
-> 由
-> $$\delta(t)\longleftrightarrow 1$$
-> 和线性性，
-> $$5\longleftrightarrow 5\delta(t).$$
+> **已知。** 传递函数为常数
+> $$G(s)=5\qquad\text{（与 }s\text{ 无关）}.$$
+>
+> **求。** 冲激响应 $h(t)$，即满足 $G(s)=\mathcal L\{h\}(s)$ 的 $h(t)$。
+>
+> **解法一：用变换对直接反变换。**
+> 拉普拉斯变换的冲激变换对为
+> $$\mathcal L\{\delta(t)\}=\int_{0^-}^{\infty}\delta(t)e^{-st}dt=e^{-s\cdot0}=1,\qquad\text{ROC 为整个 }s\text{ 平面}.$$
+> 由线性性，$K\delta(t)\leftrightarrow K\cdot1=K$。取 $K=5$：
+> $$5\delta(t)\longleftrightarrow 5.$$
 > 因此
-> $$h(t)=5\delta(t).$$
-> 校验：输入 $u(t)$ 时，
-> $$y(t)=h(t)*u(t)=5\delta(t)*u(t)=5u(t),$$
-> 正是纯增益系统。选 (d)。
+> $$h(t)=\mathcal L^{-1}\{5\}=5\delta(t).$$
+>
+> **解法二：从 $h(t)$ 与 $G(s)$ 的定义核对。**
+> 冲激响应定义为输入 $u(t)=\delta(t)$ 时的零状态输出。对 $G(s)=5$，输出变换为
+> $$Y(s)=G(s)U(s)=5\cdot1=5.$$
+> 反变换得
+> $$y(t)=5\delta(t),$$
+> 所以 $h(t)=5\delta(t)$。
+>
+> **校验：用卷积验证它确实是该系统。** 对任意输入 $u(t)$，
+> $$\begin{aligned}
+> y(t)&=h(t)*u(t)\\
+> &=\int_{-\infty}^{\infty}5\delta(\tau)u(t-\tau)d\tau\\
+> &=5u(t)\quad(\text{筛选性质：}\delta(\tau)\text{ 只在 }\tau=0\text{ 取值}).
+> \end{aligned}$$
+> 即输出等于输入的 $5$ 倍，与 $Y(s)=5U(s)$ 一致，说明 $h(t)=5\delta(t)$ 正确。
+>
+> **为什么其他选项不对。**
+> - (a) $5H(t)$ 的变换是 $5/s$，对应 $G(s)=5/s$（一个积分器），不是 $G(s)=5$。
+> - (b) 纯增益系统虽然不含储能元件，但仍是有定义的 LTI 系统，输入冲激时同样有输出 $5\delta(t)$。
+> - (c) $h(t)$ 是冲激响应的波形，由变换对得到的是 $5\delta(t)$，而不是对所有 $t$ 恒为 $5$；后者在变换域里对应的是别的东西。
+>
+> 选 (d)。
 
 ---
 
@@ -284,13 +317,13 @@ $$
 > - **注意**：延迟必须让指数与阶跃**一起**平移，只移动其中一个会多出常数因子。
 
 > [!example] 解答
-> 已知
+> 已知变换对
 > $$\frac{1}{s+1}\longleftrightarrow e^{-t}H(t).$$
-> 由时移性质，
+> 由时移性质 $u(t-3)H(t-3)\leftrightarrow e^{-3s}U(s)$，得
 > $$\frac{e^{-3s}}{s+1}\longleftrightarrow e^{-(t-3)}H(t-3).$$
 > 检查其他选项：
 > - (a) $e^{-(t+3)}H(t)=e^{-3}e^{-t}H(t)$，变换为 $\dfrac{e^{-3}}{s+1}$。
-> - (c) $e^{-t}H(t-3)=e^{-3}e^{-(t-3)}H(t-3)$，多出常数 $e^{-3}$。
+> - (c) $e^{-t}H(t-3)=e^{-3}e^{-(t-3)}H(t-3)$，变换为 $\dfrac{e^{-3}e^{-3s}}{s+1}$，多出常数 $e^{-3}$。
 > - (d) $e^{-(t-3)}H(t)=e^{3}e^{-t}H(t)$，变换为 $\dfrac{e^{3}}{s+1}$。
 >
 > 选 (b)。
@@ -318,22 +351,35 @@ What is its impulse response $h(t)$?（求其冲激响应 $h(t)$。）
 > [!abstract] 知识点讲解
 > 见 [[信号与系统/Quiz对应知识点.md|Quiz对应知识点]] 8.1 冲激响应与阶跃响应。
 >
-> - **阶跃响应与冲激响应**：$y_{\text{step}}=h*H(t)$，所以 $Y_{\text{step}}(s)=\dfrac{G(s)}{s}$，$G(s)=sY_{\text{step}}(s)$。
-> - **时域关系**：$h(t)=\dfrac{d}{dt}y_{\text{step}}(t)$（阶跃响应连续时可逐项求导）。
-> - **无冲激条件**：若 $y_{\text{step}}(0^+)=0$，则求导不产生 $\delta(t)$；本题 $1-1=0$，满足。
+> - **为什么能求导得到**：冲激是阶跃的导数（广义函数意义下 $\delta(t)=\dfrac{d}{dt}H(t)$）。
+> - **推导**：阶跃响应记为 $s(t)=h(t)*H(t)$。两边对 $t$ 求导，并利用「卷积与求导可交换」：
+>   $$s'(t)=h(t)*H'(t)=h(t)*\delta(t)=h(t).$$
+>   所以 $h(t)=\dfrac{d}{dt}s(t)$。
+> - **求导时的注意点**：$s(t)=f(t)H(t)$ 求导要用乘积法则
+>   $$s'(t)=f'(t)H(t)+f(t)\delta(t).$$
+>   若 $f(0)\ne0$，会额外产生 $f(0)\delta(t)$；本题 $f(0)=e^0-e^0=0$，冲激项消失。
+> - **s 域同一条关系**：$Y_{\text{step}}(s)=\dfrac{G(s)}{s}$，即 $G(s)=sY_{\text{step}}(s)$。
 
 > [!example] 解答
-> 对 $t>0$ 求导：
-> $$h(t)=\frac{d}{dt}\left(e^{-t}-e^{-2t}\right)H(t)
-> =\left(-e^{-t}+2e^{-2t}\right)H(t).$$
-> 因为 $y_{\text{step}}(0^+)=1-1=0$，阶跃响应连续，所以没有额外的冲激项。整理得
-> $$h(t)=\left(2e^{-2t}-e^{-t}\right)H(t).$$
-> 也可用变换校验：
+> 阶跃响应为
+> $$y_{\text{step}}(t)=\left(e^{-t}-e^{-2t}\right)H(t).$$
+> 按乘积法则求导，令 $f(t)=e^{-t}-e^{-2t}$：
+> $$\begin{aligned}
+> h(t)=\frac{d}{dt}\left[f(t)H(t)\right]
+> &=f'(t)H(t)+f(t)\delta(t)\\
+> &=\left(-e^{-t}+2e^{-2t}\right)H(t)+\underbrace{(1-1)}_{f(0)}\,\delta(t)\\
+> &=\left(2e^{-2t}-e^{-t}\right)H(t).
+> \end{aligned}$$
+> 因为 $f(0)=1-1=0$，冲激项为零，所以阶跃响应是连续的、没有跳变。
+>
+> 用变换校验：
 > $$Y_{\text{step}}(s)=\frac{1}{s+1}-\frac{1}{s+2}
 > =\frac{1}{(s+1)(s+2)},$$
 > $$G(s)=sY_{\text{step}}(s)=\frac{s}{(s+1)(s+2)}
-> =\frac{2}{s+2}-\frac{1}{s+1}.$$
-> 反变换与上面一致。选 (b)。
+> =\frac{2}{s+2}-\frac{1}{s+1},$$
+> 反变换得
+> $$h(t)=\left(2e^{-2t}-e^{-t}\right)H(t),$$
+> 与求导结果一致。选 (b)。
 
 ---
 

@@ -78,7 +78,7 @@
             }
           }
         ],
-        "currentTab": 3
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -217,7 +217,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "信号与系统/Quiz对应知识点.md",
+                "file": "信号与系统/Quiz3.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
@@ -273,11 +273,13 @@
   },
   "active": "a7b07f636312de84",
   "lastOpenFiles": [
+    "信号与系统/Quiz3.md.tmp.10680.f20675f938f5",
+    "信号与系统/Quiz对应知识点.md",
+    "信号与系统/Quiz3.md",
     "信号与系统/Quiz对应知识点.md.tmp.28628.ed4ac022d456",
     "信号与系统/Quiz对应知识点.md.tmp.28628.d7fcd7810393",
     "信号与系统/Quiz对应知识点.md.tmp.28628.0edd4620b256",
     "电路/电路原理_18-43.md",
-    "信号与系统/Quiz对应知识点.md",
     "电路/电路原理_13-17.md",
     "信号与系统/教材/formula-sheet-quiz3.pdf",
     "信号与系统/Quiz对应知识点.md.tmp.30968.24a02b2d32e8",
@@ -286,7 +288,6 @@
     "信号与系统/Quiz对应知识点.md.tmp.30968.4f81a613803a",
     "信号与系统/Quiz对应知识点.md.tmp.30968.da2b884d419a",
     "信号与系统/Quiz对应知识点.md.tmp.30968.2c6be7a84080",
-    "信号与系统/Quiz对应知识点.md.tmp.30968.f046c88a2e87",
     "电路/教材/电路原理-逐章节拆分/电路原理 (于歆杰, 朱桂萍, 陆文娟) (z-library.sk, 1lib.sk, z-lib.sk)/电路原理_377-425.md",
     "电路/教材/电路原理-逐章节拆分/电路原理 (于歆杰, 朱桂萍, 陆文娟) (z-library.sk, 1lib.sk, z-lib.sk)/电路原理_285-376.md",
     "电路/教材/电路原理-逐章节拆分/电路原理 (于歆杰, 朱桂萍, 陆文娟) (z-library.sk, 1lib.sk, z-lib.sk)/电路原理_204-284.md",
@@ -296,7 +297,6 @@
     "电路/教材/电路原理-逐章节拆分/电路原理 (于歆杰, 朱桂萍, 陆文娟) (z-library.sk, 1lib.sk, z-lib.sk)/电路原理_18-43.md",
     "电路/教材/电路原理-逐章节拆分/电路原理 (于歆杰, 朱桂萍, 陆文娟) (z-library.sk, 1lib.sk, z-lib.sk)/电路原理_13-17.md",
     "信号与系统/傅里叶变换知识点.md",
-    "信号与系统/Quiz3.md",
     "信号与系统/Quiz2.md",
     "信号与系统/附件/Pasted image 20261102124348.png",
     "Pasted image 20261031132109.png",

@@ -3291,7 +3291,7 @@ $\zeta<1/\sqrt2$ 时 $x>1$，截止频率高于 $\omega_n$，同时存在共振�
 > $$y\!\left(\frac\pi4+k\pi\right)=\frac14\left(\frac\pi4+k\pi\right)\to\infty\qquad(k\to\infty).$$
 >
 > 输出无界，即 $\sup_{t\ge0}|y(t)|=\infty$。定义要求任意有界输入都产生有界输出，这里找到了一个反例，所以系统不 BIBO 稳定。
->
+>![](Pasted%20image%2020261105200515.png)
 > **例 2**　判断积分器 $G(s)=\dfrac{1}{s}$ 是否临界稳定，并判断是否 BIBO 稳定。已知 $h(t)=H(t)$。
 >
 > 先按临界稳定定义判断。取 $M=1$，则对所有 $t\ge0$
@@ -3328,6 +3328,21 @@ $$\sup\left\{1-\frac1n:n=1,2,\dots\right\}=1,$$
 
 > **BIBO 稳定可以逐字读作**：输入峰值有限（$\sup|u|<\infty$），则输出峰值也有限（$\sup|y|<\infty$）。
 
+> [!definition] 连续时间 LTI 系统
+> **线性**：对任意输入 $u_1,u_2$ 和常数 $a,b$，系统 $T$ 满足
+>
+> $$T\{au_1+bu_2\}=aT\{u_1\}+bT\{u_2\}.$$
+>
+> **时不变**：输入延迟 $t_0$，输出也只延迟同样的 $t_0$，
+>
+> $$T\{u(t-t_0)\}=y(t-t_0).$$
+>
+> 输入输出都是连续时间信号 $u(t)$、$y(t)$（$t\in\mathbb R$），且同时满足这两条的系统，称为**连续时间线性时不变系统**（continuous-time linear time-invariant system，简称连续时间 LTI 系统）。
+>
+> 这样的系统完全由冲激响应 $h(t)$ 描述：输出等于输入与冲激响应的卷积
+>
+> $$y(t)=u(t)*h(t)=\int_{-\infty}^{\infty}h(\tau)u(t-\tau)d\tau.$$
+
 连续时间 LTI 系统 BIBO 稳定的充要条件是冲激响应绝对可积：
 
 > 下面证明：必要性取 $u(t)=\operatorname{sgn}(h(-t))$，充分性用 $|y(t)|\le M_u\int|h|$。
@@ -3343,7 +3358,9 @@ $$|y(t)|=\left|\int_{-\infty}^{\infty}h(\tau)u(t-\tau)d\tau\right|
 
 输出有界。
 
-对有理因果系统，冲激响应绝对可积等价于传递函数的所有极点严格位于左半平面。因果系统在虚轴上有单极点时，冲激响应含等幅振荡或常数项，不绝对可积，因此不 BIBO 稳定。
+对有理因果系统，冲激响应绝对可积等价于传递函数的所有极点严格位于左半平面。
+
+因果系统在虚轴上有单极点时，冲激响应含等幅振荡或常数项，不绝对可积，因此不 BIBO 稳定。
 
 > [!example] BIBO 稳定：例题
 > **例 1**　判断 $G(s)=\dfrac{2}{s+2}$ 是否 BIBO 稳定。已知 $h(t)=2e^{-2t}H(t)$。

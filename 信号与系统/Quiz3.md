@@ -1068,16 +1068,67 @@ with zero initial conditions, which bounded input produces an unbounded output?�
 > - **有界输入**：$|G(j\omega)|$ 有界不等于 BIBO 稳定；$\cos3t$ 与系统自然频率相同才共振。
 
 > [!example] 解答
-> 输入 $\cos3tH(t)$ 的变换为
-> $$U(s)=\frac{s}{s^2+9}.$$
-> 输出：
-> $$Y(s)=\frac{1}{s^2+9}\cdot\frac{s}{s^2+9}
-> =\frac{s}{(s^2+9)^2}.$$
-> 查表（或由 $t\sin\omega_0t$ 的变换）：
-> $$y(t)=\frac{t}{6}\sin3t\,H(t),$$
+> 系统 $G(s)=\dfrac{1}{s^2+9}$ 的极点在虚轴上 $s=\pm j3$，冲激响应为
+>
+> $$h(t)=\frac13\sin(3t)\,H(t).$$
+>
+> 逐个选项把 $Y(s)=G(s)U(s)$ 展开成部分分式，再反变换。
+>
+> **(a) $u(t)=\cos(3t)H(t)$**
+>
+> $$U(s)=\frac{s}{s^2+9},$$
+>
+> $$Y(s)=\frac{1}{s^2+9}\cdot\frac{s}{s^2+9}=\frac{s}{(s^2+9)^2}.$$
+>
+> 输入极点与系统极点完全重合，分母出现二重极点。由
+>
+> $$\mathcal L\{t\sin\omega_0t\}=\frac{2\omega_0s}{(s^2+\omega_0^2)^2},$$
+>
+> 取 $\omega_0=3$ 得
+>
+> $$y(t)=\frac{t}{6}\sin(3t)\,H(t).$$
+>
 > 幅度随 $t$ 线性增长，无界。
 >
-> 其余输入：$H(t)$ 给出 $y=\frac19\left(1-\cos3t\right)$；$\cos9t$ 与系统极点不重合，响应有界；$e^{-3t}H(t)$ 的极点在 $-3$，响应衰减。选 (a)。
+> **(b) $u(t)=H(t)$**
+>
+> $$U(s)=\frac1s,$$
+>
+> $$Y(s)=\frac{1}{s(s^2+9)}=\frac19\left(\frac1s-\frac{s}{s^2+9}\right).$$
+>
+> 反变换：
+>
+> $$y(t)=\frac19\left(1-\cos(3t)\right)H(t).$$
+>
+> $0\le y(t)\le\dfrac29$，有界。输入极点 $s=0$ 与系统极点 $\pm j3$ 不重合，没有二重极点。
+>
+> **(c) $u(t)=\cos(9t)H(t)$**
+>
+> $$U(s)=\frac{s}{s^2+81},$$
+>
+> $$Y(s)=\frac{s}{(s^2+9)(s^2+81)}
+> =\frac{1}{72}\left(\frac{s}{s^2+9}-\frac{s}{s^2+81}\right).$$
+>
+> 反变换：
+>
+> $$y(t)=\frac{1}{72}\left(\cos(3t)-\cos(9t)\right)H(t).$$
+>
+> $|y(t)|\le\dfrac{1}{36}$，有界。输入频率 $9$ 与系统自然频率 $3$ 不同，不发生共振。
+>
+> **(d) $u(t)=e^{-3t}H(t)$**
+>
+> $$U(s)=\frac{1}{s+3},$$
+>
+> $$Y(s)=\frac{1}{(s+3)(s^2+9)}
+> =\frac{1}{18}\left(\frac{1}{s+3}-\frac{s}{s^2+9}+\frac{3}{s^2+9}\right).$$
+>
+> 反变换：
+>
+> $$y(t)=\frac{1}{18}\left(e^{-3t}-\cos(3t)+\sin(3t)\right)H(t).$$
+>
+> $|y(t)|\le\dfrac{1}{18}(1+1+1)=\dfrac16$，有界。输入极点在 $s=-3$，远离虚轴。
+>
+> **归纳**：只有 (a) 让输入的极点与系统极点 $\pm j3$ 重合，$Y(s)$ 出现 $(s^2+9)^2$ 的二重极点，时域多出因子 $t$，所以输出无界。其余三种输入的极点都不与 $\pm j3$ 重合，系统的虚轴单极点只产生有界的等幅振荡。选 (a)。
 
 ---
 

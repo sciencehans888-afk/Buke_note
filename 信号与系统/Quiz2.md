@@ -3237,7 +3237,6 @@ Classify the system.（对该系统进行稳定性分类。）
 >
 > 判为不稳定，选 (b)。
 
-
 ---
 
 ## 79. Question 79（第 79 题）｜PDF p. 24 ^q79

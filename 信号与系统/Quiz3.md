@@ -14,11 +14,9 @@ The correct option is marked ✓.（正确选项标有 ✓。）
 
 ## 1. The Laplace transform (week 8)（拉普拉斯变换，第 8 周）
 
-Laplace transform: definition, ROC and table pairs（拉普拉斯变换：定义、收敛域与常用变换对）
+### Laplace transform: definition, ROC and table pairs（拉普拉斯变换：定义、收敛域与常用变换对）
 
----
-
-### 1. Question 1（第 1 题）^q1
+#### 1. Question 1（第 1 题）^q1
 
 The signal（已知信号）
 
@@ -56,7 +54,7 @@ What is the region of convergence of its Laplace transform?（求其拉普拉斯
 
 ---
 
-### 2. Question 2（第 2 题）^q2
+#### 2. Question 2（第 2 题）^q2
 
 The signal（已知信号）
 
@@ -107,7 +105,7 @@ What is its region of convergence?（求其收敛域。）
 
 ---
 
-### 3. Question 3（第 3 题）^q3
+#### 3. Question 3（第 3 题）^q3
 
 The centered pulse $p_2(t)$ is delayed by $3$ s, giving（中心在原点的宽 $2$ 脉冲 $p_2(t)$ 延迟 $3$ s，得到）
 
@@ -145,7 +143,7 @@ What is $U(s)$?（求 $U(s)$。）
 
 ---
 
-### 4. Question 4（第 4 题）^q4
+#### 4. Question 4（第 4 题）^q4
 
 What is the Laplace transform of（求下列信号的拉普拉斯变换）
 
@@ -182,7 +180,7 @@ $$
 
 ---
 
-### 5. Question 5（第 5 题）^q5
+#### 5. Question 5（第 5 题）^q5
 
 A system has transfer function（某系统的传递函数为）
 
@@ -246,7 +244,7 @@ What is its impulse response $h(t)$?（求其冲激响应 $h(t)$。）
 
 ---
 
-### 6. Question 6（第 6 题）^q6
+#### 6. Question 6（第 6 题）^q6
 
 Write（写出）
 
@@ -292,9 +290,9 @@ The result is（结果为）
 
 ---
 
-### 7. Question 7（第 7 题）^q7
+### Laplace transform properties（拉普拉斯变换的性质）
 
-Laplace transform properties（拉普拉斯变换的性质）
+#### 7. Question 7（第 7 题）^q7
 
 Which signal has Laplace transform（哪个信号的拉普拉斯变换为）
 
@@ -332,7 +330,7 @@ $$
 
 ---
 
-### 8. Question 8（第 8 题）^q8
+#### 8. Question 8（第 8 题）^q8
 
 An LTI system, initially at rest, has step response（某 LTI 系统零初始状态下的阶跃响应为）
 
@@ -385,7 +383,7 @@ What is its impulse response $h(t)$?（求其冲激响应 $h(t)$。）
 
 ---
 
-### 9. Question 9（第 9 题）^q9
+#### 9. Question 9（第 9 题）^q9
 
 Let（令）
 
@@ -420,7 +418,7 @@ Use the Laplace transform to find $y(1)$.（用拉普拉斯变换求 $y(1)$。�
 
 ---
 
-### 10. Question 10（第 10 题）^q10
+#### 10. Question 10（第 10 题）^q10
 
 What is the Laplace transform of（求下列信号的拉普拉斯变换）
 
@@ -457,7 +455,7 @@ $$
 
 ---
 
-### 11. Question 11（第 11 题）^q11
+#### 11. Question 11（第 11 题）^q11
 
 What is the Laplace transform of（求下列信号的拉普拉斯变换）
 
@@ -494,7 +492,7 @@ $$
 
 ---
 
-### 12. Question 12（第 12 题）^q12
+#### 12. Question 12（第 12 题）^q12
 
 A signal $q(t)$, zero for $t<0$, has（某信号 $q(t)$ 在 $t<0$ 时为零，其拉普拉斯变换为）
 
@@ -530,7 +528,7 @@ Find $q(3)$.（求 $q(3)$。）
 
 ---
 
-### 13. Question 13（第 13 题）^q13
+#### 13. Question 13（第 13 题）^q13
 
 A system has transfer function（某系统的传递函数为）
 
@@ -566,9 +564,9 @@ Its input is $u(t)=H(t)$. Using the integral property, find the output $y(t)$ at
 
 ---
 
-### 14. Question 14（第 14 题）^q14
+### Solving differential equations with initial conditions（带初始条件的微分方程求解）
 
-Solving differential equations with initial conditions（带初始条件的微分方程求解）
+#### 14. Question 14（第 14 题）^q14
 
 $y(t)$ satisfies（$y(t)$ 满足）
 
@@ -612,7 +610,7 @@ What is $Y(s)$?（求 $Y(s)$。）
 
 ---
 
-### 15. Question 15（第 15 题）^q15
+#### 15. Question 15（第 15 题）^q15
 
 Solve（求解）
 
@@ -655,7 +653,7 @@ Give $y(1)$.（求 $y(1)$。）
 
 ---
 
-### 16. Question 16（第 16 题）^q16
+#### 16. Question 16（第 16 题）^q16
 
 Solve（求解）
 
@@ -705,7 +703,7 @@ $$
 
 ---
 
-### 17. Question 17（第 17 题）^q17
+#### 17. Question 17（第 17 题）^q17
 
 A current source $u(t)=tH(t)$ A drives a capacitor $C=0.25$ F in parallel with an inductor $L=1$ H. Both start with zero energy. Find the maximum value of the voltage $y(t)$ across them for $t\ge0$, in volts.（电流源 $u(t)=tH(t)$ A 驱动并联的 $C=0.25$ F 与 $L=1$ H，初始储能为零。求 $t\ge0$ 时并联端电压 $y(t)$ 的最大值，单位为 V。）
 
@@ -740,9 +738,9 @@ A current source $u(t)=tH(t)$ A drives a capacitor $C=0.25$ F in parallel with a
 
 ---
 
-### 18. Question 18（第 18 题）^q18
+### Initial and final value theorems（初值定理与终值定理）
 
-Initial and final value theorems（初值定理与终值定理）
+#### 18. Question 18（第 18 题）^q18
 
 A system has（某系统的传递函数为）
 
@@ -773,7 +771,7 @@ Use the final value theorem to find $\lim_{t\to\infty}h(t)$ for the impulse resp
 
 ---
 
-### 19. Question 19（第 19 题）^q19
+#### 19. Question 19（第 19 题）^q19
 
 The system（系统）
 
@@ -812,7 +810,7 @@ is driven by a unit step $u(t)=H(t)$ from rest. What are $y(0^+)$ and $\lim_{t\t
 
 ---
 
-### 20. Question 20（第 20 题）^q20
+#### 20. Question 20（第 20 题）^q20
 
 An RC lowpass with（某 RC 低通的传递函数为）
 
@@ -849,7 +847,7 @@ $$
 
 ---
 
-### 21. Question 21（第 21 题）^q21
+#### 21. Question 21（第 21 题）^q21
 
 For which one of these transfer functions does the final value theorem correctly give $\lim_{t\to\infty}h(t)$ for the impulse response?（下列哪个传递函数可以用终值定理正确求出冲激响应的终值？）
 
@@ -893,11 +891,9 @@ For which one of these transfer functions does the final value theorem correctly
 
 ## 2. System analysis with the Laplace transform (week 9)（用拉普拉斯变换分析系统，第 9 周）
 
-Transfer functions, poles and stability（传递函数、极点与稳定性）
+### Transfer functions, poles and stability（传递函数、极点与稳定性）
 
----
-
-### 22. Question 22（第 22 题）^q22
+#### 22. Question 22（第 22 题）^q22
 
 Classify（对下列系统进行分类）
 
@@ -934,7 +930,7 @@ $$
 
 ---
 
-### 23. Question 23（第 23 题）^q23
+#### 23. Question 23（第 23 题）^q23
 
 A transfer function $G(s)$ has poles at $0$ and $-0.2\pm j$, with no pole–zero cancellation. Which description is correct?（某传递函数 $G(s)$ 的极点在 $0$ 和 $-0.2\pm j$，且没有零极点抵消。下列描述哪个正确？）
 
@@ -967,7 +963,7 @@ A transfer function $G(s)$ has poles at $0$ and $-0.2\pm j$, with no pole–zero
 
 ---
 
-### 24. Question 24（第 24 题）^q24
+#### 24. Question 24（第 24 题）^q24
 
 Which transfer function is marginally stable?（哪个传递函数是临界稳定的？）
 
@@ -1002,7 +998,7 @@ Which transfer function is marginally stable?（哪个传递函数是临界稳�
 
 ---
 
-### 25. Question 25（第 25 题）^q25
+#### 25. Question 25（第 25 题）^q25
 
 Classify（对下列系统进行分类）
 
@@ -1043,7 +1039,7 @@ $$
 
 ---
 
-### 26. Question 26（第 26 题）^q26
+#### 26. Question 26（第 26 题）^q26
 
 For（对于）
 
@@ -1134,9 +1130,9 @@ with zero initial conditions, which bounded input produces an unbounded output?�
 
 ---
 
-### 27. Question 27（第 27 题）^q27
+### Partial fractions and inverse transforms（部分分式与反变换）
 
-Partial fractions and inverse transforms（部分分式与反变换）
+#### 27. Question 27（第 27 题）^q27
 
 Find the impulse response of（求下列系统的冲激响应）
 
@@ -1170,7 +1166,7 @@ at $t=1$ s.（在 $t=1$ s 处的值。）
 
 ---
 
-### 28. Question 28（第 28 题）^q28
+#### 28. Question 28（第 28 题）^q28
 
 Write（写成）
 
@@ -1206,7 +1202,7 @@ Find $A$.（求 $A$。）
 
 ---
 
-### 29. Question 29（第 29 题）^q29
+#### 29. Question 29（第 29 题）^q29
 
 What is the inverse Laplace transform of（求下列信号的反变换）
 
@@ -1248,7 +1244,7 @@ $$
 
 ---
 
-### 30. Question 30（第 30 题）^q30
+#### 30. Question 30（第 30 题）^q30
 
 The inverse transform of（下列信号的反变换具有形式）
 
@@ -1295,7 +1291,7 @@ Find $C$.（求 $C$。）
 
 ---
 
-### 31. Question 31（第 31 题）^q31
+#### 31. Question 31（第 31 题）^q31
 
 $$
 G(s)=\frac{s+3}{(s+1)(s+3.1)}
@@ -1324,7 +1320,7 @@ has a zero very close to a pole. Find the coefficient of $e^{-3.1t}$ in the impu
 
 ---
 
-### 32. Question 32（第 32 题）^q32
+#### 32. Question 32（第 32 题）^q32
 
 Find $y(3)$ where（求 $y(3)$，已知）
 
@@ -1356,7 +1352,7 @@ $$
 
 ---
 
-### 33. Question 33（第 33 题）^q33
+#### 33. Question 33（第 33 题）^q33
 
 $$
 G(s)=\frac{s+4}{s^2+3s+2}
@@ -1396,7 +1392,7 @@ is driven by $u(t)=e^{-2t}H(t)$ with zero initial conditions. Find $y(1)$.（系
 
 ---
 
-### 34. Question 34（第 34 题）^q34
+#### 34. Question 34（第 34 题）^q34
 
 An RC lowpass with（某 RC 低通的传递函数为）
 
@@ -1442,7 +1438,7 @@ Find $y(1)$ in volts.（求 $y(1)$，单位为 V。）
 
 ---
 
-### 35. Question 35（第 35 题）^q35
+#### 35. Question 35（第 35 题）^q35
 
 Two identical RC sections, each with transfer function（两个相同的 RC 节，每节传递函数为）
 
@@ -1485,7 +1481,7 @@ A unit step is applied from rest. Find the output at $t=1$ s.（零初始状态�
 
 ---
 
-### 36. Question 36（第 36 题）^q36
+#### 36. Question 36（第 36 题）^q36
 
 A series RLC circuit ($L=1$ H, $C=0.25$ F, $R=2\ \Omega$, output across $C$, starting from rest) has（串联 RLC 电路，$L=1$ H、$C=0.25$ F、$R=2\ \Omega$，输出取自电容两端，零初始状态）
 
@@ -1532,9 +1528,9 @@ $$
 
 ---
 
-### 37. Question 37（第 37 题）^q37
+### Zeros（零点）
 
-Zeros（零点）
+#### 37. Question 37（第 37 题）^q37
 
 $G(s)$ has poles at $-2$ and $-5$, a single zero at $-1$, and DC gain $3$. The input is $u(t)=e^{-t}H(t)$, starting from rest. What is $y(t)$?（$G(s)$ 的极点在 $-2$、$-5$，零点在 $-1$，直流增益为 $3$。系统在零初始状态下由 $u(t)=e^{-t}H(t)$ 驱动。求 $y(t)$。）
 
@@ -1570,7 +1566,7 @@ $G(s)$ has poles at $-2$ and $-5$, a single zero at $-1$, and DC gain $3$. The i
 
 ---
 
-### 38. Question 38（第 38 题）^q38
+#### 38. Question 38（第 38 题）^q38
 
 $$
 G(s)=1+\frac{1}{s}+0.25s.
@@ -1610,7 +1606,7 @@ Which describes the straight-line Bode magnitude?（其渐近 Bode 幅频图如�
 
 ---
 
-### 39. Question 39（第 39 题）^q39
+#### 39. Question 39（第 39 题）^q39
 
 A filter（某滤波器）
 
@@ -1642,7 +1638,7 @@ has DC gain $1$ and must have a high-frequency gain of $-30$ dB. Where must the 
 
 ---
 
-### 40. Question 40（第 40 题）^q40
+#### 40. Question 40（第 40 题）^q40
 
 A 50 Hz hum notch filter is（50 Hz 工频陷波器为）
 
@@ -1680,11 +1676,9 @@ Find $\left|G(j\omega)\right|$ at 25 Hz.（求 25 Hz 处的幅值。）
 
 ## 3. Filter design (week 10)（滤波器设计，第 10 周）
 
-Filter specifications and first- and second-order filters（滤波器指标与一、二阶滤波器）
+### Filter specifications and first- and second-order filters（滤波器指标与一、二阶滤波器）
 
----
-
-### 41. Question 41（第 41 题）^q41
+#### 41. Question 41（第 41 题）^q41
 
 Why can an ideal lowpass filter $G(j\omega)=p_{2\omega_c}(\omega)$ not be built as a real-time circuit?（为什么理想低通滤波器 $G(j\omega)=p_{2\omega_c}(\omega)$ 无法用实时电路实现？）
 
@@ -1722,7 +1716,7 @@ Why can an ideal lowpass filter $G(j\omega)=p_{2\omega_c}(\omega)$ not be built 
 
 ---
 
-### 42. Question 42（第 42 题）^q42
+#### 42. Question 42（第 42 题）^q42
 
 At the $-3$ dB frequency of a first-order RC lowpass, compared with DC, the output（一阶 RC 低通在 $-3$ dB 频率处，与直流相比，输出）
 
@@ -1741,7 +1735,6 @@ At the $-3$ dB frequency of a first-order RC lowpass, compared with DC, the outp
 > - **精确换算**：$20\log_{10}\dfrac{1}{\sqrt2}=-10\log_{10}2\approx-3.01$ dB。
 > - **功率比例**：功率 $\propto|G|^2$，$|G|^2=\dfrac12$ 对应功率减半。
 > - **对照**：$|G|=\dfrac12$ 对应 $-6$ dB。
-
 
 > [!example] 解答
 > 一阶 RC 低通的直流增益为 $1$，「与直流相比」就是比较 $\omega=0$ 与 $\omega=\omega_c$ 两处的幅值。一阶低通的幅频为
@@ -1767,7 +1760,7 @@ At the $-3$ dB frequency of a first-order RC lowpass, compared with DC, the outp
 
 ---
 
-### 43. Question 43（第 43 题）^q43
+#### 43. Question 43（第 43 题）^q43
 
 Which transfer function is a bandpass filter?（哪个传递函数是带通滤波器？）
 
@@ -1815,7 +1808,7 @@ Which transfer function is a bandpass filter?（哪个传递函数是带通滤�
 
 ---
 
-### 44. Question 44（第 44 题）^q44
+#### 44. Question 44（第 44 题）^q44
 
 Find the $-3$ dB frequency of the second-order lowpass（求二阶低通的 $-3$ dB 频率）
 
@@ -1870,7 +1863,7 @@ in rad/s.
 
 ---
 
-### 45. Question 45（第 45 题）^q45
+#### 45. Question 45（第 45 题）^q45
 
 A first-order highpass（一阶高通）
 
@@ -1910,7 +1903,7 @@ is used to suppress a 50 Hz hum. By how many dB is the 50 Hz hum attenuated? (Gi
 
 ---
 
-### 46. Question 46（第 46 题）^q46
+#### 46. Question 46（第 46 题）^q46
 
 A first-order lowpass（一阶低通）
 
@@ -1954,7 +1947,7 @@ must have DC gain $+12$ dB and a gain 3 dB below the DC gain at $f=1$ kHz. Find 
 
 ---
 
-### 47. Question 47（第 47 题）^q47
+#### 47. Question 47（第 47 题）^q47
 
 Which transfer function is an exponentially stable allpass filter ($|G(j\omega)|=1$ for all $\omega$)?（哪个传递函数是指数稳定的全通滤波器，即对所有 $\omega$ 都有 $|G(j\omega)|=1$？）
 
@@ -2001,7 +1994,7 @@ Which transfer function is an exponentially stable allpass filter ($|G(j\omega)|
 
 ---
 
-### 48. Question 48（第 48 题）^q48
+#### 48. Question 48（第 48 题）^q48
 
 The allpass filter（全通滤波器）
 
@@ -2040,7 +2033,7 @@ is driven by the input $u(t)=\cos(10t)$, applied for all time. The output is（�
 
 ---
 
-### 49. Question 49（第 49 题）^q49
+#### 49. Question 49（第 49 题）^q49
 
 The system（系统）
 
@@ -2078,9 +2071,9 @@ has transfer function $G(s)=e^{-2s}$. Which describes its frequency response?（
 
 ---
 
-### 50. Question 50（第 50 题）^q50
+### Lowpass to highpass, bandpass and bandstop（低通到高通、带通与带阻的变换）
 
-Lowpass to highpass, bandpass and bandstop（低通到高通、带通与带阻的变换）
+#### 50. Question 50（第 50 题）^q50
 
 The normalized Butterworth prototype（归一化 Butterworth 低通原型）
 
@@ -2128,7 +2121,7 @@ has cutoff $1$ rad/s. Replacing $s$ by $50/s$ gives（截止频率为 $1$ rad/s�
 
 ---
 
-### 51. Question 51（第 51 题）^q51
+#### 51. Question 51（第 51 题）^q51
 
 In a two-way loudspeaker crossover, the tweeter (a $4\ \Omega$ resistor) is fed through a series capacitor $C$, giving the highpass
 （在二分频音箱中，高音单元（$4\ \Omega$ 电阻）串联电容 $C$，得到高通）
@@ -2170,7 +2163,7 @@ Find $C$ in $\mu$F so the $-3$ dB frequency is 3 kHz.（求使 $-3$ dB 频率为
 
 ---
 
-### 52. Question 52（第 52 题）^q52
+#### 52. Question 52（第 52 题）^q52
 
 A bandstop filter is built as the parallel sum of a first-order lowpass and a first-order highpass（带阻滤波器由一阶低通与一阶高通并联相加构成）：
 
@@ -2190,7 +2183,6 @@ Find $|G(j100)|$.（求 $|G(j100)|$。）
 > - **有理化**：$\dfrac{a}{b+jc}=\dfrac{a(b-jc)}{b^2+c^2}$。
 > - **分成实部虚部**：$\dfrac{a}{b+jc}=\dfrac{ab}{b^2+c^2}-j\dfrac{ac}{b^2+c^2}$。
 > - **取模**：$|G|=\sqrt{\operatorname{Re}^2G+\operatorname{Im}^2G}$。
-
 
 > [!example] 解答
 > 先把两项各自约掉公因子，让数字变小。
@@ -2212,7 +2204,7 @@ Find $|G(j100)|$.（求 $|G(j100)|$。）
 
 ---
 
-### 53. Question 53（第 53 题）^q53
+#### 53. Question 53（第 53 题）^q53
 
 A first-order lowpass（一阶低通）
 
@@ -2268,9 +2260,9 @@ with the same cutoff are connected in parallel and summed, $G=G_L+G_H$. What is 
 
 ---
 
-### 54. Question 54（第 54 题）^q54
+### Butterworth filters and order selection（Butterworth 滤波器与阶数选择）
 
-Butterworth filters and order selection（Butterworth 滤波器与阶数选择）
+#### 54. Question 54（第 54 题）^q54
 
 A second-order lowpass with no zeros has poles at $-10^4\pm j10^4$ rad/s and unit DC gain. It is a Butterworth filter. Find its $-3$ dB cutoff $\omega_c$ in rad/s.
 
@@ -2314,7 +2306,7 @@ A second-order lowpass with no zeros has poles at $-10^4\pm j10^4$ rad/s and uni
 
 ---
 
-### 55. Question 55（第 55 题）^q55
+#### 55. Question 55（第 55 题）^q55
 
 A second-order Butterworth lowpass with $f_c=100$ Hz has transfer function（二阶 Butterworth 低通的截止频率为 $100$ Hz，传递函数为）
 
@@ -2349,7 +2341,7 @@ Find $a$ in rad/s.（求 $a$，单位 rad/s。）
 
 ---
 
-### 56. Question 56（第 56 题）^q56
+#### 56. Question 56（第 56 题）^q56
 
 A fifth-order Butterworth lowpass has $\omega_c=1000$ rad/s. Find the real part of the pole pair closest to the imaginary axis.（五阶 Butterworth 低通的 $\omega_c=1000$ rad/s。求最靠近虚轴的一对极点的实部。）
 
@@ -2359,30 +2351,32 @@ A fifth-order Butterworth lowpass has $\omega_c=1000$ rad/s. Find the real part 
 > [!abstract] 知识点讲解
 > 见 [[信号与系统/Quiz对应知识点.md|Quiz对应知识点]] 8.5 极点圆。
 >
-> - **极点分布**：$n$ 阶 Butterworth 的极点均在半径 $\omega_c$ 的圆上，且位于左半平面。
-> - **角度公式**：$\theta_k=90^\circ+\dfrac{180^\circ(2k+1)}{2n}$，$k=0,1,\dots,n-1$。
-> - **坐标**：$p_k=\omega_c e^{j\theta_k}=\omega_c\cos\theta_k+j\omega_c\sin\theta_k$。
-> - **实部**：$\operatorname{Re}p_k=\omega_c\cos\theta_k$。
+> - **一般形式**：$G(s)=\dfrac{\omega_c}{s+\omega_c}\displaystyle\prod_{k=1}^{(n-1)/2}\frac{\omega_c^2}{s^2+2\zeta_k\omega_cs+\omega_c^2}$，$\zeta_k=\sin\dfrac{(2k-1)\pi}{2n}$。
+> - **二阶因子的极点**：$s=-\zeta_k\omega_c\pm j\omega_c\sqrt{1-\zeta_k^2}$。
+> - **实部**：$-\zeta_k\omega_c$，绝对值等于 $\zeta_k\omega_c$。
+> - **离虚轴最近**：即 $\zeta_k$ 最小的一对，对应 $k=1$。
 
 > [!example] 解答
-> 极点按角度
-> $$\theta_k=90^\circ+\frac{180^\circ(2k+1)}{2n},\qquad k=0,1,\dots,n-1$$
-> 均匀分布。本题 $n=5$，相邻极点的角度间隔为
-> $$\frac{360^\circ}{2n}=\frac{360^\circ}{10}=36^\circ,$$
-> 并且这些角度关于实轴对称（它们在右半平面的「搭档」被舍去，只留左半平面那 $n$ 个）。左半平面内的五个角度就是
-> $$108^\circ,\ 144^\circ,\ 180^\circ,\ 216^\circ,\ 252^\circ.$$
-> （$k=0,1,2,3,4$ 逐个代入：$90^\circ+18^\circ=108^\circ$，$90^\circ+54^\circ=144^\circ$，$90^\circ+90^\circ=180^\circ$，$90^\circ+126^\circ=216^\circ$，$90^\circ+162^\circ=252^\circ$。其中 $180^\circ$ 落在负实轴上，是一个实极点，其余四个两两共轭。）
+> 五阶为奇数，按一般形式只有一个一阶因子加两个二阶因子：
+> $$G(s)=\frac{\omega_c}{s+\omega_c}\prod_{k=1}^{2}\frac{\omega_c^2}{s^2+2\zeta_k\omega_cs+\omega_c^2},\qquad \zeta_k=\sin\frac{(2k-1)\pi}{2n}.$$
+> 本题 $n=5$，代入得
+> $$\zeta_1=\sin\frac{\pi}{10}=\sin18^\circ=0.3090,\qquad
+> \zeta_2=\sin\frac{3\pi}{10}=\sin54^\circ=0.8090.$$
 >
-> 极点在半径 $\omega_c=1000$ 的圆上，实部为 $\omega_c\cos\theta$。离虚轴最近 = 实部绝对值最小 = $\theta$ 最接近 $90^\circ$ 或 $270^\circ$。在五个角度中，$108^\circ$ 距 $90^\circ$ 只差 $18^\circ$，是最接近的；$144^\circ$ 距 $90^\circ$ 差 $54^\circ$，更远。与它对称的是 $252^\circ$（$=360^\circ-108^\circ$）。
+> 每个二阶因子的极点由 $s^2+2\zeta_k\omega_cs+\omega_c^2=0$ 解出：
+> $$s=-\zeta_k\omega_c\pm j\omega_c\sqrt{1-\zeta_k^2}.$$
+> 实部为 $-\zeta_k\omega_c$，$\zeta_k$ 越小实部绝对值越小，极点离虚轴越近。$\zeta_k$ 随 $k$ 单调增加，所以最近的一对是 $k=1$：
+> $$\operatorname{Re}p=-\zeta_1\omega_c=-0.3090\times1000=-309.0\ \mathrm{rad/s}.$$
 >
-> $$\operatorname{Re}p=\omega_c\cos108^\circ=1000\times(-0.3090)=-309.0\ \mathrm{rad/s}.$$
-> 负号表示在左半平面，这是理所应当的。最靠近虚轴意味着衰减最慢、对稳定性最不利的那一对极点，所以这类题常考这一对。
+> 验算另外两个因子：$k=2$ 的实部为 $-0.8090\times1000=-809.0$，一阶因子给出实极点 $s=-\omega_c=-1000$。两者离虚轴都比 $309$ 远，所以最近的一对确实来自 $k=1$。
 >
-> 注意：题目只问「实部」，答案是 $-309.0$；若问虚部则是 $\pm1000\sin108^\circ=\pm951.1$ rad/s，别把两者混淆。
+> 若还要虚部，直接用同一组 $\zeta_k$：
+> $$\pm\omega_c\sqrt{1-\zeta_1^2}=\pm1000\sqrt{1-0.3090^2}=\pm951.1\ \mathrm{rad/s},$$
+> 即这一对极点为 $-309.0\pm j951.1$。
 
 ---
 
-### 57. Question 57（第 57 题）^q57
+#### 57. Question 57（第 57 题）^q57
 
 A third-order Butterworth highpass filter with cutoff frequency 100 Hz is used to suppress a 50 Hz hum. By how many dB is the hum attenuated? (Give a positive number.)（三阶 Butterworth 高通截止频率为 100 Hz，用于抑制 50 Hz 工频噪声。50 Hz 分量被衰减多少 dB？给正数。）
 
@@ -2392,33 +2386,53 @@ A third-order Butterworth highpass filter with cutoff frequency 100 Hz is used t
 > [!abstract] 知识点讲解
 > 见 [[信号与系统/Quiz对应知识点.md|Quiz对应知识点]] 8.5 阶数与衰减。
 >
-> - **$n$ 阶 Butterworth 高通幅频平方**：$|G|^2=\dfrac{1}{1+\left(\dfrac{f_c}{f}\right)^{2n}}$。
-> - **衰减量**：$A=10\log_{10}\left[1+\left(\dfrac{f_c}{f}\right)^{2n}\right]$。
-> - **换算**：$10\log_{10}|G|^2=20\log_{10}|G|$。
+> - **三阶 Butterworth 低通的一般形式**：$G_{LP}(s)=\dfrac{\omega_c^3}{(s+\omega_c)(s^2+\omega_cs+\omega_c^2)}$，其中 $\zeta_1=\sin\dfrac{\pi}{6}=\dfrac12$。
+> - **低通到高通**：换 $s\to\dfrac{\omega_c^2}{s}$（保持截止频率不变）。
+> - **高通的一般形式**：$G_{HP}(s)=\dfrac{s^3}{(s+\omega_c)(s^2+\omega_cs+\omega_c^2)}$。
+> - **幅频平方**：$|G|^2=\dfrac{\omega^6}{(\omega^2+\omega_c^2)\left[(\omega_c^2-\omega^2)^2+\omega_c^2\omega^2\right]}$。
 
 > [!example] 解答
-> $n$ 阶 Butterworth 低通是
-> $$|G|^2=\frac{1}{1+\left(\omega/\omega_c\right)^{2n}},$$
-> 把 $\omega$ 换成 $\omega_c^2/\omega$（低通到高通的频率变换）就得到高通：
-> $$|G|^2=\frac{1}{1+\left(\dfrac{\omega_c}{\omega}\right)^{2n}}.$$
-> 用频率表示（$\omega=2\pi f$，$2\pi$ 约掉）：
-> $$|G|^2=\frac{1}{1+\left(\dfrac{f_c}{f}\right)^{2n}}.$$
+> 三阶是奇数，按一般形式是一个一阶因子加一个二阶因子；二阶因子的阻尼比取 $n=3$、$k=1$：
+> $$\zeta_1=\sin\frac{\pi}{6}=\frac12,$$
+> 所以
+> $$G_{LP}(s)=\frac{\omega_c^3}{(s+\omega_c)(s^2+\omega_cs+\omega_c^2)}.$$
 >
-> $f_c=100$ Hz、$f=50$ Hz、$n=3$，所以
-> $$\frac{f_c}{f}=\frac{100}{50}=2,\qquad 2n=6,$$
-> $$|G|^2=\frac{1}{1+2^6}=\frac{1}{1+64}=\frac{1}{65}.$$
+> 把低通变成同截止频率的高通，替换为 $s\to\dfrac{\omega_c^2}{s}$：
+> $$G_{HP}(s)=\frac{\omega_c^3}{\left(\dfrac{\omega_c^2}{s}+\omega_c\right)\left(\dfrac{\omega_c^4}{s^2}+\dfrac{\omega_c^3}{s}+\omega_c^2\right)}.$$
+> 两个括号分别提出公因子：
+> $$\frac{\omega_c^2}{s}+\omega_c=\frac{\omega_c(\omega_c+s)}{s},
+> \qquad
+> \frac{\omega_c^4}{s^2}+\frac{\omega_c^3}{s}+\omega_c^2=\frac{\omega_c^2(s^2+\omega_cs+\omega_c^2)}{s^2}.$$
+> 分母等于
+> $$\frac{\omega_c^3(s+\omega_c)(s^2+\omega_cs+\omega_c^2)}{s^3},$$
+> 与分子约去 $\omega_c^3$ 后翻转 $s^3$：
+> $$G_{HP}(s)=\frac{s^3}{(s+\omega_c)(s^2+\omega_cs+\omega_c^2)}.$$
 >
-> 增益为
+> 求 $50$ Hz 处的幅值。把 $\omega=2\pi\times50$、$\omega_c=2\pi\times100$ 直接代入。每个 $\omega$ 都带一个 $2\pi$，分子分母同次幂，$(2\pi)^6$ 约掉，所以下面按频率数值计算：
+> $$|G_{HP}|^2=\frac{\omega^6}{(\omega^2+\omega_c^2)\left[(\omega_c^2-\omega^2)^2+\omega_c^2\omega^2\right]}.$$
+> 逐项算：
+> $$\omega^2+\omega_c^2=50^2+100^2=2500+10000=12500,$$
+> $$(\omega_c^2-\omega^2)^2=(100^2-50^2)^2=(10000-2500)^2=7500^2=56250000,$$
+> $$\omega_c^2\omega^2=100^2\cdot50^2=10000\times2500=25000000.$$
+> 分母：
+> $$12500\times(56250000+25000000)=12500\times81250000=1015625000000.$$
+> 分子：
+> $$\omega^6=50^6=15625000000.$$
+> 所以
+> $$|G_{HP}|^2=\frac{15625000000}{1015625000000}=\frac{1}{65}.$$
+> 衰减量是**两个 dB 值相减**。参考点是通带（高频处 $|G|\to1$），待求点是 $50$ Hz。
+>
+> 参考电平：
+> $$20\log_{10}1=0\ \mathrm{dB}.$$
+> $50$ Hz 处的电平：
 > $$20\log_{10}|G|=10\log_{10}|G|^2=10\log_{10}\frac{1}{65}=-18.13\ \mathrm{dB}.$$
-> 衰减量取正数：
-> $$A=18.13\ \mathrm{dB}.$$
-> 也可以直接算 $10\log_{10}65$：$\log_{10}65=\log_{10}6.5+\log_{10}10=0.8129+1=1.8129$，乘 $10$ 得 $18.13$。
->
-> 检查量级：$n=3$ 阶在截止频率以下的渐近斜率为每十倍频程 $60$ dB，折合每倍频程 $60\log_{10}2=18.06$ dB；$50$ Hz 正好比 $100$ Hz 低一个倍频程，估算为 $18$ dB，与精确值 $18.13$ dB 吻合。
+> 相减：
+> $$A=0-(-18.13)=18.13\ \mathrm{dB}.$$
+> 通带电平是 $0$ dB 时，这个差值就等于待求电平的绝对值，所以平时直接写 $A=-20\log_{10}|G|$ 或 $A=-10\log_{10}|G|^2$。
 
 ---
 
-### 58. Question 58（第 58 题）^q58
+#### 58. Question 58（第 58 题）^q58
 
 Two identical second-order Butterworth lowpass sections, each with cutoff $\omega_c$, are cascaded. Which statement about the cascade is correct?（两个相同的二阶 Butterworth 低通节（各截止频率 $\omega_c$）级联。下列关于级联系统的说法哪个正确？）
 
@@ -2470,7 +2484,7 @@ Two identical second-order Butterworth lowpass sections, each with cutoff $\omeg
 
 ---
 
-### 59. Question 59（第 59 题）^q59
+#### 59. Question 59（第 59 题）^q59
 
 A second-order Butterworth highpass has cutoff 6 kHz, so（二阶 Butterworth 高通的截止频率为 6 kHz，因此）
 
@@ -2486,45 +2500,52 @@ At what frequency, in Hz, is its gain $-30$ dB?（在哪个频率处增益为 $-
 > [!abstract] 知识点讲解
 > 见 [[信号与系统/Quiz对应知识点.md|Quiz对应知识点]] 8.5 阶数与衰减。
 >
-> - **二阶 Butterworth 高通幅频平方**：$|G|^2=\dfrac{1}{1+\left(\dfrac{f_c}{f}\right)^{4}}$。
-> - **幅度分贝**：$A_{\mathrm{dB}}=20\log_{10}|G|$。
-> - **平方关系**：$10\log_{10}|G|^2=20\log_{10}|G|$。
-> - **反解**：$1+\left(\dfrac{f_c}{f}\right)^{4}=10^{A/10}$。
+> - **二阶 Butterworth 低通一般形式**：$G_{LP}(s)=\dfrac{\omega_c^2}{s^2+2\zeta_1\omega_cs+\omega_c^2}$，$\zeta_1=\sin\dfrac{\pi}{4}=\dfrac{1}{\sqrt2}$。
+> - **低通到高通**：$s\to\dfrac{\omega_c^2}{s}$。
+> - **高通的一般形式**：$G_{HP}(s)=\dfrac{s^2}{s^2+\sqrt2\,\omega_cs+\omega_c^2}$。
+> - **幅频平方**：$|G|^2=\dfrac{\omega^4}{(\omega_c^2-\omega^2)^2+2\omega_c^2\omega^2}$。
+> - **分贝换算**：$20\log_{10}|G|=-30\iff|G|^2=10^{-3}$。
 
 > [!example] 解答
-> 幅度的分贝定义是
-> $$A_{\mathrm{dB}}=20\log_{10}|G|.$$
-> 令其等于 $-30$：
-> $$20\log_{10}|G|=-30
-> \quad\Longrightarrow\quad
-> \log_{10}|G|=-1.5
-> \quad\Longrightarrow\quad
-> |G|=10^{-1.5}.$$
-> 两边平方：
-> $$|G|^2=10^{-3}=\frac{1}{1000}.$$
-> （等价地，$|G|^2$ 的分贝是 $10\log_{10}|G|^2$，令其为 $-30$ 也直接得到 $|G|^2=10^{-3}$，两种算法一致。）
+> 二阶是偶数阶，一般形式只有一个二阶因子，阻尼比
+> $$\zeta_1=\sin\frac{\pi}{2\cdot2}=\sin\frac{\pi}{4}=\frac{1}{\sqrt2},$$
+> 所以低通为
+> $$G_{LP}(s)=\frac{\omega_c^2}{s^2+2\zeta_1\omega_cs+\omega_c^2}
+> =\frac{\omega_c^2}{s^2+\sqrt2\,\omega_cs+\omega_c^2}.$$
 >
-> 二阶 Butterworth 高通（$n=2$，$2n=4$）：
-> $$|G|^2=\frac{1}{1+\left(\dfrac{f_c}{f}\right)^4}=\frac{1}{1000}.$$
-> 两边取倒数：
-> $$1+\left(\frac{f_c}{f}\right)^4=1000
-> \quad\Longrightarrow\quad
-> \left(\frac{f_c}{f}\right)^4=999.$$
+> 改成高通，替换 $s\to\dfrac{\omega_c^2}{s}$：
+> $$G_{HP}(s)=\frac{\omega_c^2}{\dfrac{\omega_c^4}{s^2}+\sqrt2\,\omega_c\cdot\dfrac{\omega_c^2}{s}+\omega_c^2}.$$
+> 分子分母同乘 $\dfrac{s^2}{\omega_c^2}$：
+> $$G_{HP}(s)=\frac{s^2}{s^2+\sqrt2\,\omega_cs+\omega_c^2}.$$
 >
-> 用平方根算两次：
-> $$999^{1/2}=31.607,\qquad 31.607^{1/2}=5.623,$$
+> 代入 $s=j\omega$。分子模平方为 $\omega^4$；分母
+> $$(\omega_c^2-\omega^2)+j\sqrt2\,\omega_c\omega$$
+> 的模平方：
+> $$(\omega_c^2-\omega^2)^2+2\omega_c^2\omega^2
+> =\omega_c^4-2\omega_c^2\omega^2+\omega^4+2\omega_c^2\omega^2=\omega_c^4+\omega^4.$$
 > 所以
-> $$\frac{f_c}{f}=999^{1/4}=5.623.$$
+> $$|G|^2=\frac{\omega^4}{\omega_c^4+\omega^4}
+> =\frac{1}{1+\left(\dfrac{\omega_c}{\omega}\right)^4},$$
+> 与题目给出的式子一致。
 >
-> $f_c=6$ kHz：
-> $$f=\frac{f_c}{5.623}=\frac{6000}{5.623}=1067\ \mathrm{Hz}.$$
-> 这个频率远低于截止频率（$1067\ll6000$），落在阻带里，所以衰减很大，符合 $30$ dB 的量级。
+> 增益 $-30$ dB：
+> $$20\log_{10}|G|=-30\quad\Longrightarrow\quad|G|=10^{-1.5}\quad\Longrightarrow\quad|G|^2=10^{-3}=\frac{1}{1000}.$$
+> 代入：
+> $$\frac{1}{1+\left(\dfrac{\omega_c}{\omega}\right)^4}=\frac{1}{1000}
+> \quad\Longrightarrow\quad
+> \left(\frac{\omega_c}{\omega}\right)^4=999.$$
+> 开四次方：
+> $$\frac{\omega_c}{\omega}=999^{1/4}=5.623.$$
+> 所以
+> $$\omega=\frac{\omega_c}{5.623},\qquad
+> f=\frac{f_c}{5.623}=\frac{6000}{5.623}=1067\ \mathrm{Hz}.$$
 
 ---
 
-### 60. Question 60（第 60 题）^q60
+#### 60. Question 60（第 60 题）^q60
 
-A fourth-order Butterworth lowpass must lose at most 1 dB at 1 kHz. What is the smallest cutoff frequency $f_c$ (the $-3$ dB frequency), in kHz?（四阶 Butterworth 低通在 1 kHz 处衰减不得超过 1 dB。求最小截止频率 $f_c$（$-3$ dB 频率），单位 kHz。）
+A fourth-order Butterworth lowpass must lose at most 1 dB at 1 kHz. What is the smallest cutoff frequency $f_c$ (the $-3$ dB frequency), in kHz?
+（四阶 Butterworth 低通在 1 kHz 处衰减不得超过 1 dB。求最小截止频率 $f_c$（$-3$ dB 频率），单位 kHz。）
 
 > [!success] Answer（答案）
 > $1.184$ kHz
@@ -2532,43 +2553,50 @@ A fourth-order Butterworth lowpass must lose at most 1 dB at 1 kHz. What is the 
 > [!abstract] 知识点讲解
 > 见 [[信号与系统/Quiz对应知识点.md|Quiz对应知识点]] 8.5 由通带指标定截止频率。
 >
-> - **$n$ 阶 Butterworth 低通幅频平方**：$|G|^2=\dfrac{1}{1+\left(\dfrac{f}{f_c}\right)^{2n}}$。
-> - **通带衰减**：$A=10\log_{10}\left[1+\left(\dfrac{f}{f_c}\right)^{2n}\right]$。
-> - **通带指标**：$A\le A_p$。
-> - **解不等式**：$\left(\dfrac{f}{f_c}\right)^{2n}\le10^{A_p/10}-1$。
+> - **四阶 Butterworth 低通的一般形式**：$G(s)=\displaystyle\prod_{k=1}^{2}\frac{\omega_c^2}{s^2+2\zeta_k\omega_cs+\omega_c^2}$，$\zeta_k=\sin\dfrac{(2k-1)\pi}{8}$。
+> - **单个二阶因子的幅频平方**：$\dfrac{1}{(1-x)^2+4\zeta_k^2x}$，$x=\left(\dfrac{f}{f_c}\right)^2$。
+> - **四个阻尼比凑成的乘积**：$\prod_{k=1}^{2}\left[(1-x)^2+4\zeta_k^2x\right]=1+x^4$。
+> - **通带衰减**：$A=10\log_{10}(1+x^4)$，要求 $A\le A_p$。
 
 > [!example] 解答
-> $n$ 阶 Butterworth 低通
-> $$|G|^2=\frac{1}{1+\left(\dfrac{f}{f_c}\right)^{2n}}.$$
-> 「衰减 $A$ dB」指增益降到 $10^{-A/20}$，即
-> $$|G|^2=10^{-A/10}
-> \quad\Longrightarrow\quad
-> 1+\left(\frac{f}{f_c}\right)^{2n}=10^{A/10}
-> \quad\Longrightarrow\quad
-> A=10\log_{10}\left[1+\left(\frac{f}{f_c}\right)^{2n}\right].$$
+> 四阶是偶数阶，一般形式是两个二阶因子相乘：
+> $$G(s)=\prod_{k=1}^{2}\frac{\omega_c^2}{s^2+2\zeta_k\omega_cs+\omega_c^2},\qquad
+> \zeta_k=\sin\frac{(2k-1)\pi}{8}.$$
+> 两个阻尼比：
+> $$\zeta_1=\sin\frac{\pi}{8}=0.3827,\qquad
+> \zeta_2=\sin\frac{3\pi}{8}=0.9239.$$
 >
-> $f=1$ kHz、$f_c$ 待求、$n=4$：
+> 代入 $s=j\omega$，每个二阶因子的幅频平方为
+> $$\frac{1}{(1-x)^2+4\zeta_k^2x},\qquad x=\left(\frac{\omega}{\omega_c}\right)^2=\left(\frac{f}{f_c}\right)^2.$$
+> 两级相乘，先把两个分母乘开：
+> $$\left[(1-x)^2+4\zeta_1^2x\right]\left[(1-x)^2+4\zeta_2^2x\right].$$
+> 记 $a=(1-x)^2$，并算出两个系数：
+> $$4\zeta_1^2=4\sin^2\frac{\pi}{8}=2-\sqrt2,\qquad
+> 4\zeta_2^2=4\sin^2\frac{3\pi}{8}=2+\sqrt2.$$
+> 于是
+> $$\left[a+(2-\sqrt2)x\right]\left[a+(2+\sqrt2)x\right]
+> =a^2+4ax+\left[(2-\sqrt2)(2+\sqrt2)\right]x^2
+> =a^2+4ax+2x^2.$$
+> 代入 $a=1-2x+x^2$：
+> $$a^2+4ax+2x^2=(1-4x+6x^2-4x^3+x^4)+(4x-8x^2+4x^3)+2x^2
+> =1+x^4.$$
+> 中间各项正好抵消。所以
+> $$|G|^2=\frac{1}{1+x^4}=\frac{1}{1+\left(\dfrac{f}{f_c}\right)^8}.$$
+> 一般形式在这里自动退化成了熟悉的 Butterworth 模平方公式。
+>
+> 要求 1 kHz 处衰减不超过 1 dB：
 > $$10\log_{10}\left[1+\left(\frac{1}{f_c}\right)^8\right]\le1.$$
-> 这里 $f$ 和 $f_c$ 都以 kHz 为单位，比值无量纲，单位一致即可。
->
-> $$1+\left(\frac{1}{f_c}\right)^8\le10^{0.1}=1.2589
+> 即
+> $$\left(\frac{1}{f_c}\right)^8\le10^{0.1}-1=0.2589.$$
+> 开八次方：
+> $$\frac{1}{f_c}\le0.2589^{1/8}=0.8446
 > \quad\Longrightarrow\quad
-> \left(\frac{1}{f_c}\right)^8\le0.2589.$$
-> 开八次方（两边都是正数）：
-> $$\frac{1}{f_c}\le0.2589^{1/8}.$$
-> 用对数算这个开方：
-> $$\log_{10}0.2589=-0.5868,\qquad \frac{-0.5868}{8}=-0.07335,$$
-> $$0.2589^{1/8}=10^{-0.07335}=0.8446,$$
-> 所以
-> $$\frac{1}{f_c}\le0.8446\quad\Longrightarrow\quad f_c\ge\frac{1}{0.8446}=1.184\ \mathrm{kHz}.$$
->
-> 要求是「至多衰减 1 dB」，$f_c$ 越大越宽松，所以最小截止频率就是边界值
-> $$f_c^{\min}=1.184\ \mathrm{kHz}.$$
-> 直观理解：要保证 1 kHz 处几乎不衰减，截止频率不能压得太低；如果取 $f_c=1$ kHz，1 kHz 正好在截止点，会衰减 $3$ dB，超过 $1$ dB 的限制。
+> f_c\ge1.184\ \mathrm{kHz}.$$
+> 最小截止频率为 $1.184$ kHz。
 
 ---
 
-### 61. Question 61（第 61 题）^q61
+#### 61. Question 61（第 61 题）^q61
 
 A Butterworth lowpass filter with cutoff frequency 2 kHz must attenuate a 6 kHz signal by at least 35 dB. Enter the smallest order $n$ that meets this.（Butterworth 低通截止频率为 2 kHz，要求在 6 kHz 处衰减至少 35 dB。求满足条件的最小阶数 $n$。）
 
@@ -2578,37 +2606,39 @@ A Butterworth lowpass filter with cutoff frequency 2 kHz must attenuate a 6 kHz 
 > [!abstract] 知识点讲解
 > 见 [[信号与系统/Quiz对应知识点.md|Quiz对应知识点]] 8.5 阶数与衰减。
 >
-> - **阻带衰减**：$A=10\log_{10}\left[1+\left(\dfrac{f}{f_c}\right)^{2n}\right]$。
-> - **频率比**：$\dfrac{f}{f_c}$ 为常数，记作 $r$。
-> - **阶数求解**：$A(n)=10\log_{10}\left(1+r^{2n}\right)$，$A(n)$ 随 $n$ 单调增加。
+> - **$n$ 阶 Butterworth 低通的一般形式**：$\displaystyle\prod_{k=1}^{n/2}\frac{\omega_c^2}{s^2+2\zeta_k\omega_cs+\omega_c^2}$（$n$ 偶）或再乘 $\dfrac{\omega_c}{s+\omega_c}$（$n$ 奇），$\zeta_k=\sin\dfrac{(2k-1)\pi}{2n}$。
+> - **单个二阶因子的幅频平方**：$\dfrac{1}{(1-x)^2+4\zeta_k^2x}$，$x=\left(\dfrac{f}{f_c}\right)^2$。
+> - **全部因子的乘积**：所有二阶因子（$n$ 为奇数时再乘一阶因子 $\dfrac{1}{1+x}$）乘起来后化简为 $1+x^n$。
+> - **衰减量**：$A=10\log_{10}(1+x^n)$。
 
 > [!example] 解答
-> $f=6$ kHz，$f_c=2$ kHz：
-> $$\frac{f}{f_c}=\frac{6}{2}=3.$$
-> 6 kHz 已经在通带之外（$f>f_c$），所以会有衰减。
+> 用一般形式看衰减。$n$ 阶 Butterworth 的每个二阶因子在 $s=j\omega$ 处的幅频平方为
+> $$\frac{1}{(1-x)^2+4\zeta_k^2x},\qquad x=\left(\frac{f}{f_c}\right)^2.$$
+> 所有因子（$n$ 为奇数时再乘一阶因子）的乘积，代入 $\zeta_k=\sin\dfrac{(2k-1)\pi}{2n}$ 并约去中间项后，正好化简为
+> $$|G|^2=\frac{1}{1+x^n}=\frac{1}{1+\left(\dfrac{f}{f_c}\right)^{2n}}.$$
+> 所以衰减量
+> $$A=10\log_{10}\left(1+x^n\right).$$
+> 阶数 $n$ 越高，$x^n$ 越大，衰减越多，$A(n)$ 单调增加；从 $n=1$ 开始逐阶试算，第一个满足 $A(n)\ge35$ 的就是答案。本题
+> $$x=\left(\frac{f}{f_c}\right)^2=\left(\frac{6}{2}\right)^2=9,$$
+> 所以
+> $$A(n)=10\log_{10}\left(1+9^n\right).$$
 >
-> $$A(n)=10\log_{10}\left[1+\left(\frac{f}{f_c}\right)^{2n}\right]
-> =10\log_{10}\left(1+3^{2n}\right).$$
-> 阶数 $n$ 越高，$3^{2n}$ 越大，衰减越多，所以 $A(n)$ 随 $n$ 单调增加；从 $n=1$ 开始逐阶试算，第一个满足 $A(n)\ge35$ 的就是答案。
+> - $n=1$：$A=10\log_{10}10=10$ dB，不够；
+> - $n=2$：$A=10\log_{10}82=19.1$ dB，不够；
+> - $n=3$：$A=10\log_{10}730=28.6$ dB，不够；
+> - $n=4$：$A=10\log_{10}6562=38.2$ dB，够了。
 >
-> - $n=1$：$A=10\log_{10}(1+3^2)=10\log_{10}10=10$ dB，不够；
-> - $n=2$：$A=10\log_{10}(1+3^4)=10\log_{10}82=19.1$ dB，不够；
-> - $n=3$：$3^6=729$，$A=10\log_{10}730=28.6$ dB，不够；
-> - $n=4$：$3^8=6561$，$A=10\log_{10}6562=38.2$ dB，够了。
+> $n=3$ 只有 $28.6$ dB，小于 $35$ dB；$n=4$ 为 $38.2$ dB，满足。$A(n)$ 单调，所以最小的就是 $n=4$。
 >
-> $n=3$ 只有 $28.6$ dB，小于 $35$ dB；$n=4$ 为 $38.2$ dB，满足。$A(n)$ 单调，所以 $n\ge4$ 都满足，最小的就是 $n=4$。（题目要衰减至少 $35$ dB，刚好 $38.2$ 略有余量是正常的，因为阶数只能取整数。）
->
-> 速算方法：高频近似下 $A\approx 10\log_{10}3^{2n}=20n\log_{10}3=9.54n$ dB，令 $9.54n\ge35$ 得 $n\ge3.67$，向上取整为 $4$。
+> 速算：高频渐近下 $1+x^n\approx x^n=9^n=3^{2n}$，于是 $A\approx 20n\log_{10}3=9.54n$，令 $9.54n\ge35$ 得 $n\ge3.67$，向上取整为 $4$。
 
 ---
 
 ## 4. Modulation (week 11)（调制，第 11 周）
 
-Amplitude/frequency/phase modulation, FDM and instantaneous frequency（调幅、调频、调相、频分复用与瞬时频率）
+### Amplitude/frequency/phase modulation, FDM and instantaneous frequency（调幅、调频、调相、频分复用与瞬时频率）
 
----
-
-### 62. Question 62（第 62 题）^q62
+#### 62. Question 62（第 62 题）^q62
 
 An antenna's length must be comparable to the wavelength $\lambda=c/f$ of the signal it transmits, with $c=3\times10^8$ m/s. Find the wavelength of a 3 kHz telephone audio signal sent directly as an electromagnetic wave, in km.（天线长度须与所发信号的波长 $\lambda=c/f$ 可比，$c=3\times10^8$ m/s。求 3 kHz 电话音频信号直接作为电磁波发送时的波长，单位 km。）
 
@@ -2629,7 +2659,7 @@ An antenna's length must be comparable to the wavelength $\lambda=c/f$ of the si
 
 ---
 
-### 63. Question 63（第 63 题）^q63
+#### 63. Question 63（第 63 题）^q63
 
 The message（消息信号）
 
@@ -2693,7 +2723,7 @@ Which list gives the positive frequencies (rad/s) in $y(t)$ with the amplitudes 
 
 ---
 
-### 64. Question 64（第 64 题）^q64
+#### 64. Question 64（第 64 题）^q64
 
 A speech scrambler multiplies $u(t)$, bandlimited to 15 kHz, by $2\cos(2\pi\cdot15\,000t)$ and passes the product through an ideal lowpass filter with cutoff 15 kHz and gain 1. A component $3\cos(2\pi\cdot4000t)$ of $u(t)$ appears in the scrambled output as（语音置乱器把带宽 15 kHz 的 $u(t)$ 乘以 $2\cos(2\pi\cdot15000t)$，再通过截止 15 kHz、增益 1 的理想低通。$u(t)$ 中的分量 $3\cos(2\pi\cdot4000t)$ 在置乱输出中变成）
 
@@ -2722,9 +2752,9 @@ A speech scrambler multiplies $u(t)$, bandlimited to 15 kHz, by $2\cos(2\pi\cdot
 
 ---
 
-### 65. Question 65（第 65 题）^q65
+### Frequency division multiplexing（频分复用）
 
-Frequency division multiplexing（频分复用）
+#### 65. Question 65（第 65 题）^q65
 
 A radio band runs from 3.000 MHz to 3.400 MHz. Each telephone message has bandwidth 3.4 kHz and is sent by DSB-SC, with no guard bands and no overlap allowed. What is the largest number of channels that fit in the band?（某无线电频段从 3.000 MHz 到 3.400 MHz。每路电话带宽 3.4 kHz，用 DSB-SC 发送，不留保护间隔也不允许重叠。最多能容纳多少个信道？）
 
@@ -2749,7 +2779,7 @@ A radio band runs from 3.000 MHz to 3.400 MHz. Each telephone message has bandwi
 
 ---
 
-### 66. Question 66（第 66 题）^q66
+#### 66. Question 66（第 66 题）^q66
 
 Four messages, each bandlimited to 3 kHz, are sent by DSB-SC on carriers $f_1<f_2<f_3<f_4$. The FDM spectrum must begin at 100 kHz, with 5 kHz guard bands between adjacent channels and no gaps otherwise. Find $f_4$ in kHz.（四路带宽均为 3 kHz 的消息用 DSB-SC 分别调制到载波 $f_1<f_2<f_3<f_4$。FDM 频谱须从 100 kHz 开始，相邻信道间留 5 kHz 保护间隔，其余不留空隙。求 $f_4$，单位 kHz。）
 
@@ -2788,7 +2818,7 @@ Four messages, each bandlimited to 3 kHz, are sent by DSB-SC on carriers $f_1<f_
 
 ---
 
-### 67. Question 67（第 67 题）^q67
+#### 67. Question 67（第 67 题）^q67
 
 Two messages $u_1(t)$ and $u_2(t)$ are each bandlimited to 5000 rad/s. The signal（两路消息 $u_1(t)$、$u_2(t)$ 带宽均为 5000 rad/s。构造信号）
 
@@ -2882,9 +2912,9 @@ Which band of positive frequencies does $c(t)$ occupy?（$c(t)$ 占据哪个正�
 
 ---
 
-### 68. Question 68（第 68 题）^q68
+### Frequency and phase modulation, instantaneous frequency（调频、调相与瞬时频率）
 
-Frequency and phase modulation, instantaneous frequency（调频、调相与瞬时频率）
+#### 68. Question 68（第 68 题）^q68
 
 The signal $y(t)=\cos(t^2)$ is a sinusoid with variable frequency, $y(t)=\cos(\omega(t)t)$ with $\omega(t)=t$. Find its instantaneous frequency at $t=5$ s, in rad/s.（信号 $y(t)=\cos(t^2)$ 是变频正弦，写成 $y(t)=\cos(\omega(t)t)$ 时 $\omega(t)=t$。求 $t=5$ s 时的瞬时角频率，单位 rad/s。）
 
@@ -2910,7 +2940,7 @@ The signal $y(t)=\cos(t^2)$ is a sinusoid with variable frequency, $y(t)=\cos(\o
 
 ---
 
-### 69. Question 69（第 69 题）^q69
+#### 69. Question 69（第 69 题）^q69
 
 A PM transmitter sends（某 PM 发射机发送）
 
@@ -2947,7 +2977,7 @@ By how many Hz is the instantaneous frequency shifted from the carrier during th
 
 ---
 
-### 70. Question 70（第 70 题）^q70
+#### 70. Question 70（第 70 题）^q70
 
 The message $u(t)=H(t)$ is sent once by FM（消息 $u(t)=H(t)$，一次用 FM 发送）
 
@@ -2991,7 +3021,7 @@ Which description of the two signals for $t>0$ is correct?（下列对 $t>0$ 时
 
 ---
 
-### 71. Question 71（第 71 题）^q71
+#### 71. Question 71（第 71 题）^q71
 
 A message $u(t)$ with spectrum zero for $|\omega|>W$ (and no DC component) is sent by FM（某消息 $u(t)$ 的频谱在 $|\omega|>W$ 处为零，且无直流分量，用 FM 发送）：
 

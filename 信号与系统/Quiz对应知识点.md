@@ -5990,15 +5990,19 @@ $$G(s)=\frac{\omega_c^6}{\left(s^2+0.5176\,\omega_cs+\omega_c^2\right)\left(s^2+
 
 **衰减量的计算**
 
-$n$ 阶低通的幅频平方也可以写成频率形式：
+先说明公式的来源。$n$ 阶 Butterworth 低通写成二阶因子乘积后，第 $k$ 个因子在 $s=j\omega$ 处的幅频平方是
 
-$$|G|^2=\frac{1}{1+\left(\frac{f}{f_c}\right)^{2n}},$$
+$$\frac{1}{(1-x)^2+4\zeta_k^2x},\qquad x=\left(\frac{f}{f_c}\right)^2.$$
 
-高通把比值倒过来。频带外的衰减量为
+把各因子乘起来，代入 $\zeta_k=\sin\dfrac{(2k-1)\pi}{2n}$，跨项会成对抵消，只剩
+
+$$|G|^2=\frac{1}{1+x^n}=\frac{1}{1+\left(\frac{f}{f_c}\right)^{2n}}.$$
+
+所以频带外的衰减量为
 
 $$A=10\log_{10}\left[1+\left(\frac{f}{f_c}\right)^{2n}\right].$$
 
-常见的三类反向问题都用这个式子。
+（四阶的两个因子乘出 $1+x^4$ 的过程见 Quiz 3 第 60 题。）常见的三类反向问题都用这个式子。
 
 **1. 由衰减指标定阶数**
 
@@ -6022,12 +6026,23 @@ $$\left(\frac{1}{f_c}\right)^8\le10^{0.1}-1=0.2589,$$
 
 **3. 由衰减倒推频率**
 
-**例**（Quiz 3 第 59 题）二阶高通，$f_c=6$ kHz，要求 $-30$ dB：
+**例**（Quiz 3 第 59 题）二阶高通，$f_c=6$ kHz，要求 $-30$ dB。先用二阶一般形式确定 $\zeta_1=\sin\dfrac{\pi}{4}=\dfrac1{\sqrt2}$，原型为
 
-$$10\log_{10}\left[1+\left(\frac{f_c}{f}\right)^4\right]=30
-\quad\Longrightarrow\quad\left(\frac{f_c}{f}\right)^4=999,$$
+$$G_{LP}(s)=\frac{\omega_c^2}{s^2+\sqrt2\,\omega_cs+\omega_c^2},$$
 
-$$f=\frac{6000}{999^{1/4}}=1067\ \mathrm{Hz}.$$
+做 $s\to\omega_c^2/s$ 得
+
+$$G_{HP}(s)=\frac{s^2}{s^2+\sqrt2\,\omega_cs+\omega_c^2}.$$
+
+代入 $s=j\omega$，分母模平方为 $(\omega_c^2-\omega^2)^2+2\omega_c^2\omega^2=\omega_c^4+\omega^4$，所以
+
+$$|G|^2=\frac{\omega^4}{\omega_c^4+\omega^4}
+\quad\Longrightarrow\quad
+10\log_{10}\left[1+\left(\frac{\omega_c}{\omega}\right)^4\right]=30,$$
+
+$$\left(\frac{\omega_c}{\omega}\right)^4=999
+\quad\Longrightarrow\quad
+f=\frac{6000}{999^{1/4}}=1067\ \mathrm{Hz}.$$
 
 ---
 
@@ -6049,9 +6064,12 @@ $$G(s)=\left(\frac{\omega_c}{s+\omega_c}\right)^2,$$
 
 **低通到高通的频率变换**
 
-$$s\to\frac{\omega_c}{s}.$$
+两种写法，取决于低通是否已经归一化：
 
-这个替换把低频映射到高频，把低通变成同截止频率的高通。若题目出现 $s\to50/s$，说明截止频率为 $\omega_c=50$，即原型低通的参考频率与目标频率的乘积为 $50$。
+- 归一化原型（截止频率为 $1$）换成截止频率为 $\omega_c$ 的高通：$s\to\dfrac{\omega_c}{s}$。
+- 截止频率为 $\omega_c$ 的低通换成同截止频率的高通：$s\to\dfrac{\omega_c^2}{s}$。
+
+第二种可以这样验证：代入 $s=j\omega$ 后 $\dfrac{\omega_c^2}{j\omega}=-j\dfrac{\omega_c^2}{\omega}$，它等效于低通里的频率 $\Omega=\dfrac{\omega_c^2}{\omega}$。当 $\omega=\omega_c$ 时 $\Omega=\omega_c$，正好对上低通的截止点，所以高通也在 $\omega_c$ 处为 $-3$ dB。
 
 ### 8.6 滤波器典型例题
 
@@ -6125,11 +6143,11 @@ $$-10\log_{10}\frac1{65}=10\log_{10}65\approx18.13\ \mathrm{dB}.$$
 
 **频率变换 $s\to\omega_c/s$**
 
-低通到高通的频率变换为
+归一化低通原型（截止频率 $1$）换成截止频率 $\omega_c$ 的高通：
 
 $$s\to\frac{\omega_c}{s}.$$
 
-这个替换把低频映射到高频，把低通变成同截止频率的高通。若题目出现 $s\to50/s$，说明截止频率为 $\omega_c=50$。
+如果低通的截止频率已经是 $\omega_c$、要保持截止频率不变，则用 $s\to\omega_c^2/s$（8.5 节 Q57 的做法）。两种写法在 $\omega_c=1$ 时相同。
 
 **一阶低通到高通**
 
@@ -6149,7 +6167,7 @@ $G(0)=0$、高频趋于 $1$，是高通，截止频率仍为 $1\ \mathrm{rad/s}$
 
 $$G_{LP}(s)=\frac{1}{s^2+\sqrt2s+1}.$$
 
-把 $s$ 换成 $50/s$：
+把 $s$ 换成 $50/s$（目标截止频率 $\omega_c=50$）：
 
 $$G_{HP}(s)=\frac{1}{\dfrac{2500}{s^2}+\dfrac{50\sqrt2}{s}+1}
 =\frac{s^2}{s^2+50\sqrt2s+2500}.$$

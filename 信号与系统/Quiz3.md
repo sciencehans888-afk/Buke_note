@@ -2555,8 +2555,8 @@ A fourth-order Butterworth lowpass must lose at most 1 dB at 1 kHz. What is the 
 >
 > - **四阶 Butterworth 低通的一般形式**：$G(s)=\displaystyle\prod_{k=1}^{2}\frac{\omega_c^2}{s^2+2\zeta_k\omega_cs+\omega_c^2}$，$\zeta_k=\sin\dfrac{(2k-1)\pi}{8}$。
 > - **单个二阶因子的幅频平方**：$\dfrac{1}{(1-x)^2+4\zeta_k^2x}$，$x=\left(\dfrac{f}{f_c}\right)^2$。
-> - **四个阻尼比凑成的乘积**：$\prod_{k=1}^{2}\left[(1-x)^2+4\zeta_k^2x\right]=1+x^4$。
-> - **通带衰减**：$A=10\log_{10}(1+x^4)$，要求 $A\le A_p$。
+> - **两个二阶因子的乘积**：$\prod_{k=1}^{2}\left[(1-x)^2+4\zeta_k^2x\right]=1+x^4$。
+> - **通带衰减（一般 $n$ 阶）**：$A=10\log_{10}\left[1+\left(\dfrac{f}{f_c}\right)^{2n}\right]=10\log_{10}(1+x^n)$，要求通带内 $A\le A_p$。
 
 > [!example] 解答
 > 四阶是偶数阶，一般形式是两个二阶因子相乘：
@@ -2582,9 +2582,13 @@ A fourth-order Butterworth lowpass must lose at most 1 dB at 1 kHz. What is the 
 > =1+x^4.$$
 > 中间各项正好抵消。所以
 > $$|G|^2=\frac{1}{1+x^4}=\frac{1}{1+\left(\dfrac{f}{f_c}\right)^8}.$$
-> 一般形式在这里自动退化成了熟悉的 Butterworth 模平方公式。
+> 一般形式在这里就是熟悉的 Butterworth 模平方公式。
 >
-> 要求 1 kHz 处衰减不超过 1 dB：
+> 通带衰减的一般公式是
+> $$A=10\log_{10}\left[1+\left(\frac{f}{f_c}\right)^{2n}\right].$$
+> 本题 $n=4$，$f=1$ kHz：
+> $$A=10\log_{10}\left[1+\left(\frac{1}{f_c}\right)^8\right],$$
+> 要求不超过 $A_p=1$ dB：
 > $$10\log_{10}\left[1+\left(\frac{1}{f_c}\right)^8\right]\le1.$$
 > 即
 > $$\left(\frac{1}{f_c}\right)^8\le10^{0.1}-1=0.2589.$$
@@ -2607,21 +2611,21 @@ A Butterworth lowpass filter with cutoff frequency 2 kHz must attenuate a 6 kHz 
 > 见 [[信号与系统/Quiz对应知识点.md|Quiz对应知识点]] 8.5 阶数与衰减。
 >
 > - **$n$ 阶 Butterworth 低通的一般形式**：$\displaystyle\prod_{k=1}^{n/2}\frac{\omega_c^2}{s^2+2\zeta_k\omega_cs+\omega_c^2}$（$n$ 偶）或再乘 $\dfrac{\omega_c}{s+\omega_c}$（$n$ 奇），$\zeta_k=\sin\dfrac{(2k-1)\pi}{2n}$。
-> - **单个二阶因子的幅频平方**：$\dfrac{1}{(1-x)^2+4\zeta_k^2x}$，$x=\left(\dfrac{f}{f_c}\right)^2$。
-> - **全部因子的乘积**：所有二阶因子（$n$ 为奇数时再乘一阶因子 $\dfrac{1}{1+x}$）乘起来后化简为 $1+x^n$。
-> - **衰减量**：$A=10\log_{10}(1+x^n)$。
+> - **单个二阶因子的幅频平方**：$\dfrac{1}{\left[1-\left(\dfrac{f}{f_c}\right)^2\right]^2+4\zeta_k^2\left(\dfrac{f}{f_c}\right)^2}$。
+> - **全部因子的乘积**：所有二阶因子（$n$ 为奇数时再乘一阶因子）乘起来后化简为 $\dfrac{1}{1+\left(\dfrac{f}{f_c}\right)^{2n}}$。
+> - **衰减量**：$A=10\log_{10}\left[1+\left(\dfrac{f}{f_c}\right)^{2n}\right]$。
 
 > [!example] 解答
 > 用一般形式看衰减。$n$ 阶 Butterworth 的每个二阶因子在 $s=j\omega$ 处的幅频平方为
-> $$\frac{1}{(1-x)^2+4\zeta_k^2x},\qquad x=\left(\frac{f}{f_c}\right)^2.$$
+> $$\frac{1}{\left[1-\left(\dfrac{\omega}{\omega_c}\right)^2\right]^2+4\zeta_k^2\left(\dfrac{\omega}{\omega_c}\right)^2}.$$
 > 所有因子（$n$ 为奇数时再乘一阶因子）的乘积，代入 $\zeta_k=\sin\dfrac{(2k-1)\pi}{2n}$ 并约去中间项后，正好化简为
-> $$|G|^2=\frac{1}{1+x^n}=\frac{1}{1+\left(\dfrac{f}{f_c}\right)^{2n}}.$$
+> $$|G|^2=\frac{1}{1+\left(\dfrac{\omega}{\omega_c}\right)^{2n}}=\frac{1}{1+\left(\dfrac{f}{f_c}\right)^{2n}}.$$
 > 所以衰减量
-> $$A=10\log_{10}\left(1+x^n\right).$$
-> 阶数 $n$ 越高，$x^n$ 越大，衰减越多，$A(n)$ 单调增加；从 $n=1$ 开始逐阶试算，第一个满足 $A(n)\ge35$ 的就是答案。本题
-> $$x=\left(\frac{f}{f_c}\right)^2=\left(\frac{6}{2}\right)^2=9,$$
+> $$A=10\log_{10}\left[1+\left(\frac{f}{f_c}\right)^{2n}\right].$$
+> 阶数 $n$ 越高，$(f/f_c)^{2n}$ 越大，衰减越多，$A(n)$ 单调增加；从 $n=1$ 开始逐阶试算，第一个满足 $A(n)\ge35$ 的就是答案。本题
+> $$\frac{f}{f_c}=\frac{6}{2}=3,$$
 > 所以
-> $$A(n)=10\log_{10}\left(1+9^n\right).$$
+> $$A(n)=10\log_{10}\left(1+3^{2n}\right).$$
 >
 > - $n=1$：$A=10\log_{10}10=10$ dB，不够；
 > - $n=2$：$A=10\log_{10}82=19.1$ dB，不够；
@@ -2630,7 +2634,7 @@ A Butterworth lowpass filter with cutoff frequency 2 kHz must attenuate a 6 kHz 
 >
 > $n=3$ 只有 $28.6$ dB，小于 $35$ dB；$n=4$ 为 $38.2$ dB，满足。$A(n)$ 单调，所以最小的就是 $n=4$。
 >
-> 速算：高频渐近下 $1+x^n\approx x^n=9^n=3^{2n}$，于是 $A\approx 20n\log_{10}3=9.54n$，令 $9.54n\ge35$ 得 $n\ge3.67$，向上取整为 $4$。
+> 速算：高频渐近下 $1+3^{2n}\approx 3^{2n}$，于是 $A\approx 20n\log_{10}3=9.54n$，令 $9.54n\ge35$ 得 $n\ge3.67$，向上取整为 $4$。
 
 ---
 

@@ -5728,7 +5728,7 @@ A_{\mathrm{dB}}(\omega)
 &\approx-20n\log_{10}\frac{\omega}{\omega_c}.
 \end{aligned}$$
 
-频率从 $\omega$ 升到 $10\omega$（十倍），两处的 dB 值相减：
+举例：频率从 $\omega$ 升到 $10\omega$（十倍），两处的 dB 值相减：
 
 $$\begin{aligned}
 A_{\mathrm{dB}}(10\omega)-A_{\mathrm{dB}}(\omega)
@@ -5775,7 +5775,7 @@ A_{\mathrm{dB}}(\omega)
 &\approx20n\log_{10}\frac{\omega}{\omega_c}.
 \end{aligned}$$
 
-频率从 $\omega$ 降到 $\omega/10$（降低十倍），两处的 dB 值相减：
+举例：频率从 $\omega$ 降到 $\omega/10$（降低十倍），两处的 dB 值相减：
 
 $$\begin{aligned}
 A_{\mathrm{dB}}(\omega/10)-A_{\mathrm{dB}}(\omega)
@@ -5787,6 +5787,18 @@ A_{\mathrm{dB}}(\omega/10)-A_{\mathrm{dB}}(\omega)
 \end{aligned}$$
 
 所以高通在低频段，频率每降低十倍，增益下降 $20n$ dB，与低通的高频下降完全对称。
+
+**通带衰减**
+
+低通（通带是低频）：
+
+$$A=10\log_{10}\left[1+\left(\frac{\omega}{\omega_c}\right)^{2n}\right].$$
+
+高通（通带是高频）：
+
+$$A=10\log_{10}\left[1+\left(\frac{\omega_c}{\omega}\right)^{2n}\right].$$
+
+两个式子的区别只是比值方向：低通用 $\omega/\omega_c$，高通用 $\omega_c/\omega$。在 $\omega=\omega_c$ 处两者都为 $10\log_{10}2\approx3.01$ dB；离开截止频率越远，$A\to0$。通带指标要求 $A\le A_p$。
 
 ---
 

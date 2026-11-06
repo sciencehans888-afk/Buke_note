@@ -36,7 +36,7 @@
             }
           },
           {
-            "id": "8fa5a0c479d6a80b",
+            "id": "8d42d1e4b11fc6d0",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -47,18 +47,6 @@
               },
               "icon": "lucide-file",
               "title": "Quiz对应知识点"
-            }
-          },
-          {
-            "id": "8d42d1e4b11fc6d0",
-            "type": "leaf",
-            "state": {
-              "type": "pdf",
-              "state": {
-                "file": "信号与系统/教材/formula-sheet-quiz2.pdf"
-              },
-              "icon": "lucide-file-text",
-              "title": "formula-sheet-quiz2"
             }
           }
         ],
@@ -259,21 +247,21 @@
       "bases:新建数据库": false
     }
   },
-  "active": "8fa5a0c479d6a80b",
+  "active": "a7b07f636312de84",
   "lastOpenFiles": [
-    "信号与系统/Quiz对应知识点.md.tmp.11456.f6420626bdaa",
-    "信号与系统/Quiz对应知识点.md.tmp.11456.070531a8e8d6",
-    "信号与系统/Quiz对应知识点.md.tmp.11456.3974839d9ba6",
-    "信号与系统/Quiz对应知识点.md.tmp.11456.6ecfdc36ed17",
-    "信号与系统/Quiz对应知识点.md.tmp.11456.70aec4a52f8e",
-    "信号与系统/Quiz对应知识点.md.tmp.23912.72188ad1634a",
-    "信号与系统/Quiz对应知识点.md.tmp.23912.3d328325bdd4",
-    "信号与系统/附件/Pasted image 20261105200515.png",
-    "信号与系统/Quiz对应知识点.md.tmp.28212.65d732274068",
-    "信号与系统/Quiz对应知识点.md.tmp.28212.5049272264f4",
-    "信号与系统/Quiz对应知识点.md.tmp.28212.5763136e3dcb",
-    "信号与系统/Quiz对应知识点.md.tmp.28212.a87c8afb5620",
+    "信号与系统/Quiz对应知识点.md.tmp.11456.c24af7bb2c29",
+    "信号与系统/Quiz对应知识点.md.tmp.11456.26a35ba5044d",
+    "信号与系统/Quiz对应知识点.md.tmp.11456.9ca9b9ecd84a",
+    "信号与系统/Quiz对应知识点.md.tmp.11456.10221e56a308",
+    "信号与系统/Quiz对应知识点.md.tmp.11456.d4d530e1b01f",
+    "信号与系统/Quiz对应知识点.md.tmp.11456.447c500ea47a",
+    "信号与系统/教材/formula-sheet-quiz2.pdf",
     "信号与系统/Quiz对应知识点.md",
+    "信号与系统/Quiz对应知识点.md.tmp.11456.09b40db80b4d",
+    "信号与系统/Quiz对应知识点.md.tmp.11456.f2cac7017aa8",
+    "信号与系统/Quiz对应知识点.md.tmp.11456.ecd7cab0bd7d",
+    "信号与系统/Quiz对应知识点.md.tmp.11456.7c4d9a2eaffe",
+    "信号与系统/附件/Pasted image 20261105200515.png",
     "信号与系统/Quiz3.md",
     "电路/附录A-E与索引.md",
     "电路/目录.md",

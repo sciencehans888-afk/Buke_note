@@ -1697,13 +1697,20 @@ Why can an ideal lowpass filter $G(j\omega)=p_{2\omega_c}(\omega)$ not be built 
 >
 > - **因果性判据**：实时系统的冲激响应必须满足 $h(t)=0$（$t<0$）。
 > - **理想低通频响**：$G(j\omega)=p_{2\omega_c}(\omega)$，截止频率 $\omega_c$。
-> - **反变换**：$\mathcal F^{-1}\{p_{2\omega_c}(\omega)\}=\dfrac{\sin\omega_ct}{\pi t}$，由傅里叶变换对 $\dfrac{\sin Wt}{\pi t}\leftrightarrow p_{2W}(\omega)$ 取 $W=\omega_c$。
+> - **求冲激响应**：冲激响应 $h(t)$ 是频响 $G(j\omega)$ 的傅里叶反变换，$\mathcal F^{-1}\{p_{2\omega_c}(\omega)\}=\dfrac{\sin\omega_ct}{\pi t}$，由傅里叶变换对 $\dfrac{\sin Wt}{\pi t}\leftrightarrow p_{2W}(\omega)$ 取 $W=\omega_c$。
 > - **性质**：幅值有界（$0$ 或 $1$），相位为零（线性），非有理函数，无极点；但冲激响应向 $t<0$ 延伸，非因果。
 
 > [!example] 解答
-> 反变换：
-> $$h(t)=\frac{1}{2\pi}\int_{-\omega_c}^{\omega_c}e^{j\omega t}d\omega
-> =\frac{1}{2\pi}\cdot\frac{e^{j\omega_ct}-e^{-j\omega_ct}}{jt}
+> 判断因果性要看冲激响应 $h(t)$，而 $h(t)$ 是频响 $G(j\omega)$ 的傅里叶反变换：
+> $$h(t)=\mathcal F^{-1}\{G(j\omega)\}=\frac{1}{2\pi}\int_{-\infty}^{\infty}G(j\omega)e^{j\omega t}\,d\omega.$$
+> 这里 $G(j\omega)=p_{2\omega_c}(\omega)$ 是矩形窗：$|\omega|<\omega_c$ 时等于 $1$，其余频率等于 $0$。所以无限区间的积分只剩 $[-\omega_c,\omega_c]$ 这一段：
+> $$h(t)=\frac{1}{2\pi}\int_{-\omega_c}^{\omega_c}1\cdot e^{j\omega t}\,d\omega.$$
+> 对 $\omega$ 积分（$t$ 当作常数）：
+> $$\int e^{j\omega t}\,d\omega=\frac{e^{j\omega t}}{jt},$$
+> 代入上下限：
+> $$h(t)=\frac{1}{2\pi}\cdot\frac{e^{j\omega_ct}-e^{-j\omega_ct}}{jt}.$$
+> 再用欧拉公式 $\sin a=\dfrac{e^{ja}-e^{-ja}}{2j}$，把 $a=\omega_ct$ 代入：
+> $$h(t)=\frac{1}{2\pi}\cdot\frac{2j\sin\omega_ct}{jt}
 > =\frac{\sin\omega_ct}{\pi t}.$$
 > 对任意 $t<0$，$h(t)$ 一般不恒为零，所以系统在输入加之前已有输出，非因果。
 >
@@ -1731,14 +1738,28 @@ At the $-3$ dB frequency of a first-order RC lowpass, compared with DC, the outp
 > - **功率比例**：功率 $\propto|G|^2$，$|G|^2=\dfrac12$ 对应功率减半。
 > - **对照**：$|G|=\dfrac12$ 对应 $-6$ dB。
 
+
 > [!example] 解答
-> 分贝定义：
-> $$20\log_{10}\left|G\right|=-3\quad\Longrightarrow\quad |G|=10^{-3/20}=0.7079\approx\frac{1}{\sqrt2}.$$
-> 精确计算：
-> $$20\log_{10}\frac{1}{\sqrt2}=-10\log_{10}2\approx-3.01\ \mathrm{dB}.$$
-> 功率比例：
-> $$|G|^2=\frac12.$$
-> 选 (b)。
+> 一阶 RC 低通的直流增益为 $1$，「与直流相比」就是比较 $\omega=0$ 与 $\omega=\omega_c$ 两处的幅值。一阶低通的幅频为
+> $$|G(j\omega)|=\frac{1}{\sqrt{1+\left(\omega/\omega_c\right)^2}}.$$
+> 在 $\omega=\omega_c$ 处：
+> $$|G(j\omega_c)|=\frac{1}{\sqrt{1+1}}=\frac{1}{\sqrt2}.$$
+> 所以幅值降到直流的 $1/\sqrt2$，不是 $1/2$。
+>
+> 分贝的定义是
+> $$A_{\mathrm{dB}}=20\log_{10}|G|.$$
+> 截止频率处：
+> $$20\log_{10}\frac{1}{\sqrt2}
+> =20\log_{10}\left(2^{-1/2}\right)
+> =-10\log_{10}2
+> \approx-3.01\ \mathrm{dB}.$$
+> 这就是「$-3$ dB 频率」这个名称的来源。
+>
+> 电阻上的功率 $P=U^2/(2R)$，在输入相同的条件下 $P\propto|G|^2$。所以
+> $$\frac{P_c}{P_0}=|G(j\omega_c)|^2=\left(\frac{1}{\sqrt2}\right)^2=\frac12.$$
+> 功率降到直流时的一半。
+>
+> (a) 把幅值说成 $1/2$，那样是 $-6$ dB，功率会变成 $1/4$；(c) 把幅值和功率都写成 $0.7$，但功率比应为 $0.5$；(d) 幅值写成 $1/2$，也不对。选 (b)。
 
 ---
 
@@ -1763,19 +1784,30 @@ Which transfer function is a bandpass filter?（哪个传递函数是带通滤�
 > - **分子阶数**：分子含 $s$ 因子 ⇒ $G(0)=0$；分子分母同阶 ⇒ 高频有限非零。
 
 > [!example] 解答
-> 逐项检查两端增益：
+> **判据**：低通看 $G(0)\ne0$、$G(j\infty)=0$；高通看 $G(0)=0$、$G(j\infty)\ne0$；带通看两端都为 $0$、中间有峰值；带阻看两端都不为 $0$、中间有零点。四个选项的分母相同，都是 $s^2+10s+100$，区别只在分子。
 >
-> (a) $G(0)=0$；$s\to\infty$ 时分子分母同阶，$G\to0$。两端为零，中间在 $\omega=10$ 处
-> $$|G(j10)|=\left|\frac{10\cdot10j}{-100+100j+100}\right|=1,$$
-> 是带通。
+> **逐项代入两端。**
 >
-> (b) $G(0)=1$，高频趋于 $0$：低通。
+> (a) $G(s)=\dfrac{10s}{s^2+10s+100}$：
+> $$G(0)=\frac{0}{100}=0,\qquad G(j\infty)=0\ (\text{分子一次、分母二次}),$$
+> 两端都为零，是带通。再看中间 $\omega=10$ 处（$\omega_n=\sqrt{100}=10$）：
+> $$G(j10)=\frac{10\cdot j10}{(j10)^2+10\cdot j10+100}
+> =\frac{j100}{-100+j100+100}=\frac{j100}{j100}=1,$$
+> 中间增益为 $1$，确实是带通。
 >
-> (c) 分子零点 $\pm10j$，在 $10$ rad/s 处增益为零；两端增益为 $1$：带阻。
+> (b) $G(s)=\dfrac{100}{s^2+10s+100}$：
+> $$G(0)=\frac{100}{100}=1,\qquad G(j\infty)=0,$$
+> 低频通、高频阻，是低通。
 >
-> (d) $G(0)=0$，高频趋于 $1$：高通。
+> (c) $G(s)=\dfrac{s^2+100}{s^2+10s+100}$：
+> $$G(0)=\frac{100}{100}=1,\qquad G(j\infty)=1,$$
+> 两端都为 $1$，中间 $\omega=10$ 处分母为 $j100$、分子为 $0$，是带阻（陷波）。
 >
-> 选 (a)。
+> (d) $G(s)=\dfrac{s^2}{s^2+10s+100}$：
+> $$G(0)=\frac{0}{100}=0,\qquad G(j\infty)=1,$$
+> 低频阻、高频通，是高通。
+>
+> 只有 (a) 两端为零，选 (a)。
 
 ---
 
@@ -1795,24 +1827,42 @@ in rad/s.
 > [!abstract] 知识点讲解
 > 见 [[信号与系统/Quiz对应知识点.md|Quiz对应知识点]] 5.6 二阶低通的 $-3$ dB 频率。
 >
-> - **二阶标准形**：$G(s)=\dfrac{\omega_n^2}{s^2+2\zeta\omega_ns+\omega_n^2}$，本题 $\omega_n=20$、$\zeta=0.5$。
+> - **二阶标准形**：$G(s)=\dfrac{\omega_n^2}{s^2+2\zeta\omega_ns+\omega_n^2}$。
 > - **幅频平方**：$|G(j\omega)|^2=\dfrac{1}{(1-x)^2+(2\zeta)^2x}$，其中 $x=\left(\dfrac{\omega}{\omega_n}\right)^2$。
-> - **半功率条件**：$|G|^2=\dfrac12$，化为 $x$ 的二次方程。
-> - **结论**：二阶低通的 $\omega_{-3\mathrm{dB}}\ne\omega_n$，与 $\zeta$ 有关。
+> - **半功率条件**：$|G|^2=\dfrac12$，化为 $x$ 的二次方程后取正根。
+> - **截止频率**：$\omega_c=\omega_n\sqrt{x}$，一般不等于 $\omega_n$。
 
 > [!example] 解答
-> 对照标准形式：
-> $$\omega_n=20,\qquad \zeta=\frac{20}{2\omega_n}=0.5.$$
-> 幅频平方：
-> $$|G(j\omega)|^2=\frac{1}{\left(1-x\right)^2+\left(2\zeta\right)^2x},\qquad x=\left(\frac{\omega}{\omega_n}\right)^2.$$
-> 代入 $\zeta=0.5$，即 $(2\zeta)^2=1$：
-> $$|G|^2=\frac{1}{(1-x)^2+x}=\frac{1}{x^2-x+1}.$$
-> 令 $|G|^2=1/2$：
-> $$x^2-x+1=2\quad\Longrightarrow\quad x^2-x-1=0.$$
-> 取正根：
-> $$x=\frac{1+\sqrt5}{2}=1.618.$$
+> 与标准形
+> $$G(s)=\frac{\omega_n^2}{s^2+2\zeta\omega_ns+\omega_n^2}$$
+> 对照：常数项 $400=\omega_n^2$，所以 $\omega_n=20$；一次项 $20=2\zeta\omega_n$，所以
+> $$\zeta=\frac{20}{2\times20}=0.5.$$
+>
+> 代入 $s=j\omega$：
+> $$G(j\omega)=\frac{400}{(j\omega)^2+20j\omega+400}
+> =\frac{400}{400-\omega^2+j20\omega}.$$
+> 分部取模。分子模为 $400$；分母模的平方为
+> $$\left(400-\omega^2\right)^2+\left(20\omega\right)^2.$$
 > 所以
-> $$\omega_c=20\sqrt{1.618}=25.44\ \mathrm{rad/s}.$$
+> $$|G(j\omega)|^2=\frac{400^2}{\left(400-\omega^2\right)^2+\left(20\omega\right)^2}.$$
+>
+> 上下同除以 $400^2=160000$。定义 $x=(\omega/20)^2=\omega^2/400$：
+> $$\left(\frac{400-\omega^2}{400}\right)^2=(1-x)^2,
+> \qquad
+> \left(\frac{20\omega}{400}\right)^2=\left(\frac{\omega}{20}\right)^2=x,$$
+> 于是
+> $$|G(j\omega)|^2=\frac{1}{(1-x)^2+x}=\frac{1}{x^2-x+1}.$$
+>
+> $-3$ dB 即 $|G|^2=1/2$：
+> $$\frac{1}{x^2-x+1}=\frac12\quad\Longrightarrow\quad x^2-x+1=2
+> \quad\Longrightarrow\quad x^2-x-1=0.$$
+> 求根公式：
+> $$x=\frac{1\pm\sqrt{1+4}}{2}=\frac{1\pm\sqrt5}{2}.$$
+> $x$ 必须为正，取加号：
+> $$x=\frac{1+\sqrt5}{2}=1.618.$$
+>
+> $$\omega_c=\omega_n\sqrt{x}=20\sqrt{1.618}=20\times1.272=25.44\ \mathrm{rad/s}.$$
+> 注意 $\omega_c\ne\omega_n$：一阶时二者相等，二阶开始与 $\zeta$ 有关，本题 $\zeta=0.5$ 时截止频率被抬到 $\omega_n$ 之上。
 
 ---
 
@@ -1836,15 +1886,23 @@ is used to suppress a 50 Hz hum. By how many dB is the 50 Hz hum attenuated? (Gi
 > - **一阶高通**：$G(s)=\dfrac{s}{s+\omega_c}$，幅频 $|G(j\omega)|=\dfrac{\omega/\omega_c}{\sqrt{1+(\omega/\omega_c)^2}}$。
 > - **频率比**：用 $f/f_c=\omega/\omega_c$ 计算，两边的 $2\pi$ 约掉。
 > - **衰减量**：$A=-20\log_{10}|G|$ dB。
-> - **低频渐近**：$\omega\ll\omega_c$ 时 $|G|\approx\omega/\omega_c$，按 $+20$ dB/decade 上升。
+> - **低频渐近**：$\omega\ll\omega_c$ 时 $|G|\approx\omega/\omega_c$，按每十倍频程 $20$ dB 上升。
 
 > [!example] 解答
-> 频率比：
-> $$\frac{f}{f_c}=\frac{50}{100}=0.5.$$
-> 幅值：
-> $$|G|=\frac{0.5}{\sqrt{1+0.5^2}}=\frac{0.5}{\sqrt{1.25}}=0.4472.$$
-> 衰减量：
-> $$-20\log_{10}0.4472=6.990\ \mathrm{dB}.$$
+> 把 $s=j\omega$ 代入：
+> $$G(j\omega)=\frac{j\omega}{j\omega+\omega_c}.$$
+> 分子模为 $\omega$，分母模为 $\sqrt{\omega^2+\omega_c^2}$，所以
+> $$|G(j\omega)|=\frac{\omega}{\sqrt{\omega^2+\omega_c^2}}
+> =\frac{\omega/\omega_c}{\sqrt{1+\left(\omega/\omega_c\right)^2}}.$$
+>
+> 截止频率 $100$ Hz，信号 $50$ Hz，两边的 $2\pi$ 在比值中约掉：
+> $$\frac{f}{f_c}=\frac{50}{100}=0.5\quad\Longrightarrow\quad\frac{\omega}{\omega_c}=0.5.$$
+>
+> $$|G|=\frac{0.5}{\sqrt{1+0.5^2}}=\frac{1/2}{\sqrt{5/4}}=\frac{1/2}{\sqrt5/2}=\frac{1}{\sqrt5}=0.4472.$$
+>
+> 衰减量定义为 $A=-20\log_{10}|G|$ 且取正数：
+> $$A=-20\log_{10}\frac{1}{\sqrt5}=20\log_{10}\sqrt5=10\log_{10}5=6.990\ \mathrm{dB}.$$
+> 直观检查：$\omega\ll\omega_c$ 时 $|G|\approx\omega/\omega_c=0.5$，对应约 $-6$ dB；精确值 $0.447$ 略小，对应 $6.99$ dB，两者量级一致。
 
 ---
 
@@ -1865,18 +1923,30 @@ must have DC gain $+12$ dB and a gain 3 dB below the DC gain at $f=1$ kHz. Find 
 > [!abstract] 知识点讲解
 > 见 [[信号与系统/Quiz对应知识点.md|Quiz对应知识点]] 8.8 由指标反求参数。
 >
-> - **一阶低通标准形**：$G(s)=\dfrac{k}{s+a}$，$-3$ dB 频率 $\omega_c=a$。
+> - **一阶低通标准形**：$G(s)=\dfrac{k}{s+a}$。
 > - **直流增益**：$G(0)=\dfrac{k}{a}$。
-> - **dB 换算**：$+12$ dB 对应 $\dfrac{k}{a}=10^{12/20}=10^{0.6}$。
-> - **角频率换算**：$\omega_c=2\pi f_c$，注意 $f$ 用 Hz。
+> - **$-3$ dB 频率**：由 $|G(j\omega_c)|=\dfrac{|G(0)|}{\sqrt2}$ 得 $\omega_c=a$。
+> - **dB 定义**：$A_{\mathrm{dB}}=20\log_{10}|G|$，反解得 $|G|=10^{A_{\mathrm{dB}}/20}$。
+> - **角频率换算**：$\omega_c=2\pi f_c$。
+> - **反求参数**：先由 $\dfrac{k}{a}=10^{A_{\mathrm{dB}}/20}$ 得 $k/a$，再由 $a=\omega_c$ 得 $k=a\cdot10^{A_{\mathrm{dB}}/20}$。
 
 > [!example] 解答
-> $-3$ dB 点：
+> 直流就是 $s=0$：
+> $$G(0)=\frac{k}{a}.$$
+> $+12$ dB 的含义是 $20\log_{10}\dfrac{k}{a}=12$，即
+> $$\frac{k}{a}=10^{12/20}=10^{0.6}=3.981.$$
+>
+> 一阶低通
+> $$|G(j\omega)|=\frac{k}{\sqrt{\omega^2+a^2}}.$$
+> 根据题目条件，比直流低 $3$ dB 的点就是 $|G(j\omega)|=|G(0)|/\sqrt2$ 的点，条件化为
+> $$\frac{k}{\sqrt{\omega^2+a^2}}=\frac{k/a}{\sqrt2}
+> \quad\Longrightarrow\quad\sqrt{\omega^2+a^2}=\sqrt2\,a
+> \quad\Longrightarrow\quad\omega=a.$$
+> 根据 $-3$ dB 的定义，比直流增益小3db位置的频率就是截止频率；且对照关于低通滤波器的一般公式也可以发现 $\omega_c=a$。题给 $f_c=1$ kHz：
 > $$a=2\pi\times1000=6283\ \mathrm{rad/s}.$$
-> 直流增益：
-> $$20\log_{10}\frac{k}{a}=12\quad\Longrightarrow\quad\frac{k}{a}=10^{0.6}=3.981.$$
-> 所以
+>
 > $$k=3.981\times6283=2.501\times10^4\ \mathrm{rad/s}.$$
+> 两个条件分别定出 $a$（决定转折频率）和 $k/a$（决定整体高度），$k$ 就是二者相乘。
 
 ---
 
@@ -1895,20 +1965,35 @@ Which transfer function is an exponentially stable allpass filter ($|G(j\omega)|
 > [!abstract] 知识点讲解
 > 见 [[信号与系统/Quiz对应知识点.md|Quiz对应知识点]] 8.2 典型滤波器（全通在某一频率的相位）。
 >
-> - **一阶全通形式**：$G(s)=\dfrac{s-a}{s+a}$，零点与极点关于虚轴对称。
-> - **全通性质**：$|G(j\omega)|=1$，对所有 $\omega$ 成立。
-> - **稳定性**：极点在开左半平面（$s=-a$，$a>0$）⇔ 指数稳定。
-> - **对照**：$\dfrac{s+3}{s-3}$ 幅值也为 $1$，但极点 $+3$ 在右半平面，不稳定。
+> - **一阶全通标准形**：$G(s)=\dfrac{s-a}{s+a}$。
+> - **幅频**：$|G(j\omega)|=\dfrac{|j\omega-a|}{|j\omega+a|}=1$。
+> - **极点**：$s=-a$。
+> - **稳定条件**：$\operatorname{Re}p<0$，即 $a>0$。
+> - **判定**：$|G(j\omega)|\equiv1$ 且所有极点在开左半平面。
 
 > [!example] 解答
-> 检查 (d)：
-> $$G(j\omega)=\frac{j\omega-3}{j\omega+3}.$$
-> 取模：
-> $$|G(j\omega)|=\frac{\left|j\omega-3\right|}{\left|j\omega+3\right|}
-> =\frac{\sqrt{\omega^2+9}}{\sqrt{\omega^2+9}}=1.$$
-> 极点 $s=-3$ 在开左半平面，系统指数稳定。
+> 先明确两个条件：「全通」指对所有 $\omega$ 都有 $|G(j\omega)|=1$；「指数稳定」指所有极点的实部小于 $0$（在开左半平面）。四个选项要同时满足这两条。
 >
-> 其余选项：$(a)$ 是 $G(0)=0$ 的高通；$(b)$ 是高频趋于 $0$ 的低通；$(c)$ 的极点 $+3$ 在右半平面，不稳定。选 (d)。
+> 逐项检查。
+>
+> (a) $G(s)=\dfrac{s}{s+3}$：分子模为 $\omega$，分母模为 $\sqrt{\omega^2+9}$，
+> $$|G(j\omega)|=\frac{\omega}{\sqrt{\omega^2+9}},$$
+> 在 $\omega=3$ 处为 $\dfrac{3}{\sqrt{18}}=\dfrac{1}{\sqrt2}\ne1$，不是全通。它其实是高通：$G(0)=0$、$G(j\infty)=1$。
+>
+> (b) $G(s)=\dfrac{3}{s+3}$：
+> $$|G(j\omega)|=\frac{3}{\sqrt{\omega^2+9}},$$
+> $\omega=0$ 时为 $1$，$\omega\to\infty$ 时为 $0$，是低通，不是全通。
+>
+> (c) $G(s)=\dfrac{s+3}{s-3}$：模确实为 $1$，
+> $$|G(j3)|=\frac{|3+j3|}{|-3+j3|}=\frac{3\sqrt2}{3\sqrt2}=1,$$
+> 但它的极点是 $s=3$，在右半平面，系统不稳定，不满足第二条。
+>
+> (d) $G(s)=\dfrac{s-3}{s+3}$：极点为 $s=-3$，在左半平面，指数稳定。再看模：
+> $$|G(j\omega)|=\frac{|j\omega-3|}{|j\omega+3|}
+> =\frac{\sqrt{\omega^2+9}}{\sqrt{\omega^2+9}}=1,$$
+> 对任意 $\omega$ 成立（分子分母只是 $j\omega$ 的符号不同，模一样），是全通。
+>
+> 只有 (d) 同时满足全通与稳定，选 (d)。
 
 ---
 
@@ -1934,8 +2019,8 @@ is driven by the input $u(t)=\cos(10t)$, applied for all time. The output is（�
 > 见 [[信号与系统/Quiz对应知识点.md|Quiz对应知识点]] 8.2 典型滤波器（全通在某一频率的相位） 与 4.1 正弦稳态的核心结论。
 >
 > - **正弦稳态**：$u=A\cos\omega t$ 时 $y=A|G(j\omega)|\cos\left(\omega t+\angle G(j\omega)\right)$。
-> - **全通幅值**：$|G(j\omega)|=1$，只改变相位。
-> - **特殊复数值**：$-j$ 的模为 $1$、相位为 $-90^\circ$。
+> - **全通特性**：$|G(j\omega)|=1$，只改变相位。
+> - **复数计算**：分子分母同乘共轭，写成 $x+jy$ 后取模和辐角。
 > - **相位移动**：$\cos(\theta-90^\circ)=\sin\theta$。
 
 > [!example] 解答
@@ -1972,10 +2057,11 @@ has transfer function $G(s)=e^{-2s}$. Which describes its frequency response?（
 > [!abstract] 知识点讲解
 > 见 [[信号与系统/Quiz对应知识点.md|Quiz对应知识点]] 8.2 典型滤波器（延迟线）。
 >
-> - **延迟的传递函数**：$y(t)=u(t-T)\Rightarrow G(s)=e^{-sT}$，$T=2$。
-> - **频率响应**：$G(j\omega)=e^{-j2\omega}$，$|e^{j\theta}|=1$。
-> - **线性相位**：$\angle G(j\omega)=-2\omega$，相位与频率成正比，对应纯延迟。
-> - **无极点**：指数函数不是有理函数，没有极点，Bode 幅频为 $0$ dB 水平线。
+> - **时移**：$y(t)=u(t-T)$ 的传递函数 $G(s)=e^{-sT}$。
+> - **频率响应**：$G(j\omega)=e^{-j\omega T}=1\angle(-\omega T)$。
+> - **幅频**：$|G(j\omega)|=1$。
+> - **相频**：$\angle G(j\omega)=-\omega T$，与频率成正比。
+> - **极点**：$e^{-sT}$ 不是有理函数，没有极点。
 
 > [!example] 解答
 > 代入 $s=j\omega$：
@@ -2011,19 +2097,30 @@ has cutoff $1$ rad/s. Replacing $s$ by $50/s$ gives（截止频率为 $1$ rad/s�
 > [!abstract] 知识点讲解
 > 见 [[信号与系统/Quiz对应知识点.md|Quiz对应知识点]] 8.7 例 2（Butterworth 原型到高通） 与 8.5 Butterworth 滤波器。
 >
-> - **低通到高通变换**：$s\to\dfrac{\omega_c}{s}$，$\omega_c=50$。
-> - **原型**：$G_{LP}(s)=\dfrac{1}{s^2+\sqrt2\,s+1}$（二阶 Butterworth，$\zeta=\dfrac{1}{\sqrt2}$）。
-> - **代数整理**：代入后分子分母同乘 $s^2$。
-> - **系数**：中间项 $\omega_c\sqrt2$，常数项 $\omega_c^2$。
+> - **二阶 Butterworth 低通原型**：$G_{LP}(s)=\dfrac{1}{s^2+\sqrt2\,s+1}$，$\omega_c=1$。
+> - **低通到高通变换**：把原型中的 $s$ 换成 $\dfrac{\omega_c}{s}$。
+> - **分母展开**：$1+\dfrac{\sqrt2\,\omega_c}{s}+\dfrac{\omega_c^2}{s^2}$。
+> - **整理**：分子分母同乘 $s^2$，得 $\dfrac{s^2}{s^2+\sqrt2\,\omega_cs+\omega_c^2}$。
 
 > [!example] 解答
-> 代入 $s=50/s$：
+> 低通原型 $G_{LP}(s)$ 是把 $s$ 换成 $\dfrac{\omega_c}{s}$ 得到高通的：
+> $$G_{HP}(s)=G_{LP}\!\left(\frac{\omega_c}{s}\right),\qquad \omega_c=50.$$
+>
+> 原型
+> $$G_{LP}(s)=\frac{1}{s^2+\sqrt2\,s+1}.$$
+> 分母两项分别替换：
+> $$s^2\ \longrightarrow\ \left(\frac{50}{s}\right)^2=\frac{2500}{s^2},
+> \qquad
+> \sqrt2\,s\ \longrightarrow\ \sqrt2\cdot\frac{50}{s}=\frac{50\sqrt2}{s},$$
+> 所以
 > $$G_{HP}(s)=\frac{1}{\dfrac{2500}{s^2}+\dfrac{50\sqrt2}{s}+1}.$$
-> 分子分母同乘 $s^2$：
+>
 > $$G_{HP}(s)=\frac{s^2}{s^2+50\sqrt2\,s+2500}.$$
-> 计算系数：
+> 注意常数项 $50^2$ 来自 $s^2$ 那一项，这也是 (c) 写成 $50$ 的错误所在。
+>
 > $$50\sqrt2=70.71,\qquad 50^2=2500.$$
-> 选 (b)。
+>
+> $s\to0$ 时分子 $s^2\to0$，$G\to0$；$s\to\infty$ 时分子分母同阶，$G\to1$。低频阻、高频通，确实是高通。另外 (a) 的中间项没有跟着 $50$ 缩放，(d) 分子是 $2500$，那是截止频率 $50$ rad/s 的低通而不是高通。选 (b)。
 
 ---
 
@@ -2043,21 +2140,28 @@ Find $C$ in $\mu$F so the $-3$ dB frequency is 3 kHz.（求使 $-3$ dB 频率为
 > [!abstract] 知识点讲解
 > 见 [[信号与系统/Quiz对应知识点.md|Quiz对应知识点]] 8.4 $-3$ dB 截止频率 与 8.2 典型滤波器。
 >
-> - **一阶高通标准形**：$G_H(s)=\dfrac{s}{s+\omega_c}$，本题 $G_H(s)=\dfrac{4Cs}{4Cs+1}=\dfrac{s}{s+\frac{1}{4C}}$。
-> - **极点与截止频率**：$\omega_c=\dfrac{1}{4C}$，$-3$ dB 频率等于极点频率。
+> - **一阶高通标准形**：$G_H(s)=\dfrac{s}{s+\omega_c}$。
+> - **截止频率**：$\omega_c$ 就是极点的绝对值。
 > - **角频率换算**：$\omega_c=2\pi f_c$。
-> - **反解电容**：$C=\dfrac{1}{4\omega_c}=\dfrac{1}{8\pi f_c}$。
+> - **反解电容**：在 $RC$ 高通中 $\omega_c=\dfrac{1}{RC}$，所以 $C=\dfrac{1}{R\omega_c}$。
 
 > [!example] 解答
-> 整理为标准形式：
+> 分子分母同除以 $4C$：
 > $$G_H(s)=\frac{s}{s+\dfrac{1}{4C}}.$$
-> 截止频率：
+> 与一阶高通标准形 $\dfrac{s}{s+\omega_c}$ 对照，读出
 > $$\omega_c=\frac{1}{4C}.$$
-> 令 $\omega_c=2\pi\times3000$：
-> $$C=\frac{1}{4\cdot2\pi\cdot3000}.$$
-> 计算：
-> $$4\cdot2\pi\cdot3000=75398.2,$$
-> $$C=\frac{1}{75398.2}=1.326\times10^{-5}\ \mathrm{F}=13.26\ \mu\mathrm{F}.$$
+>
+> 幅频为
+> $$|G_H(j\omega)|=\frac{\omega}{\sqrt{\omega^2+\omega_c^2}},$$
+> 在 $\omega=\omega_c$ 处等于 $\dfrac{1}{\sqrt2}$，而 $\omega\to\infty$ 时趋于 $1$，所以 $-3$ dB 频率正是 $\omega_c$。
+>
+> $f_c=3$ kHz，先换成角频率：
+> $$\omega_c=2\pi\times3000=18849.6\ \mathrm{rad/s}.$$
+> 由 $\omega_c=\dfrac{1}{4C}$：
+> $$C=\frac{1}{4\omega_c}=\frac{1}{4\times18849.6}=\frac{1}{75398.2}.$$
+>
+> $$C=1.326\times10^{-5}\ \mathrm{F}=13.26\ \mu\mathrm{F}.$$
+> （$1\ \mu\mathrm{F}=10^{-6}\ \mathrm{F}$。）
 
 ---
 
@@ -2077,22 +2181,34 @@ Find $|G(j100)|$.（求 $|G(j100)|$。）
 > [!abstract] 知识点讲解
 > 见 [[信号与系统/Quiz对应知识点.md|Quiz对应知识点]] 8.2 典型滤波器 与 0.1 复数与相量。
 >
-> - **并联相加**：$G=G_1+G_2$，是**复数相加**，不是幅值相加。
-> - **有理化**：$\dfrac{a}{b+jc}=\dfrac{a(b-jc)}{b^2+c^2}$，写成 $x+jy$。
-> - **模的计算**：$|G|=\sqrt{\operatorname{Re}^2G+\operatorname{Im}^2G}$。
-> - **虚部抵消**：互补的低通与高通在 $\omega_c$ 处虚部大小相等、符号相反，相加只剩实部。
+> - **并联（相加）**：$G=G_1+G_2$，先分别化成 $x+jy$ 再相加。
+> - **有理化**：$\dfrac{a}{b+jc}=\dfrac{a(b-jc)}{b^2+c^2}$。
+> - **分成实部虚部**：$\dfrac{a}{b+jc}=\dfrac{ab}{b^2+c^2}-j\dfrac{ac}{b^2+c^2}$。
+> - **取模**：$|G|=\sqrt{\operatorname{Re}^2G+\operatorname{Im}^2G}$。
 
 > [!example] 解答
-> 第一项：
-> $$\frac{10}{10+100j}=\frac{10(10-100j)}{10^2+100^2}
-> =\frac{100-1000j}{10100}=0.0099-0.0990j.$$
-> 第二项：
-> $$\frac{100j}{1000+100j}=\frac{100j(1000-100j)}{1000^2+100^2}
-> =\frac{10000+100000j}{1010000}=0.0099+0.0990j.$$
-> 相加，虚部抵消：
-> $$G(j100)=0.0198.$$
+> $$G(j100)=\underbrace{\frac{10}{j100+10}}_{G_1}+\underbrace{\frac{j100}{j100+1000}}_{G_2}.$$
+>
+> 分子分母同乘共轭 $10-j100$：
+> $$G_1=\frac{10}{10+j100}\cdot\frac{10-j100}{10-j100}
+> =\frac{10(10-j100)}{10^2+100^2}
+> =\frac{100-j1000}{10100}.$$
+> 拆开：
+> $$G_1=\frac{100}{10100}-j\frac{1000}{10100}=0.009901-0.099010j.$$
+>
+> 分子分母同乘共轭 $1000-j100$：
+> $$G_2=\frac{j100}{1000+j100}\cdot\frac{1000-j100}{1000-j100}
+> =\frac{j100(1000-j100)}{1000^2+100^2}.$$
+> 把分子展开，注意 $j\cdot(-j)=1$：
+> $$j100(1000-j100)=j100000-j^2\,10000=10000+j100000.$$
 > 所以
+> $$G_2=\frac{10000+j100000}{1010000}=0.009901+0.099010j.$$
+>
+> 虚部大小相等、符号相反，正好抵消：
+> $$G(j100)=0.009901+0.009901=0.019802.$$
+> 和为实数，所以
 > $$|G(j100)|=0.01980.$$
+> 结果很小，符合带阻在阻带内增益很低的预期。
 
 ---
 
@@ -2123,21 +2239,32 @@ with the same cutoff are connected in parallel and summed, $G=G_L+G_H$. What is 
 > [!abstract] 知识点讲解
 > 见 [[信号与系统/Quiz对应知识点.md|Quiz对应知识点]] 8.2 典型滤波器 与 0.1 复数与相量。
 >
-> - **并联相加**：$G=G_L+G_H$，同一分母可直接通分。
-> - **互补滤波器**：$G_L+G_H=\dfrac{\omega_c}{s+\omega_c}+\dfrac{s}{s+\omega_c}=1$。
-> - **复数相加 ≠ 模相加**：$\left|G_L(j\omega_c)\right|+\left|G_H(j\omega_c)\right|=\sqrt2$，但复数和为 $1$。
-> - **全通结论**：$|G(j\omega)|=1$ 对所有 $\omega$ 成立。
+> - **并联（相加）**：$G=G_L+G_H$。
+> - **通分**：$\dfrac{\omega_c}{s+\omega_c}+\dfrac{s}{s+\omega_c}=\dfrac{s+\omega_c}{s+\omega_c}$。
+> - **约分**：$G(s)=1$。
+> - **全通**：$|G(j\omega)|=|1|=1$，所有频率原样通过。
 
 > [!example] 解答
-> 通分相加：
+> 两项分母相同，都是 $s+\omega_c$：
 > $$G(s)=\frac{\omega_c}{s+\omega_c}+\frac{s}{s+\omega_c}
-> =\frac{s+\omega_c}{s+\omega_c}=1.$$
-> 所以
+> =\frac{\omega_c+s}{s+\omega_c}=1.$$
+> 分子恰好等于分母，所以 $G(s)=1$，与 $\omega_c$ 取多少无关。
+>
+> $G(s)=1$ 不含 $s$，代入 $s=j\omega$ 仍是 $1$：
 > $$|G(j\omega)|=1\quad\text{对所有 }\omega.$$
-> 校验 $\omega_c$ 处：
-> $$G_L(j\omega_c)=\frac{\omega_c}{\omega_c+j\omega_c}=\frac{1}{1+j}=\frac{1-j}{2},$$
-> $$G_H(j\omega_c)=\frac{j\omega_c}{\omega_c+j\omega_c}=\frac{j}{1+j}=\frac{1+j}{2},$$
-> 两者相加为 $1$，不是 $\sqrt2$（那是把模相加的错误）。选 (d)。
+> 这就是「所有频率原样通过」，即全通（而且这里连相位都不改变）。
+>
+> $$G_L(j\omega_c)=\frac{\omega_c}{\omega_c+j\omega_c}=\frac{1}{1+j}
+> =\frac{1-j}{(1+j)(1-j)}=\frac{1-j}{2},$$
+> $$G_H(j\omega_c)=\frac{j\omega_c}{\omega_c+j\omega_c}=\frac{j}{1+j}
+> =\frac{j(1-j)}{2}=\frac{j-j^2}{2}=\frac{1+j}{2}.$$
+> 两者相加：
+> $$G_L(j\omega_c)+G_H(j\omega_c)=\frac{1-j}{2}+\frac{1+j}{2}=\frac{2}{2}=1.$$
+> 各自的模都是
+> $$|G_L(j\omega_c)|=|G_H(j\omega_c)|=\frac{1}{\sqrt2},$$
+> 模相加等于 $\sqrt2$——这正是选项 (c) 犯的错：并联是**复数相加**，不是模相加，虚部抵消后得到 $1$ 而不是 $\sqrt2$。
+>
+> (a) 要形成陷波，分子必须含 $s^2+\omega_c^2$ 这样的零点，而这里两项相加把分子凑成了分母；(b) 带通要求低频和高频两端都趋于零，这里两端都是 $1$。所以选 (d)。
 
 ---
 
@@ -2153,20 +2280,34 @@ A second-order lowpass with no zeros has poles at $-10^4\pm j10^4$ rad/s and uni
 > [!abstract] 知识点讲解
 > 见 [[信号与系统/Quiz对应知识点.md|Quiz对应知识点]] 8.7 例 3（由极点求二阶 Butterworth 的截止频率） 与 8.5 Butterworth 滤波器。
 >
-> - **二阶 Butterworth 极点**：$s=-\omega_c e^{\pm j45^\circ}$ 形式，极点到原点距离为 $\omega_c$。
+> - **二阶 Butterworth 极点**：$s=\omega_c e^{\pm j135^\circ}$。
 > - **极点到原点距离**：$\omega_n=|p|=\sqrt{\operatorname{Re}^2p+\operatorname{Im}^2p}$。
-> - **阻尼比**：$\zeta=\dfrac{\left|\operatorname{Re}p\right|}{\omega_n}$，二阶 Butterworth 固定为 $\dfrac{1}{\sqrt2}$。
-> - **截止频率**：Butterworth 的 $\omega_{-3\mathrm{dB}}$ 就是 $\omega_n=\omega_c$。
+> - **阻尼比**：$\zeta=\dfrac{\left|\operatorname{Re}p\right|}{\omega_n}$。
+> - **Butterworth 条件**：$\zeta=\dfrac{1}{\sqrt2}$。
+> - **截止频率**：$\omega_c=\omega_n$。
 
 > [!example] 解答
-> 由极点求 $\omega_n$：
-> $$\omega_n=\sqrt{(10^4)^2+(10^4)^2}=\sqrt2\times10^4.$$
-> 验证阻尼比：
-> $$\zeta=\frac{\left|\operatorname{Re}p\right|}{\omega_n}
-> =\frac{10^4}{\sqrt2\times10^4}=\frac{1}{\sqrt2},$$
-> 正是二阶 Butterworth 的特征。
+> 无零点、极点为 $p_{1,2}=-10^4\pm j10^4$，所以分母为
+> $$(s-p_1)(s-p_2)
+> =(s+10^4-j10^4)(s+10^4+j10^4)
+> =(s+10^4)^2+(10^4)^2
+> =s^2+2\times10^4s+2\times10^8.$$
+> 直流增益为 $1$，即 $G(0)=1$，所以分子等于常数项：
+> $$G(s)=\frac{2\times10^8}{s^2+2\times10^4s+2\times10^8}.$$
 >
-> Butterworth 在 $\omega=\omega_n$ 处恰好 $-3$ dB，故
+> 与标准形 $s^2+2\zeta\omega_ns+\omega_n^2$ 对照：
+> $$\omega_n^2=2\times10^8
+> \quad\Longrightarrow\quad
+> \omega_n=\sqrt2\times10^4\ \mathrm{rad/s},$$
+> $$2\zeta\omega_n=2\times10^4
+> \quad\Longrightarrow\quad
+> \zeta=\frac{2\times10^4}{2\times\sqrt2\times10^4}=\frac{1}{\sqrt2}.$$
+> 这与二阶 Butterworth 的 $\zeta=1/\sqrt2$ 相符，说明题目给的极点确实自洽。（几何上极点到原点的距离 $\sqrt{(10^4)^2+(10^4)^2}=\sqrt2\times10^4$，也直接给出 $\omega_n$。）
+>
+> 一般二阶低通的 $-3$ dB 频率不等于 $\omega_n$（第 44 题 $\zeta=0.5$ 时是 $1.272\omega_n$）；但 Butterworth 恰好把 $\zeta$ 取成 $1/\sqrt2$，使 $\omega=\omega_n$ 时
+> $$|G(j\omega_n)|^2=\frac{\omega_n^4}{(\omega_n^2-\omega_n^2)^2+(2\zeta\omega_n^2)^2}
+> =\frac{\omega_n^4}{2\omega_n^4}=\frac12,$$
+> 正好 $-3$ dB。所以
 > $$\omega_c=\omega_n=\sqrt2\times10^4=1.414\times10^4\ \mathrm{rad/s}.$$
 
 ---
@@ -2187,16 +2328,22 @@ Find $a$ in rad/s.（求 $a$，单位 rad/s。）
 > [!abstract] 知识点讲解
 > 见 [[信号与系统/Quiz对应知识点.md|Quiz对应知识点]] 8.5 二阶 Butterworth 的特征。
 >
-> - **二阶 Butterworth 分母标准形**：$s^2+\sqrt2\,\omega_cs+\omega_c^2$。
-> - **系数对照**：$a=\sqrt2\,\omega_c$，常数项必须等于 $\omega_c^2$。
-> - **角频率**：$\omega_c=2\pi f_c$，不能用 Hz。
-> - **与一般二阶比较**：$2\zeta\omega_n=\sqrt2\,\omega_n\Rightarrow\zeta=\dfrac{1}{\sqrt2}$。
+> - **二阶 Butterworth 分母**：$s^2+\sqrt2\,\omega_cs+\omega_c^2$。
+> - **系数对照**：一次项系数 $a=\sqrt2\,\omega_c$。
+> - **常数项**：$\omega_c^2$。
+> - **角频率换算**：$\omega_c=2\pi f_c$。
+> - **阻尼比**：$a=2\zeta\omega_c\Rightarrow\zeta=\dfrac{1}{\sqrt2}$。
 
 > [!example] 解答
-> 截止频率：
-> $$\omega_c=2\pi\times100=628.3\ \mathrm{rad/s}.$$
-> 二阶 Butterworth 分母的标准形式给出
-> $$a=\sqrt2\,\omega_c=\sqrt2\times628.3=888.6\ \mathrm{rad/s}.$$
+> $$f_c=100\ \mathrm{Hz}\quad\Longrightarrow\quad\omega_c=2\pi\times100=628.3\ \mathrm{rad/s}.$$
+> 题目里的 $a$ 是分母一次项的系数，和 $\omega_c$ 一样以 rad/s 为单位，所以必须用角频率而不是 $100$。
+>
+> $$s^2+\sqrt2\,\omega_cs+\omega_c^2.$$
+> 题给分母是 $s^2+a\,s+\omega_c^2$，常数项已经对上了，剩下一项逐系数对照：
+> $$a=\sqrt2\,\omega_c.$$
+>
+> $$a=\sqrt2\times628.3=1.414\times628.3=888.6\ \mathrm{rad/s}.$$
+> 也可以用阻尼比核对：$a=2\zeta\omega_c$，而 $\zeta=1/\sqrt2$，得 $a=2\cdot\dfrac{1}{\sqrt2}\omega_c=\sqrt2\,\omega_c$，与上面一致。
 
 ---
 
@@ -2210,16 +2357,26 @@ A fifth-order Butterworth lowpass has $\omega_c=1000$ rad/s. Find the real part 
 > [!abstract] 知识点讲解
 > 见 [[信号与系统/Quiz对应知识点.md|Quiz对应知识点]] 8.5 极点圆。
 >
-> - **极点分布**：$n$ 阶 Butterworth 的极点均匀分布在左半平面半径 $\omega_c$ 的圆上。
-> - **角度公式**：从正实轴量起，$\theta_k=90^\circ+\dfrac{180^\circ(2k+1)}{2n}$，$k=0,1,\dots,n-1$。
+> - **极点分布**：$n$ 阶 Butterworth 的极点均在半径 $\omega_c$ 的圆上，且位于左半平面。
+> - **角度公式**：$\theta_k=90^\circ+\dfrac{180^\circ(2k+1)}{2n}$，$k=0,1,\dots,n-1$。
+> - **坐标**：$p_k=\omega_c e^{j\theta_k}=\omega_c\cos\theta_k+j\omega_c\sin\theta_k$。
 > - **实部**：$\operatorname{Re}p_k=\omega_c\cos\theta_k$。
-> - **最靠近虚轴**：角度最接近 $90^\circ$ 或 $270^\circ$ 的那一对极点。
 
 > [!example] 解答
-> 五阶的极点角度间隔为 $180^\circ/5=36^\circ$，左半平面内的五个角度为
+> 极点按角度
+> $$\theta_k=90^\circ+\frac{180^\circ(2k+1)}{2n},\qquad k=0,1,\dots,n-1$$
+> 均匀分布。本题 $n=5$，相邻极点的角度间隔为
+> $$\frac{360^\circ}{2n}=\frac{360^\circ}{10}=36^\circ,$$
+> 并且这些角度关于实轴对称（它们在右半平面的「搭档」被舍去，只留左半平面那 $n$ 个）。左半平面内的五个角度就是
 > $$108^\circ,\ 144^\circ,\ 180^\circ,\ 216^\circ,\ 252^\circ.$$
-> 最靠近虚轴的是 $108^\circ$ 与 $252^\circ$ 这一对（与 $90^\circ$ 相差 $18^\circ$）。实部：
-> $$1000\cos108^\circ=1000\times(-0.3090)=-309.0\ \mathrm{rad/s}.$$
+> （$k=0,1,2,3,4$ 逐个代入：$90^\circ+18^\circ=108^\circ$，$90^\circ+54^\circ=144^\circ$，$90^\circ+90^\circ=180^\circ$，$90^\circ+126^\circ=216^\circ$，$90^\circ+162^\circ=252^\circ$。其中 $180^\circ$ 落在负实轴上，是一个实极点，其余四个两两共轭。）
+>
+> 极点在半径 $\omega_c=1000$ 的圆上，实部为 $\omega_c\cos\theta$。离虚轴最近 = 实部绝对值最小 = $\theta$ 最接近 $90^\circ$ 或 $270^\circ$。在五个角度中，$108^\circ$ 距 $90^\circ$ 只差 $18^\circ$，是最接近的；$144^\circ$ 距 $90^\circ$ 差 $54^\circ$，更远。与它对称的是 $252^\circ$（$=360^\circ-108^\circ$）。
+>
+> $$\operatorname{Re}p=\omega_c\cos108^\circ=1000\times(-0.3090)=-309.0\ \mathrm{rad/s}.$$
+> 负号表示在左半平面，这是理所应当的。最靠近虚轴意味着衰减最慢、对稳定性最不利的那一对极点，所以这类题常考这一对。
+>
+> 注意：题目只问「实部」，答案是 $-309.0$；若问虚部则是 $\pm1000\sin108^\circ=\pm951.1$ rad/s，别把两者混淆。
 
 ---
 
@@ -2234,15 +2391,28 @@ A third-order Butterworth highpass filter with cutoff frequency 100 Hz is used t
 > 见 [[信号与系统/Quiz对应知识点.md|Quiz对应知识点]] 8.5 阶数与衰减。
 >
 > - **$n$ 阶 Butterworth 高通幅频平方**：$|G|^2=\dfrac{1}{1+\left(\dfrac{f_c}{f}\right)^{2n}}$。
-> - **衰减量**：$A=10\log_{10}\left[1+\left(\dfrac{f_c}{f}\right)^{2n}\right]$ dB。
-> - **代入**：$f_c/f=2$，$2n=6$，即 $A=10\log_{10}\left(1+2^6\right)$。
-> - **高频渐近**：每十倍频程衰减 $20n$ dB。
+> - **衰减量**：$A=10\log_{10}\left[1+\left(\dfrac{f_c}{f}\right)^{2n}\right]$。
+> - **换算**：$10\log_{10}|G|^2=20\log_{10}|G|$。
 
 > [!example] 解答
-> 幅频平方：
-> $$|G|^2=\frac{1}{1+\left(\frac{100}{50}\right)^6}=\frac{1}{1+2^6}=\frac{1}{65}.$$
-> 衰减量：
-> $$-10\log_{10}\frac{1}{65}=10\log_{10}65=18.13\ \mathrm{dB}.$$
+> $n$ 阶 Butterworth 低通是
+> $$|G|^2=\frac{1}{1+\left(\omega/\omega_c\right)^{2n}},$$
+> 把 $\omega$ 换成 $\omega_c^2/\omega$（低通到高通的频率变换）就得到高通：
+> $$|G|^2=\frac{1}{1+\left(\dfrac{\omega_c}{\omega}\right)^{2n}}.$$
+> 用频率表示（$\omega=2\pi f$，$2\pi$ 约掉）：
+> $$|G|^2=\frac{1}{1+\left(\dfrac{f_c}{f}\right)^{2n}}.$$
+>
+> $f_c=100$ Hz、$f=50$ Hz、$n=3$，所以
+> $$\frac{f_c}{f}=\frac{100}{50}=2,\qquad 2n=6,$$
+> $$|G|^2=\frac{1}{1+2^6}=\frac{1}{1+64}=\frac{1}{65}.$$
+>
+> 增益为
+> $$20\log_{10}|G|=10\log_{10}|G|^2=10\log_{10}\frac{1}{65}=-18.13\ \mathrm{dB}.$$
+> 衰减量取正数：
+> $$A=18.13\ \mathrm{dB}.$$
+> 也可以直接算 $10\log_{10}65$：$\log_{10}65=\log_{10}6.5+\log_{10}10=0.8129+1=1.8129$，乘 $10$ 得 $18.13$。
+>
+> 检查量级：$n=3$ 阶在截止频率以下的渐近斜率为每十倍频程 $60$ dB，折合每倍频程 $60\log_{10}2=18.06$ dB；$50$ Hz 正好比 $100$ Hz 低一个倍频程，估算为 $18$ dB，与精确值 $18.13$ dB 吻合。
 
 ---
 
@@ -2261,17 +2431,40 @@ Two identical second-order Butterworth lowpass sections, each with cutoff $\omeg
 > [!abstract] 知识点讲解
 > 见 [[信号与系统/Quiz对应知识点.md|Quiz对应知识点]] 8.5 级联不是高阶 Butterworth。
 >
-> - **级联**：$G=G_1G_2$，幅频相乘、相频相加，即 $|G|=|G_1||G_2|$。
-> - **在 $\omega_c$ 处**：每节为 $-3.01$ dB，两节共 $-6.02$ dB。
-> - **极点结论**：$n$ 阶 Butterworth 有 $n$ 个互不相同的极点；级联后每个极点的重数加倍。
-> - **判据**：重极点不等于同阶 Butterworth，两者在 $\omega_c$ 处的衰减也不同。
+> - **级联**：$G(s)=G_1(s)G_2(s)$。
+> - **幅频**：$|G(j\omega)|=|G_1(j\omega)|\cdot|G_2(j\omega)|$。
+> - **dB**：$20\log_{10}|G|=20\log_{10}|G_1|+20\log_{10}|G_2|$。
+> - **Butterworth 幅频平方**：$|G(j\omega)|^2=\dfrac{1}{1+\left(\omega/\omega_c\right)^{2n}}$。
+> - **极点角度**：$\theta_k=90^\circ+\dfrac{180^\circ(2k+1)}{2n}$。
 
 > [!example] 解答
-> 每节在 $\omega_c$ 处：
-> $$|G_1(j\omega_c)|=\frac{1}{\sqrt2}.$$
-> 级联增益：
-> $$|G_1|^2=\frac12,\qquad 20\log_{10}\frac12=-6.02\ \mathrm{dB}.$$
-> 极点结构：每节极点为 $\omega_c e^{\pm j135^\circ}$，级联后只是把这两个极点变成二重极点。四阶 Butterworth 的极点在 $112.5^\circ,157.5^\circ,202.5^\circ,247.5^\circ$，四个互不相同。所以增益相同不代表是四阶 Butterworth。选 (d)。
+> 每一节是二阶 Butterworth 低通，在截止频率处的幅频为
+> $$|G_1(j\omega_c)|=\frac{\omega_c^2}{\sqrt{\left(\omega_c^2-\omega_c^2\right)^2+\left(\sqrt2\,\omega_c\cdot\omega_c\right)^2}}
+> =\frac{\omega_c^2}{\sqrt2\,\omega_c^2}=\frac{1}{\sqrt2}.$$
+> 两级级联时幅频相乘：
+> $$|G(j\omega_c)|=|G_1(j\omega_c)|\cdot|G_2(j\omega_c)|=\frac{1}{\sqrt2}\cdot\frac{1}{\sqrt2}=\frac12.$$
+> 换成 dB：
+> $$20\log_{10}\frac12=-20\log_{10}2=-6.02\ \mathrm{dB}.$$
+> 也可以这样算：一节是 $-20\log_{10}\sqrt2=-3.01$ dB，两节相加得 $-6.02$ dB。所以 (b)、(c) 的增益数值就已经错了。
+>
+> 「$n$ 阶 Butterworth」指的是幅频平方满足
+> $$|G(j\omega)|^2=\frac{1}{1+\left(\omega/\omega_c\right)^{2n}}$$
+> 并且极点在左半平面圆上按等角度分布的那一个特定滤波器。级联系统的幅频是两节平方相乘：
+> $$|G_{\text{casc}}|^2=\left(|G_1|^2\right)^2
+> =\left[\frac{1}{1+\left(\omega/\omega_c\right)^4}\right]^2
+> \ne\frac{1}{1+\left(\omega/\omega_c\right)^8}.$$
+> 所以它的幅频形状本身就不是四阶 Butterworth。
+>
+> 二阶 Butterworth 的两个极点在
+> $$\theta=90^\circ+\frac{180^\circ(2k+1)}{4},\quad k=0,1
+> \quad\Longrightarrow\quad 135^\circ,\ 225^\circ,$$
+> 即 $\omega_c e^{\pm j135^\circ}$。级联后这两个极点各自变成**二重极点**（左上、左下各两个）。
+> 而真正的四阶 Butterworth 极点在
+> $$\theta=90^\circ+\frac{180^\circ(2k+1)}{8},\quad k=0,1,2,3
+> \quad\Longrightarrow\quad 112.5^\circ,\ 157.5^\circ,\ 202.5^\circ,\ 247.5^\circ,$$
+> 四个角度互不相同，每个极点都是单极点。极点位置不同，两者不是同一个滤波器。
+>
+> 所以级联在 $\omega_c$ 处为 $-6.02$ dB，且不是四阶 Butterworth。选 (d)。
 
 ---
 
@@ -2292,19 +2485,38 @@ At what frequency, in Hz, is its gain $-30$ dB?（在哪个频率处增益为 $-
 > 见 [[信号与系统/Quiz对应知识点.md|Quiz对应知识点]] 8.5 阶数与衰减。
 >
 > - **二阶 Butterworth 高通幅频平方**：$|G|^2=\dfrac{1}{1+\left(\dfrac{f_c}{f}\right)^{4}}$。
-> - **衰减条件**：$10\log_{10}\left[1+\left(\dfrac{f_c}{f}\right)^4\right]=30$。
-> - **指数关系**：$30$ dB 对应 $\left(\dfrac{f_c}{f}\right)^4=10^{3}-1=999$。
-> - **反解频率**：由 $(f_c/f)^4=999$ 得 $f_c/f=999^{1/4}$，故 $f=\dfrac{f_c}{999^{1/4}}$。
+> - **幅度分贝**：$A_{\mathrm{dB}}=20\log_{10}|G|$。
+> - **平方关系**：$10\log_{10}|G|^2=20\log_{10}|G|$。
+> - **反解**：$1+\left(\dfrac{f_c}{f}\right)^{4}=10^{A/10}$。
 
 > [!example] 解答
-> 由
-> $$10\log_{10}\left[1+\left(\frac{f_c}{f}\right)^4\right]=30$$
-> 得
-> $$1+\left(\frac{f_c}{f}\right)^4=10^3\quad\Longrightarrow\quad\left(\frac{f_c}{f}\right)^4=999.$$
-> 开四次方：
-> $$\frac{f_c}{f}=999^{1/4}=5.623.$$
+> 幅度的分贝定义是
+> $$A_{\mathrm{dB}}=20\log_{10}|G|.$$
+> 令其等于 $-30$：
+> $$20\log_{10}|G|=-30
+> \quad\Longrightarrow\quad
+> \log_{10}|G|=-1.5
+> \quad\Longrightarrow\quad
+> |G|=10^{-1.5}.$$
+> 两边平方：
+> $$|G|^2=10^{-3}=\frac{1}{1000}.$$
+> （等价地，$|G|^2$ 的分贝是 $10\log_{10}|G|^2$，令其为 $-30$ 也直接得到 $|G|^2=10^{-3}$，两种算法一致。）
+>
+> 二阶 Butterworth 高通（$n=2$，$2n=4$）：
+> $$|G|^2=\frac{1}{1+\left(\dfrac{f_c}{f}\right)^4}=\frac{1}{1000}.$$
+> 两边取倒数：
+> $$1+\left(\frac{f_c}{f}\right)^4=1000
+> \quad\Longrightarrow\quad
+> \left(\frac{f_c}{f}\right)^4=999.$$
+>
+> 用平方根算两次：
+> $$999^{1/2}=31.607,\qquad 31.607^{1/2}=5.623,$$
 > 所以
-> $$f=\frac{6000}{5.623}=1067\ \mathrm{Hz}.$$
+> $$\frac{f_c}{f}=999^{1/4}=5.623.$$
+>
+> $f_c=6$ kHz：
+> $$f=\frac{f_c}{5.623}=\frac{6000}{5.623}=1067\ \mathrm{Hz}.$$
+> 这个频率远低于截止频率（$1067\ll6000$），落在阻带里，所以衰减很大，符合 $30$ dB 的量级。
 
 ---
 
@@ -2319,18 +2531,38 @@ A fourth-order Butterworth lowpass must lose at most 1 dB at 1 kHz. What is the 
 > 见 [[信号与系统/Quiz对应知识点.md|Quiz对应知识点]] 8.5 由通带指标定截止频率。
 >
 > - **$n$ 阶 Butterworth 低通幅频平方**：$|G|^2=\dfrac{1}{1+\left(\dfrac{f}{f_c}\right)^{2n}}$。
-> - **通带指标**：$10\log_{10}\left[1+\left(\dfrac{f}{f_c}\right)^{2n}\right]\le A_p$，本题 $A_p=1$ dB、$2n=8$。
-> - **解不等式**：$\left(\dfrac{f}{f_c}\right)^8\le10^{0.1}-1$，得 $f_c$ 的下界。
-> - **结论**：衰减越小，所需截止频率越高。
+> - **通带衰减**：$A=10\log_{10}\left[1+\left(\dfrac{f}{f_c}\right)^{2n}\right]$。
+> - **通带指标**：$A\le A_p$。
+> - **解不等式**：$\left(\dfrac{f}{f_c}\right)^{2n}\le10^{A_p/10}-1$。
 
 > [!example] 解答
-> 要求
-> $$10\log_{10}\left[1+\left(\frac{1}{f_c}\right)^8\right]\le1$$
-> （$f$ 的单位取 kHz）。即
-> $$\left(\frac{1}{f_c}\right)^8\le10^{0.1}-1=0.2589.$$
-> 开八次方：
+> $n$ 阶 Butterworth 低通
+> $$|G|^2=\frac{1}{1+\left(\dfrac{f}{f_c}\right)^{2n}}.$$
+> 「衰减 $A$ dB」指增益降到 $10^{-A/20}$，即
+> $$|G|^2=10^{-A/10}
+> \quad\Longrightarrow\quad
+> 1+\left(\frac{f}{f_c}\right)^{2n}=10^{A/10}
+> \quad\Longrightarrow\quad
+> A=10\log_{10}\left[1+\left(\frac{f}{f_c}\right)^{2n}\right].$$
+>
+> $f=1$ kHz、$f_c$ 待求、$n=4$：
+> $$10\log_{10}\left[1+\left(\frac{1}{f_c}\right)^8\right]\le1.$$
+> 这里 $f$ 和 $f_c$ 都以 kHz 为单位，比值无量纲，单位一致即可。
+>
+> $$1+\left(\frac{1}{f_c}\right)^8\le10^{0.1}=1.2589
+> \quad\Longrightarrow\quad
+> \left(\frac{1}{f_c}\right)^8\le0.2589.$$
+> 开八次方（两边都是正数）：
+> $$\frac{1}{f_c}\le0.2589^{1/8}.$$
+> 用对数算这个开方：
+> $$\log_{10}0.2589=-0.5868,\qquad \frac{-0.5868}{8}=-0.07335,$$
+> $$0.2589^{1/8}=10^{-0.07335}=0.8446,$$
+> 所以
 > $$\frac{1}{f_c}\le0.8446\quad\Longrightarrow\quad f_c\ge\frac{1}{0.8446}=1.184\ \mathrm{kHz}.$$
-> 最小截止频率为 $1.184$ kHz。
+>
+> 要求是「至多衰减 1 dB」，$f_c$ 越大越宽松，所以最小截止频率就是边界值
+> $$f_c^{\min}=1.184\ \mathrm{kHz}.$$
+> 直观理解：要保证 1 kHz 处几乎不衰减，截止频率不能压得太低；如果取 $f_c=1$ kHz，1 kHz 正好在截止点，会衰减 $3$ dB，超过 $1$ dB 的限制。
 
 ---
 
@@ -2344,20 +2576,27 @@ A Butterworth lowpass filter with cutoff frequency 2 kHz must attenuate a 6 kHz 
 > [!abstract] 知识点讲解
 > 见 [[信号与系统/Quiz对应知识点.md|Quiz对应知识点]] 8.5 阶数与衰减。
 >
-> - **阻带衰减公式**：$A=10\log_{10}\left[1+\left(\dfrac{f}{f_c}\right)^{2n}\right]$ dB。
-> - **频率比**：$\dfrac{f}{f_c}=\dfrac{6}{2}=3$，故 $A(n)=10\log_{10}\left(1+3^{2n}\right)$。
-> - **求解方法**：$A(n)$ 随 $n$ 单调增加，从小到大试算取最小满足者。
-> - **渐近对照**：每增加一阶，$6$ kHz 处衰减约增加 $20\log_{10}3=9.54$ dB。
+> - **阻带衰减**：$A=10\log_{10}\left[1+\left(\dfrac{f}{f_c}\right)^{2n}\right]$。
+> - **频率比**：$\dfrac{f}{f_c}$ 为常数，记作 $r$。
+> - **阶数求解**：$A(n)=10\log_{10}\left(1+r^{2n}\right)$，$A(n)$ 随 $n$ 单调增加。
 
 > [!example] 解答
-> 频率比：
+> $f=6$ kHz，$f_c=2$ kHz：
 > $$\frac{f}{f_c}=\frac{6}{2}=3.$$
-> 衰减量公式：
-> $$A(n)=10\log_{10}\left(1+3^{2n}\right).$$
-> 试算：
-> $$A(3)=10\log_{10}\left(1+3^6\right)=10\log_{10}730=28.6\ \mathrm{dB},$$
-> $$A(4)=10\log_{10}\left(1+3^8\right)=10\log_{10}6562=38.2\ \mathrm{dB}.$$
-> $n=3$ 不够，$n=4$ 满足且为最小。所以 $n=4$。
+> 6 kHz 已经在通带之外（$f>f_c$），所以会有衰减。
+>
+> $$A(n)=10\log_{10}\left[1+\left(\frac{f}{f_c}\right)^{2n}\right]
+> =10\log_{10}\left(1+3^{2n}\right).$$
+> 阶数 $n$ 越高，$3^{2n}$ 越大，衰减越多，所以 $A(n)$ 随 $n$ 单调增加；从 $n=1$ 开始逐阶试算，第一个满足 $A(n)\ge35$ 的就是答案。
+>
+> - $n=1$：$A=10\log_{10}(1+3^2)=10\log_{10}10=10$ dB，不够；
+> - $n=2$：$A=10\log_{10}(1+3^4)=10\log_{10}82=19.1$ dB，不够；
+> - $n=3$：$3^6=729$，$A=10\log_{10}730=28.6$ dB，不够；
+> - $n=4$：$3^8=6561$，$A=10\log_{10}6562=38.2$ dB，够了。
+>
+> $n=3$ 只有 $28.6$ dB，小于 $35$ dB；$n=4$ 为 $38.2$ dB，满足。$A(n)$ 单调，所以 $n\ge4$ 都满足，最小的就是 $n=4$。（题目要衰减至少 $35$ dB，刚好 $38.2$ 略有余量是正常的，因为阶数只能取整数。）
+>
+> 速算方法：高频近似下 $A\approx 10\log_{10}3^{2n}=20n\log_{10}3=9.54n$ dB，令 $9.54n\ge35$ 得 $n\ge3.67$，向上取整为 $4$。
 
 ---
 
@@ -2375,9 +2614,10 @@ An antenna's length must be comparable to the wavelength $\lambda=c/f$ of the si
 > [!abstract] 知识点讲解
 > 见 [[信号与系统/Quiz对应知识点.md|Quiz对应知识点]] 9.1 调制的基本概念 与 9.7 例 5（波长与载波）。
 >
-> - **为什么调制**：天线长度要与波长 $\lambda=c/f$ 可比；音频频率只有 kHz，波长约 $100$ km，天线做不出来，所以要把频谱搬到高频载波附近。
-> - **波长关系**：$\lambda=\dfrac{c}{f}$，$c=3\times10^8$ m/s。
-> - **数量级记忆**：$3$ kHz ↔ $100$ km；$100$ MHz ↔ $3$ m。
+> - **波长**：$\lambda=\dfrac{c}{f}$。
+> - **电磁波速度**：$c=3\times10^8$ m/s。
+> - **频率**：$f$ 的单位是 Hz。
+> - **天线长度**：需与 $\lambda$ 相当，$f$ 越低所需天线越长。
 
 > [!example] 解答
 > $$\lambda=\frac{c}{f}=\frac{3\times10^8}{3\times10^3}=10^5\ \mathrm{m}=100\ \mathrm{km}.$$
@@ -2420,11 +2660,11 @@ Which list gives the positive frequencies (rad/s) in $y(t)$ with the amplitudes 
 > - **确定振幅**：$2\cos1000t$ 一项不产生 $\frac12$（$2\times\frac12=1$）；$\cos2000t$ 一项振幅为 $1\times\frac12=0.5$。
 
 > [!example] 解答
-> **第一步：把 $u(t)$ 写成各分量。**
+> 把 $u(t)$ 写成各分量。
 > $$u(t)=2\cos(1000t)+\cos(2000t),$$
 > 两个正频率 $1000$、$2000$ rad/s，振幅分别为 $2$、$1$。
 >
-> **第二步：逐项乘载波，用积化和差。**
+> 逐项乘载波，用积化和差。
 >
 > 第一项（振幅 $2$）：
 > $$2\cos1000t\cos10000t=2\cdot\frac12\left[\cos(10000-1000)t+\cos(10000+1000)t\right]
@@ -2436,7 +2676,7 @@ Which list gives the positive frequencies (rad/s) in $y(t)$ with the amplitudes 
 > =\frac12\cos8000t+\frac12\cos12000t,$$
 > 得到正频率 $8000$ 与 $12\,000$ rad/s，振幅均为 $0.5$。
 >
-> **第三步：汇总（正频率，单位 rad/s）。**
+> 汇总（正频率，单位 rad/s）。
 >
 > | 正频率 | 振幅 | 来源 |
 > |---|---|---|
@@ -2576,23 +2816,23 @@ Which band of positive frequencies does $c(t)$ occupy?（$c(t)$ 占据哪个正�
 > - **先内后外**：$b(t)$ 占 $[0,15\,000]$，所以 $c(t)$ 占 $20\,000\pm15\,000$。
 
 > [!example] 解答
-> **第 0 步：先明确「正频率频段」在问什么。** 实信号的负频率总是正频率的镜像，所以只需追踪 $\omega>0$ 这一半；下面的每一步都只记正频率范围。
+> 先明确「正频率频段」在问什么。 实信号的负频率总是正频率的镜像，所以只需追踪 $\omega>0$ 这一半；下面的每一步都只记正频率范围。
 >
-> **第 1 步：$u_1,u_2$ 各自占多宽。** 「带宽 5000 rad/s」说明这两个基带信号的正频率都落在
+> $u_1,u_2$ 各自占多宽。 「带宽 5000 rad/s」说明这两个基带信号的正频率都落在
 > $$[0,\,5000]\ \mathrm{rad/s},$$
 > 负频率各有一份镜像 $[-5000,0]$（频谱关于 $\omega=0$ 共轭对称）。
 >
-> **第 2 步：$u_2$ 乘 $2\cos(10\,000t)$ 后搬到哪。** 把载波展开：
+> $u_2$ 乘 $2\cos(10\,000t)$ 后搬到哪。 把载波展开：
 > $$2\cos(10\,000t)=e^{j10\,000t}+e^{-j10\,000t}.$$
 > 乘 $e^{j10\,000t}$ 把频谱右移 $10\,000$，乘 $e^{-j10\,000t}$ 把频谱左移 $10\,000$——相当于把 $u_2$ 的频谱复制两份，分别贴在 $\pm10\,000$ 两侧。只看正频率，取右移的那份，把 $u_2$ 的整段 $[-5000,5000]$ 平移 $10\,000$：
 > $$[-5000,5000]+10\,000=[5000,\,15\,000].$$
 > 拆开看：下边带 $[5000,10\,000]$，上边带 $[10\,000,15\,000]$，合起来 $[5000,15\,000]$。乘 $2$ 抵消了积化和差的 $\frac12$，所以各分量的幅度不变。
 >
-> **第 3 步：$b(t)=u_1+$（调制后的 $u_2$）。** 时域相加，频谱相加，所以两个信号占的频段取**并集**：
+> $b(t)=u_1+$（调制后的 $u_2$）。 时域相加，频谱相加，所以两个信号占的频段取**并集**：
 > $$b:\underbrace{[0,5000]}_{u_1\ \text{原样}}\cup\underbrace{[5000,15\,000]}_{u_2\ \text{调制后}}=[0,15\,000]\quad(\omega>0).$$
 > 两段恰好在 $5000$ 处首尾相接，中间没有空隙。关键点：$u_1$ **没有乘载波**，仍留在基带 $[0,5000]$，这一步最容易漏。加上负频率半边，$b$ 的完整频谱占 $[-15\,000,\,15\,000]$。
 >
-> **第 4 步：$c(t)=b(t)\cdot2\cos(20\,000t)$。** 同样展开：
+> $c(t)=b(t)\cdot2\cos(20\,000t)$。 同样展开：
 > $$2\cos(20\,000t)=e^{j20\,000t}+e^{-j20\,000t}.$$
 > - 乘 $e^{j20\,000t}$：$b$ 的频谱右移 $20\,000$。把 $b$ 的完整频段 $[-15\,000,15\,000]$ 平移：
 > $$[-15\,000,15\,000]+20\,000=[5000,\,35\,000].$$
@@ -2776,27 +3016,27 @@ For small but nonzero $k$, the spectrum of $y(t)$ consists of（当 $k$ 很小�
 > [!example] 解答
 > **目标。** $k$ 很小但不为零时，问 $y(t)$ 的频谱落在哪些频率上。
 >
-> **第 1 步：把相位拆成「载波相位 + 小扰动」。** 记
+> 把相位拆成「载波相位 + 小扰动」。 记
 > $$\theta(t)=k\int_{-\infty}^{t}u(\tau)d\tau,$$
 > 则
 > $$y(t)=\cos\left(\omega_ct+\theta(t)\right).$$
 > $k$ 很小，所以 $\theta(t)$ 的幅度很小（$|\theta|\ll1$ rad）。这正是「窄带」的含义：相位只被轻轻推了一下，不会绕圈。
 >
-> **第 2 步：小角度展开。** 用 $\cos(A+B)=\cos A\cos B-\sin A\sin B$。因为 $|B|=|\theta|\ll1$，有 $\cos\theta\approx1$、$\sin\theta\approx\theta$，所以
+> 小角度展开。 用 $\cos(A+B)=\cos A\cos B-\sin A\sin B$。因为 $|B|=|\theta|\ll1$，有 $\cos\theta\approx1$、$\sin\theta\approx\theta$，所以
 > $$y(t)\approx\cos\omega_ct\cdot1-\sin\omega_ct\cdot\theta(t)
 > =\underbrace{\cos\omega_ct}_{\text{载波}}-\underbrace{\theta(t)\sin\omega_ct}_{\text{边带}}.$$
 > 这一步把「频率被调制」变成了「两项相加」：一项是纯载波，另一项是基带信号 $\theta$ 乘载波。
 >
-> **第 3 步：$\theta(t)$ 的频带有多宽。** $\theta=k\int u$。积分在频域是乘 $\dfrac{1}{j\omega}$，只改变各频率的幅度和相位，**不产生新频率**。$u$ 的频谱在 $|\omega|>W$ 处为零，所以 $\theta$ 的频谱也只在 $|\omega|\le W$ 内。
+> $\theta(t)$ 的频带有多宽。 $\theta=k\int u$。积分在频域是乘 $\dfrac{1}{j\omega}$，只改变各频率的幅度和相位，**不产生新频率**。$u$ 的频谱在 $|\omega|>W$ 处为零，所以 $\theta$ 的频谱也只在 $|\omega|\le W$ 内。
 > 另外 $u$ 无直流 ⇒ $U(0)=0$ ⇒ 积分后 $\theta$ 也没有直流分量（没有常数项）。
 >
-> **第 4 步：两项各自的频谱。**
+> 两项各自的频谱。
 > - 第一项 $\cos\omega_ct$：两根谱线，位于 $\omega=\pm\omega_c$。
 > - 第二项 $-\theta(t)\sin\omega_ct$：这是一个**带宽 $W$、无直流的基带信号乘载波**。乘载波就是把 $\theta$ 的频谱复制到 $\pm\omega_c$ 两侧，占据
 > $$\omega_c-W<|\omega|<\omega_c+W.$$
 > 因为 $\theta$ 没有直流，所以这一项在 $\omega=\pm\omega_c$ 处**不产生**额外谱线，只形成上、下边带。（与 AM 的差别：$\sin$ 载波使下边带相位反相，但占据的频段相同。）
 >
-> **第 5 步：合并。** 总频谱为
+> 合并。 总频谱为
 > $$\underbrace{\pm\omega_c\ \text{处的载波谱线}}_{\text{第一项}}+\underbrace{\omega_c-W<|\omega|<\omega_c+W\ \text{内的边带}}_{\text{第二项}}.$$
 > 正频率部分从 $\omega_c-W$ 到 $\omega_c+W$，宽 $2W$，与 AM 完全相同。选 (a)。
 >

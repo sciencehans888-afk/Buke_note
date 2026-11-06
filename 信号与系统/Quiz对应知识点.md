@@ -5319,19 +5319,27 @@ $$|G(j\omega_c)|=\frac{|G|_{\max}}{\sqrt2}.$$
 
 - 对低通，$|G|_{\max}=|G(0)|=\dfrac{\omega_c}{\sqrt{0+\omega_c^2}}=1$；
 - 对高通，$|G|_{\max}$ 是高频增益，$\displaystyle\lim_{\omega\to\infty}|G(j\omega)|=\lim_{\omega\to\infty}\frac{\omega}{\sqrt{\omega^2+\omega_c^2}}=1$；
-- 对带通，$|G|_{\max}=|G(j\omega_0)|=1$，两个 $-3$ dB 边界 $\omega_1,\omega_2$ 给出带宽 $\Delta\omega=\omega_2-\omega_1=\omega_0/Q$；
+- 对带通，$|G|_{\max}=|G(j\omega_0)|=1$，两个 $-3$ dB 边界 $\omega_1,\omega_2$ 给出带宽 $\Delta\omega=\omega_2-\omega_1=2\zeta\omega_0$；
 - 对带阻，$|G|_{\max}=1$（$\omega=0$ 或 $\omega\to\infty$ 处），两个 $-3$ dB 边界给出阻带宽度；
 - 对全通，$|G(j\omega)|=1$ 对所有 $\omega$ 成立，没有截止频率。
 
-| 类型 | 通带 | 阻带 | 典型形式 |
-|---|---|---|---|
-| 低通 | 低频 | 高频 | $\dfrac{\omega_c}{s+\omega_c}$ |
-| 高通 | 高频 | 低频 | $\dfrac{s}{s+\omega_c}$ |
-| 带通 | 中间频段 | 高低两端 | $\dfrac{(\omega_0/Q)s}{s^2+(\omega_0/Q)s+\omega_0^2}$ |
-| 带阻 | 高低两端 | 特定频段 | $\dfrac{s^2+\omega_0^2}{s^2+(\omega_0/Q)s+\omega_0^2}$ |
-| 全通 | 全部频率 | 无 | $\dfrac{s-a}{s+a}$ |
+| 类型 | 通带 | 阻带 | 标准形式（$\zeta$） | 品质因数形式（$Q$） |
+|---|---|---|---|---|
+| 低通 | 低频 | 高频 | $\dfrac{\omega_c}{s+\omega_c}$ | $\dfrac{\omega_c}{s+\omega_c}$ |
+| 高通 | 高频 | 低频 | $\dfrac{s}{s+\omega_c}$ | $\dfrac{s}{s+\omega_c}$ |
+| 带通 | 中间频段 | 高低两端 | $\dfrac{2\zeta\omega_0 s}{s^2+2\zeta\omega_0 s+\omega_0^2}$ | $\dfrac{\frac{\omega_0}{Q}s}{s^2+\frac{\omega_0}{Q}s+\omega_0^2}$ |
+| 带阻 | 高低两端 | 特定频段 | $\dfrac{s^2+\omega_0^2}{s^2+2\zeta\omega_0 s+\omega_0^2}$ | $\dfrac{s^2+\omega_0^2}{s^2+\frac{\omega_0}{Q}s+\omega_0^2}$ |
+| 全通 | 全部频率 | 无 | $\dfrac{s-a}{s+a}$ | $\dfrac{s-a}{s+a}$ |
 
-表中低通、高通和全通是一阶形式；带通、带阻给的是二阶标准形式，$Q$ 是品质因数，$\omega_0$ 是中心频率。
+表中低通、高通、全通是一阶形式，两种写法相同；带通、带阻是二阶标准形式，两种写法只差一个替换：
+
+$$2\zeta\omega_0=\frac{\omega_0}{Q}\quad\Longleftrightarrow\quad Q=\frac{1}{2\zeta}.$$
+
+$\zeta$ 写法便于读极点和阻尼，$Q$ 写法便于读带宽和选择性：
+
+$$\Delta\omega=2\zeta\omega_0=\frac{\omega_0}{Q}.$$
+
+用 $Q$ 写幅频公式时，把 $2\zeta\omega_0$ 整体替换成 $\dfrac{\omega_0}{Q}$ 即可，其余部分不变。
 
 **低通**：让低频通过，高频被衰减。例：给直流电源去纹波。
 
@@ -5351,7 +5359,11 @@ $$|G(j\omega_c)|=\frac{|G|_{\max}}{\sqrt2}.$$
 
 判断方法只有一步：把 $s=j\omega$ 代入 $G(s)$，算出模 $|G(j\omega)|$，再看低频、高频和中心频率处的值。
 
-**低通** $G(s)=\dfrac{\omega_c}{s+\omega_c}$，代入 $s=j\omega$：
+**低通**
+
+$$G(s)=\frac{\omega_c}{s+\omega_c}.$$
+
+代入 $s=j\omega$：
 
 $$|G(j\omega)|=\frac{\omega_c}{\sqrt{\omega^2+\omega_c^2}}.$$
 
@@ -5365,7 +5377,13 @@ $$|G(j\omega)|=\frac{\omega_c}{\sqrt{\omega^2+\omega_c^2}}.$$
 
 直观理解：RC 低通的输出取电容电压。低频时电容阻抗大，近似开路，输入原样传到输出；高频时电容阻抗小，近似短路，输出被拉到零。
 
-**高通** $G(s)=\dfrac{s}{s+\omega_c}$，代入 $s=j\omega$：
+---
+
+**高通**
+
+$$G(s)=\frac{s}{s+\omega_c}.$$
+
+代入 $s=j\omega$：
 
 $$|G(j\omega)|=\frac{\omega}{\sqrt{\omega^2+\omega_c^2}}.$$
 
@@ -5379,17 +5397,61 @@ $$|G(j\omega)|=\frac{\omega}{\sqrt{\omega^2+\omega_c^2}}.$$
 
 直观理解：RC 高通的输出取电阻电压。低频时电容近似开路，电路里几乎没有电流，电阻上电压为零；高频时电容近似短路，输入几乎全落在电阻上。
 
-**带通** $G(s)=\dfrac{(\omega_0/Q)s}{s^2+(\omega_0/Q)s+\omega_0^2}$，代入 $s=j\omega$：
+---
 
-$$|G(j\omega)|=\frac{(\omega_0/Q)\omega}{\sqrt{(\omega_0^2-\omega^2)^2+(\omega_0\omega/Q)^2}}.$$
+**带通**
 
-关键值：
+用阻尼比 $\zeta$ 写的标准形式：
+
+$$G(s)=\frac{2\zeta\omega_0 s}{s^2+2\zeta\omega_0 s+\omega_0^2}.$$
+
+用品质因数 $Q$ 写的形式（$Q=\dfrac{1}{2\zeta}$）：
+
+$$G(s)=\frac{\frac{\omega_0}{Q}s}{s^2+\frac{\omega_0}{Q}s+\omega_0^2}.$$
+
+两种写法只差一个替换：$2\zeta\omega_0=\dfrac{\omega_0}{Q}$。
+
+代入 $s=j\omega$，$\zeta$ 版本的幅频：
+
+$$|G(j\omega)|=\frac{2\zeta\omega_0\omega}{\sqrt{(\omega_0^2-\omega^2)^2+(2\zeta\omega_0\omega)^2}}.$$
+
+$Q$ 版本的幅频：
+
+$$|G(j\omega)|=\frac{\frac{\omega_0}{Q}\omega}{\sqrt{(\omega_0^2-\omega^2)^2+\left(\frac{\omega_0\omega}{Q}\right)^2}}.$$
+
+关键值（两种写法相同）：
 
 - $\omega=0$：分子为零，$|G|=0$；
-- $\omega=\omega_0$：分子分母都等于 $\omega_0^2/Q$，$|G|=1$；
+- $\omega=\omega_0$：$\zeta$ 版分子分母都等于 $2\zeta\omega_0^2$，$Q$ 版都等于 $\omega_0^2/Q$，$|G|=1$；
 - $\omega\to\infty$：分母是二阶、分子只有一阶，$|G|\to0$。
 
 结论：中间一段能通过，两端被衰减，所以叫带通。
+
+带宽：令 $|G(j\omega)|=1/\sqrt2$（$-3$ dB 的来历见 8.4 节），两种写法给出同一个方程：
+
+$$(2\zeta\omega_0\omega)^2=(\omega_0^2-\omega^2)^2
+\quad\Longleftrightarrow\quad
+\left(\frac{\omega_0\omega}{Q}\right)^2=(\omega_0^2-\omega^2)^2.$$
+
+解出两个 $-3$ dB 边界，$\zeta$ 版本：
+
+$$\omega_1=\omega_0\left(\sqrt{1+\zeta^2}-\zeta\right),\qquad
+\omega_2=\omega_0\left(\sqrt{1+\zeta^2}+\zeta\right).$$
+
+$Q$ 版本：
+
+$$\omega_1=\omega_0\left(\sqrt{1+\frac{1}{4Q^2}}-\frac{1}{2Q}\right),\qquad
+\omega_2=\omega_0\left(\sqrt{1+\frac{1}{4Q^2}}+\frac{1}{2Q}\right).$$
+
+两式相减得带宽
+
+$$\Delta\omega=\omega_2-\omega_1=2\zeta\omega_0=\frac{\omega_0}{Q},$$
+
+两式相乘得
+
+$$\omega_1\omega_2=\omega_0^2,$$
+
+即 $\omega_0$ 是 $\omega_1$、$\omega_2$ 的几何平均。$\zeta$ 越小（$Q$ 越大），带宽越窄，选择性越好。
 
 从极零点看：
 
@@ -5397,11 +5459,29 @@ $$|G(j\omega)|=\frac{(\omega_0/Q)\omega}{\sqrt{(\omega_0^2-\omega^2)^2+(\omega_0
 - 分母比分子高一阶，把高频压掉；
 - 剩下的就是中间频段。
 
-**带阻** $G(s)=\dfrac{s^2+\omega_0^2}{s^2+(\omega_0/Q)s+\omega_0^2}$，代入 $s=j\omega$：
+---
 
-$$|G(j\omega)|=\frac{|\omega_0^2-\omega^2|}{\sqrt{(\omega_0^2-\omega^2)^2+(\omega_0\omega/Q)^2}}.$$
+**带阻**
 
-关键值：
+用阻尼比 $\zeta$ 写的标准形式：
+
+$$G(s)=\frac{s^2+\omega_0^2}{s^2+2\zeta\omega_0s+\omega_0^2}.$$
+
+用品质因数 $Q$ 写的形式：
+
+$$G(s)=\frac{s^2+\omega_0^2}{s^2+\frac{\omega_0}{Q}s+\omega_0^2}.$$
+
+两种写法替换：$2\zeta\omega_0=\dfrac{\omega_0}{Q}$。
+
+代入 $s=j\omega$，$\zeta$ 版本的幅频：
+
+$$|G(j\omega)|=\frac{|\omega_0^2-\omega^2|}{\sqrt{(\omega_0^2-\omega^2)^2+(2\zeta\omega_0\omega)^2}}.$$
+
+$Q$ 版本的幅频：
+
+$$|G(j\omega)|=\frac{|\omega_0^2-\omega^2|}{\sqrt{(\omega_0^2-\omega^2)^2+\left(\frac{\omega_0\omega}{Q}\right)^2}}.$$
+
+关键值（两种写法相同）：
 
 - $\omega=0$：分子分母都是 $\omega_0^2$，$|G|=1$；
 - $\omega=\omega_0$：分子为零，$|G|=0$；
@@ -5409,9 +5489,37 @@ $$|G(j\omega)|=\frac{|\omega_0^2-\omega^2|}{\sqrt{(\omega_0^2-\omega^2)^2+(\omeg
 
 结论：中间一段被挡住，两端能通过，所以叫带阻。
 
+阻带宽度：令 $|G(j\omega)|=1/\sqrt2$（$-3$ dB 的来历见 8.4 节），和带通解的是同一个方程，边界仍是
+
+$$\omega_1=\omega_0\left(\sqrt{1+\zeta^2}-\zeta\right),\qquad
+\omega_2=\omega_0\left(\sqrt{1+\zeta^2}+\zeta\right),$$
+
+$Q$ 版本：
+
+$$\omega_1=\omega_0\left(\sqrt{1+\frac{1}{4Q^2}}-\frac{1}{2Q}\right),\qquad
+\omega_2=\omega_0\left(\sqrt{1+\frac{1}{4Q^2}}+\frac{1}{2Q}\right).$$
+
+所以阻带宽度
+
+$$\Delta\omega=\omega_2-\omega_1=2\zeta\omega_0=\frac{\omega_0}{Q},$$
+
+且 $\omega_1\omega_2=\omega_0^2$。$\zeta$ 越小，陷波越窄，只挡住 $\omega_0$ 附近很窄的一段。
+
 从极零点看：分子 $s^2+\omega_0^2$ 的零点在 $s=\pm j\omega_0$，正好落在虚轴上，因此 $\omega=\omega_0$ 处幅值为零，这个频率被完全挡住。
 
-**全通** $G(s)=\dfrac{s-a}{s+a}$，$a>0$，代入 $s=j\omega$：
+---
+
+**全通**
+
+$$G(s)=\frac{s-a}{s+a},\qquad a>0.$$
+
+这里 $a$ 是**正实数**，单位与 $\omega$ 相同（rad/s），不是复数。
+
+它表示零点 $+a$ 和极点 $-a$ 到原点的距离；
+
+取 $a=10$ 就是 $G(s)=\dfrac{s-10}{s+10}$，零点在 $s=10$，极点在 $s=-10$，两者都在实轴上。
+
+代入 $s=j\omega$：
 
 $$|G(j\omega)|=\frac{|j\omega-a|}{|j\omega+a|}.$$
 
@@ -5436,31 +5544,27 @@ $$|G(j\omega)|=\frac{\sqrt{\omega^2+a^2}}{\sqrt{\omega^2+a^2}}=1\quad\text{对�
 
 ---
 
-**理想延迟线**
+**延迟线**
 
-理想延迟线为
+延迟线把输入原样延后 $T$ 秒输出：
 
-$$G(s)=e^{-sT},\qquad G(j\omega)=e^{-j\omega T}.$$
+$$y(t)=u(t-T),\qquad T>0.$$
 
-- 幅值恒为 $1$，是全通。
-- 相位 $-\omega T$，与频率成线性关系。
-- 群延迟恒为 $T$。
+- 冲激响应：$h(t)=\delta(t-T)$；
+- 传递函数：$G(s)=e^{-sT}$（拉普拉斯变换的时移性质）；
+- 频率响应：$G(j\omega)=e^{-j\omega T}$，幅值 $|G|=1$，相位 $-\omega T$；
+- 所有频率推迟相同的时间 $T$，波形不变形；
+- $e^{-sT}$ 的泰勒级数有无穷多项，不是两个有限多项式的比，所以无法用有限阶电路精确实现，只能用全通级联、传输线或数字缓冲逼近。
 
-延迟线无法用有限阶有理传递函数精确实现，但可以用全通级联或数字滤波器逼近。
+**例** $y(t)=u(t-2)$，求传递函数，并判断是否全通、延迟多少。
 
----
+$$G(s)=e^{-2s},\qquad |G(j\omega)|=1,\qquad \angle G(j\omega)=-2\omega.$$
 
-**相位延迟与群延迟**
+幅值恒为 $1$，是全通；
 
-对一般的频率响应，定义两种延迟：
+$$\tau_g=-\frac{d(-2\omega)}{d\omega}=2\ \mathrm{s},$$
 
-$$\tau_p(\omega)=-\frac{\angle G(j\omega)}{\omega},\qquad
-\tau_g(\omega)=-\frac{d\angle G(j\omega)}{d\omega}.$$
-
-- 相位延迟：单频正弦的等效延迟，决定某条谱线的相位。
-- 群延迟：包络或宽带信号的延迟，决定波形是否失真。
-
-只有线性相位时两者相等且为常数。
+所以所有频率都推迟 $2$ 秒，波形只是平移，不会变形。
 
 **全通：某一频率的相位**
 
@@ -5472,17 +5576,7 @@ $$G(j10)=\frac{10-10j}{10+10j}=-j.$$
 
 $$y(t)=\cos(10t-90^\circ)=\sin10t.$$
 
-这里 $\cos(\theta-90^\circ)=\sin\theta$，符号为正。若相位写成 $+90^\circ$，结果就会变成 $-\sin$，这是选项 (d) 的错误来源。
-
----
-
-**延迟线**
-
-**例** $y(t)=u(t-2)$，求传递函数并判断是否全通、相位延迟是多少。
-
-$$G(s)=e^{-2s},\qquad G(j\omega)=e^{-j2\omega},\qquad |G(j\omega)|=1,\quad \angle G(j\omega)=-2\omega.$$
-
-幅度恒定，相位与频率成线性关系，所以这是全通系统，相位延迟为 $2$ 秒。第 49 题把「全通」与「线性相位」两个概念合在一起考：幅值为 $1$ 且相位线性，说明是延迟，而不是普通有理全通。
+这里 $\cos(\theta-90^\circ)=\sin\theta$，符号为正。
 
 ---
 
@@ -5506,23 +5600,93 @@ $$H(j\omega)=\begin{cases}1,&|\omega|<\omega_c,\\0,&|\omega|>\omega_c.\end{cases
 
 $$h(t)=\frac{\sin\omega_ct}{\pi t}.$$
 
-这个函数在 $t<0$ 时已经不为零，因此理想低通是非因果的，物理实时系统无法实现。实际滤波器只能逼近理想特性：通带允许一定起伏，阻带衰减有限，过渡带宽度非零。
+这个函数在 $t<0$ 时已经不为零，因此理想低通是非因果的，物理实时系统无法实现。
+
+实际滤波器只能逼近理想特性：通带允许一定起伏，阻带衰减有限，过渡带宽度非零。
 
 ---
 
 ### 8.4 $-3$ dB 截止频率
 
-先给出结论：截止频率是幅值降到直流幅值 $1/\sqrt2$（即 $-3$ dB）处的频率，此时功率减半。
-
-**$-3$ dB 截止频率**
-
-截止频率定义为幅值降到直流幅值的 $1/\sqrt2$ 处的频率：
+截止频率：幅值降到通带最大幅值 $1/\sqrt2$ 处的频率。
 
 $$|G(j\omega_c)|=\frac{|G(0)|}{\sqrt2}.$$
 
-此时功率降到一半：
+**$-3$ dB 的计算过程**
 
-$$|G(j\omega_c)|^2=\frac{|G(0)|^2}{2}.$$
+幅值分贝的通用公式是
+
+$$A_{\mathrm{dB}}=20\log_{10}|G(j\omega)|.$$
+
+这里 $|G(j\omega)|$ 是输出幅值与输入幅值之比。
+
+在截止频率处，$|G(j\omega_c)|=|G(0)|/\sqrt2$。$-3$ dB 说的是「相对于通带最大幅值 $|G(0)|$ 下降了多少」，所以先把输出幅值除以 $|G(0)|$ 归一化，再代入通用公式：
+
+$$\begin{aligned}
+A_{\mathrm{dB}}(\omega_c)
+&=20\log_{10}\frac{|G(j\omega_c)|}{|G(0)|}\\
+&=20\log_{10}\frac{|G(0)|/\sqrt2}{|G(0)|}\\
+&=20\log_{10}\frac{1}{\sqrt2}\\
+&=20\log_{10}\left(2^{-1/2}\right)\\
+&=20\times\left(-\frac12\log_{10}2\right)\\
+&=-10\log_{10}2.
+\end{aligned}$$
+
+如果传递函数已经归一化，即 $|G(0)|=1$，第二步中的 $|G(0)|$ 就直接约成 $1$；结果为 $-3$ dB 与 $|G(0)|$ 的具体取值无关。
+
+代入 $\log_{10}2\approx0.3010$：
+
+$$\begin{aligned}
+A_{\mathrm{dB}}(\omega_c)
+&=-10\times0.3010\\
+&=-3.01\ \mathrm{dB}\\
+&\approx-3\ \mathrm{dB}.
+\end{aligned}$$
+
+**为什么功率比是幅值比的平方**
+
+设输入是正弦电压 $u(t)=U_m\cos\omega t$，输出端接一个电阻 $R$。
+
+输入全部加到电阻上时，电阻上的平均功率是
+
+$$P_0=\frac{U_m^2}{2R}.$$
+
+经过滤波器后，输出幅值为 $U_{\text{out}}=|G(j\omega)|U_m$，电阻上的平均功率是
+
+$$P_c=\frac{U_{\text{out}}^2}{2R}
+=\frac{|G(j\omega)|^2U_m^2}{2R}
+=P_0\,|G(j\omega)|^2.$$
+
+两式相除，$U_m^2/(2R)$ 约掉：
+
+$$\frac{P_c}{P_0}=|G(j\omega)|^2.$$
+
+功率与电压幅值的平方成正比，所以功率比一定是幅值比的平方。
+
+截止频率处幅值比是 $1/\sqrt2$，于是
+
+$$\frac{P_c}{P_0}=\left(\frac{1}{\sqrt2}\right)^2=\frac12.$$
+
+也可以按功率算。功率分贝的公式是 $10\log_{10}$，逐行代入：
+
+$$\begin{aligned}
+10\log_{10}\frac{P_c}{P_0}
+&=10\log_{10}\frac12\\
+&=10\log_{10}\left(2^{-1}\right)\\
+&=10\times\left(-\log_{10}2\right)\\
+&=-10\log_{10}2\\
+&=-10\times0.3010\\
+&=-3.01\ \mathrm{dB}.
+\end{aligned}$$
+
+两个结果相同，因为 $20\log_{10}x=10\log_{10}(x^2)$。
+
+所以「幅值降到 $1/\sqrt2$」「功率减半」「$-3$ dB」是同一件事。
+
+**用途**
+
+- 与阶数无关，不同滤波器可以按同一标准比较；
+- 级联时 dB 相加：两节相同的 $-3$ dB 滤波器串起来，在该频率处变成 $-6$ dB。
 
 一阶低通的截止频率等于极点频率。二阶低通的截止频率与 $\omega_n$ 和 $\zeta$ 都有关，不能简单取 $\omega_n$。
 
@@ -5530,35 +5694,160 @@ $$|G(j\omega_c)|^2=\frac{|G(0)|^2}{2}.$$
 
 ### 8.5 Butterworth 滤波器
 
-先给出结论：$n$ 阶 Butterworth 低通以「通带最平坦」为目标，幅频平方为 $1/[1+(\omega/\omega_c)^{2n}]$；极点均匀分布在半径 $\omega_c$ 的左半圆上，过渡带滚降速率为 $-20n$ dB/dec。
-
-**Butterworth 低通**
-
-$n$ 阶 Butterworth 低通的幅频特性为
-
-$$|G(j\omega)|^2=\frac1{1+\left(\dfrac{\omega}{\omega_c}\right)^{2n}}.$$
-
-特点：
-
-- 直流处最平坦。前 $2n-1$ 阶导数在 $\omega=0$ 处为零。
-- 极点均匀分布在半径为 $\omega_c$ 的左半平面圆上。
-- 高频段滚降速率为 $-20n$ dB/dec。
-- 在 $\omega=\omega_c$ 处，幅度为 $1/\sqrt2$，即 $-3$ dB。
-
-低通到高通的频率变换为
-
-$$s\to\frac{\omega_c}{s}.$$
-
-这个替换把低频映射到高频，把低通变成同截止频率的高通。若题目出现 $s\to50/s$，说明截止频率为 $\omega_c=50$，即原型低通的参考频率与目标频率的乘积为 $50$。
+$n$ 阶 Butterworth 低通在通带内尽可能平坦，在 $\omega=\omega_c$ 处降到 $1/\sqrt2$（$-3$ dB），之后频率每升高十倍，增益下降 $20n$ dB。阶数 $n$ 越高，过渡带越陡。
 
 ---
 
-**各阶 Butterworth 的传递函数**
+**幅频特性**
 
-公式表给出的阶次实现：
+$n$ 阶 Butterworth 低通的幅频平方为
 
-- $n=1$：$G(s)=\dfrac{\omega_c}{s+\omega_c}$。
-- $n=2$：$G(s)=\dfrac{\omega_c^2}{s^2+\sqrt2\,\omega_cs+\omega_c^2}$。
+$$|G(j\omega)|^2=\frac1{1+\left(\dfrac{\omega}{\omega_c}\right)^{2n}}.$$
+
+关键值：
+
+- $\omega=0$：$|G|=1$；
+- $\omega=\omega_c$：$|G|=1/\sqrt2$，即 $-3$ dB；
+- $\omega\to\infty$：$|G|\to0$。
+
+**高频每升高十倍频率下降 $20n$ dB 的计算**
+
+当 $\omega\gg\omega_c$ 时，分母里的 $1$ 可以忽略：
+
+$$|G(j\omega)|^2\approx\left(\frac{\omega}{\omega_c}\right)^{-2n},$$
+
+开方得
+
+$$|G(j\omega)|\approx\left(\frac{\omega}{\omega_c}\right)^{-n}.$$
+
+换成 dB：
+
+$$\begin{aligned}
+A_{\mathrm{dB}}(\omega)
+&=20\log_{10}|G(j\omega)|\\
+&\approx-20n\log_{10}\frac{\omega}{\omega_c}.
+\end{aligned}$$
+
+频率从 $\omega$ 升到 $10\omega$（十倍），两处的 dB 值相减：
+
+$$\begin{aligned}
+A_{\mathrm{dB}}(10\omega)-A_{\mathrm{dB}}(\omega)
+&=-20n\log_{10}\frac{10\omega}{\omega_c}
++20n\log_{10}\frac{\omega}{\omega_c}\\
+&=-20n\left(\log_{10}10+\log_{10}\frac{\omega}{\omega_c}-\log_{10}\frac{\omega}{\omega_c}\right)\\
+&=-20n\log_{10}10\\
+&=-20n\ \mathrm{dB}.
+\end{aligned}$$
+
+所以阶数 $n$ 每增加 $1$，高频段频率每升高十倍就多下降 $20$ dB。
+
+例如 $n=1$ 时下降 $20$ dB，$n=2$ 时下降 $40$ dB，$n=3$ 时下降 $60$ dB。
+
+「最平坦」的意思是：在 $\omega=0$ 附近，幅频曲线的前 $2n-1$ 阶导数都为零，曲线贴住 $1$ 的时间最长。
+
+**高通版本**
+
+把比值倒过来：
+
+$$|G(j\omega)|^2=\frac1{1+\left(\dfrac{\omega_c}{\omega}\right)^{2n}}.$$
+
+关键值：
+
+- $\omega=0$：$|G|=0$；
+- $\omega=\omega_c$：$|G|=1/\sqrt2$，即 $-3$ dB；
+- $\omega\to\infty$：$|G|\to1$。
+
+**低频每降低十倍频率下降 $20n$ dB 的计算**
+
+当 $\omega\ll\omega_c$ 时，分母里的 $1$ 可以忽略：
+
+$$|G(j\omega)|^2\approx\left(\frac{\omega_c}{\omega}\right)^{-2n},$$
+
+开方得
+
+$$|G(j\omega)|\approx\left(\frac{\omega_c}{\omega}\right)^{-n}=\left(\frac{\omega}{\omega_c}\right)^{n}.$$
+
+换成 dB：
+
+$$\begin{aligned}
+A_{\mathrm{dB}}(\omega)
+&=20\log_{10}|G(j\omega)|\\
+&\approx20n\log_{10}\frac{\omega}{\omega_c}.
+\end{aligned}$$
+
+频率从 $\omega$ 降到 $\omega/10$（降低十倍），两处的 dB 值相减：
+
+$$\begin{aligned}
+A_{\mathrm{dB}}(\omega/10)-A_{\mathrm{dB}}(\omega)
+&=20n\log_{10}\frac{\omega/10}{\omega_c}
+-20n\log_{10}\frac{\omega}{\omega_c}\\
+&=20n\left(\log_{10}\frac{\omega}{\omega_c}-\log_{10}10-\log_{10}\frac{\omega}{\omega_c}\right)\\
+&=-20n\log_{10}10\\
+&=-20n\ \mathrm{dB}.
+\end{aligned}$$
+
+所以高通在低频段，频率每降低十倍，增益下降 $20n$ dB，与低通的高频下降完全对称。
+
+---
+
+**极点位置**
+
+Butterworth 的极点就是使传递函数分母为零的 $s$。由
+
+$$|G(j\omega)|^2=\frac1{1+(\omega/\omega_c)^{2n}}$$
+
+把 $j\omega$ 换成 $s$，分母为零的条件是
+
+$$1+\left(\frac{s}{j\omega_c}\right)^{2n}=0.$$
+
+移项：
+
+$$\left(\frac{s}{j\omega_c}\right)^{2n}=-1.$$
+
+$-1$ 写成指数形式是 $e^{j(2k+1)\pi}$，$k$ 为整数。两边开 $2n$ 次方：
+
+$$\frac{s}{j\omega_c}=e^{j\frac{(2k+1)\pi}{2n}}.$$
+
+把 $j=e^{j90^\circ}$ 乘到右边：
+
+$$s=\omega_c\,e^{j\left(90^\circ+\frac{180^\circ(2k+1)}{2n}\right)}.$$
+
+所以极点的模都是 $\omega_c$（落在半径为 $\omega_c$ 的圆上），角度就是
+
+$$\theta_k=90^\circ+\frac{180^\circ(2k+1)}{2n},\qquad k=0,1,\dots,n-1.$$
+
+取 $k=0$ 到 $n-1$ 时，角度从 $90^\circ+\dfrac{90^\circ}{n}$ 变到 $270^\circ-\dfrac{90^\circ}{n}$，正好覆盖左半圆的 $n$ 个极点。相邻两个极点角度差为
+
+$$\theta_{k+1}-\theta_k=\frac{180^\circ\cdot2}{2n}=\frac{180^\circ}{n}.$$
+
+**例**（Quiz 3 第 56 题）五阶，$\omega_c=1000$：
+
+$$\theta_k=90^\circ+\frac{180^\circ(2k+1)}{10}=90^\circ+18^\circ(2k+1).$$
+
+逐个代入 $k=0,1,2,3,4$：
+
+$$\theta=108^\circ,\ 144^\circ,\ 180^\circ,\ 216^\circ,\ 252^\circ.$$
+
+最靠近虚轴的实部为 $1000\cos108^\circ=-309.0$ rad/s。角度按「起点 $90^\circ$、间隔 $36^\circ$」直接数即可。
+
+**二阶特例**：分母固定为
+
+$$s^2+\sqrt2\,\omega_cs+\omega_c^2,$$
+
+所以
+
+$$\omega_n=\omega_c,\qquad \zeta=\frac{1}{\sqrt2}.$$
+
+由极点反推时（Quiz 3 第 54 题）：极点到原点的距离是 $\omega_n$，实部与 $\omega_n$ 之比是 $\zeta$。若算出 $\zeta=1/\sqrt2$，就必然是 Butterworth，且 $\omega_c=\omega_n$。
+
+---
+
+**传递函数**
+
+低通的逐阶形式：
+
+- $n=1$：$G(s)=\dfrac{\omega_c}{s+\omega_c}$；
+- $n=2$：$G(s)=\dfrac{\omega_c^2}{s^2+\sqrt2\,\omega_cs+\omega_c^2}$；
 - $n=3$：$G(s)=\dfrac{\omega_c^3}{(s+\omega_c)(s^2+\omega_cs+\omega_c^2)}$。
 
 一般形式（$\zeta_k=\sin\dfrac{(2k-1)\pi}{2n}$）：
@@ -5567,25 +5856,151 @@ $$n\ \text{偶}:\ G(s)=\prod_{k=1}^{n/2}\frac{\omega_c^2}{s^2+2\zeta_k\omega_cs+
 
 $$n\ \text{奇}:\ G(s)=\frac{\omega_c}{s+\omega_c}\prod_{k=1}^{(n-1)/2}\frac{\omega_c^2}{s^2+2\zeta_k\omega_cs+\omega_c^2}.$$
 
-每一对共轭极点按二阶标准形 $s^2+2\zeta_k\omega_cs+\omega_c^2$ 写出，对应 $\omega_n=\omega_c$、$\zeta_k=\sin\dfrac{(2k-1)\pi}{2n}$。二阶时 $\zeta_1=\sin45^\circ=1/\sqrt2$，正是 $\sqrt2\omega_cs$ 的来源。
+---
+
+**为什么要写成二阶因子**
+
+第一步：把一对共轭极点写成实部与虚部。
+
+Butterworth 的极点成对共轭。取其中一对，设角度为 $\theta$、模为 $\omega_c$：
+
+$$p=\omega_c e^{j\theta}=\omega_c(\cos\theta+j\sin\theta),$$
+
+$$p^*=\omega_c e^{-j\theta}=\omega_c(\cos\theta-j\sin\theta).$$
+
+第二步：算出这一对根对应的二次多项式。
+
+先把两个根相加、相乘：
+
+$$p+p^*=\omega_c(\cos\theta+j\sin\theta)+\omega_c(\cos\theta-j\sin\theta)=2\omega_c\cos\theta,$$
+
+$$p\,p^*=\omega_c^2 e^{j\theta}e^{-j\theta}=\omega_c^2.$$
+
+再展开
+
+$$(s-p)(s-p^*)=s^2-(p+p^*)\,s+p\,p^*,$$
+
+把上面的结果代入：
+
+$$(s-p)(s-p^*)=s^2-2\omega_c\cos\theta\,s+\omega_c^2.$$
+
+第三步：与二阶标准形比较。
+
+二阶标准形为
+
+$$s^2+2\zeta_k\omega_c s+\omega_c^2.$$
+
+两个 $s$ 的系数必须相等：
+
+$$2\zeta_k\omega_c=-2\omega_c\cos\theta.$$
+
+两边同除以 $2\omega_c$：
+
+$$\zeta_k=-\cos\theta.$$
+
+第四步：代入 Butterworth 的极点角度。
+
+第 $j$ 个极点的角度是
+
+$$\theta_j=90^\circ+\frac{180^\circ(2j+1)}{2n},\qquad j=0,1,\dots,n-1.$$
+
+令
+
+$$\varphi_j=\frac{180^\circ(2j+1)}{2n}=\frac{(2j+1)\pi}{2n},$$
+
+则 $\theta_j=90^\circ+\varphi_j$，因此
+
+$$\zeta_k=-\cos\theta_j=-\cos(90^\circ+\varphi_j).$$
+
+用 $\cos(90^\circ+\varphi)=-\sin\varphi$：
+
+$$\zeta_k=\sin\varphi_j=\sin\frac{(2j+1)\pi}{2n}.$$
+
+第五步：和一般形式里的编号对上。
+
+一般形式中的 $\zeta_k$ 从 $k=1$ 开始，对应第 $k$ 对极点；第 $k$ 对极点用的是第 $j=k-1$ 个极点角度。把 $j=k-1$ 代入：
+
+$$2j+1=2(k-1)+1=2k-1,$$
+
+所以
+
+$$\zeta_k=\sin\frac{(2k-1)\pi}{2n}.$$
+
+这就是一般形式中 $(2k-1)$ 的来源。
+
+**二阶的例子**：$n=2$ 的极点角度是 $135^\circ$、$225^\circ$，是一对共轭极点。阻尼比
+
+$$\zeta_1=-\cos135^\circ=\frac{1}{\sqrt2},$$
+
+二次因子为
+
+$$s^2+2\cdot\frac{1}{\sqrt2}\omega_cs+\omega_c^2=s^2+\sqrt2\,\omega_cs+\omega_c^2,$$
+
+正是前面 $n=2$ 的传递函数。
+
+**三阶的例子**：$n=3$ 的极点在 $120^\circ$、$180^\circ$、$240^\circ$。$120^\circ$ 和 $240^\circ$ 共轭，阻尼比
+
+$$\zeta_1=-\cos120^\circ=\frac12,$$
+
+二次因子为
+
+$$s^2+2\cdot\frac12\omega_cs+\omega_c^2=s^2+\omega_cs+\omega_c^2;$$
+
+剩下 $180^\circ$ 的实极点在 $-\omega_c$，给一次因子 $s+\omega_c$。合起来就是
+
+$$G(s)=\frac{\omega_c^3}{(s+\omega_c)(s^2+\omega_cs+\omega_c^2)},$$
+
+与前面 $n=3$ 的形式一致。阶数为奇数时总有一个实极点，所以一般形式里单独提出一个一阶因子。
 
 ---
 
-**由阶数计算衰减**
+**示例：代入一般形式**
 
-$n$ 阶 Butterworth 低通的幅频平方：
+$n=4$（偶）。两个阻尼比：
 
-$$|G|^2=\frac{1}{1+\left(\frac{f}{f_c}\right)^{2n}}.$$
+$$\zeta_1=\sin\frac{\pi}{8}=0.3827,\qquad
+\zeta_2=\sin\frac{3\pi}{8}=0.9239.$$
 
-高通则把比值倒过来：
+$2\zeta_1=0.7654$，$2\zeta_2=1.8478$，所以
 
-$$|G|^2=\frac{1}{1+\left(\frac{f_c}{f}\right)^{2n}}.$$
+$$G(s)=\frac{\omega_c^4}{\left(s^2+0.7654\,\omega_cs+\omega_c^2\right)\left(s^2+1.8478\,\omega_cs+\omega_c^2\right)}.$$
 
-频带外的衰减量：
+$n=5$（奇）。先提出实极点对应的因子 $s+\omega_c$，再算两个阻尼比：
+
+$$\zeta_1=\sin\frac{\pi}{10}=0.3090,\qquad
+\zeta_2=\sin\frac{3\pi}{10}=0.8090.$$
+
+$2\zeta_1=0.6180$，$2\zeta_2=1.6180$，所以
+
+$$G(s)=\frac{\omega_c^5}{(s+\omega_c)\left(s^2+0.6180\,\omega_cs+\omega_c^2\right)\left(s^2+1.6180\,\omega_cs+\omega_c^2\right)}.$$
+
+$n=6$（偶）。三个阻尼比：
+
+$$\zeta_1=\sin\frac{\pi}{12}=0.2588,\quad
+\zeta_2=\sin\frac{3\pi}{12}=0.7071,\quad
+\zeta_3=\sin\frac{5\pi}{12}=0.9659.$$
+
+所以
+
+$$G(s)=\frac{\omega_c^6}{\left(s^2+0.5176\,\omega_cs+\omega_c^2\right)\left(s^2+1.4142\,\omega_cs+\omega_c^2\right)\left(s^2+1.9319\,\omega_cs+\omega_c^2\right)}.$$
+
+每个二阶因子对应一对共轭极点，分子取 $\omega_c^2$（一阶因子取 $\omega_c$）是为了让每个因子在 $s=0$ 处等于 $1$，从而 $G(0)=1$。
+
+---
+
+**衰减量的计算**
+
+$n$ 阶低通的幅频平方也可以写成频率形式：
+
+$$|G|^2=\frac{1}{1+\left(\frac{f}{f_c}\right)^{2n}},$$
+
+高通把比值倒过来。频带外的衰减量为
 
 $$A=10\log_{10}\left[1+\left(\frac{f}{f_c}\right)^{2n}\right].$$
 
-**由衰减指标定阶数**
+常见的三类反向问题都用这个式子。
+
+**1. 由衰减指标定阶数**
 
 **例**（Quiz 3 第 61 题）$f_c=2$ kHz，要求 $6$ kHz 处衰减 $35$ dB。频率比 $3$，试算：
 
@@ -5593,11 +6008,9 @@ $$n=3:\ 10\log_{10}(1+3^6)=28.6\ \mathrm{dB},$$
 
 $$n=4:\ 10\log_{10}(1+3^8)=38.2\ \mathrm{dB}.$$
 
-最小阶数为 $4$。试算时代入的是 $2n$，不是 $n$：三阶指数为 $6$，四阶为 $8$，这是最容易出错的地方。
+最小阶数为 $4$。代入的是 $2n$ 而不是 $n$：三阶指数为 $6$，四阶为 $8$，这是最容易出错的地方。
 
----
-
-**由通带指标定截止频率**
+**2. 由通带指标定截止频率**
 
 **例**（Quiz 3 第 60 题）四阶、$1$ kHz 处损失不超过 $1$ dB：
 
@@ -5605,68 +6018,40 @@ $$10\log_{10}\left[1+\left(\frac{1}{f_c}\right)^8\right]\le1,$$
 
 $$\left(\frac{1}{f_c}\right)^8\le10^{0.1}-1=0.2589,$$
 
-开八次方得 $1/f_c\le0.8446$，即 $f_c\ge1.184$ kHz。注意 $10^{0.1}-1$ 中的 $0.1$ 来自 $1\ \mathrm{dB}=10\times0.1$；如果先算 $|G|^2$ 再取分贝，容易把 $20$ 和 $10$ 两个系数混用。
+开八次方得 $1/f_c\le0.8446$，即 $f_c\ge1.184$ kHz。$10^{0.1}-1$ 中的 $0.1$ 来自 $1\ \mathrm{dB}=10\times0.1$；先算 $|G|^2$ 再取分贝时，容易把 $20$ 和 $10$ 两个系数混用。
 
----
-
-**由衰减倒推频率**
+**3. 由衰减倒推频率**
 
 **例**（Quiz 3 第 59 题）二阶高通，$f_c=6$ kHz，要求 $-30$ dB：
 
 $$10\log_{10}\left[1+\left(\frac{f_c}{f}\right)^4\right]=30
-\quad\Longrightarrow\quad\left(\frac{f_c}{f}\right)^4=999.$$
+\quad\Longrightarrow\quad\left(\frac{f_c}{f}\right)^4=999,$$
 
 $$f=\frac{6000}{999^{1/4}}=1067\ \mathrm{Hz}.$$
 
 ---
 
-**Butterworth 极点圆**
-
-$n$ 阶 Butterworth 的极点在左半平面圆上均匀分布，半径为 $\omega_c$，角度（从正实轴量起）
-
-$$\theta_k=90^\circ+\frac{180^\circ(2k+1)}{2n},\qquad k=0,1,\dots,n-1.$$
-
-相邻极点相隔 $180^\circ/n$。最靠近虚轴的一对角度最接近 $90^\circ$。
-
-**极点圆：五阶 Butterworth**
-
-**例**（Quiz 3 第 56 题）五阶，$\omega_c=1000$：
-
-$$\theta=108^\circ,\ 144^\circ,\ 180^\circ,\ 216^\circ,\ 252^\circ.$$
-
-最近的实部为 $1000\cos108^\circ=-309.0$ rad/s。角度用「起点 $90^\circ$、间隔 $36^\circ$」也可以直接数出来。
-
----
-
-**二阶 Butterworth 的特征**
-
-二阶 Butterworth 分母固定为
-
-$$s^2+\sqrt2\,\omega_cs+\omega_c^2,$$
-
-所以
-
-$$\omega_n=\omega_c,\qquad \zeta=\frac{1}{\sqrt2}.$$
-
-由极点反推时（Quiz 3 第 54 题）：极点到原点的距离为 $\omega_n$，实部与 $\omega_n$ 之比为 $\zeta$。若得到 $\zeta=1/\sqrt2$，它必然是 Butterworth，且 $\omega_c=\omega_n$。
-
----
-
-**级联不是高阶 Butterworth**
+**容易混淆：级联不是高阶 Butterworth**
 
 两个相同的二阶 Butterworth 级联，得到的是
 
 $$G(s)=\left[\frac{\omega_c^2}{s^2+\sqrt2\omega_cs+\omega_c^2}\right]^2,$$
 
-极点是二重的，而四阶 Butterworth 的四个极点在 $112.5^\circ,157.5^\circ,202.5^\circ,247.5^\circ$，互不相同。两者在 $\omega_c$ 处的增益也不一样：级联为 $-6.02$ dB（两节各 $-3.01$ dB），真正的四阶 Butterworth 仍为 $-3.01$ dB。因此级联系统的 $-3$ dB 截止频率低于 $\omega_c$，过渡带也更深：在 $\omega=\sqrt2\omega_c$ 处，级联为 $1/(1+2x^4+x^8)$，四阶 Butterworth 为 $1/(1+x^8)$，前者衰减更多。Quiz 3 第 58 题正是考「增益不能单独说明是几阶 Butterworth，极点结构才决定滤波器类型」。
+极点是二重的；而四阶 Butterworth 的四个极点在 $112.5^\circ,157.5^\circ,202.5^\circ,247.5^\circ$，互不相同。两者在 $\omega_c$ 处的增益也不同：级联为 $-6.02$ dB（两节各 $-3.01$ dB），真正的四阶 Butterworth 仍为 $-3.01$ dB。因此级联系统的 $-3$ dB 截止频率低于 $\omega_c$，过渡带也更深。Quiz 3 第 58 题考的就是「增益不能单独说明是几阶 Butterworth，极点结构才决定滤波器类型」。
 
-**例** 两个相同的一阶低通 $\dfrac{\omega_c}{s+\omega_c}$ 级联同理：
+**例** 两个相同的一阶低通 $\dfrac{\omega_c}{s+\omega_c}$ 级联：
 
 $$G(s)=\left(\frac{\omega_c}{s+\omega_c}\right)^2,$$
 
 极点是二重极点，不是两阶 Butterworth 的两个不同极点。增益相同不等于滤波器相同。
 
 ---
+
+**低通到高通的频率变换**
+
+$$s\to\frac{\omega_c}{s}.$$
+
+这个替换把低频映射到高频，把低通变成同截止频率的高通。若题目出现 $s\to50/s$，说明截止频率为 $\omega_c=50$，即原型低通的参考频率与目标频率的乘积为 $50$。
 
 ### 8.6 滤波器典型例题
 
@@ -5680,13 +6065,13 @@ $G(0)=0$，高频时 $G\to1$，为高通滤波器，截止频率为 $10\ \mathrm
 
 ---
 
-**Butterworth 滚降**
+**Butterworth 高频下降**
 
 **例** 三阶 Butterworth 低通。
 
-高频段滚降速率为
+频率每升高十倍，高频增益下降
 
-$$-20\times3=-60\ \mathrm{dB/dec}.$$
+$$-20\times3=-60\ \mathrm{dB}.$$
 
 在 $\omega=\omega_c$ 处，幅度为 $-3$ dB。
 
@@ -6688,7 +7073,7 @@ $$\omega_r=\omega_n\sqrt{1-2\zeta^2},\qquad \left|G(j\omega_r)\right|=\frac{|K|}
 
 $-3$ dB 频率：$|G(j\omega_c)|=|G(0)|/\sqrt2$，即 $20\log_{10}|G(j\omega_c)|=20\log_{10}|G(0)|-3.01$。
 
-Butterworth 低通：$|G(j\omega)|^2=\dfrac1{1+(\omega/\omega_c)^{2n}}$，高频滚降 $-20n$ dB/dec，$\omega=\omega_c$ 处为 $-3$ dB。
+Butterworth 低通：$|G(j\omega)|^2=\dfrac1{1+(\omega/\omega_c)^{2n}}$，高频每十倍频程下降 $20n$ dB，$\omega=\omega_c$ 处为 $-3$ dB。
 
 低通原型到高通：$s\to\omega_c/s$；到更低截止频率：$s\to s/\omega_c$。
 

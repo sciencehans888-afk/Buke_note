@@ -49,8 +49,7 @@
               "title": "Quiz对应知识点"
             }
           }
-        ],
-        "currentTab": 2
+        ]
       }
     ],
     "direction": "vertical"
@@ -189,7 +188,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "信号与系统/Quiz对应知识点.md",
+                "file": "信号与系统/Quiz3.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
@@ -247,23 +246,23 @@
       "bases:新建数据库": false
     }
   },
-  "active": "8d42d1e4b11fc6d0",
+  "active": "0e26cda92b0abab8",
   "lastOpenFiles": [
-    "信号与系统/Quiz对应知识点.md.tmp.4240.867d20f20eca",
-    "信号与系统/Quiz对应知识点.md.tmp.4240.69996bd85509",
-    "信号与系统/Quiz对应知识点.md.tmp.4240.cd5413b8be44",
-    "信号与系统/Quiz对应知识点.md.tmp.4240.e8604e03dd00",
-    "信号与系统/Quiz对应知识点.md.tmp.4240.425a7950af1e",
+    "信号与系统/Quiz3.md.tmp.4240.ed099a86c426",
+    "信号与系统/Quiz3.md.tmp.4240.78b34ae42d41",
+    "信号与系统/Quiz3.md.tmp.4240.d98446bd1b5b",
     "信号与系统/Quiz2.md",
-    "信号与系统/Quiz3.md",
-    "信号与系统/Quiz3.md.tmp.3140.b442d4e2bd95",
-    "信号与系统/Quiz3.md.tmp.3140.c492fcbec44f",
-    "信号与系统/Quiz3.md.tmp.3140.73285cbef466",
     "信号与系统/Quiz对应知识点.md",
+    "信号与系统/Quiz3.md",
+    "信号与系统/Quiz3.md.tmp.4240.8e92daac9d17",
+    "信号与系统/Quiz3.md.tmp.4240.dffc45130ea8",
+    "信号与系统/Quiz3.md.tmp.4240.67cd9c9534e2",
+    "信号与系统/Quiz3.md.tmp.4240.91672ca0cb19",
+    "信号与系统/Quiz3.md.tmp.4240.300ac18d0a36",
+    "信号与系统/Quiz3.md.tmp.4240.065d461c80fe",
+    "信号与系统/Quiz对应知识点.md.tmp.4240.b26e06b877b3",
+    "信号与系统/Quiz对应知识点.md.tmp.4240.b4c212e1e58e",
     "电路/目录.md",
-    "信号与系统/Quiz对应知识点.md.tmp.11456.b70d27249e9e",
-    "信号与系统/Quiz对应知识点.md.tmp.11456.c24af7bb2c29",
-    "信号与系统/Quiz对应知识点.md.tmp.11456.26a35ba5044d",
     "信号与系统/附件/Pasted image 20261105200515.png",
     "电路/附录A-E与索引.md",
     "电路/附录A-E及习题答案.md",

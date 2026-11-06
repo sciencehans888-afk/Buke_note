@@ -2272,7 +2272,9 @@ with the same cutoff are connected in parallel and summed, $G=G_L+G_H$. What is 
 
 Butterworth filters and order selection（Butterworth 滤波器与阶数选择）
 
-A second-order lowpass with no zeros has poles at $-10^4\pm j10^4$ rad/s and unit DC gain. It is a Butterworth filter. Find its $-3$ dB cutoff $\omega_c$ in rad/s.（某无零点的二阶低通极点在 $-10^4\pm j10^4$ rad/s，直流增益为 $1$，且为 Butterworth 滤波器。求其 $-3$ dB 截止频率 $\omega_c$，单位 rad/s。）
+A second-order lowpass with no zeros has poles at $-10^4\pm j10^4$ rad/s and unit DC gain. It is a Butterworth filter. Find its $-3$ dB cutoff $\omega_c$ in rad/s.
+
+（某无零点的二阶低通极点在 $-10^4\pm j10^4$ rad/s，直流增益为 $1$，且为 Butterworth 滤波器。求其 $-3$ dB 截止频率 $\omega_c$，单位 rad/s。）
 
 > [!success] Answer（答案）
 > $\omega_c=1.414\times10^4$ rad/s

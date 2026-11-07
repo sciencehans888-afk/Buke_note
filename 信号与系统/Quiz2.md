@@ -12,11 +12,11 @@ The correct option is marked ✓.（正确选项标有 ✓。）
 
 ---
 
-## 1. Question 1（第 1 题）｜PDF p. 1 ^q1
+## 1. Fourier series (week 4)（傅里叶级数，第 4 周）
 
-### 1. Fourier series (week 4)（傅里叶级数，第 4 周）
+### Fundamental frequency of a sum of sinusoids（多个正弦分量之和的基波频率）
 
-Fundamental frequency of a sum of sinusoids（多个正弦分量之和的基波频率）
+#### 1. Question 1（第 1 题）｜PDF p. 1 ^q1
 
 A signal is given by（给定如下信号：）
 
@@ -59,14 +59,13 @@ Is $u(t)$ periodic, and if so what is its fundamental frequency $\omega_0$?（�
 >
 > 选 (d)。
 
-
 ---
 
 1 Some questions are adapted from B. P. Lathi and R. A. Green, *Linear Systems and Signals*, 3rd ed. (chapters 2, 4, 6 and 7), from ELEC3004 Signals, Systems and Control at the University of Queensland (2013 and 2017), and from S. Boyd, EE102 Introduction to Signals and Systems, Stanford University.（部分题目改编自 B. P. Lathi 和 R. A. Green《线性系统与信号》第三版第 2、4、6、7 章，昆士兰大学 ELEC3004《信号、系统与控制》课程（2013 年及 2017 年），以及斯坦福大学 S. Boyd 的 EE102《信号与系统导论》课程。）
 
 ---
 
-## 2. Question 2（第 2 题）｜PDF p. 1 ^q2
+#### 2. Question 2（第 2 题）｜PDF p. 1 ^q2
 
 A signal is given by（给定如下信号：）
 
@@ -103,10 +102,9 @@ Find its fundamental frequency $\omega_0$, in $\mathrm{rad/s}$.（求其基波�
 >
 > 常数 $2$ 只抬高波形，不影响周期。
 
-
 ---
 
-## 3. Question 3（第 3 题）｜PDF p. 1 ^q3
+#### 3. Question 3（第 3 题）｜PDF p. 1 ^q3
 
 A signal is given by
 
@@ -146,10 +144,11 @@ Is $u(t)$ periodic?（判断 $u(t)$ 是否为周期信号。）
 >
 > 排除干扰：$\sqrt5-3$ 是拍频且为负；「任意两正弦之和皆周期」错误。选 (d)。
 
-
 ---
 
-## 4. Question 4（第 4 题）｜PDF p. 2 ^q4
+### Fourier series coefficients（傅里叶级数系数）
+
+#### 4. Question 4（第 4 题）｜PDF p. 2 ^q4
 
 A periodic signal $u(t)$ of period $T$ satisfies $u(t-T/2)=-u(t)$. Which of its Fourier coefficients $c_k$ must be zero?（周期为 $T$ 的信号满足半周期平移后变号的条件；它的哪些傅里叶系数 $c_k$ 必须为零？）
 
@@ -190,10 +189,9 @@ $$
 >
 > $k$ 偶（含 $0$）时系数因子为零，$c_k=0$；$k$ 奇时因子为 $2/T$。选 (b)。
 
-
 ---
 
-## 5. Question 5（第 5 题）｜PDF p. 2 ^q5
+#### 5. Question 5（第 5 题）｜PDF p. 2 ^q5
 
 The sawtooth wave $u(t)=2At/T$ for $|t|<T/2$ (period $T$) has which of the following properties?（周期 $T$ 内的锯齿波具有下面哪种性质？）
 
@@ -236,10 +234,9 @@ $$
 >
 > 结果为纯虚数。选 (b)。
 
-
 ---
 
-## 6. Question 6（第 6 题）｜PDF p. 3 ^q6
+#### 6. Question 6（第 6 题）｜PDF p. 3 ^q6
 
 A periodic signal is $u(t)=1$ for $|t|<\pi/2$ and $0$ for $\pi/2<|t|<\pi$, repeated with period $2\pi$: an even square pulse train with 50% duty cycle. Once its DC component is removed, which coefficients remain nonzero?（周期为 $2\pi$ 的偶对称 50% 占空比方波，去除直流后还有哪些非零系数？）
 
@@ -251,7 +248,6 @@ $$
 (b) All $a_k$, $k\ge1$, decaying as $1/k$（所有 $k\ge1$ 的余弦系数 $a_k$，且按 $1/k$ 衰减）
 (c) Only $a_2,a_4,a_6,\dots$（只有 $a_2,a_4,a_6$ 等偶次系数）
 (d) Only the odd-indexed $a_k$ – the signal is even, and once the DC offset is removed it satisfies $u(t-T/2)=-u(t)$, which kills every even harmonic **✓**（只有奇数序号的余弦系数 $a_k$；信号为偶函数，去除直流后具有半波反对称性，从而全部偶次谐波消失）
-
 
 > [!success] Answer（答案）
 > (d) 只有奇次 $a_k$ 非零
@@ -284,10 +280,9 @@ $$
 
 ---
 
-## 7. Question 7（第 7 题）｜PDF p. 3 ^q7
+#### 7. Question 7（第 7 题）｜PDF p. 3 ^q7
 
 An even, bipolar square wave ($+A$ for $|t|<T/4$, $-A$ for $T/4<|t|<T/2$) has amplitude $A=6$. Find $c_5$, to 4 significant figures.（给定幅值 $A=6$ 的偶对称双极性方波，求 $c_5$，保留四位有效数字。）
-
 
 $$
 A=6,\qquad c_5=?
@@ -343,13 +338,11 @@ $$
 > 取四位有效数字：
 > $$c_5=0.7639.$$
 
-
 ---
 
-## 8. Question 8（第 8 题）｜PDF p. 3 ^q8
+#### 8. Question 8（第 8 题）｜PDF p. 3 ^q8
 
 A full-wave rectified sine $u(t)=A|\sin(\omega_0 t)|$ has amplitude $A=7$. Find $c_3$, to 4 significant figures.（幅值 $A=7$ 的全波整流正弦，求 $c_3$，保留四位有效数字；公式表中记作 $A\lvert\sin(\omega_0t)\rvert$。）
-
 
 $$
 u(t)=7\left|\sin(\omega_0 t)\right|,\qquad c_3=?
@@ -384,10 +377,9 @@ $$
 >
 > 四位有效数字 $-0.1273$。
 
-
 ---
 
-## 9. Question 9（第 9 题）｜PDF p. 3 ^q9
+#### 9. Question 9（第 9 题）｜PDF p. 3 ^q9
 
 A pulse train $u(t)=A p_\tau(t)$ (period $T$, duty cycle $d=\tau/T=1/3$) has Fourier coefficients $c_k=Ad\operatorname{sinc}(kd)$. For which smallest positive integer $k$ does $c_k=0$?（给定占空比为 $1/3$ 的脉冲列，求使 $c_k$ 首次为零的最小正整数 $k$。）
 
@@ -425,10 +417,9 @@ $$
 
 ---
 
-## 10. Question 10（第 10 题）｜PDF p. 4 ^q10
+#### 10. Question 10（第 10 题）｜PDF p. 4 ^q10
 
 A periodic signal $u(t)$ with period $T$ equals $+8$ for a quarter of each period and $-2$ for the remaining three-quarters. Find $c_0$.（求给定分段常值周期信号的直流系数 $c_0$。）
-
 
 $$
 u(t)=\begin{cases}8,&\text{占周期 }1/4\\-2,&\text{占周期 }3/4\end{cases}
@@ -462,10 +453,9 @@ $$
 >
 > 与 $T$ 无关。
 
-
 ---
 
-## 11. Question 11（第 11 题）｜PDF p. 4 ^q11
+#### 11. Question 11（第 11 题）｜PDF p. 4 ^q11
 
 A signal $u(t)$ has period $T=2$ and is defined on one period by $u(t)=1$ for $0<t<1$ and $u(t)=-1$ for $1<t<2$ (repeating). Its complex Fourier coefficient $c_0$ is:（该信号的复傅里叶系数 $c_0$ 为多少？）
 
@@ -502,10 +492,9 @@ $$
 >
 > 只积前半段会误得 $0.5$。选 (c)。
 
-
 ---
 
-## 12. Question 12（第 12 题）｜PDF p. 4 ^q12
+#### 12. Question 12（第 12 题）｜PDF p. 4 ^q12
 
 A signal of period $1$ equals $1/\sqrt{d}$ on $0\le t<d$ and $0$ on the rest of each period, where $0<d<1$. For $d=0.01$, find $c_0$.（当 $d=0.01$ 时求 $c_0$。）
 
@@ -541,7 +530,7 @@ $$
 
 ---
 
-## 13. Question 13（第 13 题）｜PDF p. 5 ^q13
+#### 13. Question 13（第 13 题）｜PDF p. 5 ^q13
 
 In the exponential Fourier series
 
@@ -591,7 +580,6 @@ of a real signal, the term with index $k=-3$ is best interpreted as:
 > &=2|c_3|\cos\left(3\omega_0t+\angle c_3\right).
 > \end{aligned}$$
 > 这里把 $c_3$ 写成极坐标形式 $c_3=|c_3|e^{j\angle c_3}$，再用 $\operatorname{Re}\left(e^{j\theta}\right)=\cos\theta$ 合并。合并后的振幅 $2|c_3|$ 是单个复系数模的两倍。
-ight)=\cos	heta$ 合并。合并后的振幅 $2|c_3|$ 是单个复系数模的两倍。
 >
 > 看每一项在这条实余弦里的份额。先回到单项本身，用欧拉公式把它拆成实部与虚部。记 $\theta=3\omega_0t+\angle c_3$，由 $c_3=|c_3|e^{j\angle c_3}$ 得
 > $$c_3e^{j3\omega_0t}=|c_3|e^{j\theta}=|c_3|\left(\cos\theta+j\sin\theta\right)=|c_3|\cos\theta+j|c_3|\sin\theta.$$
@@ -609,7 +597,7 @@ ight)=\cos	heta$ 合并。合并后的振幅 $2|c_3|$ 是单个复系数模的�
 
 ---
 
-## 14. Question 14（第 14 题）｜PDF p. 5 ^q14
+#### 14. Question 14（第 14 题）｜PDF p. 5 ^q14
 
 A periodic signal's complex Fourier coefficient is $c_1=2-3j$. Using the convention $\left(a_k=2\operatorname{Re}c_k,\ b_k=-2\operatorname{Im}c_k\right)$, the pair $(a_1,b_1)$ is:（按照给定的余弦、正弦系数约定，求 $(a_1,b_1)$。）
 
@@ -643,13 +631,11 @@ $$
 >
 > 选 (c)。
 
-
 ---
 
-## 15. Question 15（第 15 题）｜PDF p. 5 ^q15
+#### 15. Question 15（第 15 题）｜PDF p. 5 ^q15
 
 The sine–cosine Fourier series of a periodic signal $u(t)$ contains the term $3\cos(2\omega_0t)+4\sin(2\omega_0t)$ (i.e. $a_2=3$, $b_2=4$). Find $|c_2|$.（求 $|c_2|$。）
-
 
 $$
 3\cos(2\omega_0t)+4\sin(2\omega_0t),\qquad |c_2|=?
@@ -673,10 +659,9 @@ $$
 >
 > 结果 $2.500$。
 
-
 ---
 
-## 16. Question 16（第 16 题）｜PDF p. 5 ^q16
+#### 16. Question 16（第 16 题）｜PDF p. 5 ^q16
 
 A periodic signal is
 
@@ -728,7 +713,9 @@ Which set of Fourier coefficients describes it?（下面哪一组傅里叶系数
 
 ---
 
-## 17. Question 17（第 17 题）｜PDF p. 6 ^q17
+### Parseval's theorem for periodic signals（周期信号的帕塞瓦尔定理）
+
+#### 17. Question 17（第 17 题）｜PDF p. 6 ^q17
 
 Parseval's theorem for a periodic signal $u(t)$ states that its average power is:（周期信号的帕塞瓦尔定理如何表示平均功率？）
 
@@ -762,17 +749,15 @@ $$
 >
 > 对频率积分是能量公式；直接把 $c_k$ 相加得 $u(0)$。选 (d)。
 
-
 ---
 
-## 18. Question 18（第 18 题）｜PDF p. 6 ^q18
+#### 18. Question 18（第 18 题）｜PDF p. 6 ^q18
 
 An odd, bipolar square wave of amplitude $A=1$ (period $T$, so $|u(t)|=1$ always) has（奇对称双极性方波，幅度 $A=1$，周期为 $T$，因此始终满足 $|u(t)|=1$；它的复系数为）
 
 $$c_k=-\frac{2j}{\pi k}\qquad(k\ \text{odd}),$$
 
 zero otherwise. What percentage of its total average power is carried by the fundamental component alone ($k=\pm1$)? Give your answer to 4 significant figures.（其余情况为零。基波分量（即仅 $k=\pm1$ 两项）占总平均功率的百分之几？答案保留四位有效数字。）
-
 
 $$
 A=1,\qquad c_k=-\frac{2j}{\pi k}\quad(k\text{ 为奇数})
@@ -801,13 +786,11 @@ $$
 >
 > $81.06\%$。
 
-
 ---
 
-## 19. Question 19（第 19 题）｜PDF p. 6 ^q19
+#### 19. Question 19（第 19 题）｜PDF p. 6 ^q19
 
 A rectangular pulse train $A p_\tau(t)$ of period $T$ has duty cycle $d=\tau/T=0.25$.（周期为 $T$ 的矩形脉冲串 $A p_\tau(t)$ 占空比为 $d=\tau/T=0.25$。）What fraction of its total average power is carried by the DC term $c_0$ alone?（其总平均功率中，仅由直流项 $c_0$ 承担的比例是多少？）
-
 
 $$
 d=\frac{\tau}{T}=0.25,\qquad \frac{P_{\mathrm{DC}}}{P_{\mathrm{total}}}=?
@@ -859,13 +842,13 @@ $$
 > $$\frac{P_{\text{DC}}}{P_{\text{total}}}=\frac{A^2d^2}{A^2d}=d=\frac{\tau}{T}=0.25.$$
 > $A^2$ 和 $d$ 分别约掉，结果只剩占空比 $d$，与幅度 $A$ 和周期具体数值都无关。
 
-
 ---
 
-## 20. Question 20（第 20 题）｜PDF p. 7 ^q20
+### Signals as vectors, projection and orthogonality（信号作为向量：投影与正交）
+
+#### 20. Question 20（第 20 题）｜PDF p. 7 ^q20
 
 A square wave $u(t)$ has period $T=2\pi$, with $u(t)=+1$ for $0<t<\pi$ and $u(t)=-1$ for $\pi<t<2\pi$.（方波 $u(t)$ 的周期为 $T=2\pi$：$0<t<\pi$ 时 $u(t)=+1$，$\pi<t<2\pi$ 时 $u(t)=-1$。）It is approximated by a single complex sinusoid at the fundamental frequency, $u(t)\approx c\,e^{jt}$, with the complex constant $c$ chosen to minimise $\left\|u-c\,e^{jt}\right\|_P^2$.（用基频处的单个复正弦 $u(t)\approx c\,e^{jt}$ 逼近它，复常数 $c$ 取为使均方周期误差 $\left\|u-c\,e^{jt}\right\|_P^2$ 最小的值。）Find $c$.（求 $c$。）
-
 
 $$
 T=2\pi,\quad u(t)=\begin{cases}1,&0<t<\pi\\-1,&\pi<t<2\pi\end{cases},\quad u\approx c\,e^{jt}
@@ -902,10 +885,9 @@ $$
 >
 > 校验：方波为奇函数，$a_1=0$；$b_1=\frac{4}{\pi}$，于是 $c_1=\frac{0-j\cdot4/\pi}{2}=-\frac{2j}{\pi}$，一致。
 
-
 ---
 
-## 21. Question 21（第 21 题）｜PDF p. 7 ^q21
+#### 21. Question 21（第 21 题）｜PDF p. 7 ^q21
 
 A real $T$-periodic signal $u(t)$ is approximated by $c\,\phi(t)$, with the real constant $c$ chosen to minimise $\|u-c\phi\|_P^2$.（实周期信号 $u(t)$（周期 $T$）用 $c\,\phi(t)$ 逼近，实常数 $c$ 取为使 $\|u-c\phi\|_P^2$ 最小的值。）At that optimal $c$, the error signal $e(t)=u(t)-c\phi(t)$ satisfies:（在该最优 $c$ 处，误差信号 $e(t)=u(t)-c\phi(t)$ 满足什么条件？）
 
@@ -953,7 +935,7 @@ $$
 
 ---
 
-## 22. Question 22（第 22 题）｜PDF p. 7 ^q22
+#### 22. Question 22（第 22 题）｜PDF p. 7 ^q22
 
 Two real $T$-periodic signals $u(t)$ and $y(t)$ are orthogonal, $\langle u,y\rangle_P=0$.（两个实的 $T$ 周期信号 $u(t)$、$y(t)$ 正交，即 $\langle u,y\rangle_P=0$。）Let $z(t)=u(t)+y(t)$. The average power $P(z)$ equals:（令 $z(t)=u(t)+y(t)$，其平均功率 $P(z)$ 等于多少？）
 
@@ -965,11 +947,6 @@ $$
 (b) $P(u)\,P(y)$（两信号功率之积）
 (c) $P(u)+P(y)$ **✓**（两信号功率之和）
 (d) $\left(\sqrt{P(u)}+\sqrt{P(y)}\right)^2$（两个信号有效值相加后再平方）
-
-
-### 2. Fourier transform (week 5)（傅里叶变换，第 5 周）
-
-Existence of the transform, and symmetry for real, even and odd signals（傅里叶变换的存在性以及实信号、偶信号、奇信号的对称性）
 
 > [!success] Answer（答案）
 > (c) $P(u)+P(y)$
@@ -999,7 +976,11 @@ Existence of the transform, and symmetry for real, even and odd signals（傅里
 
 ---
 
-## 23. Question 23（第 23 题）｜PDF p. 8 ^q23
+## 2. Fourier transform (week 5)（傅里叶变换，第 5 周）
+
+### Existence of the transform, and symmetry for real, even and odd signals（傅里叶变换的存在性以及实信号、偶信号、奇信号的对称性）
+
+#### 23. Question 23（第 23 题）｜PDF p. 8 ^q23
 
 Which of the following signals does not possess a Fourier transform, not even one containing impulses?（下列信号中，哪一个即使允许冲激项也不存在傅里叶变换？）
 
@@ -1068,7 +1049,7 @@ $$
 
 ---
 
-## 24. Question 24（第 24 题）｜PDF p. 8 ^q24
+#### 24. Question 24（第 24 题）｜PDF p. 8 ^q24
 
 $u(t)$ is real and odd, i.e. $u(-t)=-u(t)$.（$u(t)$ 为实奇信号，即 $u(-t)=-u(t)$。）Which statement about $U(j\omega)$ must be true?（关于其傅里叶变换 $U(j\omega)$，哪一项必然成立？）
 
@@ -1111,7 +1092,7 @@ $$
 
 ---
 
-## 25. Question 25（第 25 题）｜PDF p. 8 ^q25
+#### 25. Question 25（第 25 题）｜PDF p. 8 ^q25
 
 $u(t)$ is real.（$u(t)$ 为实信号。）Which statement about its spectrum is always true?（关于其频谱，哪一项总是成立？）
 
@@ -1152,10 +1133,11 @@ $$
 
 ---
 
-## 26. Question 26（第 26 题）｜PDF p. 9 ^q26
+### Area relations between $u$ and $U(j\omega)$（$u$ 与频谱之间的面积关系）
+
+#### 26. Question 26（第 26 题）｜PDF p. 9 ^q26
 
 $u(t)=3e^{-2t}H(t)-2e^{-5t}H(t)$.（已知该信号。）Find $U(0)$.（求 $U(0)$。）
-
 
 $$
 u(t)=3e^{-2t}H(t)-2e^{-5t}H(t)
@@ -1187,10 +1169,9 @@ $$
 
 ---
 
-## 27. Question 27（第 27 题）｜PDF p. 9 ^q27
+#### 27. Question 27（第 27 题）｜PDF p. 9 ^q27
 
 $U(j\omega)=4$ for $|\omega|<1$ and $0$ otherwise (i.e. $U(j\omega)=4p_2(\omega)$).（$|\omega|<1$ 时 $U(j\omega)=4$，其余为 $0$，即 $U(j\omega)=4p_2(\omega)$。）Find $u(0)$.（求 $u(0)$。）
-
 
 $$
 U(j\omega)=\begin{cases}4,&|\omega|<1\\0,&\text{otherwise}\end{cases}
@@ -1217,10 +1198,9 @@ $$
 
 ---
 
-## 28. Question 28（第 28 题）｜PDF p. 9 ^q28
+#### 28. Question 28（第 28 题）｜PDF p. 9 ^q28
 
 Evaluate $\displaystyle\int_{-\infty}^{\infty}\operatorname{sinc}(t)\,dt$.（计算 $\operatorname{sinc}(t)$ 在整个时间轴上的积分。）
-
 
 $$
 \int_{-\infty}^{\infty}\operatorname{sinc}(t)\,dt
@@ -1250,7 +1230,9 @@ $$
 
 ---
 
-## 29. Question 29（第 29 题）｜PDF p. 9 ^q29
+### Transforms of standard signals（常用信号的变换对）
+
+#### 29. Question 29（第 29 题）｜PDF p. 9 ^q29
 
 What is the Fourier transform of $u(t)=\delta(t-5)$?（求延迟冲激 $u(t)=\delta(t-5)$ 的傅里叶变换。）
 
@@ -1285,7 +1267,7 @@ $$
 
 ---
 
-## 30. Question 30（第 30 题）｜PDF p. 9 ^q30
+#### 30. Question 30（第 30 题）｜PDF p. 9 ^q30
 
 What is the Fourier transform of the constant signal $u(t)=1$, and why is the weight $2\pi$ (not $1$) attached to the impulse?（常数信号 $u(t)=1$ 的傅里叶变换是什么？冲激前的权重为何是 $2\pi$ 而不是 $1$？）
 
@@ -1323,7 +1305,7 @@ $$
 
 ---
 
-## 31. Question 31（第 31 题）｜PDF p. 10 ^q31
+#### 31. Question 31（第 31 题）｜PDF p. 10 ^q31
 
 What is the Fourier transform of $u(t)=\operatorname{sinc}(t)$?（求 $u(t)=\operatorname{sinc}(t)$ 的傅里叶变换。）
 
@@ -1361,7 +1343,7 @@ $$
 
 ---
 
-## 32. Question 32（第 32 题）｜PDF p. 10 ^q32
+#### 32. Question 32（第 32 题）｜PDF p. 10 ^q32
 
 $u(t)=p_6(t)$ (a pulse of width $6$, centred at the origin).（$u(t)=p_6(t)$，即宽为 $6$、以原点为中心的矩形脉冲。）What is $U(j\omega)$?（其频谱 $U(j\omega)$ 是什么？）
 
@@ -1373,7 +1355,6 @@ $$
 (b) $6\operatorname{sinc}\left(\dfrac{3\omega}{\pi}\right)$ **✓**（幅值为 $6$、自变量为 $\frac{3\omega}{\pi}$ 的 sinc 函数）
 (c) $\dfrac{1}{6}\operatorname{sinc}\left(\dfrac{3\omega}{\pi}\right)$（幅值为 $1/6$、自变量为 $\frac{3\omega}{\pi}$ 的 sinc 函数）
 (d) $6\operatorname{sinc}\left(\dfrac{\omega}{3\pi}\right)$（幅值为 $6$、自变量为 $\frac{\omega}{3\pi}$ 的 sinc 函数）
-
 
 > [!success] Answer（答案）
 > (b) $6\operatorname{sinc}\left(\frac{3\omega}{\pi}\right)$
@@ -1401,16 +1382,26 @@ $$
 
 ---
 
-## 33. Question 33（第 33 题）｜PDF p. 10 ^q33
+#### 33. Question 33（第 33 题）｜PDF p. 10 ^q33
 
-$u(t)=p_{0.5}(t)$ (a pulse of width $0.5$) （$u(t)=p_{0.5}(t)$，宽为 $0.5$ 的脉冲） pdf中题目不全没法做
+$u(t)=p_{0.5}(t)$ (a pulse of width $0.5$)（$u(t)=p_{0.5}(t)$，宽为 $0.5$ 的脉冲。）
+
+At what frequency does $|U(j\omega)|$ first reach zero for $\omega>0$?（$|U(j\omega)|$ 在 $\omega>0$ 范围内首次为零的频率是多少？）
+
+> [!warning] 原 PDF 题干不完整
+> 原文在 “a pulse of width 0.5” 之后中断，选项缺失；以下设问是根据原文 Feedback 恢复的。
 
 $$
 u(t)=p_{0.5}(t)
 $$
 
+(a) $\omega=2\pi\ \mathrm{rad/s}$
+(b) $\omega=\pi\ \mathrm{rad/s}$
+(c) $\omega=4\pi\ \mathrm{rad/s}$ **✓**
+(d) $|U(j\omega)|$ 没有零点
+
 > [!success] Answer（答案）
-> 首个正零点 $\omega=4\pi=12.566\ \mathrm{rad/s}$
+> (c) 首个正零点 $\omega=4\pi=12.566\ \mathrm{rad/s}$
 
 > [!abstract] 知识点讲解
 > 见 [[信号与系统/Quiz对应知识点.md|Quiz对应知识点]] 3.4 常用变换对。
@@ -1434,12 +1425,11 @@ $$
 
 ---
 
-## 34. Question 34（第 34 题）｜PDF p. 11 ^q34
+#### 34. Question 34（第 34 题）｜PDF p. 11 ^q34
 
 $u(t)=p_4(t)$.（已知矩形脉冲 $u(t)=p_4(t)$。）
 
 Evaluate $U(j\pi/4)$.（求 $\omega=\pi/4$ 处的 $U(j\omega)$。）
-
 
 $$
 u(t)=p_4(t),\qquad U(j\pi/4)=?
@@ -1469,7 +1459,7 @@ $$
 
 ---
 
-## 35. Question 35（第 35 题）｜PDF p. 11 ^q35
+#### 35. Question 35（第 35 题）｜PDF p. 11 ^q35
 
 A rectangular pulse train has amplitude $A=1$ and pulse width $\tau=1\ \mathrm{s}$, and repeats with period $T$:（矩形脉冲串的幅度为 $A=1$、脉宽为 $\tau=1\ \mathrm{s}$，按周期 $T$ 重复：）
 
@@ -1503,7 +1493,6 @@ $$
 > - **为什么能落在灰色曲线上**：灰色曲线是单脉冲 $p_1(t)$ 的连续频谱 $\operatorname{sinc}\left(\dfrac{\omega}{2\pi}\right)$。由于 $Tc_k=\operatorname{sinc}\left(\dfrac{\omega_k}{2\pi}\right)$，每条谱线的顶端正好是这条连续谱在 $\omega_k$ 处的取值，所以所有谱线顶端都落在灰色包络上；$T\to\infty$ 时谱线间隔趋于 0，离散谱线就连续成这条曲线。
 > - **单脉冲**：$p_1(t)\leftrightarrow\operatorname{sinc}\left(\dfrac{\omega}{2\pi}\right)$，就是那条灰色曲线本身，只有曲线、没有竖线。
 
-
 > [!example] 解答
 > 分别求三个周期的谱线间隔：
 > $$T=2.5:\ \omega_0=\frac{2\pi}{2.5}=2.513,$$
@@ -1520,13 +1509,11 @@ $$
 > $$U(j\omega)=\operatorname{sinc}\left(\frac{\omega}{2\pi}\right),$$
 > 对应 (iv)，即 B。
 
-
 ---
 
-## 36. Question 36（第 36 题）｜PDF p. 12 ^q36
+#### 36. Question 36（第 36 题）｜PDF p. 12 ^q36
 
 $u(t)=e^{-3t}H(t)$.（已知该信号。）Evaluate $|U(j4)|$.（求 $|U(j4)|$。）
-
 
 $$
 u(t)=e^{-3t}H(t),\qquad |U(j4)|=?
@@ -1553,12 +1540,11 @@ $$
 
 ---
 
-## 37. Question 37（第 37 题）｜PDF p. 12 ^q37
+#### 37. Question 37（第 37 题）｜PDF p. 12 ^q37
 
 $u(t)=e^{-a|t|}$ has Fourier transform $U(j\omega)=\dfrac{2a}{a^2+\omega^2}$.（$u(t)=e^{-a|t|}$ 的傅里叶变换为 $U(j\omega)=\dfrac{2a}{a^2+\omega^2}$。）
 
 For $a=5000\ \mathrm{s^{-1}}$, find $|U(j\omega)|$ at $\omega=a=5000\ \mathrm{rad/s}$.（取 $a=5000\ \mathrm{s^{-1}}$，求 $\omega=a=5000\ \mathrm{rad/s}$ 处的 $|U(j\omega)|$。）
-
 
 $$
 u(t)=e^{-a|t|},\qquad U(j\omega)=\frac{2a}{a^2+\omega^2},\qquad a=5000,\ \omega=a
@@ -1586,12 +1572,11 @@ $$
 
 ---
 
-## 38. Question 38（第 38 题）｜PDF p. 12 ^q38
+#### 38. Question 38（第 38 题）｜PDF p. 12 ^q38
 
 A system has $G(j\omega)=\dfrac{1}{3+j\omega}$.（某系统的频率响应为 $G(j\omega)=\dfrac{1}{3+j\omega}$。）
 
 Find the phase of $G(j4)$ in degrees.（求 $G(j4)$ 的相位，单位为度。）
-
 
 $$
 G(j\omega)=\frac{1}{3+j\omega},\qquad \arg G(j4)=?
@@ -1618,10 +1603,11 @@ $$
 > 故
 > $$\arg G(j4)=-53.1301^\circ.$$
 
-
 ---
 
-## 39. Question 39（第 39 题）｜PDF p. 12 ^q39
+### Properties of the Fourier transform（傅里叶变换的性质）
+
+#### 39. Question 39（第 39 题）｜PDF p. 12 ^q39
 
 $u(t)=p_2(t)$. Compare $U(j\omega)$ with the transform of the delayed pulse $u(t-5)$.（$u(t)=p_2(t)$。比较其频谱 $U(j\omega)$ 与延迟脉冲 $u(t-5)$ 的频谱。）
 
@@ -1659,10 +1645,9 @@ $$
 >
 > 排除 (d)：模因子为 $1$，不影响幅度。选 (c)。
 
-
 ---
 
-## 40. Question 40（第 40 题）｜PDF p. 12 ^q40
+#### 40. Question 40（第 40 题）｜PDF p. 12 ^q40
 
 $u(t)$ has spectrum $U(j\omega)$. The signal is compressed in time by a factor of $3$, giving $u(3t)$.（$u(t)$ 的频谱为 $U(j\omega)$。把信号在时间上压缩为原来的三分之一，得到 $u(3t)$。）
 
@@ -1685,7 +1670,6 @@ $$
 >
 > - **尺度性质**：$u(at)\leftrightarrow\dfrac1{|a|}U\left(j\dfrac{\omega}{a}\right)$，本题 $a=3$。
 
-
 > [!example] 解答
 > 取 $a=3$：
 > $$u(3t)\leftrightarrow\frac{1}{3}U\left(j\frac{\omega}{3}\right).$$
@@ -1700,10 +1684,9 @@ $$
 
 ---
 
-## 41. Question 41（第 41 题）｜PDF p. 13 ^q41
+#### 41. Question 41（第 41 题）｜PDF p. 13 ^q41
 
 Let $y(t)=p_4(2t-4)$.（令 $y(t)=p_4(2t-4)$。）Using the time-shift and time-scaling properties together with the pair $p_\tau(t)\leftrightarrow\tau\operatorname{sinc}\!\left(\dfrac{\omega\tau}{2\pi}\right)$, evaluate $Y(j\omega)$ at $\omega=\pi/2$.（结合时移性质、尺度性质以及变换对 $p_\tau(t)\leftrightarrow\tau\operatorname{sinc}\!\left(\dfrac{\omega\tau}{2\pi}\right)$，求 $\omega=\pi/2$ 处的 $Y(j\omega)$。）
-
 
 $$
 y(t)=p_4(2t-4),\qquad Y(j\pi/2)=?
@@ -1736,10 +1719,9 @@ $$
 > 求值：
 > $$Y(j\pi/2)=2\cdot\frac{2}{\pi}\cdot e^{-j\pi}=-\frac{4}{\pi}=-1.2732.$$
 
-
 ---
 
-## 42. Question 42（第 42 题）｜PDF p. 13 ^q42
+#### 42. Question 42（第 42 题）｜PDF p. 13 ^q42
 
 The width-$\tau$ triangle（宽为 $\tau$ 的三角形）has the Fourier transform pair（其傅里叶变换对为）：
 
@@ -1783,10 +1765,9 @@ Applying the duality property to this pair, what kind of function of $\omega$ is
 >
 > 选 (b)。
 
-
 ---
 
-## 43. Question 43（第 43 题）｜PDF p. 13 ^q43
+#### 43. Question 43（第 43 题）｜PDF p. 13 ^q43
 
 What is the Fourier transform of $u(t)=\dfrac{2a}{t^2+a^2}$, where $a>0$?（其中 $a>0$。求 $u(t)=\dfrac{2a}{t^2+a^2}$ 的傅里叶变换。）
 
@@ -1818,10 +1799,9 @@ $$
 >
 > 选 (a)。
 
-
 ---
 
-## 44. Question 44（第 44 题）｜PDF p. 14 ^q44
+#### 44. Question 44（第 44 题）｜PDF p. 14 ^q44
 
 Given that $u(t)\leftrightarrow U(j\omega)$, which of the following correctly states the duality property of the Fourier transform?（已知 $u(t)\leftrightarrow U(j\omega)$，下列哪一项正确表述了傅里叶变换的对偶性质？）
 
@@ -1840,10 +1820,9 @@ Given that $u(t)\leftrightarrow U(j\omega)$, which of the following correctly st
 > - **$2\pi$ 来源**：逆变换中的 $\dfrac1{2\pi}$，对偶后移到正变换一侧。
 > - **负号**：右端是 $u(-\omega)$，频率反转不可省略。
 
-
 ---
 
-## 45. Question 45（第 45 题）｜PDF p. 14 ^q45
+#### 45. Question 45（第 45 题）｜PDF p. 14 ^q45
 
 Which Fourier-transform property converts convolution in time into a product in frequency?（什么性质把时域卷积转换为频域乘积？）
 
@@ -1869,11 +1848,9 @@ $$
 >
 > 题干问的是「时域卷积 → 频域乘积」，只有卷积性质符合。
 
-
-
 ---
 
-## 46. Question 46（第 46 题）｜PDF p. 14 ^q46
+#### 46. Question 46（第 46 题）｜PDF p. 14 ^q46
 
 Which property converts a product of two time signals into a (scaled) convolution of their transforms?（什么性质把两个时域信号的乘积转换为变换的带系数卷积？）
 
@@ -1899,11 +1876,9 @@ $$
 >
 > 题干问的是「时域乘积 → 频域卷积」，只有相乘性质符合；它与卷积性质互为对偶，系数 $\frac{1}{2\pi}$ 来自逆变换。
 
-
-
 ---
 
-## 47. Question 47（第 47 题）｜PDF p. 15 ^q47
+#### 47. Question 47（第 47 题）｜PDF p. 15 ^q47
 
 What is the Fourier transform of $\dfrac{d}{dt}\cos(\omega_0t)$?（求 $\cos(\omega_0t)$ 的时间导数的傅里叶变换。）
 
@@ -1930,7 +1905,6 @@ $$
 >   f(\omega)\,\delta(\omega-\omega_0)=f(\omega_0)\,\delta(\omega-\omega_0).$$
 >   直观理解：$\delta(\omega-\omega_0)$ 只在 $\omega=\omega_0$ 这一点非零，乘在它前面的 $f(\omega)$ 只在这一点被「取值」，其余地方的 $f(\omega)$ 都乘了零、不起作用。
 
-
 > [!example] 解答
 > 由 3.4 表，
 > $$X(j\omega)=\mathcal{F}\{\cos\omega_0t\}=\pi\left[\delta(\omega-\omega_0)+\delta(\omega+\omega_0)\right].$$
@@ -1950,7 +1924,7 @@ $$
 
 ---
 
-## 48. Question 48（第 48 题）｜PDF p. 15 ^q48
+#### 48. Question 48（第 48 题）｜PDF p. 15 ^q48
 
 What is the Fourier transform of $\dfrac{d}{dt}\left[H(t)e^{-3t}\right]$?（求 $H(t)e^{-3t}$ 的导数的傅里叶变换。）
 
@@ -1991,12 +1965,11 @@ $$
 
 ---
 
-## 49. Question 49（第 49 题）｜PDF p. 15 ^q49
+#### 49. Question 49（第 49 题）｜PDF p. 15 ^q49
 
 A signal $u(t)$ has Fourier transform $U(j\omega)$, and it is known that $U(j5)=2-3j$.（信号 $u(t)$ 的傅里叶变换为 $U(j\omega)$，已知 $U(j5)=2-3j$。）
 
 Let $y(t)=\dfrac{du}{dt}$. Evaluate $Y(j5)$.（令 $y(t)=\dfrac{du}{dt}$，求 $Y(j5)$。）
-
 
 $$
 U(j5)=2-3j,\qquad y(t)=\frac{du}{dt}
@@ -2024,10 +1997,11 @@ $$
 > 用 $j^2=-1$：
 > $$10j+15=15+10j.$$
 
-
 ---
 
-## 50. Question 50（第 50 题）｜PDF p. 16 ^q50
+### The transform of a periodic signal（周期信号的傅里叶变换）
+
+#### 50. Question 50（第 50 题）｜PDF p. 16 ^q50
 
 $u(t)$ is periodic with period $T$, fundamental frequency $\omega_0=2\pi/T$, and Fourier series coefficients $c_k$.（$u(t)$ 为周期信号，周期 $T$，基频 $\omega_0=2\pi/T$，傅里叶级数系数为 $c_k$。）
 
@@ -2064,15 +2038,13 @@ $$
 >
 > 检查其他选项：(d) 少 $2\pi$；(c) 是时域表达式；(b) 丢失系数 $c_k$。选 (a)。
 
-
 ---
 
-## 51. Question 51（第 51 题）｜PDF p. 16 ^q51
+#### 51. Question 51（第 51 题）｜PDF p. 16 ^q51
 
 $u(t)=5+4\cos(3t)-2\sin(3t)$ is periodic with fundamental frequency $\omega_0=3\ \mathrm{rad/s}$.（$u(t)=5+4\cos(3t)-2\sin(3t)$ 为周期信号，基频 $\omega_0=3\ \mathrm{rad/s}$。）
 
 Writing $U(j\omega)$ as a sum of weighted impulses, find the complex weight of the impulse located at $\omega=3$.（把 $U(j\omega)$ 写成带权重的冲激之和，求位于 $\omega=3$ 处冲激的复权重。）
-
 
 $$
 u(t)=5+4\cos(3t)-2\sin(3t)
@@ -2102,7 +2074,7 @@ $$
 
 ---
 
-## 52. Question 52（第 52 题）｜PDF p. 16 ^q52
+#### 52. Question 52（第 52 题）｜PDF p. 16 ^q52
 
 A periodic, real-valued signal $u(t)$ has Fourier transform（周期实值信号 $u(t)$ 的傅里叶变换为）
 
@@ -2141,7 +2113,9 @@ Find $u(0)$.（给定实周期信号的冲激频谱，求 $u(0)$。）
 
 ---
 
-## 53. Question 53（第 53 题）｜PDF p. 16 ^q53
+### Parseval's theorem and signal energy（帕塞瓦尔定理与信号能量）
+
+#### 53. Question 53（第 53 题）｜PDF p. 16 ^q53
 
 Which of the following correctly states Parseval's theorem for the Fourier transform?（哪一项正确陈述连续时间傅里叶变换的帕塞瓦尔定理？）
 
@@ -2172,13 +2146,11 @@ $$
 >
 > 对照选项：(b) 缺 $\frac{1}{2\pi}$；(c) 混入面积定理；(d) 系数为 $\frac{1}{\pi}$。选 (a)。
 
-
 ---
 
-## 54. Question 54（第 54 题）｜PDF p. 17 ^q54
+#### 54. Question 54（第 54 题）｜PDF p. 17 ^q54
 
 Find the energy of $u(t)=\dfrac{\sin(3t)}{\pi t}$.（求 $u(t)=\dfrac{\sin(3t)}{\pi t}$ 的能量。）
-
 
 $$
 u(t)=\frac{\sin(3t)}{\pi t}
@@ -2209,20 +2181,17 @@ $$
 
 ---
 
-### 3. Frequency response (week 6)（频率响应，第 6 周）
+## 3. Frequency response (week 6)（频率响应，第 6 周）
 
-Evaluating and using $G(j\omega)$（计算与使用频率响应 $G(j\omega)$）
+### Evaluating and using $G(j\omega)$（计算与使用频率响应 $G(j\omega)$）
 
----
-
-## 55. Question 55（第 55 题）｜PDF p. 17 ^q55
+#### 55. Question 55（第 55 题）｜PDF p. 17 ^q55
 
 A system has（某系统的频率响应为）
 
 $$G(j\omega)=\frac{j\omega+2}{(j\omega)^2+5(j\omega)+4}.$$
 
 Find the steady-state response to the input $u(t)=5\cos(2t+30^\circ)$.（求系统对输入 $u(t)=5\cos(2t+30^\circ)$ 的稳态响应。）
-
 
 $$
 G(j\omega)=\frac{j\omega+2}{(j\omega)^2+5j\omega+4},\qquad u(t)=5\cos(2t+30^\circ)
@@ -2261,10 +2230,9 @@ $$
 > 所以
 > $$y_{ss}(t)=1.41421\cos(2t-15^\circ).$$
 
-
 ---
 
-## 56. Question 56（第 56 题）｜PDF p. 17 ^q56
+#### 56. Question 56（第 56 题）｜PDF p. 17 ^q56
 
 A system has（某系统的频率响应为）
 
@@ -2308,17 +2276,15 @@ $$
 >
 > 选 (b)。干扰项 $0.372$ 是 $|G(j2)|$，代错了频率。
 
-
 ---
 
-## 57. Question 57（第 57 题）｜PDF p. 18 ^q57
+#### 57. Question 57（第 57 题）｜PDF p. 18 ^q57
 
 A vehicle's height $h$ and road height $r$ are related by（车辆高度 $h$ 与路面高度 $r$ 的关系为）
 
 $$m\ddot{h}=-k(h-r)-b(\dot{h}-\dot{r})$$
 
 with $m=1$, $k=2$, $b=3$ (SI units).（其中 $m=1$、$k=2$、$b=3$，均采用国际单位制。）For a sinusoidal road profile $r(t)=\cos(2t)$, the vehicle height reaches steady state. Find its RMS value.（当路面起伏为正弦 $r(t)=\cos(2t)$ 时，车辆高度进入稳态。求其有效值。）
-
 
 $$
 m\ddot{h}=-k(h-r)-b(\dot{h}-\dot{r}),\quad m=1,\ k=2,\ b=3,\ r(t)=\cos2t
@@ -2357,17 +2323,15 @@ $$
 > 输出峰值等于输入峰值 $1$，RMS：
 > $$h_{\text{RMS}}=\frac{1}{\sqrt2}=0.707107.$$
 
-
 ---
 
-## 58. Question 58（第 58 题）｜PDF p. 18 ^q58
+#### 58. Question 58（第 58 题）｜PDF p. 18 ^q58
 
 A system has（某系统的频率响应为）
 
 $$G(j\omega)=\frac{2(j\omega)^2+4}{(j\omega)^2+4(j\omega)+4}.$$
 
 Find $|G(j2)|$ and $\arg G(j2)$.（求 $|G(j2)|$ 与 $\arg G(j2)$。）
-
 
 $$
 G(j\omega)=\frac{2(j\omega)^2+4}{(j\omega)^2+4j\omega+4}
@@ -2397,17 +2361,15 @@ $$
 > 模与相位：
 > $$|G(j2)|=0.5,\qquad \arg G(j2)=90^\circ.$$
 
-
 ---
 
-## 59. Question 59（第 59 题）｜PDF p. 18 ^q59
+#### 59. Question 59（第 59 题）｜PDF p. 18 ^q59
 
 A system has（某系统的频率响应为）
 
 $$G(j\omega)=\frac{300}{j\omega+4}.$$
 
 Find the phase of $G(j4)$ in degrees.（求 $G(j4)$ 的相位，单位为度。）
-
 
 $$
 G(j\omega)=\frac{300}{j\omega+4}
@@ -2434,17 +2396,15 @@ $$
 > 相除等于相位相减：
 > $$\arg G(j4)=0-45^\circ=-45.0000^\circ.$$
 
-
 ---
 
-## 60. Question 60（第 60 题）｜PDF p. 18 ^q60
+#### 60. Question 60（第 60 题）｜PDF p. 18 ^q60
 
 A river's height $y(t)$ (in feet) responds to rainfall rate $u(t)$ (in/hr) via（河流水位 $y(t)$（单位：英尺）与降雨率 $u(t)$（单位：英寸/小时）之间的关系为）
 
 $$G(j\omega)=\frac{10}{(9j\omega+1)(16j\omega+1)},$$
 
 with time in hours. Find $|G(j\omega)|$ at $\omega=1/12\ \mathrm{rad/hr}$.（时间单位为小时。求 $\omega=1/12\ \mathrm{rad/hr}$ 处的 $|G(j\omega)|$。）
-
 
 $$
 G(j\omega)=\frac{10}{(9j\omega+1)(16j\omega+1)},\qquad \omega=\frac{1}{12}
@@ -2475,14 +2435,13 @@ $$
 
 ---
 
-## 61. Question 61（第 61 题）｜PDF p. 18 ^q61
+#### 61. Question 61（第 61 题）｜PDF p. 18 ^q61
 
 A system obeys $\ddot{y}+3\dot{y}+2y=u$, so（某系统服从 $\ddot{y}+3\dot{y}+2y=u$，因此）
 
 $$G(j\omega)=\frac{1}{(j\omega+1)(j\omega+2)}.$$
 
 Find the steady-state output for the constant input $u(t)=1$.（常值输入 $u(t)=1$ 时求稳态输出。）
-
 
 $$
 \ddot{y}+3\dot{y}+2y=u,\qquad u(t)=1
@@ -2497,7 +2456,6 @@ $$
 > - **由微分方程求频率响应**：$(j\omega)^2Y+3j\omega Y+2Y=U\Rightarrow G(j\omega)=\dfrac1{(j\omega+1)(j\omega+2)}$。
 > - **直流增益**：$G(0)$ 就是把 $\omega=0$（即 $s=0$）代入 $G(j\omega)$ 得到的实数，表示系统对不随时间变化的输入的放大倍数。
 
-
 > [!example] 解答
 > 从微分方程求 $G(j\omega)$：两边变换得
 > $$\left[(j\omega)^2+3j\omega+2\right]Y(j\omega)=U(j\omega),$$
@@ -2509,17 +2467,15 @@ $$
 > 输入 $u=1$，稳态输出：
 > $$y_{ss}=G(0)\cdot1=0.5.$$
 
-
 ---
 
-## 62. Question 62（第 62 题）｜PDF p. 18 ^q62
+#### 62. Question 62（第 62 题）｜PDF p. 18 ^q62
 
 A full-wave rectified sine $u(t)=|\sin t|$ (period $T=\pi$, $\omega_0=2$) drives a first-order lowpass filter with（全波整流正弦 $u(t)=|\sin t|$（周期 $T=\pi$，$\omega_0=2$）驱动一个一阶低通滤波器）
 
 $$G(j\omega)=\frac{1}{1+3j\omega}.$$
 
 Find the DC component of the output $y(t)$.（求输出 $y(t)$ 的直流分量。）
-
 
 $$
 u(t)=|\sin t|,\qquad G(j\omega)=\frac{1}{1+3j\omega}
@@ -2582,10 +2538,9 @@ $$
 >   $$|G(j2)|=\frac{1}{\sqrt{1+36}}\approx0.164,\qquad |G(j4)|=\frac{1}{\sqrt{1+144}}\approx0.083,$$
 >   谐波频率越高被压得越狠，输出只剩下近似的直流 $\dfrac{2}{\pi}$ 加很小的纹波——低通滤波在这里的作用就是把整流后的纹波滤掉、保留直流分量。
 
-
 ---
 
-## 63. Question 63（第 63 题）｜PDF p. 18 ^q63
+#### 63. Question 63（第 63 题）｜PDF p. 18 ^q63
 
 A system has impulse response $h(t)=3e^{-6t}H(t)$, so（某系统的冲激响应为 $h(t)=3e^{-6t}H(t)$，因此）
 
@@ -2627,13 +2582,15 @@ $$
 >
 > 选 (d)。
 
-
 ---
 
-## 64. Question 64（第 64 题）｜PDF p. 19 ^q64
+### Bode diagrams（波特图）
 
-The straight-line (asymptotic) Bode magnitude plot of a first-order system is flat at $12\ \mathrm{dB}$ for $\omega<200\ \mathrm{rad/s}$ and falls at $-20\ \mathrm{dB/decade}$ for $\omega>200\ \mathrm{rad/s}$, with its corner at $\omega=200\ \mathrm{rad/s}$.（一阶系统的渐近波特幅频图在 $\omega<200\ \mathrm{rad/s}$ 时为 $12\ \mathrm{dB}$ 的水平线，$\omega>200\ \mathrm{rad/s}$ 后以 $-20\ \mathrm{dB/decade}$ 下降，转折点在 $\omega=200\ \mathrm{rad/s}$。）Reading off that plot, what is $20\log_{10}|G(j2000)|$?（按图读取，$20\log_{10}|G(j2000)|$ 等于多少？）
+#### 64. Question 64（第 64 题）｜PDF p. 19 ^q64
 
+The straight-line (asymptotic) Bode magnitude plot of a first-order system is flat at $12\ \mathrm{dB}$ for $\omega<200\ \mathrm{rad/s}$ and falls at $-20\ \mathrm{dB/decade}$ for $\omega>200\ \mathrm{rad/s}$, with its corner at $\omega=200\ \mathrm{rad/s}$.（一阶系统的渐近波特幅频图在 $\omega<200\ \mathrm{rad/s}$ 时为 $12\ \mathrm{dB}$ 的水平线，$\omega>200\ \mathrm{rad/s}$ 后以 $-20\ \mathrm{dB/decade}$ 下降，转折点在 $\omega=200\ \mathrm{rad/s}$。）
+
+Reading off that plot, what is $20\log_{10}|G(j2000)|$?（按图读取，$20\log_{10}|G(j2000)|$ 等于多少？）
 
 $$
 12\ \mathrm{dB}\ (\omega<200),\qquad -20\ \mathrm{dB/decade}\ (\omega>200)
@@ -2645,27 +2602,34 @@ $$
 > [!abstract] 知识点讲解
 > 见 [[信号与系统/Quiz对应知识点.md|Quiz对应知识点]] 4.4 Bode 图。
 >
-> - **一阶低通渐近幅频**：$\omega\gg\omega_c$ 时每 decade 下降 $20$ dB，即 $|G|\approx\dfrac{|G(0)|}{\omega/\omega_c}$。
-> - **转折频率**：$\omega_c=200$；一个 decade 为频率乘 $10$。
+> - **decade（十倍频程）**：频率变成原来的 $10$ 倍的那一段区间，是一个**比值**，不是固定的频率差。$200\to2000$ 是一个 decade，$3\to30$、$50\to500$ 也都各是一个 decade。
+> - **decade 数的算法**：从 $\omega_1$ 到 $\omega_2$ 跨越的 decade 数
+>   $$N=\log_{10}\frac{\omega_2}{\omega_1}.$$
+>   例如 $\log_{10}(2000/200)=\log_{10}10=1$，正好一个 decade；$\log_{10}(20000/200)=\log_{10}100=2$，两个 decade。
+> - **为什么用 decade**：Bode 图横轴是 $\log_{10}\omega$，横轴上等长的距离就是频率的等倍数，一段 decade 在图上对应相同长度的水平距离，所以渐近线在这段距离里下降的 dB 数是常数。
+> - **斜率**：$-20$ dB/decade 表示频率每乘 $10$，纵坐标下降 $20$ dB。
 > - **dB 定义**：$20\log_{10}|G|$，dB 值可按斜率线性外推。
 
 > [!example] 解答
-> 判断转折频率：$\omega_c=200\ \mathrm{rad/s}$。
+> 转折频率：$\omega_c=200\ \mathrm{rad/s}$。所求点在 $\omega=2000$。
 >
-> 求跨越的 decade 数：
-> $$\log_{10}\frac{2000}{200}=\log_{10}10=1.$$
+> 先算从 $200$ 到 $2000$ 跨了几个 decade，即频率乘了几次 $10$：
+> $$N=\log_{10}\frac{2000}{200}=\log_{10}10=1.$$
+> 所以是**一个** decade（频率从 $200$ 乘一次 $10$ 就到 $2000$）。
 >
-> 一个 decade 的下降量：$20$ dB。
+> 斜率是 $-20$ dB/decade，一个 decade 就下降 $20$ dB：
+> $$\text{下降量}=20\times N=20\times1=20\ \mathrm{dB}.$$
 >
-> 从平台值外推：
+> 从平台值 $12$ dB 外推：
 > $$12-20=-8\ \mathrm{dB}.$$
 >
 > 结果 $-8.00000$ dB。
-
+>
+> **如果换个频率验证**：$\omega=20000$ 时 $N=\log_{10}\frac{20000}{200}=\log_{10}100=2$，就是两个 decade，下降 $40$ dB，读数为 $12-40=-28$ dB。可见「decade」永远是「乘 $10$ 的倍数」，与频率的具体数值无关。
 
 ---
 
-## 65. Question 65（第 65 题）｜PDF p. 19 ^q65
+#### 65. Question 65（第 65 题）｜PDF p. 19 ^q65
 
 The straight-line (asymptotic) Bode phase plot of a system with a single real pole at $\omega_c=1000\ \mathrm{rad/s}$ is $0^\circ$ for $\omega\le\omega_c/10$, a straight segment of slope $-45^\circ$ per decade from $\omega_c/10$ to $10\omega_c$, and $-90^\circ$ for $\omega\ge10\omega_c$.（某系统在 $\omega_c=1000\ \mathrm{rad/s}$ 处有一个实极点。其渐近波特相频图在 $\omega\le\omega_c/10$ 时为 $0^\circ$，从 $\omega_c/10$ 到 $10\omega_c$ 是斜率为 $-45^\circ$/decade 的直线段，$\omega\ge10\omega_c$ 后为 $-90^\circ$。）Reading off that plot, what is the phase at $\omega=10{,}000\ \mathrm{rad/s}$?（按图读取，$\omega=10{,}000\ \mathrm{rad/s}$ 处的相位是多少？）
 
@@ -2698,14 +2662,14 @@ $$
 >
 > 识别干扰项：$-84.29^\circ=\arctan(-10)$ 是精确相位，不是渐近值。选 (a)。
 
-
 ---
 
-## 66. Question 66（第 66 题）｜PDF p. 19 ^q66
+#### 66. Question 66（第 66 题）｜PDF p. 19 ^q66
 
+A system has impulse response $h(t)=e^{-at}H(t)$ with $a=3$, so $G(j\omega)=1/(a+j\omega)$. Find the $-3$ dB frequency in rad/s.（某系统的冲激响应为 $h(t)=e^{-at}H(t)$，其中 $a=3$，频率响应为 $G(j\omega)=1/(a+j\omega)$。求其 $-3$ dB 截止频率，单位 rad/s。）
 
-A system has impulse response $h(t)=e^{-at}H(t)$ with $a=3$, so $G(j\omega)=1/(a+j\omega)$ … [truncated in source]（一个系统的冲激响应为 $h(t)=e^{-at}H(t)$，其中 $a=3$，因此频率响应为 $G(j\omega)=1/(a+j\omega)$；后续原文截断。根据反馈推断，题目要求求 $-3\ \mathrm{dB}$ 截止频率。）
-
+> [!warning] 原 PDF 题干不完整
+> 原文在 “so $G(j\omega)=1/\ldots$” 处中断，设问缺失；以下设问与答案根据原文 Feedback 恢复。
 
 $$
 h(t)=e^{-3t}H(t),\qquad \omega_{-3\mathrm{dB}}=?
@@ -2736,10 +2700,9 @@ $$
 > 取正根：
 > $$\omega=3\ \mathrm{rad/s}.$$
 
-
 ---
 
-## 67. Question 67（第 67 题）｜PDF p. 20 ^q67
+#### 67. Question 67（第 67 题）｜PDF p. 20 ^q67
 
 Four systems:（下列四个系统：）
 
@@ -2758,6 +2721,9 @@ G_1=\frac{1}{1+j\omega/10},\qquad G_2=\frac{10^4}{(j\omega)^2+10j\omega+10^4}
 $$
 
 ![[Pasted image 20261031132109.png]]
+
+> [!warning] 原图缺失
+> 粘贴版中的「图2」（四幅 Bode 幅频图）在这里没有对应的图片文件，下面按原文给出的答案 (i) B、(ii) D、(iii) A、(iv) C 保留题目与解答；需要看图时请对照原 PDF 第 20 页。
 
 > [!success] Answer（答案）
 > (i) B　(ii) D　(iii) A　(iv) C
@@ -2787,17 +2753,17 @@ $$
 >
 > (i) 只剩 $-20$ dB/decade，对应 B。
 
-
 ---
 
-## 68. Question 68（第 68 题）｜PDF p. 21 ^q68
+### Moving between the impulse response and $G(j\omega)$（冲激响应与频率响应的互换）
+
+#### 68. Question 68（第 68 题）｜PDF p. 21 ^q68
 
 A system has（某系统的频率响应为）
 
 $$G(j\omega)=\frac{4}{j\omega+2}.$$
 
 Find its impulse response $h(t)$.（求该系统的冲激响应 $h(t)$。）
-
 
 $$
 G(j\omega)=\frac{4}{j\omega+2}
@@ -2824,13 +2790,11 @@ $$
 >
 > 校验 $h(0^+)=4$，而 $G(j\infty)=0$；又 $\int h\,dt=G(0)=2$，与 $\frac{4}{2}=2$ 一致。
 
-
 ---
 
-## 69. Question 69（第 69 题）｜PDF p. 21 ^q69
+#### 69. Question 69（第 69 题）｜PDF p. 21 ^q69
 
 A first-order system with impulse response $h_1(t)=2e^{-5t}H(t)$ is connected in cascade with an ideal delay of $3$ seconds (impulse response $\delta(t-3)$). Find the impulse response $h(t)$ of the overall cascade system.（求一阶系统与三秒理想延迟级联后的整体冲激响应。）
-
 
 $$
 h_1(t)=2e^{-5t}H(t),\qquad h_2(t)=\delta(t-3)
@@ -2858,10 +2822,9 @@ $$
 > 也可频域验证：
 > $$G(j\omega)=\frac{2}{5+j\omega}e^{-j3\omega}.$$
 
-
 ---
 
-## 70. Question 70（第 70 题）｜PDF p. 21 ^q70
+#### 70. Question 70（第 70 题）｜PDF p. 21 ^q70
 
 A system has（某系统的频率响应为）
 
@@ -2900,10 +2863,9 @@ $$
 >
 > 检查错误选项：(a) 把两个极点误合并为 $e^{-5t}$；(b) 幅度与极点配错；(c) 第二项符号错。选 (d)。
 
-
 ---
 
-## 71. Question 71（第 71 题）｜PDF p. 21 ^q71
+#### 71. Question 71（第 71 题）｜PDF p. 21 ^q71
 
 A system has impulse response $h(t)=4e^{-3t}\sin(5t)H(t)$.（某系统的冲激响应为 $h(t)=4e^{-3t}\sin(5t)H(t)$。）Its transfer function $G(j\omega)$ is:（其传递函数 $G(j\omega)$ 是：）
 
@@ -2937,16 +2899,13 @@ $$
 >
 > 校验 $G(0)$：$\frac{20}{9+25}=\frac{20}{34}$；又 $G(0)=\int h\,dt=\int_0^\infty4e^{-3t}\sin5t\,dt=4\cdot\frac{5}{34}=\frac{20}{34}$，一致。
 
-
 ---
 
-### 4. Second order systems and stability (weeks 6–7)（二阶系统与稳定性，第 6—7 周）
+## 4. Second order systems and stability (weeks 6–7)（二阶系统与稳定性，第 6—7 周）
 
-Damping and resonance in second order systems（二阶系统的阻尼与谐振）
+### Damping and resonance in second order systems（二阶系统的阻尼与谐振）
 
----
-
-## 72. Question 72（第 72 题）｜PDF p. 22 ^q72
+#### 72. Question 72（第 72 题）｜PDF p. 22 ^q72
 
 Which damping ratio makes a second-order system（哪个阻尼比使下面这个二阶系统达到临界阻尼）
 
@@ -2983,10 +2942,9 @@ critically damped?（哪一阻尼比使该系统达到临界阻尼？）
 >
 > 选 (c)。
 
-
 ---
 
-## 73. Question 73（第 73 题）｜PDF p. 22 ^q73
+#### 73. Question 73（第 73 题）｜PDF p. 22 ^q73
 
 A second-order system in the standard form $(j\omega)^2+2\zeta\omega_n(j\omega)+\omega_n^2$ has its two poles at $-10^4\pm j10^4\ \mathrm{rad/s}$.（标准形式为 $(j\omega)^2+2\zeta\omega_n(j\omega)+\omega_n^2$ 的二阶系统，两个极点位于 $-10^4\pm j10^4\ \mathrm{rad/s}$。）What is $\zeta$?（求阻尼比 $\zeta$。）
 
@@ -3022,10 +2980,9 @@ $$
 >
 > 选 (c)。
 
-
 ---
 
-## 74. Question 74（第 74 题）｜PDF p. 23 ^q74
+#### 74. Question 74（第 74 题）｜PDF p. 23 ^q74
 
 A second-order system has $\zeta=0.8$. Does $|G(j\omega)|$ have a resonant peak at a nonzero frequency?（阻尼比 $\zeta=0.8$ 时，是否存在非零频率谐振峰？）
 
@@ -3064,17 +3021,15 @@ $$
 >
 > 说明幅值从 $|G(j0)|$ 单调下降，选 (a)。
 
-
 ---
 
-## 75. Question 75（第 75 题）｜PDF p. 23 ^q75
+#### 75. Question 75（第 75 题）｜PDF p. 23 ^q75
 
 A series RLC circuit is driven by $u(t)$, with the output $y(t)$ taken across the capacitor, so（串联 RLC 电路由 $u(t)$ 驱动，输出 $y(t)$ 取自电容两端，因此）
 
 $$LC\ddot{y}+RC\dot{y}+y=u.$$
 
 Here $R=200\ \Omega$, $L=0.5\ \mathrm{H}$ and $C=2\ \mu\mathrm{F}$.（其中 $R=200\ \Omega$，$L=0.5\ \mathrm{H}$，$C=2\ \mu\mathrm{F}$。）Does $|G(j\omega)|$ have a resonant peak? If so, find $\omega_r$ and the peak value $|G(j\omega_r)|$ in dB.（$|G(j\omega)|$ 是否存在谐振峰？若存在，求谐振频率 $\omega_r$ 及峰值 $|G(j\omega_r)|$ 的分贝值。）
-
 
 $$
 LC\ddot{y}+RC\dot{y}+y=u,\qquad R=200\ \Omega,\ L=0.5\ \mathrm{H},\ C=2\ \mu\mathrm{F}
@@ -3119,10 +3074,9 @@ $$
 > 分贝：
 > $$20\lg2.55155=8.13609\ \mathrm{dB}.$$
 
-
 ---
 
-## 76. Question 76（第 76 题）｜PDF p. 23 ^q76
+#### 76. Question 76（第 76 题）｜PDF p. 23 ^q76
 
 A designer wants a sharp resonant peak near $\omega_0=5\ \mathrm{rad/s}$, using a pair of complex conjugate poles at $-\alpha\pm j5$.（设计者希望在一对共轭复极点 $-\alpha\pm j5$ 下，于 $\omega_0=5\ \mathrm{rad/s}$ 附近得到尖锐的谐振峰。）Which choice of $\alpha$ gives the sharpest, highest resonant peak?（$\alpha$ 取哪个值时，谐振峰最尖锐、最高？）
 
@@ -3161,10 +3115,11 @@ $$
 >
 > 峰最尖的是 $\alpha=0.05$，选 (c)。
 
-
 ---
 
-## 77. Question 77（第 77 题）｜PDF p. 24 ^q77
+### Stability from the poles（由极点判定稳定性）
+
+#### 77. Question 77（第 77 题）｜PDF p. 24 ^q77
 
 An LTI system has（某 LTI 系统的传递函数为）
 
@@ -3198,10 +3153,9 @@ Classify the system.（对该系统进行稳定性分类。）
 >
 > 分类：临界稳定。选 (a)。
 
-
 ---
 
-## 78. Question 78（第 78 题）｜PDF p. 24 ^q78
+#### 78. Question 78（第 78 题）｜PDF p. 24 ^q78
 
 An LTI system has（某 LTI 系统的传递函数为）
 
@@ -3239,7 +3193,7 @@ Classify the system.（对该系统进行稳定性分类。）
 
 ---
 
-## 79. Question 79（第 79 题）｜PDF p. 24 ^q79
+#### 79. Question 79（第 79 题）｜PDF p. 24 ^q79
 
 Four LTI systems are given by their transfer functions. Which one is BIBO stable?（四个 LTI 系统中哪一个满足 BIBO 稳定性？）
 
@@ -3277,10 +3231,9 @@ Four LTI systems are given by their transfer functions. Which one is BIBO stable
 >
 > 选 (c)。
 
-
 ---
 
-## 80. Question 80（第 80 题）｜PDF p. 25 ^q80
+#### 80. Question 80（第 80 题）｜PDF p. 25 ^q80
 
 A first-order system obeys $\tau\dot{y}=-y+\beta u$ with $\tau=-4\ \mathrm{s}$.（一阶系统服从 $\tau\dot{y}=-y+\beta u$，其中 $\tau=-4\ \mathrm{s}$。）Classify its stability.（判断其稳定性。）
 
@@ -3319,10 +3272,9 @@ $$
 >
 > 结论不稳定，选 (d)。
 
-
 ---
 
-## 81. Question 81（第 81 题）｜PDF p. 25 ^q81
+#### 81. Question 81（第 81 题）｜PDF p. 25 ^q81
 
 For the second-order system（对于二阶系统）
 
@@ -3363,10 +3315,9 @@ $$
 >
 > 选 (b)。
 
-
 ---
 
-## 82. Question 82（第 82 题）｜PDF p. 25 ^q82
+#### 82. Question 82（第 82 题）｜PDF p. 25 ^q82
 
 For $a\ddot{y}+b\dot{y}+cy=0$ with $a,b,c>0$, which is always true of the solution $y(t)$ as $t\to\infty$?（对于 $a\ddot{y}+b\dot{y}+cy=0$，$a,b,c>0$，关于 $t\to\infty$ 时的解 $y(t)$，哪一项总是成立？）
 
@@ -3404,13 +3355,13 @@ $$
 >
 > 排除 (d)：复根同样衰减，条件不只是 $b^2\ge4ac$。选 (c)。
 
-
 ---
 
-## 83. Question 83（第 83 题）｜PDF p. 26 ^q83
+### BIBO stability from the impulse response（由冲激响应判定 BIBO 稳定性）
+
+#### 83. Question 83（第 83 题）｜PDF p. 26 ^q83
 
 A system has impulse response $h(t)=3e^{-2t}H(t)$.（某系统的冲激响应为 $h(t)=3e^{-2t}H(t)$。）Compute $\displaystyle\int_{-\infty}^{\infty}|h(t)|\,dt$ and state whether the system is BIBO stable.（计算 $\displaystyle\int_{-\infty}^{\infty}|h(t)|\,dt$，并判断系统是否 BIBO 稳定。）
-
 
 $$
 h(t)=3e^{-2t}H(t)
@@ -3436,10 +3387,9 @@ $$
 >
 > 判据成立，BIBO 稳定。
 
-
 ---
 
-## 84. Question 84（第 84 题）｜PDF p. 26 ^q84
+#### 84. Question 84（第 84 题）｜PDF p. 26 ^q84
 
 A system has impulse response $h(t)=H(t)$ (an ideal integrator).（某系统的冲激响应为 $h(t)=H(t)$，即理想积分器。）Classify its pole, its stability, and its BIBO stability.（判断其极点位置、稳定性与 BIBO 稳定性。）
 
@@ -3475,10 +3425,9 @@ $$
 >
 > 选 (c)。
 
-
 ---
 
-## 85. Question 85（第 85 题）｜PDF p. 26 ^q85
+#### 85. Question 85（第 85 题）｜PDF p. 26 ^q85
 
 Two systems have impulse responses（两个系统的冲激响应分别为）
 
@@ -3512,5 +3461,3 @@ Which system is BIBO stable and has a frequency response $G(j\omega)$ that exist
 > 判断频率响应：A 的 $G_A(j\omega)=\frac{300}{4+j\omega}$ 存在；B 的积分发散，通常傅里叶变换不存在。
 >
 > 选 (b)。
-
-

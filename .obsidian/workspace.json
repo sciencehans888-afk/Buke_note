@@ -13,20 +13,6 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "信号与系统/Quiz3.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "Quiz3"
-            }
-          },
-          {
-            "id": "96fb6edc7de3698f",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
                 "file": "信号与系统/Quiz2.md",
                 "mode": "source",
                 "source": false
@@ -48,8 +34,23 @@
               "icon": "lucide-file",
               "title": "Quiz对应知识点"
             }
+          },
+          {
+            "id": "6db5f26808622173",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "信号与系统/Quiz3.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Quiz3"
+            }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -188,7 +189,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "信号与系统/Quiz3.md",
+                "file": "信号与系统/Quiz对应知识点.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
@@ -246,11 +247,16 @@
       "bases:新建数据库": false
     }
   },
-  "active": "0e26cda92b0abab8",
+  "active": "a7b07f636312de84",
   "lastOpenFiles": [
+    "信号与系统/Quiz对应知识点.md.tmp.17724.5b661e2ab6bb",
+    "信号与系统/Quiz对应知识点.md.tmp.17724.a744a6522786",
+    "信号与系统/Quiz对应知识点.md.tmp.8692.e5501f657e3a",
     "信号与系统/Quiz2.md",
+    "信号与系统/Quiz对应知识点.md.tmp.8692.ea0cb4b958bf",
     "信号与系统/Quiz对应知识点.md",
     "信号与系统/Quiz3.md",
+    "信号与系统/quiz2-practice-feedback.md",
     "信号与系统/Quiz对应知识点.md.tmp.1336.0468b16cac78",
     "信号与系统/Quiz对应知识点.md.tmp.1336.2939e84cf418",
     "信号与系统/Quiz3.md.tmp.1336.9182716b77b6",
@@ -258,9 +264,6 @@
     "信号与系统/Quiz对应知识点.md.tmp.1336.e13b3a4fced6",
     "信号与系统/Quiz对应知识点.md.tmp.1336.75b4f8c5efeb",
     "信号与系统/Quiz3.md.tmp.1336.ded58343876c",
-    "信号与系统/Quiz3.md.tmp.4240.ed099a86c426",
-    "信号与系统/Quiz3.md.tmp.4240.78b34ae42d41",
-    "信号与系统/Quiz3.md.tmp.4240.d98446bd1b5b",
     "电路/目录.md",
     "信号与系统/附件/Pasted image 20261105200515.png",
     "电路/附录A-E与索引.md",

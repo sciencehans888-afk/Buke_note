@@ -4,35 +4,17 @@
     "type": "split",
     "children": [
       {
-        "id": "12c5ca0b011fb606",
+        "id": "acdee7eecc4922df",
         "type": "tabs",
         "children": [
           {
-            "id": "5438375091556447",
+            "id": "e0d89e420fea0a67",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "信号与系统/Quiz对应知识点.md",
-                "mode": "source",
-                "source": false
-              },
+              "type": "empty",
+              "state": {},
               "icon": "lucide-file",
-              "title": "Quiz对应知识点"
-            }
-          },
-          {
-            "id": "c5092eb959ddccbf",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "信号与系统/Quiz2.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "Quiz2"
+              "title": "新标签页"
             }
           }
         ]
@@ -195,9 +177,7 @@
                   "openTabs": [
                     {
                       "tabId": "tab-1794053367682-mdnahxl",
-                      "conversationId": null,
-                      "draftModel": "sonnet",
-                      "providerId": "claude"
+                      "conversationId": "conv-1794055948047-py8qw1xtr"
                     }
                   ],
                   "activeTabId": "tab-1794053367682-mdnahxl"
@@ -227,13 +207,18 @@
       "realclaudian:Open Claudian": false
     }
   },
-  "active": "25b538230d70f59a",
+  "active": "e0d89e420fea0a67",
   "lastOpenFiles": [
-    "信号与系统/傅里叶变换知识点.md",
-    "信号与系统/quiz2-practice-feedback.md",
     "信号与系统/Quiz2.md",
     "信号与系统/Quiz3.md",
+    "信号与系统/导出pdf/Quiz2解答.pdf",
+    "信号与系统/导出pdf",
+    "信号与系统/新建文件夹",
+    "信号与系统/sedRB376t",
+    "信号与系统/sedL7BIeW",
     "信号与系统/Quiz对应知识点.md",
+    "信号与系统/傅里叶变换知识点.md",
+    "信号与系统/quiz2-practice-feedback.md",
     "信号与系统/formula-sheet-quiz3.pdf",
     "电路/附录A-E与索引.md",
     "电路/附件/Pasted image 20261105170841.png",
@@ -258,11 +243,6 @@
     "电路/教材/电路原理-逐章节拆分/电路原理 (于歆杰, 朱桂萍, 陆文娟) (z-library.sk, 1lib.sk, z-lib.sk)/电路原理 (于歆杰, 朱桂萍, 陆文娟) (z-library.sk, 1lib.sk, z-lib.sk)_44-116.pdf",
     "电路/教材/电路原理-逐章节拆分/电路原理 (于歆杰, 朱桂萍, 陆文娟) (z-library.sk, 1lib.sk, z-lib.sk)/电路原理 (于歆杰, 朱桂萍, 陆文娟) (z-library.sk, 1lib.sk, z-lib.sk)_377-425.pdf",
     "电路/教材/电路原理-逐章节拆分/电路原理 (于歆杰, 朱桂萍, 陆文娟) (z-library.sk, 1lib.sk, z-lib.sk)/电路原理 (于歆杰, 朱桂萍, 陆文娟) (z-library.sk, 1lib.sk, z-lib.sk)_285-376.pdf",
-    "电路/教材/电路原理-逐章节拆分/电路原理 (于歆杰, 朱桂萍, 陆文娟) (z-library.sk, 1lib.sk, z-lib.sk)/电路原理 (于歆杰, 朱桂萍, 陆文娟) (z-library.sk, 1lib.sk, z-lib.sk)_204-284.pdf",
-    "电路/教材/电路原理-逐章节拆分/电路原理 (于歆杰, 朱桂萍, 陆文娟) (z-library.sk, 1lib.sk, z-lib.sk)/电路原理 (于歆杰, 朱桂萍, 陆文娟) (z-library.sk, 1lib.sk, z-lib.sk)_18-43.pdf",
-    "电路/教材/电路原理-逐章节拆分/电路原理 (于歆杰, 朱桂萍, 陆文娟) (z-library.sk, 1lib.sk, z-lib.sk)/电路原理 (于歆杰, 朱桂萍, 陆文娟) (z-library.sk, 1lib.sk, z-lib.sk)_172-203.pdf",
-    "电路/教材/电路原理-逐章节拆分/电路原理 (于歆杰, 朱桂萍, 陆文娟) (z-library.sk, 1lib.sk, z-lib.sk)/电路原理 (于歆杰, 朱桂萍, 陆文娟) (z-library.sk, 1lib.sk, z-lib.sk)_13-17.pdf",
-    "电路/教材/电路原理-逐章节拆分/电路原理 (于歆杰, 朱桂萍, 陆文娟) (z-library.sk, 1lib.sk, z-lib.sk)/电路原理 (于歆杰, 朱桂萍, 陆文娟) (z-library.sk, 1lib.sk, z-lib.sk)_117-171.pdf",
     "信号与系统/Quiz2-公式表解法.md",
     "Buke_note/Quiz对应知识点.md",
     "Buke_note/Quiz3.md",

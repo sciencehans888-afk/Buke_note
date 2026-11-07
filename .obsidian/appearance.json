@@ -2,7 +2,5 @@
   "cssTheme": "Blue Topaz",
   "interfaceFontFamily": "黑体",
   "monospaceFontFamily": "Times New Roman",
-  "enabledCssSnippets": [
-    "course-callouts"
-  ]
+  "enabledCssSnippets": []
 }

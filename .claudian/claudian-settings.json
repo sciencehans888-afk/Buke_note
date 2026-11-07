@@ -28,6 +28,7 @@
       "discoveredOutputStyles": [
         "default",
         "Proactive",
+        "Concise",
         "Explanatory",
         "Learning"
       ],
@@ -49,8 +50,9 @@
       "selectedModels": [
         {
           "value": "opus",
-          "label": "deepseek-v4-pro",
-          "description": "Custom Opus model",
+          "label": "deepseek-flash[1M]",
+          "description": "Custom Opus model (1M context)",
+          "resolvedModel": "deepseek-flash[1M]",
           "reasoningMetadataResolved": true,
           "supportedEffortLevels": [
             "low",
@@ -62,8 +64,9 @@
         },
         {
           "value": "fable",
-          "label": "deepseek-v4-pro",
-          "description": "Custom Fable model",
+          "label": "Fable",
+          "description": "Fable 5.1 · Most capable for your hardest and longest-running tasks · $10/$50 per Mtok",
+          "resolvedModel": "claude-fable-5-1",
           "reasoningMetadataResolved": true,
           "supportedEffortLevels": [
             "low",
@@ -75,8 +78,9 @@
         },
         {
           "value": "sonnet",
-          "label": "deepseek-flash",
-          "description": "Custom Sonnet model",
+          "label": "deepseek-flash[1M]",
+          "description": "Custom Sonnet model (1M context)",
+          "resolvedModel": "deepseek-flash[1M]",
           "reasoningMetadataResolved": true,
           "supportedEffortLevels": [
             "low",
@@ -88,8 +92,9 @@
         },
         {
           "value": "haiku",
-          "label": "deepseek-flash",
+          "label": "deepseek-flash[1M]",
           "description": "Custom Haiku model",
+          "resolvedModel": "deepseek-flash[1M]",
           "reasoningMetadataResolved": true,
           "supportedEffortLevels": [
             "low",
@@ -102,7 +107,8 @@
       ],
       "installationMethodsByHost": {
         "device-b06c993f4a40a1f660b595ee461c17854c9926bfa67c028ba799b6d090355d56": "native-windows",
-        "device-ac4915ca45d65068efb1f114674f86091dbe0f22891f1db2c0b6fcd8b810dfa0": "native-windows"
+        "device-ac4915ca45d65068efb1f114674f86091dbe0f22891f1db2c0b6fcd8b810dfa0": "native-windows",
+        "device-4a67bd6014f3c038645fe19cee14a1e3f65e5f34734e4f420a5babf7f58b8c46": "native-windows"
       },
       "wslDistroOverridesByHost": {}
     },
@@ -138,14 +144,16 @@
       "selectedModels": [],
       "installationMethodsByHost": {
         "device-b06c993f4a40a1f660b595ee461c17854c9926bfa67c028ba799b6d090355d56": "native-windows",
-        "device-ac4915ca45d65068efb1f114674f86091dbe0f22891f1db2c0b6fcd8b810dfa0": "native-windows"
+        "device-ac4915ca45d65068efb1f114674f86091dbe0f22891f1db2c0b6fcd8b810dfa0": "native-windows",
+        "device-4a67bd6014f3c038645fe19cee14a1e3f65e5f34734e4f420a5babf7f58b8c46": "native-windows"
       },
       "wslDistroOverridesByHost": {}
     },
     "grok": {
       "installationMethodsByHost": {
         "device-b06c993f4a40a1f660b595ee461c17854c9926bfa67c028ba799b6d090355d56": "native-windows",
-        "device-ac4915ca45d65068efb1f114674f86091dbe0f22891f1db2c0b6fcd8b810dfa0": "native-windows"
+        "device-ac4915ca45d65068efb1f114674f86091dbe0f22891f1db2c0b6fcd8b810dfa0": "native-windows",
+        "device-4a67bd6014f3c038645fe19cee14a1e3f65e5f34734e4f420a5babf7f58b8c46": "native-windows"
       },
       "wslDistroOverridesByHost": {},
       "sessionEnvironmentHash": "",
@@ -172,14 +180,16 @@
       "selectedModels": [],
       "installationMethodsByHost": {
         "device-b06c993f4a40a1f660b595ee461c17854c9926bfa67c028ba799b6d090355d56": "native-windows",
-        "device-ac4915ca45d65068efb1f114674f86091dbe0f22891f1db2c0b6fcd8b810dfa0": "native-windows"
+        "device-ac4915ca45d65068efb1f114674f86091dbe0f22891f1db2c0b6fcd8b810dfa0": "native-windows",
+        "device-4a67bd6014f3c038645fe19cee14a1e3f65e5f34734e4f420a5babf7f58b8c46": "native-windows"
       },
       "wslDistroOverridesByHost": {}
     },
     "pi": {
       "installationMethodsByHost": {
         "device-b06c993f4a40a1f660b595ee461c17854c9926bfa67c028ba799b6d090355d56": "native-windows",
-        "device-ac4915ca45d65068efb1f114674f86091dbe0f22891f1db2c0b6fcd8b810dfa0": "native-windows"
+        "device-ac4915ca45d65068efb1f114674f86091dbe0f22891f1db2c0b6fcd8b810dfa0": "native-windows",
+        "device-4a67bd6014f3c038645fe19cee14a1e3f65e5f34734e4f420a5babf7f58b8c46": "native-windows"
       },
       "wslDistroOverridesByHost": {},
       "cliPath": "",

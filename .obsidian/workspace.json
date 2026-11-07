@@ -1,28 +1,14 @@
 {
   "main": {
-    "id": "1dad03e1ee866a6b",
+    "id": "fcec7dc535261e96",
     "type": "split",
     "children": [
       {
-        "id": "ca3ea5a10642dc2c",
+        "id": "12c5ca0b011fb606",
         "type": "tabs",
         "children": [
           {
-            "id": "0e26cda92b0abab8",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "信号与系统/Quiz2.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "Quiz2"
-            }
-          },
-          {
-            "id": "8d42d1e4b11fc6d0",
+            "id": "5438375091556447",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -36,35 +22,34 @@
             }
           },
           {
-            "id": "6db5f26808622173",
+            "id": "c5092eb959ddccbf",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "信号与系统/Quiz3.md",
+                "file": "信号与系统/Quiz2.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Quiz3"
+              "title": "Quiz2"
             }
           }
-        ],
-        "currentTab": 2
+        ]
       }
     ],
     "direction": "vertical"
   },
   "left": {
-    "id": "52220028d5e79a3a",
+    "id": "814591cf81e581c3",
     "type": "split",
     "children": [
       {
-        "id": "34f9e76745d5e626",
+        "id": "46500b34ed0636d0",
         "type": "tabs",
         "children": [
           {
-            "id": "781991eb67a5aad1",
+            "id": "31e3c669ae38eac9",
             "type": "leaf",
             "state": {
               "type": "file-explorer",
@@ -79,7 +64,7 @@
             }
           },
           {
-            "id": "bce99590cdbbf1e1",
+            "id": "d51c060417b8ee5f",
             "type": "leaf",
             "state": {
               "type": "search",
@@ -96,7 +81,7 @@
             }
           },
           {
-            "id": "ed8200ae919502f3",
+            "id": "20e1222e52a6def4",
             "type": "leaf",
             "state": {
               "type": "bookmarks",
@@ -112,22 +97,23 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200
+    "width": 300
   },
   "right": {
-    "id": "cb69e1b565ff8054",
+    "id": "0956912a494b3d13",
     "type": "split",
     "children": [
       {
-        "id": "b0400429c8c8961c",
+        "id": "66283709dd8c64f6",
         "type": "tabs",
         "children": [
           {
-            "id": "cf467ebfa2ed1112",
+            "id": "1d7b27c5d0e07b07",
             "type": "leaf",
             "state": {
               "type": "backlink",
               "state": {
+                "file": "信号与系统/Quiz对应知识点.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -141,12 +127,12 @@
             }
           },
           {
-            "id": "8b6fbfbd0acac155",
+            "id": "3c39c31f0f915223",
             "type": "leaf",
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Quiz2.md",
+                "file": "信号与系统/Quiz对应知识点.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
@@ -155,7 +141,7 @@
             }
           },
           {
-            "id": "abfc15542a6afdc3",
+            "id": "9596b6bc70c4f321",
             "type": "leaf",
             "state": {
               "type": "tag",
@@ -170,7 +156,7 @@
             }
           },
           {
-            "id": "904ce42b88c4f8a2",
+            "id": "32679600e99b8759",
             "type": "leaf",
             "state": {
               "type": "all-properties",
@@ -184,12 +170,12 @@
             }
           },
           {
-            "id": "351fff935a912d9d",
+            "id": "89a842232a962a3f",
             "type": "leaf",
             "state": {
               "type": "outline",
               "state": {
-                "file": "信号与系统/Quiz3.md",
+                "file": "信号与系统/Quiz对应知识点.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
@@ -199,7 +185,7 @@
             }
           },
           {
-            "id": "a7b07f636312de84",
+            "id": "25b538230d70f59a",
             "type": "leaf",
             "state": {
               "type": "claudian-view",
@@ -208,19 +194,13 @@
                   "version": 1,
                   "openTabs": [
                     {
-                      "tabId": "tab-1793600566872-obb74vw",
-                      "conversationId": "conv-1793600579933-8fux9bu2e"
-                    },
-                    {
-                      "tabId": "tab-1793638510272-inn8407",
-                      "conversationId": "conv-1793667928371-zq8uycshk"
-                    },
-                    {
-                      "tabId": "tab-1793860312909-m55m2hs",
-                      "conversationId": "conv-1793860405688-1clvujk1o"
+                      "tabId": "tab-1794053367682-mdnahxl",
+                      "conversationId": null,
+                      "draftModel": "sonnet",
+                      "providerId": "claude"
                     }
                   ],
-                  "activeTabId": "tab-1793860312909-m55m2hs"
+                  "activeTabId": "tab-1794053367682-mdnahxl"
                 }
               },
               "icon": "bot",
@@ -228,50 +208,34 @@
             }
           }
         ],
-        "currentTab": 4
+        "currentTab": 5
       }
     ],
     "direction": "horizontal",
-    "width": 446.83331298828125
+    "width": 493.1666259765625
   },
   "left-ribbon": {
     "hiddenItems": {
-      "obsidian-git:Open Git source control": false,
-      "realclaudian:Open Claudian": false,
       "switcher:打开快速切换": false,
       "graph:查看关系图谱": false,
       "canvas:新建白板": false,
       "daily-notes:打开/创建今天的日记": false,
       "templates:插入模板": false,
       "command-palette:打开命令面板": false,
-      "bases:新建数据库": false
+      "bases:新建数据库": false,
+      "obsidian-git:Open Git source control": false,
+      "realclaudian:Open Claudian": false
     }
   },
-  "active": "6db5f26808622173",
+  "active": "25b538230d70f59a",
   "lastOpenFiles": [
-    "信号与系统/Quiz对应知识点.md",
-    "信号与系统/Quiz3.md",
-    "信号与系统/Quiz2.md",
-    "信号与系统/Quiz对应知识点.md.tmp.17724.45c981f3d7cf",
-    "信号与系统/Quiz对应知识点.md.tmp.17724.33c24feb70be",
-    "信号与系统/Quiz对应知识点.md.tmp.17724.5b661e2ab6bb",
-    "信号与系统/Quiz对应知识点.md.tmp.17724.a744a6522786",
-    "信号与系统/Quiz对应知识点.md.tmp.8692.e5501f657e3a",
-    "信号与系统/Quiz对应知识点.md.tmp.8692.ea0cb4b958bf",
+    "信号与系统/傅里叶变换知识点.md",
     "信号与系统/quiz2-practice-feedback.md",
-    "信号与系统/Quiz对应知识点.md.tmp.1336.0468b16cac78",
-    "信号与系统/Quiz对应知识点.md.tmp.1336.2939e84cf418",
-    "信号与系统/Quiz3.md.tmp.1336.9182716b77b6",
-    "信号与系统/Quiz3.md.tmp.1336.5e1d489e3828",
-    "电路/目录.md",
-    "信号与系统/附件/Pasted image 20261105200515.png",
+    "信号与系统/Quiz2.md",
+    "信号与系统/Quiz3.md",
+    "信号与系统/Quiz对应知识点.md",
+    "信号与系统/formula-sheet-quiz3.pdf",
     "电路/附录A-E与索引.md",
-    "电路/附录A-E及习题答案.md",
-    "电路/第6章 正弦激励下动态电路的稳态分析.md",
-    "电路/第5章 动态电路的时域分析.md",
-    "电路/第4章 非线性电阻电路分析.md",
-    "电路/第3章 线性电阻电路的分析方法和电路定理.md",
-    "电路/第2章 简单电阻电路分析.md",
     "电路/附件/Pasted image 20261105170841.png",
     "电路/附件/Pasted image 20261105170828.png",
     "电路/附件/Pasted image 20261105170814.png",
@@ -281,18 +245,27 @@
     "电路/附件/Pasted image 20261105170730.png",
     "电路/附件/Pasted image 20261105170719.png",
     "电路/附件/Pasted image 20261105170703.png",
+    "电路/附件/Pasted image 20261105170648.png",
+    "电路/附件",
+    "电路/第6章 正弦激励下动态电路的稳态分析.md",
+    "电路/第5章 动态电路的时域分析.md",
+    "电路/第4章 非线性电阻电路分析.md",
+    "电路/第3章 线性电阻电路的分析方法和电路定理.md",
+    "电路/第2章 简单电阻电路分析.md",
     "电路/第1章 绪论.md",
-    "电路/_test-ref.md",
-    "电路/_test-new.md",
-    "电路/教材/电路原理-逐章节拆分/电路原理 (于歆杰, 朱桂萍, 陆文娟) (z-library.sk, 1lib.sk, z-lib.sk)/电路原理_377-425.md",
-    "电路/教材/电路原理-逐章节拆分/电路原理 (于歆杰, 朱桂萍, 陆文娟) (z-library.sk, 1lib.sk, z-lib.sk)/电路原理_285-376.md",
-    "电路/教材/电路原理-逐章节拆分/电路原理 (于歆杰, 朱桂萍, 陆文娟) (z-library.sk, 1lib.sk, z-lib.sk)/电路原理_204-284.md",
-    "电路/教材/电路原理-逐章节拆分/电路原理 (于歆杰, 朱桂萍, 陆文娟) (z-library.sk, 1lib.sk, z-lib.sk)/电路原理_172-203.md",
-    "电路/教材/电路原理-逐章节拆分/电路原理 (于歆杰, 朱桂萍, 陆文娟) (z-library.sk, 1lib.sk, z-lib.sk)/电路原理_117-171.md",
+    "电路/目录.md",
     "电路/教材/电路原理-逐章节拆分/电路原理 (于歆杰, 朱桂萍, 陆文娟) (z-library.sk, 1lib.sk, z-lib.sk)/电路原理_44-116.md",
-    "电路/教材/电路原理-逐章节拆分/电路原理 (于歆杰, 朱桂萍, 陆文娟) (z-library.sk, 1lib.sk, z-lib.sk)/电路原理_18-43.md",
-    "电路/教材/电路原理-逐章节拆分/电路原理 (于歆杰, 朱桂萍, 陆文娟) (z-library.sk, 1lib.sk, z-lib.sk)/电路原理_13-17.md",
-    "信号与系统/傅里叶变换知识点.md",
-    "Quiz2.md"
+    "电路/教材/电路原理-逐章节拆分/电路原理 (于歆杰, 朱桂萍, 陆文娟) (z-library.sk, 1lib.sk, z-lib.sk)/电路原理 (于歆杰, 朱桂萍, 陆文娟) (z-library.sk, 1lib.sk, z-lib.sk)_44-116.pdf",
+    "电路/教材/电路原理-逐章节拆分/电路原理 (于歆杰, 朱桂萍, 陆文娟) (z-library.sk, 1lib.sk, z-lib.sk)/电路原理 (于歆杰, 朱桂萍, 陆文娟) (z-library.sk, 1lib.sk, z-lib.sk)_377-425.pdf",
+    "电路/教材/电路原理-逐章节拆分/电路原理 (于歆杰, 朱桂萍, 陆文娟) (z-library.sk, 1lib.sk, z-lib.sk)/电路原理 (于歆杰, 朱桂萍, 陆文娟) (z-library.sk, 1lib.sk, z-lib.sk)_285-376.pdf",
+    "电路/教材/电路原理-逐章节拆分/电路原理 (于歆杰, 朱桂萍, 陆文娟) (z-library.sk, 1lib.sk, z-lib.sk)/电路原理 (于歆杰, 朱桂萍, 陆文娟) (z-library.sk, 1lib.sk, z-lib.sk)_204-284.pdf",
+    "电路/教材/电路原理-逐章节拆分/电路原理 (于歆杰, 朱桂萍, 陆文娟) (z-library.sk, 1lib.sk, z-lib.sk)/电路原理 (于歆杰, 朱桂萍, 陆文娟) (z-library.sk, 1lib.sk, z-lib.sk)_18-43.pdf",
+    "电路/教材/电路原理-逐章节拆分/电路原理 (于歆杰, 朱桂萍, 陆文娟) (z-library.sk, 1lib.sk, z-lib.sk)/电路原理 (于歆杰, 朱桂萍, 陆文娟) (z-library.sk, 1lib.sk, z-lib.sk)_172-203.pdf",
+    "电路/教材/电路原理-逐章节拆分/电路原理 (于歆杰, 朱桂萍, 陆文娟) (z-library.sk, 1lib.sk, z-lib.sk)/电路原理 (于歆杰, 朱桂萍, 陆文娟) (z-library.sk, 1lib.sk, z-lib.sk)_13-17.pdf",
+    "电路/教材/电路原理-逐章节拆分/电路原理 (于歆杰, 朱桂萍, 陆文娟) (z-library.sk, 1lib.sk, z-lib.sk)/电路原理 (于歆杰, 朱桂萍, 陆文娟) (z-library.sk, 1lib.sk, z-lib.sk)_117-171.pdf",
+    "信号与系统/Quiz2-公式表解法.md",
+    "Buke_note/Quiz对应知识点.md",
+    "Buke_note/Quiz3.md",
+    "Buke_note/Quiz2.md"
   ]
 }

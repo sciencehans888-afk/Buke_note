@@ -2631,7 +2631,9 @@ $$
 
 #### 65. Question 65（第 65 题）｜PDF p. 19 ^q65
 
-The straight-line (asymptotic) Bode phase plot of a system with a single real pole at $\omega_c=1000\ \mathrm{rad/s}$ is $0^\circ$ for $\omega\le\omega_c/10$, a straight segment of slope $-45^\circ$ per decade from $\omega_c/10$ to $10\omega_c$, and $-90^\circ$ for $\omega\ge10\omega_c$.（某系统在 $\omega_c=1000\ \mathrm{rad/s}$ 处有一个实极点。其渐近波特相频图在 $\omega\le\omega_c/10$ 时为 $0^\circ$，从 $\omega_c/10$ 到 $10\omega_c$ 是斜率为 $-45^\circ$/decade 的直线段，$\omega\ge10\omega_c$ 后为 $-90^\circ$。）Reading off that plot, what is the phase at $\omega=10{,}000\ \mathrm{rad/s}$?（按图读取，$\omega=10{,}000\ \mathrm{rad/s}$ 处的相位是多少？）
+The straight-line (asymptotic) Bode phase plot of a system with a single real pole at $\omega_c=1000\ \mathrm{rad/s}$ is $0^\circ$ for $\omega\le\omega_c/10$, a straight segment of slope $-45^\circ$ per decade from $\omega_c/10$ to $10\omega_c$, and $-90^\circ$ for $\omega\ge10\omega_c$.（某系统在 $\omega_c=1000\ \mathrm{rad/s}$ 处有一个实极点。其渐近波特相频图在 $\omega\le\omega_c/10$ 时为 $0^\circ$，从 $\omega_c/10$ 到 $10\omega_c$ 是斜率为 $-45^\circ$/decade 的直线段，$\omega\ge10\omega_c$ 后为 $-90^\circ$。）
+
+Reading off that plot, what is the phase at $\omega=10{,}000\ \mathrm{rad/s}$?（按图读取，$\omega=10{,}000\ \mathrm{rad/s}$ 处的相位是多少？）
 
 $$
 \omega_c=1000\ \mathrm{rad/s},\qquad \omega=10{,}000\ \mathrm{rad/s}

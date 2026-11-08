@@ -148,7 +148,9 @@ $$
 
 *Figure 1: Energy level in a Schottky contact*（图 1：肖特基接触中的能级）
 
-Now, let's find the value of each parameter in equation (7).（现在，让我们求方程 (7) 中每个参数的数值。）The physical properties of gold and silicon are provided in the question, as（金和硅的物理性质在题目中已给出，即）
+Now, let's find the value of each parameter in equation (7).（现在，让我们求方程 (7) 中每个参数的数值。）
+
+The physical properties of gold and silicon are provided in the question, as（金和硅的物理性质在题目中已给出，即）
 
 $$
 q\phi_M = 5.1\ \text{eV}, \qquad (\text{gold work function}) \tag{8}

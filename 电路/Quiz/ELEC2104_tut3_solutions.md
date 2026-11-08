@@ -269,7 +269,14 @@ $$
 q = 1.6 \times 10^{-19}\ \text{C} \qquad (\text{charge of a single electron}) \tag{6}
 $$
 
+**注：** 题目只给出了 $N_D=10^{20}$ cm⁻³ 和 $N_A=10^{18}$ cm⁻³。式 (3)–(6) 中的 $n_i$、$V_T$、$\varepsilon_{Si}$、$q$ 并非题干数据，而是室温下硅材料的标准常数或约定取值，解题时直接采用。
+
 We have a formula for the built-in voltage ($\phi_j$), whose parameters are only $N_D$, $N_A$, $n_i$, and $V_T$.（我们有一个用于内建电压（$\phi_j$）的公式，其参数只有 $N_D$、$N_A$、$n_i$ 和 $V_T$。）
+
+**注：公式表里是这个公式**
+$$
+V_{bi}=\frac{k_BT}{q}\ln\frac{N_AN_D}{n_i^2}
+$$
 
 This formula is shown in equation (7).（该公式如方程 (7) 所示。）
 

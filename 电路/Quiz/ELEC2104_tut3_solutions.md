@@ -16,8 +16,23 @@ Before the tutorial, there is a small formula sheet for you.（在辅导课开�
 | $\varepsilon_0$                             | Vacuum permittivity, $8.854 \times 10^{-12}$ F/m.<br>（真空介电常数，$8.854 \times 10^{-12}$ F/m。）                                                                                                                      |
 | $k_B$                                       | Boltzmann constant, $1.380\ 649 \times 10^{-23}$ J/K $= 8.617\ 333 \times 10^{-5}$ eV/K.<br>（玻尔兹曼常数，$1.380\ 649 \times 10^{-23}$ J/K $= 8.617\ 333 \times 10^{-5}$ eV/K。）                                       |
 | $T$                                         | Absolute temperature (K).<br>（绝对温度（K）。）                                                                                                                                                                         |
-| $n_i$                                       | Intrinsic carrier concentration of the semiconductor (cm⁻³ or m⁻³).<br>（半导体的本征载流子浓度（cm⁻³ 或 m⁻³）。）                                                                                                               |
+| $n_i$                                       | Intrinsic carrier concentration of the semiconductor (cm⁻³ or m⁻³); for Si at room temperature, $10^{10}$ cm⁻³. This value is given in the statements of Questions 1 and 2, and is reused in Question 3.<br>（半导体的本征载流子浓度（cm⁻³ 或 m⁻³）；室温下硅取 $10^{10}$ cm⁻³。该值在第 1、2 题的题干中给出，第 3 题沿用。）                 |
 | $E_{i,p}$, $E_{i,n}$                        | Intrinsic Fermi levels in the p- and n-side quasi-neutral regions (eV); at equilibrium<br>（p 侧与 n 侧准中性区中的本征费米能级（eV）；在平衡态下）                                                                                      |
+
+**补充：题干或解答中出现、但上表未列出的符号**
+
+| Symbol | Description |
+| --- | --- |
+| $k_BT$ | Thermal energy at room temperature, $26$ meV.（室温热能量，26 meV；第 1、2 题给出。） |
+| $E_F$ | Fermi level (eV).（费米能级。） |
+| $E_C-E_i$ | Conduction-band edge to intrinsic Fermi level for Si at room temperature, $\approx0.56$ eV.（室温硅的导带底与本征费米能级之差。） |
+| $q\phi_M$ | Metal work function; for gold, $5.1$ eV.（金属功函数；金的为 5.1 eV。） |
+| $q\chi$ | Semiconductor electron affinity; for Si, $4.05$ eV.（半导体电子亲和势；硅的为 4.05 eV。） |
+| $\phi_i$ | Built-in potential of a Schottky contact (V).（肖特基结的内建电势。） |
+| $X_d$ | Depletion width on the semiconductor side of a Schottky contact (m or µm).（肖特基结半导体一侧的耗尽宽度。） |
+| $V_T$ | Thermal voltage, $V_T=k_BT/q\approx0.025$ V.（热电压。） |
+| $V_R$ | Reverse-bias voltage applied to the junction (V).（加在结上的反向偏置电压。） |
+| $W_{d0}$, $W_d$ | Depletion width at zero bias and at reverse bias $V_R$ (m or µm).（零偏置和反偏 $V_R$ 下的耗尽宽度。） |
 
 There are several formulas for the built-in voltage; you can pick any of them regarding the provided parameters that are known.
 （内建电压有若干个公式；你可以根据已知的参数从中任选一个。）
@@ -254,22 +269,27 @@ N_A = 10^{18}\ \text{cm}^{-3} \qquad (\text{acceptor density at p-side}) \tag{2}
 $$
 
 $$
-n_i = 10^{10}\ \text{cm}^{-3} \qquad (\text{intrinsic carrier density}) \tag{3}
+n_i = 10^{10}\ \text{cm}^{-3} \qquad (\text{intrinsic carrier density；本征载流子浓度}) \tag{3}
 $$
 
 $$
-V_T = 0.025\ \text{V} \qquad (\text{thermal voltage at room temp.}) \tag{4}
+V_T = \frac{k_B T}{q} = 0.025\ \text{V} \qquad (\text{thermal voltage at room temp.；室温热电压}) \tag{4}
 $$
 
 $$
-\varepsilon_{Si} = 11.7 \times \varepsilon_0 = 11.7 \times 8.854 \times 10^{-12}\ \text{F/m} \qquad (\text{permittivity of Si}) \tag{5}
+\varepsilon_{Si} = \varepsilon_r \varepsilon_0 = 11.7 \times 8.854 \times 10^{-12} \approx 1.04 \times 10^{-10}\ \text{F/m} \qquad (\text{permittivity of Si；硅的介电常数}) \tag{5}
 $$
 
 $$
-q = 1.6 \times 10^{-19}\ \text{C} \qquad (\text{charge of a single electron}) \tag{6}
+q = 1.602 \times 10^{-19}\ \text{C} \qquad (\text{elementary charge；基本电荷量}) \tag{6}
 $$
 
-**注：** 题目只给出了 $N_D=10^{20}$ cm⁻³ 和 $N_A=10^{18}$ cm⁻³。式 (3)–(6) 中的 $n_i$、$V_T$、$\varepsilon_{Si}$、$q$ 并非题干数据，而是室温下硅材料的标准常数或约定取值，解题时直接采用。
+**注：** 本题只给出了 $N_D$ 和 $N_A$，其余参数沿用前两题题干中的数值或由公式表算出：
+
+- $n_i=10^{10}$ cm⁻³：来自第 1、2 题的题干（两题都给出该值），本题沿用，不能由公式表算出。严格公式为 $n_i=\sqrt{N_CN_V}\,e^{-E_g/(2k_BT)}$，其中 $N_C$、$N_V$ 为导带、价带的有效状态密度，$E_g$ 为禁带宽度，这三个量表中没有给出。
+- $V_T$：可由表中参数算出，$V_T=\dfrac{k_BT}{q}=\dfrac{1.380\ 649\times10^{-23}\times300}{1.602\times10^{-19}}\approx0.0259$ V；也可由第 1、2 题给出的 $k_BT=26$ meV 直接换算为 0.026 V。本题取 0.025 V。
+- $\varepsilon_{Si}$：与第 2 题给出的 $\varepsilon=11.7\varepsilon_0$、$\varepsilon_0=8.854\times10^{-12}$ F/m 相同，也可由表中的 $\varepsilon_r\varepsilon_0$ 算出，约 $1.04\times10^{-10}$ F/m。
+- $q$：表中直接给出的基本物理常数。
 
 We have a formula for the built-in voltage ($\phi_j$), whose parameters are only $N_D$, $N_A$, $n_i$, and $V_T$.（我们有一个用于内建电压（$\phi_j$）的公式，其参数只有 $N_D$、$N_A$、$n_i$ 和 $V_T$。）
 
@@ -296,6 +316,13 @@ $$
 W_{d0} = \sqrt{\frac{2 \varepsilon_{Si}}{q} \left( \frac{1}{N_A} + \frac{1}{N_D} \right) \phi_j} \tag{9}
 $$
 
+**注：** 这里用的是公式表里这个公式的变形
+
+$$
+V_{bi}=\frac12\frac{q}{\varepsilon_s}\frac{N_AN_D}{N_A+N_D}W^2
+$$
+
+
 Take (1),(2),(6), (8) into (9), we can determined the depletion length.（把 (1)、(2)、(6)、(8) 代入 (9)，我们就能确定耗尽长度。）
 
 Please pay as much attention as you can to the UNITs!（请尽可能注意单位！）
@@ -307,6 +334,7 @@ W_{d0} &= \sqrt{\frac{2 \varepsilon_{Si}}{q} \left( \frac{1}{N_A} + \frac{1}{N_D
 \end{aligned}
 \tag{10}
 $$
+
 
 To determine the maximum electric field intensity ($E_{\max}$), we will apply the equation below which describes the correlation between the built-in voltage and $E_{\max}$, where（为了确定最大电场强度（$E_{\max}$），我们将应用下面这个描述内建电压与 $E_{\max}$ 之间关系的方程，其中）
 

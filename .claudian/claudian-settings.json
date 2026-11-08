@@ -50,9 +50,9 @@
       "selectedModels": [
         {
           "value": "opus",
-          "label": "deepseek-flash[1M]",
-          "description": "Custom Opus model (1M context)",
-          "resolvedModel": "deepseek-flash[1M]",
+          "label": "deepseek-flash",
+          "description": "DeepSeek · deepseek-flash · 1M",
+          "resolvedModel": "claude-opus-5",
           "reasoningMetadataResolved": true,
           "supportedEffortLevels": [
             "low",
@@ -78,9 +78,9 @@
         },
         {
           "value": "sonnet",
-          "label": "deepseek-flash[1M]",
-          "description": "Custom Sonnet model (1M context)",
-          "resolvedModel": "deepseek-flash[1M]",
+          "label": "deepseek-flash",
+          "description": "DeepSeek · deepseek-flash · 1M",
+          "resolvedModel": "claude-sonnet-5",
           "reasoningMetadataResolved": true,
           "supportedEffortLevels": [
             "low",
@@ -92,9 +92,9 @@
         },
         {
           "value": "haiku",
-          "label": "deepseek-flash[1M]",
-          "description": "Custom Haiku model",
-          "resolvedModel": "deepseek-flash[1M]",
+          "label": "deepseek-flash",
+          "description": "DeepSeek · deepseek-flash · 1M",
+          "resolvedModel": "claude-haiku-5-5",
           "reasoningMetadataResolved": true,
           "supportedEffortLevels": [
             "low",

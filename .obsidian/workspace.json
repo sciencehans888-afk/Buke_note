@@ -4,20 +4,39 @@
     "type": "split",
     "children": [
       {
-        "id": "acdee7eecc4922df",
+        "id": "07686a55718b1664",
         "type": "tabs",
         "children": [
           {
-            "id": "e0d89e420fea0a67",
+            "id": "cc84981c50960d66",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "电路/Quiz/ELEC2104_tut3_solutions.md",
+                "mode": "source",
+                "source": false
+              },
               "icon": "lucide-file",
-              "title": "新标签页"
+              "title": "ELEC2104_tut3_solutions"
+            }
+          },
+          {
+            "id": "54320806b3d98afb",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "电路/Quiz/模电第3章-二极管及其基本电路.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "模电第3章-二极管及其基本电路"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -79,7 +98,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 200
   },
   "right": {
     "id": "0956912a494b3d13",
@@ -157,7 +176,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "信号与系统/Quiz对应知识点.md",
+                "file": "电路/Quiz/模电第3章-二极管及其基本电路.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
@@ -178,9 +197,13 @@
                     {
                       "tabId": "tab-1794053367682-mdnahxl",
                       "conversationId": "conv-1794055948047-py8qw1xtr"
+                    },
+                    {
+                      "tabId": "tab-1794127571048-h6a7ept",
+                      "conversationId": "conv-1794127597350-88b0muat1"
                     }
                   ],
-                  "activeTabId": "tab-1794053367682-mdnahxl"
+                  "activeTabId": "tab-1794127571048-h6a7ept"
                 }
               },
               "icon": "bot",
@@ -192,7 +215,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 493.1666259765625
+    "width": 361.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -207,42 +230,47 @@
       "realclaudian:Open Claudian": false
     }
   },
-  "active": "e0d89e420fea0a67",
+  "active": "54320806b3d98afb",
   "lastOpenFiles": [
+    "电路/Quiz/模电第3章-二极管及其基本电路.md.tmp.18796.1c41d6f7a7eb",
+    "电路/Quiz/模电第3章-二极管及其基本电路.md.tmp.18796.dd4606e15df4",
+    "电路/Quiz/ELEC2104_tut3_solutions.md",
+    "电路/Quiz/模电第3章-二极管及其基本电路.md",
+    "电路/Quiz/附件/Pasted image 20261108184419.png",
+    "电路/Quiz/附件/Pasted image 20261108184225.png",
+    "电路/Quiz/附件/Pasted image 20261108184204.png",
+    "电路/Quiz/附件/Pasted image 20261108184136.png",
+    "电路/Quiz/附件/Pasted image 20261108184119.png",
+    "电路/Quiz/附件/Pasted image 20261108184106.png",
+    "电路/Quiz/附件/Pasted image 20261108184050.png",
+    "电路/Quiz/附件/Pasted image 20261108184029.png",
+    "电路/Quiz/附件/Pasted image 20261108184017.png",
+    "电路/Quiz/附件/Pasted image 20261108184004.png",
+    "电路/模电第3章-二极管及其基本电路.md",
+    "电路/Ch-03-二极管及其基本电路.md",
+    "电路/教材/电子技术基础模拟部分（第七版） (康华光，张林) (z-library.sk, 1lib.sk, z-lib.sk)/第3章.pdf",
+    "电路/教材/电子技术基础模拟部分（第七版） (康华光，张林) (z-library.sk, 1lib.sk, z-lib.sk)/电子技术基础模拟部分（第七版） (康华光，张林) (z-library.sk, 1lib.sk, z-lib.sk)_79-116.pdf",
+    "电路/教材/电子技术基础模拟部分（第七版） (康华光，张林) (z-library.sk, 1lib.sk, z-lib.sk)",
+    "电路/教材/电子技术基础模拟部分（第七版） (康华光，张林) (z-library.sk, 1lib.sk, z-lib.sk).pdf",
+    "电路/Quiz/附件",
+    "电路/第2章 简单电阻电路分析.md",
+    "电路/第1章 绪论.md",
     "信号与系统/Quiz2.md",
     "信号与系统/Quiz3.md",
-    "信号与系统/导出pdf/Quiz2解答.pdf",
-    "信号与系统/导出pdf",
-    "信号与系统/新建文件夹",
-    "信号与系统/sedRB376t",
-    "信号与系统/sedL7BIeW",
+    "电路/教材/电路原理-逐章节拆分/电路原理 (于歆杰, 朱桂萍, 陆文娟) (z-library.sk, 1lib.sk, z-lib.sk)/电路原理_44-116.md.baiduyun.uploading.cfg",
+    "电路/教材/电路原理-逐章节拆分/电路原理 (于歆杰, 朱桂萍, 陆文娟) (z-library.sk, 1lib.sk, z-lib.sk)/电路原理_377-425.md.baiduyun.uploading.cfg",
+    "电路/教材/电路原理-逐章节拆分/电路原理 (于歆杰, 朱桂萍, 陆文娟) (z-library.sk, 1lib.sk, z-lib.sk)/电路原理_285-376.md.baiduyun.uploading.cfg",
+    "电路/教材/电路原理-逐章节拆分/电路原理 (于歆杰, 朱桂萍, 陆文娟) (z-library.sk, 1lib.sk, z-lib.sk)/电路原理_204-284.md.baiduyun.uploading.cfg",
     "信号与系统/Quiz对应知识点.md",
     "信号与系统/傅里叶变换知识点.md",
     "信号与系统/quiz2-practice-feedback.md",
-    "信号与系统/formula-sheet-quiz3.pdf",
     "电路/附录A-E与索引.md",
-    "电路/附件/Pasted image 20261105170841.png",
-    "电路/附件/Pasted image 20261105170828.png",
-    "电路/附件/Pasted image 20261105170814.png",
-    "电路/附件/Pasted image 20261105170804.png",
-    "电路/附件/Pasted image 20261105170755.png",
-    "电路/附件/Pasted image 20261105170742.png",
-    "电路/附件/Pasted image 20261105170730.png",
-    "电路/附件/Pasted image 20261105170719.png",
-    "电路/附件/Pasted image 20261105170703.png",
-    "电路/附件/Pasted image 20261105170648.png",
-    "电路/附件",
     "电路/第6章 正弦激励下动态电路的稳态分析.md",
     "电路/第5章 动态电路的时域分析.md",
     "电路/第4章 非线性电阻电路分析.md",
     "电路/第3章 线性电阻电路的分析方法和电路定理.md",
-    "电路/第2章 简单电阻电路分析.md",
-    "电路/第1章 绪论.md",
     "电路/目录.md",
     "电路/教材/电路原理-逐章节拆分/电路原理 (于歆杰, 朱桂萍, 陆文娟) (z-library.sk, 1lib.sk, z-lib.sk)/电路原理_44-116.md",
-    "电路/教材/电路原理-逐章节拆分/电路原理 (于歆杰, 朱桂萍, 陆文娟) (z-library.sk, 1lib.sk, z-lib.sk)/电路原理 (于歆杰, 朱桂萍, 陆文娟) (z-library.sk, 1lib.sk, z-lib.sk)_44-116.pdf",
-    "电路/教材/电路原理-逐章节拆分/电路原理 (于歆杰, 朱桂萍, 陆文娟) (z-library.sk, 1lib.sk, z-lib.sk)/电路原理 (于歆杰, 朱桂萍, 陆文娟) (z-library.sk, 1lib.sk, z-lib.sk)_377-425.pdf",
-    "电路/教材/电路原理-逐章节拆分/电路原理 (于歆杰, 朱桂萍, 陆文娟) (z-library.sk, 1lib.sk, z-lib.sk)/电路原理 (于歆杰, 朱桂萍, 陆文娟) (z-library.sk, 1lib.sk, z-lib.sk)_285-376.pdf",
     "信号与系统/Quiz2-公式表解法.md",
     "Buke_note/Quiz对应知识点.md",
     "Buke_note/Quiz3.md",

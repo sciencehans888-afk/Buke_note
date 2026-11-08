@@ -107,8 +107,7 @@
       ],
       "installationMethodsByHost": {
         "device-b06c993f4a40a1f660b595ee461c17854c9926bfa67c028ba799b6d090355d56": "native-windows",
-        "device-ac4915ca45d65068efb1f114674f86091dbe0f22891f1db2c0b6fcd8b810dfa0": "native-windows",
-        "device-4a67bd6014f3c038645fe19cee14a1e3f65e5f34734e4f420a5babf7f58b8c46": "native-windows"
+        "device-ac4915ca45d65068efb1f114674f86091dbe0f22891f1db2c0b6fcd8b810dfa0": "native-windows"
       },
       "wslDistroOverridesByHost": {}
     },
@@ -144,16 +143,14 @@
       "selectedModels": [],
       "installationMethodsByHost": {
         "device-b06c993f4a40a1f660b595ee461c17854c9926bfa67c028ba799b6d090355d56": "native-windows",
-        "device-ac4915ca45d65068efb1f114674f86091dbe0f22891f1db2c0b6fcd8b810dfa0": "native-windows",
-        "device-4a67bd6014f3c038645fe19cee14a1e3f65e5f34734e4f420a5babf7f58b8c46": "native-windows"
+        "device-ac4915ca45d65068efb1f114674f86091dbe0f22891f1db2c0b6fcd8b810dfa0": "native-windows"
       },
       "wslDistroOverridesByHost": {}
     },
     "grok": {
       "installationMethodsByHost": {
         "device-b06c993f4a40a1f660b595ee461c17854c9926bfa67c028ba799b6d090355d56": "native-windows",
-        "device-ac4915ca45d65068efb1f114674f86091dbe0f22891f1db2c0b6fcd8b810dfa0": "native-windows",
-        "device-4a67bd6014f3c038645fe19cee14a1e3f65e5f34734e4f420a5babf7f58b8c46": "native-windows"
+        "device-ac4915ca45d65068efb1f114674f86091dbe0f22891f1db2c0b6fcd8b810dfa0": "native-windows"
       },
       "wslDistroOverridesByHost": {},
       "sessionEnvironmentHash": "",
@@ -180,16 +177,14 @@
       "selectedModels": [],
       "installationMethodsByHost": {
         "device-b06c993f4a40a1f660b595ee461c17854c9926bfa67c028ba799b6d090355d56": "native-windows",
-        "device-ac4915ca45d65068efb1f114674f86091dbe0f22891f1db2c0b6fcd8b810dfa0": "native-windows",
-        "device-4a67bd6014f3c038645fe19cee14a1e3f65e5f34734e4f420a5babf7f58b8c46": "native-windows"
+        "device-ac4915ca45d65068efb1f114674f86091dbe0f22891f1db2c0b6fcd8b810dfa0": "native-windows"
       },
       "wslDistroOverridesByHost": {}
     },
     "pi": {
       "installationMethodsByHost": {
         "device-b06c993f4a40a1f660b595ee461c17854c9926bfa67c028ba799b6d090355d56": "native-windows",
-        "device-ac4915ca45d65068efb1f114674f86091dbe0f22891f1db2c0b6fcd8b810dfa0": "native-windows",
-        "device-4a67bd6014f3c038645fe19cee14a1e3f65e5f34734e4f420a5babf7f58b8c46": "native-windows"
+        "device-ac4915ca45d65068efb1f114674f86091dbe0f22891f1db2c0b6fcd8b810dfa0": "native-windows"
       },
       "wslDistroOverridesByHost": {},
       "cliPath": "",
@@ -202,6 +197,18 @@
       "sessionEnvironmentHash": "",
       "visibleModels": [],
       "selectedModels": []
+    },
+    "antigravity": {
+      "cliPath": "",
+      "cliPathsByHost": {},
+      "enabled": false,
+      "environmentHash": "",
+      "environmentVariables": "",
+      "modelAliases": {},
+      "preferredReasoningByModel": {},
+      "sessionStoreHash": "",
+      "visibleModels": [],
+      "selectedModelsByHost": {}
     }
   },
   "settingsProvider": "claude",

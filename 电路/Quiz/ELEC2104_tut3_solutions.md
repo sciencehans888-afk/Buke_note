@@ -98,7 +98,15 @@ We know gold has a work function $(q\phi_M) = 5.1$ eV.（我们知道金的功�
 
 Silicon has an electron affinity $(q\chi)$ of 4.05 eV, and a permittivity of $\varepsilon = 11.7\ \varepsilon_0$, where $\varepsilon_0 = 8.854 \times 10^{-12}$ F m⁻¹.（硅的电子亲和势 $(q\chi)$ 为 4.05 eV，介电常数为 $\varepsilon = 11.7\ \varepsilon_0$，其中 $\varepsilon_0 = 8.854 \times 10^{-12}$ F m⁻¹。）
 
+**注：**
+
+- **金属功函数 $q\phi_M$**：把一个电子从金属内部的费米能级 $E_{F,M}$ 拿到真空能级 $E_0$（真空中的静止自由电子:指完全脱离固体的电子）所需要的最小能量。
+- **半导体电子亲和能 $q\chi$**：把一个电子从半导体的导带底 $E_C$ 拿到真空能级 $E_0$ 所需要的最小能量。硅的 $q\chi_{Si}=4.05$ eV。
+
+两者的终点都是真空能级，区别只在起点：功函数从金属费米能级算起，电子亲和能从半导体导带底算起。
+
 What is the depletion length in silicon?（硅中的耗尽长度是多少？）
+
 
 **Solution:**（**解答：**）
 
@@ -173,6 +181,10 @@ Taking (8),(9),(11) into (7), we will get（把 (8)、(9)、(11) 代入 (7)，�
 $$
 \phi_i = 5.1 - 4.05 - 0.20 = 0.85\ \text{V}. \tag{11}
 $$
+
+**注（$\phi_i$ 与 $V_{bi}$、$\phi_B$ 的关系）：**
+
+- $\phi_i$ 就是肖特基结的内建电势（built-in potential），与 PN 结中的 $V_{bi}$（$\phi_{bi}$、$\phi_j$）是同一类物理量，只是符号习惯不同。
 
 There is another expression for the built-in potential based on the depletion width $X_d$, the permittivity $\varepsilon$, and the donor density $N_D$:（还有另一个用耗尽宽度 $X_d$、介电常数 $\varepsilon$ 和施主浓度 $N_D$ 表示内建电势的表达式：）
 

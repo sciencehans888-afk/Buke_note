@@ -50,8 +50,8 @@
       "selectedModels": [
         {
           "value": "opus",
-          "label": "deepseek-flash",
-          "description": "DeepSeek · deepseek-flash · 1M",
+          "label": "deepseek-v4-flash",
+          "description": "武汉大学 · deepseek-v4-flash",
           "resolvedModel": "claude-opus-5",
           "reasoningMetadataResolved": true,
           "supportedEffortLevels": [
@@ -64,9 +64,9 @@
         },
         {
           "value": "fable",
-          "label": "Fable",
-          "description": "Fable 5.1 · Most capable for your hardest and longest-running tasks · $10/$50 per Mtok",
-          "resolvedModel": "claude-fable-5-1",
+          "label": "deepseek-v4-flash",
+          "description": "武汉大学 · deepseek-v4-flash",
+          "resolvedModel": "claude-fable-5",
           "reasoningMetadataResolved": true,
           "supportedEffortLevels": [
             "low",
@@ -78,8 +78,8 @@
         },
         {
           "value": "sonnet",
-          "label": "deepseek-flash",
-          "description": "DeepSeek · deepseek-flash · 1M",
+          "label": "deepseek-v4-flash",
+          "description": "武汉大学 · deepseek-v4-flash",
           "resolvedModel": "claude-sonnet-5",
           "reasoningMetadataResolved": true,
           "supportedEffortLevels": [
@@ -92,8 +92,8 @@
         },
         {
           "value": "haiku",
-          "label": "deepseek-flash",
-          "description": "DeepSeek · deepseek-flash · 1M",
+          "label": "deepseek-v4-flash",
+          "description": "武汉大学 · deepseek-v4-flash",
           "resolvedModel": "claude-haiku-5-5",
           "reasoningMetadataResolved": true,
           "supportedEffortLevels": [

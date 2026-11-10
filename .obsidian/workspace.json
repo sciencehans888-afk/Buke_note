@@ -8,7 +8,35 @@
         "type": "tabs",
         "children": [
           {
-            "id": "73049636e8cdf960",
+            "id": "d5fdc1348168ebe0",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "电路/Quiz/ELEC2104_tut4_solutions.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "ELEC2104_tut4_solutions"
+            }
+          },
+          {
+            "id": "461c62b2425fd86e",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "电路/Quiz/ELEC2104_tut5_solutions.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "ELEC2104_tut5_solutions"
+            }
+          },
+          {
+            "id": "a354fbe928ca1da1",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -21,7 +49,8 @@
               "title": "模电第3章-二极管及其基本电路"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -161,7 +190,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "电路/Quiz/模电第3章-二极管及其基本电路.md",
+                "file": "电路/Quiz/ELEC2104_tut5_solutions.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
@@ -196,11 +225,11 @@
             }
           }
         ],
-        "currentTab": 4
+        "currentTab": 5
       }
     ],
     "direction": "horizontal",
-    "width": 361.5
+    "width": 401.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -215,33 +244,36 @@
       "realclaudian:Open Claudian": false
     }
   },
-  "active": "89a842232a962a3f",
+  "active": "25b538230d70f59a",
   "lastOpenFiles": [
-    "电路/Quiz/ELEC2104_tut3_solutions.md",
-    "电路/教材/ELEC2104_tut5_solutions.pdf",
-    "电路/教材/ELEC2104_tut4_solutions.pdf",
-    "电路/Quiz/ELEC2104_tut4_solutions.pdf",
-    "电路/Quiz/ELEC2104_tut5_solutions.pdf",
+    "电路/Quiz/ELEC2104_tut5_solutions.md.tmp.6204.b227d2863d3c",
+    "电路/Quiz/ELEC2104_tut5_solutions.md.tmp.6204.b6b10087a0ac",
     "电路/Quiz/模电第3章-二极管及其基本电路.md",
+    "电路/Quiz/ELEC2104_tut5_solutions.md",
+    "电路/Quiz/附件/Pasted image 20261110224626.png",
+    "电路/Quiz/ELEC2104_tut4_solutions.md",
+    "电路/Quiz/ELEC2104_tut3_solutions.md",
+    "电路/Quiz/附件/Pasted image 20261110222525.png",
+    "电路/Quiz/附件/Pasted image 20261110222512.png",
+    "电路/Quiz/附件/Pasted image 20261110222453.png",
+    "电路/Quiz/附件/Pasted image 20261110222437.png",
+    "电路/Quiz/附件/Pasted image 20261110222415.png",
+    "电路/Quiz/附件/Pasted image 20261110222357.png",
+    "电路/Quiz/附件/Pasted image 20261110222345.png",
+    "电路/Quiz/附件/Pasted image 20261110222332.png",
+    "电路/Quiz/附件/Pasted image 20261110222323.png",
+    "电路/Quiz/ELEC2104_tut4_solutions.md.tmp.44160.a6b2ad74db28",
+    "电路/Quiz/ELEC2104_tut5_solutions.md.tmp.44160.5feea23c6ffa",
+    "电路/Quiz/ELEC2104_tut5_solutions.md.tmp.44160.ce64259af98b",
+    "电路/Quiz/ELEC2104_tut4_solutions.md.tmp.44160.87b1630dbc87",
+    "电路/Quiz/ELEC2104_tut4_solutions.md.tmp.44160.3bf884767e64",
+    "电路/Quiz/ELEC2104_tut4_solutions.md.tmp.44160.5052d8c5a2d4",
+    "电路/Quiz/ELEC2104_tut4_solutions.md.tmp.44160.dd22552e31ac",
+    "电路/Quiz/ELEC2104_tut4_solutions.md.tmp.44160.308e2c4a2d14",
+    "电路/Quiz/ELEC2104_tut5_solutions.md.tmp.44160.1b747533277c",
     "半导体的基本知识.md",
-    "信号与系统/导出pdf/半导体的基本知识.pdf",
-    "电路/Quiz/附件/Pasted image 20261108220359.png",
-    "电路/Quiz/附件/Pasted image 20261108220348.png",
-    "电路/Quiz/附件/Pasted image 20261108220338.png",
-    "电路/Quiz/附件/Pasted image 20261108220327.png",
-    "电路/Quiz/附件/Pasted image 20261108220317.png",
-    "电路/Quiz/附件/Pasted image 20261108220305.png",
-    "电路/Quiz/附件/Pasted image 20261108220254.png",
-    "电路/Quiz/附件/Pasted image 20261108220239.png",
-    "电路/Quiz/附件/Pasted image 20261108220223.png",
-    "电路/Quiz/附件/Pasted image 20261108220203.png",
-    "电路/Quiz/模电第3章-二极管及其基本电路.md.tmp.38560.155c4efe6690",
-    "电路/Quiz/模电第3章-二极管及其基本电路.md.tmp.38560.846ca8d9d435",
-    "电路/Quiz/模电第3章-二极管及其基本电路.md.tmp.18796.1c41d6f7a7eb",
-    "电路/Quiz/模电第3章-二极管及其基本电路.md.tmp.18796.dd4606e15df4",
     "电路/模电第3章-二极管及其基本电路.md",
     "电路/Ch-03-二极管及其基本电路.md",
-    "电路/教材/电子技术基础模拟部分（第七版） (康华光，张林) (z-library.sk, 1lib.sk, z-lib.sk)/第3章.pdf",
     "电路/第2章 简单电阻电路分析.md",
     "电路/第1章 绪论.md",
     "信号与系统/Quiz2.md",

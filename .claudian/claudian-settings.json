@@ -50,8 +50,8 @@
       "selectedModels": [
         {
           "value": "opus",
-          "label": "deepseek-v4-flash",
-          "description": "武汉大学 · deepseek-v4-flash",
+          "label": "deepseek-flash",
+          "description": "DeepSeek · deepseek-flash · 1M",
           "resolvedModel": "claude-opus-5",
           "reasoningMetadataResolved": true,
           "supportedEffortLevels": [
@@ -64,9 +64,9 @@
         },
         {
           "value": "fable",
-          "label": "deepseek-v4-flash",
-          "description": "武汉大学 · deepseek-v4-flash",
-          "resolvedModel": "claude-fable-5",
+          "label": "Fable",
+          "description": "Fable 5.1 · Most capable for your hardest and longest-running tasks · $10/$50 per Mtok",
+          "resolvedModel": "claude-fable-5-1",
           "reasoningMetadataResolved": true,
           "supportedEffortLevels": [
             "low",
@@ -78,8 +78,8 @@
         },
         {
           "value": "sonnet",
-          "label": "deepseek-v4-flash",
-          "description": "武汉大学 · deepseek-v4-flash",
+          "label": "deepseek-flash",
+          "description": "DeepSeek · deepseek-flash · 1M",
           "resolvedModel": "claude-sonnet-5",
           "reasoningMetadataResolved": true,
           "supportedEffortLevels": [
@@ -92,8 +92,8 @@
         },
         {
           "value": "haiku",
-          "label": "deepseek-v4-flash",
-          "description": "武汉大学 · deepseek-v4-flash",
+          "label": "deepseek-flash",
+          "description": "DeepSeek · deepseek-flash · 1M",
           "resolvedModel": "claude-haiku-5-5",
           "reasoningMetadataResolved": true,
           "supportedEffortLevels": [
@@ -130,13 +130,15 @@
       "selectedModels": []
     },
     "deepseek": {
-      "enabled": false,
+      "enabled": true,
       "codeMode": false,
       "presetPlugins": "",
       "cliPath": "",
-      "cliPathsByHost": {},
+      "cliPathsByHost": {
+        "device-4a67bd6014f3c038645fe19cee14a1e3f65e5f34734e4f420a5babf7f58b8c46": "D:\\Program Files\\DeepSeek Harness"
+      },
       "environmentVariables": "",
-      "environmentHash": "",
+      "environmentHash": "runtime-input:v1:9e151340f193acdff3da47e5df054a6edfb9cfbc6ea0a5f375b4ccf6feb30fae",
       "visibleModels": [],
       "modelAliases": {},
       "preferredReasoningByModel": {},
@@ -225,7 +227,8 @@
   },
   "savedProviderServiceTier": {},
   "savedProviderPermissionMode": {
-    "claude": "yolo"
+    "claude": "yolo",
+    "deepseek": "normal"
   },
   "pendingProviderSessionInvalidations": {},
   "enableAutoScroll": true,

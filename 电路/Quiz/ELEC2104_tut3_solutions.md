@@ -186,7 +186,7 @@ $$
 The energy difference between the conduction band and the Fermi level $E_C - E_F$ can be determined.（导带与费米能级之间的能量差 $E_C - E_F$ 可以求出。）、
 
 Using $E_C - E_i = 0.56$ eV (the energy difference between the conduction band and the intrinsic Fermi level for Si at room temperature), we can obtain the built-in energy as（利用 $E_C - E_i = 0.56$ eV（室温下 Si 的导带与本征费米能级之间的能量差），我们可以得到内建能量为）
-
+ 
 $$
 E_C - E_F = (E_C - E_i) - (E_F - E_i) = 0.56\ \text{eV} - 0.36\ \text{eV} = 0.20\ \text{eV}. \tag{10}
 $$
@@ -243,7 +243,7 @@ Finally, we determine the depletion length.（最后，我们确定耗尽长度�
 $$
 X_d = \sqrt{\frac{2 \varepsilon_{Si} \phi_i}{q N_D}} \approx \sqrt{\frac{2(11.7)(8.854 \times 10^{-12})(0.85)}{(1.602 \times 10^{-19})(10^{22})}} \approx 3.3 \times 10^{-7}\ \text{m} = 0.33\ \text{µm}.
 $$
-
+ 
 ## 3 Question 3
 
 A diode has a doping of $N_D = 10^{20}$ cm⁻³ on the n-type side and $N_A = 10^{18}$ cm⁻³ on the p-type side.（一个二极管 n 型一侧的掺杂为 $N_D = 10^{20}$ cm⁻³，p 型一侧的掺杂为 $N_A = 10^{18}$ cm⁻³。）

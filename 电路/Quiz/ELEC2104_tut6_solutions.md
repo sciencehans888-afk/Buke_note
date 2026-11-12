@@ -1,6 +1,10 @@
 # ELEC2104/9704 Tutorial 6 Solutions (2025)
 
-For any BJT circuit analysis question, the first step is label all BJT voltages and currents and with correct polarities/directions.（对于任何 BJT 电路分析题，第一步都是标出所有 BJT 电压与电流，并标对极性/方向。） For NPN transistors, the arrow points *outward* from the emitter, indicating conventional current flow direction.（对于 NPN 晶体管，箭头从发射极指向*外*，表示常规电流的流动方向。） For PNP transistors, the arrow points *inward* to the emitter, with opposite current directions.（对于 PNP 晶体管，箭头指向发射极*内部*，电流方向相反。）
+For any BJT circuit analysis question, the first step is label all BJT voltages and currents and with correct polarities/directions.（对于任何 BJT 电路分析题，第一步都是标出所有 BJT 电压与电流，并标对极性/方向。） 
+
+For NPN transistors, the arrow points *outward* from the emitter, indicating conventional current flow direction.（对于 NPN 晶体管，箭头从发射极指向*外*，表示常规电流的流动方向。）
+
+For PNP transistors, the arrow points *inward* to the emitter, with opposite current directions.（对于 PNP 晶体管，箭头指向发射极*内部*，电流方向相反。）
 
 ![](Pasted%20image%2020261111234834.png)
 > 图1 NPN and PNP BJT symbols with proper voltage and current labeling conventions（图 1：NPN 与 PNP BJT 符号，以及正确的电压、电流标注约定）

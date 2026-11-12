@@ -5,13 +5,21 @@
   "effortLevel": "low",
   "serviceTier": "default",
   "enableAutoTitleGeneration": true,
-  "titleGenerationLocale": "",
-  "titleGenerationModel": "",
+  "titleGenerationLocale": "zh-CN",
+  "titleGenerationModel": "haiku",
   "excludedTags": [],
   "mediaFolder": "",
   "systemPrompt": "",
   "sharedEnvironmentVariables": "",
-  "envSnippets": [],
+  "envSnippets": [
+    {
+      "id": "snippet-1794414565456",
+      "name": "AI_env1 (D盘Anaconda)",
+      "description": "D:\\Anaconda3\\envs\\AI_env1，Python3.10，机器学习环境，清华conda源",
+      "envVars": "CONDA_ENV_PATH=D:\\Anaconda3\\envs\\AI_env1\nPYTHONPATH=D:\\Anaconda3\\envs\\AI_env1\nPATH=D:\\Anaconda3\\envs\\AI_env1;D:\\Anaconda3\\envs\\AI_env1\\Scripts;D:\\Anaconda3\\Library\\bin\n",
+      "scope": "shared"
+    }
+  ],
   "customContextLimits": {},
   "keyboardNavigation": {
     "scrollUpKey": "w",

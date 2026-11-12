@@ -15,7 +15,9 @@ Observe the arrow direction in the BJT circuit symbol.（观察 BJT 电路符号
 
 This arrow indicates the emitter $E$ terminal and the direction of current flow for the emitter current $I_E$.（这个箭头指示发射极 $E$ 端以及发射极电流 $I_E$ 的流动方向。）
 
-The remaining currents $I_C$ and $I_B$ have the opposite direction.（其余电流 $I_C$ 与 $I_B$ 的方向相反。） For example, if $I_E$ points outward (NPN), then $I_C$ and $I_B$ point inward.（例如，若 $I_E$ 向外（NPN），则 $I_C$ 与 $I_B$ 向内。） 
+The remaining currents $I_C$ and $I_B$ have the opposite direction.（其余电流 $I_C$ 与 $I_B$ 的方向相反。） 
+
+For example, if $I_E$ points outward (NPN), then $I_C$ and $I_B$ point inward.（例如，若 $I_E$ 向外（NPN），则 $I_C$ 与 $I_B$ 向内。） 
 
 The BJT voltage directions are given by these current directions, as the current arrows point from the positive (+) to the negative (-) of their corresponding voltages.（BJT 的电压方向由这些电流方向确定，因为电流箭头从对应电压的正（+）端指向负（−）端。）
 
@@ -28,6 +30,8 @@ The BJT voltage directions are given by these current directions, as the current
 > I_C = I_S\left[\exp\left(\frac{V_{BE}}{V_T}\right)-1\right] \approx I_S\exp\left(\frac{V_{BE}}{V_T}\right) \quad \text{when } V_{BE} \gg V_T
 > $$
 >
+> 式中：$I_C$ 为集电极电流（A）；$I_S$ 为反向饱和电流（A）；$V_{BE}$ 为基极-发射极电压（V）；$V_T$ 为热电压（V），室温下约 26 mV。当 $V_{BE}\gg V_T$（约 0.1 V 以上）时，指数项远大于 1，括号中的 $-1$ 可以略去。
+>
 > This describes the non-linear, exponential relationship between collector current and base-emitter voltage.（这描述了集电极电流与基极-发射极电压之间的非线性指数关系。） 
 > Small changes in $V_{BE}$ cause large changes in $I_C$.（$V_{BE}$ 的微小变化会引起 $I_C$ 的很大变化。）
 >
@@ -37,13 +41,22 @@ The BJT voltage directions are given by these current directions, as the current
 > I_E = I_C + I_B \quad \text{and} \quad I_C = \beta I_B \quad \text{where } \beta \text{ is the current gain (typically 100-200)}
 > $$
 >
+> 式中：$I_E$、$I_C$、$I_B$ 分别为发射极、集电极、基极电流（A）；$\beta$ 为共射电流放大系数，$\beta=I_C/I_B$，典型值 100–200；另有 $\alpha=I_C/I_E=\beta/(1+\beta)$。
+>
 > **3. Small-Signal Parameters (for AC analysis):**（3. 小信号参数（用于交流分析）：）
 >
 > $$
 > g_m = \frac{I_C}{V_T}\ \ (\text{transconductance}) \quad \text{and} \quad r_\pi = \frac{\beta}{g_m}\ \ (\text{input resistance})
 > $$
 >
+> 式中：$g_m$ 为跨导（S），表示 $I_C$ 对 $V_{BE}$ 的敏感程度；$r_\pi$ 为基极-发射极之间的输入电阻（Ω）；$I_C$ 为静态工作点的集电极电流；$V_T$ 为热电压；$\beta$ 同上。
+>
 > These linearized parameters are crucial for analysing BJT amplifiers (next tutorial).（这些线性化参数对分析 BJT 放大器（下次课）至关重要。）
+>
+> **NPN 与 PNP 的区别（NPN vs PNP）：** 上面三个公式对 NPN 与 PNP 的**形式完全相同**，区别只在电压极性和电流方向：
+> - **NPN**：电流从集电极、基极流入，从发射极流出；正常放大时 $V_{BE}>0$、$V_{CE}>0$，硅管 $V_{BE}\approx0.7$ V。
+> - **PNP**：电流从发射极流入，从集电极、基极流出；若仍按“流出为正”的约定，则 $V_{BE}<0$、$V_{CE}<0$。工程上通常改写为 $V_{EB}>0$、$V_{EC}>0$（约 0.7 V），并把电流取绝对值。
+> - 因此计算 PNP 电路时，可把所有电压、电流反号（或取幅值），再套用同一组公式；$I_S$、$\beta$、$g_m$、$r_\pi$ 的数值只由器件参数和工作点决定，与管型无关。
 
 ## 1 Question 1（第 1 题）
 
@@ -69,6 +82,26 @@ The following formula for BJT saturation current was presented in the lecture:�
 $$
 I_S = \frac{AqD_n n_i^2}{N_A W_B} \tag{2}
 $$
+
+式中：
+
+- $I_S$：反向饱和电流（A）；
+- $A$：发射结（晶体管）横截面积（cm²）；
+- $q$：电子电荷，$1.602\times10^{-19}$ C；
+- $D_n$：电子扩散系数（cm²/s）；
+- $n_i$：本征载流子浓度（cm⁻³）；
+- $N_A$：基区受主浓度（cm⁻³）；
+- $W_B$：基区宽度（cm）。
+
+由该式可见，$I_S$ 与面积 $A$ 成正比、与基区宽度 $W_B$ 成反比。
+
+**PNP 型的区别（PNP case）：** 式 (2) 中的 $D_n$、$N_A$ 对应的是 NPN 管——基区为 p 型，基区中的少子是电子。对 PNP 管，基区为 n 型，基区少子是空穴，相应的饱和电流为
+
+$$
+I_S = \frac{AqD_p n_i^2}{N_D W_B}
+$$
+
+式中 $D_p$ 为空穴扩散系数（cm²/s），$N_D$ 为基区施主浓度（cm⁻³），其余符号同前。
 
 Taking (1) into (2), we find that $I_C$ is proportional to the transistor cross-section area $A$, so $I_C \propto A$.（把 (1) 代入 (2) 可得 $I_C$ 正比于晶体管横截面积 $A$，即 $I_C\propto A$。）
 
@@ -163,9 +196,15 @@ $$
 *A more detailed, step-by-step walkthrough of this solution is provided in Section 2.3 below.*（本解答更详细的逐步推导见下文 2.3 节。）
 
 > [!warning] Important Note: $V_{BE}$ vs $V_B$（重要提示：$V_{BE}$ 与 $V_B$ 的区别）
+> 
 > Be careful to distinguish between $V_{BE}$ (base-emitter voltage) and $V_B$ (base voltage with respect to ground).（注意区分 $V_{BE}$（基极-发射极电压）与 $V_B$（基极对地电压）。）
+> 
 > In this circuit, since both emitters are connected to ground (0V), we have $V_{BE} = V_B - V_E = V_B - 0 = V_B$.（本电路中，由于两发射极都接地（0 V），有 $V_{BE}=V_B-V_E=V_B-0=V_B$。）
-> However, if there were a resistor between the emitter and ground, then $V_E \neq 0$ and $V_{BE} = V_B - V_E \neq V_B$.（然而，如果发射极与地之间有电阻，则 $V_E\neq0$，$V_{BE}=V_B-V_E\neq V_B$。） This is a common source of confusion in BJT circuit analysis.（这是 BJT 电路分析中常见的混淆来源。）
+> 
+> However, if there were a resistor between the emitter and ground, then $V_E \neq 0$ and $V_{BE} = V_B - V_E \neq V_B$.（然而，如果发射极与地之间有电阻，则 $V_E\neq0$，$V_{BE}=V_B-V_E\neq V_B$。） 
+> 
+> This is a common source of confusion in BJT circuit analysis.（这是 BJT 电路分析中常见的混淆来源。）
+
 
 > [!info] BJT Operating Regions (NPN)（BJT 的工作区（NPN））
 > ![](Pasted%20image%2020261111234914.png)
@@ -182,6 +221,15 @@ $$
 > | Reverse Active<br>(rarely used)（反向放大区（很少用）） | $V_C < V_B < V_E$<br>BE reverse, BC forward（BE 反偏，BC 正偏） |
 >
 > *For PNP transistors, simply flip the directions of these inequalities.*（对 PNP 晶体管，只需把上述不等号方向全部翻转。）
+>
+> **四个工作区的工作原理（how the four regions work）：** 工作区由 BE、BC 两个 PN 结的偏置组合决定。
+>
+> - **截止区（cut-off）**：两结均反偏。发射结不向基区注入载流子，集电结也收集不到，$I_B\approx0$、$I_C\approx0$，只剩极小漏电流 → 相当于开关断开。
+> - **放大区（forward active）**：BE 正偏、BC 反偏。发射区向薄基区注入少子，绝大多数穿过基区后被反偏的 BC 结扫入集电区，因此 $I_C=\beta I_B$；$I_C$ 主要由 $V_{BE}$ 控制、几乎与 $V_{CE}$ 无关 → 相当于受控电流源，可用于放大。
+> - **饱和区（saturation）**：两结均正偏。集电结也向基区注入载流子，$I_C$ 不再等于 $\beta I_B$，而是被外部电路限制在 $(V_{CC}-V_{CE(\mathrm{sat})})/R_C$；$V_{CE}$ 很小（硅管约 0.2–0.3 V）→ 相当于开关闭合。“饱和”指 $I_C$ 达到外部允许的上限，再增大 $I_B$ 也基本不变。
+> - **反向放大区（reverse active）**：BE 反偏、BC 正偏，发射极与集电极角色互换。由于管子结构不对称，反向电流增益 $\beta_R$ 很小，实际几乎不用。
+>
+> 名称来源：放大区——$I_C$ 按比例跟随 $I_B$，起放大作用；饱和区——$I_C$ 达到上限、不再增大；截止区——电流几乎为零。
 >
 > **Key insight for Q2 Part B:**（第 2 题 B 部分的关键点：）
 >
@@ -274,13 +322,15 @@ We start with $I_X = 1.2$ mA (given) and ask: *"How does this current relate to 
 
 **Circuit observation:** From Fig 6, current $I_X$ flows into *both* BJT collector terminals at their shared connection.（**电路观察：** 由图 6，电流 $I_X$ 在共用连接处流入*两个* BJT 的集电极。）
 
-**Mathematical translation:** This is a classic KCL application! At the shared collector node:（**数学翻译：** 这是典型的 KCL 应用！在共用集电极节点：）
+**Mathematical translation:** This is a classic KCL application! At the shared collector node:
+（**数学翻译：** 这是典型的 KCL 应用！在共用集电极节点：）
 
 $$
 \boxed{\text{Current in = Current out}} \Rightarrow \boxed{I_X = I_{C1} + I_{C2}}
 $$
 
 *Note:* Don't assume $I_X = I_{C1} = I_{C2}$. They are different currents related by KCL.（*注意：* 不要假设 $I_X=I_{C1}=I_{C2}$，它们是由 KCL 联系的不同电流。）
+
 Using KCL at the shared collector node (blue = known, red = unknown):（在共用集电极节点使用 KCL（蓝色为已知量，红色为未知量）：）
 
 $$
@@ -289,23 +339,29 @@ $$
 
 Note that we are trying to find either $V_B$, $V_{BE1}$ or $V_{BE2}$ for this question (they are all equal).（注意本题要求的是 $V_B$、$V_{BE1}$ 或 $V_{BE2}$ 中的任意一个（三者相等）。） 
 
-Currently, $I_{C1}$ and $I_{C2}$ are unknown, but for BJTs, the collector currents $I_{C1}$ and $I_{C2}$ can easily be related to $V_{BE1}$ and $V_{BE2}$ using the exponential $I_C$ relation:（目前 $I_{C1}$、$I_{C2}$ 未知，但 BJT 的集电极电流可以用指数型 $I_C$ 关系与 $V_{BE1}$、$V_{BE2}$ 联系起来：）
+Currently, $I_{C1}$ and $I_{C2}$ are unknown, but for BJTs, the collector currents $I_{C1}$ and $I_{C2}$ can easily be related to $V_{BE1}$ and $V_{BE2}$ using the exponential $I_C$ relation:
+（目前 $I_{C1}$、$I_{C2}$ 未知，但 BJT 的集电极电流可以用指数型 $I_C$ 关系与 $V_{BE1}$、$V_{BE2}$ 联系起来：）
 
 $$
 I_C = I_S\left[\exp\left(\frac{V_{BE}}{V_T}\right)-1\right] \tag{13}
 $$
 
-Substituting the above (13) into our expression for $I_X$ in (12) gives us a more direct relation between known variables and the variables we are solving for:（把上面的 (13) 代入 (12) 中 $I_X$ 的表达式，可得到已知量与待求量之间更直接的关系：）
+Substituting the above (13) into our expression for $I_X$ in (12) gives us a more direct relation between known variables and the variables we are solving for:
+（把上面的 (13) 代入 (12) 中 $I_X$ 的表达式，可得到已知量与待求量之间更直接的关系：）
 
 $$
 I_X = I_{S1}\left[\exp\left(\frac{V_{BE1}}{V_T}\right)-1\right] + I_{S2}\left[\exp\left(\frac{V_{BE2}}{V_T}\right)-1\right] \tag{14}
 $$
 
-Expect to make this substitution for many (but not all) BJT circuits, as making this substitution describes the non-linear behaviour of the BJT in the circuit, capturing this behaviour into the math.（许多（但并非全部）BJT 电路都需要做这一步代入，因为它把 BJT 的非线性特性写进了数学模型。）
+Expect to make this substitution for many (but not all) BJT circuits, as making this substitution describes the non-linear behaviour of the BJT in the circuit, capturing this behaviour into the math.
+（许多（但并非全部）BJT 电路都需要做这一步代入，因为它把 BJT 的非线性特性写进了数学模型。）
 
 **Counting Unknowns:** Looking at the color-coding in (14), we initially have two red unknowns: $V_{BE1}$ and $V_{BE2}$.（**清点未知量：** 看 (14) 的颜色标记，最初有两个红色未知量 $V_{BE1}$ 与 $V_{BE2}$。） 
 
-However, from our circuit analysis, we know that $V_{BE1} = V_{BE2} = V_B$ (both emitters grounded).（但由电路分析可知 $V_{BE1}=V_{BE2}=V_B$（两发射极均接地）。） This reduces our problem to just one unknown, which means we can solve it!（于是问题只剩一个未知量，可以求解了！）
+However, from our circuit analysis, we know that $V_{BE1} = V_{BE2} = V_B$ (both emitters grounded).（但由电路分析可知 $V_{BE1}=V_{BE2}=V_B$（两发射极均接地）。）
+
+This reduces our problem to just one unknown, which means we can solve it!
+（于是问题只剩一个未知量，可以求解了！）
 
 $$
 I_X = I_{S1}\left[\exp\left(\frac{V_B}{V_T}\right)-1\right] + \tfrac{1}{2}I_{S1}\left[\exp\left(\frac{V_B}{V_T}\right)-1\right] \tag{15}
@@ -362,7 +418,9 @@ $$
 
 ## 3 Question 3（第 3 题）
 
-Consider the circuit below, assuming $\beta$ = 100, $V_T$ = 26 mV, and $I_S = 7 \times 10^{-16}$ A.（考虑下图电路，假设 $\beta=100$、$V_T=26$ mV、$I_S=7\times10^{-16}$ A。） If $R_1 = 10$ k$\Omega$, determine $V_S$ such that $I_C$ = 1 mA.（若 $R_1=10$ kΩ，求使 $I_C=1$ mA 的 $V_S$。）
+Consider the circuit below, assuming $\beta$ = 100, $V_T$ = 26 mV, and $I_S = 7 \times 10^{-16}$ A.（考虑下图电路，假设 $\beta=100$、$V_T=26$ mV、$I_S=7\times10^{-16}$ A。）
+
+If $R_1 = 10$ k$\Omega$, determine $V_S$ such that $I_C$ = 1 mA.（若 $R_1=10$ kΩ，求使 $I_C=1$ mA 的 $V_S$。）
 
 ![](Pasted%20image%2020261111234958.png)
 > 图7 Q3 circuit diagram（图 7：第 3 题电路图）
@@ -402,6 +460,7 @@ $$
 $$
 
 As $V_E = 0$ V (emitter connected to ground), $V_{BE} = V_B - V_E = V_B$.（由于 $V_E=0$ V（发射极接地），有 $V_{BE}=V_B-V_E=V_B$。）
+
 Rearranging (5) and substituting $V_B = V_{BE}$ and numerical values, we can determine $V_S$:（重排 (5)，代入 $V_B=V_{BE}$ 及数值，即可求出 $V_S$：）
 
 $$
@@ -420,16 +479,25 @@ What is the transconductance of an npn transistor operating at 350 K and a colle
 - (b) 100 $\mathrm{\mu A}$，
 - (c) 1 mA，
 - (d) 10 mA？
-
 - (e) Repeat for a pnp transistor.（对 pnp 晶体管重复上述计算。）
 
 Solution:（**解答：**）
 
-In a BJT, the transconductance $g_m$ is used to describe the sensitivity of the collector current $I_C$ to changes in the base-emitter voltage $V_{BE}$.（在 BJT 中，跨导 $g_m$ 用于描述集电极电流 $I_C$ 对基极-发射极电压 $V_{BE}$ 变化的敏感程度。） It is defined as:（其定义为：）
+In a BJT, the transconductance $g_m$ is used to describe the sensitivity of the collector current $I_C$ to changes in the base-emitter voltage $V_{BE}$.
+（在 BJT 中，跨导 $g_m$ 用于描述集电极电流 $I_C$ 对基极-发射极电压 $V_{BE}$ 变化的敏感程度。） 
+
+It is defined as:（其定义为：）
 
 $$
 g_m = \frac{I_C}{V_T} \tag{1}
 $$
+
+**$g_m$ 的物理意义（what a larger $g_m$ means）：** $g_m$ 越大，表示同样大小的 $V_{BE}$ 变化能引起更大的 $I_C$ 变化，即电压控制能力越强。
+
+- 小信号电压增益（共射）：$A_v\approx-g_mR_C$，$g_m$ 越大，增益越高；
+- 输入电阻：$r_\pi=\beta/g_m$，$\beta$ 一定时，$g_m$ 越大，$r_\pi$ 越小；
+- 小信号模型：受控电流源为 $g_mv_{be}$，$g_m$ 越大，控制作用越强；
+- 工作点：$g_m=I_C/V_T$，$I_C$ 越大，$g_m$ 越大；温度升高时 $V_T$ 增大，同一 $I_C$ 下 $g_m$ 略降。
 
 The thermal voltage at $T = 350$ K is:（$T=350$ K 时的热电压为：）
 
@@ -474,16 +542,3 @@ $$
 The values of $g_m$ are identical for both npn and pnp transistors, since (1) depends only on the collector current $I_C$ and the thermal voltage $V_T$, and not on transistor polarity.（npn 与 pnp 晶体管的 $g_m$ 相同，因为 (1) 只取决于集电极电流 $I_C$ 与热电压 $V_T$，与晶体管极性无关。）
 
 ---
-
-## 转换说明（非原文内容）
-
-- **转换方式**：源 PDF 由 LaTeX + pdfTeX-1.40.26 生成，10 页，带完整文本层（21 270 字符）。正文句子、段落归属、列表层级用 `page.get_text("text", sort=True)` 校对；公式一律不取文本（分式、根号、上下标在文本层会被拆成碎片），改用 2 倍渲染页图（1224×1584）逐页读图重建，写成 LaTeX。
-- **公式编号**：沿用原 PDF 编号，每道题从 (1) 重新开始；正文里的 “Taking (1) into (2)”、“Rearranging (9)”、“From (14), we can solve…” 等交叉引用保持原样。
-- **公式分组**：原 PDF 中一组多行的推导（如 Q2 的 (16) 五步化简式、(17) 两行代入式、Q3 的 (6) 三行数值代入式、Part A 的三个已知量 (2)）各按一整组编号，此处用 `aligned` 写一个 `$$` 块、只在块末写一次 `\tag`。
-- **插图**：按约定一律只写纯文本占位 `> 图N 图名`（图 1–7），不插入图片文件。其中图 3、图 5、图 6 在原 PDF 中引用的是同一张位图（xref=33，Q2 电路图重复放置三次），仍按原图注分别编号为 3、5、6，未合并、未改号。图 1（NPN/PNP 符号）与图 4（工作区象限图）在原 PDF 中分别是矢量绘图与位图，均只给占位。
-- **彩色提示框**：原 PDF 有 4 个带底色的框——第 1 页 “Essential BJT Equations for Circuit Analysis”（绿）、第 4 页 “Important Note: $V_{BE}$ vs $V_B$”（红）与 “BJT Operating Regions (NPN)”（蓝）、第 8 页 “Engineering Approximation Tip”（绿）。现改用 Obsidian callout 表示：绿色框用 `[!tip]`，红色框用 `[!warning]`，蓝色框用 `[!info]`；框内内容（含公式与表格）整体缩进在 callout 中。
-- **彩色公式**：第 7 页起 Q2 Part A 详细推导里，原 PDF 用蓝/红两种颜色区分“已知量/未知量”（如 (14)(15)(16)(17) 中的 $I_{S1}$、$V_{BE1}$、$V_B$ 等），Markdown 无法保留字体颜色，只保留文字说明 “(blue = known, red = unknown)”，公式本身按原式照录。第 7 页顶部 “Current in = Current out ⇒ $I_X = I_{C1}+I_{C2}$” 两个方框用 `\boxed{}` 还原。
-- **表格**：第 4 页 “Region / Voltage Relationships (NPN)” 四行工作区条件表在原 PDF 中是排版表格（非图片），已转成 Markdown 表格，单元格内的两行文字用 `<br>` 分行。
-- **原文照录**：正文句子、数值、单位一律按原 PDF 照抄，未作订正。两点纯排版差异需要说明——
-  - 原文的撇号用的是弯引号（如 “you’ll”、“Ohm’s law”、“BJT’s”），Markdown 中统一排成直引号（'），文字本身未改。
-  - 第 5 页 Answer 一行经 6 倍放大核对为 “$R_C = 1.47$ k$\Omega$ places both transistors at the edge of active mode ($V_C = V_B$)”，$\mathrm{k\Omega}$ 与 places 之间确有一个空格（文本层曾把它抽成 “kΩplaces”，此处以渲染图为准）。

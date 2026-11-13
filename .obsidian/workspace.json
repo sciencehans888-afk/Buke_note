@@ -64,7 +64,7 @@
             }
           }
         ],
-        "currentTab": 3
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -126,8 +126,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200,
-    "collapsed": true
+    "width": 200
   },
   "right": {
     "id": "0956912a494b3d13",
@@ -244,8 +243,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200,
-    "collapsed": true
+    "width": 344.699951171875
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -260,8 +258,10 @@
       "realclaudian:Open Claudian": false
     }
   },
-  "active": "e23608b0d9f7060d",
+  "active": "a354fbe928ca1da1",
   "lastOpenFiles": [
+    "电路/Quiz/ELEC2104_tut6_solutions.md",
+    "电路/Quiz/Ch-04-场效应三极管及其放大电路.md",
     "电路/Quiz/附件/Pasted image 20261112214509.png",
     "电路/Quiz/附件/Pasted image 20261112214457.png",
     "电路/Quiz/附件/Pasted image 20261112214440.png",
@@ -272,15 +272,12 @@
     "电路/Quiz/附件/Pasted image 20261112214342.png",
     "电路/Quiz/附件/Pasted image 20261112214332.png",
     "电路/Quiz/附件/Pasted image 20261112214318.png",
-    "电路/Quiz/附件/Pasted image 20261112214301.png",
     "电路/Quiz/ELEC2104_tut3_solutions.md",
     "电路/Quiz/Ch-05-双极结型三极管（BJT）及其放大电路.md",
-    "电路/Quiz/ELEC2104_tut6_solutions.md",
     "电路/Quiz/Ch-05-双极结型三极管（BJT）及其放大电路.md.tmp.26720.e4c5a99b7d63",
     "电路/Quiz/模电第3章-二极管及其基本电路.md",
     "电路/Quiz/Ch-05-双极结型三极管（BJT）及其放大电路.md.tmp.9676.d0b0f5f577c4",
     "电路/Quiz/ELEC2104_tut5_solutions.md",
-    "电路/Quiz/Ch-04-场效应三极管及其放大电路.md",
     "电路/教材/电子技术基础模拟部分（第七版） (康华光，张林) (z-library.sk, 1lib.sk, z-lib.sk)/第5章.pdf",
     "电路/教材/电子技术基础模拟部分（第七版） (康华光，张林) (z-library.sk, 1lib.sk, z-lib.sk)/第4章.pdf",
     "电路/教材/电子技术基础模拟部分（第七版） (康华光，张林) (z-library.sk, 1lib.sk, z-lib.sk)/电子技术基础模拟部分（第七版） (康华光，张林) (z-library.sk, 1lib.sk, z-lib.sk)_180-215.pdf",

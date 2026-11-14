@@ -4,11 +4,25 @@
 
 In this course, we're particularly interested in using BJTs as **amplifiers**.（本课程特别关注把 BJT 用作**放大器**。） 
 
-BJTs excel as amplifiers due to their exponential $I_C = I_S e^{V_{BE}/V_T}$ relationship, providing high transconductance ($g_m = I_C/V_T$).（BJT 适合做放大器，是因为其指数关系 $I_C=I_Se^{V_{BE}/V_T}$ 能提供较高的跨导（$g_m=I_C/V_T$）。） 
+BJTs excel as amplifiers due to their exponential $I_C = I_S e^{V_{BE}/V_T}$ relationship, providing high transconductance ($g_m = I_C/V_T$).（BJT 适合做放大器，是因为其指数关系 $I_C=I_Se^{V_{BE}/V_T}$ 有较高的跨导（$g_m=I_C/V_T$）。） 
 
 That is, small changes in base-emitter voltage $V_{BE}$ lead to large changes in collector current $I_C$.（也就是说，基极-发射极电压 $V_{BE}$ 的微小变化会引起集电极电流 $I_C$ 的很大变化。）
 
 ### Small Signal Inputs vs. Large Signal Inputs（小信号输入与大信号输入）
+
+**小信号输入（small-signal input）：** 幅度足够小、使晶体管始终工作在 Q 点附近近似线性区的输入信号。通常满足 $|v_{be}|\ll V_T$（$V_T\approx26$ mV，工程上常取几 mV 以内）。此时 $I_C$–$V_{BE}$ 曲线在 Q 点附近可近似为切线，$i_c=g_mv_{be}$，可用线性小信号模型分析，输出无明显失真。
+
+**符号约定（notation）：** 大写符号 $V_{BE}$、$I_C$、$I_B$ 表示直流（静态）量；小写符号 $v_{be}$、$i_c$、$i_b$ 表示交流小信号量；小写字母配合大写下标（如 $v_{BE}$、$i_C$）表示瞬时总量，即
+
+$$
+v_{BE}=V_{BE}+v_{be},\qquad i_C=I_C+i_c
+$$
+
+因此判据 $|v_{be}|\ll V_T$ 指的是**交流信号的幅度**远小于热电压，而不是直流偏置 $V_{BE}$（约 0.7 V）小于 $V_T$。
+
+**大信号输入（large-signal input）：** 幅度较大、使晶体管在特性曲线的较大范围内摆动（甚至进入截止区或饱和区）的输入信号。此时线性近似不再成立，必须使用指数关系 $I_C=I_Se^{V_{BE}/V_T}$ 或分段模型（理想二极管模型、恒压降模型等）分析，并考虑输出波形的失真。
+
+小信号与大信号之间没有绝对的电压界限，取决于允许的失真程度：一般认为 $|v_{be}|$ 在几 mV 量级时可作小信号处理；接近或超过 $V_T$ 时，非线性失真已不可忽略。
 
 **However**, the very property that makes BJTs good amplifiers (the exponential relationship) also creates a challenge: distortion!（**然而**，正是让 BJT 成为好放大器的这一特性（指数关系）也带来了一个难题：失真！）
 
@@ -23,7 +37,7 @@ Large input signals cause the transistor to operate over a wide range of this cu
 
 Around this point, we can approximate the exponential curve as a straight line (the tangent with slope = $g_m$), allowing for *linear amplification without distortion*.（在该点附近，可把指数曲线近似为一条直线（斜率为 $g_m$ 的切线），从而实现*无失真的线性放大*。）
 
-**Q-point location** - We deliberately position the Q-point on the $I_C$-$V_{BE}$ characteristic curve by selecting an appropriate DC collector current $I_{C,Q}$.（**Q 点的位置**——通过选取合适的直流集电极电流 $I_{C,Q}$，人为地把 Q 点设在 $I_C$–$V_{BE}$ 特性曲线上。）
+**Q-point location** - We deliberately position the Q-point on the $I_C$-$V_{BE}$ characteristic curve by selecting an appropriate DC collector current $I_{C,Q}$.（**Q 点的位置的选择**——选取合适的直流集电极电流 $I_{C,Q}$，人为地把 Q 点设在 $I_C$–$V_{BE}$ 特性曲线上。）
 
 This choice involves trade-offs:（这一选择需要权衡：）
 

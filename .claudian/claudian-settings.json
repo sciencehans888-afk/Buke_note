@@ -59,7 +59,7 @@
         {
           "value": "opus",
           "label": "deepseek-flash",
-          "description": "DeepSeek · deepseek-flash · 1M",
+          "description": "default · deepseek-flash · 1M",
           "resolvedModel": "claude-opus-5",
           "reasoningMetadataResolved": true,
           "supportedEffortLevels": [
@@ -87,7 +87,7 @@
         {
           "value": "sonnet",
           "label": "deepseek-flash",
-          "description": "DeepSeek · deepseek-flash · 1M",
+          "description": "default · deepseek-flash · 1M",
           "resolvedModel": "claude-sonnet-5",
           "reasoningMetadataResolved": true,
           "supportedEffortLevels": [
@@ -101,7 +101,7 @@
         {
           "value": "haiku",
           "label": "deepseek-flash",
-          "description": "DeepSeek · deepseek-flash · 1M",
+          "description": "default · deepseek-flash · 1M",
           "resolvedModel": "claude-haiku-5-5",
           "reasoningMetadataResolved": true,
           "supportedEffortLevels": [
@@ -147,10 +147,75 @@
       },
       "environmentVariables": "",
       "environmentHash": "runtime-input:v1:9e151340f193acdff3da47e5df054a6edfb9cfbc6ea0a5f375b4ccf6feb30fae",
-      "visibleModels": [],
+      "visibleModels": [
+        "deepseek:deepseek-account/deepseek-flash",
+        "deepseek:deepseek-account/deepseek-v4-pro"
+      ],
       "modelAliases": {},
       "preferredReasoningByModel": {},
-      "selectedModels": [],
+      "selectedModels": [
+        {
+          "encodedId": "deepseek:deepseek-account/deepseek-flash",
+          "provider": "deepseek-account",
+          "providerName": "DeepSeek Account",
+          "id": "deepseek-flash",
+          "label": "DeepSeek-V4.1-Flash",
+          "reasoning": [
+            {
+              "id": "off",
+              "name": "Off",
+              "description": "Use for simple tasks that do not need reasoning."
+            },
+            {
+              "id": "low",
+              "name": "Low",
+              "description": "Prefer for routine or latency-sensitive tasks."
+            },
+            {
+              "id": "high",
+              "name": "High",
+              "description": "The default balance for most tasks."
+            },
+            {
+              "id": "max",
+              "name": "Max",
+              "description": "Reserve for the hardest quality-first tasks."
+            }
+          ],
+          "available": true
+        },
+        {
+          "encodedId": "deepseek:deepseek-account/deepseek-v4-pro",
+          "provider": "deepseek-account",
+          "providerName": "DeepSeek Account",
+          "id": "deepseek-v4-pro",
+          "label": "DeepSeek-V4-Pro",
+          "reasoning": [
+            {
+              "id": "off",
+              "name": "Off",
+              "description": "Use for simple tasks that do not need reasoning."
+            },
+            {
+              "id": "low",
+              "name": "Low",
+              "description": "Prefer for routine or latency-sensitive tasks."
+            },
+            {
+              "id": "high",
+              "name": "High",
+              "description": "The default balance for most tasks."
+            },
+            {
+              "id": "max",
+              "name": "Max",
+              "description": "Reserve for the hardest quality-first tasks."
+            }
+          ],
+          "description": "Stronger agentic coding, knowledge, and difficult reasoning; suited to complex or quality-critical tasks at higher cost.",
+          "available": true
+        }
+      ],
       "installationMethodsByHost": {
         "device-b06c993f4a40a1f660b595ee461c17854c9926bfa67c028ba799b6d090355d56": "native-windows",
         "device-ac4915ca45d65068efb1f114674f86091dbe0f22891f1db2c0b6fcd8b810dfa0": "native-windows"

@@ -8,45 +8,17 @@
         "type": "tabs",
         "children": [
           {
-            "id": "d5fdc1348168ebe0",
+            "id": "b2e8f61392c1183c",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "电路/Quiz/Ch-05-双极结型三极管（BJT）及其放大电路.md",
+                "file": "电路/Quiz/ELEC2104_tut9_solutions.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Ch-05-双极结型三极管（BJT）及其放大电路"
-            }
-          },
-          {
-            "id": "461c62b2425fd86e",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "电路/Quiz/ELEC2104_tut5_solutions.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "ELEC2104_tut5_solutions"
-            }
-          },
-          {
-            "id": "4f6789bf36b7233a",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "电路/Quiz/ELEC2104_tut6_solutions.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "ELEC2104_tut6_solutions"
+              "title": "ELEC2104_tut9_solutions"
             }
           }
         ]
@@ -111,7 +83,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200
+    "width": 200,
+    "collapsed": true
   },
   "right": {
     "id": "0956912a494b3d13",
@@ -228,7 +201,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 344.699951171875
+    "width": 200,
+    "collapsed": true
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -243,14 +217,35 @@
       "realclaudian:Open Claudian": false
     }
   },
-  "active": "25b538230d70f59a",
+  "active": "b2e8f61392c1183c",
   "lastOpenFiles": [
-    "电路/教材/ELEC2104_tut9_solutions.pdf",
-    "电路/教材/ELEC2104_tut7_solutions.pdf",
-    "电路/教材/ELEC2104_tut8_solutions (1).pdf",
+    "电路/Quiz/附件/Pasted image 20261114214923.png",
+    "电路/Quiz/附件/Pasted image 20261114214909.png",
+    "电路/Quiz/附件/Pasted image 20261114214852.png",
+    "电路/Quiz/附件/Pasted image 20261114214828.png",
+    "电路/Quiz/附件/Pasted image 20261114214746.png",
+    "电路/Quiz/附件/Pasted image 20261114214731.png",
+    "电路/Quiz/附件/Pasted image 20261114214715.png",
+    "电路/Quiz/附件/Pasted image 20261114214702.png",
+    "电路/Quiz/附件/Pasted image 20261114214635.png",
+    "电路/Quiz/附件/Pasted image 20261114214619.png",
+    "电路/Quiz/附件/Pasted image 20261114214602.png",
+    "电路/Quiz/ELEC2104_tut8_solutions.md",
+    "电路/Quiz/ELEC2104_tut7_solutions.md",
+    "电路/Quiz/ELEC2104_tut9_solutions.md",
+    "电路/Quiz/Ch-05-双极结型三极管（BJT）及其放大电路.md",
+    "电路/Quiz/ELEC2104_tut9_solutions.md.tmp.1416.57cf3e8b31f6",
+    "电路/Quiz/ELEC2104_tut7_solutions.md.tmp.1416.70ba670b7689",
+    "电路/Quiz/ELEC2104_tut9_solutions.md.tmp.1416.071e3d22284f",
+    "电路/Quiz/ELEC2104_tut8_solutions.md.tmp.1416.6be3c8b82a62",
+    "电路/Quiz/ELEC2104_tut7_solutions.md.tmp.1416.65964556a995",
+    "电路/Quiz/ELEC2104_tut8_solutions.md.tmp.1416.5ad1cba5efac",
+    "电路/Quiz/ELEC2104_tut8_solutions.md.tmp.1416.3f74ec7a4ecd",
+    "电路/Quiz/ELEC2104_tut9_solutions.md.tmp.1416.0d3931342a61",
+    "电路/Quiz/ELEC2104_tut9_solutions.md.tmp.1416.a063ee2f610f",
+    "电路/Quiz/ELEC2104_tut8_solutions.md.tmp.1416.e3658f14c935",
     "电路/第4章 非线性电阻电路分析.md",
     "电路/教材/电路原理-逐章节拆分/电路原理 (于歆杰, 朱桂萍, 陆文娟) (z-library.sk, 1lib.sk, z-lib.sk)/电路原理_172-203.md",
-    "电路/Quiz/Ch-05-双极结型三极管（BJT）及其放大电路.md",
     "电路/Quiz/ELEC2104_tut6_solutions.md",
     "电路/Quiz/ELEC2104_tut5_solutions.md",
     "电路/Quiz/ELEC2104_tut4_solutions.md",
@@ -258,24 +253,6 @@
     "电路/Quiz/模电第3章-二极管及其基本电路.md",
     "信号与系统/Quiz对应知识点.md",
     "电路/Quiz/Ch-04-场效应三极管及其放大电路.md",
-    "电路/Quiz/附件/Pasted image 20261112214509.png",
-    "电路/Quiz/附件/Pasted image 20261112214457.png",
-    "电路/Quiz/附件/Pasted image 20261112214440.png",
-    "电路/Quiz/附件/Pasted image 20261112214425.png",
-    "电路/Quiz/附件/Pasted image 20261112214413.png",
-    "电路/Quiz/附件/Pasted image 20261112214406.png",
-    "电路/Quiz/附件/Pasted image 20261112214354.png",
-    "电路/Quiz/附件/Pasted image 20261112214342.png",
-    "电路/Quiz/附件/Pasted image 20261112214332.png",
-    "电路/Quiz/附件/Pasted image 20261112214318.png",
-    "电路/Quiz/Ch-05-双极结型三极管（BJT）及其放大电路.md.tmp.26720.e4c5a99b7d63",
-    "电路/Quiz/Ch-05-双极结型三极管（BJT）及其放大电路.md.tmp.9676.d0b0f5f577c4",
-    "电路/教材/电子技术基础模拟部分（第七版） (康华光，张林) (z-library.sk, 1lib.sk, z-lib.sk)/第5章.pdf",
-    "电路/教材/电子技术基础模拟部分（第七版） (康华光，张林) (z-library.sk, 1lib.sk, z-lib.sk)/第4章.pdf",
-    "电路/教材/电子技术基础模拟部分（第七版） (康华光，张林) (z-library.sk, 1lib.sk, z-lib.sk)/电子技术基础模拟部分（第七版） (康华光，张林) (z-library.sk, 1lib.sk, z-lib.sk)_180-215.pdf",
-    "电路/教材/电子技术基础模拟部分（第七版） (康华光，张林) (z-library.sk, 1lib.sk, z-lib.sk)/电子技术基础模拟部分（第七版） (康华光，张林) (z-library.sk, 1lib.sk, z-lib.sk)_117-179.pdf",
-    "电路/教材/电子技术基础模拟部分（第七版） (康华光，张林) (z-library.sk, 1lib.sk, z-lib.sk)/电子技术基础模拟部分（第七版） (康华光，张林) (z-library.sk, 1lib.sk, z-lib.sk)/电子技术基础模拟部分（第七版） (康华光，张林) (z-library.sk, 1lib.sk, z-lib.sk)_180-215.pdf",
-    "电路/教材/电子技术基础模拟部分（第七版） (康华光，张林) (z-library.sk, 1lib.sk, z-lib.sk)/电子技术基础模拟部分（第七版） (康华光，张林) (z-library.sk, 1lib.sk, z-lib.sk)/电子技术基础模拟部分（第七版） (康华光，张林) (z-library.sk, 1lib.sk, z-lib.sk)_117-179.pdf",
     "电路/第2章 简单电阻电路分析.md",
     "半导体的基本知识.md",
     "电路/模电第3章-二极管及其基本电路.md",
@@ -287,9 +264,6 @@
     "信号与系统/quiz2-practice-feedback.md",
     "电路/附录A-E与索引.md",
     "电路/第6章 正弦激励下动态电路的稳态分析.md",
-    "电路/第5章 动态电路的时域分析.md",
-    "电路/第3章 线性电阻电路的分析方法和电路定理.md",
-    "电路/目录.md",
-    "电路/教材/电路原理-逐章节拆分/电路原理 (于歆杰, 朱桂萍, 陆文娟) (z-library.sk, 1lib.sk, z-lib.sk)/电路原理_44-116.md"
+    "电路/第5章 动态电路的时域分析.md"
   ]
 }

@@ -2,5 +2,6 @@
   "cssTheme": "Blue Topaz",
   "interfaceFontFamily": "黑体",
   "monospaceFontFamily": "Times New Roman",
-  "enabledCssSnippets": []
+  "enabledCssSnippets": [],
+  "showRibbon": true
 }

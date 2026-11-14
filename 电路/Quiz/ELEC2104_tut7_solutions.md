@@ -39,6 +39,7 @@ Around this point, we can approximate the exponential curve as a straight line (
 
 **Q-point location** - We deliberately position the Q-point on the $I_C$-$V_{BE}$ characteristic curve by selecting an appropriate DC collector current $I_{C,Q}$.（**Q 点的位置的选择**——选取合适的直流集电极电流 $I_{C,Q}$，人为地把 Q 点设在 $I_C$–$V_{BE}$ 特性曲线上。）
 
+
 This choice involves trade-offs:（这一选择需要权衡：）
 
 - **Higher** $I_{C,Q}$ → Higher $g_m$ → Better gain, but more power consumption（**较高的** $I_{C,Q}$ → 较大的 $g_m$ → 增益更好，但功耗更大）

@@ -211,6 +211,15 @@ $$g_m=\left.\frac{\partial i_C}{\partial v_{BE}}\right|_{Q}=\frac{i_c}{v_{be}}=\
 
 理想指数模型 $I_C=I_Se^{V_{BE}/V_T}$ 中 $I_C$ 与 $V_{CE}$ 无关，$\partial i_C/\partial v_{CE}=0$，于是 $r_o=\infty$，输出是理想受控电流源，输出特性是水平线。
 
+Tu6中，我们遇到的公式是这个
+$$
+ I_C = I_S\left[\exp\left(\frac{V_{BE}}{V_T}\right)-1\right] \approx I_S\exp\left(\frac{V_{BE}}{V_T}\right) \quad \text{when } V_{BE} \gg V_T
+ $$
+
+实际中，由于基区宽度调制效应，$I_C$ 还随 $V_{CE}$ 增大而略增。
+
+**基区宽度调制效应**：$V_{CE}$ 增大 → 集电结反偏加深 → 集电结耗尽区向基区扩展 → 中性基区的有效宽度变窄。基区变窄后，同样的 $V_{BE}$ 下到达集电极的载流子增多，所以 $I_C$ 略增，输出特性轻微上翘。
+
 实际器件有厄利效应：
 
 $$I_C=I_Se^{V_{BE}/V_T}\left(1+\frac{V_{CE}}{V_A}\right)$$
@@ -233,8 +242,6 @@ $V_A$ 越小，特性越陡，$r_o$ 越小。
 > - 所有实际 BJT 都存在厄利效应，只是 $V_A$ 大小不同（小功率管约几十至几百伏）。
 > - $V_A$ 越大，输出特性越平，$r_o=V_A/I_{C,Q}$ 越大，越接近理想受控电流源（输出电流只由控制量决定，**内部输出电阻为无穷大**）；$V_A=\infty$ 只是理想化处理，本课程除特别说明外都这样取。
 
-
-
 ---
 
 **5. 方程组代入与对应关系**
@@ -249,7 +256,7 @@ di_C=\left.\dfrac{\partial i_C}{\partial i_B}\right|_{V_{CEQ}}di_B+\left.\dfrac{
 把四个偏导记成 H 参数：
 $$h_{ie}=\left.\frac{\partial v_{BE}}{\partial i_B}\right|_{V_{CEQ}},\qquad h_{re}=\left.\frac{\partial v_{BE}}{\partial v_{CE}}\right|_{I_{BQ}}$$
 $$h_{fe}=\left.\frac{\partial i_C}{\partial i_B}\right|_{V_{CEQ}},\qquad h_{oe}=\left.\frac{\partial i_C}{\partial v_{CE}}\right|_{I_{BQ}}$$
-代入后：
+代入后：、
 
 $$\begin{cases}
 dv_{BE}=h_{ie}di_B+h_{re}dv_{CE}\\

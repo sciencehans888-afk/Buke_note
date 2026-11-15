@@ -142,13 +142,15 @@ $$di_C=\left.\frac{\partial i_C}{\partial i_B}\right|_{V_{CEQ}}di_B+\left.\frac{
 
 $$v_{be}=h_{ie}i_b+h_{re}v_{ce},\qquad i_c=h_{fe}i_b+h_{oe}v_{ce}$$
 
-这两个方程分别描述输入口和输出口，所以等效电路自然分成输入回路、输出回路两块。**之所以看起来「中间隔开」，是因为方程本来就是按端口写的**：共射时发射极 E 是两个回路的公共端（参考点），两回路之间只通过耦合项 $h_{re}v_{ce}$ 和受控项 $h_{fe}i_b$ 联系，没有直接的导线连接。
+标准来说，直接由方程组，等效电路应该是这样子的
+![](Pasted%20image%2020261115182309.png)
+
 
 ---
 
 **4. 四个 H 参数：定义、计算、图中位置**
 
-四个系数是 Q 点处的四个偏导；把另一个自变量置 0（对应端口交流短路或开路），偏导就成为可测量之比。每个系数对应图 2 中的一个位置。
+四个系数是 Q 点处的四个偏导；把另一个自变量置 0（对应端口交流短路或开路），偏导就成为可测量之比。每个系数对应图  中的一个位置。
 
 | 参数 | 定义式 | 测试条件 | 含义 | 量纲 | 量级 |
 |---|---|---|---|---|---|
@@ -156,6 +158,14 @@ $$v_{be}=h_{ie}i_b+h_{re}v_{ce},\qquad i_c=h_{fe}i_b+h_{oe}v_{ce}$$
 | $h_{re}$ | $\partial v_{BE}/\partial v_{CE}$ | 输入交流开路 $i_b=0$ | 反向电压传输比 | 无量纲 | $10^{-3}\sim10^{-4}$ |
 | $h_{fe}$ | $\partial i_C/\partial i_B$ | 输出交流短路 $v_{ce}=0$ | 正向电流放大系数 | 无量纲 | $10^{2}$ |
 | $h_{oe}$ | $\partial i_C/\partial v_{CE}$ | 输入交流开路 $i_b=0$ | 输出电导 | S | $10^{-5}$ |
+
+首先，回顾一下什么是输入电阻和输出电阻？
+
+- **输入电阻 $R_{in}$**：从输入端看进去的等效电阻，$R_{in}=\dfrac{v_{in}}{i_{in}}$。计算时把端口内所有独立源置零（电压源短路、电流源开路），受控源保留，再在输入端加测试源量取 $v/i$。
+- **输出电阻 $R_{out}$**：从输出端看进去的等效电阻，$R_{out}=\dfrac{v_t}{i_t}=\dfrac{v_{oc}}{i_{sc}}$。计算时先断开负载，把独立源置零（放大器要保留信号源内阻），受控源保留，再在输出端加测试源量取 $v/i$。
+- **区别**：看入的端口不同，输出电阻要求负载断开；两者都只把**独立源**置零，**受控源不能置零**。
+
+
 
 **(1) $h_{ie}$：输入电阻 $r_\pi$（B–E 之间）**
 
@@ -166,7 +176,14 @@ $$h_{ie}=r_{be}=r_{bb'}+(1+\beta)(r_e+r_e')\approx200\ \Omega+(1+\beta)\frac{26\
 
 - **符号说明**：$r_{bb'}$ 为基区体电阻；$r_e$ 为发射结动态电阻，$r_e=V_T/I_{EQ}$；$r_e'$ 为发射区体电阻，很小，通常忽略；$I_{EQ}$ 为发射极静态电流；$V_T$ 为热电压，室温约 $26$ mV。
 
-- **等效形式**：$r_\pi=\dfrac{v_{be}}{i_b}=\dfrac{\beta_0}{g_m}$。
+- **推导**：定义当前系数的符号为$r_\pi$
+$$r_\pi=\left.\dfrac{\partial v_{BE}}{\partial i_B}\right|_{V_{CEQ}}=\dfrac{v_{be}}{i_b}=\dfrac{\beta_0}{g_m}$$
+其中 $\beta_0$ 与 $g_m$ 的定义式：
+
+$$\beta_0=\left.\frac{\partial i_C}{\partial i_B}\right|_{Q}=\frac{i_c}{i_b}\quad(\text{共射电流放大系数})$$
+$$g_m=\left.\frac{\partial i_C}{\partial v_{BE}}\right|_{Q}=\frac{i_c}{v_{be}}=\frac{I_{C,Q}}{V_T}\quad(\text{跨导})$$
+
+- **推导联系**：由 $i_b=i_c/\beta_0$、$i_c=g_mv_{be}$ 可得 $i_b=\dfrac{g_mv_{be}}{\beta_0}$，故 $r_\pi=\dfrac{v_{be}}{i_b}=\dfrac{\beta_0}{g_m}$。
 - **位置**：B–E 之间的电阻。
 
 **(2) $h_{re}$：反向电压传输比（输入口受控电压源）**
@@ -188,45 +205,74 @@ $$h_{ie}=r_{be}=r_{bb'}+(1+\beta)(r_e+r_e')\approx200\ \Omega+(1+\beta)\frac{26\
 **(4) $h_{oe}$：输出电导 $1/r_o$（C–E 之间）**
 
 - **定义**：$h_{oe}=\left.\dfrac{\partial i_C}{\partial v_{CE}}\right|_{I_{BQ}}$，输入端交流开路。
-- **计算**：$h_{oe}=\dfrac{I_{C,Q}}{V_A}=\dfrac{1}{r_o}$；理想 $V_A=\infty$ 时 $r_o=\infty$、$h_{oe}=0$。
 - **位置**：C–E 之间与受控源并联的电阻 $r_o=1/h_{oe}$。
 
-**推导与 $V_A$ 的来源**：
+**推导**：
 
 理想指数模型 $I_C=I_Se^{V_{BE}/V_T}$ 中 $I_C$ 与 $V_{CE}$ 无关，$\partial i_C/\partial v_{CE}=0$，于是 $r_o=\infty$，输出是理想受控电流源，输出特性是水平线。
 
 实际器件有厄利效应：
 
 $$I_C=I_Se^{V_{BE}/V_T}\left(1+\frac{V_{CE}}{V_A}\right)$$
-
-> [!note] 厄利电压 $V_A$（Early voltage）
-> - **定义**：把共射输出特性曲线在放大区的近似直线反向延长，与 $v_{CE}$ 轴相交于 $v_{CE}=-V_A$；$V_A$ 就是该截距的绝对值。
-> - **物理来源**：$v_{CE}$ 增大 → 集电结耗尽区变宽 → 基区有效宽度变窄（基区宽度调制）→ 同样的 $v_{BE}$ 下 $I_C$ 略有增加。
-> - **数学表现**：$I_C=I_Se^{v_{BE}/V_T}\left(1+\dfrac{v_{CE}}{V_A}\right)$，输出特性的斜率 $\dfrac{\partial I_C}{\partial v_{CE}}\approx\dfrac{I_C}{V_A}$。
-> - **是否所有实际器件都有**：是。所有实际 BJT 都存在厄利效应，只是 $V_A$ 大小不同（小功率管约几十至几百伏）。$V_A$ 越大，输出特性越平，$r_o=V_A/I_C$ 越大，越接近理想受控电流源；$V_A=\infty$ 只是理想化处理，本课程除特别说明外都这样取。
-
 于是
 
-$$\left.\frac{\partial i_C}{\partial v_{CE}}\right|_Q=\frac{I_Se^{V_{BE}/V_T}}{V_A}=\frac{I_C}{V_A+V_{CE}}\approx\frac{I_C}{V_A}$$
+$$h_{oe}=\left.\frac{\partial I_C}{\partial V_{CE}}\right|_Q=\frac{I_Se^{V_{BE,Q}/V_T}}{V_A}=\frac{I_{C,Q}}{V_A+V_{CE,Q}}\approx\frac{I_{C,Q}}{V_A}=\dfrac{1}{r_o}$$
 
-$$r_o=\left(\left.\frac{\partial i_C}{\partial v_{CE}}\right|_Q\right)^{-1}\approx\frac{V_A}{I_{C,Q}}$$
+$$r_o=\left(\left.\frac{\partial I_C}{\partial V_{CE}}\right|_Q\right)^{-1}\approx\frac{V_A}{I_{C,Q}}$$
 
-$V_A\to\infty$ 时输出特性变平，$r_o\to\infty$；$V_A$ 越小，特性越陡，$r_o$ 越小。本课程默认 $V_A=\infty$，此时 $r_o=\infty$（开路），图 2 中省略。
+$V_A\to\infty$ 时输出特性变平，$r_o\to\infty$
+$V_A$ 越小，特性越陡，$r_o$ 越小。
 
-**判断电阻还是受控源**：看这一项由谁决定。本支路的量决定本支路的量 → 无源元件（$v=Ri$ 画电阻，$i=Gv$ 画电导）；另一支路的量决定本支路的量 → 受控源（VCVS 或 CCCS）。$h_{ie}i_b$、$h_{oe}v_{ce}$ 属于前者，$h_{re}v_{ce}$、$h_{fe}i_b$ 属于后者。
 
-四个参数都只在放大区、小信号下成立，都描述交流变化量、不能用来求 Q 点，数值都与 Q 点有关；量纲不同，所以叫「混合」参数。
+> [!note] 厄利电压 $V_A$（Early voltage）
+> - **定义**：把共射输出特性曲线（$I_C$–$V_{CE}$）在放大区的近似直线反向延长，与 $V_{CE}$ 轴相交于 $V_{CE}=-V_A$；$V_A$ 就是该截距的绝对值。
+> ![](Pasted%20image%2020261112213629.png)
+> - **物理来源**：$V_{CE}$ 增大 → 集电结耗尽区变宽 → 基区有效宽度变窄（基区宽度调制）→ 同样的 $V_{BE}$ 下 $I_C$ 略有增加。
+> - **数学表现**：$I_C=I_Se^{V_{BE}/V_T}\left(1+\dfrac{V_{CE}}{V_A}\right)$，输出特性的斜率 $\dfrac{\partial I_C}{\partial V_{CE}}\approx\dfrac{I_{C,Q}}{V_A}$。
+> - **符号说明**：此处有两个不同的集电极电流——$I_C$ 是输出特性曲线上的电流（把 $V_{BE}$、$V_{CE}$ 当作变量时的总量）；$I_{C,Q}$ 是 Q 点的静态电流（一个固定数）。另外 $I_S$ 为反向饱和电流；$V_T$ 为热电压，室温约 $26$ mV；$V_A$ 为厄利电压；$r_o$ 为小信号输出电阻。
+> - 所有实际 BJT 都存在厄利效应，只是 $V_A$ 大小不同（小功率管约几十至几百伏）。
+> - $V_A$ 越大，输出特性越平，$r_o=V_A/I_{C,Q}$ 越大，越接近理想受控电流源（输出电流只由控制量决定，**内部输出电阻为无穷大**）；$V_A=\infty$ 只是理想化处理，本课程除特别说明外都这样取。
+
+
 
 ---
 
-**5. 对应关系**
+**5. 方程组代入与对应关系**
 
-| 推导量 | H 参数 | 图中元件 |
-|---|---|---|
-| $v_{be}=r_\pi i_b$ | $r_\pi=h_{ie}$ | B–E 间电阻 |
-| $i_c=g_mv_{be}$ | $h_{fe}=\beta_0$ | 受控电流源 $g_mv_{be}$ |
-| $r_o$ | $r_o=1/h_{oe}$ | C–E 间电阻 |
-| 输入口受控电压源 | $h_{re}$（忽略） | 一般不画 |
+我们在回到原始的全微分方程组：
+
+$$\begin{cases}
+dv_{BE}=\left.\dfrac{\partial v_{BE}}{\partial i_B}\right|_{V_{CEQ}}di_B+\left.\dfrac{\partial v_{BE}}{\partial v_{CE}}\right|_{I_{BQ}}dv_{CE}\\
+di_C=\left.\dfrac{\partial i_C}{\partial i_B}\right|_{V_{CEQ}}di_B+\left.\dfrac{\partial i_C}{\partial v_{CE}}\right|_{I_{BQ}}dv_{CE}
+\end{cases}$$
+
+把四个偏导记成 H 参数：
+$$h_{ie}=\left.\frac{\partial v_{BE}}{\partial i_B}\right|_{V_{CEQ}},\qquad h_{re}=\left.\frac{\partial v_{BE}}{\partial v_{CE}}\right|_{I_{BQ}}$$
+$$h_{fe}=\left.\frac{\partial i_C}{\partial i_B}\right|_{V_{CEQ}},\qquad h_{oe}=\left.\frac{\partial i_C}{\partial v_{CE}}\right|_{I_{BQ}}$$
+代入后：
+
+$$\begin{cases}
+dv_{BE}=h_{ie}di_B+h_{re}dv_{CE}\\
+di_C=h_{fe}di_B+h_{oe}dv_{CE}
+\end{cases}$$
+
+再把微分换写成小信号量（$dv_{BE}\to v_{be}$，$di_B\to i_b$，$dv_{CE}\to v_{ce}$，$di_C\to i_c$）：
+
+$$\begin{cases}
+v_{be}=h_{ie}i_b+h_{re}v_{ce}\\
+i_c=h_{fe}i_b+h_{oe}v_{ce}
+\end{cases}$$
+
+再把上面计算的系数代入：
+
+$$\begin{cases}
+v_{be}=r_\pi\,i_b+h_{re}\,v_{ce}\\
+i_c=\beta_0\,i_b+\dfrac{I_{C,Q}}{V_A}\,v_{ce}
+\end{cases}$$
+
+其中 $r_\pi=h_{ie}=\dfrac{\beta_0}{g_m}$，$\beta_0=h_{fe}$，$\dfrac{I_{C,Q}}{V_A}=h_{oe}=\dfrac{1}{r_o}$；
+
+又因 $i_b=\dfrac{v_{be}}{r_\pi}$，第二式可写成 $i_c=g_mv_{be}+\dfrac{v_{ce}}{r_o}$。
 
 ---
 

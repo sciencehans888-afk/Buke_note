@@ -1196,7 +1196,8 @@ $$
 I_C = \frac{V_{eq} - V_{BE}}{R_{eq} + (1 + \beta_F)R_E} \cdot \beta_F \tag{30}
 $$
 
-Substituting the known values, we can get the expression of $V_{BE}$ as a function of $I_C$:（代入已知值，可得 $V_{BE}$ 关于 $I_C$ 的表达式：）
+Substituting the known values, we can get the expression of $V_{BE}$ as a function of $I_C$:
+（代入已知值，可得 $V_{BE}$ 关于 $I_C$ 的表达式：）
 
 $$
 I_C = \frac{3.46 - V_{BE}}{170.654\ \text{k}\Omega} \cdot 50 = \frac{3.46 - V_{BE}}{34130} \tag{31}
@@ -1206,7 +1207,11 @@ $$
 V_{BE} = 3.46 - 34130 I_C \tag{32}
 $$
 
-To solve the non-linear equations (29) and (32), we construct the following function.（为求解非线性方程 (29) 与 (32)，构造如下函数。）
+
+>联立式29、32，这是一个非线性方程，所以可以与迭代法求解
+
+To solve the non-linear equations (29) and (32), we construct the following function.
+（为求解非线性方程 (29) 与 (32)，构造如下函数。）
 
 We want to find the optimal value of $I_C$ to make $f(I_C) = 0$（求使 $f(I_C)=0$ 的 $I_C$）
 
@@ -1246,11 +1251,43 @@ $$
 
 >求$\beta_F$与$V_{CE}$（联立）
 
+不计厄利效应时，电流增益是常数 $\beta_{F0}$，与 $V_{CE}$ 无关：
+
+$$\beta_F=\beta_{F0}=\frac{I_C}{I_B},\qquad I_C=\beta_{F0}I_B$$
+
 Including the Early effect, the forward current gain is expressed as:（计入厄利效应后，正向电流增益为：）
 
 $$
 \beta_F = \beta_{F0}\left(1 + \frac{V_{CE}}{V_A}\right) = 50 \cdot \left(1 + \frac{V_{CE}}{60}\right) \tag{38}
 $$
+
+---
+
+>推导过程：
+
+理想情况下（不计厄利效应）：
+
+$$I_C=I_Se^{V_{BE}/V_T},\qquad I_B=\frac{I_S}{\beta_{F0}}e^{V_{BE}/V_T}$$
+
+两式相除，指数项抵消：
+
+$$\beta_F=\frac{I_C}{I_B}=\beta_{F0}$$
+
+计入厄利效应后，只有 $I_C$ 多了 $(1+V_{CE}/V_A)$ 这个因子：
+
+$$I_C=I_Se^{V_{BE}/V_T}\left(1+\frac{V_{CE}}{V_A}\right)$$
+
+而 $I_B$ 几乎不变——它由 $V_{BE}$ 和发射结注入决定，受 $V_{CE}$ 影响很小，仍为
+
+$$I_B=\frac{I_S}{\beta_{F0}}e^{V_{BE}/V_T}$$
+
+再相除：
+
+$$\beta_F=\frac{I_C}{I_B}=\frac{I_Se^{V_{BE}/V_T}\left(1+\dfrac{V_{CE}}{V_A}\right)}{\dfrac{I_S}{\beta_{F0}}e^{V_{BE}/V_T}}=\beta_{F0}\left(1+\frac{V_{CE}}{V_A}\right)$$
+
+即 $\beta_{F0}$ 是 $V_{CE}=0$ 时的电流增益，$V_{CE}>0$ 时按 $1+V_{CE}/V_A$ 线性增大。
+
+---
 
 The collector–emitter voltage drop can be written below using KVL.（用 KVL 可写出集电极-发射极压降。）
 
@@ -1290,7 +1327,9 @@ $$
 
 An npn transistor is operating in the forward-active region with a base current of 3 $\mu$A.（一个 npn 晶体管工作在放大区，基极电流为 3 $\mu$A。）
 
-It is found that $I_C = 240$ $\mu$A for $V_{CE} = 5$ V and $I_C = 265$ $\mu$A for $V_{CE} = 10$ V.（测得 $V_{CE}=5$ V 时 $I_C=240$ $\mu$A，$V_{CE}=10$ V 时 $I_C=265$ $\mu$A。）
+It is found that $I_C = 240$ $\mu$A for $V_{CE} = 5$ V and $I_C = 265$ $\mu$A for $V_{CE} = 10$ V.
+-  $V_{CE}=5$ V 时 $I_C=240$ $\mu$A
+- $V_{CE}=10$ V 时 $I_C=265$ $\mu$A。
 
 What are the values of $\beta_{F0}$ and $V_A$ for this transistor?（求该晶体管的 $\beta_{F0}$ 与 $V_A$。）
 
@@ -1346,10 +1385,3 @@ $$
 \beta_{F0} = 71.7, \quad V_A = 43\ \text{V}. \tag{10}
 $$
 
-## 转换说明（非原文内容）
-
-- 本文由 PDF 文本层与页面渲染图逐页核对后转录；公式一律改写为 LaTeX，`\tag` 沿用原文的式号（原文在第 1、2、3 题内各自从 (1) 重新编号）。
-- 所有插图（含手绘的等效电路、小信号模型、器件符号）一律以纯文本占位表示，未插入图像本体；原书有编号的图写作 `> 图1 …`，原书未编号的插图写作 `> 图Q1-1 …` 这样的题号式编号。
-- 提示框（Key Insight / Important / Critical Assumption / Simpler Iteration Method 等）改用 Obsidian callout 呈现：Critical Assumption 与 Important 用 `[!warning]`，Simpler Iteration Method 用 `[!tip]`，框内保留原有粗体小标题。
-- 原文个别笔误照录未改：第 2 题 (6) 式末尾多写了一个 `I_B =`；第 2 题 (5) 式处写“Substituting (2) into (1)”，按上下文应为 (4) 代入 (3)；第 3 题写“Taking the two sets of values … into (5)”“Solving (6) and (7)”，按上下文应为 (7)/(8)(9)。
-- 原书页眉统一为“ELEC2104/9704 Tutorial 7 Solutions (2025)”，只在文首保留一次。

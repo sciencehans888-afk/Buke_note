@@ -58,8 +58,8 @@
         {
           "value": "opus",
           "label": "deepseek-flash",
-          "description": "DeepSeek · deepseek-flash · 1M",
-          "resolvedModel": "claude-opus-5",
+          "description": "Custom Opus model (1M context)",
+          "resolvedModel": "deepseek-flash[1M]",
           "reasoningMetadataResolved": true,
           "supportedEffortLevels": [
             "low",
@@ -72,8 +72,8 @@
         {
           "value": "fable",
           "label": "deepseek-flash",
-          "description": "DeepSeek · deepseek-flash · 1M",
-          "resolvedModel": "claude-fable-5",
+          "description": "Custom Fable model",
+          "resolvedModel": "deepseek-flash[1M]",
           "reasoningMetadataResolved": true,
           "supportedEffortLevels": [
             "low",
@@ -86,8 +86,8 @@
         {
           "value": "sonnet",
           "label": "deepseek-flash",
-          "description": "DeepSeek · deepseek-flash · 1M",
-          "resolvedModel": "claude-sonnet-5",
+          "description": "Custom Sonnet model (1M context)",
+          "resolvedModel": "deepseek-flash[1M]",
           "reasoningMetadataResolved": true,
           "supportedEffortLevels": [
             "low",
@@ -100,8 +100,8 @@
         {
           "value": "haiku",
           "label": "deepseek-flash",
-          "description": "DeepSeek · deepseek-flash · 1M",
-          "resolvedModel": "claude-haiku-5-5",
+          "description": "Custom Haiku model",
+          "resolvedModel": "deepseek-flash[1M]",
           "reasoningMetadataResolved": true,
           "supportedEffortLevels": [
             "low",

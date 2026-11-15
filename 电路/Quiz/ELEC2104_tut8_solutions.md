@@ -21,6 +21,11 @@ Find the Q-point for the circuit in the figure below for（求下图电路的 Q 
 
 **Solution:**（**解答：**）
 
+> [!note] 本题假设
+> 题目未给出 $V_{BE}$，按教材惯例取导通电压 $V_{BE}=0.7$ V。第 1 题的所有部分都沿用这个值。
+
+>求$I_C$的表达式
+
 First, we write the emitter current as the sum of base and collector currents.（首先，把发射极电流写成基极电流与集电极电流之和。）
 
 Also, from KCL, we notice $I_X$ is also the sum of base and collector currents.（另外，由 KCL 可知 $I_X$ 也是基极电流与集电极电流之和。）
@@ -56,10 +61,12 @@ Finally, we write the expression for the collector current is a function of the 
 We can find the collector current is a function of $\beta_F$, which is useful for part A, B, C, D.（可以看出集电极电流是 $\beta_F$ 的函数，这对 A、B、C、D 部分都适用。）
 
 $$
-I_C = \beta_F I_B = \frac{\beta(V_{CC} - V_{BE})}{1500(1 + \beta_F) + 10\,000} \tag{6}
+I_C = \beta_F I_B = \frac{\beta_F(V_{CC} - V_{BE})}{1500(1 + \beta_F) + 10\,000} \tag{6}
 $$
 
 ### 1.1 Part A（A 部分）
+
+>求$I_C$
 
 Substitute $\beta_F = 40$ into the collector current expression:（把 $\beta_F=40$ 代入集电极电流表达式：）
 
@@ -67,15 +74,19 @@ $$
 I_C = \frac{\beta_F(V_{CC} - V_{BE})}{1500(1 + \beta_F) + 10\,000} = \frac{40(9 - 0.7)}{1500(1 + 40) + 10\,000} = 4.64\ \text{mA} \tag{7}
 $$
 
+>求$V_{CE}$
+
 Next, compute the collector–emitter voltage.（接下来计算集电极-发射极电压。）
 
 Since $V_E = 0$, we have:（由于 $V_E=0$，有：）
 
 $$
-V_{CE} = V_C - V_E = V_C = 9 - 1500 I_X\left(1 + \frac{1}{\beta_F}\right) = 1.87\ \text{V} \tag{8}
+V_{CE} = V_C - V_E = V_C = 9 - 1500 I_X = 9 - 1500 I_C\left(1 + \frac{1}{\beta_F}\right) = 1.87\ \text{V} \tag{8}
 $$
 
 Where we used KVL to get $V_C = V_{CC} - 1.5$ k$\Omega \cdot I_X$ and (1) and (3) give $I_X = I_E = I_C\left(1 + \frac{1}{\beta_F}\right)$.（其中用 KVL 得 $V_C=V_{CC}-1.5$ kΩ$\cdot I_X$，并由 (1)、(3) 得 $I_X=I_E=I_C\left(1+\frac{1}{\beta_F}\right)$。）
+
+>记录Q点
 
 Therefore, the Q-point of the transistor is:（因此，该晶体管的 Q 点为：）
 
@@ -83,9 +94,13 @@ $$
 Q = (I_C, V_{CE}) = (4.64\ \text{mA}, 1.87\ \text{V}) \tag{9}
 $$
 
+---
+
 ### 1.2 Part B（B 部分）
 
 Take $\beta_F = 120$.（取 $\beta_F=120$。）
+
+>求$I_C$
 
 The collector current is（集电极电流为）
 
@@ -93,11 +108,15 @@ $$
 I_C = \frac{\beta_F(V_{CC} - V_{BE})}{1500(1 + \beta_F) + 10\,000} = \frac{120(9 - 0.7)}{1500(1 + 120) + 10\,000} = 5.2\ \text{mA} \tag{10}
 $$
 
+>求$V_{CE}$
+
 The collector–emitter voltage is（集电极-发射极电压为）
 
 $$
 V_{CE} = 9 - 1500 I_C\left(1 + \frac{1}{\beta_F}\right) - 0 = 1.14\ \text{V} \tag{11}
 $$
+
+>记录Q点
 
 Thus, the Q-point is（因此，Q 点为）
 
@@ -105,9 +124,13 @@ $$
 Q = (I_C, V_{CE}) = (5.2\ \text{mA}, 1.14\ \text{V}) \tag{12}
 $$
 
+---
+
 ### 1.3 Part C（C 部分）
 
 Take $\beta_F = 250$.（取 $\beta_F=250$。）
+
+>求$I_C$
 
 The collector current is（集电极电流为）
 
@@ -115,11 +138,15 @@ $$
 I_C = \frac{250(9 - 0.7)}{1500(1 + 250) + 10\,000} = 5.37\ \text{mA} \tag{13}
 $$
 
+>求$V_{CE}$
+
 The collector–emitter voltage is（集电极-发射极电压为）
 
 $$
 V_{CE} = 9 - 1500 I_C\left(1 + \frac{1}{\beta_F}\right) - 0 = 0.91\ \text{V} \tag{14}
 $$
+
+>记录Q点
 
 Thus, the Q-point is（因此，Q 点为）
 
@@ -127,15 +154,21 @@ $$
 Q = (I_C, V_{CE}) = (5.37\ \text{mA}, 0.91\ \text{V}) \tag{15}
 $$
 
+---
+
 ### 1.4 Part D（D 部分）
 
 Take $\beta_F = \infty$.（取 $\beta_F=\infty$。）
 
+>求$I_C$
+
 Then（于是）
 
 $$
-I_C = \frac{\infty(9 - 0.7)}{1500(1 + \infty) + 10\,000} = \frac{9 - 0.7}{1500} = 5.53\ \text{mA} \tag{16}
+I_C=\lim_{\beta_F\to\infty}\frac{\beta_F(V_{CC}-V_{BE})}{1500(1+\beta_F)+10\,000}=\frac{V_{CC}-V_{BE}}{1500}=\frac{9-0.7}{1500}=5.53\ \text{mA} \tag{16}
 $$
+
+>求$V_{CE}$
 
 The collector–emitter voltage is（集电极-发射极电压为）
 
@@ -143,13 +176,19 @@ $$
 V_{CE} = 9 - 1500 I_C\left(1 + \frac{1}{\infty}\right) - 0 = 0.705\ \text{V} \tag{17}
 $$
 
+>记录Q点
+
 Thus, the Q-point is（因此，Q 点为）
 
 $$
 Q = (I_C, V_{CE}) = (5.53\ \text{mA}, 0.705\ \text{V}) \tag{18}
 $$
 
+---
+
 ### 1.5 Part E（E 部分）
+
+>求$V_{BE}$的两个表达式
 
 The collector current is expressed by the exponential model:（集电极电流用指数模型表示：）
 
@@ -181,6 +220,8 @@ $$
 f'(I_C) = \frac{V_T}{I_C} + 1500\left(1 + \frac{1}{\beta_F}\right) + 10\,000 \cdot \frac{1}{\beta_F} \tag{23}
 $$
 
+>求$I_C$（牛顿迭代）
+
 Newton's iteration formula is（牛顿迭代公式为）
 
 $$
@@ -193,25 +234,35 @@ $$
 I_C \approx 4.60\ \text{mA} \tag{25}
 $$
 
+>记录Q点
+
 Thus, the Q-point is（因此，Q 点为）
 
 $$
 Q = (I_C, V_{CE}) = (4.6\ \text{mA}, 1.92\ \text{V}) \tag{26}
 $$
 
+---
+
 ### 1.6 Part F（F 部分）
 
-Using the same working procedure as part E, we take $\beta_F = 250$, we iterate the equation (45) for several iterations than we can get（采用与 E 部分相同的步骤，取 $\beta_F=250$，对方程 (45) 迭代若干次可得）
+>求$I_C$（迭代）
+
+Using the same working procedure as part E, we take $\beta_F = 250$, we iterate the equation (24) for several iterations than we can get（采用与 E 部分相同的步骤，取 $\beta_F=250$，对方程 (24) 迭代若干次可得）
 
 $$
 I_C \approx 5.32\ \text{mA} \tag{27}
 $$
+
+>记录Q点
 
 Thus, the Q-point is（因此，Q 点为）
 
 $$
 Q = (I_C, V_{CE}) = (5.32\ \text{mA}, 0.987\ \text{V}) \tag{28}
 $$
+
+---
 
 ## 2 Question 2（第 2 题）
 
@@ -226,7 +277,10 @@ What is the Q-point if the current gain of the transistor is actually 40?（若�
 
 ### 2.1 Part A（A 部分）
 
-**Note that PNP type BJT! The current directions and voltage polarities are flipped (vs. NPN BJT).**（**注意这是 PNP 型 BJT！电流方向与电压极性与 NPN 相反。**）
+> [!warning] 注意：PNP 型 BJT
+> 电流方向与电压极性都与 NPN 相反：$I_E$ 流入发射极、$I_B$ 流出基极，放大区判据用 $V_{EC}>V_{EB}$，导通电压用 $V_{EB}\approx0.7$ V。
+
+>求$I_B$
 
 The base current is obtained from the given collector current using $I_C = 10$ mA and $\beta_F = 60$:（由给定集电极电流 $I_C=10$ mA、$\beta_F=60$ 求基极电流：）
 
@@ -235,6 +289,8 @@ I_B = \frac{I_C}{\beta_F} = \frac{10\ \text{mA}}{60} = 0.167\ \text{mA} \tag{1}
 $$
 
 The emitter-collector (PNP) voltage is specified as $V_{EC} = 3$ V.（PNP 管的发射极-集电极电压给定为 $V_{EC}=3$ V。）
+
+>求$R_C$
 
 Ohm's Law across the resistor $R_C$ gives (note the negative voltage source $V_{CC} = -5$ V):（对电阻 $R_C$ 应用欧姆定律（注意电源为负电压 $V_{CC}=-5$ V）：）
 
@@ -266,6 +322,8 @@ $$
 
 Since this is design task, we need to pick a existing resistor value in real life, so we choose $R_C = 680\ \Omega$.（由于这是设计任务，需选取实际存在的电阻值，故取 $R_C=680\ \Omega$。）
 
+>求$R_B$
+
 To choose the base resistor, make the assumption that the BJT is on, so $V_{EB} \approx 0.7$ V.（选择基极电阻时，假设 BJT 导通，即 $V_{EB}\approx0.7$ V。）
 
 Using Ohm's Law and the fact from KVL that $V_{BC} = V_{EC} - V_{EB}$:（利用欧姆定律及由 KVL 得到的 $V_{BC}=V_{EC}-V_{EB}$：）
@@ -286,11 +344,15 @@ $$
 = 13.77\ \text{k}\Omega
 $$
 
-Again, since this is design task, we need to pick a existing resistor value in real life, so we choose $R_B = 14\ \Omega$.（同样是设计任务，需选取实际电阻值，故取 $R_B=14\ \Omega$。）
+Again, since this is design task, we need to pick a existing resistor value in real life, so we choose $R_B = 14\ 	ext{k}\Omega$.（同样是设计任务，需选取实际电阻值，故取 $R_B=14\ 	ext{k}\Omega$。）
+
+---
 
 ### 2.2 Part B（B 部分）
 
 Now we apply the design choices $R_B = 14$ k$\Omega$, $R_C = 680\ \Omega$, and take $\beta_F = 40$.（现在采用设计值 $R_B=14$ kΩ、$R_C=680$ $\Omega$，并取 $\beta_F=40$。）
+
+>求$I_B$
 
 Applying KVL from the top $+5$ V voltage source, through the base $V_{EB}$ and base resistor $R_B$, down through the $R_C$ resistor to the bottom negative voltage source $-5$ V:（从顶部 $+5$ V 电源出发，经基极 $V_{EB}$、基极电阻 $R_B$，再经 $R_C$ 到底部 $-5$ V 电源，应用 KVL：）
 
@@ -302,7 +364,7 @@ Note the $V_{EB}$ voltage polarity for the PNP.（注意 PNP 管 $V_{EB}$ 的极
 
 Also note that (KCL) $I_X = I_B + I_C = (1 + \beta_F)I_B$.（另由 KCL，$I_X=I_B+I_C=(1+\beta_F)I_B$。）
 
-Substituting $V_{BE} \approx 0.7$ V, we solve for base current:（代入 $V_{BE}\approx0.7$ V，解出基极电流：）
+Substituting $V_{EB} \approx 0.7$ V, we solve for base current:（代入 $V_{EB}\approx0.7$ V，解出基极电流：）
 
 $$
 5\ \text{V} - 0.7\ \text{V} - 14\ \text{k}\Omega I_B - 680\ \Omega(1 + 40)I_B + 5\ \text{V} = 0
@@ -316,11 +378,15 @@ $$
 I_B = 222.1\ \mu\text{A}
 $$
 
+>求$I_C$
+
 Then, we determine the collector current.（然后确定集电极电流。）
 
 $$
 I_C = \beta_F I_B = 40 \cdot 222.1\ \mu\text{A} = 8.88\ \text{mA} \tag{8}
 $$
+
+>求$V_{EC}$
 
 Next, we can determine the collector–emitter voltage using（接下来可求集电极-发射极电压，使用）
 
@@ -330,11 +396,15 @@ $$
 
 Where in the above we used KVL ($V_C - R_C I_X = -5$ V) and KCL ($I_X = I_B + I_C = (1 + \beta_F)I_B$).（其中用到 KVL（$V_C-R_CI_X=-5$ V）和 KCL（$I_X=I_B+I_C=(1+\beta_F)I_B$）。）
 
+>记录Q点
+
 Therefore, the Q-point is（因此，Q 点为）
 
 $$
 Q = (I_C, V_{EC}) = (8.88\ \text{mA}, 3.81\ \text{V}) \tag{10}
 $$
+
+---
 
 ## 3 Question 3（第 3 题）
 
@@ -346,6 +416,8 @@ Assume $\beta = 100$, $V_T = 26$ mV, and $I_s = 6 \times 10^{-16}$ A.（假设 $
 > 图Q3-1 题 3 的共射放大电路（Fig. 5.161）：$V_{CC} = 2.5$ V 经 $R_B$ 接基极、经 $R_C$ 接集电极，$V_{in}$ 接基极，$V_{out}$ 取自集电极，$Q_1$ 发射极接地
 
 **Solution:**（**解答：**）
+
+>求$I_C$（功耗）
 
 The total power dissipated is written below.（总功耗如下式。）
 
@@ -361,6 +433,8 @@ $$
 I_C = \frac{P}{V_{CC}} = \frac{1\ \text{mW}}{2.5\ \text{V}} = 0.4\ \text{mA} \tag{2}
 $$
 
+>求$R_C$（增益）
+
 For the voltage gain, we start from drawing the small signal circuit diagram.（求电压增益，先画小信号等效电路。）
 
 Since the early effect is not mentioned, $r_o$ is $\infty$.（题目未提厄利效应，故 $r_o=\infty$。）
@@ -374,13 +448,15 @@ $$
 A_V = \frac{v_{out}}{v_{in}} = \frac{-g_m v_\pi R_C}{v_\pi} = -g_m R_C = -\frac{I_C}{V_T}R_C \tag{3}
 $$
 
-Since $A_v$, $I_C$ and $V_T$, we can rearrange (3) and solve for $R_C$:（已知 $A_v$、$I_C$、$V_T$，重排 (3) 可解出 $R_C$：）
+Since $A_V$, $I_C$ and $V_T$ are known, we can rearrange (3) and solve for $R_C$:（已知 $A_v$、$I_C$、$V_T$，重排 (3) 可解出 $R_C$：）
 
 $$
 R_C = \left|\frac{A_V V_T}{I_C}\right| = \left|\frac{-20 \cdot 0.026}{0.4 \times 10^{-3}}\right| = 1300\ \Omega \tag{4}
 $$
 
 For the design problem, $R_C = 1300\ \Omega$ is possible.（设计上取 $R_C=1300\ \Omega$ 是可行的。）
+
+>求$R_B$（输入回路）
 
 Now applying KVL at the input loop, we can write（现在对输入回路应用 KVL，可得）
 
@@ -408,6 +484,8 @@ $$
 
 For the design problem, $R_B = 448$ k$\Omega$ is possible.（设计上取 $R_B=448$ kΩ 是可行的。）
 
+---
+
 ## 4 Question 4（第 4 题）
 
 Find the region of operation and drain current in an NMOS transistor with $\mu_n C_{ox} = 200$ $\mu$A/V$^2$, $W/L = 10/1$, and $V_{TN} = 0.75$ V for:（求下列条件下 NMOS 晶体管的工作区与漏极电流，已知 $\mu_nC_{ox}=200$ μA/V²、$W/L=10/1$、$V_{TN}=0.75$ V：）
@@ -432,6 +510,8 @@ The typical working procedure to solve an MOSFET problem is（求解 MOSFET 问�
 
 ### 4.1 Part A（A 部分）
 
+>判断工作区
+
 **Step 1. check the operating region**（**第 1 步：判断工作区**）
 
 According to the calculation below, we can find that the NMOS operates in the saturation region.（由下列计算可知，该 NMOS 工作在饱和区。）
@@ -439,6 +519,8 @@ According to the calculation below, we can find that the NMOS operates in the sa
 $$
 V_{GS} - V_{TN} = 2 - 0.75 = 1.25\ \text{V} < V_{DS} = 2.5\ \text{V}
 $$
+
+>求$I_D$
 
 **Step 2. Calculate $I_D$ based on the region.**（**第 2 步：按工作区计算 $I_D$。**）
 
@@ -448,7 +530,11 @@ $$
 I_D = \frac{1}{2}(\mu_n C_{ox})\left(\frac{W}{L}\right)(V_{GS} - V_{TN})^2 = \frac{1}{2}(200 \times 10^{-6})\left(\frac{10}{1}\right)(2 - 0.75)^2 = 1.56\ \text{mA} \tag{1}
 $$
 
+---
+
 ### 4.2 Part B（B 部分）
+
+>判断工作区
 
 **Step 1. Check the operating region**（**第 1 步：判断工作区**）
 
@@ -459,6 +545,8 @@ V_{GS} - V_{TN} = 1.25\ \text{V} > V_{DS} = 0.2\ \text{V}
 $$
 
 Therefore, the NMOS operates in the triode (linear) region.（因此，该 NMOS 工作在可变电阻区（线性区）。）
+
+>求$I_D$
 
 **Step 2. Calculate $I_D$ based on the region.**（**第 2 步：按工作区计算 $I_D$。**）
 
@@ -474,7 +562,11 @@ $$
 I_D = (200 \times 10^{-6})\frac{10}{1}\left(2 - 0.75 - \frac{0.2}{2}\right)(0.2) = 0.46\ \text{mA}
 $$
 
+---
+
 ### 4.3 Part C（C 部分）
+
+>判断工作区
 
 **Step 1. Check the operating region**（**第 1 步：判断工作区**）
 
@@ -486,6 +578,8 @@ $$
 
 Thus, the NMOS is in the cutoff region.（因此该 NMOS 处于截止区。）
 
+>求$I_D$
+
 **Step 2. Calculate $I_D$ based on the region.**（**第 2 步：按工作区计算 $I_D$。**）
 
 Since the device is in cutoff,（由于器件处于截止区，）
@@ -494,11 +588,15 @@ $$
 I_D = 0 \tag{3}
 $$
 
+---
+
 ### 4.4 Part D（D 部分）
 
 Here we consider the same NMOS configuration, but with a different mobility–oxide capacitance product ($\mu_n C_{ox}$).（这里保持 NMOS 结构不变，仅改变迁移率-氧化层电容乘积 $\mu_nC_{ox}$。）
 
 The operating region remains the same as in parts (a)–(c), but the drain current $I_D$ will scale with ($\mu_n C_{ox}$).（工作区与 (a)~(c) 相同，但漏极电流 $I_D$ 将随 $\mu_nC_{ox}$ 成比例变化。）
+
+>求$I_D$（按比例缩放）
 
 **(a) Saturation Region**（(a) 饱和区）
 
@@ -528,9 +626,17 @@ $$
 I_D = 0 \tag{6}
 $$
 
+---
+
 ## 转换说明（非原文内容）
 
 - 本文由 PDF 文本层与页面渲染图逐页核对后转录；公式一律改写为 LaTeX，`\tag` 沿用原文式号（第 1 题 (1)–(28)、第 2 题 (1)–(10)、第 3 题 (1)–(8)、第 4 题 (1)–(6)）。
 - 所有电路图、小信号等效电路、NMOS 符号均以纯文本占位表示，未插入图像本体；原书未编号的插图统一写作 `> 图Q1-1 …` 这样的题号式编号。
-- 原文笔误照录未改：第 1 题 Part F 写“we iterate the equation (45)”，该式实际为式 (24)（原文式号最多到 (28)）；第 2 题末尾“so we choose $R_B = 14\ \Omega$”，按前文计算值 13.77 kΩ 应为 14 kΩ。
+- 原文笔误已修正：
+    - 第 1 题式 (6)：分子中的 $\beta$ 改为 $\beta_F$；
+    - 第 1 题 Part A 式 (8)：原文在 $1500I_X$ 后又乘了 $\left(1+\frac{1}{\beta_F}\right)$，属重复计算，改为 $V_C=9-1500I_X=9-1500I_C\left(1+\frac{1}{\beta_F}\right)$；
+    - 第 1 题 Part D 式 (16)：原文直接代入 $\beta_F=\infty$ 得 $\frac{\infty}{\infty}$，改写为极限形式；
+    - 第 1 题 Part F：原文“equation (45)”应为式 (24)；
+    - 第 2 题末尾：原文“$R_B = 14\ \Omega$”应为 $14\ \text{k}\Omega$；
+    - 第 3 题：补全“Since $A_V$, $I_C$ and $V_T$ are known”一句。
 - 第 4 题 Part A 的饱和电流表达式原书写作 $\frac{1}{2}(\mu_nC_{ox})(W/L)(V_{GS}-V_{TN})^2$，与正文其他处一致。

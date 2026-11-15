@@ -310,7 +310,36 @@ Note that the Q-point $Q = (I_C, V_{CE})$ is expressed with the collector curren
 
 Only $I_C$ directly influences the small-signal parameters like $g_m$, $r_\pi$, and $r_o$.（只有 $I_C$ 直接影响 $g_m$、$r_\pi$、$r_o$ 等小信号参数。）
 
-The voltage $V_{CE}$ is primarily used to verify that the BJT is operating in the forward active region (i.e. $V_{CE} > V_{BE}$ for npn BJTs).（$V_{CE}$ 主要用于检验 BJT 是否工作在放大区（对 npn 管即 $V_{CE}>V_{BE}$）。）
+
+---
+![552](Pasted%20image%2020261115183347.png)
+
+
+| 区域      | 图上位置                                                                   | 曲线形态                                       | 名称来源                                                                                         | 偏置条件                                                  |
+| ------- | ---------------------------------------------------------------------- | ------------------------------------------ | -------------------------------------------------------------------------------------------- | ----------------------------------------------------- |
+| **饱和区** | **最左端**，$v_{CE}$ 很小（硅管约 $v_{CE}<V_{CES}\approx0.3\ \text{V}$），靠近纵轴那一竖条 | 各条曲线从原点陡升、拐弯、挤在一起，**不是水平的**                | 双结正偏时，增大 $i_B$ 不能再使 $i_C$ 不再有明显增大，$i_C$ 被外电路限制，称为饱和。<br>「饱和」这个名字针对的是 $i_C$–$i_B$ 关系，不是曲线水平与否 | 发射结正偏、**集电结也正偏**<br>（$v_{CB}<0$<br>即 $v_{CE}<v_{BE}$） |
+| **放大区** | 饱和区**往右**，曲线拉平、彼此近似平行等距的水平段，**Q 点就在这里**                                | 各条曲线近似水平，$i_C$ 基本不随 $v_{CE}$ 变，只随 $i_B$ 抬升 | $i_C=\beta_0i_B$<br>$i_C$ 完全由 $i_B$ 控制，输入的变化可以被成比例地线性放大，故名放大区                                | 发射结正偏、**集电结反偏**<br>（$v_{CB}>0$，即 $v_{CE}>v_{BE}$）     |
+| **截止区** | **最下方**，$i_B=0$ 那条曲线以下                                                 | $i_C\approx0$（只剩 $I_{CBO}$）                | 两个结都不正偏，发射极不再向基区注入载流子<br>$i_C\approx0$，电流被切断，故名截止                                            | 发射结反偏或零偏                                              |
+
+**图解法读 Q 点的顺序**
+
+1. **输入回路 → $V_{BEQ}$、$I_{BQ}$**
+    - 基极回路：$V_{BB}=I_BR_b+V_{BE}$
+    - 负载线：$I_B=\dfrac{V_{BB}-V_{BE}}{R_b}$，是从 $(V_{BB},0)$ 到 $(0,V_{BB}/R_b)$ 的直线
+    - 输入特性曲线：$i_B=\dfrac{I_S}{\beta_0}e^{v_{BE}/V_T}$（由 $i_C=I_Se^{v_{BE}/V_T}$ 与 $i_B=i_C/\beta_0$ 得到）；严格写是 $i_B=f(v_{BE},v_{CE})$，只是对 $v_{CE}$ 依赖很弱，所以画成一族曲线
+    - 交点：与输入特性曲线的交点即 Q
+    - 读出：$V_{BEQ}$、$I_{BQ}$
+2. **输出回路 → $I_{CQ}$、$V_{CEQ}$**
+    - 已知：$I_{BQ}$，取输出特性族中 $i_B=I_{BQ}$ 那一条
+    - 输出特性曲线：$i_C=I_Se^{v_{BE}/V_T}\left(1+\dfrac{v_{CE}}{V_A}\right)$；放大区近似 $i_C=\beta_0i_B$，所以按 $i_B$ 分级画成一族曲线
+    - 集电极回路：$V_{CC}=I_CR_c+V_{CE}$
+    - 负载线：$i_C=\dfrac{V_{CC}-v_{CE}}{R_c}$，是从 $(0,V_{CC}/R_c)$ 到 $(V_{CC},0)$ 的斜线
+    - 交点：与 $i_B=I_{BQ}$ 那条曲线的交点即输出侧 Q
+    - 读出：$I_{CQ}$、$V_{CEQ}$
+
+---
+
+The voltage $V_{CE}$ is primarily used to verify that the BJT is operating in the forward active region (i.e. $V_{CE} > V_{BE}$ for npn BJTs).（$V_{CE}$ 主要用于检验 BJT 是否工作在放大区（对 npn 管即 $V_{CE}>V_{BE}$））
 
 Also, **note that the $V_{BE}$ voltage is not part of the Q-point**, but knowing the Q-point guarantees knowing $V_{BE}$.（另外，**注意 $V_{BE}$ 不属于 Q 点**，但知道 Q 点就必然知道 $V_{BE}$。）
 

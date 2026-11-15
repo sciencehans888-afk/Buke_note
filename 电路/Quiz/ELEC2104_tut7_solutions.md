@@ -12,13 +12,16 @@ That is, small changes in base-emitter voltage $V_{BE}$ lead to large changes in
 
 **小信号输入（small-signal input）：** 幅度足够小、使晶体管始终工作在 Q 点附近近似线性区的输入信号。通常满足 $|v_{be}|\ll V_T$（$V_T\approx26$ mV，工程上常取几 mV 以内）。此时 $I_C$–$V_{BE}$ 曲线在 Q 点附近可近似为切线，$i_c=g_mv_{be}$，可用线性小信号模型分析，输出无明显失真。
 
-**符号约定（notation）：** 大写符号 $V_{BE}$、$I_C$、$I_B$ 表示直流（静态）量；小写符号 $v_{be}$、$i_c$、$i_b$ 表示交流小信号量；小写字母配合大写下标（如 $v_{BE}$、$i_C$）表示瞬时总量，即
-
-$$
-v_{BE}=V_{BE}+v_{be},\qquad i_C=I_C+i_c
-$$
-
-因此判据 $|v_{be}|\ll V_T$ 指的是**交流信号的幅度**远小于热电压，而不是直流偏置 $V_{BE}$（约 0.7 V）小于 $V_T$。
+> [!note] 符号约定（notation）
+> - **大写**（$V_{BE}$、$I_C$、$I_B$）：直流（静态）量。
+> - **小写**（$v_{be}$、$i_c$、$i_b$）：交流小信号量。
+> - **小写字母 + 大写下标**（$v_{BE}$、$i_C$）：瞬时总量，即直流与交流之和：
+>
+> $$
+> v_{BE}=V_{BE}+v_{be},\qquad i_C=I_C+i_c
+> $$
+>
+> 因此判据 $|v_{be}|\ll V_T$ 指的是**交流信号的幅度**远小于热电压，而不是直流偏置 $V_{BE}$（约 0.7 V）小于 $V_T$。
 
 **大信号输入（large-signal input）：** 幅度较大、使晶体管在特性曲线的较大范围内摆动（甚至进入截止区或饱和区）的输入信号。此时线性近似不再成立，必须使用指数关系 $I_C=I_Se^{V_{BE}/V_T}$ 或分段模型（理想二极管模型、恒压降模型等）分析，并考虑输出波形的失真。
 
@@ -67,14 +70,156 @@ $$
 
 where $g_m = \left.\dfrac{\mathrm{d}I_C}{\mathrm{d}V_{BE}}\right|_Q = \dfrac{I_{C,Q}}{V_T}$ is the transconductance (slope of the tangent line in Figure 1).（式中 $g_m=\left.\dfrac{\mathrm{d}I_C}{\mathrm{d}V_{BE}}\right|_Q=\dfrac{I_{C,Q}}{V_T}$ 为跨导（图 1 中切线的斜率）。）
 
+> [!note] 泰勒展开（一般形式）
+> 函数 $f(x)$ 在 $x=x_0$ 处的展开：
+>
+> $$
+> f(x)=f(x_0)+f'(x_0)(x-x_0)+\frac{f''(x_0)}{2!}(x-x_0)^2+\cdots
+> $$
+>
+> 只保留前两项，即一阶（切线）近似：
+>
+> $$
+> f(x)\approx f(x_0)+f'(x_0)(x-x_0)
+> $$
+>
+> 对应到本题：$f\to I_C$，$x\to V_{BE}$，$x_0\to V_{BE,Q}$。
+
 This linear approximation is *only valid for small signals* because higher-order terms in the Taylor series become significant for large deviations from the Q-point.（该线性近似*仅对小信号成立*，因为偏离 Q 点较大时，泰勒级数的高阶项会变得显著。）
+
+
+> 根据小信号波动的这附近的电压电流表达式，我们近似画出BJT此时的等效电路
 
 The beauty: this transforms complex nonlinear circuit analysis into straightforward linear circuit analysis using familiar techniques like Ohm's law and voltage dividers!（其妙处在于：它把复杂的非线性电路分析转化为简单的线性电路分析，可用欧姆定律、分压等熟悉方法。）
 
-This linearization enables us to create the **hybrid-$\pi$ small-signal model**—a linear equivalent circuit that replaces the nonlinear BJT for small-signal analysis:（这种线性化使我们能够建立 **hybrid-$\pi$ 小信号模型**——一种用于小信号分析的线性等效电路，用来替代非线性 BJT：）
+This linearization enables us to create the **hybrid-$\pi$ small-signal model**—a linear equivalent circuit that replaces the nonlinear BJT for small-signal analysis:
+（这种线性化使我们能够建立 **hybrid-$\pi$ 小信号模型**——一种用于小信号分析的线性等效电路，用来替代非线性 BJT：）
 
-![](Pasted%20image%2020261114214103.png)
+![573](Pasted%20image%2020261114214103.png)
 > 图2 Hybrid-$\pi$ small-signal model: The linear equivalent circuit that replaces the nonlinear BJT for small-signal analysis. All parameters depend on the Q-point!（图 2：hybrid-$\pi$ 小信号模型——用于小信号分析的线性等效电路，替代非线性 BJT。所有参数都依赖于 Q 点！）
+
+> [!note] 图 2 是怎么来的：从线性化公式推导 hybrid-π 小信号模型
+> **1. 大信号（非线性）**
+>
+> $$I_C=I_S e^{V_{BE}/V_T}$$
+>
+> **2. 在 Q 点一阶泰勒展开**
+>
+> $$I_C(V_{BE})\approx I_{C,Q}+\left.\frac{\partial I_C}{\partial V_{BE}}\right|_Q (V_{BE}-V_{BE,Q})$$
+>
+> 小信号定义：
+>
+> $$v_{be}=V_{BE}-V_{BE,Q},\quad i_c=I_C-I_{C,Q}$$
+>
+> 跨导：
+>
+> $$g_m=\left.\frac{\partial I_C}{\partial V_{BE}}\right|_Q=\frac{I_{C,Q}}{V_T}$$
+>
+> 线性化结果：
+>
+> $$I_C\approx I_{C,Q}+g_m(V_{BE}-V_{BE,Q})\quad\Longleftrightarrow\quad i_c=g_m v_{be}$$
+>
+> **3. 输入、输出两个端口**
+> 把 BJT 看成双口网络：输入口 $(v_{BE}, i_B)$，输出口 $(v_{CE}, i_C)$。共射放大时基极由信号源驱动、集电极由外电路决定，所以取 $i_B$、$v_{CE}$ 为自变量，$v_{BE}$、$i_C$ 为因变量：
+>
+> $$v_{BE}=f_1(i_B,v_{CE}),\qquad i_C=f_2(i_B,v_{CE})$$
+>
+> 在 Q 点取全微分：
+>
+> $$dv_{BE}=\left.\frac{\partial v_{BE}}{\partial i_B}\right|_{V_{CEQ}}di_B+\left.\frac{\partial v_{BE}}{\partial v_{CE}}\right|_{I_{BQ}}dv_{CE}$$
+>
+> $$di_C=\left.\frac{\partial i_C}{\partial i_B}\right|_{V_{CEQ}}di_B+\left.\frac{\partial i_C}{\partial v_{CE}}\right|_{I_{BQ}}dv_{CE}$$
+>
+> 把微分换写成小信号量，四个偏导记作 H 参数：
+>
+> $$v_{be}=h_{ie}i_b+h_{re}v_{ce},\qquad i_c=h_{fe}i_b+h_{oe}v_{ce}$$
+>
+> 这两个方程分别描述输入口和输出口，所以等效电路自然分成输入回路、输出回路两块。**之所以看起来「中间隔开」，是因为方程本来就是按端口写的**：共射时发射极 E 是两个回路的公共端（参考点），两回路之间只通过耦合项 $h_{re}v_{ce}$ 和受控项 $h_{fe}i_b$ 联系，没有直接的导线连接。
+>
+> **4. 四个 H 参数的定义与计算**
+> 每个参数都是 Q 点处的一个偏导数。使另一个自变量为 0（对应端口「交流短路」或「交流开路」），偏导就变成两个可测量之比：
+>
+> | 参数 | 定义式 | 测试条件 | 含义 | 量纲 | 量级 |
+> |---|---|---|---|---|---|
+> | $h_{ie}$ | $\partial v_{BE}/\partial i_B$ | 输出交流短路 $v_{ce}=0$ | 输入电阻 | Ω | $10^{3}$ |
+> | $h_{re}$ | $\partial v_{BE}/\partial v_{CE}$ | 输入交流开路 $i_b=0$ | 反向电压传输比 | 无量纲 | $10^{-3}\sim10^{-4}$ |
+> | $h_{fe}$ | $\partial i_C/\partial i_B$ | 输出交流短路 $v_{ce}=0$ | 正向电流放大系数 | 无量纲 | $10^{2}$ |
+> | $h_{oe}$ | $\partial i_C/\partial v_{CE}$ | 输入交流开路 $i_b=0$ | 输出电导 | S | $10^{-5}$ |
+>
+> **4. 四个 H 参数：定义、计算、图中位置**
+> 四个系数是 Q 点处的四个偏导；把另一个自变量置 0（对应端口交流短路或开路），偏导就成为可测量之比。每个系数对应图 2 中的一个位置。
+>
+> **(1) $h_{ie}$：输入电阻 $r_\pi$（B–E 之间）**
+>
+> - 定义：$h_{ie}=\left.\dfrac{\partial v_{BE}}{\partial i_B}\right|_{V_{CEQ}}$，输出端交流短路。
+> - 计算：
+>
+> $$h_{ie}=r_{be}=r_{bb'}+(1+\beta)(r_e+r_e')\approx200\ \Omega+(1+\beta)\frac{26\ \text{mV}}{I_{EQ}}\quad(0.1\ \text{mA}<I_{EQ}<5\ \text{mA})$$
+>
+> 也可由小信号参数求得：$r_\pi=\dfrac{v_{be}}{i_b}=\dfrac{\beta_0}{g_m}$。
+> - 位置：B–E 之间的电阻。
+>
+> **(2) $h_{re}$：反向电压传输比（输入口受控电压源）**
+>
+> - 定义：$h_{re}=\left.\dfrac{\partial v_{BE}}{\partial v_{CE}}\right|_{I_{BQ}}$，输入端交流开路。
+> - 计算：量级 $10^{-3}\sim10^{-4}$，很小，通常忽略。
+> - 位置：输入回路的受控电压源 $h_{re}v_{ce}$；简化模型中短路掉，不画。
+>
+> **(3) $h_{fe}$：正向电流放大系数 $\beta_0$（C–E 受控电流源）**
+>
+> - 定义：$h_{fe}=\left.\dfrac{\partial i_C}{\partial i_B}\right|_{V_{CEQ}}$，输出端交流短路。
+> - 计算：$h_{fe}=\beta_0=g_mr_\pi$。
+> - 位置：C–E 之间的受控电流源。
+> - 与 hybrid-π 的换算：
+>
+> $$h_{fe}i_b=\beta_0i_b=\beta_0\frac{v_{be}}{r_\pi}=\frac{\beta_0}{\beta_0/g_m}v_{be}=g_mv_{be}$$
+>
+> **(4) $h_{oe}$：输出电导 $1/r_o$（C–E 之间）**
+>
+> - 定义：$h_{oe}=\left.\dfrac{\partial i_C}{\partial v_{CE}}\right|_{I_{BQ}}$，输入端交流开路。
+> - 计算：$h_{oe}=\dfrac{I_{C,Q}}{V_A}=\dfrac{1}{r_o}$；理想 $V_A=\infty$ 时 $r_o=\infty$、$h_{oe}=0$。
+> - 位置：C–E 之间与受控源并联的电阻 $r_o=1/h_{oe}$。
+>
+> 它的推导与 $V_A$ 的来源：
+>
+> 理想指数模型 $I_C=I_Se^{V_{BE}/V_T}$ 中 $I_C$ 与 $V_{CE}$ 无关，$\partial i_C/\partial v_{CE}=0$，于是 $r_o=\infty$，输出是理想受控电流源，输出特性是水平线。
+>
+> 实际器件有厄利效应：
+>
+> $$I_C=I_Se^{V_{BE}/V_T}\left(1+\frac{V_{CE}}{V_A}\right)$$
+>
+> > [!note] 厄利电压 $V_A$（Early voltage）
+> > **定义**：把共射输出特性曲线在放大区的近似直线反向延长，与 $v_{CE}$ 轴相交于 $v_{CE}=-V_A$；$V_A$ 就是该截距的绝对值。
+> >
+> > **物理来源**：$v_{CE}$ 增大 → 集电结耗尽区变宽 → 基区有效宽度变窄（基区宽度调制）→ 同样的 $v_{BE}$ 下 $I_C$ 略有增加。
+> >
+> > **数学表现**：$I_C=I_Se^{v_{BE}/V_T}\left(1+\dfrac{v_{CE}}{V_A}\right)$，输出特性的斜率 $\dfrac{\partial I_C}{\partial v_{CE}}\approx\dfrac{I_C}{V_A}$。
+> >
+> > **是否所有实际器件都有**：是。所有实际 BJT 都存在厄利效应，只是 $V_A$ 大小不同（小功率管约几十至几百伏）。$V_A$ 越大，输出特性越平，$r_o=V_A/I_C$ 越大，越接近理想受控电流源；$V_A=\infty$ 只是理想化处理，本课程除特别说明外都这样取。
+>
+> 于是
+>
+> $$\left.\frac{\partial i_C}{\partial v_{CE}}\right|_Q=\frac{I_Se^{V_{BE}/V_T}}{V_A}=\frac{I_C}{V_A+V_{CE}}\approx\frac{I_C}{V_A}$$
+>
+> $$r_o=\left(\left.\frac{\partial i_C}{\partial v_{CE}}\right|_Q\right)^{-1}\approx\frac{V_A}{I_{C,Q}}$$
+>
+> $V_A\to\infty$ 时输出特性变平，$r_o\to\infty$；$V_A$ 越小，特性越陡，$r_o$ 越小。本课程默认 $V_A=\infty$，此时 $r_o=\infty$（开路），图 2 中省略。
+>
+> **判断电阻还是受控源**：看这一项由谁决定。本支路的量决定本支路的量 → 无源元件（$v=Ri$ 画电阻，$i=Gv$ 画电导）；另一支路的量决定本支路的量 → 受控源（VCVS 或 CCCS）。$h_{ie}i_b$、$h_{oe}v_{ce}$ 属于前者，$h_{re}v_{ce}$、$h_{fe}i_b$ 属于后者。
+>
+> 四个参数都只在放大区、小信号下成立，都描述交流变化量、不能用来求 Q 点，数值都与 Q 点有关；量纲不同，所以叫「混合」参数。
+>
+> **5. 对应关系**
+>
+> | 推导量 | H 参数 | 图中元件 |
+> |---|---|---|
+> | $v_{be}=r_\pi i_b$ | $r_\pi=h_{ie}$ | B–E 间电阻 |
+> | $i_c=g_mv_{be}$ | $h_{fe}=\beta_0$ | 受控电流源 $g_mv_{be}$ |
+> | $r_o$ | $r_o=1/h_{oe}$ | C–E 间电阻 |
+> | 输入口受控电压源 | $h_{re}$（忽略） | 一般不画 |
+>
+> **6. 成立条件**
+> 小信号：$|v_{be}|\ll V_T\ (\approx 26\ \text{mV})$，否则指数非线性不可忽略。
 
 ### Small Signal Analysis vs. Large Signal Analysis（小信号分析与大信号分析）
 

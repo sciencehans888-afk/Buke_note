@@ -1,12 +1,14 @@
 {
   "userName": "",
-  "permissionMode": "yolo",
-  "model": "haiku",
-  "effortLevel": "low",
+  "permissionMode": "normal",
+  "model": "deepseek:deepseek-account/deepseek-flash",
+  "effortLevel": "high",
   "serviceTier": "default",
   "enableAutoTitleGeneration": true,
   "titleGenerationLocale": "zh-CN",
   "titleGenerationModel": "haiku",
+  "showTabTitlesByDefault": true,
+  "chatFontScale": 100,
   "excludedTags": [],
   "mediaFolder": "",
   "systemPrompt": "",
@@ -20,7 +22,6 @@
       "scope": "shared"
     }
   ],
-  "customContextLimits": {},
   "keyboardNavigation": {
     "scrollUpKey": "w",
     "scrollDownKey": "s",
@@ -45,21 +46,19 @@
       "loadUserSettings": true,
       "enableChrome": true,
       "visibleModels": [
-        "haiku",
-        "opus[1m]",
-        "sonnet",
+        "opus",
         "fable",
-        "opus"
+        "sonnet",
+        "haiku"
       ],
       "modelAliases": {},
       "environmentVariables": "",
       "environmentHash": "",
-      "sessionEnvironmentHash": "",
       "selectedModels": [
         {
           "value": "opus",
           "label": "deepseek-flash",
-          "description": "default · deepseek-flash · 1M",
+          "description": "DeepSeek · deepseek-flash · 1M",
           "resolvedModel": "claude-opus-5",
           "reasoningMetadataResolved": true,
           "supportedEffortLevels": [
@@ -72,9 +71,9 @@
         },
         {
           "value": "fable",
-          "label": "Fable",
-          "description": "Fable 5.1 · Most capable for your hardest and longest-running tasks · $10/$50 per Mtok",
-          "resolvedModel": "claude-fable-5-1",
+          "label": "deepseek-flash",
+          "description": "DeepSeek · deepseek-flash · 1M",
+          "resolvedModel": "claude-fable-5",
           "reasoningMetadataResolved": true,
           "supportedEffortLevels": [
             "low",
@@ -87,7 +86,7 @@
         {
           "value": "sonnet",
           "label": "deepseek-flash",
-          "description": "default · deepseek-flash · 1M",
+          "description": "DeepSeek · deepseek-flash · 1M",
           "resolvedModel": "claude-sonnet-5",
           "reasoningMetadataResolved": true,
           "supportedEffortLevels": [
@@ -101,7 +100,7 @@
         {
           "value": "haiku",
           "label": "deepseek-flash",
-          "description": "default · deepseek-flash · 1M",
+          "description": "DeepSeek · deepseek-flash · 1M",
           "resolvedModel": "claude-haiku-5-5",
           "reasoningMetadataResolved": true,
           "supportedEffortLevels": [
@@ -228,7 +227,6 @@
         "device-ac4915ca45d65068efb1f114674f86091dbe0f22891f1db2c0b6fcd8b810dfa0": "native-windows"
       },
       "wslDistroOverridesByHost": {},
-      "sessionEnvironmentHash": "",
       "cliPath": "",
       "cliPathsByHost": {},
       "enabled": false,
@@ -269,7 +267,6 @@
       "environmentVariables": "",
       "modelAliases": {},
       "preferredThinkingByModel": {},
-      "sessionEnvironmentHash": "",
       "visibleModels": [],
       "selectedModels": []
     },
@@ -281,31 +278,30 @@
       "environmentVariables": "",
       "modelAliases": {},
       "preferredReasoningByModel": {},
-      "sessionStoreHash": "",
       "visibleModels": [],
       "selectedModelsByHost": {}
     }
   },
-  "settingsProvider": "claude",
+  "settingsProvider": "deepseek",
   "lastSelectedChatModel": {
     "providerId": "claude",
     "model": "haiku"
   },
   "inlineEditModel": null,
   "savedProviderModel": {
-    "claude": "haiku"
+    "claude": "haiku",
+    "deepseek": "deepseek:deepseek-account/deepseek-flash"
   },
   "savedProviderEffort": {
-    "claude": "low"
+    "claude": "low",
+    "deepseek": "high"
   },
   "savedProviderServiceTier": {},
   "savedProviderPermissionMode": {
     "claude": "yolo",
     "deepseek": "normal"
   },
-  "pendingProviderSessionInvalidations": {},
   "enableAutoScroll": true,
-  "showMessageTimestamps": false,
   "deferMathRenderingDuringStreaming": true,
   "pluginRenderedFenceLanguages": [],
   "expandFileEditsByDefault": false,
@@ -320,5 +316,8 @@
   "sessionManagerSort": "last-updated",
   "sessionAutoArchiveAfter": "off",
   "pinnedLinkedContentPaths": [],
-  "hiddenCommands": []
+  "hiddenCommands": [],
+  "expandedProjectIds": [
+    "e56481df-014c-47ba-b85e-d3b884880511"
+  ]
 }

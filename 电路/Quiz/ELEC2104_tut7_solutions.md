@@ -317,7 +317,6 @@ Note that the Q-point $Q = (I_C, V_{CE})$ is expressed with the collector curren
 
 Only $I_C$ directly influences the small-signal parameters like $g_m$, $r_\pi$, and $r_o$.（只有 $I_C$ 直接影响 $g_m$、$r_\pi$、$r_o$ 等小信号参数。）
 
-
 ---
 ![552](Pasted%20image%2020261115183347.png)
 
@@ -367,6 +366,17 @@ Assume forward active region, then:（先假设工作在放大区，然后：）
 
 2. **Verify the forward active assumption:** Check that $V_{BE,\mathrm{on}} \leq V_{BE} \leq V_{CE}$（**验证放大区假设：** 检查 $V_{BE,\mathrm{on}}\leq V_{BE}\leq V_{CE}$）
 
+    **详细说明：**
+
+    - 放大区成立的条件是：**发射结正偏 + 集电结反偏**。
+    - **发射结正偏**：$V_{BE}\ge V_{BE,\mathrm{on}}$，$V_{BE,\mathrm{on}}$ 是发射结导通电压，硅管约 $0.6\sim0.7$ V。低于它发射结不导通，管子进入截止区。
+    - **集电结反偏**：集电结两端电压是 $V_{CB}=V_{CE}-V_{BE}$，反偏要求 $V_{CB}\ge0$，即 $V_{CE}\ge V_{BE}$。不满足则进入饱和区。
+    - 两条件合并，就是 $V_{BE,\mathrm{on}}\le V_{BE}\le V_{CE}$。
+    - **检验后的处理**：
+        - 满足 → 放大区假设成立，算出的 $I_C$、$V_{CE}$ 有效，可继续小信号分析；
+        - $V_{CE}<V_{BE}$ → 实际在饱和区，$V_{CE}$ 不再由放大区关系决定（约等于 $V_{CES}$），需按饱和区重算；
+        - $V_{BE}<V_{BE,\mathrm{on}}$ → 实际在截止区，$I_C\approx0$，同样需重算。
+
 3. Record Q-point: $Q = (I_C, V_{CE})$（记录 Q 点：$Q=(I_C,V_{CE})$）
 
 **Step 2: Small-Signal (AC) Analysis**（第 2 步：小信号（交流）分析）
@@ -386,6 +396,8 @@ r_o = \frac{V_A}{I_C} \tag{3}
 $$
 
 2. Replace the BJT circuit symbol with the linearised hybrid-$\pi$ model within the circuit diagram.（在电路图中用线性化 hybrid-$\pi$ 模型替代 BJT 符号。）
+
+>就是要画等效电路
 
 3. Set all DC independent sources to zero (current sources become open circuits, voltage sources become short circuits).（把所有直流独立源置零（电流源开路、电压源短路）。）
 
@@ -418,6 +430,42 @@ In this course, you'll rarely encounter problems where the BJT operates in satur
 > Outside this region (cutoff, saturation), the relationship breaks down completely.（在该区域之外（截止、饱和），这一关系完全失效。）
 >
 > **Check** as a *rule of thumb* that your calculated voltages satisfy $V_C > V_B > V_E$ (npn) or $V_E > V_B > V_C$ (pnp).（作为*经验法则*，检查算出的电压是否满足 $V_C>V_B>V_E$（npn）或 $V_E>V_B>V_C$（pnp）。）
+
+
+---
+
+**中文版：BJT 放大器分析步骤**
+
+目标：先求静态工作点 $Q=(I_C,V_{CE})$，再据此建立小信号模型，求增益与端口电阻。
+
+**第 1 步：大信号（直流）分析**
+
+1. **处理交流源**：耦合电容、旁路电容按开路处理，只保留直流电源；信号源置零或断开。
+2. **化简电路**：必要时把基极分压网络化成戴维南等效 $V_{eq}$、$R_{eq}$，再列回路方程。
+3. **假设放大区，统一用 $I_C$ 作未知量**：
+    - $I_B=\dfrac{I_C}{\beta_0}$
+    - $I_E=I_C\left(1+\dfrac{1}{\beta_0}\right)$
+    - $V_{BE}=V_T\ln\dfrac{I_C}{I_S}$（不计厄利效应）
+    - 若电路已直接给出 $V_{BE}$：$I_C=I_Se^{V_{BE}/V_T}$，一步得解；
+    - 否则得到 $I_C$ 的隐式方程，用牛顿迭代或高斯-赛德尔迭代求解。
+4. **求 $V_{CE}$**：$V_{CE}=V_{CC}-I_CR_C-I_ER_E$（按具体电路写 KVL）。
+5. **验证放大区**：$V_{BE,\mathrm{on}}\le V_{BE}\le V_{CE}$，即发射结正偏且 $V_{CB}=V_{CE}-V_{BE}\ge0$。不满足则按饱和区或截止区重新分析。
+6. **记录 Q 点**：$Q=(I_C,V_{CE})$，并把 $V_{BE}$ 一并记下备用。
+
+**第 2 步：小信号（交流）分析**
+1. **由 Q 点算小信号参数**：
+
+$$g_m=\frac{I_{C,Q}}{V_T},\qquad r_\pi=\frac{\beta_0}{g_m},\qquad r_o=\frac{V_A}{I_{C,Q}}$$
+
+当 $V_A=\infty$ 时 $r_o=\infty$，在等效电路中断开。
+2. **画小信号等效电路**：BJT 符号换成 hybrid-$\pi$ 模型；直流独立源置零（电压源短路、电流源开路）；耦合电容、旁路电容短路。
+3. **用线性电路方法求指标**（共射组态）：
+
+$$R_{in}=r_\pi,\qquad R_{out}=r_o\parallel R_C,\qquad A_v=-g_m\left(R_C\parallel r_o\parallel R_L\right)$$
+
+4. **理解各量的意义**：$R_{in}$ 决定前级信号有多少分到输入端；$R_{out}$ 决定带负载能力；$A_v$ 是电压增益，负号表示反相。
+
+---
 
 ### BJT Non-Ideal Behavior: Early Effect（BJT 的非理想特性：厄利效应）
 
@@ -464,37 +512,36 @@ Infinite Early voltage ($V_A \rightarrow \infty$) gives infinite output resistan
 
 Questions will assume $V_A = \infty$, an infinite Early voltage (i.e. no Early Effect), unless otherwise specified.（除非另有说明，题目均假设 $V_A=\infty$，即厄利电压无穷大、忽略厄利效应。）
 
+
 ## 1 Question 1 Solution（第 1 题解答）
 
-### 1.1 Part A（A 部分）
+### 1.1 Part A（图 a）
 
 Determine the operating point and the small-signal model of $Q_1$ for each of the circuits shown below.（求下列各电路中 $Q_1$ 的工作点与小信号模型。）
 
-Assume $I_S = 8 \times 10^{-16}$ A, $V_T = 26$ mV, $\beta = 100$, $V_A = \infty$.（假设 $I_S=8\times10^{-16}$ A、$V_T=26$ mV、$\beta=100$、$V_A=\infty$。）
+Assume $I_S = 8 \times 10^{-16}$ A, $V_T = 26$ mV, $\beta = 100$, $V_A = \infty$.
+（假设 $I_S=8\times10^{-16}$ A、$V_T=26$ mV、$\beta=100$、$V_A=\infty$。）
 
 ![](Pasted%20image%2020261114214130.png)
-> 图Q1-1 题 1(a)(b)(c) 三个电路（（a）$R_C=50\ \Omega$，$V_{CC}=2.5$ V，基极接 0.8 V 电压源；（b）$R_C=1$ k$\Omega$，$V_{CC}=2.5$ V，基极接 10 µA 电流源；（c）$R_C=1$ k$\Omega$，$V_{CC}=2.5$ V，基极与集电极短接）
 
-*Recall the typical steps for large-signal analysis of a BJT circuit:*（回顾 BJT 电路大信号分析的典型步骤：）
+> 图Q1-1 题 1 的三个电路：
+> （a）$R_C=50\ \Omega$，$V_{CC}=2.5$ V，基极接 0.8 V 电压源；
+> （b）$R_C=1$ k$\Omega$，$V_{CC}=2.5$ V，基极接 10 µA 电流源；
+> （c）$R_C=1$ k$\Omega$，$V_{CC}=2.5$ V，基极与集电极短接
 
-1. Find $I_C$ and $V_{CE}$ using standard circuit analysis techniques (may need Thevenin equivalence).（用标准电路分析方法求 $I_C$ 和 $V_{CE}$（可能需要戴维南等效）。）
-
-   - Use KCL/KVL to write equations for the circuit (typically 2x KVL loop equations).（用 KCL/KVL 列方程（通常为 2 个 KVL 回路方程）。）
-   - Use the non-linear $I_C$-$V_{BE}$ relationship to relate $V_{BE}$ to $I_C$ (no Early Effect!).（用非线性 $I_C$–$V_{BE}$ 关系联系 $V_{BE}$ 与 $I_C$（不计厄利效应！）。）
-   - If you end up with equation terms of $I_B$, use $I_C = \beta_0 I_B$ to express these in terms of $I_C$.（若方程中出现 $I_B$，用 $I_C=\beta_0I_B$ 化为 $I_C$。）
-   - For terms of $I_E$, use $I_E = I_C + I_B = I_C(1 + 1/\beta_0)$ to express in terms of $I_C$.（出现 $I_E$ 时，用 $I_E=I_C+I_B=I_C(1+1/\beta_0)$ 化为 $I_C$。）
-
-2. **Verify the forward active assumption:** Check that $V_{BE,\mathrm{on}} \leq V_{BE} \leq V_{CE}$（**验证放大区假设：** 检查 $V_{BE,\mathrm{on}}\leq V_{BE}\leq V_{CE}$）
-
-3. Record Q-point: $Q = (I_C, V_{CE})$（记录 Q 点：$Q=(I_C,V_{CE})$）
+一般分析步骤见 [[#BJT Analysis Procedure（BJT 分析步骤）|BJT 分析步骤]]。
 
 **Note that $V_A = \infty$ in this question, so Early Effect does not apply!**（注意本题 $V_A=\infty$，因此不考虑厄利效应！）
 
-**Large-signal analysis:**（**大信号分析：**）
+---
+
+**Large-signal analysis:**（**大信号分析：**）求工作点
 
 In this circuit diagram, we notice that the BJT base is *directly* connected to a voltage source of 0.8 V.（观察电路图可知，BJT 基极*直接*接到 0.8 V 电压源。）
 
 This is generous - we can directly derive $V_{BE}$ which (without Early Effect) means we have $I_C$ ✓✓（这很方便——可直接得到 $V_{BE}$；在不计厄利效应时，也就得到 $I_C$ ✓✓）
+
+>求$I_C$
 
 $V_E$ is connected to ground, so $V_E = 0$ V:（$V_E$ 接地，故 $V_E=0$ V：）
 
@@ -508,31 +555,45 @@ $$
 I_C = I_S \cdot \exp\left(\frac{V_{BE}}{V_T}\right) = (8 \times 10^{-16}\ \text{A})\exp\left(\frac{0.8\ \text{V}}{0.026\ \text{V}}\right) = 18.5\ \text{mA}
 $$
 
-**Finding $V_{CE}$:** Using a KVL loop through $R_C$ and the collector (or just Ohm's law):（**求 $V_{CE}$：** 对 $R_C$ 和集电极取 KVL 回路（或直接用欧姆定律）：）
+>求$V_{CE}$
+
+**Finding $V_{CE}$:** Using a KVL loop through $R_C$ and the collector (or just Ohm's law):
+（**求 $V_{CE}$：** 对 $R_C$ 和集电极取 KVL 回路（或直接用欧姆定律）：）
 
 $$
 V_C = V_{CC} - I_C R_C = 2.5\ \text{V} - (0.0185\ \text{A}) \cdot (50\ \Omega) = 1.58\ \text{V} \tag{2}
 $$
 
-Then, we can determine $V_{CE}$.（于是可求 $V_{CE}$。）
+Then, we can determine $V_{CE}$.
+（于是可求 $V_{CE}$。）
 
 $$
 V_{CE} = V_C - V_E = 1.58\ \text{V} - 0\ \text{V} = 1.58\ \text{V} \tag{3}
 $$
 
-Sanity check for forward active region: $V_{BE,\mathrm{on}} \leq V_{BE} \leq V_{CE}$.（放大区合理性检查：$V_{BE,\mathrm{on}}\leq V_{BE}\leq V_{CE}$。）
+>验证放大区
 
-Assuming $V_{BE,\mathrm{on}}$ is around 0.6 - 0.7 V, we have $0.7\ \text{V} \leq 0.8\ \text{V} \leq 1.58\ \text{V}$ ✓✓（取 $V_{BE,\mathrm{on}}$ 约 0.6–0.7 V，则有 $0.7\ \text{V}\leq0.8\ \text{V}\leq1.58\ \text{V}$ ✓✓）
+Sanity check for forward active region: $V_{BE,\mathrm{on}} \leq V_{BE} \leq V_{CE}$.
+（检查是否在放大区：$V_{BE,\mathrm{on}}\leq V_{BE}\leq V_{CE}$。）
 
-Therefore, the Q-point of the BJT is:（因此，BJT 的 Q 点为：）
+Assuming $V_{BE,\mathrm{on}}$ is around 0.6 - 0.7 V, we have $0.7\ \text{V} \leq 0.8\ \text{V} \leq 1.58\ \text{V}$ ✓✓
+（取 $V_{BE,\mathrm{on}}$ 约 0.6–0.7 V，则有 $0.7\ \text{V}\leq0.8\ \text{V}\leq1.58\ \text{V}$ ✓✓）
+
+>记录Q点
+
+Therefore, the Q-point of the BJT is:
+（因此，BJT 的 Q 点为：）
 
 $$
 Q = (I_C, V_{CE}) = (18.5\ \text{mA}, 1.58\ \text{V})
 $$
 
-**Remark:** Note that in this case, we did not need to use Thevenin equivalence or write 2x KVL equations because the circuit is simple in that $V_{BE}$ was effectively given.（**备注：** 本例中无需戴维南等效或列两个 KVL 方程，因为电路简单，$V_{BE}$ 实际上已直接给出。）
+**Remark:** Note that in this case, we did not need to use Thevenin equivalence or write 2x KVL equations because the circuit is simple in that $V_{BE}$ was effectively given.
+（**备注：** 本例中无需戴维南等效或列两个 KVL 方程，因为电路简单，$V_{BE}$ 实际上已直接给出。）
 
-**Small-signal analysis:**（**小信号分析：**）
+>求小信号参数
+
+**Small-signal analysis:**（**小信号分析：**）求小信号等效电路
 
 According to the given current gain $\beta = 100$ and the thermal voltage $V_T = 0.026$ V, (and $V_A = \infty \Rightarrow$ no Early Effect) we can determine the following small signal parameters:（由已知电流增益 $\beta=100$、热电压 $V_T=0.026$ V（且 $V_A=\infty$，无厄利效应），可求以下小信号参数：）
 
@@ -547,6 +608,8 @@ $$
 $$
 r_o = \frac{V_A}{I_C} = \frac{\infty}{I_C} = \infty \tag{6}
 $$
+
+>画小信号模型
 
 Finally, we draw the small signal model:（最后画出小信号模型：）
 
@@ -576,7 +639,9 @@ Thus, here, $r_o$ can be omitted as it is infinite:（因此这里 $r_o$ 可省�
 >
 > This is why we can write $V_C = V_{CC} - I_C R_C$ without explicitly showing the complete loop — the ground node provides the reference that makes this equation valid.（这就是为什么不必画出完整回路也能写 $V_C=V_{CC}-I_C R_C$——接地节点提供了使该式成立的参考。）
 
-### 1.2 Part B（B 部分）
+---
+
+### 1.2 Part B（图 b）
 
 Determine the operating point and the small-signal model of $Q_1$ for each of the circuits shown below.（求下列各电路中 $Q_1$ 的工作点与小信号模型。）
 
@@ -585,22 +650,13 @@ Assume $I_S = 8 \times 10^{-16}$ A, $V_T = 26$ mV, $\beta = 100$, $V_A = \infty$
 ![](Pasted%20image%2020261114214218.png)
 > 图Q1-1（原书在 Part B 处重复排版）题 1(a)(b)(c) 三个电路
 
-*Recall the typical steps for large-signal analysis of a BJT circuit:*（回顾 BJT 电路大信号分析的典型步骤：）
-
-1. Find $I_C$ and $V_{CE}$ using standard circuit analysis techniques (may need Thevenin equivalence).（用标准电路分析方法求 $I_C$ 和 $V_{CE}$（可能需要戴维南等效）。）
-
-   - Use KCL/KVL to write equations for the circuit (typically 2x KVL loop equations).（用 KCL/KVL 列方程（通常为 2 个 KVL 回路方程）。）
-   - Use the non-linear $I_C$-$V_{BE}$ relationship to relate $V_{BE}$ to $I_C$ (no Early Effect!).（用非线性 $I_C$–$V_{BE}$ 关系联系 $V_{BE}$ 与 $I_C$（不计厄利效应！）。）
-   - If you end up with equation terms of $I_B$, use $I_C = \beta_0 I_B$ to express these in terms of $I_C$.（若方程中出现 $I_B$，用 $I_C=\beta_0I_B$ 化为 $I_C$。）
-   - For terms of $I_E$, use $I_E = I_C + I_B = I_C(1 + 1/\beta_0)$ to express in terms of $I_C$.（出现 $I_E$ 时，用 $I_E=I_C+I_B=I_C(1+1/\beta_0)$ 化为 $I_C$。）
-
-2. **Verify the forward active assumption:** Check that $V_{BE,\mathrm{on}} \leq V_{BE} \leq V_{CE}$（**验证放大区假设：** 检查 $V_{BE,\mathrm{on}}\leq V_{BE}\leq V_{CE}$）
-
-3. Record Q-point: $Q = (I_C, V_{CE})$（记录 Q 点：$Q=(I_C,V_{CE})$）
+>一般分析步骤见 [[#BJT Analysis Procedure（BJT 分析步骤）|BJT 分析步骤]]。
 
 **Note that $V_A = \infty$ in this question, so Early Effect does not apply!**（注意本题 $V_A=\infty$，因此不考虑厄利效应！）
 
 **Large-Signal Analysis**（**大信号分析**）
+
+>求$I_B$、$I_C$
 
 From the circuit diagram, a current source provides the base current $I_B$ directly.（由电路图可知，电流源直接提供基极电流 $I_B$。）
 
@@ -616,17 +672,23 @@ $$
 I_C = \beta I_B = 100 \cdot (10 \times 10^{-6}\ \text{A}) = 1\ \text{mA} \tag{8}
 $$
 
+>求$V_{CE}$
+
 **Finding $V_{CE}$:** We can use KVL through the collector to determine the collector-emitter voltage $V_{CE}$:（**求 $V_{CE}$：** 对集电极取 KVL 回路，可求集电极-发射极电压 $V_{CE}$：）
 
 $$
 V_{CE} = V_{CC} - I_C R_C = 2.5\ \text{V} - (10^{-3}\ \text{A}) \cdot (1000\ \Omega) = 1.5\ \text{V} \tag{9}
 $$
 
+>记录Q点
+
 Therefore, the Q-point of the BJT is:（因此，BJT 的 Q 点为：）
 
 $$
 Q = (I_C, V_{CE}) = (1\ \text{mA}, 1.5\ \text{V}) \tag{10}
 $$
+
+>求$V_{BE}$并验证放大区
 
 Now, we need to find $V_{BE}$ to verify the forward active assumption.（现在需要求 $V_{BE}$ 以验证放大区假设。）
 
@@ -635,6 +697,8 @@ Using the $I_C$-$V_{BE}$ relationship and the known $I_C$, we can determine $V_{
 $$
 V_{BE} = V_T \ln\left(\frac{I_C}{I_S}\right) = (0.026\ \text{V}) \ln\left(\frac{10^{-3}\ \text{A}}{8 \times 10^{-16}\ \text{A}}\right) = 0.724\ \text{V} \quad [V_{BE,\mathrm{on}} \leq V_{BE} \leq V_{CE}\ ✓✓] \tag{11}
 $$
+
+>求$g_m$、$r_\pi$、$r_o$
 
 **Small-Signal Analysis**（**小信号分析**）
 
@@ -656,7 +720,9 @@ $$
 r_o = \frac{V_A}{I_C} = \frac{\infty}{I_C} = \infty \tag{14}
 $$
 
-### 1.3 Part C（C 部分）
+---
+
+### 1.3 Part C（图 c）
 
 Determine the operating point and the small-signal model of $Q_1$ for each of the circuits shown below.（求下列各电路中 $Q_1$ 的工作点与小信号模型。）
 
@@ -665,32 +731,33 @@ Assume $I_S = 8 \times 10^{-16}$ A, $V_T = 26$ mV, $\beta = 100$, $V_A = \infty$
 ![](Pasted%20image%2020261114214229.png)
 > 图Q1-1（原书在 Part C 处重复排版）题 1(a)(b)(c) 三个电路
 
-*Recall the typical steps for large-signal analysis of a BJT circuit:*（回顾 BJT 电路大信号分析的典型步骤：）
-
-1. Find $I_C$ and $V_{CE}$ using standard circuit analysis techniques (may need Thevenin equivalence).（用标准电路分析方法求 $I_C$ 和 $V_{CE}$（可能需要戴维南等效）。）
-
-   - Use KCL/KVL to write equations for the circuit (typically 2x KVL loop equations).（用 KCL/KVL 列方程（通常为 2 个 KVL 回路方程）。）
-   - Use the non-linear $I_C$-$V_{BE}$ relationship to relate $V_{BE}$ to $I_C$ (no Early Effect!).（用非线性 $I_C$–$V_{BE}$ 关系联系 $V_{BE}$ 与 $I_C$（不计厄利效应！）。）
-   - If you end up with equation terms of $I_B$, use $I_C = \beta_0 I_B$ to express these in terms of $I_C$.（若方程中出现 $I_B$，用 $I_C=\beta_0I_B$ 化为 $I_C$。）
-   - For terms of $I_E$, use $I_E = I_C + I_B = I_C(1 + 1/\beta_0)$ to express in terms of $I_C$.（出现 $I_E$ 时，用 $I_E=I_C+I_B=I_C(1+1/\beta_0)$ 化为 $I_C$。）
-
-2. **Verify the forward active assumption:** Check that $V_{BE,\mathrm{on}} \leq V_{BE} \leq V_{CE}$（**验证放大区假设：** 检查 $V_{BE,\mathrm{on}}\leq V_{BE}\leq V_{CE}$）
-
-3. Record Q-point: $Q = (I_C, V_{CE})$（记录 Q 点：$Q=(I_C,V_{CE})$）
+>一般分析步骤见 [[#BJT Analysis Procedure（BJT 分析步骤）|BJT 分析步骤]]。
 
 **Note that $V_A = \infty$ in this question, so Early Effect does not apply!**（注意本题 $V_A=\infty$，因此不考虑厄利效应！）
 
 **Large-Signal Analysis**（**大信号分析**）
 
-Unfortunately, for this circuit, we cannot directly determine $I_C$ or $V_{BE}$ from the circuit as we have not been given a convenient voltage/current source this time, so we need to write 2x KVL or KCL equations and use the BJT $I_C$-$V_{BE}$ relationship to solve for $I_C$.（可惜本题没有直接给出方便的电压源或电流源，无法直接从电路读出 $I_C$ 或 $V_{BE}$，因此需要列两个 KVL 或 KCL 方程，并结合 BJT 的 $I_C$–$V_{BE}$ 关系求解 $I_C$。）
+>求$I_C$（列方程迭代）
+
+Unfortunately, for this circuit, we cannot directly determine $I_C$ or $V_{BE}$ from the circuit as we have not been given a convenient voltage/current source this time, so we need to write 2x KVL or KCL equations and use the BJT $I_C$-$V_{BE}$ relationship to solve for $I_C$.
+（可惜本题没有直接给出方便的电压源或电流源，无法直接从电路读出 $I_C$ 或 $V_{BE}$，因此需要列两个 KVL 或 KCL 方程，并结合 BJT 的 $I_C$–$V_{BE}$ 关系求解 $I_C$。）
 
 The first thing that stands out is the base and collector of the BJT are tied together.（最显眼的是 BJT 的基极与集电极短接在一起。）
 
 This means 3 things:（这带来三点：）
 
-- The voltages at these nodes are equal: $V_B = V_C \Rightarrow V_{BE} = V_{CE}$（两节点电压相等：$V_B=V_C\Rightarrow V_{BE}=V_{CE}$）
-- Therefore, the BJT is "self-biased" - the BJT is in the active region as long as $V_{BE} > V_{BE,\mathrm{on}}$.（因此 BJT 处于“自偏置”状态——只要 $V_{BE}>V_{BE,\mathrm{on}}$，就工作在放大区。）
-- By KCL, the current flowing through resistor $R_C$ is simply the emitter current $I_E = I_C + I_B$.（由 KCL，流过 $R_C$ 的电流就是发射极电流 $I_E=I_C+I_B$。）
+- The voltages at these nodes are equal: $V_B = V_C \Rightarrow V_{BE} = V_{CE}$
+  （两节点电压相等：$V_B=V_C\Rightarrow V_{BE}=V_{CE}$）
+- Therefore, the BJT is "self-biased" - the BJT is in the active region as long as $V_{BE} > V_{BE,\mathrm{on}}$.
+  （因此 BJT 处于“自偏置”状态——只要 $V_{BE}>V_{BE,\mathrm{on}}$，就工作在放大区。）
+- By KCL, the current flowing through resistor $R_C$ is simply the emitter current $I_E = I_C + I_B$.
+  （由 KCL，流过 $R_C$ 的电流就是发射极电流 $I_E=I_C+I_B$。）
+
+> [!note] 为什么叫「自偏置」
+> - 基极与集电极短接：$V_B=V_C$，所以 $V_{CE}=V_{BE}$。放大区判据 $V_{BE,\mathrm{on}}\le V_{BE}\le V_{CE}$ 的右半边自动取等号，只剩 $V_{BE}>V_{BE,\mathrm{on}}$。
+> - 没有独立的基极偏置：$I_B$ 和 $I_C$共同 从 $V_{CC}$ 经 $R_C$ 流入，$V_B=V_C=V_{CC}-(I_C+I_B)R_C$，一个 $R_C$ 同时决定 $I_C$、$I_B$、$V_{BE}$。
+> - 带负反馈：$I_C$ 偏大 → $R_C$ 压降变大 → $V_C$ 下降 → $V_{BE}$ 下降 → $I_C$ 回落，Q 点自行稳定。
+> - $V_{CB}=0$ 是放大区与饱和区的临界点（集电结零偏），本课程按放大区处理。
 
 You should know that the emitter current equals the sum of the collector current and the base current:（发射极电流等于集电极电流与基极电流之和：）
 
@@ -722,7 +789,8 @@ We still need to express $I_C$ in terms of known quantities.（还需把 $I_C$ �
 
 Recall, as mentioned earlier, that since the base and collector are tied together, $V_{BE} = V_{CE}$.（回顾前面所述，基极与集电极短接，故 $V_{BE}=V_{CE}$。）
 
-We can use the BJT $I_C$-$V_{BE}$ relationship to express $V_{CE} = V_{BE}$ in terms of $I_C$:（利用 BJT 的 $I_C$–$V_{BE}$ 关系，把 $V_{CE}=V_{BE}$ 用 $I_C$ 表示：）
+We can use the BJT $I_C$-$V_{BE}$ relationship to express $V_{CE} = V_{BE}$ in terms of $I_C$:
+（利用 BJT 的 $I_C$–$V_{BE}$ 关系，把 $V_{CE}=V_{BE}$ 用 $I_C$ 表示：）
 
 $$
 I_C\left(1 + \frac{1}{\beta}\right) = \frac{V_{CC} - V_{BE}}{R_C}
@@ -785,17 +853,23 @@ $$
 I_C \approx 1.74\ \text{mA} \tag{25}
 $$
 
+>求$V_{CE}$
+
 The collector–emitter voltage equals the base–emitter voltage, hence（集电极-发射极电压等于基极-发射极电压，故）
 
 $$
 V_{CE} = V_{BE} = V_T \ln\left(\frac{I_C}{I_S}\right) = (0.026\ \text{V}) \ln\left(\frac{1.74 \times 10^{-3}\ \text{A}}{8 \times 10^{-16}\ \text{A}}\right) = 0.739\ \text{V} \quad [V_{BE,\mathrm{on}} \leq V_{BE} \leq V_{CE},\ \text{self-biased}\ ✓✓] \tag{26}
 $$
 
+>记录Q点
+
 Thus, the Q-point is（因此，Q 点为）
 
 $$
 Q = (I_C, V_{CE}) = (1.74\ \text{mA}, 0.739\ \text{V}) \tag{27}
 $$
+
+>求小信号参数
 
 #### Small-Signal Parameters（小信号参数）
 
@@ -835,12 +909,27 @@ $$
 >
 > **Calculator Technique:**（**计算器操作：**）
 >
-> 1. Enter initial guess: 1E-3 (for 1 mA)（输入初值 1E-3（即 1 mA））
-> 2. Type the formula using ANS for $I_C^{(n)}$:（用 ANS 代表 $I_C^{(n)}$ 输入公式：）
+> 以 Part C 为例：$\beta=100$，$V_{CC}=2.5$ V，$R_C=1000\ \Omega$，$V_T=0.026$ V，$I_S=8\times10^{-16}$ A。**全部用 SI 单位**（$I_C$ 以 A 计，$R_C$ 以 $\Omega$ 计），结果读出来是 A。
+>
+> 1. **先给 ANS 一个初值**：按 `1` → `EXP` → `-3` → `=`，屏幕显示 `0.001`。此时计算器的 `ANS` 就是 $I_C^{(0)}=0.001$ A。
+> 2. **输入迭代公式**，凡是 $I_C^{(n)}$ 的位置都用 `ANS` 代替：
 >
 >    `(100/101)*(2.5-0.026*ln(ANS/8E-16))/1000`
 >
-> 3. Press `=` repeatedly until the value converges（反复按 `=` 直到数值收敛）
+>    按键要点：
+>    - `100÷101` 就是 $\dfrac{\beta}{1+\beta}$；
+>    - `2.5` 是 $V_{CC}$，`0.026` 是 $V_T$，`1000` 是 $R_C$；
+>    - `8E-16` 可用 `8` → `EXP` → `-16`；
+>    - `ln` 用**自然对数键**，不是 `log`（`log` 以 10 为底）。
+> 3. **按一次 `=`**：得到 $I_C^{(1)}=0.001758$ A。这一次用的是上一步的 `ANS=0.001`。
+> 4. **再按一次 `=`**：`ANS` 自动换成 `0.001758`，得到 $I_C^{(2)}=0.001744$ A。
+> 5. **继续按 `=`**：显示值不再变化（`0.001744`），说明收敛，停止。
+> 6. **读结果**：$I_C=0.001744$ A $=1.744$ mA。
+>
+> **常见问题：**
+> - 显示 `Math ERROR`：多半是 `ln` 的参数不为正——检查 `ANS` 是不是还没赋值，或者把 $I_C$ 当成了 mA 输入（应输入 0.001 而不是 1）。
+> - 数字一直变、不收敛：初值离解太远，先换一个更接近的初值再迭代。
+> - 有些计算器没有 `ANS` 键，用 `x` 变量代替，每轮把上次结果存入 `x` 再按 `=`。
 >
 > **Example for Part C:**（**C 部分的例子：**）
 >
@@ -853,6 +942,7 @@ $$
 >
 > **Warning:** This method may not converge if the initial guess is too far from the solution or if the BJT is near cutoff.（**注意：** 若初值离解太远，或 BJT 接近截止，该方法可能不收敛。）
 
+
 ## 2 Question 2（第 2 题）
 
 (a) Find the Q-point for the circuit in Fig. a.（求图 a 电路的 Q 点。）
@@ -863,7 +953,8 @@ Assume that $\beta_F = 50$ and $V_{BE} = 0.7$ V.（假设 $\beta_F=50$、$V_{BE}
 
 (c) Repeat if all the resistor values are increased by a factor of 5.（若所有电阻值都增大为 5 倍，重做计算。）
 
-(d) Find the Q-point in part (a) using the numerical iteration method if $I_S = 0.5$ fA and $V_T = 25.8$ mV.（若 $I_S=0.5$ fA、$V_T=25.8$ mV，用数值迭代法求 (a) 中的 Q 点。）
+(d) Find the Q-point in part (a) using the numerical iteration method if $I_S = 0.5$ fA and $V_T = 25.8$ mV.
+（若 $I_S=0.5$ fA、$V_T=25.8$ mV，用数值迭代法求 (a) 中的 Q 点。）
 
 (e) Repeat for $V_A = 60$ V.（对 $V_A=60$ V 重做。）
 
@@ -876,15 +967,21 @@ This circuit is a "8"-shaped **4-Resistor Bias Network** BJT circuit.（该电�
 
 This is a well known configuration, featured in the lecture.（这是课上介绍过的经典结构。）
 
-You should memorise this, or draw it on your formula sheet!（应当记住它，或画在公式表上！）
+You should memorise this, or draw it on your formula sheet!（**应当记住它，或画在公式表上**！）
 
 We must simplify the left-hand-side part of the circuit using Thevenin equivalence (see lecture).（需用戴维南等效化简电路左侧部分（见课件）。）
+
+>从B、E之间看进去
+
+>求等效电压：等效电压就是BE间的电压，根据电阻串联分压求等效电压
 
 The equivalent voltage source can be determined by finding the open-circuit voltage at the base node:（等效电压源可由基极节点的开路电压求出：）
 
 $$
 V_{eq} = 10 \cdot \left(\frac{36\ \text{k}\Omega}{36\ \text{k}\Omega + 68\ \text{k}\Omega}\right) = 3.46\ \text{V} \tag{1}
 $$
+
+>求等效电阻：10V电压置零，相当于直接接地，两个电阻就并联了
 
 The equivalent resistance can be determined by:（等效电阻为：）
 
@@ -897,29 +994,37 @@ $$
 
 ### 2.1 Part A（A 部分）
 
-Applying KVL in the base loop, we get the following equation.（在基极回路中应用 KVL，得：）
+>求$I_B$
+
+Applying KVL in the base loop, we get the following equation.
+（在基极回路中应用 KVL，得：）
 
 $$
 V_{eq} - I_B R_{eq} - V_{BE} - I_E \cdot 33\,000 = 0 \tag{3}
 $$
 
-The correlation between the emitter current and the base current is given by:（发射极电流与基极电流的关系为：）
+The correlation between the emitter current and the base current is given by:
+（发射极电流与基极电流的关系为：）
 
 $$
 I_E = (1 + \beta_F)I_B \tag{4}
 $$
 
-Substituting (2) into (1), we get the following equation, where $V_{BE} = 0.7$V, given by the question.（把 (4) 代入 (3)，并取题目给出的 $V_{BE}=0.7$ V，得：）
+Substituting (2) into (1), we get the following equation, where $V_{BE} = 0.7$V, given by the question.
+（把 (4) 代入 (3)，并取题目给出的 $V_{BE}=0.7$ V，得：）
 
 $$
 V_{eq} - I_B R_{eq} - V_{BE} - (1 + \beta_F)I_B \times 33\,000 = 0 \tag{5}
 $$
 
-Rearranging the equation, we can solve the base current.（重排方程即可解出基极电流。）
+Rearranging the equation, we can solve the base current.
+（重排方程即可解出基极电流。）
 
 $$
 I_B = \frac{V_{eq} - V_{BE}}{R_{eq} + (1 + \beta_F) \times 33\,000} I_B = 1.62\ \mu\text{A} \tag{6}
 $$
+
+>求$I_C$、$I_E$
 
 The collector current and the emitter current are then determined using the current gain $\beta_F = 50$.（再用电流增益 $\beta_F=50$ 求集电极电流与发射极电流。）
 
@@ -930,6 +1035,8 @@ $$
 $$
 I_E = (1 + \beta_F)I_B = 51 \times 1.62\ \mu\text{A} = 82.48\ \mu\text{A} \tag{8}
 $$
+
+>求$V_{CE}$
 
 According to Ohm's Law and basic KVL, we can get the expressions for the collector voltage and emitter voltage, where The collector–emitter voltage:（由欧姆定律与基本 KVL，可得集电极电压与发射极电压表达式，进而求集电极-发射极电压：）
 
@@ -947,6 +1054,8 @@ $$
 V_{CE} = V_C - V_E = [V_{CC} - (43\,000 \cdot I_C)] - (33\,000 \cdot I_E) = 3.8\ \text{V} \tag{11}
 $$
 
+>记录Q点
+
 Therefore, the operating point (Q-point) is:（因此，工作点（Q 点）为：）
 
 $$
@@ -954,6 +1063,8 @@ Q : (I_C, V_{CE}) = (80.87\ \mu\text{A}, 3.8\ \text{V}) \tag{12}
 $$
 
 ### 2.2 Part B（B 部分）
+
+>求$V_{eq}$、$R_{eq}$
 
 From the voltage divider, the Thevenin equivalent voltage is given as:（由分压关系，戴维南等效电压为：）
 
@@ -967,6 +1078,8 @@ $$
 R_{eq} = 7.2\ \text{k}\Omega \parallel 13.6\ \text{k}\Omega = 4.71\ \text{k}\Omega \tag{14}
 $$
 
+>求$I_B$
+
 The base current can be expressed as:（基极电流可表示为：）
 
 $$
@@ -979,6 +1092,8 @@ $$
 I_B = \frac{3.46 - 0.7}{4710 + 51 \times 330} = 8.10\ \mu\text{A} \tag{16}
 $$
 
+>求$I_C$、$I_E$
+
 The collector current and emitter current are then calculated:（于是可算集电极电流与发射极电流：）
 
 $$
@@ -989,11 +1104,15 @@ $$
 I_E = (1 + \beta_F)I_B = 51 \times 8.10\ \mu\text{A} = 412.7\ \mu\text{A} \tag{18}
 $$
 
+>求$V_{CE}$
+
 Next, we determine the collector–emitter voltage:（接着求集电极-发射极电压：）
 
 $$
 V_{CE} = [10 - (8.6\ \text{k}\Omega \cdot I_C)] - (6.6\ \text{k}\Omega \cdot I_E) = 3.8\ \text{V} \tag{19}
 $$
+
+>记录Q点
 
 Therefore, the operating point (Q-point) is:（因此，工作点（Q 点）为：）
 
@@ -1002,6 +1121,8 @@ Q : (I_C, V_{CE}) = (405\ \mu\text{A}, 3.8\ \text{V}) \tag{20}
 $$
 
 ### 2.3 Part C（C 部分）
+
+>求$V_{eq}$、$R_{eq}$
 
 From the voltage divider, the Thevenin equivalent voltage is the same as before:（由分压关系，戴维南等效电压与前面相同：）
 
@@ -1015,6 +1136,8 @@ $$
 R_{eq} = 180\ \text{k}\Omega \parallel 340\ \text{k}\Omega = 117.7\ \text{k}\Omega \tag{22}
 $$
 
+>求$I_B$
+
 The base current is then:（基极电流为：）
 
 $$
@@ -1027,6 +1150,8 @@ $$
 I_B = \frac{3.46 - 0.7}{117700 + 51 \times 16500} = 0.32\ \mu\text{A} \tag{24}
 $$
 
+>求$I_C$、$I_E$
+
 The collector current and emitter current are then determined:（于是求集电极电流与发射极电流：）
 
 $$
@@ -1037,11 +1162,15 @@ $$
 I_E = (1 + \beta_F)I_B = 51 \times 0.32\ \mu\text{A} = 16.5\ \mu\text{A} \tag{26}
 $$
 
+>求$V_{CE}$
+
 The collector–emitter voltage is:（集电极-发射极电压为：）
 
 $$
 V_{CE} = 3.8\ \text{V} \tag{27}
 $$
+
+>记录Q点
 
 Therefore, the operating point (Q-point) is:（因此，工作点（Q 点）为：）
 
@@ -1051,13 +1180,17 @@ $$
 
 ### 2.4 Part D（D 部分）
 
-The base–emitter voltage is modeled using the following equation:（基极-发射极电压用下式建模：）
+>求$V_{BE}$与$I_C$的关系
+
+The base–emitter voltage is modeled using the following equation:
+（基极-发射极电压用下式建模：）
 
 $$
 V_{BE} = V_T \cdot \ln\left(\frac{I_C}{I_S} + 1\right) = 0.0258 \cdot \ln\left(2 \times 10^{15} I_C + 1\right) \tag{29}
 $$
 
-The collector current can also be expressed using the KVL method:（集电极电流也可由 KVL 方法表示：）
+The collector current can also be expressed using the KVL method:
+（集电极电流也可由 KVL 方法表示：）
 
 $$
 I_C = \frac{V_{eq} - V_{BE}}{R_{eq} + (1 + \beta_F)R_E} \cdot \beta_F \tag{30}
@@ -1093,11 +1226,15 @@ $$
 I_{C,\text{new}} = I_{C,\text{old}} - \frac{f(I_{C,\text{old}})}{f'(I_{C,\text{old}})} \tag{35}
 $$
 
+>求$I_C$、$V_{CE}$（迭代收敛）
+
 After iteration, the solution converges to:（迭代后收敛于：）
 
 $$
 I_C = 81.8\ \mu\text{A}, \quad V_{CE} = 3.79\ \text{V} \tag{36}
 $$
+
+>记录Q点
 
 Therefore, the operating point (Q-point) is:（因此，工作点（Q 点）为：）
 
@@ -1106,6 +1243,8 @@ Q : (I_C, V_{CE}) = (81.8\ \mu\text{A}, 3.79\ \text{V}) \tag{37}
 $$
 
 ### 2.5 Part E（E 部分）
+
+>求$\beta_F$与$V_{CE}$（联立）
 
 Including the Early effect, the forward current gain is expressed as:（计入厄利效应后，正向电流增益为：）
 
@@ -1139,6 +1278,8 @@ $$
 V_{CE} = 3.44\ \text{V}, \quad I_B = 0.81\ \mu\text{A}, \quad I_C = 85.5\ \mu\text{A} \tag{42}
 $$
 
+>记录Q点
+
 Therefore, the operating point (Q-point) is:（因此，工作点（Q 点）为：）
 
 $$
@@ -1154,6 +1295,8 @@ It is found that $I_C = 240$ $\mu$A for $V_{CE} = 5$ V and $I_C = 265$ $\mu$A fo
 What are the values of $\beta_{F0}$ and $V_A$ for this transistor?（求该晶体管的 $\beta_{F0}$ 与 $V_A$。）
 
 **Solution:**（**解答：**）
+
+>求$\beta_{F0}$、$V_A$
 
 We define the following parameters:（定义以下参数：）
 

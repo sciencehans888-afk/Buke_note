@@ -10,7 +10,11 @@ That is, small changes in base-emitter voltage $V_{BE}$ lead to large changes in
 
 ### Small Signal Inputs vs. Large Signal Inputs（小信号输入与大信号输入）
 
-**小信号输入（small-signal input）：** 幅度足够小、使晶体管始终工作在 Q 点附近近似线性区的输入信号。通常满足 $|v_{be}|\ll V_T$（$V_T\approx26$ mV，工程上常取几 mV 以内）。此时 $I_C$–$V_{BE}$ 曲线在 Q 点附近可近似为切线，$i_c=g_mv_{be}$，可用线性小信号模型分析，输出无明显失真。
+**小信号输入（small-signal input）：** 幅度足够小、使晶体管始终工作在 Q 点附近近似线性区的输入信号。
+
+通常满足 $|v_{be}|\ll V_T$（$V_T\approx26$ mV，工程上常取几 mV 以内）。
+
+此时 $I_C$–$V_{BE}$ 曲线在 Q 点附近可近似为切线，$i_c=g_mv_{be}$，可用线性小信号模型分析，输出无明显失真。
 
 > [!note] 符号约定（notation）
 > - **大写**（$V_{BE}$、$I_C$、$I_B$）：直流（静态）量。
@@ -38,9 +42,11 @@ Large input signals cause the transistor to operate over a wide range of this cu
 
 **Small signal inputs** (see in green) keep the transistor operating near a specific point on the curve, called the **Quiescent point (Q-point)**.（**小信号输入**（见绿色）使晶体管工作在曲线上某个特定点附近，该点称为**静态工作点（Q 点）**。）
 
-Around this point, we can approximate the exponential curve as a straight line (the tangent with slope = $g_m$), allowing for *linear amplification without distortion*.（在该点附近，可把指数曲线近似为一条直线（斜率为 $g_m$ 的切线），从而实现*无失真的线性放大*。）
+Around this point, we can approximate the exponential curve as a straight line (the tangent with slope = $g_m$), allowing for *linear amplification without distortion*.
+（在该点附近，可把指数曲线近似为一条直线（斜率为 $g_m$ 的切线），从而实现*无失真的线性放大*。）
 
-**Q-point location** - We deliberately position the Q-point on the $I_C$-$V_{BE}$ characteristic curve by selecting an appropriate DC collector current $I_{C,Q}$.（**Q 点的位置的选择**——选取合适的直流集电极电流 $I_{C,Q}$，人为地把 Q 点设在 $I_C$–$V_{BE}$ 特性曲线上。）
+**Q-point location** - We deliberately position the Q-point on the $I_C$-$V_{BE}$ characteristic curve by selecting an appropriate DC collector current $I_{C,Q}$.
+（**Q 点的位置的选择**——选取合适的直流集电极电流 $I_{C,Q}$，人为地把 Q 点设在 $I_C$–$V_{BE}$ 特性曲线上。）
 
 
 This choice involves trade-offs:（这一选择需要权衡：）
@@ -86,7 +92,6 @@ where $g_m = \left.\dfrac{\mathrm{d}I_C}{\mathrm{d}V_{BE}}\right|_Q = \dfrac{I_{
 > 对应到本题：$f\to I_C$，$x\to V_{BE}$，$x_0\to V_{BE,Q}$。
 
 This linear approximation is *only valid for small signals* because higher-order terms in the Taylor series become significant for large deviations from the Q-point.（该线性近似*仅对小信号成立*，因为偏离 Q 点较大时，泰勒级数的高阶项会变得显著。）
-
 
 > 根据小信号波动的这附近的电压电流表达式，我们近似画出BJT此时的等效电路
 
@@ -532,7 +537,7 @@ Assume $I_S = 8 \times 10^{-16}$ A, $V_T = 26$ mV, $\beta = 100$, $V_A = \infty$
 一般分析步骤见 [[#BJT Analysis Procedure（BJT 分析步骤）|BJT 分析步骤]]。
 
 **Note that $V_A = \infty$ in this question, so Early Effect does not apply!**（注意本题 $V_A=\infty$，因此不考虑厄利效应！）
-
+ 
 ---
 
 **Large-signal analysis:**（**大信号分析：**）求工作点
@@ -841,11 +846,11 @@ $$
 Starting with an initial guess $I_C^{(0)} = 1$ mA:（取初值 $I_C^{(0)}=1$ mA：）
 
 | Iteration（迭代次数） | $I_C^{(n)}$ (mA) | $f\left(I_C^{(n)}\right)$ | $f'\left(I_C^{(n)}\right)$ |
-| --- | --- | --- | --- |
-| 0 | 1.000 | $7.58 \times 10^{-4}$ | -1.026 |
-| 1 | 1.739 | $4.78 \times 10^{-6}$ | -1.015 |
-| 2 | 1.744 | $9.43 \times 10^{-11}$ | -1.015 |
-| 3 | 1.744 |  |  |
+| --------------- | ---------------- | ------------------------- | -------------------------- |
+| 0               | 1.000            | $7.58 \times 10^{-4}$     | -1.026                     |
+| 1               | 1.739            | $4.78 \times 10^{-6}$     | -1.015                     |
+| 2               | 1.744            | $9.43 \times 10^{-11}$    | -1.015                     |
+| 3               | 1.744            |                           |                            |
 
 Using this method, the collector current converges to（用该方法，集电极电流收敛于）
 

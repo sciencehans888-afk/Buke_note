@@ -2,10 +2,15 @@
 
 ## Introduction to MOSFETs and Circuit Analysis（MOSFET 与电路分析简介）
 
+---
+
 ### The MOSFET: A Voltage-Controlled Current Source（MOSFET：电压控制电流源）
 
 The Metal-Oxide-Semiconductor Field-Effect Transistor (MOSFET) is the fundamental building block of modern electronics.
 （金属-氧化物-半导体场效应晶体管（MOSFET）是现代电子技术的基本器件。）
+
+>MOSFET的常见类型，有图中这几种
+
 
 Unlike bipolar junction transistors (BJTs) which are current-controlled, MOSFETs are voltage-controlled devices - the gate voltage controls the drain current.
 （与电流控制的双极型晶体管（BJT）不同，MOSFET 是电压控制器件——栅极电压控制漏极电流。）
@@ -14,6 +19,12 @@ Unlike bipolar junction transistors (BJTs) which are current-controlled, MOSFETs
 
 > 图1 MOSFET symbols showing both 4-terminal (with body) and 3-terminal configurations（图 1：MOSFET 符号，包括四端（带体）与三端两种形式）
 
+>区别
+- **4 端子（4-terminal）：G、D、S、B 四个引脚全部独立引出**
+- **3 端子（3-terminal）：衬底 B 在器件内部直接和源极 S 短接，外部只引出 G、D、S**
+
+> [!note] 本课程使用的类型
+> 本课程题目中的 MOSFET 都是**增强型**：NMOS 取 $V_{TN}>0$、$v_{GS}>V_{TN}$ 导通；PMOS 取 $V_{TP}<0$、$v_{GS}<V_{TP}$ 导通。
 
 > [!warning] Critical: Arrow Direction Confusion Between 4-Terminal and 3-Terminal Symbols（重要：四端与三端符号的箭头方向容易混淆）
 >
@@ -28,24 +39,90 @@ Unlike bipolar junction transistors (BJTs) which are current-controlled, MOSFETs
 
 #### The Physical Picture（物理图像）
 
-When we apply a voltage to the gate (relative to the source), we create an electric field that attracts charge carriers to form a conductive channel between drain and source.
-（当在栅极（相对源极）加电压时，会产生电场，吸引载流子在漏极与源极之间形成导电沟道。）
+>这是我找了一个MOSFET的结构图
 
 ![](Pasted%20image%2020261112213540.png)
+
+
+![](Pasted%20image%2020261112213417.png)
+> 图4.1.1 N 沟道增强型 MOSFET 结构及符号（a）结构（b）简图（纵剖面图）（c）代表符号
+
+
+When we apply a voltage to the gate (relative to the source), we create an electric field that attracts charge carriers to form a conductive channel between drain and source.
+（当在栅极（相对源极）加电压时，会产生电场，吸引载流子在漏极与源极之间形成导电沟道。）
 
 This channel acts like a voltage-controlled resistor, allowing current to flow.
 （该沟道相当于一个电压控制的电阻，允许电流通过。）
 
-#### Key Parameters（主要参数）
+---
 
-- **Gate Current ($I_G = 0$):** is zero (in this course), as the gate is insulated by oxide.
-  （**栅极电流（$I_G=0$）：** 本课程中为零，因为栅极被氧化物绝缘。）
-- **Threshold Voltage ($V_{Th}$, $V_{TN}$ or $V_{TP}$):** Minimum gate voltage needed to form a channel（**阈值电压：** 形成沟道所需的最小栅极电压）
-- **Transconductance Param. ($K_n$, $K_p$):** $K' = \mu C_{ox}$ ($\mu$ carrier mobility, $C_{ox}$ oxide capacitance)（**跨导参数：** $K'=\mu C_{ox}$（$\mu$ 为载流子迁移率，$C_{ox}$ 为氧化层电容））
-- **Aspect Ratio ($W/L$):** Width-to-length ratio of the channel, controlling current capability（**宽长比：** 沟道宽度与长度之比，决定电流能力）
-- **Channel Length Modulation ($\lambda$):** Accounts for slight dependence of $I_D$ on $V_{DS}$ in saturation（**沟道长度调制：** 描述饱和区 $I_D$ 对 $V_{DS}$ 的轻微依赖）
+#### 工作原理：沟道是怎样形成的（教材补充）
 
-#### The Three Operating Regions（三个工作区）
+![](Pasted%20image%2020261112213434.png)
+> 图4.1.2 N 沟道增强型 MOSFET 的基本工作原理示意图
+> （a）$v_{GS}=0$ 时，没有导电沟道
+> （b）$v_{GS}\geq V_{TN}$ 时，出现 N 型导电沟道
+> （c）图 a 所示 MOSFET 截止时源极和漏极之间等价的背靠背二极管
+> （d）$v_{GS}=0$ 时，即使漏源极加正电压时，也无漏极电流
+> （e）$v_{DS}$ 较小时，不同 $v_{GS}$ 时的 $i_D$ 随 $v_{DS}$ 变化曲线可近似看成直线
+
+**（1）$v_{GS}=0$：没有导电沟道**
+
+源区与漏区都是 N 型，中间隔着 P 型衬底，所以 d、s 之间隔着两个 PN 结：d–B 与 s–B。
+
+**① B 与 s 断开（B 悬空）**
+
+- 两个结背靠背串联。
+- $v_{DS}>0$（漏极高于源极）时，d–B 结反偏；$v_{DS}<0$ 时，s–B 结反偏。
+- 所以**正、反两个方向都被挡住**，d、s 之间不导通。
+- 代价：B 的电位悬空、不确定。
+
+**② B 与 s 短接（三端器件的正常接法）**
+
+- s–B 结被短路，只剩 d–B 一个结；$v_{GS}=0$ 时没有沟道。
+- 因为 B 与 s 短接，$v_B=v_s$，所以  $v_{DB}=v_{DS}$。
+- $v_{DS}>0$ ⇒ $v_{DB}>0$（B 电位低于 D），d–B 结反偏 → 不导通。
+- $v_{DS}<0$ ⇒ $v_{DB}<0$（B 电位高于 D），d–B 结正偏 → **经体二极管导通**（约 0.6 V 以上）。
+
+> [!note] 与沟道无关
+> 以上讨论都限定在 $v_{GS}<V_{TN}$、没有沟道的情况。一旦 $v_{GS}>V_{TN}$ 形成沟道，d、s 经沟道导通，PN 结是否反偏不再决定通断。
+
+**（2）$v_{GS}\ge V_{TN}$：出现 N 型沟道（反型层）**
+
+- 栅极与衬底之间隔有 SiO$_2$ 绝缘层，因此栅极电流 $i_G=0$；绝缘层很薄，$v_{GS}$ 只有几伏就能产生 $10^{5}\sim10^{6}$ V/cm 量级的电场
+- G极加正电压，$v_{GS}$ 会在绝缘层中产生由栅极指向衬底的垂直电场。
+    - 这个电场，会排斥 P 型衬底中的多子（空穴），留下不能移动的负离子，形成**耗尽层**；同时吸引少子（自由电子）在绝缘层下方聚集。
+    - 当 $v_{GS}$ 足够大时，绝缘层下方形成电子层，即 N 型**反型层**。这个反型层连通 d、s，就是导电沟道。
+        - 沟道由栅源电压经电场感生，故称**感生沟道**；$v_{GS}$ 越大，电场越强，沟道越厚，沟道电阻越小。
+        - 使 d、s 之间开始导电，产生沟道的临界栅源电压称为**阈值电压** $V_{TN}$。
+
+
+> [!note] 增强型 MOSFET
+> $v_{GS}=0$ 时没有沟道、必须依靠 $v_{GS}$ 感生沟道的器件称为**增强型** MOSFET。符号中 $v_{GS}=0$ 处画成断开的短划线，表示此时沟道不存在。
+
+**（3）可变电阻区与恒流区（饱和区）的形成**
+
+加上正的 $v_{DS}$ 后，沟道中的电子从源极流向漏极，电流方向和电子运动方向相反，$i_D$ 从漏极流入、经沟道由源极流出。
+
+漏极正电压使漏-衬底 PN 结反偏，所以 $i_D$ 不流经衬底。
+![291](Pasted%20image%2020261116154255.png)![379](Pasted%20image%2020261116154501.png)
+
+>看右边的图
+
+- **$v_{DS}$ 较小时**：$i_D$ 与 $v_{DS}$ 近似成正比，斜率等于沟道电导（沟道电阻的倒数）。不同的 $v_{GS}$ 对应不同的沟道厚度，斜率也不同，因此称**可变电阻区**。
+- **$v_{DS}$ 增大时**：沟道中从源到漏的电位逐渐升高，而栅极电位处处相同，所以栅-沟压差 $v_{GD}=v_{GS}-v_{DS}$ 从源到漏逐渐减小，垂直电场逐渐减弱，沟道从源到漏逐渐变薄，呈楔形。
+- **夹断条件**：当 $v_{GD}=v_{GS}-v_{DS}=V_{TN}$ 时，漏端反型层消失，出现**夹断点**。
+- $v_{DS}$ 继续增大，夹断点向源极移动，形成**夹断区**（耗尽区）。夹断区的电阻远大于剩余沟道，新增的电压几乎全降在夹断区上，剩余沟道上的电压不再增加，所以 $i_D$ 基本不变，曲线转为水平——这就是**恒流区（饱和区）**。
+
+> [!tip] 判别方法
+> - $v_{DS}<v_{GS}-V_{TN}$：沟道仍连续，工作在**可变电阻区**；
+> - $v_{DS}\ge v_{GS}-V_{TN}$：漏端已夹断，工作在**恒流区（饱和区）**。
+
+**符号说明**：$v_{GS}$ 栅源电压；$v_{DS}$ 漏源电压；$v_{GD}=v_{GS}-v_{DS}$ 栅漏电压；$i_D$ 漏极电流；$i_G$ 栅极电流；$V_{TN}$ NMOS 阈值电压；B 为衬底（体）。
+
+---
+
+#### The Three Operating Regions（三个工作区）-工作原理
 
 A MOSFET's behavior changes dramatically depending on the applied voltages.
 （MOSFET 的特性随所加电压显著变化。）
@@ -55,6 +132,8 @@ Understanding these regions is crucial for circuit analysis.
 
 The Triode region is split into linear and non-linear parts.
 （三极管区又分为线性与非线性两部分。）
+
+![](Pasted%20image%2020261116144205.png)
 
 > [!info] MOSFET Operating Regions（MOSFET 工作区）
 >
@@ -88,6 +167,18 @@ The Triode region is split into linear and non-linear parts.
 
 We use the MOSFET saturation region for amplification, while BJT saturation is for switching, not amplifying.
 （MOSFET 的饱和区用于放大，而 BJT 的饱和区用于开关，不用于放大。）
+
+---
+
+#### Key Parameters（主要参数）
+
+- **Gate Current ($I_G = 0$):** is zero (in this course), as the gate is insulated by oxide.
+  （**栅极电流（$I_G=0$）：** 本课程中为零，因为栅极被氧化物绝缘。）
+- **Threshold Voltage ($V_{Th}$, $V_{TN}$ or $V_{TP}$):** Minimum gate voltage needed to form a channel（**阈值电压：** 形成沟道所需的最小栅极电压）
+- **Transconductance Param. ($K_n$, $K_p$):** $K' = \mu C_{ox}$ ($\mu$ carrier mobility, $C_{ox}$ oxide capacitance)（**跨导参数：** $K'=\mu C_{ox}$（$\mu$ 为载流子迁移率，$C_{ox}$ 为氧化层电容））
+- **Aspect Ratio ($W/L$):** Width-to-length ratio of the channel, controlling current capability（**宽长比：** 沟道宽度与长度之比，决定电流能力）
+- **Channel Length Modulation ($\lambda$):** Accounts for slight dependence of $I_D$ on $V_{DS}$ in saturation（**沟道长度调制：** 描述饱和区 $I_D$ 对 $V_{DS}$ 的轻微依赖）
+
 
 ### Analyzing MOSFET Circuits: The Load Line Method（分析 MOSFET 电路：负载线法）
 

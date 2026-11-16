@@ -110,15 +110,42 @@ This channel acts like a voltage-controlled resistor, allowing current to flow.
 >看右边的图
 
 - **$v_{DS}$ 较小时**：$i_D$ 与 $v_{DS}$ 近似成正比，斜率等于沟道电导（沟道电阻的倒数）。不同的 $v_{GS}$ 对应不同的沟道厚度，斜率也不同，因此称**可变电阻区**。
-- **$v_{DS}$ 增大时**：沟道中从源到漏的电位逐渐升高，而栅极电位处处相同，所以栅-沟压差 $v_{GD}=v_{GS}-v_{DS}$ 从源到漏逐渐减小，垂直电场逐渐减弱，沟道从源到漏逐渐变薄，呈楔形。
+- **$v_{DS}$ 增大时**：沟道中从源到漏的电位逐渐升高，而栅极电位处处相同，所以**栅极与沟道同一点之间的压差**从源到漏逐点减小；在漏端，这个压差就是 $v_{GD}=v_{GS}-v_{DS}$。垂直电场因此逐渐减弱，沟道从源到漏逐渐变薄，呈楔形。
 - **夹断条件**：当 $v_{GD}=v_{GS}-v_{DS}=V_{TN}$ 时，漏端反型层消失，出现**夹断点**。
 - $v_{DS}$ 继续增大，夹断点向源极移动，形成**夹断区**（耗尽区）。夹断区的电阻远大于剩余沟道，新增的电压几乎全降在夹断区上，剩余沟道上的电压不再增加，所以 $i_D$ 基本不变，曲线转为水平——这就是**恒流区（饱和区）**。
 
-> [!tip] 判别方法
+> [!tip] 判别方法-理解不了的话，就直接记这个公式，用于判断在哪个工作区
 > - $v_{DS}<v_{GS}-V_{TN}$：沟道仍连续，工作在**可变电阻区**；
 > - $v_{DS}\ge v_{GS}-V_{TN}$：漏端已夹断，工作在**恒流区（饱和区）**。
 
-**符号说明**：$v_{GS}$ 栅源电压；$v_{DS}$ 漏源电压；$v_{GD}=v_{GS}-v_{DS}$ 栅漏电压；$i_D$ 漏极电流；$i_G$ 栅极电流；$V_{TN}$ NMOS 阈值电压；B 为衬底（体）。
+**（4）四个工作区与对应的电流方程**
+
+**截止区**：$v_{GS}<V_{TN}$，没有沟道，$i_D=0$。
+
+**可变电阻区**：$v_{GS}>V_{TN}$ 且 $v_{DS}<v_{GS}-V_{TN}$，沟道连续。当 $v_{DS}\ll2(v_{GS}-V_{TN})$ 时，$v_{DS}^2$ 项可忽略，电流与 $v_{DS}$ 成正比：
+
+$$i_D=\mu_nC_{ox}\frac{W}{L}(v_{GS}-V_{TN})v_{DS}$$
+
+此时器件等效为一个电阻：
+
+$$R_{on}=\frac{1}{\mu_nC_{ox}\frac{W}{L}(v_{GS}-V_{TN})}$$
+
+不作近似时的完整表达式：
+
+$$i_D=\frac{1}{2}\mu_nC_{ox}\frac{W}{L}\left[2(v_{GS}-V_{TN})v_{DS}-v_{DS}^2\right]$$
+
+**恒流区（饱和区）**：$v_{DS}\ge v_{GS}-V_{TN}$，漏端夹断：
+
+$$i_D=\frac{1}{2}\mu_nC_{ox}\frac{W}{L}(v_{GS}-V_{TN})^2(1+\lambda v_{DS})$$
+
+当 $\lambda=0$ 时，$i_D$ 与 $v_{DS}$ 无关，器件等效为电压控制电流源。
+
+**PMOS 的对应条件**：所有电压取负值，不等号反向。导通条件 $v_{GS}<V_{TP}$；可变电阻区 $v_{DS}>v_{GS}-V_{TP}$；饱和区 $v_{DS}\le v_{GS}-V_{TP}$。
+
+> [!note] 线性区与非线性区的关系
+> $v_{DS}\ll2(v_{GS}-V_{TN})$ 时，$v_{DS}^2$ 远小于一次项，电流与 $v_{DS}$ 成正比，表现为电阻；$v_{DS}$ 继续增大后，$v_{DS}^2$ 不能忽略，电流开始弯曲，这就是非线性三极管区。
+
+**符号说明**：$v_{GS}$ 栅源电压；$v_{DS}$ 漏源电压；$v_{GD}=v_{GS}-v_{DS}$ 栅漏电压；$i_D$ 漏极电流；$i_G$ 栅极电流；$V_{TN}$ NMOS 阈值电压；$V_{TP}$ PMOS 阈值电压；$\mu_n$ 电子迁移率；$C_{ox}$ 氧化层电容；$W/L$ 宽长比；$\lambda$ 沟道长度调制系数；$R_{on}$ 导通电阻；B 为衬底（体）。
 
 ---
 
@@ -137,31 +164,55 @@ The Triode region is split into linear and non-linear parts.
 
 > [!info] MOSFET Operating Regions（MOSFET 工作区）
 >
-> 1. **Cutoff Region (NMOS: $V_{GS} < V_{TN}$)**（截止区）
+> **速查表**
 >
->    - No channel formed, so acts like an open switch, $I_D = 0$ (device is OFF)（无沟道形成，相当于开路开关，$I_D=0$，器件截止）
->    - PMOS have negative $V_{GS}$ and $V_{TP}$, so the inequality is reversed: $V_{GS} > V_{TP}$（PMOS 的 $V_{GS}$ 与 $V_{TP}$ 均为负，故不等号反向：$V_{GS}>V_{TP}$）
+> | 工作区 | NMOS 条件 | 等效器件 | $I_D$ |
+> | --- | --- | --- | --- |
+> | 截止区 | $V_{GS}<V_{TN}$ | 开路开关 | $0$ |
+> | 可变电阻区（线性） | $V_{GS}>V_{TN}$，$V_{DS}\ll2(V_{GS}-V_{TN})$ | 电压控制电阻 | $\mu_nC_{ox}\frac{W}{L}(V_{GS}-V_{TN})V_{DS}$ |
+> | 可变电阻区（非线性） | $V_{GS}>V_{TN}$，$V_{DS}<V_{GS}-V_{TN}$ | 电压控制电流源 | $\frac{1}{2}\mu_nC_{ox}\frac{W}{L}\left[2(V_{GS}-V_{TN})V_{DS}-V_{DS}^2\right]$ |
+> | 饱和区 | $V_{GS}>V_{TN}$，$V_{DS}\ge V_{GS}-V_{TN}$ | 电压控制电流源 | $\frac{1}{2}\mu_nC_{ox}\frac{W}{L}(V_{GS}-V_{TN})^2(1+\lambda V_{DS})$ |
 >
-> 2. **Triode Region (Linear) (NMOS: $V_{GS} > V_{TN}$ and $V_{DS} \ll 2(V_{GS} - V_{TN})$)（三极管区（线性））**
+> ---
 >
->    - Channel formed and continuous（沟道形成且连续）
->    - Current depends on both $V_{GS}$ and $V_{DS}$ linearly: $I_{D,\mathrm{tri}} = \mu_n C_{ox}\frac{W}{L}(V_{GS} - V_{TN})V_{DS}$（电流与 $V_{GS}$、$V_{DS}$ 均成线性关系）
->    - Acts like a voltage-controlled resistor: $R_{on} = \dfrac{1}{\mu_n C_{ox}\frac{W}{L}(V_{GS} - V_{TN})}$（相当于电压控制电阻）
+> **1. Cutoff Region（截止区）** — NMOS: $V_{GS}<V_{TN}$
+> - No channel formed, so acts like an open switch, $I_D=0$ (device is OFF)
+>   （无沟道形成，相当于开路开关，$I_D=0$，器件截止）
+> - PMOS have negative $V_{GS}$ and $V_{TP}$, so the inequality is reversed: $V_{GS}>V_{TP}$
+>   （PMOS 的 $V_{GS}$ 与 $V_{TP}$ 均为负，故不等号反向：$V_{GS}>V_{TP}$）
 >
-> 3. **Triode Region (Non-linear) (NMOS: $V_{GS} > V_{TN}$ and $V_{DS} < V_{GS} - V_{TN}$)**（三极管区（非线性））
+> **2. Triode Region (Linear)（可变电阻区·线性）** — NMOS: $V_{GS}>V_{TN}$ and $V_{DS}\ll2(V_{GS}-V_{TN})$
+> - Channel formed and continuous
+>   （沟道形成且连续）
+> - Current depends on both $V_{GS}$ and $V_{DS}$ linearly: $I_{D,\mathrm{tri}}=\mu_nC_{ox}\frac{W}{L}(V_{GS}-V_{TN})V_{DS}$
+>   （电流与 $V_{GS}$、$V_{DS}$ 均成线性关系）
+> - Acts like a voltage-controlled resistor: $R_{on}=\dfrac{1}{\mu_nC_{ox}\frac{W}{L}(V_{GS}-V_{TN})}$
+>   （相当于电压控制电阻）
 >
->    - The channel is still continuous but starts to pinch off near the drain（沟道仍连续，但在漏极附近开始夹断）
->    - Nonlinear dependence on $V_{GS}$, $V_{DS}$: $I_{D,\mathrm{tri}} = \frac{1}{2}\mu_n C_{ox}\frac{W}{L}\left[2(V_{GS} - V_{TN})V_{DS} - V_{DS}^2\right]$（对 $V_{GS}$、$V_{DS}$ 呈非线性关系）
->    - Acts like a voltage-controlled current source（相当于电压控制电流源）
->    - PMOS: negative voltages (so reversed inequalities) $V_{GS} < V_{TP}$ and $V_{DS} > V_{GS} - V_{TP}$（PMOS：电压为负，故不等号反向）
+> **3. Triode Region (Non-linear)（可变电阻区·非线性）** — NMOS: $V_{GS}>V_{TN}$ and $V_{DS}<V_{GS}-V_{TN}$
+> - The channel is still continuous but starts to pinch off near the drain
+>   （沟道仍连续，但在漏极附近开始夹断）
+> - Nonlinear dependence on $V_{GS}$, $V_{DS}$: $I_{D,\mathrm{tri}}=\frac{1}{2}\mu_nC_{ox}\frac{W}{L}\left[2(V_{GS}-V_{TN})V_{DS}-V_{DS}^2\right]$
+>   （对 $V_{GS}$、$V_{DS}$ 呈非线性关系）
+> - Acts like a voltage-controlled current source
+>   （相当于电压控制电流源）
+> - PMOS: negative voltages (so reversed inequalities) $V_{GS}<V_{TP}$ and $V_{DS}>V_{GS}-V_{TP}$
+>   （PMOS：电压为负，故不等号反向）
 >
-> 4. **Saturation Region (NMOS: $V_{GS} > V_{TN}$ and $V_{DS} \geq V_{GS} - V_{TN}$)**（饱和区）
+> **4. Saturation Region（饱和区）** — NMOS: $V_{GS}>V_{TN}$ and $V_{DS}\ge V_{GS}-V_{TN}$
+> - Channel pinched off near drain
+>   （漏极附近沟道夹断）
+> - Current mainly depends on $V_{GS}$: $I_{D,\mathrm{sat}}=\frac{1}{2}\mu_nC_{ox}\frac{W}{L}(V_{GS}-V_{TN})^2(1+\lambda V_{DS})$
+>   （电流主要取决于 $V_{GS}$）
+> - Acts like a voltage-controlled current source
+>   （相当于电压控制电流源）
+> - PMOS: negative voltages (so reversed inequalities) $V_{GS}<V_{TP}$ and $V_{DS}\le V_{GS}-V_{TP}$
+>   （PMOS：电压为负，故不等号反向）
+> - **Remember this one!**（记住这一条！）
 >
->    - Channel pinched off near drain（漏极附近沟道夹断）
->    - Current mainly depends on $V_{GS}$: $I_{D,\mathrm{sat}} = \frac{1}{2}\mu_n C_{ox}\frac{W}{L}(V_{GS} - V_{TN})^2(1 + \lambda V_{DS})$（电流主要取决于 $V_{GS}$）
->    - Acts like a voltage-controlled current source（相当于电压控制电流源）
->    - PMOS: negative voltages (so reversed inequalities) $V_{GS} < V_{TP}$ and $V_{DS} \leq V_{GS} - V_{TP}$（PMOS：电压为负，故不等号反向）
->    - **Remember this one!**（记住这一条！）
+> ---
+>
+> **符号说明**：$V_{GS}$ 栅源电压；$V_{DS}$ 漏源电压；$V_{TN}$ NMOS 阈值电压；$V_{TP}$ PMOS 阈值电压；$I_D$ 漏极电流；$I_{D,\mathrm{tri}}$ 三极管区漏极电流；$I_{D,\mathrm{sat}}$ 饱和区漏极电流；$\mu_n$ 电子迁移率；$C_{ox}$ 氧化层电容；$W/L$ 宽长比；$\lambda$ 沟道长度调制系数；$R_{on}$ 导通电阻。
 
 **Don't confuse the BJT saturation region with the MOSFET saturation region!**（不要把 BJT 的饱和区与 MOSFET 的饱和区混淆！）
 
@@ -224,6 +275,8 @@ On the $I_D$ versus $V_D$ plot, this is a straight line with:
 - Slope: $-\dfrac{1}{R_D}$ (determined by load resistance)（斜率：$-\dfrac{1}{R_D}$，由负载电阻决定）
 
 #### Graphical Solution: Where Device Meets Circuit（图解：器件特性与电路约束的交点）
+
+>$I_D$既要满足线路中的约束方程，也要满足它本身的特性，所以这里只能取交点的位置
 
 The beauty of load line analysis is that it provides a visual solution.
 （负载线分析的优点在于给出直观的图解。）
@@ -301,28 +354,30 @@ For NMOS:
 （对 NMOS：）
 
 $$
-V_{TN} = V_{T0} + \gamma\sqrt{V_{SB} + 2\phi_F} - \sqrt{2\phi_F} \tag{4}
+V_{TN} = V_{T0} + \gamma\left(\sqrt{V_{SB} + 2\phi_F} - \sqrt{2\phi_F}\right) \tag{4}
 $$
 
 For PMOS:
 （对 PMOS：）
 
 $$
-V_{TP} = V_{T0} - \gamma\sqrt{V_{BS} + 2\phi_F} - \sqrt{2\phi_F} \tag{5}
+V_{TP} = V_{T0} - \gamma\left(\sqrt{V_{BS} + 2\phi_F} - \sqrt{2\phi_F}\right) \tag{5}
 $$
+
+**符号说明**：
+
+- $V_{TN}$：NMOS 阈值电压
+- $V_{TP}$：PMOS 阈值电压
+- $V_{T0}$：零偏阈值电压（$V_{SB}=0$ 或 $V_{BS}=0$ 时的值）
+- $\gamma$：体效应参数
+- $V_{SB}$：源-体电压（NMOS）
+- $V_{BS}$：体-源电压（PMOS）
+- $2\phi_F$：表面势参数（课堂上记为 $2\Psi_F$）
 
 **Note the negative sign before $\gamma$ for PMOS!**（注意 PMOS 式中 $\gamma$ 前为负号！）
 
 This is because increasing $V_{BS}$ increases the magnitude of the threshold voltage (makes it more negative).
 （这是因为 $V_{BS}$ 增大时阈值电压的幅值增大（变得更负）。）
-
-Where:
-（式中：）
-
-- $V_{T0}$: Zero-bias threshold voltage（零偏阈值电压）
-- $\gamma$: Body effect parameter（体效应参数）
-- $V_{SB}$ / $V_{BS}$: Source-to-body voltage / body-to-source voltage（源-体电压 / 体-源电压）
-- $2\phi_F$: Surface potential parameter ($2\Psi_F$ in the lectures)（表面势参数（课堂上记为 $2\Psi_F$））
 
 This creates an implicit equation since $V_{SB} = I_D R_3$ in many circuits, requiring iterative solution.
 （由于许多电路中 $V_{SB}=I_D R_3$，这形成隐式方程，需要迭代求解。）
@@ -331,7 +386,7 @@ This creates an implicit equation since $V_{SB} = I_D R_3$ in many circuits, req
 （**提示：** 可用统一公式计算 NMOS 与 PMOS 的阈值电压幅值：）
 
 $$
-|V_{Th}| = |V_{T0}| + \gamma\sqrt{|V_{SB}| + 2\phi_F} - \sqrt{2\phi_F} \tag{6}
+|V_{Th}| = |V_{T0}| + \gamma\left(\sqrt{|V_{SB}| + 2\phi_F} - \sqrt{2\phi_F}\right) \tag{6}
 $$
 
 Remember to make your answer for $|V_{Th}|$ negative if its PMOS (i.e. $V_{TP}$).
@@ -339,12 +394,17 @@ Remember to make your answer for $|V_{Th}|$ negative if its PMOS (i.e. $V_{TP}$)
 
 > [!warning] Threshold Voltage Notation（阈值电压符号说明）
 >
-> **Important:** Don't confuse MOSFET threshold voltages with BJT thermal voltage $V_T$!（**重要：** 不要把 MOSFET 的阈值电压与 BJT 的热电压 $V_T$ 混淆！）
+> **Important:** Don't confuse MOSFET threshold voltages with BJT thermal voltage $V_T$!
+> （**重要：** 不要把 MOSFET 的阈值电压与 BJT 的热电压 $V_T$ 混淆！）
 >
-> - $V_{TN}$ = NMOS threshold voltage (typically positive, e.g., +0.75 V)（NMOS 阈值电压，通常为正，如 +0.75 V）
-> - $V_{TP}$ = PMOS threshold voltage (typically negative, e.g., -0.75 V)（PMOS 阈值电压，通常为负，如 -0.75 V）
-> - $V_{Th}$ = MOSFET threshold voltage (generic symbol, either NMOS or PMOS)（MOSFET 阈值电压的通用符号，可表示 NMOS 或 PMOS）
-> - $V_{Th0}$ or $V_{T0}$ = Zero-bias threshold voltage (when $V_{SB} = 0$ or $V_{BS} = 0$)（零偏阈值电压（$V_{SB}=0$ 或 $V_{BS}=0$ 时））
+> - $V_{TN}$ = NMOS threshold voltage (typically positive, e.g., +0.75 V)
+>   （NMOS 阈值电压，通常为正，如 +0.75 V）
+> - $V_{TP}$ = PMOS threshold voltage (typically negative, e.g., -0.75 V)
+>   （PMOS 阈值电压，通常为负，如 -0.75 V）
+> - $V_{Th}$ = MOSFET threshold voltage (generic symbol, either NMOS or PMOS)
+>   （MOSFET 阈值电压的通用符号，可表示 NMOS 或 PMOS）
+> - $V_{Th0}$ or $V_{T0}$ = Zero-bias threshold voltage (when $V_{SB} = 0$ or $V_{BS} = 0$)
+>   （零偏阈值电压（$V_{SB}=0$ 或 $V_{BS}=0$ 时））
 >
 > **Note:** When there's no body effect, $V_{TN} = V_{T0}$ for NMOS and $V_{TP} = V_{T0}$ for PMOS.
 > （**注：** 无体效应时，NMOS 的 $V_{TN}=V_{T0}$，PMOS 的 $V_{TP}=V_{T0}$。）
@@ -357,12 +417,17 @@ Remember to make your answer for $|V_{Th}|$ negative if its PMOS (i.e. $V_{TP}$)
 > Whenever you see a 3-terminal MOSFET symbol (without an explicit body connection), it is implied that:
 > （当看到三端 MOSFET 符号（未明确画出体端）时，隐含以下条件：）
 >
-> - The body is internally connected to the source（体在内部与源极相连）
-> - Therefore, $V_{BS} = 0$ (for PMOS) or $V_{SB} = 0$ (for NMOS)（因此 PMOS 的 $V_{BS}=0$，NMOS 的 $V_{SB}=0$）
-> - There is no body effect ($V_{TN}$ or $V_{TP}$ remains constant)（无体效应，$V_{TN}$ 或 $V_{TP}$ 保持不变）
-> - This is the most common configuration in basic circuits（这是基本电路中最常见的接法）
+> - The body is internally connected to the source
+>   （体在内部与源极相连）
+> - Therefore, $V_{BS} = 0$ (for PMOS) or $V_{SB} = 0$ (for NMOS)
+>   （因此 PMOS 的 $V_{BS}=0$，NMOS 的 $V_{SB}=0$）
+> - There is no body effect ($V_{TN}$ or $V_{TP}$ remains constant)
+>   （无体效应，$V_{TN}$ 或 $V_{TP}$ 保持不变）
+> - This is the most common configuration in basic circuits
+>   （这是基本电路中最常见的接法）
 >
-> Only when you see the 4-terminal symbol with a separate body connection and $V_{SB} \neq 0$ (or $V_{BS} \neq 0$) and $\gamma \neq 0$, should you consider body effect!（只有当出现四端符号、体端单独连接且 $V_{SB}\neq0$（或 $V_{BS}\neq0$）、$\gamma\neq0$ 时，才需要考虑体效应！）
+> Only when you see the 4-terminal symbol with a separate body connection and $V_{SB} \neq 0$ (or $V_{BS} \neq 0$) and $\gamma \neq 0$, should you consider body effect!
+> （只有当出现四端符号、体端单独连接且 $V_{SB}\neq0$（或 $V_{BS}\neq0$）、$\gamma\neq0$ 时，才需要考虑体效应！）
 
 #### Effect of W/L Ratio（宽长比的影响）
 
@@ -428,6 +493,10 @@ Master this technique, and you'll have a powerful tool for analyzing and designi
 
 ### 1.1 Part A（A 部分）
 
+---
+
+>由题目基础信息可以判断出以下内容
+
 Note that $\lambda = 0$ means we are neglecting channel length modulation, simplifying our analysis by assuming the drain current is independent of $V_{DS}$ in saturation.
 （注意 $\lambda=0$ 表示忽略沟道长度调制，即假设饱和区漏极电流与 $V_{DS}$ 无关，从而简化分析。）
 
@@ -443,6 +512,16 @@ This special configuration guarantees the transistor operates in saturation sinc
 $$
 V_{DS} = V_{GS} > V_{GS} - V_{TN} \quad (\text{always true as } V_{TN} \text{ is positive})
 $$
+---
+
+>漏极电流方程
+
+In saturation, the effective channel length decreases slightly with increasing $V_{DS}$, causing a small increase in current:
+（在饱和区，有效沟道长度随 $V_{DS}$ 增大而略微减小，使电流略有增加：）
+
+$$
+I_D = \frac{1}{2}\mu_n C_{ox}\frac{W}{L}(V_{GS} - V_{TN})^2(1 + \lambda V_{DS}) \tag{3}
+$$
 
 For an NMOS in saturation with $\lambda = 0$, the drain current equation is:
 （对 $\lambda=0$ 的饱和区 NMOS，漏极电流方程为：）
@@ -450,6 +529,10 @@ For an NMOS in saturation with $\lambda = 0$, the drain current equation is:
 $$
 I_D = \frac{1}{2}\mu_n C_{ox}\left(\frac{W}{L}\right)(V_{GS} - V_{TN})^2 \tag{1}
 $$
+
+---
+
+>回路中，漏极电流满足的方程
 
 To find the load line equation, we apply KVL around the drain-source loop:
 （为求负载线方程，对漏源回路应用 KVL：）
@@ -474,6 +557,9 @@ Since the gate is connected to the drain in this circuit, we have $V_{DS} = V_{G
 $$
 I_D = \frac{12\ \text{V} - V_{DS}}{100\ \text{k}\Omega} = \frac{12\ \text{V} - V_{GS}}{100\ \text{k}\Omega} \tag{2}
 $$
+
+
+---
 
 >求$V_{GS}$
 
@@ -503,9 +589,15 @@ We need to check which solution is physically valid.
 For the NMOS to be ON and in saturation:
 （NMOS 导通且处于饱和区需满足：）
 
-- We need $V_{GS} > V_{TN} = +0.75$ V (transistor ON)（需 $V_{GS}>V_{TN}=+0.75$ V，晶体管导通）
-- The solution $V_{GS} = 0.2$ V $< V_{TN}$ would put the transistor in cutoff (OFF)（$V_{GS}=0.2$ V $<V_{TN}$，会使晶体管进入截止区）
-- Only the solution $V_{GS} = 1.2$ V $> V_{TN}$ is valid（只有 $V_{GS}=1.2$ V $>V_{TN}$ 的解有效）
+- We need $V_{GS} > V_{TN} = +0.75$ V (transistor ON)
+   （需 $V_{GS}>V_{TN}=+0.75$ V，晶体管导通）
+- The solution $V_{GS} = 0.2$ V $< V_{TN}$ would put the transistor in cutoff (OFF)
+   （$V_{GS}=0.2$ V $<V_{TN}$，会使晶体管进入截止区）
+   
+**结论：** Only the solution $V_{GS} = 1.2$ V $> V_{TN}$ is valid
+   （只有 $V_{GS}=1.2$ V $>V_{TN}$ 的解有效）
+
+---
 
 >求$I_D$、记录工作点
 
@@ -520,8 +612,14 @@ $$
 
 ### 1.2 Part B（B 部分）
 
+---
+
+>按同样步骤，先假设工作在饱和区
+
 Following the same procedure, we assume saturation.
 （按同样步骤，假设工作在饱和区。）
+
+---
 
 >求$V_{GS}$
 
@@ -549,6 +647,8 @@ Again checking validity:
 
 - $V_{GS} = 0.46$ V $< V_{TN} = 0.75$ V (cutoff - invalid)（截止区，无效）
 - $V_{GS} = 1.046$ V $> V_{TN}$ (saturation - valid)（饱和区，有效）
+
+---
 
 >求$I_D$、记录工作点
 
@@ -585,8 +685,14 @@ What is the region of operation and drain current in this device if $W/L = 25/1$
 
 **Solution:**（**解答：**）
 
+---
+
+>判断是否需要计入体效应
+
 Since $V_{BS} = 4$ V $\neq 0$, the body cannot be short-circuited to the source and thus we must include the body effect.
 （由于 $V_{BS}=4$ V $\neq0$，体不能与源极短接，因此必须考虑体效应。）
+
+---
 
 >求$V_{TP}$（体效应）
 
@@ -613,6 +719,8 @@ $$
 V_{TP} = -0.75\ \text{V} - 0.5\sqrt{\text{V}}\left(\sqrt{4\ \text{V} + 0.6\ \text{V}} - \sqrt{0.6\ \text{V}}\right) = -1.44\ \text{V} \tag{2}
 $$
 
+---
+
 >判断工作区
 
 Now we check the region of operation to select the proper drain current formula.
@@ -638,6 +746,8 @@ $$
 
 Therefore, the PMOS operates in the **saturation region**.
 （因此，该 PMOS 工作在**饱和区**。）
+
+---
 
 >求$I_D$
 
@@ -716,6 +826,8 @@ $$
 
 **Part A（A 部分）**
 
+---
+
 >判断两管状态
 
 Given $V_{IN} = 0$ V, let's analyze the gate voltages (assuming $V_O \approx V_{IN} = 0$ V for the transmission gate):
@@ -723,6 +835,8 @@ Given $V_{IN} = 0$ V, let's analyze the gate voltages (assuming $V_O \approx V_{
 
 - NMOS (bottom): $V_{GS} = V_G - V_S = 5\ \text{V} - 0\ \text{V} = 5\ \text{V} > V_{TN} = 0.75\ \text{V} \Rightarrow$ ON（NMOS（下管）：$V_{GS}=5$ V $>V_{TN}$，导通）
 - PMOS (top): $V_{GS} = V_G - V_S = 0\ \text{V} - 0\ \text{V} = 0\ \text{V} > V_{TP} = -0.75\ \text{V} \Rightarrow$ OFF（PMOS（上管）：$V_{GS}=0$ V $>V_{TP}$，截止）
+
+---
 
 >求$R_{on}$、$V_O$
 
@@ -747,6 +861,8 @@ Since the transmission gate acts as a closed switch, $V_O = V_{IN} = 0$ V.
 
 **Part B（B 部分）**
 
+---
+
 >判断两管状态
 
 Given $V_{IN} = 5$ V, let's analyze the gate voltages (assuming $V_{OUT} \approx V_{IN} = 5$ V):
@@ -754,6 +870,8 @@ Given $V_{IN} = 5$ V, let's analyze the gate voltages (assuming $V_{OUT} \approx
 
 - NMOS (bottom): $V_{GS} = 5\ \text{V} - 5\ \text{V} = 0\ \text{V} < V_{TN} = 0.75\ \text{V} \Rightarrow$ OFF（NMOS（下管）：$V_{GS}=0$ V $<V_{TN}$，截止）
 - PMOS (top): $V_{GS} = 0\ \text{V} - 5\ \text{V} = -5\ \text{V} < V_{TP} = -0.75\ \text{V} \Rightarrow$ ON（PMOS（上管）：$V_{GS}=-5$ V $<V_{TP}$，导通）
+
+---
 
 >求$R_{on}$、$V_O$
 
@@ -801,6 +919,10 @@ Assume that $V_{TO} = 1$ V, $\gamma = 0$, and $W/L = 6/1$.
 
 **Solution:**（**解答：**）
 
+---
+
+>四电阻偏置：先化简为戴维南等效
+
 This problem uses the four-resistor bias configuration discussed in the introduction.
 （本题使用引言中讨论的四电阻偏置结构。）
 
@@ -818,6 +940,8 @@ The equivalent circuit diagram is drawn below.
 
 The following formulas are derived in the lectures.
 （以下公式在课堂中已推导。）
+
+---
 
 >求$R_{eq}$、$V_{th}$
 
@@ -847,6 +971,8 @@ Note that the transistor is NMOS because the arrow on the body points inward.
 
 For MOSFETs, the Q-point is conventionally expressed as $(I_D, V_{DS})$, representing the DC drain current and drain-source voltage.
 （对 MOSFET，Q 点通常表示为 $(I_D,V_{DS})$，即直流漏极电流与漏源电压。）
+
+---
 
 >求$V_{GS}$（假设饱和）
 
@@ -901,6 +1027,8 @@ $$
 V_{GS} = 1.49\ \text{V} \tag{8}
 $$
 
+---
+
 >求$I_D$
 
 Now the drain current is:
@@ -909,6 +1037,8 @@ Now the drain current is:
 $$
 I_D = \frac{1}{2}(100 \times 10^{-6}\ \text{A/V}^2)(6)(1.49\ \text{V} - 1\ \text{V})^2 = 66.27\ \mu\text{A} \tag{9}
 $$
+
+---
 
 >求$V_{DS}$
 
@@ -936,6 +1066,8 @@ $$
 = [10\ \text{V} - 0.795\ \text{V}] - [1.591\ \text{V}] = 7.62\ \text{V} \tag{12}
 $$
 
+---
+
 >验证工作区
 
 Next, we check the operation region.
@@ -944,6 +1076,8 @@ Next, we check the operation region.
 $$
 V_{GS} > V_{TN}, \quad V_{GS} - V_{TN} < V_{DS} \Rightarrow \text{saturation is correct } \checkmark \tag{13}
 $$
+
+---
 
 >记录Q点
 
@@ -963,6 +1097,8 @@ $$
 
 Now we repeat the analysis with $W/L = 12/1$ instead of 6/1.
 （现在把 $W/L$ 由 6/1 改为 12/1 重做分析。）
+
+---
 
 >求$V_{GS}$（假设饱和）
 
@@ -997,6 +1133,8 @@ $$
 V_{GS} = 1.35\ \text{V} \tag{18}
 $$
 
+---
+
 >求$I_D$
 
 Then the drain current is:
@@ -1005,6 +1143,8 @@ Then the drain current is:
 $$
 I_D = \frac{1}{2}(100 \times 10^{-6}\ \text{A/V}^2)(12)(1.35\ \text{V} - 1\ \text{V})^2 = 73.5\ \mu\text{A} \tag{19}
 $$
+
+---
 
 >求$V_{DS}$
 
@@ -1026,6 +1166,8 @@ $$
 = [10\ \text{V} - 0.882\ \text{V}] - [1.764\ \text{V}] = 7.35\ \text{V} \tag{22}
 $$
 
+---
+
 >验证工作区
 
 Next, we check the operation region.
@@ -1034,6 +1176,8 @@ Next, we check the operation region.
 $$
 V_{GS} > V_{TN}, \quad V_{GS} - V_{TN} < V_{DS} \Rightarrow \text{saturation is correct } \checkmark \tag{23}
 $$
+
+---
 
 >记录Q点
 
@@ -1062,6 +1206,10 @@ Assume that $V_{T0} = 1$ V, $\gamma = 0.6$ V$^{1/2}$, and $W/L = 5/1$.
 
 **Solution:**（**解答：**）
 
+---
+
+>与第 4 题的区别：需要考虑体效应
+
 **Key Difference from Question 4:** This problem is very similar to Question 4, but now includes the body effect ($\gamma \neq 0$ and $V_{SB} \neq 0$ V) and also uses different supply voltage and aspect ratio.
 （**与第 4 题的关键区别：** 本题与第 4 题很相似，但需考虑体效应（$\gamma\neq0$ 且 $V_{SB}\neq0$ V），且电源电压与宽长比不同。）
 
@@ -1073,6 +1221,8 @@ Following the same approach as Question 4, we start by finding the Th&eacute;ven
 
 ![](Pasted%20image%2020261114214923.png)
 > 图6 q5 equivalent circuit diagram（图 6：第 5 题等效电路）
+
+---
 
 >求$R_{th}$、$V_{th}$
 
@@ -1135,6 +1285,8 @@ $$
 I_D = \frac{1}{2}(100 \times 10^{-6}\ \text{A/V}^2)(5)\left[(3.75\ \text{V} - I_D \cdot 24\ \text{k}\Omega) - V_{TN}\right]^2 \tag{8}
 $$
 
+---
+
 >求$I_D$、$V_{TN}$（迭代）
 
 This nonlinear system requires iterative solution (e.g., Newton's method).
@@ -1150,6 +1302,8 @@ $$
 $$
 V_{TN} = 1.46\ \text{V} \tag{10}
 $$
+
+---
 
 >求$V_{DS}$
 
@@ -1168,6 +1322,8 @@ $$
 = 12\ \text{V} - 0.877\ \text{V} - 1.754\ \text{V} = 9.37\ \text{V} \tag{13}
 $$
 
+---
+
 >验证工作区
 
 Next, we verify our saturation assumption:
@@ -1176,6 +1332,8 @@ Next, we verify our saturation assumption:
 - $V_{GS} = V_{th} - I_D R_3 = 3.75\ \text{V} - (73.1\ \mu\text{A})(24\ \text{k}\Omega) = 1.996\ \text{V}$
 - $V_{GS} = 1.996\ \text{V} > V_{TN} = 1.46\ \text{V} \ \checkmark$ (transistor ON)（晶体管导通）
 - $V_{GS} - V_{TN} = 0.536\ \text{V} < V_{DS} = 9.37\ \text{V} \ \checkmark$ (saturation confirmed)（确认饱和）
+
+---
 
 >记录Q点
 

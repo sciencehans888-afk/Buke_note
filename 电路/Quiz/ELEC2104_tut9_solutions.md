@@ -11,7 +11,6 @@ The Metal-Oxide-Semiconductor Field-Effect Transistor (MOSFET) is the fundamenta
 
 >MOSFET的常见类型，有图中这几种
 
-
 Unlike bipolar junction transistors (BJTs) which are current-controlled, MOSFETs are voltage-controlled devices - the gate voltage controls the drain current.
 （与电流控制的双极型晶体管（BJT）不同，MOSFET 是电压控制器件——栅极电压控制漏极电流。）
 
@@ -365,7 +364,6 @@ V_{TP} = V_{T0} - \gamma\left(\sqrt{V_{BS} + 2\phi_F} - \sqrt{2\phi_F}\right) \t
 $$
 
 **符号说明**：
-
 - $V_{TN}$：NMOS 阈值电压
 - $V_{TP}$：PMOS 阈值电压
 - $V_{T0}$：零偏阈值电压（$V_{SB}=0$ 或 $V_{BS}=0$ 时的值）

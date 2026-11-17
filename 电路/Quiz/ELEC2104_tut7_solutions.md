@@ -954,9 +954,11 @@ $$
 
 Assume that $\beta_F = 50$ and $V_{BE} = 0.7$ V.（假设 $\beta_F=50$、$V_{BE}=0.7$ V。）
 
-(b) Repeat the calculation if all the resistor values are decreased by a factor of 5.（若所有电阻值都减小为 1/5，重做计算。）
+(b) Repeat the calculation if all the resistor values are decreased by a factor of 5.
+（若所有电阻值都减小为 1/5，重做计算。）
 
-(c) Repeat if all the resistor values are increased by a factor of 5.（若所有电阻值都增大为 5 倍，重做计算。）
+(c) Repeat if all the resistor values are increased by a factor of 5.
+（若所有电阻值都增大为 5 倍，重做计算。）
 
 (d) Find the Q-point in part (a) using the numerical iteration method if $I_S = 0.5$ fA and $V_T = 25.8$ mV.
 （若 $I_S=0.5$ fA、$V_T=25.8$ mV，用数值迭代法求 (a) 中的 Q 点。）
@@ -1327,6 +1329,8 @@ Therefore, the operating point (Q-point) is:（因此，工作点（Q 点）为�
 $$
 Q : (I_C, V_{CE}) = (85.5\ \mu\text{A}, 3.44\ \text{V}) \tag{43}
 $$
+
+---
 
 ## 3 Question 3（第 3 题）
 

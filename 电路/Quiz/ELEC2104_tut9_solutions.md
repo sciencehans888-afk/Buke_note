@@ -364,6 +364,13 @@ MOSFETs actually have a 4th terminal called the "Body", which is typically just 
 However, when the source is not connected to the body (substrate), we must take the "Body Effect" into account, where the threshold voltage increases.
 （然而，当源极不与体（衬底）相连时，必须考虑“体效应”，此时阈值电压升高。）
 
+> [!note] 是否需要考虑体效应：判据
+> 只看一个量：**$V_{SB}$（NMOS）或 $V_{BS}$（PMOS）是否可能不为零**，且题目是否给出 $\gamma\neq0$。
+> - **三端符号**（B 在内部接 S）：$V_{SB}=0$ → 无体效应，直接用 $V_{TN}=V_{T0}$。
+> - **四端符号、B 单独接其他电位**：$V_{SB}\neq0$ → 必须计入体效应。
+> - **题目给定 $\gamma=0$**：即使 $V_{SB}\neq0$，按照公式计算出阈值电压也不变，$V_{TN}=V_{T0}$。
+> - 注意 $V_{SB}$ 常由电路决定（如 $V_{SB}=I_D R_3$），此时与 $I_D$ 互相依赖，需要迭代求解。
+
 For NMOS:
 （对 NMOS：）
 
@@ -728,11 +735,11 @@ What is the region of operation and drain current in this device if $W/L = 25/1$
 >判断是否需要计入体效应
 
 Since $V_{BS} = 4$ V $\neq 0$, the body cannot be short-circuited to the source and thus we must include the body effect.
-（由于 $V_{BS}=4$ V $\neq0$，体不能与源极短接，因此必须考虑体效应。）
+（由于 $V_{BS}=4$ V $\neq0$，可以看出衬底没有与源极短接，因此此处需要考虑体效应。）
 
 ---
 
->求$V_{TP}$（体效应）
+>求$V_{TP}$（考虑体效应下，门槛电压应该是多少）
 
 The threshold voltage for the PMOS, $V_{TP}$ is:
 （PMOS 的阈值电压 $V_{TP}$ 为：）

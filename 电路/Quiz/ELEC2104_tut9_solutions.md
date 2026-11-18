@@ -207,7 +207,8 @@ The Triode region is split into linear and non-linear parts.
 >   （相当于电压控制电流源）
 > - PMOS: negative voltages (so reversed inequalities) $V_{GS}<V_{TP}$ and $V_{DS}\le V_{GS}-V_{TP}$
 >   （PMOS：电压为负，故不等号反向）
-> - **Remember this one!**（记住这一条！）
+> - **Remember this one!**
+>   （记住这一条！）
 >
 > ---
 >
@@ -224,10 +225,14 @@ We use the MOSFET saturation region for amplification, while BJT saturation is f
 
 - **Gate Current ($I_G = 0$):** is zero (in this course), as the gate is insulated by oxide.
   （**栅极电流（$I_G=0$）：** 本课程中为零，因为栅极被氧化物绝缘。）
-- **Threshold Voltage ($V_{Th}$, $V_{TN}$ or $V_{TP}$):** Minimum gate voltage needed to form a channel（**阈值电压：** 形成沟道所需的最小栅极电压）
-- **Transconductance Param. ($K_n$, $K_p$):** $K' = \mu C_{ox}$ ($\mu$ carrier mobility, $C_{ox}$ oxide capacitance)（**跨导参数：** $K'=\mu C_{ox}$（$\mu$ 为载流子迁移率，$C_{ox}$ 为氧化层电容））
-- **Aspect Ratio ($W/L$):** Width-to-length ratio of the channel, controlling current capability（**宽长比：** 沟道宽度与长度之比，决定电流能力）
-- **Channel Length Modulation ($\lambda$):** Accounts for slight dependence of $I_D$ on $V_{DS}$ in saturation（**沟道长度调制：** 描述饱和区 $I_D$ 对 $V_{DS}$ 的轻微依赖）
+- **Threshold Voltage ($V_{Th}$, $V_{TN}$ or $V_{TP}$):** Minimum gate voltage needed to form a channel
+  （**阈值电压：** 形成沟道所需的最小栅极电压）
+- **Transconductance Param. ($K_n$, $K_p$):** $K' = \mu C_{ox}$ ($\mu$ carrier mobility, $C_{ox}$ oxide capacitance)
+  （**跨导参数：** $K'=\mu C_{ox}$（$\mu$ 为载流子迁移率，$C_{ox}$ 为氧化层电容））
+- **Aspect Ratio ($W/L$):** Width-to-length ratio of the channel, controlling current capability
+  （**宽长比：** 沟道宽度与长度之比，决定电流能力）
+- **Channel Length Modulation ($\lambda$):** Accounts for slight dependence of $I_D$ on $V_{DS}$ in saturation
+  （**沟道长度调制：** 描述饱和区 $I_D$ 对 $V_{DS}$ 的轻微依赖）
 
 
 ### Analyzing MOSFET Circuits: The Load Line Method（分析 MOSFET 电路：负载线法）
@@ -269,9 +274,12 @@ $$
 On the $I_D$ versus $V_D$ plot, this is a straight line with:
 （在 $I_D$–$V_D$ 图上，这是一条直线，其：）
 
-- Y-intercept (when $V_{DS} = 0$): $I_D = \dfrac{V_{DD}}{R_D}$ (maximum possible current)（纵轴截距（$V_{DS}=0$ 时）：$I_D=\dfrac{V_{DD}}{R_D}$，即最大可能电流）
-- X-intercept (when $I_D = 0$): $V_{DS} = V_{DD}$ (maximum possible voltage)（横轴截距（$I_D=0$ 时）：$V_{DS}=V_{DD}$，即最大可能电压）
-- Slope: $-\dfrac{1}{R_D}$ (determined by load resistance)（斜率：$-\dfrac{1}{R_D}$，由负载电阻决定）
+- Y-intercept (when $V_{DS} = 0$): $I_D = \dfrac{V_{DD}}{R_D}$ (maximum possible current)
+  （纵轴截距（$V_{DS}=0$ 时）：$I_D=\dfrac{V_{DD}}{R_D}$，即最大可能电流）
+- X-intercept (when $I_D = 0$): $V_{DS} = V_{DD}$ (maximum possible voltage)
+  （横轴截距（$I_D=0$ 时）：$V_{DS}=V_{DD}$，即最大可能电压）
+- Slope: $-\dfrac{1}{R_D}$ (determined by load resistance)
+  （斜率：$-\dfrac{1}{R_D}$，由负载电阻决定）
 
 #### Graphical Solution: Where Device Meets Circuit（图解：器件特性与电路约束的交点）
 
@@ -292,7 +300,8 @@ The operating point (Q-point) is where the load line intersects the MOSFET chara
 >
 > **Step 1: Simplify the Circuit to get Load Line Equation**（第 1 步：化简电路，得到负载线方程）
 >
-> - Find Th&eacute;venin equivalents for bias networks if necessary (e.g. 4-Resistor Bias Network)（必要时求偏置网络的戴维南等效，例如四电阻偏置网络）
+> - Find Th&eacute;venin equivalents for bias networks if necessary (e.g. 4-Resistor Bias Network)
+>   （必要时求偏置网络的戴维南等效，例如四电阻偏置网络）
 > - Identify circuit constraints (KVL, KCL). E.g., KVL loops involving $V_{DS}$ or $V_{GS}$.
 >   （确定电路约束（KVL、KCL），例如含 $V_{DS}$ 或 $V_{GS}$ 的 KVL 回路。）
 > - Use $I_G = 0$ to simplify analysis.
@@ -300,13 +309,17 @@ The operating point (Q-point) is where the load line intersects the MOSFET chara
 >
 > **Step 2: Assume Operating Region to get MOSFET Equation**（第 2 步：假设工作区，写出对应的 MOSFET 方程）
 >
-> - For amplifiers: usually saturation (common in this course)（对放大器通常假设饱和区（本课程常见））
-> - Write the corresponding $I_D$ equation for this region（写出该工作区对应的 $I_D$ 方程）
+> - For amplifiers: usually saturation (common in this course)
+>   （对放大器通常假设饱和区（本课程常见））
+> - Write the corresponding $I_D$ equation for this region
+>   （写出该工作区对应的 $I_D$ 方程）
 >
 > **Step 3: Solve Load Line and MOSFET Equations Simultaneously**（第 3 步：联立求解负载线与 MOSFET 方程）
 >
-> - Combine MOSFET equation with circuit constraints (i.e. load line equation)（把 MOSFET 方程与电路约束（即负载线方程）联立）
-> - Solve with the quadratic equation, keep the physically meaningful solution（用二次方程求解，保留有物理意义的解）
+> - Combine MOSFET equation with circuit constraints (i.e. load line equation)
+>   （把 MOSFET 方程与电路约束（即负载线方程）联立）
+> - Solve with the quadratic equation, keep the physically meaningful solution
+>   （用二次方程求解，保留有物理意义的解）
 >   - Choose a solution that satisfies the region conditions in Step 4 (if there is one).
 >     （选择满足第 4 步工作区条件的解（若有）。）
 >
@@ -316,13 +329,15 @@ The operating point (Q-point) is where the load line intersects the MOSFET chara
 >   （检查工作区条件：）
 >   - Saturation: $V_{GS} > V_{TN}$ and $V_{DS} > V_{GS} - V_{TN}$ (NMOS)（饱和区）
 >   - Triode: $V_{GS} > V_{TN}$ and $V_{DS} < V_{GS} - V_{TN}$ (NMOS)（三极管区）
-> - If wrong, return to Step 2 with new assumption（若不成立，换假设返回第 2 步）
+> - If wrong, return to Step 2 with new assumption
+>   （若不成立，换假设返回第 2 步）
 >
 > **Step 5: Find Q-Point**（第 5 步：求 Q 点）
 >
 > - Calculate final values to get $Q = (I_D, V_{DS})$, returning to circuit analysis if necessary.
 >   （计算最终数值，得到 $Q=(I_D,V_{DS})$，必要时回到电路分析。）
-> - This is your DC operating point（这就是直流工作点）
+> - This is your DC operating point
+>   （这就是直流工作点）
 
 ### Advanced Topics（进阶内容）
 
@@ -432,9 +447,12 @@ Remember to make your answer for $|V_{Th}|$ negative if its PMOS (i.e. $V_{TP}$)
 The aspect ratio directly scales the current capability:
 （宽长比直接按比例决定电流能力：）
 
-- Doubling $W/L$ doubles the saturation current（$W/L$ 加倍，饱和电流加倍）
-- Allows designer to size transistors for required current（设计者可据此选择晶体管尺寸以获得所需电流）
-- Trade-off: larger devices consume more area and have higher capacitance（代价：器件越大，占用面积越大、电容越大）
+- Doubling $W/L$ doubles the saturation current
+  （$W/L$ 加倍，饱和电流加倍）
+- Allows designer to size transistors for required current
+  （设计者可据此选择晶体管尺寸以获得所需电流）
+- Trade-off: larger devices consume more area and have higher capacitance
+  （代价：器件越大，占用面积越大、电容越大）
 
 > [!tip] Design Insight（设计要点）
 >
@@ -465,10 +483,14 @@ MOSFETs are voltage-controlled devices that form the backbone of modern electron
 Understanding their operation requires:
 （理解其工作需要：）
 
-- Recognizing the three operating regions and their equations（识别三个工作区及其方程）
-- Using load line analysis to find the Q-point graphically（用负载线分析图解求 Q 点）
-- Applying systematic solution strategies for different bias configurations（对不同偏置结构采用系统的求解策略）
-- Accounting for second-order effects when precision matters（在需要精度时考虑二阶效应）
+- Recognizing the three operating regions and their equations
+  （识别三个工作区及其方程）
+- Using load line analysis to find the Q-point graphically
+  （用负载线分析图解求 Q 点）
+- Applying systematic solution strategies for different bias configurations
+  （对不同偏置结构采用系统的求解策略）
+- Accounting for second-order effects when precision matters
+  （在需要精度时考虑二阶效应）
 
 The load line method bridges the gap between device physics and circuit behavior, providing both mathematical rigor and intuitive understanding.
 （负载线法连接了器件物理与电路行为，兼有数学严谨性与直观性。）
@@ -643,8 +665,10 @@ $$
 Again checking validity:
 （再次检验有效性：）
 
-- $V_{GS} = 0.46$ V $< V_{TN} = 0.75$ V (cutoff - invalid)（截止区，无效）
-- $V_{GS} = 1.046$ V $> V_{TN}$ (saturation - valid)（饱和区，有效）
+- $V_{GS} = 0.46$ V $< V_{TN} = 0.75$ V (cutoff - invalid)
+  （截止区，无效）
+- $V_{GS} = 1.046$ V $> V_{TN}$ (saturation - valid)
+  （饱和区，有效）
 
 ---
 
@@ -675,11 +699,27 @@ What is the region of operation and drain current in this device if $W/L = 25/1$
 **PMOS Sign Conventions:** For PMOS transistors, we use a different sign convention than NMOS:
 （**PMOS 符号约定：** 对 PMOS，采用与 NMOS 不同的符号约定：）
 
-- All voltages are typically negative relative to the source (which is usually at the highest potential),（所有电压相对源极通常为负（源极通常处于最高电位），）
+- All voltages are typically negative relative to the source (which is usually at the highest potential),
+  （所有电压相对源极通常为负（源极通常处于最高电位），）
 - This is unlike BJT PNP transistors which use "flipped" subscripts (e.g., $V_{EB}$ instead of $V_{BE}$), MOSFETs maintain consistent subscript ordering (e.g., $V_{GS}$, $V_{DS}$) for both NMOS and PMOS.
   （这一点与 BJT 的 PNP 管不同：后者采用“翻转”的下标（如用 $V_{EB}$ 代替 $V_{BE}$），而 MOSFET 对 NMOS 与 PMOS 都保持相同的下标顺序（如 $V_{GS}$、$V_{DS}$）。）
 - Exception: For body effect, we *can* use $V_{BS}$ (body-to-source) for PMOS (versus $V_{SB}$ for NMOS).
   （例外：讨论体效应时，PMOS 可用 $V_{BS}$（体到源），而 NMOS 用 $V_{SB}$。）
+
+**电流方向：NMOS 与 PMOS 的区别**
+
+- NMOS 导通时：电流从漏极 D 流入，经沟道从源极 S 流出，即 $V_D>V_S$。
+- PMOS 导通时：电流从源极 S 流入，经沟道从漏极 D 流出，即 $V_S>V_D$。
+- 统一约定：$I_D$ 的参考方向都取「流入漏极」。因此 NMOS 的 $I_D>0$，PMOS 的 $I_D<0$；若题目只要幅值，再取 $|I_D|$。
+- 两者的栅极电流都为零：$I_G=0$。
+- 源极取在「载流子来源」一侧：NMOS 源极接低电位，PMOS 源极接高电位。
+
+| 项目 | NMOS | PMOS |
+| --- | --- | --- |
+| 导通时电流方向 | $D\to S$ | $S\to D$ |
+| 源极电位 | 低 | 高 |
+| $V_{DS}$ | $>0$ | $<0$ |
+| $I_D$（流入漏极为正） | $>0$ | $<0$ |
 
 **Solution:**（**解答：**）
 
@@ -704,9 +744,12 @@ $$
 Using the PMOS parameters from the tutorial parameter section (note that PMOS typically has different parameters than NMOS):
 （使用辅导课参数表中的 PMOS 参数（注意 PMOS 参数通常与 NMOS 不同）：）
 
-- $V_{T0} = -0.75$ V (zero-bias threshold voltage for PMOS)（PMOS 的零偏阈值电压）
-- $\gamma = 0.5\sqrt{\text{V}}$ (body effect parameter)（体效应参数）
-- $2\phi_F = 0.6$ V (surface potential parameter, $2\Psi_F$ in the lectures)（表面势参数，课堂上记为 $2\Psi_F$）
+- $V_{T0} = -0.75$ V (zero-bias threshold voltage for PMOS)
+  （PMOS 的零偏阈值电压）
+- $\gamma = 0.5\sqrt{\text{V}}$ (body effect parameter)
+  （体效应参数）
+- $2\phi_F = 0.6$ V (surface potential parameter, $2\Psi_F$ in the lectures)
+  （表面势参数，课堂上记为 $2\Psi_F$）
 
 With PMOS we deal with a lot of negatives!（PMOS 中会出现很多负号！）
 
@@ -727,9 +770,12 @@ Now we check the region of operation to select the proper drain current formula.
 For PMOS:
 （对 PMOS：）
 
-- **ON condition:** $V_{GS} < V_{TP}$ ($V_{GS}$ more negative than threshold)（**导通条件：** $V_{GS}<V_{TP}$，即 $V_{GS}$ 比阈值更负）
-- **Triode region:** $V_{DS} > V_{GS} - V_{TP}$ ($V_{DS}$ less negative)（**三极管区：** $V_{DS}>V_{GS}-V_{TP}$，即 $V_{DS}$ 负得较少）
-- **Saturation region:** $V_{DS} < V_{GS} - V_{TP}$ ($V_{DS}$ more negative)（**饱和区：** $V_{DS}<V_{GS}-V_{TP}$，即 $V_{DS}$ 更负）
+- **ON condition:** $V_{GS} < V_{TP}$ ($V_{GS}$ more negative than threshold)
+  （**导通条件：** $V_{GS}<V_{TP}$，即 $V_{GS}$ 比阈值更负）
+- **Triode region:** $V_{DS} > V_{GS} - V_{TP}$ ($V_{DS}$ less negative)
+  （**三极管区：** $V_{DS}>V_{GS}-V_{TP}$，即 $V_{DS}$ 负得较少）
+- **Saturation region:** $V_{DS} < V_{GS} - V_{TP}$ ($V_{DS}$ more negative)
+  （**饱和区：** $V_{DS}<V_{GS}-V_{TP}$，即 $V_{DS}$ 更负）
 
 Checking our values:
 （检验数值：）
@@ -805,10 +851,14 @@ $$
 > **Unlike BJTs, MOSFETs are symmetric devices!** This means:
 > （**与 BJT 不同，MOSFET 是对称器件！** 这意味着：）
 >
-> - The drain and source terminals are physically identical（漏极与源极在物理上完全相同）
-> - You can swap drain and source, and the device works the same way（交换漏极与源极，器件仍以相同方式工作）
-> - The terminal at higher potential (for NMOS) becomes the "drain" (PMOS is opposite)（对 NMOS，电位较高的一端作为“漏极”（PMOS 相反））
-> - The terminal at lower potential (for NMOS) becomes the "source" (PMOS is opposite)（对 NMOS，电位较低的一端作为“源极”（PMOS 相反））
+> - The drain and source terminals are physically identical
+>   （漏极与源极在物理上完全相同）
+> - You can swap drain and source, and the device works the same way
+>   （交换漏极与源极，器件仍以相同方式工作）
+> - The terminal at higher potential (for NMOS) becomes the "drain" (PMOS is opposite)
+>   （对 NMOS，电位较高的一端作为“漏极”（PMOS 相反））
+> - The terminal at lower potential (for NMOS) becomes the "source" (PMOS is opposite)
+>   （对 NMOS，电位较低的一端作为“源极”（PMOS 相反））
 >
 > **For transmission gate analysis:**（**传输门分析步骤：**）
 >
@@ -831,8 +881,10 @@ $$
 Given $V_{IN} = 0$ V, let's analyze the gate voltages (assuming $V_O \approx V_{IN} = 0$ V for the transmission gate):
 （已知 $V_{IN}=0$ V，分析各管栅极电压（对传输门假设 $V_O\approx V_{IN}=0$ V）：）
 
-- NMOS (bottom): $V_{GS} = V_G - V_S = 5\ \text{V} - 0\ \text{V} = 5\ \text{V} > V_{TN} = 0.75\ \text{V} \Rightarrow$ ON（NMOS（下管）：$V_{GS}=5$ V $>V_{TN}$，导通）
-- PMOS (top): $V_{GS} = V_G - V_S = 0\ \text{V} - 0\ \text{V} = 0\ \text{V} > V_{TP} = -0.75\ \text{V} \Rightarrow$ OFF（PMOS（上管）：$V_{GS}=0$ V $>V_{TP}$，截止）
+- NMOS (bottom): $V_{GS} = V_G - V_S = 5\ \text{V} - 0\ \text{V} = 5\ \text{V} > V_{TN} = 0.75\ \text{V} \Rightarrow$ ON
+  （NMOS（下管）：$V_{GS}=5$ V $>V_{TN}$，导通）
+- PMOS (top): $V_{GS} = V_G - V_S = 0\ \text{V} - 0\ \text{V} = 0\ \text{V} > V_{TP} = -0.75\ \text{V} \Rightarrow$ OFF
+  （PMOS（上管）：$V_{GS}=0$ V $>V_{TP}$，截止）
 
 ---
 
@@ -866,8 +918,10 @@ Since the transmission gate acts as a closed switch, $V_O = V_{IN} = 0$ V.
 Given $V_{IN} = 5$ V, let's analyze the gate voltages (assuming $V_{OUT} \approx V_{IN} = 5$ V):
 （已知 $V_{IN}=5$ V，分析各管栅极电压（假设 $V_{OUT}\approx V_{IN}=5$ V）：）
 
-- NMOS (bottom): $V_{GS} = 5\ \text{V} - 5\ \text{V} = 0\ \text{V} < V_{TN} = 0.75\ \text{V} \Rightarrow$ OFF（NMOS（下管）：$V_{GS}=0$ V $<V_{TN}$，截止）
-- PMOS (top): $V_{GS} = 0\ \text{V} - 5\ \text{V} = -5\ \text{V} < V_{TP} = -0.75\ \text{V} \Rightarrow$ ON（PMOS（上管）：$V_{GS}=-5$ V $<V_{TP}$，导通）
+- NMOS (bottom): $V_{GS} = 5\ \text{V} - 5\ \text{V} = 0\ \text{V} < V_{TN} = 0.75\ \text{V} \Rightarrow$ OFF
+  （NMOS（下管）：$V_{GS}=0$ V $<V_{TN}$，截止）
+- PMOS (top): $V_{GS} = 0\ \text{V} - 5\ \text{V} = -5\ \text{V} < V_{TP} = -0.75\ \text{V} \Rightarrow$ ON
+  （PMOS（上管）：$V_{GS}=-5$ V $<V_{TP}$，导通）
 
 ---
 
@@ -1043,8 +1097,10 @@ $$
 To find $V_{DS}$, we need to determine the drain and source voltages separately using KVL:
 （为求 $V_{DS}$，需用 KVL 分别求漏极与源极电压：）
 
-- Drain voltage: $V_D = V_{DD} - I_D R_4$ (voltage drop across $R_4$)（漏极电压：$V_D=V_{DD}-I_D R_4$，即 $R_4$ 上的压降）
-- Source voltage: $V_S = I_D R_3$ (voltage drop across $R_3$ from ground)（源极电压：$V_S=I_D R_3$，即 $R_3$ 上对地的压降）
+- Drain voltage: $V_D = V_{DD} - I_D R_4$ (voltage drop across $R_4$)
+  （漏极电压：$V_D=V_{DD}-I_D R_4$，即 $R_4$ 上的压降）
+- Source voltage: $V_S = I_D R_3$ (voltage drop across $R_3$ from ground)
+  （源极电压：$V_S=I_D R_3$，即 $R_3$ 上对地的压降）
 
 Therefore:
 （因此：）
@@ -1328,8 +1384,10 @@ Next, we verify our saturation assumption:
 （接着验证饱和区假设：）
 
 - $V_{GS} = V_{th} - I_D R_3 = 3.75\ \text{V} - (73.1\ \mu\text{A})(24\ \text{k}\Omega) = 1.996\ \text{V}$
-- $V_{GS} = 1.996\ \text{V} > V_{TN} = 1.46\ \text{V} \ \checkmark$ (transistor ON)（晶体管导通）
-- $V_{GS} - V_{TN} = 0.536\ \text{V} < V_{DS} = 9.37\ \text{V} \ \checkmark$ (saturation confirmed)（确认饱和）
+- $V_{GS} = 1.996\ \text{V} > V_{TN} = 1.46\ \text{V} \ \checkmark$ (transistor ON)
+  （晶体管导通）
+- $V_{GS} - V_{TN} = 0.536\ \text{V} < V_{DS} = 9.37\ \text{V} \ \checkmark$ (saturation confirmed)
+  （确认饱和）
 
 ---
 

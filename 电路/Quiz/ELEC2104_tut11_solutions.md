@@ -6,7 +6,7 @@ In the Tutorial 7, we studied BJT amplifiers and their small-signal analysis. No
 （在第 7 次辅导课中，我们学习了 BJT 放大器及其小信号分析。现在我们转向 MOSFET 放大器，它与 BJT 放大器在概念上有许多相似之处，但在物理行为和数学模型上存在重要差异。）
 
 Like BJTs, MOSFETs excel as amplifiers due to their ability to convert small voltage changes at the input (gate-source voltage $V_{GS}$) into large current changes at the output (drain current $I_D$). However, while BJTs use an exponential relationship, MOSFETs use a quadratic relationship in saturation:
-（与 BJT 一样，MOSFET 之所以适合做放大器，是因为它能将输入端（栅源电压 $V_{GS}$）的微小电压变化转换为输出端（漏极电流 $I_D$）的大电流变化。然而，BJT 使用的是指数关系，而 MOSFET 在饱和区使用的是二次关系：）
+（与 BJT 一样，MOSFET 之所以适合做放大器，是因为它能将输入端（栅源电压 $V_{GS}$）的微小电压变化转换为输出端（漏极电流 $I_D$）的大电流变化。然而，**BJT 使用的是指数关系，而 MOSFET 在饱和区使用的是二次关系**：）
 
 $$
 I_D = \frac{1}{2}\mu_n C_{ox}\frac{W}{L}(V_{GS} - V_{TN})^2 \tag{1}
@@ -58,6 +58,7 @@ where $g_m$ is the transconductance at the Q-point (the slope of the tangent in 
 $$
 g_m = \left.\frac{dI_D}{dV_{GS}}\right|_Q = \mu_n C_{ox}\frac{W}{L}(V_{GS,Q} - V_{TN}) \tag{3}
 $$
+
 
 This linear approximation is only valid for small signals because higher-order terms in the Taylor series become significant for large deviations from the Q-point. This transforms complex nonlinear circuit analysis into straightforward linear circuit analysis using familiar techniques like Ohm's law and voltage dividers!
 （这种线性近似只对小信号有效，因为当偏离 Q 点较大时，泰勒级数中的高阶项会变得显著。这样就把复杂的非线性电路分析转化为使用欧姆定律和分压器等熟悉技巧的简单线性电路分析！）
@@ -138,6 +139,43 @@ When $\lambda \to 0$, we get $r_o \to \infty$ (open circuit). Questions will ass
 > $$
 > g_m = \mu_n C_{ox}\frac{W}{L}(V_{GS,Q} - V_{TN})(1 + \lambda V_{DS,Q}) = \sqrt{2\mu_n C_{ox}\frac{W}{L}I_{D,Q}}\sqrt{1 + \lambda V_{DS,Q}} \tag{10}
 > $$
+>
+> Since $I_D$ now depends on both $V_{GS}$ and $V_{DS}$, the first-order expansion must keep two terms:
+> （由于 $I_D$ 现在同时依赖 $V_{GS}$ 与 $V_{DS}$，一阶展开要保留两项：）
+>
+> $$
+> i_d\approx\frac{\partial I_D}{\partial V_{GS}}v_{gs}+\frac{\partial I_D}{\partial V_{DS}}v_{ds}=g_mv_{gs}+\frac{v_{ds}}{r_o}
+> $$
+>
+> where
+> （其中）
+>
+> $$
+> \frac{1}{r_o}=\left.\frac{\partial I_D}{\partial V_{DS}}\right|_Q=\frac{1}{2}\mu_nC_{ox}\frac{W}{L}(V_{GS,Q}-V_{TN})^2\lambda=\frac{\lambda I_{D,Q}}{1+\lambda V_{DS,Q}}
+> $$
+>
+> Rearranging gives
+> （整理得）
+>
+> $$
+> r_o=\frac{1+\lambda V_{DS,Q}}{\lambda I_{D,Q}}=\frac{\frac{1}{\lambda}+V_{DS,Q}}{I_{D,Q}}=\frac{V_A+V_{DS,Q}}{I_{D,Q}}\approx\frac{V_A}{I_{D,Q}}
+> $$
+>
+> The approximation holds when $V_A\gg V_{DS,Q}$, i.e. $\lambda V_{DS,Q}\ll1$; this is the same as Eq. (5), where $r_o\approx1/(\lambda I_{D,Q})$.
+> （约等号成立的条件是 $V_A\gg V_{DS,Q}$，即 $\lambda V_{DS,Q}\ll1$；这与式 (5) 的 $r_o\approx1/(\lambda I_{D,Q})$ 是同一结果。）
+>
+> Note the relation between $\lambda$ and the Early voltage:
+> （注意 $\lambda$ 与厄利电压的关系：）
+>
+> $$
+> 1+\lambda V_{DS}=1+\frac{V_{DS}}{V_A}\quad\Longrightarrow\quad \lambda=\frac{1}{V_A},\qquad V_A=\frac{1}{\lambda}
+> $$
+>
+> Extrapolating the output characteristic to $V_{DS}=-V_A$ gives $I_D=0$, which is exactly the definition of the Early voltage. So $r_o=V_A/I_D$ and $r_o=1/(\lambda I_D)$ are two forms of the same expression; $\lambda$ is in V$^{-1}$ and $V_A$ is in V.
+> （把输出特性反向延长到 $V_{DS}=-V_A$ 时 $I_D=0$，这正是厄利电压的定义。所以 $r_o=V_A/I_D$ 与 $r_o=1/(\lambda I_D)$ 是同一式子的两种写法；$\lambda$ 的单位是 V$^{-1}$，$V_A$ 的单位是 V。）
+>
+> Compared with Eqs. (2)(3): $g_m$ gains a factor $(1+\lambda V_{DS,Q})$, and the expansion gains the term $v_{ds}/r_o$; both reduce to (2)(3) when $\lambda=0$.
+> （与式 (2)(3) 相比：$g_m$ 多了因子 $(1+\lambda V_{DS,Q})$，展开式多了 $v_{ds}/r_o$ 一项；$\lambda=0$ 时两者都退化为式 (2)(3)。）
 >
 > Interestingly, the form $g_m = \dfrac{2I_{D,Q}}{V_{GS,Q} - V_{TN}}$ remains valid even with channel-length modulation, as $I_D$ includes the $(1 + \lambda V_{DS,Q})$ factor.
 > （有趣的是，即使存在沟道长度调制，$g_m = \dfrac{2I_{D,Q}}{V_{GS,Q} - V_{TN}}$ 这一形式依然成立，因为 $I_D$ 中已经包含了 $(1 + \lambda V_{DS,Q})$ 因子。）

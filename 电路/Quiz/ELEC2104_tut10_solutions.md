@@ -12,7 +12,7 @@ In MOSFET problems, unless otherwise stated, assume $\mu_n C_{ox} = 200\ \mu\tex
 
 >回顾一下tu9中的公式
 
-截止区**：$v_{GS}<V_{TN}$，没有沟道，$i_D=0$。
+**截止区**：$v_{GS}<V_{TN}$，没有沟道，$i_D=0$。
 
 **可变电阻区**：$v_{GS}>V_{TN}$ 且 $v_{DS}<v_{GS}-V_{TN}$，沟道连续。当 $v_{DS}\ll2(v_{GS}-V_{TN})$ 时，$v_{DS}^2$ 项可忽略，电流与 $v_{DS}$ 成正比：
 
@@ -688,6 +688,20 @@ $$
 
 Substitute expressions for $V_{DS}$ and $V_{GS}$:
 （代入 $V_{DS}$ 与 $V_{GS}$ 的表达式：）
+
+先写回 Part A 中用过的那两个电压表达式（这里把 $R$ 保留为变量）：
+
+$$
+V_D = I_D R,\qquad V_S = 15 - (100\ \text{k}\Omega)I_D
+$$
+
+于是漏源电压为：
+
+$$
+V_{DS} = V_D - V_S = I_D R - \left[15 - (100\ \text{k}\Omega)I_D\right] = -\left[15 - (100\ \text{k}\Omega + R)I_D\right]
+$$
+
+代入饱和条件 $V_{DS}\leq V_{GS}-V_{TP}$，即得：
 
 $$
 -[15 - (100\ \text{k}\Omega + R)I_D] \leq V_{GS} - V_{TP} \tag{11}

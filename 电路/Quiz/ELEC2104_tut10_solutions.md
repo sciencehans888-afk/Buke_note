@@ -410,6 +410,8 @@ $$
 V_{GS} - V_{TN} = 0.13\ \text{V} < V_{DS} = 0.53\ \text{V} \Rightarrow \text{Saturation region confirmed.} \tag{19}
 $$
 
+所以，MOS管确实工作在饱和区。
+
 ---
 
 >记录Q点
@@ -454,11 +456,11 @@ Given $\gamma = 0$, there is no body effect.
 
 >判断工作区
 
-Since all three PMOS transistors are identical:
-（由于三个 PMOS 晶体管完全相同：）
+Since all three PMOS transistors are identical and each is diode-connected (gate tied to drain), we have $V_{GS}=V_{DS}$:
+（由于三个 PMOS 晶体管完全相同，且每个都是二极管连接（栅极与漏极短接），故 $V_{GS}=V_{DS}$：）
 
 $$
-V_{GS} = -\left(\frac{15}{3}\right) = -5\ \text{V} \tag{1}
+V_{GS} = V_{DS} = -\left(\frac{15}{3}\right) = -5\ \text{V} \tag{1}
 $$
 
 Because they are connected in series:

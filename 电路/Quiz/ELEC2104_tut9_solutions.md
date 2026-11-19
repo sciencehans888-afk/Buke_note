@@ -1064,7 +1064,7 @@ Note that the transistor is NMOS because the arrow on the body points inward.
 ### 4.1 Part A（A 部分）
 
 For MOSFETs, the Q-point is conventionally expressed as $(I_D, V_{DS})$, representing the DC drain current and drain-source voltage.
-（对 MOSFET，Q 点通常表示为 $(I_D,V_{DS})$，即直流漏极电流与漏源电压。）
+**（对 MOSFET，Q 点通常表示为 $(I_D,V_{DS})$，即直流漏极电流与漏源电压。）**
 
 ---
 

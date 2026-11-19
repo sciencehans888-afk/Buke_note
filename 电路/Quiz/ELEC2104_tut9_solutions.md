@@ -1009,7 +1009,7 @@ Assume that $V_{TO} = 1$ V, $\gamma = 0$, and $W/L = 6/1$.
 （(b) 对 $W/L=12/1$ 重做。）
 
 ![](Pasted%20image%2020261114214828.png)
-> 图Q4-1 题 4 的四电阻偏置电路：$V_{DD}$ 经 $R_2$ 与 $R_4$ 接漏极/栅极，$R_1$ 与 $R_3$ 下端接地，栅极取自 $R_1$、$R_2$ 分压点，源极接 $R_3$（图 Q4-1：第 4 题四电阻偏置电路）
+> 图Q4-1 题 4 的四电阻偏置电路：$V_{DD}$ 经 $R_2$ 与 $R_4$ 接漏极/栅极，$R_1$ 与 $R_3$ 下端接地，栅极取自 $R_1$、$R_2$ 分压点，源极接 $R_3$
 
 **Solution:**（**解答：**）
 
@@ -1052,7 +1052,7 @@ V_{th} = V_{DD} \cdot \frac{R_1}{R_2 + R_1} = 10\ \text{V} \cdot \frac{100\ \tex
 $$
 
 Since $\gamma = 0$ (the body effect parameter), there is no body effect and the threshold voltage remains constant:
-（由于 $\gamma=0$（体效应参数），无体效应，阈值电压保持不变：）
+（由于题目条件为 $\gamma=0$（体效应参数），所以此处不考虑体效应，阈值电压的计算公式如下：）
 
 $$
 V_{TN} = V_{T0} = 1\ \text{V} \tag{3}

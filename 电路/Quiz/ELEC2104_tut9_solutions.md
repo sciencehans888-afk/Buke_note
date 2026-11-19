@@ -703,6 +703,18 @@ What is the region of operation and drain current in this device if $W/L = 25/1$
 ![](Pasted%20image%2020261114214731.png)
 > 图Q2-1 PMOS 符号（手绘）：D 在上、S 在下、G 在左、B 在右侧（图 Q2-1：PMOS 符号）
 
+**NMOS Sign Conventions:** For NMOS transistors, all voltages are taken relative to the source, which is usually at the lowest potential:
+（**NMOS 符号约定：** 对 NMOS，所有电压都以源极为参考，源极通常处于最低电位：）
+
+- All quantities are typically positive: $V_{GS} > 0$, $V_{DS} > 0$.
+  （各量通常为正：$V_{GS}>0$，$V_{DS}>0$。）
+- Turn-on condition $V_{GS} > V_{TN}$; saturation condition $V_{DS} \ge V_{GS} - V_{TN}$.
+  （导通条件 $V_{GS}>V_{TN}$；饱和条件 $V_{DS}\ge V_{GS}-V_{TN}$。）
+- Current flows into the drain and out of the source, so $I_D > 0$ under the "into the drain" reference direction.
+  （电流由漏极流入、经沟道从源极流出，按「流入漏极」的参考方向 $I_D>0$。）
+- Body effect uses $V_{SB} = V_S - V_B$, which is positive when the source is above the body.
+  （体效应使用 $V_{SB}=V_S-V_B$，源极高于体时为正。）
+
 **PMOS Sign Conventions:** For PMOS transistors, we use a different sign convention than NMOS:
 （**PMOS 符号约定：** 对 PMOS，采用与 NMOS 不同的符号约定：）
 
@@ -774,6 +786,16 @@ $$
 Now we check the region of operation to select the proper drain current formula.
 （现在判断工作区，以选择正确的漏极电流公式。）
 
+For NMOS:
+（对 NMOS：）
+
+- **ON condition:** $V_{GS} > V_{TN}$ ($V_{GS}$ more positive than threshold)
+  （**导通条件：** $V_{GS}>V_{TN}$，即 $V_{GS}$ 高于阈值）
+- **Triode region:** $V_{DS} < V_{GS} - V_{TN}$ ($V_{DS}$ small)
+  （**三极管区（放大区）：** $V_{DS}<V_{GS}-V_{TN}$，即 $V_{DS}$ 较小）
+- **Saturation region:** $V_{DS} \ge V_{GS} - V_{TN}$ ($V_{DS}$ large)
+  （**饱和区：** $V_{DS}\ge V_{GS}-V_{TN}$，即 $V_{DS}$ 较大）
+
 For PMOS:
 （对 PMOS：）
 
@@ -828,14 +850,14 @@ $$
 
 ## 3 Question 3（第 3 题）
 
-What is the on-resistance and voltage $V_O$ for the parallel combination of the NMOS ($W/L = 10/1$) and PMOS ($W/L = 25/1$) transistors in a *transmission gate*?（在*传输门*中，NMOS（$W/L=10/1$）与 PMOS（$W/L=25/1$）并联时，导通电阻和电压 $V_O$ 是多少？）
+What is the on-resistance and voltage $V_O$ for the parallel combination of the NMOS ($W/L = 10/1$) and PMOS ($W/L = 25/1$) transistors in a *transmission gate*?
+（在*传输门*中，NMOS（$W/L=10/1$）与 PMOS（$W/L=25/1$）并联时，导通电阻和电压 $V_O$ 是多少？）
 
 (a) For $V_{IN} = 0$ V?（(a) 当 $V_{IN}=0$ V 时？）
-
 (b) For $V_{IN} = 5$ V?（(b) 当 $V_{IN}=5$ V 时？）
 
 ![](Pasted%20image%2020261114214746.png)
-> 图Q3-1 题 3 的传输门电路：上管为 PMOS（源极接 $+5$ V，栅极接 $+5$ V），下管为 NMOS（栅极接 $+5$ V，另一端接 $0$ V），两管漏极并联接 $V_{IN}$ 与 $V_O$（图 Q3-1：第 3 题传输门电路）
+> 图Q3-1 题 3 的传输门电路
 
 **Background:** A transmission gate is a bidirectional switch that uses complementary NMOS and PMOS transistors in parallel.
 （**背景：** 传输门是一种双向开关，由互补的 NMOS 与 PMOS 并联构成。）
@@ -846,12 +868,19 @@ This configuration ensures good conduction for both high and low input voltages,
 **MOSFET On-Resistance:** When a MOSFET operates in the triode (linear) region with small $V_{DS}$, it behaves like a resistor.
 （**MOSFET 导通电阻：** 当 MOSFET 在小 $V_{DS}$ 下工作于三极管（线性）区时，表现为电阻。）
 
+>电压电流关系为直线的时候，这种时候是管的特性是一个电阻
+
+可变电阻区：$v_{GS}>V_{TN}$ 且 $v_{DS}<v_{GS}-V_{TN}$，沟道连续。当 $v_{DS}\ll2(v_{GS}-V_{TN})$ 时，$v_{DS}^2$ 项可忽略，电流与 $v_{DS}$ 成正比：
+
+$$i_D=\mu_nC_{ox}\frac{W}{L}(v_{GS}-V_{TN})v_{DS}$$
+
+此时器件等效为一个电阻：
+
 The on-resistance $R_{on}$ is the small-signal resistance for small drain-source voltages:
 （导通电阻 $R_{on}$ 是小漏源电压下的小信号电阻：）
 
-$$
-R_{on} = \frac{1}{\mu_n C_{ox}\frac{W}{L}(V_{GS} - V_{TN})}
-$$
+$$R_{on}=\frac{1}{\mu_nC_{ox}\frac{W}{L}(v_{GS}-V_{TN})}$$
+
 
 > [!info] MOSFET Symmetry（MOSFET 的对称性）
 >
@@ -883,15 +912,20 @@ $$
 
 ---
 
+![](Pasted%20image%2020261114214746.png)
+
 >判断两管状态
 
 Given $V_{IN} = 0$ V, let's analyze the gate voltages (assuming $V_O \approx V_{IN} = 0$ V for the transmission gate):
 （已知 $V_{IN}=0$ V，分析各管栅极电压（对传输门假设 $V_O\approx V_{IN}=0$ V）：）
 
-- NMOS (bottom): $V_{GS} = V_G - V_S = 5\ \text{V} - 0\ \text{V} = 5\ \text{V} > V_{TN} = 0.75\ \text{V} \Rightarrow$ ON
-  （NMOS（下管）：$V_{GS}=5$ V $>V_{TN}$，导通）
-- PMOS (top): $V_{GS} = V_G - V_S = 0\ \text{V} - 0\ \text{V} = 0\ \text{V} > V_{TP} = -0.75\ \text{V} \Rightarrow$ OFF
-  （PMOS（上管）：$V_{GS}=0$ V $>V_{TP}$，截止）
+>这里Vin为0，所以相当于，NMOS的S和G直接相连，PMOS的B和S直接相连。另外，根据符号表（虽然这份材料里没有），默认导通压降是0.75V。
+
+
+- NMOS (top): $V_{GS} = V_G - V_S = 5\ \text{V} - 0\ \text{V} = 5\ \text{V} > V_{TN} = 0.75\ \text{V} \Rightarrow$ ON
+  （NMOS（上管）：$V_{GS}=5$ V $>V_{TN}$，导通）
+- PMOS (bottom): $V_{GS} = V_G - V_S = 0\ \text{V} - 0\ \text{V} = 0\ \text{V} > V_{TP} = -0.75\ \text{V} \Rightarrow$ OFF
+  （PMOS（下管）：$V_{GS}=0$ V $>V_{TP}$，截止）
 
 ---
 
@@ -922,13 +956,14 @@ Since the transmission gate acts as a closed switch, $V_O = V_{IN} = 0$ V.
 
 >判断两管状态
 
+
 Given $V_{IN} = 5$ V, let's analyze the gate voltages (assuming $V_{OUT} \approx V_{IN} = 5$ V):
 （已知 $V_{IN}=5$ V，分析各管栅极电压（假设 $V_{OUT}\approx V_{IN}=5$ V）：）
 
-- NMOS (bottom): $V_{GS} = 5\ \text{V} - 5\ \text{V} = 0\ \text{V} < V_{TN} = 0.75\ \text{V} \Rightarrow$ OFF
-  （NMOS（下管）：$V_{GS}=0$ V $<V_{TN}$，截止）
-- PMOS (top): $V_{GS} = 0\ \text{V} - 5\ \text{V} = -5\ \text{V} < V_{TP} = -0.75\ \text{V} \Rightarrow$ ON
-  （PMOS（上管）：$V_{GS}=-5$ V $<V_{TP}$，导通）
+- NMOS (top): $V_{GS} = 5\ \text{V} - 5\ \text{V} = 0\ \text{V} < V_{TN} = 0.75\ \text{V} \Rightarrow$ OFF
+  （NMOS（上管）：$V_{GS}=0$ V $<V_{TN}$，截止）
+- PMOS (bottom): $V_{GS} = 0\ \text{V} - 5\ \text{V} = -5\ \text{V} < V_{TP} = -0.75\ \text{V} \Rightarrow$ ON
+  （PMOS（下管）：$V_{GS}=-5$ V $<V_{TP}$，导通）
 
 ---
 

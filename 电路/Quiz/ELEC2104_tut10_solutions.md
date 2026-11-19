@@ -232,8 +232,12 @@ $$
 V_{GS} - V_{TN} < V_{DS} \tag{1}
 $$
 
-Assume $V_{GS} > V_{TN}$ so that the NMOS is in the **saturation region**. For the given circuit,
-（假设 $V_{GS}>V_{TN}$，使 NMOS 工作在**饱和区**。对给定电路，）
+Assume $V_{GS} > V_{TN}$ so that the NMOS is in the **saturation region**.
+
+>由于$V_G = V_D \Rightarrow V_{GS} = V_{DS}$，只要$V_{GS}$大于$V_{TN}$就一定满足饱和区的条件，使 NMOS 工作在**饱和区**
+
+For the given circuit,
+（对给定电路，）
 
 $$
 V_{GS} = V_{DD} - I_D(100\ \text{k}\Omega) \tag{2}

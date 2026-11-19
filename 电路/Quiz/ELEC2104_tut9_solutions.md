@@ -1125,6 +1125,8 @@ $$
 
 >求$I_D$
 
+再把$V_{GS}$代入（5）式
+
 Now the drain current is:
 （于是漏极电流为：）
 

@@ -553,6 +553,25 @@ We start by assuming that the PMOS transistor is operating in the saturation reg
 
 ---
 
+>求$V_{th}$、$R_{eq}$
+
+The gate divider (two $510\ \text{k}\Omega$ resistors) is converted to its Thevenin equivalent:
+（把栅极分压网络（两个 $510\ \text{k}\Omega$ 电阻）化为戴维南等效：）
+
+Thevenin voltage（戴维南电压）：
+
+$$
+V_{th} = 15\ \text{V}\times\frac{510\ \text{k}\Omega}{510\ \text{k}\Omega + 510\ \text{k}\Omega} = 7.5\ \text{V}
+$$
+
+Thevenin resistance（戴维南电阻）：
+
+$$
+R_{eq} = 510\ \text{k}\Omega \parallel 510\ \text{k}\Omega = 255\ \text{k}\Omega
+$$
+
+---
+
 >列方程（饱和区假设）
 
 The gate-source voltage is determined by the biasing network:
@@ -562,8 +581,20 @@ $$
 V_{th} = 15 - I_D(100\ \text{k}\Omega) + V_{GS} \tag{1}
 $$
 
+**这个式子来自哪个 KVL 回路**：沿 $+15\text{ V}\to100\ \text{k}\Omega\to S\to(G\text{–}S)\to G\to R_{eq}\to V_{th}\to\text{地}\to+15\text{ V}$ 写一圈：
+
+$$
+15 - I_D(100\ \text{k}\Omega) + V_{GS} - V_{th} = 0
+$$
+
+移项即得式 (1)。
+
 The drain current equation in the saturation region is:
 （饱和区漏极电流方程为：）
+
+$$
+I_D = \frac{1}{2}\mu_p C_{ox}\frac{W}{L}(V_{GS} - V_{TP})^2 
+$$
 
 $$
 I_D = \frac{1}{2}(40\ \mu\text{A/V}^2)\frac{20}{1}(V_{GS} - (-0.75))^2 \tag{2}

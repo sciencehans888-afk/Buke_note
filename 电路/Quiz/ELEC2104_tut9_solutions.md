@@ -1146,6 +1146,8 @@ To find $V_{DS}$, we need to determine the drain and source voltages separately 
 - Source voltage: $V_S = I_D R_3$ (voltage drop across $R_3$ from ground)
   （源极电压：$V_S=I_D R_3$，即 $R_3$ 上对地的压降）
 
+![](Pasted%20image%2020261119215512.png)
+
 Therefore:
 （因此：）
 
@@ -1296,6 +1298,8 @@ This demonstrates how the aspect ratio affects the Q-point location along the lo
 
 ## 5 Question 5（第 5 题）
 
+![](Pasted%20image%2020261119222727.png)
+
 Find the Q-point for the transistor in the same four-resistor bias configuration as Question 4, with parameters: $R_1 = 100$ k$\Omega$, $R_2 = 220$ k$\Omega$, $R_3 = 24$ k$\Omega$, $R_4 = 12$ k$\Omega$, and $V_{DD} = 12$ V.
 （在与第 4 题相同的四电阻偏置电路中，参数为 $R_1=100$ k$\Omega$、$R_2=220$ k$\Omega$、$R_3=24$ k$\Omega$、$R_4=12$ k$\Omega$、$V_{DD}=12$ V，求晶体管的 Q 点。）
 
@@ -1322,7 +1326,7 @@ Following the same approach as Question 4, we start by finding the Th&eacute;ven
 
 ---
 
->求$R_{th}$、$V_{th}$
+>戴维南等效，求$R_{th}$、$V_{th}$
 
 The Th&eacute;venin resistance (same calculation as Question 4):
 （戴维南电阻（与第 4 题相同）：）
@@ -1338,6 +1342,10 @@ $$
 V_{th} = \frac{R_1}{R_1 + R_2}V_{DD} = \frac{100\ \text{k}\Omega}{320\ \text{k}\Omega} \times 12\ \text{V} = 3.75\ \text{V} \tag{2}
 $$
 
+---
+
+>求考虑体效应的阈值电压
+
 The threshold voltage $V_{TN}$ including body effect is:
 （含体效应的阈值电压 $V_{TN}$ 为：）
 
@@ -1352,6 +1360,8 @@ $$
 V_{TN} = 1\ \text{V} + 0.6\sqrt{\text{V}}\left(\sqrt{I_D R_3 + 0.6\ \text{V}} - \sqrt{0.6\ \text{V}}\right) \tag{4}
 $$
 
+>求 $I_D$
+
 From KVL around the gate-source loop (through the Th&eacute;venin equivalent):
 （对栅源回路（经戴维南等效）应用 KVL：）
 
@@ -1365,6 +1375,10 @@ Assuming the NMOS operates in saturation, the drain current equation is:
 $$
 I_D = \frac{1}{2}\mu_n C_{ox}\left(\frac{W}{L}\right)(V_{GS} - V_{TN})^2 \tag{6}
 $$
+
+---
+
+>求$I_D$、$V_{TN}$（迭代）
 
 This creates a system of implicit equations because $V_{TN}$ depends on $I_D$ through the body effect, and $I_D$ depends on $V_{TN}$ through the saturation equation.
 （这形成隐式方程组，因为 $V_{TN}$ 通过体效应依赖 $I_D$，而 $I_D$ 又通过饱和区方程依赖 $V_{TN}$。）
@@ -1382,10 +1396,6 @@ $$
 $$
 I_D = \frac{1}{2}(100 \times 10^{-6}\ \text{A/V}^2)(5)\left[(3.75\ \text{V} - I_D \cdot 24\ \text{k}\Omega) - V_{TN}\right]^2 \tag{8}
 $$
-
----
-
->求$I_D$、$V_{TN}$（迭代）
 
 This nonlinear system requires iterative solution (e.g., Newton's method).
 （该非线性方程组需迭代求解（如牛顿法）。）

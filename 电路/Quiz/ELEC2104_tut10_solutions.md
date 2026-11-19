@@ -10,6 +10,30 @@ In MOSFET problems, unless otherwise stated, assume $\mu_n C_{ox} = 200\ \mu\tex
 
 ---
 
+>回顾一下tu9中的公式
+
+截止区**：$v_{GS}<V_{TN}$，没有沟道，$i_D=0$。
+
+**可变电阻区**：$v_{GS}>V_{TN}$ 且 $v_{DS}<v_{GS}-V_{TN}$，沟道连续。当 $v_{DS}\ll2(v_{GS}-V_{TN})$ 时，$v_{DS}^2$ 项可忽略，电流与 $v_{DS}$ 成正比：
+
+$$i_D=\mu_nC_{ox}\frac{W}{L}(v_{GS}-V_{TN})v_{DS}$$
+
+此时器件等效为一个电阻：
+
+$$R_{on}=\frac{1}{\mu_nC_{ox}\frac{W}{L}(v_{GS}-V_{TN})}$$
+
+不作近似时的完整表达式：
+
+$$i_D=\frac{1}{2}\mu_nC_{ox}\frac{W}{L}\left[2(v_{GS}-V_{TN})v_{DS}-v_{DS}^2\right]$$
+
+**恒流区（饱和区）**：$v_{DS}\ge v_{GS}-V_{TN}$，漏端夹断：
+
+$$i_D=\frac{1}{2}\mu_nC_{ox}\frac{W}{L}(v_{GS}-V_{TN})^2(1+\lambda v_{DS})$$
+
+当 $\lambda=0$ 时，$i_D$ 与 $v_{DS}$ 无关，器件等效为电压控制电流源。
+
+---
+
 ## 1 Question 1（第 1 题）
 
 Calculate the transconductance for an NMOS transistor for $V_{GS} = 2$ V and $3.3$ V, with $V_{DS} = 3.3$ V, if $W = 20\ \mu\text{m}$, $L = 1\ \mu\text{m}$, $V_{TN} = 0.7$ V, and $\mu_n C_{ox} = 250\ \mu\text{A/V}^2$. Check the saturation region assumption.
@@ -35,9 +59,26 @@ We are to find the transconductance $g_m$ for two cases of $V_{GS}$.
 - $V_{TN}$：NMOS 阈值电压
 - $V_{DS}$：漏源电压
 
-> [!note] 饱和区判别式（NMOS）
+> [!note] 饱和区判别式与跨导推导（NMOS）
 > 器件导通需 $V_{GS}>V_{TN}$；工作于饱和区需 $V_{DS}>V_{GS}-V_{TN}$。
-> 饱和区跨导公式：$g_m=\mu_nC_{ox}\dfrac{W}{L}(V_{GS}-V_{TN})=\dfrac{2I_D}{V_{GS}-V_{TN}}$。
+>
+> 跨导定义为饱和区电流对 $V_{GS}$ 的偏导（固定 $V_{DS}$）：
+>
+> $$g_m=\frac{\partial I_D}{\partial V_{GS}}$$
+>
+> 代入饱和区电流
+>
+> $$I_D=\frac{1}{2}\mu_nC_{ox}\frac{W}{L}(V_{GS}-V_{TN})^2(1+\lambda V_{DS})$$
+>
+> 求导得
+>
+> $$g_m=\mu_nC_{ox}\frac{W}{L}(V_{GS}-V_{TN})(1+\lambda V_{DS})$$
+>
+> 本课程取 $\lambda=0$，于是
+>
+> $$g_m=\mu_nC_{ox}\frac{W}{L}(V_{GS}-V_{TN})=\sqrt{2\mu_nC_{ox}\frac{W}{L}I_D}=\frac{2I_D}{V_{GS}-V_{TN}}$$
+
+---
 
 **1) For $V_{GS} = 2$ V:**（**1）当 $V_{GS}=2$ V 时：**）
 

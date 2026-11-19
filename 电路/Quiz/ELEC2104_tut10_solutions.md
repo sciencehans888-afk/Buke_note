@@ -128,6 +128,8 @@ $$
 g_m = 0.0065\ \text{S} = 6.5\ \text{mS} \tag{6}
 $$
 
+---
+
 **2) For $V_{GS} = 3.3$ V:**（**2）当 $V_{GS}=3.3$ V 时：**）
 
 ---
@@ -149,7 +151,7 @@ Since $V_{DS} = 3.3$ V $> 2.6$ V, the transistor remains in the saturation regio
 >求$g_m$（$V_{GS}=3.3$ V）
 
 Now,
-（于是，）
+（于是，可以继续用饱和区的跨导公式）
 
 $$
 g_m = (250\ \mu\text{A/V}^2) \times \frac{20}{1} \times (3.3 - 0.7) \tag{8}
@@ -178,6 +180,14 @@ As expected, increasing $V_{GS}$ increases the overdrive voltage $(V_{GS} - V_{T
 
 > [!tip] 结论
 > 饱和区中 $g_m$ 与过驱动电压成正比，因此 $V_{GS}$ 从 $2$ V 升到 $3.3$ V 时，$g_m$ 由 $6.5$ mS 翻倍到 $13$ mS（过驱动电压恰好翻倍）。
+
+> [!note] 增大 $g_m$ 意味着什么
+> 直接理解：$g_m=\dfrac{\Delta I_D}{\Delta V_{GS}}$。$g_m$ 越大，**同样的输入电压变化能产生更大的电流变化**。
+>
+> - 对放大器：同样的 $v_{gs}$ 得到更大的 $i_d=g_mv_{gs}$，再乘上负载就是更大的输出电压，所以增益更高。
+> - 对带电容的节点：同样的 $v_{gs}$ 能提供更大的充放电电流，所以速度更快。
+> - 代价：要得到更大的 $g_m$，只能提高过驱动 $V_{OV}=V_{GS}-V_{TN}$ 或加大 $W/L$。
+
 
 ---
 

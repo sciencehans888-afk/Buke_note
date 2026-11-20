@@ -734,6 +734,8 @@ Before we dive into the op-amp questions, let's review the fundamental principle
 
 ### Ideal Op-Amp: Definition（理想运放的定义）
 
+![](Pasted%20image%2020261120182120.png)
+
 An ideal op-amp is a differential voltage amplifier with infinite open-loop gain and infinite input impedance:
 （理想运放是一个开环增益无限大、输入阻抗无限大的差分电压放大器：）
 
@@ -757,39 +759,46 @@ $$
 For an ideal op-amp in negative feedback configuration, we have two golden rules:
 （对于处于负反馈配置的理想运放，有两条黄金法则：）
 
-> [!note] Golden Rules of Ideal Op-Amps（理想运放的黄金法则）
+> [!note] Golden Rules of Ideal Op-Amps（理想运放的黄金法则：虚断与虚短）
 >
-> 1. **Zero input current:** No current flows into either input terminal
->    （**零输入电流：** 没有电流流入任一输入端子）
+> 1. **Zero input current (virtual open, 虚断):** No current flows into either input terminal
+>    （**零输入电流（虚断）：** 没有电流流入任一输入端子）
 >
 >    $$i_+ = i_- = 0\ \text{A}$$
 >
-> 2. **Equal input voltages:** The voltages at both input terminals are equal
->    （**输入电压相等：** 两个输入端子的电压相等）
+> 2. **Equal input voltages (virtual short, 虚短):** The voltages at both input terminals are equal
+>    （**输入电压相等（虚短）：** 两个输入端子的电压相等）
 >
 >    $$v_+ = v_-$$
 >
+> **为什么叫「虚」：** 虚短不是用导线把两端真正连起来，而是 $A_{OL}\to\infty$ 加负反馈后输出自动调节到 $v_+\approx v_-$；虚断也不是输入端断路，而是 $R_{in}\to\infty$ 使电流趋于零，电压仍然存在。
+> 
 > **Important:** These rules only apply when the op-amp is in negative feedback and operating within its linear region (not saturated at $\pm V_{CC}$, always check that the output falls within this range).
 > （**重要：** 这些法则只在运放处于负反馈且工作在线性区时适用（未在 $\pm V_{CC}$ 处饱和，务必检查输出是否落在该范围内）。）
 
-### Common Configurations and Closed-Loop Gain（常见组态与闭环增益）
 
-| 组态 | 连接特征 | 闭环增益 |
-| --- | --- | --- |
-| 反相放大器 | 输入经 $R_1$ 接反相端，$R_f$ 接输出与反相端 | $-\dfrac{R_f}{R_1}$ |
-| 同相放大器 | 输入接同相端，反相端经 $R_1$ 接地、$R_f$ 接输出 | $1+\dfrac{R_f}{R_1}$ |
-| 电压跟随器 | 输出直接连回反相端 | $1$ |
-| 反相加法器 | 多路输入各经 $R_i$ 接反相端 | $-\displaystyle\sum_i \dfrac{R_f}{R_i}$ |
-| 差分放大器 | 两路输入分别接同相、反相端 | $\dfrac{R_f}{R_1}(v_2-v_1)$（电阻匹配时）|
-| 积分器 | 反馈元件为电容 $C$ | $-\dfrac{1}{sRC}$ |
-| 微分器 | 输入元件为电容 $C$、反馈为 $R$ | $-sRC$ |
+### Common Amplifier Configurations and Gain Formulas（常见放大器组态与放大公式）
 
-### Common Pitfalls（常见误区）
+下表中的 $A_v$ 一律指**输出电压与输入电压之比**：
 
-- **虚短不是短路**：不能把两个输入端用导线连起来，只是电位相等。
-- **虚断不是断路**：输入端电压仍然存在，只是不从外部取电流。
-- **开环或正反馈时两条法则都不成立**，输出会饱和到 $\pm V_{sat}$。
-- **输出饱和后** $v_+\neq v_-$，必须先确认 $|v_{out}|<V_{sat}$，再用黄金法则。
+$$A_v=\frac{v_o}{v_i}\qquad\text{（频域写成 }A_v(s)=\frac{V_o(s)}{V_i(s)}\text{）}$$
+
+即：$v_i$ 是加在电路输入端的电压，$v_o$ 是运放输出端的电压。加法器和差分器有多个输入，直接给出 $v_o$ 与各输入的关系。
+
+| 组态 | 输入与输出 | 放大公式 | 输入电阻 |
+| --- | --- | --- | --- |
+| 反相放大器 | 输入 $v_i$ 经 $R_1$ 接反相端，输出 $v_o$ 取自运放输出 | $A_v=\dfrac{v_o}{v_i}=-\dfrac{R_f}{R_1}$ | $R_1$ |
+| 同相放大器 | 输入 $v_i$ 接同相端，输出 $v_o$ 取自运放输出 | $A_v=\dfrac{v_o}{v_i}=1+\dfrac{R_f}{R_1}$ | $\infty$ |
+| 电压跟随器 | 输入 $v_i$ 接同相端，输出直接连回反相端 | $A_v=\dfrac{v_o}{v_i}=1$ | $\infty$ |
+| 反相加法器 | 各输入 $v_i$ 分别经 $R_i$ 接到反相端 | $v_o=-R_f\displaystyle\sum_i\frac{v_i}{R_i}$（多输入） | — |
+| 差分放大器 | $v_1$ 经 $R_1$ 接反相端，$v_2$ 经 $R_1$ 接同相端，电阻匹配 | $v_o=\dfrac{R_f}{R_1}(v_2-v_1)$ | $2R_1$ |
+| 积分器 | 输入 $v_i$ 经 $R$ 接反相端，反馈为 $C$ | $A_v(s)=\dfrac{V_o(s)}{V_i(s)}=-\dfrac{1}{sRC}$ | $R$ |
+| 微分器 | 输入 $v_i$ 经 $C$ 接反相端，反馈为 $R$ | $A_v(s)=\dfrac{V_o(s)}{V_i(s)}=-sRC$ | — |
+
+这些式子都由同一套方法推出：$v_+=v_-$（虚短）与 $i_+=i_-=0$（虚断），再在输入端写 KCL。
+
+
+以上均假设理想运放、负反馈、工作在线性区。
 
 ### Systematic Analysis Strategy（系统分析策略）
 
@@ -802,8 +811,8 @@ When analyzing ideal op-amp circuits, follow this systematic approach:
 2. **Always check negative feedback** - The golden rules only apply when the op-amp has negative feedback. Look for a connection from output back to the inverting input.
    （**始终检查负反馈** —— 黄金法则只在运放具有负反馈时适用。寻找从输出回到反相输入端的连接。）
 
-3. **Apply Golden Rule #2:** $v_+ = v_-$ - This gives you one equation relating node voltages.
-   （**应用黄金法则 #2：** $v_+ = v_-$ —— 这给出一个联系各节点电压的方程。）
+3. **Apply Golden Rule 2:** $v_+ = v_-$ - This gives you one equation relating node voltages.
+   （**应用黄金法则第 2 条：** $v_+ = v_-$ —— 这给出一个联系各节点电压的方程。）
 
 4. **Check for voltage dividers** - When finding $v_+$ or $v_-$, sometimes part of the circuit is simply a voltage divider, which, if you recognise early on, can save time. Example: Q4.
    （**检查分压器** —— 求 $v_+$ 或 $v_-$ 时，有时电路的一部分就是分压器；若及早识别可节省时间。例如：第 4 题。）
@@ -811,8 +820,8 @@ When analyzing ideal op-amp circuits, follow this systematic approach:
 5. **Apply KCL at the input nodes** - Write KCL at the $v_-$ node (and/or $v_+$ node if needed). This is usually the most effective approach because:
    （**在输入节点应用 KCL** —— 在 $v_-$ 节点（必要时也在 $v_+$ 节点）写 KCL。这通常是最有效的方法，因为：）
 
-   - Golden Rule #1 ($i_+ = i_- = 0$) means currents must flow through passive components only
-     （黄金法则 #1（$i_+ = i_- = 0$）意味着电流只能流经无源元件）
+   - Golden Rule 1 ($i_+ = i_- = 0$) means currents must flow through passive components only
+     （黄金法则第 1 条（$i_+ = i_- = 0$）意味着电流只能流经无源元件）
    - Input nodes typically connect to multiple resistors/impedances
      （输入节点通常连接多个电阻/阻抗）
    - You can use voltage dividers or write current equations
@@ -824,10 +833,10 @@ When analyzing ideal op-amp circuits, follow this systematic approach:
 7. **Verify you're using both golden rules** - Your mathematical model should use:
    （**确认两条黄金法则都用上了** —— 你的数学模型应使用：）
 
-   - $v_+ = v_-$ (Golden Rule #2)
-     （$v_+ = v_-$（黄金法则 #2））
-   - $i_+ = i_- = 0$ (Golden Rule #1, implicitly used in KCL at input nodes)
-     （$i_+ = i_- = 0$（黄金法则 #1，在输入节点写 KCL 时隐含使用））
+   - $v_+ = v_-$ (Golden Rule 2)
+     （$v_+ = v_-$（黄金法则第 2 条））
+   - $i_+ = i_- = 0$ (Golden Rule 1, implicitly used in KCL at input nodes)
+     （$i_+ = i_- = 0$（黄金法则第 1 条，在输入节点写 KCL 时隐含使用））
 
    If you're only using one rule, you're likely missing part of the circuit behavior!
    （如果只用了一条法则，你很可能漏掉了部分电路行为！）
@@ -912,8 +921,13 @@ Therefore, the output voltage is $V_o = 9$ V.
 （因此，输出电压为 $V_o = 9$ V。）
 
 > [!note] 检验
-> $V_o = 9$ V 在运放供电范围 $\pm 15$ V 之内，运放工作在线性区，虚短假设成立。
-> 
+> $+15$ V 和 $-15$ V 是运放的正、负电源电压（不是输入信号的上限），理想运放的输出只能落在 $-15\ \text{V}\le V_o\le15\ \text{V}$ 之间。
+>
+> $V_o=9$ V 落在该范围内，说明输出没有饱和、运放工作在线性区，虚短假设成立。
+> 若算出的 $|V_o|>15$ V，则运放已饱和，虚短失效，需按饱和输出 $\pm V_{sat}$ 重新分析。
+>
+> 实际运放的输出最大值比电源电压略小，需要留出一定余量；理想模型才取到 $\pm15$ V。
+>
 > 同时这也符合同相放大器增益 $1 + R_f/R_1 = 1 + 80/40 = 3$，即 $3\ \text{V} \times 3 = 9\ \text{V}$。
 
 ---
@@ -945,6 +959,8 @@ The circuit shown below is a difference amplifier. Determine the formula for $v_
 
 ---
 
+![](Pasted%20image%2020261120190141.png)
+
 >虚短与节点电流
 
 Applying the ideal op-amp conditions, we have
@@ -970,7 +986,7 @@ The voltage at the non-inverting terminal can be found from the voltage divider:
 （同相端电压可由分压器求得：）
 
 $$
-V^+ = \frac{5}{\left(\frac{R_c}{R_d} + 1\right)} = \frac{5}{\left(\frac{130}{120} + 1\right)} = 2.4\ \text{V} \tag{4}
+V^+ = V_b\frac{R_d}{R_c + R_d} = \frac{5}{\left(\frac{R_c}{R_d} + 1\right)} = \frac{5}{\left(\frac{130}{120} + 1\right)} = 2.4\ \text{V} \tag{4}
 $$
 
 Thus, $V^- = V^+ = 2.4$ V.
@@ -986,6 +1002,9 @@ The output voltage can be expressed as
 $$
 V_o = V^- + R_b\frac{V^- - V_a}{R_a} \tag{5}
 $$
+
+This is obtained from the KCL at the inverting node, Eq. (2): multiply both sides by $R_b$ and rearrange.
+（它由反相端节点的 KCL（式 (2)）得到：两边乘 $R_b$ 再移项。因为虚断 $i_-=0$，流过 $R_a$ 与 $R_b$ 的电流相等。）
 
 Substituting the known values:
 （代入已知值：）
@@ -1108,107 +1127,98 @@ Find the values of $R$, $L$ and $C$ to implement the admittance shown in the fig
 
 ---
 
->求$Z(s)$
+>由网络写出含 $R,L,C$ 的 $Y(s)$
 
-Given: The impedance of a capacitor and an inductor are respectively
-（已知：电容和电感的阻抗分别为）
-
-$$
-Z_C = \frac{1}{Cs} \tag{1}
-$$
+The circuit is $R$ in series with the parallel combination of $L$ and $C$:
+（电路为 $R$ 与「$L$、$C$ 并联」串联：）
 
 $$
-Z_L = Ls \tag{2}
+Z_C=\frac{1}{Cs},\qquad Z_L=Ls
 $$
 
-and admittance is defined as the reciprocal of impedance:
-（且导纳定义为阻抗的倒数：）
+The parallel part is
+（并联部分为）
 
 $$
-Y(s) = \frac{1}{Z(s)} \tag{3}
+Z_{LC}=Z_C\parallel Z_L=\frac{Z_CZ_L}{Z_C+Z_L}=\frac{Ls}{1+LCs^2} \tag{1}
 $$
 
-From the given admittance function:
-（由给定导纳函数：）
+Hence
+（因此）
 
 $$
-Z(s) = \frac{1}{Y(s)} = \frac{s^2 + \frac{2}{3}s + \frac{3}{4}}{\frac{3}{2}(s^2 + 4)} \tag{4}
+Z(s)=R+Z_{LC}=R+\frac{Ls}{1+LCs^2}=\frac{RLCs^2+Ls+R}{1+LCs^2} \tag{2}
 $$
 
----
-
->部分分式展开
-
-Simplifying,
-（化简，）
+Taking the reciprocal gives the admittance:
+（取倒数得导纳：）
 
 $$
-Z(s) = \frac{2}{3} + \frac{\frac{49s}{3}}{s^2 + 4} \tag{5}
+Y(s)=\frac{1}{Z(s)}=\frac{1+LCs^2}{RLCs^2+Ls+R} \tag{3}
 $$
 
-We can write this as
-（可将其写成）
+The given admittance is
+（给定导纳为）
 
 $$
-Z(s) = R + (Z_C(s) \parallel Z_L(s)) \tag{6}
+Y(s)=\frac{\frac{3}{2}\left(s^2+\frac{3}{4}\right)}{s^2+\frac{2}{3}s+\frac{3}{4}} \tag{4}
 $$
 
 ---
 
->匹配常数项，求$R$
+>把分子的常数项化成 1
 
-Comparing Eq. (5) with Eq. (6),
-（比较式 (5) 与式 (6)，）
+To compare directly, divide numerator and denominator by the numerator's constant term $\frac{3}{2}\cdot\frac{3}{4}=\frac{9}{8}$:
+（为了直接对照，把分子、分母同除以分子的常数项 $\frac32\cdot\frac34=\frac98$：）
 
 $$
-R = \frac{2}{3}\ \Omega \tag{7}
+Y(s)=\frac{1+\frac{4}{3}s^2}{\frac{8}{9}s^2+\frac{16}{27}s+\frac{2}{3}} \tag{5}
+$$
+
+Now the numerator constant is 1, matching our expression
+（此时分子常数项为 1，与我们写出的式子对应：）
+
+$$
+Y(s)=\frac{1+LCs^2}{RLCs^2+Ls+R} \tag{6}
 $$
 
 ---
 
->求$L$、$C$
+>对照系数
 
-Now, for the parallel combination of $Z_C$ and $Z_L$:
-（现在看 $Z_C$ 与 $Z_L$ 的并联组合：）
+Compare term by term（逐项比较）：
 
-$$
-Z_C(s) \parallel Z_L(s) = \frac{Z_C(s) Z_L(s)}{Z_C(s) + Z_L(s)} \tag{8}
-$$
-
-Substitute $Z_C = 1/(Cs)$ and $Z_L = Ls$ into Eq. (8):
-（将 $Z_C = 1/(Cs)$、$Z_L = Ls$ 代入式 (8)：）
+$s^2$ term of the numerator（分子 $s^2$ 项）：
 
 $$
-Z_C(s) \parallel Z_L(s) = \frac{\frac{1}{Cs}(Ls)}{\frac{1}{Cs} + Ls} \tag{9}
+LC=\frac{4}{3} \tag{7}
 $$
 
-Simplify:
-（化简：）
+$s^2$ term of the denominator（分母 $s^2$ 项）：
 
 $$
-Z_C(s) \parallel Z_L(s) = \frac{L/C \cdot s^2}{s^2 + \frac{1}{CL}} = \frac{\frac{49s}{3}}{s^2 + 4} \tag{10}
+RLC=\frac{8}{9} \tag{8}
 $$
 
-Equating coefficients from Eq. (10):
-（由式 (10) 比较系数：）
+$s$ term of the denominator（分母 $s$ 项）：
 
 $$
-\frac{L}{C} = \frac{4}{9} \tag{11}
+L=\frac{16}{27}\ \text{H} \tag{9}
 $$
 
-$$
-\frac{1}{CL} = \frac{3}{4} \tag{12}
-$$
-
-From Eqs. (11) and (12), solving for $L$ and $C$ gives:
-（由式 (11) 和 (12) 解 $L$ 和 $C$ 得：）
+Constant term of the denominator（分母常数项）：
 
 $$
-C = \frac{9}{4} \tag{13}
+R=\frac{2}{3}\ \Omega \tag{10}
 $$
 
+校验（check）：$R=\dfrac{RLC}{LC}=\dfrac{8/9}{4/3}=\dfrac{2}{3}$ ✓，与式 (10) 一致。
+
+Finally, from $LC=4/3$ and $L=16/27$:
+（最后由 $LC=4/3$、$L=16/27$：）
+
 $$
-L = \frac{16}{27} \tag{14}
+C=\frac{LC}{L}=\frac{4/3}{16/27}=\frac{9}{4}\ \text{F} \tag{11}
 $$
 
 ---
@@ -1218,7 +1228,7 @@ $$
 **Final Results:**（**最终结果：**）
 
 $$
-R = \frac{2}{3}\ \Omega, \quad C = \frac{9}{4}\ \text{F}, \quad L = \frac{16}{27}\ \text{H} \tag{15}
+R = \frac{2}{3}\ \Omega, \quad C = \frac{9}{4}\ \text{F}, \quad L = \frac{16}{27}\ \text{H} \tag{12}
 $$
 
 ---

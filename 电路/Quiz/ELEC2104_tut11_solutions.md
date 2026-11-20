@@ -487,6 +487,12 @@ In the circuit shown in Fig. 3, M2 serves as a current source. Design the stage 
 ![](Pasted%20image%2020261117154257.png)
 > 图Q2-1 Fig. 3：CMOS 共源放大器，PMOS $M_2$ 在上（$V_{DD} = 1.8$ V，栅极接 $V_b$），漏极即 $V_{out}$；NMOS $M_1$ 在下（栅极 $V_{in}$，源极接地）
 
+**这道设计题要求什么**
+
+- **已知指标**：$A_v=20$、$P=2$ mW、$\lambda=0.1\ \text{V}^{-1}$、$V_{out}\le1.5$ V。
+- **待定参数**：$(W/L)_{M1}$、$(W/L)_{M2}$、偏置电压 $V_b$，以及 $V_{IN}$ 的允许范围。
+- **约束**：M1、M2 都必须保持在饱和区。
+
 **Solution:**（**解答：**）
 
 **Small signal circuit diagram** Given the large signal circuit setup, we can notice that:
@@ -613,11 +619,11 @@ $$
 
 ![](Pasted%20image%2020261120165426.png)
 
-**For M1:** To keep M1 in saturation, the boundary condition is:
-（**对于 M1：** 为使 M1 保持饱和，边界条件为：）
+**For M1:** To keep M1 in saturation, we need
+（**对于 M1：** 为使 M1 保持饱和，需要满足）
 
 $$
-V_{DS1} = V_{GS1} - V_{TN} \tag{9}
+V_{DS1} \ge V_{GS1} - V_{TN} \tag{9}
 $$
 
 Since the source is grounded and the drain is the output node,
@@ -628,10 +634,10 @@ V_{DS1} = V_{out}, \qquad V_{GS1} = V_{IN}
 $$
 
 Therefore
-（因此）在恰好饱和的边界位置，有如下的关系
+（因此）
 
 $$
-V_{IN} = V_{out} + V_{TN} \tag{10}
+V_{out} \ge V_{IN} - V_{TN} \quad\Longleftrightarrow\quad V_{IN} \le V_{out} + V_{TN} \tag{10}
 $$
 
 Using the MOSFET transconductance equation:
@@ -713,11 +719,11 @@ $$
 **Final Design Summary:**（**最终设计汇总：**）
 
 $$
-V_b = 1.1\ \text{V}, \quad V_{IN} = V_{out} + V_{TN}, \quad \left(\frac{W}{L}\right)_1 = 27.75, \quad \left(\frac{W}{L}\right)_2 = 540 \tag{17}
+V_b = 1.1\ \text{V}, \quad V_{IN} \le V_{out} + V_{TN}, \quad \left(\frac{W}{L}\right)_1 = 27.75, \quad \left(\frac{W}{L}\right)_2 = 540 \tag{17}
 $$
 
-$V_{IN}$ 由式 (10) 确定，其数值取决于最终选定的输出电平 $V_{out}$。
-（$V_{IN}$ is fixed by Eq. (10); its value depends on the chosen output level $V_{out}$.）
+$V_{IN}$ 的取值上限由式 (10) 给出，具体数值取决于最终选定的输出电平 $V_{out}$。
+（The upper bound on $V_{IN}$ is given by Eq. (10); its value depends on the chosen output level $V_{out}$.）
 
 ---
 
@@ -725,6 +731,26 @@ $V_{IN}$ 由式 (10) 确定，其数值取决于最终选定的输出电平 $V_{
 
 Before we dive into the op-amp questions, let's review the fundamental principles and techniques for analyzing ideal op-amp circuits.
 （在进入运放题目之前，我们先复习分析理想运放电路的基本原理与技巧。）
+
+### Ideal Op-Amp: Definition（理想运放的定义）
+
+An ideal op-amp is a differential voltage amplifier with infinite open-loop gain and infinite input impedance:
+（理想运放是一个开环增益无限大、输入阻抗无限大的差分电压放大器：）
+
+$$
+v_{out}=A_{OL}(v_+-v_-),\qquad A_{OL}\to\infty
+$$
+
+| 参数 | 理想值 | 含义 |
+| --- | --- | --- |
+| 开环增益 $A_{OL}$ | $\infty$ | 只要 $v_+-v_-\neq0$，输出就会饱和；线性区里差模输入趋于零 |
+| 输入阻抗 $R_{in}$ | $\infty$ | 输入端不取电流 |
+| 输出阻抗 $R_{out}$ | $0$ | 输出可驱动任意负载而不掉压 |
+| 带宽 | $\infty$ | 所有频率增益相同 |
+| 共模抑制比 | $\infty$ | 只放大差模信号 |
+| 失调电压/电流、噪声 | $0$ | 无误差、无噪声 |
+
+真实运放只是近似这些条件；在负反馈、线性区范围内，理想模型足够准确。
 
 ### The Golden Rules of Ideal Op-Amp Analysis（理想运放分析的黄金法则）
 
@@ -745,6 +771,25 @@ For an ideal op-amp in negative feedback configuration, we have two golden rules
 >
 > **Important:** These rules only apply when the op-amp is in negative feedback and operating within its linear region (not saturated at $\pm V_{CC}$, always check that the output falls within this range).
 > （**重要：** 这些法则只在运放处于负反馈且工作在线性区时适用（未在 $\pm V_{CC}$ 处饱和，务必检查输出是否落在该范围内）。）
+
+### Common Configurations and Closed-Loop Gain（常见组态与闭环增益）
+
+| 组态 | 连接特征 | 闭环增益 |
+| --- | --- | --- |
+| 反相放大器 | 输入经 $R_1$ 接反相端，$R_f$ 接输出与反相端 | $-\dfrac{R_f}{R_1}$ |
+| 同相放大器 | 输入接同相端，反相端经 $R_1$ 接地、$R_f$ 接输出 | $1+\dfrac{R_f}{R_1}$ |
+| 电压跟随器 | 输出直接连回反相端 | $1$ |
+| 反相加法器 | 多路输入各经 $R_i$ 接反相端 | $-\displaystyle\sum_i \dfrac{R_f}{R_i}$ |
+| 差分放大器 | 两路输入分别接同相、反相端 | $\dfrac{R_f}{R_1}(v_2-v_1)$（电阻匹配时）|
+| 积分器 | 反馈元件为电容 $C$ | $-\dfrac{1}{sRC}$ |
+| 微分器 | 输入元件为电容 $C$、反馈为 $R$ | $-sRC$ |
+
+### Common Pitfalls（常见误区）
+
+- **虚短不是短路**：不能把两个输入端用导线连起来，只是电位相等。
+- **虚断不是断路**：输入端电压仍然存在，只是不从外部取电流。
+- **开环或正反馈时两条法则都不成立**，输出会饱和到 $\pm V_{sat}$。
+- **输出饱和后** $v_+\neq v_-$，必须先确认 $|v_{out}|<V_{sat}$，再用黄金法则。
 
 ### Systematic Analysis Strategy（系统分析策略）
 

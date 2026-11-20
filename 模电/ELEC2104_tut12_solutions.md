@@ -135,30 +135,8 @@ $$
 - **Low-frequency gain** ($A$): The gain of the transfer function as $\omega \to 0$ (or sometimes normalized to 1).
   （**低频增益**（$A$）：当 $\omega \to 0$ 时传递函数的增益（有时归一化为 1）。）
 
-Poles and zeros are crucial because they determine the frequency response shape.
-（极点与零点至关重要，因为它们决定了频率响应的形状。）
-
-We'll see later in this tutorial how poles and zeros affect the slopes and features of Bode plots.
-（本次辅导课后面会看到极点、零点如何影响 Bode 图的斜率与特征。）
-
-**Try it yourself:** Consider the transfer function from our low-pass filter example:
-（**自己试一试：** 考虑低通滤波器示例中的传递函数：）
-
-$$
-T(s) = \frac{1}{1 + \frac{s}{10,000}}
-$$
-
-What value of $s$ makes the denominator equal to zero?
-（$s$ 取何值时分母为零？）
-
-Substitute that value and see what happens to $T(s)$.
-（把该值代入，观察 $T(s)$ 会发生什么。）
-
-This is a pole! In this case, setting $1 + s/10,000 = 0$ gives $s = -10,000$, which makes $T(s) \to \infty$.
-（这就是一个极点！此处令 $1 + s/10,000 = 0$ 得 $s = -10,000$，此时 $T(s) \to \infty$。）
-
-This pole location at $s = -10,000$ (on the negative real axis) determines the circuit's cutoff frequency and time response characteristics.
-（该极点位于 $s = -10,000$（负实轴上），决定了电路的截止频率与时间响应特性。）
+**符号约定：** 在零极点图（s 平面）中，**极点用 × 表示，零点用 ◦ 表示**。
+（**Notation:** on a pole-zero plot in the s-plane, poles are marked with × and zeros with ◦.）
 
 ![](Pasted%20image%2020261117154649.png)
 > 图3 Poles (×) and zeros (◦) determine the transfer function behavior.（Pole-Zero Plot in s-plane：纵轴 Im(s)，横轴 Re(s)，两个 pole 标 ×，一个 zero 标 ◦）
@@ -167,113 +145,57 @@ This pole location at $s = -10,000$ (on the negative real axis) determines the c
 
 ### 4. Standard Bode Format（标准 Bode 形式）
 
-The standard Bode format expresses the transfer function in a normalized form that makes it easy to identify key frequencies and gain.
-（标准 Bode 形式把传递函数写成归一化形式，便于直接识别关键频率与增益。）
+先给出结论：标准 Bode 形式就是把传递函数写成「低频增益 × 各个一阶因子」的乘积。分母里的 $(1+s/\omega_p)$ 直接给出极点频率，分子里的 $(1+s/\omega_z)$ 直接给出零点频率；零点让斜率 $+20$ dB/dec，极点让斜率 $-20$ dB/dec。
 
-For a first-order low-pass filter, the standard form is:
-（对一阶低通滤波器，标准形式为：）
+**三种常用形式**
 
-$$
-T(s) = \frac{A}{1 + \frac{s}{\omega_c}} \tag{4}
-$$
-
-where $A$ is the DC gain and $\omega_c$ is the cut-off angular frequency (also called the corner frequency or pole frequency).
-（其中 $A$ 为直流增益，$\omega_c$ 为截止角频率（也称转折频率或极点频率）。）
-
-For a first-order high-pass filter:
-（对一阶高通滤波器：）
+一阶低通：
 
 $$
-T(s) = A \cdot \frac{\frac{s}{\omega_c}}{1 + \frac{s}{\omega_c}} \tag{5}
+T(s)=\frac{A}{1+\frac{s}{\omega_c}} \tag{4}
 $$
 
-Note that this can also be written as:
-（注意它也可写成：）
+$A$ 是直流增益，$\omega_c$ 是截止角频率，同时也是极点频率、转折频率。
+
+一阶高通：
 
 $$
-T(s) = A \cdot \frac{s}{s + \omega_c} \tag{6}
+T(s)=A\frac{\frac{s}{\omega_c}}{1+\frac{s}{\omega_c}}=\frac{As}{s+\omega_c} \tag{5}
 $$
 
-Both forms are equivalent!
-（两种形式等价！）
+两种写法等价；分子含 $s$ 项，说明高频能通过。
 
-The first emphasizes the standard Bode format, while the second is more compact.
-（前者突出标准 Bode 形式，后者更简洁。）
-
-**Alternative Bode format - Inverted form:**（另一种 Bode 形式——倒置形式：）
-
-You'll also see the transfer function written with $s$ in the denominator instead of the numerator:
-（你还会看到把 $s$ 写在分母而不是分子中的传递函数写法：）
+一般的多极点/零点形式：
 
 $$
-T(s) = A \cdot \frac{1}{1 + \frac{\omega_c}{s}} \tag{7}
+T(s)=A\frac{\left(1+\frac{s}{\omega_{z1}}\right)\left(1+\frac{s}{\omega_{z2}}\right)\cdots}{\left(1+\frac{s}{\omega_{p1}}\right)\left(1+\frac{s}{\omega_{p2}}\right)\cdots} \tag{6}
 $$
 
-This is called the inverted Bode form.
-（这称为倒置 Bode 形式。）
+**怎么读**
 
-Let's see how to convert between the two formats:
-（下面看两种形式之间如何互换：）
+- 低频增益：$A$（$s$ 趋于 0 时的值）
+- 每个极点 $\omega_p$：过了这个频率，斜率 $-20$ dB/dec
+- 每个零点 $\omega_z$：过了这个频率，斜率 $+20$ dB/dec
+- 一阶滤波器的 $\omega_c$ 同时是极点和 $-3$ dB 截止频率：$\lvert T(j\omega_c)\rvert=|A|/\sqrt{2}$
 
-**Converting from standard to inverted form:**（从标准形式化为倒置形式：）
-
-Starting with the standard high-pass form: $T(s) = A \cdot \dfrac{s/\omega_c}{1 + s/\omega_c}$
-（从标准高通形式出发：$T(s) = A \cdot \dfrac{s/\omega_c}{1 + s/\omega_c}$）
-
-Multiply numerator and denominator by $\omega_c/s$:
-（分子分母同乘 $\omega_c/s$：）
+**倒置形式**
 
 $$
-T(s) = A \cdot \frac{\frac{s}{\omega_c} \cdot \frac{\omega_c}{s}}{\left(1 + \frac{s}{\omega_c}\right) \cdot \frac{\omega_c}{s}} = A \cdot \frac{1}{\frac{\omega_c}{s} + 1} = \frac{A}{1 + \frac{\omega_c}{s}} \tag{8}
+T(s)=\frac{A}{1+\frac{\omega_c}{s}} \tag{7}
 $$
 
-So both formats describe the same high-pass filter!
-（可见两种形式描述的是同一个高通滤波器！）
+与标准形式等价（分子分母同乘 $\omega_c/s$），本课程两种写法都会出现，认得出来即可。
 
-The standard form $1 + s/\omega_c$ and inverted form $1 + \omega_c/s$ are just different ways of writing the same thing.
-（标准形式 $1 + s/\omega_c$ 与倒置形式 $1 + \omega_c/s$ 只是同一表达的不同写法。）
-
-**When to use each format:**（何时使用哪种形式：）
-
-- Standard form $1 + s/\omega_c$: Emphasizes the pole/zero frequency directly
-  （标准形式 $1 + s/\omega_c$：直接突出极点/零点频率）
-- Inverted form $1 + \omega_c/s$: Useful for certain algebraic manipulations
-  （倒置形式 $1 + \omega_c/s$：便于某些代数变形）
-
-Both forms are used in this course, so it's important to recognize them and be able to convert between them.
-（本课程两种形式都会用到，因此要能识别并相互转换。）
-
-You'll see examples of each in the problems below!
-（下面的题目中两种形式都会出现！）
-
-**More complex example with multiple poles and zeros:**（含多个极点、零点的更复杂示例：）
-
-For a transfer function with a zero at $\omega_z$, a pole at $\omega_{p1}$, and another pole at $\omega_{p2}$, the standard Bode format is:
-（若传递函数在 $\omega_z$ 处有一个零点、在 $\omega_{p1}$ 与 $\omega_{p2}$ 处各有一个极点，则标准 Bode 形式为：）
+**例子：RC 低通**
 
 $$
-T(s) = A \cdot \frac{1 + \frac{s}{\omega_z}}{\left(1 + \frac{s}{\omega_{p1}}\right)\left(1 + \frac{s}{\omega_{p2}}\right)} \tag{9}
+T(s)=\frac{1}{1+sRC}=\frac{1}{1+\frac{s}{\omega_c}},\qquad \omega_c=\frac{1}{RC}
 $$
 
-where:
-（其中：）
-
-- $A$ is the low-frequency gain (DC gain)
-  （$A$ 为低频增益（直流增益））
-- $\omega_z$ is the zero frequency (causes +20 dB/decade slope)
-  （$\omega_z$ 为零点频率（产生 +20 dB/十倍频的斜率））
-- $\omega_{p1}$ and $\omega_{p2}$ are the pole frequencies (each causes $-20$ dB/decade slope)
-  （$\omega_{p1}$、$\omega_{p2}$ 为极点频率（各产生 $-20$ dB/十倍频的斜率））
-
-The advantage of this format is that you can directly read all the critical frequencies from the expression without additional calculation.
-（这种形式的优点是无需额外计算，就能从表达式中直接读出所有关键频率。）
-
-**Example: Simple RC Low-Pass Filter**（示例：简单 RC 低通滤波器）
+对照式 (4)：$A=1$，$\omega_c=1/(RC)$。
 
 ![](Pasted%20image%2020261117154705.png)
 > 图4 First-order RC low-pass filter with $T(s) = 1/(1+sRC)$：$R$ 串联于 $V_i(s)$ 与 $V_o(s)$ 之间，$C$ 由 $V_o(s)$ 端接地
-
----
 
 ### 5. Deriving Transfer Functions: The Power of s-Domain Analysis（推导传递函数：s 域分析的威力）
 

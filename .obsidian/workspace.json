@@ -20,23 +20,8 @@
               "icon": "lucide-file",
               "title": "ELEC2104_tut12_solutions"
             }
-          },
-          {
-            "id": "5eed1bc6bcb2c0e4",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "模电/ELEC2104_tut12_solutions.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "ELEC2104_tut12_solutions"
-            }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -239,10 +224,26 @@
       "realclaudian:Open Claudian": false
     }
   },
-  "active": "5eed1bc6bcb2c0e4",
+  "active": "62a3bc7985783f51",
   "lastOpenFiles": [
-    "模电/ELEC2104_tut7_solutions.md",
+    "电路/附件/Pasted image 20261105100754.png",
+    "电路/附件/Pasted image 20261105100630.png",
+    "电路/附件/Pasted image 20261105100528.png",
+    "电路/附件/Pasted image 20261105100251.png",
+    "电路/附件/Pasted image 20261105100328.png",
+    "模电/模电第3章-二极管及其基本电路.md",
     "模电/ELEC2104_tut12_solutions.md",
+    "模电/Ch-05-双极结型三极管（BJT）及其放大电路.md",
+    "模电/Ch-04-场效应三极管及其放大电路.md",
+    "模电/新建文件夹",
+    "模电/附件/Pasted image 20261120190141.png",
+    "模电/附件/Pasted image 20261120182120.png",
+    "模电/附件/Pasted image 20261120165426.png",
+    "模电/附件/Pasted image 20261120165611.png",
+    "模电/附件/Pasted image 20261120090351.png",
+    "模电/附件/Pasted image 20261119222727.png",
+    "模电/附件",
+    "模电/ELEC2104_tut7_solutions.md",
     "模电/ELEC2104_tut9_solutions.md",
     "模电/ELEC2104_tut3_solutions.md",
     "模电/ELEC2104_tut11_solutions.md",
@@ -254,24 +255,12 @@
     "模电/教材-pdf/电子技术基础模拟部分（第七版） (康华光，张林) (z-library.sk, 1lib.sk, z-lib.sk)",
     "模电/教材-pdf",
     "模电/quiz-pdf/ELEC2104_tut9_solutions.pdf",
-    "模电/quiz-pdf/ELEC2104_tut8_solutions.pdf",
-    "模电/quiz-pdf/ELEC2104_tut7_solutions.pdf",
     "信号与系统/Quiz对应知识点.md",
-    "电路/Quiz/附件/Pasted image 20261120190141.png",
     "信号与系统/Quiz3.md",
     "信号与系统/Quiz2.md",
     "模电/ELEC2104_tut10_solutions.md",
-    "电路/Quiz/附件/Pasted image 20261120182120.png",
     "电路/Quiz/Ch-04-场效应三极管及其放大电路.md",
-    "电路/Quiz/附件/Pasted image 20261120165611.png",
-    "电路/Quiz/附件/Pasted image 20261120165426.png",
-    "电路/Quiz/附件/Pasted image 20261120090351.png",
     "模电/ELEC2104_tut8_solutions.md",
-    "电路/Quiz/附件/Pasted image 20261119222727.png",
-    "电路/Quiz/附件/Pasted image 20261119215512.png",
-    "电路/Quiz/附件/Pasted image 20261117155240.png",
-    "电路/Quiz/附件/Pasted image 20261117155223.png",
-    "电路/Quiz/附件/Pasted image 20261117155143.png",
     "电路/Quiz/Ch-05-双极结型三极管（BJT）及其放大电路.md",
     "模电/ELEC2104_tut6_solutions.md",
     "电路/第4章 非线性电阻电路分析.md",
@@ -282,9 +271,6 @@
     "电路/第2章 简单电阻电路分析.md",
     "半导体的基本知识.md",
     "电路/模电第3章-二极管及其基本电路.md",
-    "电路/Ch-03-二极管及其基本电路.md",
-    "电路/第1章 绪论.md",
-    "信号与系统/傅里叶变换知识点.md",
-    "信号与系统/quiz2-practice-feedback.md"
+    "电路/Ch-03-二极管及其基本电路.md"
   ]
 }

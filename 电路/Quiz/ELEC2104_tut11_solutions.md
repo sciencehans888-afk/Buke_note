@@ -185,24 +185,25 @@ When $\lambda \to 0$, we get $r_o \to \infty$ (open circuit). Questions will ass
 While the overall approach to small-signal analysis is identical for MOSFETs and BJTs, there are important differences:
 （虽然 MOSFET 与 BJT 的小信号分析总体方法完全相同，但存在一些重要区别：）
 
-1. **Gate current:** MOSFETs have negligible gate current ($i_g = 0$), so there is no input resistance like $r_\pi$ in BJTs. The gate appears as an open circuit in the small-signal model.
-   （**栅极电流：** MOSFET 的栅极电流可忽略（$i_g = 0$），因此不像 BJT 那样有 $r_\pi$ 这样的输入电阻。在小信号模型中，栅极表现为开路。）
+**1. Gate current:** MOSFETs have negligible gate current ($i_g = 0$), so there is no input resistance like $r_\pi$ in BJTs. The gate appears as an open circuit in the small-signal model.
+（**1. 栅极电流：** MOSFET 的栅极电流可忽略（$i_g=0$），因此不像 BJT 那样有 $r_\pi$ 这类输入电阻；小信号模型中栅极相当于开路。）
 
-2. **Transconductance formulas:**
-   （**跨导公式：**）
+**2. Transconductance formulas:**（**2. 跨导公式：**）
 
-   - BJT: $g_m = I_C/V_T$ (depends on thermal voltage $V_T \approx 26$ mV)
-     （BJT：$g_m = I_C/V_T$（取决于热电压 $V_T \approx 26$ mV））
-   - MOSFET: $g_m = \sqrt{2\mu_n C_{ox}\frac{W}{L}I_D}$, etc. (see above for the other forms)
-     （MOSFET：$g_m = \sqrt{2\mu_n C_{ox}\frac{W}{L}I_D}$ 等（其他形式见上文））
+| 器件 | 形式 | 表达式 | 适用条件 |
+| --- | --- | --- | --- |
+| BJT | 基本 | $g_m=\dfrac{I_C}{V_T}$ | $V_T\approx26$ mV |
+| MOSFET | 用 $V_{GS}$ 表示 | $g_m=\mu_nC_{ox}\dfrac{W}{L}(V_{GS,Q}-V_{TN})$ | $\lambda=0$ |
+| MOSFET | 用 $I_D$ 表示 | $g_m=\sqrt{2\mu_nC_{ox}\dfrac{W}{L}I_{D,Q}}$ | $\lambda=0$ |
+| MOSFET | 用 $V_{GS}$ 与 $I_D$ | $g_m=\dfrac{2I_{D,Q}}{V_{GS,Q}-V_{TN}}$ | 该形式在 $\lambda\neq0$ 时仍成立 |
+| MOSFET | 含 $\lambda$ | $g_m=\mu_nC_{ox}\dfrac{W}{L}(V_{GS,Q}-V_{TN})(1+\lambda V_{DS,Q})$ | 完整版 |
 
-3. **Output resistance formulas:**
-   （**输出电阻公式：**）
+**3. Output resistance formulas:**（**3. 输出电阻公式：**）
 
-   - BJT: $r_o = V_A/I_C$ (Early voltage)
-     （BJT：$r_o = V_A/I_C$（厄利电压））
-   - MOSFET: $r_o = 1/(\lambda I_D)$ (channel-length modulation parameter)
-     （MOSFET：$r_o = 1/(\lambda I_D)$（沟道长度调制参数））
+| 器件 | 表达式 | 说明 |
+| --- | --- | --- |
+| BJT | $r_o=\dfrac{V_A}{I_C}$ | 厄利电压 |
+| MOSFET | $r_o=\dfrac{1}{\lambda I_{D,Q}}\approx\dfrac{V_A}{I_{D,Q}}$ | 沟道长度调制，$V_A=1/\lambda$ |
 
 Despite these differences, the analysis procedure is identical: find the Q-point, calculate small-signal parameters, replace the transistor with its small-signal hybrid-π model, and analyze the linear circuit.
 （尽管存在这些差异，分析步骤完全相同：求 Q 点、计算小信号参数、用混合 π 小信号模型替代晶体管，然后分析线性电路。）
@@ -275,6 +276,8 @@ $$
 2. Replace the MOSFET circuit symbol with the linearized small-signal model within the circuit diagram. See Figure 2.
    （在电路图中用线性化小信号模型替代 MOSFET 符号。见图 2。）
 
+![](Pasted%20image%2020261120090351.png)
+
 3. Set all DC independent sources to zero (current sources become open circuits, voltage sources become short circuits).
    （将所有直流独立源置零（电流源变为开路，电压源变为短路）。）
 
@@ -342,9 +345,41 @@ We are to design a MOSFET amplifier that provides a voltage gain of $A_v = 5$, w
 
 **Given design equations:**（**已知设计方程：**）
 
+Voltage gain is first of all a ratio of voltages:
+（电压增益首先就是两个电压之比：）
+
 $$
-A_v = |-g_m R_D| = 5 \tag{1}
+A_v=\frac{v_{out}}{v_{in}}
 $$
+
+From the small-signal circuit, $v_{in}$ controls the current $i_d=g_mv_{in}$; this current flows through $R_D$, so
+（由小信号电路，$v_{in}$ 控制电流 $i_d=g_mv_{in}$；该电流流过 $R_D$，所以：）
+
+$$
+v_{out}=-i_dR_D=-g_mR_D\,v_{in}
+$$
+
+Thus
+（因此：）
+
+$$
+A_v=\frac{v_{out}}{v_{in}}=-g_mR_D
+$$
+
+and the design requires $|A_v|=5$:
+（设计要求 $|A_v|=5$：）
+
+$$
+|A_v| = g_mR_D = 5 \tag{1}
+$$
+
+
+>在没有给任何信息的情况下，就不考虑沟道长度调制效应了。
+
+> [!note] 这里默认 $r_o=\infty$
+> 上式只保留 $R_D$，相当于取 $r_o\to\infty$（本课程默认 $\lambda=0$）。若计入沟道长度调制，完整增益为
+> $$A_v=-g_m\left(R_D\parallel r_o\right)$$
+> 只有 $r_o\gg R_D$ 时才能近似成 $-g_mR_D$。
 
 $$
 P = I_{DS} \cdot V_{DD} \leq 1\ \text{mW} \tag{2}
@@ -429,8 +464,11 @@ Given:
 （已知：）
 
 $$
-\mu_n C_{ox} = 200\ \mu\text{A/V}^2, \quad \frac{W}{L} = \frac{20}{0.18}, \quad I_{DS} = 0.56\ \text{mA}
+\mu_n C_{ox} = 200\ \mu\text{A/V}^2, \quad \frac{W}{L} = \frac{20}{0.18}, \quad I_{DS} \leq 0.56\ \text{mA}
 $$
+
+The design takes the maximum allowed current $I_{DS}=0.56\ \text{mA}$: a larger $I_{DS}$ gives a larger $g_m$ and therefore the smallest $R_D$ for the required gain.
+（设计取允许的最大电流 $I_{DS}=0.56$ mA：$I_{DS}$ 越大，$g_m$ 越大，达到同样增益所需的 $R_D$ 越小。）
 
 Substituting into Eq. (7):
 （代入式 (7)：）

@@ -36,7 +36,7 @@ These tools are fundamental in filter design, signal processing, control systems
 | Bode 斜率 | 极点 $-20$ dB/dec，零点 $+20$ dB/dec |
 
 > [!tip] 阅读建议
-> 概念部分（第 1–14 节）按顺序读一遍即可；做题时直接看各 Part 的「>求…」标签和小结。MATLAB 章节（Q1 的 D、E 部分）可以按需跳过，不影响理解前面对传递函数和 Bode 图的推导。
+> 概念部分（第 1–14 节）按顺序读一遍即可；做题时直接看各 Part 的「>求…」标签和小结。MATLAB 部分集中在文末附录，可以按需跳过，不影响前面对传递函数和 Bode 图的推导。
 
 ---
 
@@ -171,12 +171,11 @@ $$
 T(s)=A\frac{\left(1+\frac{s}{\omega_{z1}}\right)\left(1+\frac{s}{\omega_{z2}}\right)\cdots}{\left(1+\frac{s}{\omega_{p1}}\right)\left(1+\frac{s}{\omega_{p2}}\right)\cdots} \tag{6}
 $$
 
-**怎么读**
+**怎么看这个公式**
 
 - 低频增益：$A$（$s$ 趋于 0 时的值）
 - 每个极点 $\omega_p$：过了这个频率，斜率 $-20$ dB/dec
 - 每个零点 $\omega_z$：过了这个频率，斜率 $+20$ dB/dec
-- 一阶滤波器的 $\omega_c$ 同时是极点和 $-3$ dB 截止频率：$\lvert T(j\omega_c)\rvert=|A|/\sqrt{2}$
 
 **倒置形式**
 
@@ -186,126 +185,47 @@ $$
 
 与标准形式等价（分子分母同乘 $\omega_c/s$），本课程两种写法都会出现，认得出来即可。
 
-**例子：RC 低通**
+### 5. Deriving Transfer Functions: Low-Pass vs. High-Pass（低通与高通对照）
 
-$$
-T(s)=\frac{1}{1+sRC}=\frac{1}{1+\frac{s}{\omega_c}},\qquad \omega_c=\frac{1}{RC}
-$$
+把电容换成阻抗 $Z_C=\frac{1}{sC}$、电阻 $Z_R=R$，再套分压公式。
 
-对照式 (4)：$A=1$，$\omega_c=1/(RC)$。
+| | 一阶低通 | 一阶高通 |
+| --- | --- | --- |
+| 电路 | $R$ 串联、$C$ 接地 | $C$ 串联、$R$ 接地 |
+| 输出取自 | $C$ 两端 | $R$ 两端 |
+| 分压式 | $T=\frac{Z_C}{R+Z_C}$ | $T=\frac{R}{Z_C+R}$ |
+| 化简结果 | $\frac{1}{1+sRC}$ | $\frac{sRC}{1+sRC}$ |
+| 标准形式 | $\frac{1}{1+s/\omega_c}$ | $\frac{s/\omega_c}{1+s/\omega_c}$ |
+
+两者截止频率相同
+$$
+\omega_c=\frac{1}{RC}
+$$
 
 ![](Pasted%20image%2020261117154705.png)
 > 图4 First-order RC low-pass filter with $T(s) = 1/(1+sRC)$：$R$ 串联于 $V_i(s)$ 与 $V_o(s)$ 之间，$C$ 由 $V_o(s)$ 端接地
 
-### 5. Deriving Transfer Functions: The Power of s-Domain Analysis（推导传递函数：s 域分析的威力）
-
-Now we'll see why the s-domain is so powerful by deriving the transfer functions for RC filters.
-（下面通过推导 RC 滤波器的传递函数，来看 s 域为何如此强大。）
-
-The key insight is that capacitors and inductors behave just like resistors in the s-domain, allowing us to use familiar circuit analysis techniques like the voltage divider formula!
-（关键之处在于：在 s 域中电容和电感的行为与电阻类似，因此可以使用分压公式等熟悉的电路分析方法！）
-
-**RC Low-Pass Filter Derivation**（RC 低通滤波器的推导）
-
-Consider the RC low-pass filter shown above.
-（考虑上面所示的 RC 低通滤波器。）
-
-In the s-domain:
-（在 s 域中：）
-
-- Resistor impedance: $Z_R = R$
-  （电阻阻抗：$Z_R = R$）
-- Capacitor impedance: $Z_C = \dfrac{1}{sC}$
-  （电容阻抗：$Z_C = \dfrac{1}{sC}$）
-
-Notice how the capacitor has an impedance just like a resistor—it's frequency-dependent, but mathematically it's just another impedance!
-（注意电容也像电阻一样具有阻抗——它随频率变化，但在数学上就是另一个阻抗！）
-
-This is the magic of the s-domain.
-（这正是 s 域的奇妙之处。）
-
-**Using the voltage divider formula:**（使用分压公式：）
-
-Since the resistor and capacitor form a voltage divider, we can immediately write:
-（由于电阻与电容构成分压器，可直接写出：）
+**低通推导**（图 4）：
 
 $$
-T(s) = \frac{V_o(s)}{V_i(s)} = \frac{Z_C}{Z_R + Z_C} \tag{10}
+T(s)=\frac{Z_C}{Z_R+Z_C}=\frac{\frac{1}{sC}}{R+\frac{1}{sC}}\cdot\frac{sC}{sC}=\frac{1}{1+sRC}=\frac{1}{1+s/\omega_c}
 $$
 
-This is exactly the same formula you'd use for two resistors in series!
-（这与两个电阻串联时所用的公式完全相同！）
-
-Substituting the impedances:
-（代入各阻抗：）
-
-$$
-T(s) = \frac{\frac{1}{sC}}{R + \frac{1}{sC}} \tag{11}
-$$
-
-To simplify, multiply numerator and denominator by $sC$:
-（为化简，分子分母同乘 $sC$：）
-
-$$
-T(s) = \frac{1}{sRC + 1} = \frac{1}{1 + sRC} \tag{12}
-$$
-
-Now, let's define the cutoff angular frequency as:
-（现在定义截止角频率为：）
-
-$$
-\omega_c = \frac{1}{RC} \tag{13}
-$$
-
-Writing $s = \dfrac{s}{\omega_c} \cdot \omega_c$ and factoring:
-（把 $s$ 写成 $\dfrac{s}{\omega_c} \cdot \omega_c$ 并整理：）
-
-$$
-T(s) = \frac{1}{1 + s \cdot RC} = \frac{1}{1 + s/\omega_c} \tag{14}
-$$
-
-This is the standard Bode form for a first-order low-pass filter!
-（这就是一阶低通滤波器的标准 Bode 形式！）
-
-You can directly read the cutoff frequency $\omega_c = 1/RC$ from the denominator.
-（可直接从分母读出截止频率 $\omega_c = 1/RC$。）
-
-**RC High-Pass Filter Derivation**（RC 高通滤波器的推导）
-
-Now consider swapping the resistor and capacitor positions:
-（现在考虑把电阻与电容的位置互换：）
+**为什么是低通**：输出取电容电压。频率升高时 $\lvert Z_C\rvert=1/(\omega C)$ 变小，电容趋于短路，输出被拉低；$s\to0$ 时 $T\to1$，$s\to\infty$ 时 $T\to0$ —— 低频通过、高频衰减。
 
 ![](Pasted%20image%2020261117154720.png)
 > 图5 First-order RC high-pass filter：$C$ 串联于 $V_i(s)$ 与 $V_o(s)$ 之间，$R$ 由 $V_o(s)$ 端接地
 
-Using the voltage divider formula again:
-（再次使用分压公式：）
+**高通推导**（图 5）：
 
 $$
-T(s) = \frac{V_o(s)}{V_i(s)} = \frac{Z_R}{Z_C + Z_R} = \frac{R}{\frac{1}{sC} + R} \tag{15}
+T(s)=\frac{Z_R}{Z_C+Z_R}=\frac{R}{\frac{1}{sC}+R}\cdot\frac{sC}{sC}=\frac{sRC}{1+sRC}=\frac{s/\omega_c}{1+s/\omega_c}
 $$
 
-Multiply numerator and denominator by $sC$:
-（分子分母同乘 $sC$：）
 
-$$
-T(s) = \frac{sRC}{1 + sRC} \tag{16}
-$$
+**为什么是高通**：输出取电阻电压。频率升高时电容阻抗变小，输入电压几乎全落在电阻上；$s\to0$ 时 $T\to0$，$s\to\infty$ 时 $T\to1$ —— 高频通过、低频衰减。
 
-Using the same cutoff frequency $\omega_c = 1/RC$:
-（利用相同的截止频率 $\omega_c = 1/RC$：）
-
-$$
-T(s) = \frac{s/\omega_c}{1 + s/\omega_c} \tag{17}
-$$
-
-This is the standard Bode form for a first-order high-pass filter!
-（这就是一阶高通滤波器的标准 Bode 形式！）
-
-Notice the numerator has an $s$ term, indicating this filter passes high frequencies.
-（注意分子中含 $s$ 项，说明该滤波器通过高频。）
-
----
+两者分母都是 $(1+s/\omega_c)$，因此在 $\omega=\omega_c$ 处都降到 $-3$ dB。
 
 ### 6. Understanding Decibels (dB)（理解分贝（dB））
 
@@ -461,15 +381,15 @@ The -3 dB point is significant because:
 - This marks the boundary between the passband (where signals pass through) and the stopband (where signals are attenuated).
   （它标出了通带（信号通过）与阻带（信号被衰减）的分界。）
 
+>像对于低通滤波器来说，高于截止频率的分量幅值继续以 $-20$ dB/dec 减小；远高于 $\omega_c$ 的分量幅值已经很小，可以认为被滤除了。
+
 
 ![](Pasted%20image%2020261117154812.png)
 > 图8 常用分贝参考值及其对应的幅值比（Key Decibel Values）：
->  $0$ dB: $|T| = 1$ (no change)
->   （幅值无变化）
->  $-3$ dB: $|T| = \frac{1}{\sqrt{2}} = 0.707$ (cutoff frequency)
->   （截止频率处）
->  $-6$ dB: $|T| = \frac{1}{2} = 0.5$
->  $-20$ dB: $|T| = \frac{1}{10} = 0.1$
+>  $0$ dB：$\lvert T\rvert=1$ —— 幅值不变，输出与输入相同
+>  $-3$ dB：$\lvert T\rvert=\frac{1}{\sqrt{2}}=0.707$ —— 幅值降到约 $70.7\%$，**功率减半**，即截止频率、半功率点
+>  $-6$ dB：$\lvert T\rvert=\frac{1}{2}=0.5$ —— **幅值减半**，功率降到 $1/4$
+>  $-20$ dB：$\lvert T\rvert=\frac{1}{10}=0.1$ —— 幅值降到 $10\%$，功率降到 $1/100$
 
 ---
 
@@ -534,6 +454,32 @@ It consists of **two** separate plots:
 2. **Phase plot:** Shows the phase angle $\angle T(j\omega)$ in degrees versus frequency
    （**相频图：** 以度表示相角 $\angle T(j\omega)$ 随频率的变化）
 
+**公式**
+
+幅频（dB）：
+
+$$
+\lvert T(j\omega)\rvert_{\text{dB}}=20\log_{10}\lvert T(j\omega)\rvert
+$$
+
+相频：
+
+$$
+\phi(\omega)=\angle T(j\omega)\quad(\text{单位为度})
+$$
+
+若 $T(j\omega)=a+jb$：
+
+$$
+\lvert T(j\omega)\rvert=\sqrt{a^2+b^2},\qquad \angle T(j\omega)=\arctan\frac{b}{a}
+$$
+
+以一阶低通 $T(j\omega)=\dfrac{1}{1+j\omega/\omega_c}$ 为例：
+
+$$
+\lvert T(j\omega)\rvert=\frac{1}{\sqrt{1+\left(\dfrac{\omega}{\omega_c}\right)^2}},\qquad \phi(\omega)=-\arctan\frac{\omega}{\omega_c}
+$$
+
 Both plots use a logarithmic scale for the frequency axis (horizontal), while the magnitude is plotted in dB and the phase in degrees (both on linear vertical scales).
 （两图的频率轴（横轴）都用对数刻度，而幅度以 dB、相位以度表示（两者的纵轴都是线性刻度）。）
 
@@ -578,14 +524,39 @@ Named after Hendrik Wade Bode, who developed this technique while working at Bel
 - **Decibel (dB):** The vertical axis unit for gain magnitude, expressing ratios logarithmically.
   （**分贝（dB）：** 增益幅度纵轴的单位，用对数表示比值。）
 
-Since $2^{10} = 1024 \approx 10^3$, one decade is approximately 3.32 octaves.
-（由于 $2^{10} = 1024 \approx 10^3$，一个十倍频程约等于 3.32 个倍频程。）
 
-This explains why:
-（这就解释了：）
+**为什么 $-20$ dB/dec 等于 $-6$ dB/oct**
+
+先看斜率本身。一阶低通在远高于截止频率时
 
 $$
-20\ \text{dB/decade} = \frac{20\ \text{dB}}{3.32\ \text{octaves}} \approx 6\ \text{dB/octave} \tag{35}
+\lvert T(j\omega)\rvert\approx\frac{\omega_c}{\omega}\propto\frac{1}{\omega}
+$$
+
+即增益与频率成反比。分别看两种频率变化：
+
+- **频率变成 2 倍**（1 个倍频程）：$\lvert T\rvert$ 变成 $1/2$
+
+$$
+20\log_{10}\frac{1}{2}=-6.02\ \text{dB}
+$$
+
+- **频率变成 10 倍**（1 个十倍频程）：$\lvert T\rvert$ 变成 $1/10$
+
+$$
+20\log_{10}\frac{1}{10}=-20\ \text{dB}
+$$
+
+**单位换算验证**：1 decade 是频率 ×10，而
+
+$$
+10=2^{\log_2 10}\approx2^{3.32}
+$$
+
+所以 1 decade = 3.32 个 octave，于是
+
+$$
+\frac{-20\ \text{dB}}{3.32\ \text{octave}}\approx-6.02\ \text{dB/oct}
 $$
 
 ![](Pasted%20image%2020261117155016.png)
@@ -611,6 +582,26 @@ $$
      （每个极点使幅度以 20 dB/十倍频下降，并引入最多 $-90^\circ$ 的相移。）
    - Each zero causes the magnitude to increase by 20 dB/decade and introduces up to $+90^\circ$ phase shift.
      （每个零点使幅度以 20 dB/十倍频上升，并引入最多 $+90^\circ$ 的相移。）
+
+**极点、零点如何改变斜率与相位**
+
+| 因子 | 低频段 | 过转折频率后的幅频斜率 | 相频变化 |
+| --- | --- | --- | --- |
+| 极点 $\dfrac{1}{1+s/\omega_p}$ | $0$ dB | $-20$ dB/dec | $0^\circ\to-90^\circ$ |
+| 零点 $1+s/\omega_z$ | $0$ dB | $+20$ dB/dec | $0^\circ\to+90^\circ$ |
+| 原点极点 $\dfrac{1}{s}$ | 一开始就是 $-20$ dB/dec | $-20$ dB/dec | 恒为 $-90^\circ$ |
+| 原点零点 $s$ | 一开始就是 $+20$ dB/dec | $+20$ dB/dec | 恒为 $+90^\circ$ |
+| 二阶极点 | — | $-40$ dB/dec | $0^\circ\to-180^\circ$ |
+| 二阶零点 | — | $+40$ dB/dec | $0^\circ\to+180^\circ$ |
+
+**转折点附近的细节**
+
+- **幅频**：两条渐近线在 $\omega_c$ 处相交；实际曲线在极点处比交点低 $3$ dB，在零点处比交点高 $3$ dB。
+- **相频**： **理论上，** 极点从 $0^\circ$ 平滑降到 $-90^\circ$，在 $\omega_p$ 处正好 $-45^\circ$；零点从 $0^\circ$ 升到 $+90^\circ$，在 $\omega_z$ 处正好 $+45^\circ$。**手绘时可用折线近似：在 $0.1\omega_c$ 到 $10\omega_c$ 之间线性过渡**。
+- **多个极/零点**：斜率和相位都直接相加。比如，两个极点 → $-40$ dB/dec、$-180^\circ$ ；一个极点加一个零点 → 斜率净变化 $0$。
+- **极点与零点同频率**：互相抵消，不改变斜率。
+
+**例子**：$T(s)=\dfrac{1+s/\omega_z}{(1+s/\omega_{p1})(1+s/\omega_{p2})}$，低频 $0$ dB；过 $\omega_z$ 斜率 $+20$ dB/dec；过 $\omega_{p1}$ 回到 $0$；过 $\omega_{p2}$ 变为 $-20$ dB/dec。
 
 ![](Pasted%20image%2020261117155031.png)
 > 图11 Typical Bode plots for a first-order low-pass filter showing magnitude (top) and phase (bottom)（上图 Gain (dB)：0 dB 水平段，$\omega_c$ 处 −3 dB，其后 −20 dB/decade；下图 Phase (°)：$0^\circ$ 水平段，$\omega_c$ 处 −45°，渐近 −90°）
@@ -672,64 +663,11 @@ $$
 \omega^2 = -s^2 \tag{2}
 $$
 
-**(d)** Start MATLAB and plot the magnitude of the transfer function using the following commands:
-（**(d)** 启动 MATLAB，用以下命令画出传递函数的幅频特性：）
+**(d)** Use MATLAB to plot the magnitude and phase of the transfer function (the commands are collected in the appendix).
+（**(d)** 用 MATLAB 画出传递函数的幅频与相频（命令见文末附录）。）
 
-```matlab
->> omega = (0.1*10000:100:10*10000);
->> Tmag = 20*log10(sqrt(1./(1+omega.^2/10000^2)));
->> semilogx(omega,Tmag)
->> grid on
-```
-
-Add a title and axis labels using the `title`, `xlabel`, and `ylabel` commands.
-（用 `title`、`xlabel`、`ylabel` 命令添加标题与坐标轴标签。）
-
-Alternatively, also try:
-（或者也可以试试：）
-
-```matlab
->> omega = (0.1*10000:100:10*10000);
->> T = 1./(1+j*omega/10000);
->> figure; semilogx(omega,20*log10(abs(T)))
->> grid on
-```
-
-Now plot the phase of the transfer function using:
-（再用下面的命令画相频特性：）
-
-```matlab
->> omega = (0.1*10000:100:10*10000);
->> T = 1./(1+j*omega/10000);
->> figure; semilogx(omega,angle(T))
->> grid on
-```
-
-Please ensure that the above MATLAB commands, mathematics, and magnitude and phase plots make sense to you.
-（请确保能理解上述 MATLAB 命令、其中的数学以及幅频、相频图形。）
-
-**(e)** Transfer functions are ubiquitous in engineering, and MATLAB has a `bode` function to automatically create the Bode plot for you.
-（**(e)** 传递函数在工程中无处不在，MATLAB 提供了 `bode` 函数可自动生成 Bode 图。）
-
-The first step is to create a "transfer function" object.
-（第一步是创建一个“传递函数”对象。）
-
-The transfer function object is created by expressing the coefficients of the polynomial in $s$ for the numerator and denominator.
-（该对象通过给出分子、分母中 $s$ 多项式的系数来创建。）
-
-Please type `doc bode` in MATLAB for a description of the `bode` function and how to use it.
-（请在 MATLAB 中输入 `doc bode`，查看 `bode` 函数的说明及用法。）
-
-Create a Bode plot for the low-pass filter using the following MATLAB commands:
-（用以下 MATLAB 命令为低通滤波器绘制 Bode 图：）
-
-```matlab
->> g = tf([1],[1/10000 1]);
->> bode(g)
-```
-
-Type `g` at the MATLAB prompt and see what it returns.
-（在 MATLAB 提示符下输入 `g`，看看它返回什么。）
+**(e)** Use MATLAB's `bode` function to create the Bode plot automatically (see the appendix).
+（**(e)** 用 MATLAB 的 `bode` 函数自动绘制 Bode 图（见文末附录）。）
 
 **(f)** Use a Bode magnitude plot to help answer the questions below:
 （**(f)** 借助 Bode 幅频图回答下列问题：）
@@ -760,7 +698,7 @@ Explain what a 20 dB/decade roll-off means and why it is the same as a 6 dB/octa
 - **(a)** 在 s 域对 RC 串联分压，$T(s)=\dfrac{Z_C}{R+Z_C}$，再化为标准形式 $\dfrac{1}{1+s/\omega_c}$
 - **(b)** 从标准形式的分母直接读出 $\omega_c=1/(RC)$，再换算 $f_c=\omega_c/(2\pi)$
 - **(c)** 用 $|T|^2=T(s)T(-s)$、代入 $\omega^2=-s^2$ 求 $|T(j\omega)|$
-- **(d)(e)** MATLAB 画幅频、相频，与手算结果对照
+- **(d)(e)** MATLAB 画幅频、相频，与手算结果对照（代码已移到文末「附录：MATLAB 验证」）
 - **(f)** 从图上读增益与滚降，验证 $-20$ dB/dec 与 $-6$ dB/oct
 
 ### Solution:（解答：）
@@ -933,7 +871,17 @@ This confirms the filter passes low frequencies and attenuates high frequencies�
 
 ---
 
-#### 1.2 Part B: Reading the Cutoff Frequency from Standard Bode Form（B 部分：由标准 Bode 形式直接读出截止频率）
+#### 1.2 极点、零点与初始增益
+
+由 $T(s)=\dfrac{1}{1+s/10^4}$ 直接读：
+
+- **极点**：令分母为零，$1+s/10^4=0$，得 $s=-10^4$ rad/s，所以极点频率 $\omega_p=10^4$ rad/s。
+- **零点**：分子为常数 $1$，没有有限零点。
+- **初始（低频）增益**：$s\to0$ 时 $T\to1$，即 $0$ dB。
+
+因此幅频从 $0$ dB 水平开始，过 $\omega_p=10^4$ rad/s 后以 $-20$ dB/dec 下降；相频从 $0^\circ$ 过渡到 $-90^\circ$，在 $\omega_p$ 处为 $-45^\circ$。
+
+#### 1.3 Part B: Reading the Cutoff Frequency from Standard Bode Form（B 部分：由标准 Bode 形式直接读出截止频率）
 
 One of the main advantages of expressing the transfer function in standard Bode form is that we can **directly read** the cutoff frequency without any calculation!
 （把传递函数写成标准 Bode 形式的一大好处是：无需任何计算即可**直接读出**截止频率！）
@@ -964,7 +912,7 @@ $$
 
 ---
 
-#### 1.3 Part C - Finding the Magnitude Response:（C 部分——求幅频响应）
+#### 1.4 Part C - Finding the Magnitude Response:（C 部分——求幅频响应）
 
 ---
 
@@ -1030,186 +978,9 @@ At high frequencies ($\omega \gg \omega_c$), the denominator becomes large and $
 
 ---
 
-#### 1.4 Part D: Creating Bode Plots Using MATLAB（D 部分：用 MATLAB 绘制 Bode 图）
+#### 1.5 Part F: Interpreting the Bode Magnitude Plot（F 部分：解读 Bode 幅频图）
 
-> [!info] MATLAB Online Access（MATLAB 在线访问）
-> If you don't have MATLAB installed on your computer, you can use MATLAB Online for free with your university account!
-> （如果电脑上没有安装 MATLAB，可用学校账号免费使用 MATLAB Online！）
->
-> Simply visit: https://matlab.mathworks.com/ Log in with your university credentials to access a full MATLAB environment in your web browser.
-> （访问 https://matlab.mathworks.com/ ，用学校账号登录，即可在浏览器中获得完整的 MATLAB 环境。）
->
-> All the commands in this tutorial will work identically in MATLAB Online.
-> （本次辅导课中的所有命令在 MATLAB Online 中效果完全相同。）
-
----
-
->运行 MATLAB 计算幅频
-
-In this part, we'll create Bode plots by explicitly calculating the magnitude and phase from the transfer function.
-（本部分通过显式计算传递函数的幅度与相位来绘制 Bode 图。）
-
-**MATLAB Code (Method 1: Calculating magnitude manually):**（**MATLAB 代码（方法 1：手工计算幅度）：**）
-
-```matlab
->> omega = (0.1*10000:100:10*10000);
->> Tmag = 20*log10(sqrt(1./(1+omega.^2/10000^2)));
->> semilogx(omega,Tmag)
->> grid on
-```
-
-Let's break down each command:
-（逐条解释各命令：）
-
-- `omega = (0.1*10000:100:10*10000)`: Creates a vector of frequency values from 1,000 to 100,000 rad/s in steps of 100.
-  （`omega = (0.1*10000:100:10*10000)`：生成从 1,000 到 100,000 rad/s、步长 100 的频率向量。）
-
-  This range covers frequencies well below and above the cutoff frequency.
-  （该范围覆盖了远低于和远高于截止频率的频率。）
-- `Tmag = 20*log10(sqrt(1./(1+omega.^2/10000^2)))`: Calculates the magnitude in dB.
-  （`Tmag = 20*log10(sqrt(1./(1+omega.^2/10000^2)))`：计算以 dB 表示的幅度。）
-
-  This implements the formula:
-  （它实现的是公式：）
-
-$$
-|T(j\omega)|_{\mathrm{dB}} = 20 \log_{10}\frac{1}{\sqrt{1 + (\omega/\omega_c)^2}}
-$$
-
-The `.^` operator performs element-wise exponentiation, and `./` performs element-wise division.
-（`.^` 运算符执行逐元素乘方，`./` 执行逐元素除法。）
-
-- `semilogx(omega,Tmag)`: Plots magnitude vs frequency with a logarithmic frequency axis (required for Bode plots).
-  （`semilogx(omega,Tmag)`：以对数频率轴绘制幅度-频率曲线（Bode 图必需）。）
-- `grid on`: Enables grid lines for easier reading of values.
-  （`grid on`：打开网格线，便于读数。）
-
----
-
->用复数运算复核
-
-**MATLAB Code (Method 2: Using complex arithmetic):**（**MATLAB 代码（方法 2：用复数运算）：**）
-
-```matlab
->> omega = (0.1*10000:100:10*10000);
->> T = 1./(1+j*omega/10000);
->> figure; semilogx(omega,20*log10(abs(T)))
->> grid on
-```
-
-This method evaluates $T(j\omega) = \dfrac{1}{1+j\omega/\omega_c}$ as a complex number, then uses `abs(T)` to find its magnitude.
-（该方法把 $T(j\omega) = \dfrac{1}{1+j\omega/\omega_c}$ 作为复数计算，再用 `abs(T)` 求其模。）
-
-This is often more intuitive as it directly uses the transfer function form.
-（它直接使用传递函数形式，往往更直观。）
-
----
-
->画相频
-
-**Phase Plot:**（**相频图：**）
-
-```matlab
->> omega = (0.1*10000:100:10*10000);
->> T = 1./(1+j*omega/10000);
->> figure; semilogx(omega,angle(T)*180/pi)
->> grid on
-```
-
-The `angle(T)` function returns the phase in radians, which we convert to degrees by multiplying by $180/\pi$.
-（`angle(T)` 返回以弧度表示的相位，乘以 $180/\pi$ 换算为度。）
-
-![](Pasted%20image%2020261117155143.png)
-> 图13 Bode plot created using manual calculation (Part D)：上图幅频特性在低频段为 0 dB，截止频率 10,000 rad/s 处 −3 dB，高频段滚降；下图相频特性由低频 $0^\circ$ 过渡到高频 $-90^\circ$
-
-The magnitude plot shows the characteristic low-pass behavior: flat response at low frequencies (0 dB), $-3$ dB at the cutoff frequency (10,000 rad/s), and roll-off at high frequencies.
-（幅频图呈现典型的低通特性：低频平坦（0 dB），截止频率（10,000 rad/s）处为 $-3$ dB，高频段滚降。）
-
-The phase plot shows the phase shift ranging from $0^\circ$ at low frequencies to $-90^\circ$ at high frequencies.
-（相频图显示相移从低频的 $0^\circ$ 变化到高频的 $-90^\circ$。）
-
----
-
-#### 1.5 Part E: Using MATLAB's Built-in Bode Functions（E 部分：使用 MATLAB 内置 Bode 函数）
-
-While Part D showed us how to manually calculate and plot the Bode diagram, MATLAB provides powerful built-in functions that make this much easier: `tf()` and `bode()`.
-（D 部分演示了如何手工计算并绘制 Bode 图，而 MATLAB 提供了强大的内置函数 `tf()` 与 `bode()`，使这一过程容易得多。）
-
-**The `tf()` Function:**（**`tf()` 函数：**）
-
-The `tf()` function creates a transfer function object from the numerator and denominator polynomials in $s$.
-（`tf()` 函数由分子、分母中 $s$ 的多项式创建传递函数对象。）
-
-Our transfer function is:
-（本题的传递函数为：）
-
-$$
-T(s) = \frac{1}{1 + \frac{s}{10,000}} = \frac{10,000}{s + 10,000}
-$$
-
-Written as a ratio of polynomials:
-（写成多项式之比：）
-
-$$
-T(s) = \frac{1 \cdot s^0}{(1/10,000) \cdot s^1 + 1 \cdot s^0}
-$$
-
-The coefficients are:
-（各系数为：）
-
-- Numerator: `[1]` (just the constant 1)
-  （分子：`[1]`（即常数 1））
-- Denominator: `[1/10,000, 1]` (coefficient of $s$ and constant term)
-  （分母：`[1/10,000, 1]`（$s$ 的系数与常数项））
-
-**The `bode()` Function:**（**`bode()` 函数：**）
-
-The `bode()` function automatically generates both magnitude and phase Bode plots from a transfer function object.
-（`bode()` 函数可由传递函数对象自动生成幅频与相频 Bode 图。）
-
-**MATLAB Code:**（**MATLAB 代码：**）
-
-```matlab
->> g = tf([1],[1/10000 1]);
->> bode(g)
-```
-
-When you type `g` at the MATLAB prompt, it displays:
-（在 MATLAB 提示符下输入 `g`，会显示：）
-
-```text
-Transfer function:
-      10000
-  -------------
-  s + 10000
-```
-
-This confirms that MATLAB has correctly constructed our transfer function!
-（这证实 MATLAB 正确构造了我们的传递函数！）
-
-**Advantages of using `bode()`:**（**使用 `bode()` 的优点：**）
-
-- Automatically handles the logarithmic frequency axis
-  （自动处理对数频率轴）
-- Provides proper scaling and axis labels
-  （提供合适的刻度与坐标轴标签）
-- Interactive cursor allows you to read exact values at any frequency
-  （交互式游标可在任意频率处读精确数值）
-- Works for transfer functions of any order
-  （适用于任意阶的传递函数）
-
-![](Pasted%20image%2020261117155223.png)
-> 图14 Bode plot created using MATLAB's bode() function (Part E)：幅频与相频 Bode 图，与 Part D 手工计算结果一致
-
-The plot created by `bode()` is identical to the one we made manually in Part D, but required much less code!
-（`bode()` 生成的图与 D 部分手工绘制的结果一致，但代码少得多！）
-
-This is the preferred method for creating Bode plots in practice.
-（实际中这是绘制 Bode 图的首选方法。）
-
----
-
-#### 1.6 Part F: Interpreting the Bode Magnitude Plot（F 部分：解读 Bode 幅频图）
+> 对应的 MATLAB Bode 图见文末「附录：MATLAB 验证」的 Part D、E。
 
 ---
 
@@ -1539,7 +1310,17 @@ This confirms that the filter blocks low frequencies and passes high frequencies
 
 ---
 
-#### 2.2 Part B（B 部分）
+#### 2.2 极点、零点与初始增益
+
+由 $T(s)=\dfrac{s/4000}{1+s/4000}$：
+
+- **零点**：令分子为零，得 $s=0$（原点零点），它让幅频从 $+20$ dB/dec 开始上升。
+- **极点**：令分母为零，$1+s/4000=0$，得 $s=-4000$ rad/s，即 $\omega_p=4000$ rad/s。
+- **初始增益**：$s\to0$ 时 $T\to0$，所以低频增益为 $0$（幅值趋于 $0$，对应 $\to-\infty$ dB）。
+
+因此幅频在低频以 $+20$ dB/dec 上升，过 $\omega_p=4000$ rad/s 后转为平坦（$0$ dB）；相频从 $+90^\circ$ 降到 $0^\circ$，在 $\omega_p$ 处为 $+45^\circ$。
+
+#### 2.3 Part B（B 部分）
 
 ---
 
@@ -1557,7 +1338,7 @@ This is the frequency at which the output voltage magnitude falls to $\frac{1}{\
 
 ---
 
-#### 2.3 Part C: Evaluating the Transfer Function at Specific Frequencies（C 部分：在指定频率处计算传递函数）
+#### 2.4 Part C: Evaluating the Transfer Function at Specific Frequencies（C 部分：在指定频率处计算传递函数）
 
 **Why are we doing this calculation?**（**为什么要做这个计算？**）
 
@@ -1606,36 +1387,10 @@ This notation is extremely useful because:
 
 ---
 
->运行 MATLAB
-
-**MATLAB Code:**（**MATLAB 代码：**）
-
-```matlab
->> omega = 4000;
->> T = 1/(1+4000/(j*omega));
->> abs(T)
->> angle(T)*180/pi
-```
-
-**Explanation of each line:**（**逐行说明：**）
-
-- `omega = 4000`: Sets the frequency to 4000 rad/s (the cutoff frequency!)
-  （`omega = 4000`：设定频率为 4000 rad/s（即截止频率！））
-- `T = 1/(1+4000/(j*omega))`: Evaluates $T(j\omega) = \dfrac{s/\omega_c}{1+s/\omega_c}$, $s = j\omega$, as a complex number
-  （`T = 1/(1+4000/(j*omega))`：把 $T(j\omega) = \dfrac{s/\omega_c}{1+s/\omega_c}$（$s = j\omega$）作为复数计算）
-- `abs(T)`: Returns the magnitude $|T(j\omega)|$
-  （`abs(T)`：返回模 $|T(j\omega)|$）
-- `angle(T)*180/pi`: Returns the phase angle in degrees
-  （`angle(T)*180/pi`：返回以度表示的相角）
-
----
-
->公式与在 $\omega=4000$ 处的解析计算
-
 **Analytical Derivation:**（**解析推导：**）
 
-Let's verify the MATLAB results by calculating them analytically.
-（下面用解析计算来验证 MATLAB 结果。）
+Let's calculate the results analytically.
+（下面用解析计算求这些数值。）
 
 The transfer function is:
 （传递函数为：）
@@ -1740,7 +1495,7 @@ Now we'll use these results in Part D to find the actual time-domain output sign
 
 ---
 
-#### 2.4 Part D: Converting Back to Time-Domain Signals（D 部分：还原为时域信号）
+#### 2.5 Part D: Converting Back to Time-Domain Signals（D 部分：还原为时域信号）
 
 This is where everything comes together!
 （到这里各部分就汇合起来了！）
@@ -1897,4 +1652,219 @@ This gradual phase transition is also characteristic of first-order high-pass fi
 > - 高通特性：低频以 $-20$ dB/dec 衰减，高频接近 $0$ dB；相移从 $+90^\circ$ 降到 $0^\circ$
 
 ---
+
+
+---
+
+## 附录：MATLAB 验证（Q1 的 D、E 部分与 Q2 的 C 部分）
+
+#### Part D: Creating Bode Plots Using MATLAB（D 部分：用 MATLAB 绘制 Bode 图）
+
+> [!info] MATLAB Online Access（MATLAB 在线访问）
+> If you don't have MATLAB installed on your computer, you can use MATLAB Online for free with your university account!
+> （如果电脑上没有安装 MATLAB，可用学校账号免费使用 MATLAB Online！）
+>
+> Simply visit: https://matlab.mathworks.com/ Log in with your university credentials to access a full MATLAB environment in your web browser.
+> （访问 https://matlab.mathworks.com/ ，用学校账号登录，即可在浏览器中获得完整的 MATLAB 环境。）
+>
+> All the commands in this tutorial will work identically in MATLAB Online.
+> （本次辅导课中的所有命令在 MATLAB Online 中效果完全相同。）
+
+---
+
+>运行 MATLAB 计算幅频
+
+In this part, we'll create Bode plots by explicitly calculating the magnitude and phase from the transfer function.
+（本部分通过显式计算传递函数的幅度与相位来绘制 Bode 图。）
+
+**MATLAB Code (Method 1: Calculating magnitude manually):**（**MATLAB 代码（方法 1：手工计算幅度）：**）
+
+```matlab
+>> omega = (0.1*10000:100:10*10000);
+>> Tmag = 20*log10(sqrt(1./(1+omega.^2/10000^2)));
+>> semilogx(omega,Tmag)
+>> grid on
+```
+
+Let's break down each command:
+（逐条解释各命令：）
+
+- `omega = (0.1*10000:100:10*10000)`: Creates a vector of frequency values from 1,000 to 100,000 rad/s in steps of 100.
+  （`omega = (0.1*10000:100:10*10000)`：生成从 1,000 到 100,000 rad/s、步长 100 的频率向量。）
+
+  This range covers frequencies well below and above the cutoff frequency.
+  （该范围覆盖了远低于和远高于截止频率的频率。）
+- `Tmag = 20*log10(sqrt(1./(1+omega.^2/10000^2)))`: Calculates the magnitude in dB.
+  （`Tmag = 20*log10(sqrt(1./(1+omega.^2/10000^2)))`：计算以 dB 表示的幅度。）
+
+  This implements the formula:
+  （它实现的是公式：）
+
+$$
+|T(j\omega)|_{\mathrm{dB}} = 20 \log_{10}\frac{1}{\sqrt{1 + (\omega/\omega_c)^2}}
+$$
+
+The `.^` operator performs element-wise exponentiation, and `./` performs element-wise division.
+（`.^` 运算符执行逐元素乘方，`./` 执行逐元素除法。）
+
+- `semilogx(omega,Tmag)`: Plots magnitude vs frequency with a logarithmic frequency axis (required for Bode plots).
+  （`semilogx(omega,Tmag)`：以对数频率轴绘制幅度-频率曲线（Bode 图必需）。）
+- `grid on`: Enables grid lines for easier reading of values.
+  （`grid on`：打开网格线，便于读数。）
+
+---
+
+>用复数运算复核
+
+**MATLAB Code (Method 2: Using complex arithmetic):**（**MATLAB 代码（方法 2：用复数运算）：**）
+
+```matlab
+>> omega = (0.1*10000:100:10*10000);
+>> T = 1./(1+j*omega/10000);
+>> figure; semilogx(omega,20*log10(abs(T)))
+>> grid on
+```
+
+This method evaluates $T(j\omega) = \dfrac{1}{1+j\omega/\omega_c}$ as a complex number, then uses `abs(T)` to find its magnitude.
+（该方法把 $T(j\omega) = \dfrac{1}{1+j\omega/\omega_c}$ 作为复数计算，再用 `abs(T)` 求其模。）
+
+This is often more intuitive as it directly uses the transfer function form.
+（它直接使用传递函数形式，往往更直观。）
+
+---
+
+>画相频
+
+**Phase Plot:**（**相频图：**）
+
+```matlab
+>> omega = (0.1*10000:100:10*10000);
+>> T = 1./(1+j*omega/10000);
+>> figure; semilogx(omega,angle(T)*180/pi)
+>> grid on
+```
+
+The `angle(T)` function returns the phase in radians, which we convert to degrees by multiplying by $180/\pi$.
+（`angle(T)` 返回以弧度表示的相位，乘以 $180/\pi$ 换算为度。）
+
+![](Pasted%20image%2020261117155143.png)
+> 图13 Bode plot created using manual calculation (Part D)：上图幅频特性在低频段为 0 dB，截止频率 10,000 rad/s 处 −3 dB，高频段滚降；下图相频特性由低频 $0^\circ$ 过渡到高频 $-90^\circ$
+
+The magnitude plot shows the characteristic low-pass behavior: flat response at low frequencies (0 dB), $-3$ dB at the cutoff frequency (10,000 rad/s), and roll-off at high frequencies.
+（幅频图呈现典型的低通特性：低频平坦（0 dB），截止频率（10,000 rad/s）处为 $-3$ dB，高频段滚降。）
+
+The phase plot shows the phase shift ranging from $0^\circ$ at low frequencies to $-90^\circ$ at high frequencies.
+（相频图显示相移从低频的 $0^\circ$ 变化到高频的 $-90^\circ$。）
+
+---
+
+#### Part E: Using MATLAB's Built-in Bode Functions（E 部分：使用 MATLAB 内置 Bode 函数）
+
+While Part D showed us how to manually calculate and plot the Bode diagram, MATLAB provides powerful built-in functions that make this much easier: `tf()` and `bode()`.
+（D 部分演示了如何手工计算并绘制 Bode 图，而 MATLAB 提供了强大的内置函数 `tf()` 与 `bode()`，使这一过程容易得多。）
+
+**The `tf()` Function:**（**`tf()` 函数：**）
+
+The `tf()` function creates a transfer function object from the numerator and denominator polynomials in $s$.
+（`tf()` 函数由分子、分母中 $s$ 的多项式创建传递函数对象。）
+
+Our transfer function is:
+（本题的传递函数为：）
+
+$$
+T(s) = \frac{1}{1 + \frac{s}{10,000}} = \frac{10,000}{s + 10,000}
+$$
+
+Written as a ratio of polynomials:
+（写成多项式之比：）
+
+$$
+T(s) = \frac{1 \cdot s^0}{(1/10,000) \cdot s^1 + 1 \cdot s^0}
+$$
+
+The coefficients are:
+（各系数为：）
+
+- Numerator: `[1]` (just the constant 1)
+  （分子：`[1]`（即常数 1））
+- Denominator: `[1/10,000, 1]` (coefficient of $s$ and constant term)
+  （分母：`[1/10,000, 1]`（$s$ 的系数与常数项））
+
+**The `bode()` Function:**（**`bode()` 函数：**）
+
+The `bode()` function automatically generates both magnitude and phase Bode plots from a transfer function object.
+（`bode()` 函数可由传递函数对象自动生成幅频与相频 Bode 图。）
+
+**MATLAB Code:**（**MATLAB 代码：**）
+
+```matlab
+>> g = tf([1],[1/10000 1]);
+>> bode(g)
+```
+
+When you type `g` at the MATLAB prompt, it displays:
+（在 MATLAB 提示符下输入 `g`，会显示：）
+
+```text
+Transfer function:
+      10000
+  -------------
+  s + 10000
+```
+
+This confirms that MATLAB has correctly constructed our transfer function!
+（这证实 MATLAB 正确构造了我们的传递函数！）
+
+**Advantages of using `bode()`:**（**使用 `bode()` 的优点：**）
+
+- Automatically handles the logarithmic frequency axis
+  （自动处理对数频率轴）
+- Provides proper scaling and axis labels
+  （提供合适的刻度与坐标轴标签）
+- Interactive cursor allows you to read exact values at any frequency
+  （交互式游标可在任意频率处读精确数值）
+- Works for transfer functions of any order
+  （适用于任意阶的传递函数）
+
+![](Pasted%20image%2020261117155223.png)
+> 图14 Bode plot created using MATLAB's bode() function (Part E)：幅频与相频 Bode 图，与 Part D 手工计算结果一致
+
+The plot created by `bode()` is identical to the one we made manually in Part D, but required much less code!
+（`bode()` 生成的图与 D 部分手工绘制的结果一致，但代码少得多！）
+
+This is the preferred method for creating Bode plots in practice.
+（实际中这是绘制 Bode 图的首选方法。）
+
+---
+
+
+---
+
+### Q2 Part C 的 MATLAB 计算
+
+>运行 MATLAB
+
+**MATLAB Code:**（**MATLAB 代码：**）
+
+```matlab
+>> omega = 4000;
+>> T = 1/(1+4000/(j*omega));
+>> abs(T)
+>> angle(T)*180/pi
+```
+
+**Explanation of each line:**（**逐行说明：**）
+
+- `omega = 4000`: Sets the frequency to 4000 rad/s (the cutoff frequency!)
+  （`omega = 4000`：设定频率为 4000 rad/s（即截止频率！））
+- `T = 1/(1+4000/(j*omega))`: Evaluates $T(j\omega) = \dfrac{s/\omega_c}{1+s/\omega_c}$, $s = j\omega$, as a complex number
+  （`T = 1/(1+4000/(j*omega))`：把 $T(j\omega) = \dfrac{s/\omega_c}{1+s/\omega_c}$（$s = j\omega$）作为复数计算）
+- `abs(T)`: Returns the magnitude $|T(j\omega)|$
+  （`abs(T)`：返回模 $|T(j\omega)|$）
+- `angle(T)*180/pi`: Returns the phase angle in degrees
+  （`angle(T)*180/pi`：返回以度表示的相角）
+
+---
+
+>公式与在 $\omega=4000$ 处的解析计算
 

@@ -348,17 +348,16 @@ $$
 |A_v| = g_mR_D = 5 \tag{1}
 $$
 
-
->在没有给任何信息的情况下，就不考虑沟道长度调制效应了。
-
-> [!note] 这里默认 $r_o=\infty$
-> 上式只保留 $R_D$，相当于取 $r_o\to\infty$（本课程默认 $\lambda=0$）。若计入沟道长度调制，完整增益为
-> $$A_v=-g_m\left(R_D\parallel r_o\right)$$
-> 只有 $r_o\gg R_D$ 时才能近似成 $-g_mR_D$。
+The power budget gives（功耗预算给出）：
 
 $$
 P = I_{DS} \cdot V_{DD} \leq 1\ \text{mW} \tag{2}
 $$
+
+> [!note] 默认 $r_o=\infty$
+> 式 (1) 只保留 $R_D$，相当于取 $r_o\to\infty$。题目没有给出沟道长度调制参数，本课程默认 $\lambda=0$，因此不计 $r_o$。若计入，完整增益为
+> $$A_v=-g_m\left(R_D\parallel r_o\right)$$
+> 只有 $r_o\gg R_D$ 时才能近似成 $-g_mR_D$。
 
 ---
 
@@ -493,20 +492,30 @@ In the circuit shown in Fig. 3, M2 serves as a current source. Design the stage 
 **Small signal circuit diagram** Given the large signal circuit setup, we can notice that:
 （**小信号电路图** 给定大信号电路结构，我们可以注意到：）
 
-**M1 (NMOS):** Acts as the main amplifying transistor, converting the input voltage signal into a current signal.
-（**M1（NMOS）：** 作为主放大晶体管，把输入电压信号转换为电流信号。）
+**先明确器件类型：** 图中 **$M_2$ 是 PMOS，位于上方**（源极接 $V_{DD}=1.8$ V，栅极接偏置 $V_b$，漏极接 $V_{out}$）；**$M_1$ 是 NMOS，位于下方**（栅极接输入 $V_{in}$，源极接地）。
 
-**M2 (PMOS):** Serves as an active load, providing a constant current source and high output resistance to increase gain.
-（**M2（PMOS）：** 作为有源负载，提供恒流源和高输出电阻以提高增益。）
+**小信号等效结果**
 
-So after converting the large signal circuit to the small signal model, M1 uses the standard NMOS model while M2 becomes a resistor. The small signal circuit diagram is shown below.
-（因此，将大信号电路转换为小信号模型后，M1 使用标准 NMOS 模型，而 M2 变成一个电阻。小信号电路图如下所示。）
+The small signal circuit diagram is shown below.
+（小信号电路图如下所示。）
 
 ![](Pasted%20image%2020261117154307.png)
 > 图Q2-2 Figure 4: Small signal circuit diagram（$r_{o2}$ 由电源接至 $V_{out}$；$g_m V_{in}$ 受控源与 $r_{o1}$ 并联于 $V_{out}$ 与地之间；$V_{in}$ 加在栅源之间）
 
-> [!note] 为什么 M2 在小信号中只是一个电阻
-> M2 的栅极接固定偏置 $V_b$，小信号 $v_{gs2} = 0$，故受控源 $g_{m2}v_{gs2} = 0$；M2 只剩输出电阻 $r_{o2}$，作为有源负载呈现高阻抗。
+- **M1（NMOS，放大管）** → 受控电流源 $g_mv_{in}$ 与 $r_{o1}$ 并联，栅极开路。
+- **M2（PMOS，有源负载）** → 受控源为零，只剩一个电阻 $r_{o2}$（交流中接在 $V_{out}$ 与地之间）。
+
+**为什么这样等效**
+
+**M1 是放大管**
+
+输入 $v_{in}$ 加在它的栅极 → $v_{gs1}=v_{in}$ 随信号变化 → 漏极电流 $i_d=g_{m1}v_{in}$ 随信号变化。
+
+**M2 是有源负载**
+
+它的栅极接固定偏置 $V_b$ → 小信号 $v_{gs2}=0$ → 受控源 $g_{m2}v_{gs2}=0$，对交流只剩输出电阻 $r_{o2}$；
+
+直流上它提供偏置电流，是恒流源。又因 $V_{DD}$ 是直流电源、交流短路到地，$r_{o2}$ 表现为从 $V_{out}$ 到地。
 
 **符号说明**：
 - $\lambda$：沟道长度调制参数
@@ -560,6 +569,16 @@ $$
 
 **Voltage Gain:**（**电压增益：**）
 
+>这里需要再画一下小信号等效电路
+
+**画小信号等效电路的三步**
+
+1. **独立直流源置零**：电压源短路、电流源开路。
+2. **信号只保留增量**：总量拆成“直流 + 增量”，如 $v_{GS}=V_{GS,Q}+v_{gs}$，小信号只画 $v_{gs}$。
+3. **器件换成小信号模型**：参数由 Q 点算出，$g_m=I_{D,Q}/V_T$ 等。
+
+注意三点：Q 点不能丢（否则 $g_m=0$、没有增益）；受控源不能置零；耦合、旁路电容在交流通路中视为短路。
+
 The small-signal voltage gain is
 （小信号电压增益为）
 
@@ -592,18 +611,27 @@ $$
 
 >求$(W/L)_{M1}$、记录偏置
 
-**For M1:** To keep M1 in saturation,
-（**对于 M1：** 为使 M1 保持在饱和区，）
+![](Pasted%20image%2020261120165426.png)
+
+**For M1:** To keep M1 in saturation, the boundary condition is:
+（**对于 M1：** 为使 M1 保持饱和，边界条件为：）
 
 $$
-V_{DS1} = 1.2\ \text{V} = V_{out} \tag{9}
+V_{DS1} = V_{GS1} - V_{TN} \tag{9}
 $$
 
-and
-（且）
+Since the source is grounded and the drain is the output node,
+（由于源极接地、漏极即输出节点，）
 
 $$
-V_{IN} = V_{GS1} = 1.2 + V_{TN} \tag{10}
+V_{DS1} = V_{out}, \qquad V_{GS1} = V_{IN}
+$$
+
+Therefore
+（因此）在恰好饱和的边界位置，有如下的关系
+
+$$
+V_{IN} = V_{out} + V_{TN} \tag{10}
 $$
 
 Using the MOSFET transconductance equation:
@@ -624,11 +652,37 @@ $$
 
 >求$(W/L)_{M2}$
 
+![](Pasted%20image%2020261120165611.png)
+
 **For M2:** To remain in saturation for $V_{out} \leq 1.5$ V,
 （**对于 M2：** 为使 $V_{out} \leq 1.5$ V 时仍处于饱和区，）
 
+The saturation condition is:
+（饱和条件为：）
+
 $$
-V_{DD} - V_{SD2} \leq V_{DD} - 1.5\ \text{V} + V_{TP} \Rightarrow V_b \geq 1.1\ \text{V} \tag{13}
+V_{SD2} \ge V_{SG2} - |V_{TP}|
+$$
+
+With $V_{SD2} = V_{DD} - V_{out}$ and $V_{SG2} = V_{DD} - V_b$:
+（代入 $V_{SD2}=V_{DD}-V_{out}$、$V_{SG2}=V_{DD}-V_b$：）
+
+$$
+V_{DD} - V_{out} \ge V_{DD} - V_b - |V_{TP}|
+$$
+
+Cancelling $V_{DD}$ on both sides:
+（两边消去 $V_{DD}$：）
+
+$$
+V_b \ge V_{out} - |V_{TP}|
+$$
+
+For $V_{out} \leq 1.5$ V and $|V_{TP}| = 0.4$ V:
+（取 $V_{out}\leq1.5$ V、$|V_{TP}|=0.4$ V：）
+
+$$
+V_b \geq 1.5 - 0.4 = 1.1\ \text{V} \tag{13}
 $$
 
 Setting $V_b = 1.2$ V and $V_{out} = 1.5$ V, we apply:
@@ -659,8 +713,11 @@ $$
 **Final Design Summary:**（**最终设计汇总：**）
 
 $$
-V_b = 1.1\ \text{V}, \quad V_{IN} = 1.2\ \text{V}, \quad \left(\frac{W}{L}\right)_1 = 27.75, \quad \left(\frac{W}{L}\right)_2 = 540 \tag{17}
+V_b = 1.1\ \text{V}, \quad V_{IN} = V_{out} + V_{TN}, \quad \left(\frac{W}{L}\right)_1 = 27.75, \quad \left(\frac{W}{L}\right)_2 = 540 \tag{17}
 $$
+
+$V_{IN}$ 由式 (10) 确定，其数值取决于最终选定的输出电平 $V_{out}$。
+（$V_{IN}$ is fixed by Eq. (10); its value depends on the chosen output level $V_{out}$.）
 
 ---
 

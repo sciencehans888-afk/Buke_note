@@ -322,7 +322,7 @@ Since $V_{GS} - V_{TN} = 0.24$ V $< V_{DS}$, the device is indeed in saturation.
 
 ---
 
-### 2.2 Part B（B 部分）
+0### 2.2 Part B（B 部分）
 
 Since no current enters the gate,
 （由于栅极无电流流入，）

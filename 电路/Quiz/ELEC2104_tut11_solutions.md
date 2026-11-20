@@ -56,9 +56,11 @@ where $g_m$ is the transconductance at the Q-point (the slope of the tangent in 
 （其中 $g_m$ 是 Q 点处的跨导（图 1 中切线的斜率），其表达式为：）
 
 $$
-g_m = \left.\frac{dI_D}{dV_{GS}}\right|_Q = \mu_n C_{ox}\frac{W}{L}(V_{GS,Q} - V_{TN}) \tag{3}
+g_m = \left.\frac{\partial I_D}{\partial V_{GS}}\right|_{\substack{Q\\ V_{DS}\ \text{fixed}}} = \mu_n C_{ox}\frac{W}{L}(V_{GS,Q} - V_{TN}) \tag{3}
 $$
 
+Note that $g_m$ is the derivative with respect to $V_{GS}$ (with $V_{DS}$ held constant).
+（注意 $g_m$ 是对 $V_{GS}$ 的偏导（保持 $V_{DS}$ 不变））
 
 This linear approximation is only valid for small signals because higher-order terms in the Taylor series become significant for large deviations from the Q-point. This transforms complex nonlinear circuit analysis into straightforward linear circuit analysis using familiar techniques like Ohm's law and voltage dividers!
 （这种线性近似只对小信号有效，因为当偏离 Q 点较大时，泰勒级数中的高阶项会变得显著。这样就把复杂的非线性电路分析转化为使用欧姆定律和分压器等熟悉技巧的简单线性电路分析！）
@@ -68,6 +70,26 @@ This linearization enables us to create the MOSFET small-signal model—a linear
 
 ![](Pasted%20image%2020261117154159.png)
 > 图2 MOSFET small-signal hybrid-π model: The linear equivalent circuit that replaces the nonlinear MOSFET for small-signal analysis. All parameters depend on the Q-point!（端子 G、D、S；$v_{gs}$ 标 +/−；受控源 $g_m v_{gs}$；输出电阻 $r_o$，$r_o = 1/(\lambda I_D)$）
+
+
+> [!note] 两个小信号参数怎么来的
+> 因为 $I_D=f(V_{GS},V_{DS})$，在 Q 点做一阶展开：
+>
+> $$i_d\approx\underbrace{\left.\frac{\partial I_D}{\partial V_{GS}}\right|_Q}_{g_m}v_{gs}+\underbrace{\left.\frac{\partial I_D}{\partial V_{DS}}\right|_Q}_{1/r_o}v_{ds}=g_mv_{gs}+\frac{v_{ds}}{r_o}$$
+>
+> 两个偏导系数正好对应等效电路里的两个元件：
+>
+> - **对 $V_{GS}$ 求导 → $g_m$**：这一项电流由输入电压 $v_{gs}$ 控制，画成受控电流源 $g_mv_{gs}$（接在 D–S 之间）。
+> - **对 $V_{DS}$ 求导 → $1/r_o$**：这一项电流由自身的端电压 $v_{ds}$ 决定，画成电阻 $r_o$ 并联在 D–S 之间。
+> - 栅极 $i_g=0$，所以 G 端开路，模型里没有输入电阻。
+>
+> 由此得到两个参数（本课程 $\lambda=0$）：
+>
+> $$g_m=\mu_nC_{ox}\frac{W}{L}(V_{GS,Q}-V_{TN})$$
+>
+> $$r_o=\frac{1}{\lambda I_{D,Q}}\ (\lambda\neq0),\qquad r_o=\infty\ (\lambda=0)$$
+>
+> $g_m$ 的三种等价形式（形式 1：用 $V_{GS,Q}$；形式 2：用 $I_{D,Q}$；形式 3：用 $V_{GS,Q}$ 与 $I_{D,Q}$），每种都附有含 $\lambda$ 的版本，见下文三个 callout。
 
 ### MOSFET Non-Ideal Behavior: Channel-Length Modulation（MOSFET 非理想行为：沟道长度调制）
 
@@ -94,91 +116,44 @@ $$
 When $\lambda \to 0$, we get $r_o \to \infty$ (open circuit). Questions will assume $\lambda = 0$ unless otherwise specified.
 （当 $\lambda \to 0$ 时，$r_o \to \infty$（开路）。除非另有说明，题目均假设 $\lambda = 0$。）
 
-> [!note] Alternative Forms of Transconductance $g_m$（跨导 $g_m$ 的其他形式）
+> [!note] 形式 1：用 $V_{GS,Q}$ 表示
+> 基本形式（即前面的式 (3)，$\lambda=0$）：
 >
-> **In terms of drain current $I_D$**（**用漏极电流 $I_D$ 表示**）
+> $$g_m=\mu_nC_{ox}\frac{W}{L}(V_{GS,Q}-V_{TN})$$
 >
-> Since at the Q-point we have (1), we can solve for:
-> （由于在 Q 点式 (1) 成立，可解得：）
+> 含 $\lambda$ 时，大信号方程变为
 >
-> $$
-> (V_{GS,Q} - V_{TN}) = \sqrt{\frac{2 I_{D,Q}}{\mu_n C_{ox}(W/L)}} \tag{6}
-> $$
+> $$I_D = \frac{1}{2}\mu_n C_{ox}\frac{W}{L}(V_{GS} - V_{TN})^2(1 + \lambda V_{DS}) \tag{9}$$
 >
-> Then substitute (6) into the transconductance formula (3):
-> （再把 (6) 代入跨导公式 (3)：）
+> 对 $V_{GS}$ 求导：
 >
-> $$
-> g_m = \mu_n C_{ox}\frac{W}{L}\sqrt{\frac{I_{D,Q}}{\mu_n C_{ox}(W/L)}} = \sqrt{2\mu_n C_{ox}\frac{W}{L}I_{D,Q}} \tag{7}
-> $$
+> $$g_m = \mu_n C_{ox}\frac{W}{L}(V_{GS,Q} - V_{TN})(1 + \lambda V_{DS,Q}) \tag{10}$$
 >
-> This form is particularly useful because it directly relates $g_m$ to the Q-point drain current $I_{D,Q}$, which is often easier to determine from circuit analysis.
-> （这种形式特别有用，因为它把 $g_m$ 直接与 Q 点漏极电流 $I_{D,Q}$ 联系起来，而后者通常更容易由电路分析求出。）
+> 比基本形式多一个因子 $(1+\lambda V_{DS,Q})$。
 >
-> **In terms of both $V_{GS}$ and $I_D$**（**同时用 $V_{GS}$ 和 $I_D$ 表示**）
+
+
+> [!note] 形式 2：用 $I_{D,Q}$ 表示
+> 基本形式（$\lambda=0$）：由式 (1) 解出 $V_{GS,Q}-V_{TN}$，
 >
-> We can express $g_m$ in terms of the both $V_{GS}$ and $I_D$. From (3) and (1):
-> （我们可以同时用 $V_{GS}$ 和 $I_D$ 表示 $g_m$。由 (3) 和 (1)：）
+> $$(V_{GS,Q} - V_{TN}) = \sqrt{\frac{2 I_{D,Q}}{\mu_n C_{ox}(W/L)}} \tag{6}$$
 >
-> $$
-> g_m = \mu_n C_{ox}\frac{W}{L}(V_{GS,Q} - V_{TN}) = \frac{2 I_{D,Q}}{V_{GS,Q} - V_{TN}} \tag{8}
-> $$
+> 代入基本跨导式：
 >
-> **With channel-length modulation ($\lambda \neq 0$)**（**考虑沟道长度调制（$\lambda \neq 0$）**）
+> $$g_m = \mu_n C_{ox}\frac{W}{L}\sqrt{\frac{I_{D,Q}}{\mu_n C_{ox}(W/L)}} = \sqrt{2\mu_n C_{ox}\frac{W}{L}I_{D,Q}} \tag{7}$$
 >
-> When $\lambda \neq 0$, the large-signal equation becomes:
-> （当 $\lambda \neq 0$ 时，大信号方程变为：）
+> 这个形式把 $g_m$ 直接与 Q 点电流 $I_{D,Q}$ 联系起来，而 $I_{D,Q}$ 通常更容易由电路分析求出。
 >
-> $$
-> I_D = \frac{1}{2}\mu_n C_{ox}\frac{W}{L}(V_{GS} - V_{TN})^2(1 + \lambda V_{DS}) \tag{9}
-> $$
+> 含 $\lambda$ 时：
 >
-> Taking $\left.\dfrac{dI_D}{dV_{GS}}\right|_Q$ gives:
-> （对其取 $\left.\dfrac{dI_D}{dV_{GS}}\right|_Q$ 得：）
+> $$g_m = \sqrt{2\mu_n C_{ox}\frac{W}{L}I_{D,Q}}\sqrt{1 + \lambda V_{DS,Q}}$$
+
+> [!note] 形式 3：用 $V_{GS,Q}$ 与 $I_{D,Q}$ 表示
+> 基本形式（$\lambda=0$）：
 >
-> $$
-> g_m = \mu_n C_{ox}\frac{W}{L}(V_{GS,Q} - V_{TN})(1 + \lambda V_{DS,Q}) = \sqrt{2\mu_n C_{ox}\frac{W}{L}I_{D,Q}}\sqrt{1 + \lambda V_{DS,Q}} \tag{10}
-> $$
+> $$g_m = \mu_n C_{ox}\frac{W}{L}(V_{GS,Q} - V_{TN}) = \frac{2 I_{D,Q}}{V_{GS,Q} - V_{TN}} \tag{8}$$
 >
-> Since $I_D$ now depends on both $V_{GS}$ and $V_{DS}$, the first-order expansion must keep two terms:
-> （由于 $I_D$ 现在同时依赖 $V_{GS}$ 与 $V_{DS}$，一阶展开要保留两项：）
->
-> $$
-> i_d\approx\frac{\partial I_D}{\partial V_{GS}}v_{gs}+\frac{\partial I_D}{\partial V_{DS}}v_{ds}=g_mv_{gs}+\frac{v_{ds}}{r_o}
-> $$
->
-> where
-> （其中）
->
-> $$
-> \frac{1}{r_o}=\left.\frac{\partial I_D}{\partial V_{DS}}\right|_Q=\frac{1}{2}\mu_nC_{ox}\frac{W}{L}(V_{GS,Q}-V_{TN})^2\lambda=\frac{\lambda I_{D,Q}}{1+\lambda V_{DS,Q}}
-> $$
->
-> Rearranging gives
-> （整理得）
->
-> $$
-> r_o=\frac{1+\lambda V_{DS,Q}}{\lambda I_{D,Q}}=\frac{\frac{1}{\lambda}+V_{DS,Q}}{I_{D,Q}}=\frac{V_A+V_{DS,Q}}{I_{D,Q}}\approx\frac{V_A}{I_{D,Q}}
-> $$
->
-> The approximation holds when $V_A\gg V_{DS,Q}$, i.e. $\lambda V_{DS,Q}\ll1$; this is the same as Eq. (5), where $r_o\approx1/(\lambda I_{D,Q})$.
-> （约等号成立的条件是 $V_A\gg V_{DS,Q}$，即 $\lambda V_{DS,Q}\ll1$；这与式 (5) 的 $r_o\approx1/(\lambda I_{D,Q})$ 是同一结果。）
->
-> Note the relation between $\lambda$ and the Early voltage:
-> （注意 $\lambda$ 与厄利电压的关系：）
->
-> $$
-> 1+\lambda V_{DS}=1+\frac{V_{DS}}{V_A}\quad\Longrightarrow\quad \lambda=\frac{1}{V_A},\qquad V_A=\frac{1}{\lambda}
-> $$
->
-> Extrapolating the output characteristic to $V_{DS}=-V_A$ gives $I_D=0$, which is exactly the definition of the Early voltage. So $r_o=V_A/I_D$ and $r_o=1/(\lambda I_D)$ are two forms of the same expression; $\lambda$ is in V$^{-1}$ and $V_A$ is in V.
-> （把输出特性反向延长到 $V_{DS}=-V_A$ 时 $I_D=0$，这正是厄利电压的定义。所以 $r_o=V_A/I_D$ 与 $r_o=1/(\lambda I_D)$ 是同一式子的两种写法；$\lambda$ 的单位是 V$^{-1}$，$V_A$ 的单位是 V。）
->
-> Compared with Eqs. (2)(3): $g_m$ gains a factor $(1+\lambda V_{DS,Q})$, and the expansion gains the term $v_{ds}/r_o$; both reduce to (2)(3) when $\lambda=0$.
-> （与式 (2)(3) 相比：$g_m$ 多了因子 $(1+\lambda V_{DS,Q})$，展开式多了 $v_{ds}/r_o$ 一项；$\lambda=0$ 时两者都退化为式 (2)(3)。）
->
-> Interestingly, the form $g_m = \dfrac{2I_{D,Q}}{V_{GS,Q} - V_{TN}}$ remains valid even with channel-length modulation, as $I_D$ includes the $(1 + \lambda V_{DS,Q})$ factor.
-> （有趣的是，即使存在沟道长度调制，$g_m = \dfrac{2I_{D,Q}}{V_{GS,Q} - V_{TN}}$ 这一形式依然成立，因为 $I_D$ 中已经包含了 $(1 + \lambda V_{DS,Q})$ 因子。）
+> 含 $\lambda$ 时这个形式依然成立：$I_D$ 中已经包含 $(1+\lambda V_{DS,Q})$ 因子，而 $g_m=2I_{D,Q}/(V_{GS,Q}-V_{TN})$ 的比值不变。
 
 ### Key Differences: MOSFET vs. BJT Small-Signal Models（关键区别：MOSFET 与 BJT 小信号模型）
 
@@ -190,13 +165,13 @@ While the overall approach to small-signal analysis is identical for MOSFETs and
 
 **2. Transconductance formulas:**（**2. 跨导公式：**）
 
-| 器件 | 形式 | 表达式 | 适用条件 |
-| --- | --- | --- | --- |
-| BJT | 基本 | $g_m=\dfrac{I_C}{V_T}$ | $V_T\approx26$ mV |
-| MOSFET | 用 $V_{GS}$ 表示 | $g_m=\mu_nC_{ox}\dfrac{W}{L}(V_{GS,Q}-V_{TN})$ | $\lambda=0$ |
-| MOSFET | 用 $I_D$ 表示 | $g_m=\sqrt{2\mu_nC_{ox}\dfrac{W}{L}I_{D,Q}}$ | $\lambda=0$ |
-| MOSFET | 用 $V_{GS}$ 与 $I_D$ | $g_m=\dfrac{2I_{D,Q}}{V_{GS,Q}-V_{TN}}$ | 该形式在 $\lambda\neq0$ 时仍成立 |
-| MOSFET | 含 $\lambda$ | $g_m=\mu_nC_{ox}\dfrac{W}{L}(V_{GS,Q}-V_{TN})(1+\lambda V_{DS,Q})$ | 完整版 |
+| 器件     | 形式                 | 表达式                                                                | 适用条件                     |
+| ------ | ------------------ | ------------------------------------------------------------------ | ------------------------ |
+| BJT    | 基本                 | $g_m=\dfrac{I_C}{V_T}$                                             | $V_T\approx26$ mV        |
+| MOSFET | 用 $V_{GS}$ 表示      | $g_m=\mu_nC_{ox}\dfrac{W}{L}(V_{GS,Q}-V_{TN})$                     | $\lambda=0$              |
+| MOSFET | 用 $I_D$ 表示         | $g_m=\sqrt{2\mu_nC_{ox}\dfrac{W}{L}I_{D,Q}}$                       | $\lambda=0$              |
+| MOSFET | 用 $V_{GS}$ 与 $I_D$ | $g_m=\dfrac{2I_{D,Q}}{V_{GS,Q}-V_{TN}}$                            | 该形式在 $\lambda\neq0$ 时仍成立 |
+| MOSFET | 含 $\lambda$        | $g_m=\mu_nC_{ox}\dfrac{W}{L}(V_{GS,Q}-V_{TN})(1+\lambda V_{DS,Q})$ | 完整版                      |
 
 **3. Output resistance formulas:**（**3. 输出电阻公式：**）
 

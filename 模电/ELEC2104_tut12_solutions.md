@@ -8,6 +8,36 @@ In this tutorial, we introduce powerful frequency-domain analysis techniques tha
 These tools are fundamental in filter design, signal processing, control systems, and amplifier analysis.
 （这些工具是滤波器设计、信号处理、控制系统与放大器分析的基础。）
 
+## 本讲导读（How to Use This Note）
+
+**学习路径**
+
+1. **传递函数**：在 s 域用 KCL/分压写出 $T(s)=V_o(s)/V_i(s)$
+2. **频率响应**：令 $s=j\omega$，得到 $H(j\omega)$
+3. **分贝与 $-3$ dB**：$20\log_{10}|H|$，半功率点对应 $-3$ dB
+4. **标准 Bode 形式与极点/零点**：每个极点 $-20$ dB/dec，每个零点 $+20$ dB/dec
+5. **Bode 图**：对数频率轴 + 幅频/相频 + 渐近线
+6. **题目**：一阶低通（Q1）、一阶高通（Q2），以及 MATLAB 验证
+
+这些内容本讲会直接用到：传递函数来自 s 域分析，Bode 图就是频率响应的对数画法，$-3$ dB 是滤波器的通带边界。
+
+**核心公式速查**
+
+| 量 | 公式 |
+| --- | --- |
+| 传递函数 | $T(s)=\dfrac{V_o(s)}{V_i(s)}$ |
+| 频率响应 | $T(j\omega)=\left.T(s)\right\rvert_{s=j\omega}$ |
+| 电压增益（dB） | $20\log_{10}\lvert T(j\omega)\rvert$ |
+| 一阶 RC 截止频率 | $\omega_c=\dfrac{1}{RC}$，$f_c=\dfrac{1}{2\pi RC}$ |
+| 一阶低通标准形式 | $T(s)=\dfrac{1}{1+s/\omega_c}$ |
+| 一阶高通标准形式 | $T(s)=\dfrac{s/\omega_c}{1+s/\omega_c}$ |
+| 一阶低通幅频 | $\lvert T(j\omega)\rvert=\dfrac{1}{\sqrt{1+(\omega/\omega_c)^2}}$ |
+| $-3$ dB 点 | $\lvert T\rvert=1/\sqrt{2}$，功率减半 |
+| Bode 斜率 | 极点 $-20$ dB/dec，零点 $+20$ dB/dec |
+
+> [!tip] 阅读建议
+> 概念部分（第 1–14 节）按顺序读一遍即可；做题时直接看各 Part 的「>求…」标签和小结。MATLAB 章节（Q1 的 D、E 部分）可以按需跳过，不影响理解前面对传递函数和 Bode 图的推导。
+
 ---
 
 ### 1. What is a Transfer Function?（什么是传递函数？）
@@ -24,6 +54,8 @@ $$
 
 where $V_o(s)$ is the output voltage and $V_i(s)$ is the input voltage, both expressed in the complex frequency domain.
 （其中 $V_o(s)$ 为输出电压，$V_i(s)$ 为输入电压，两者都在复频域中表示。）
+
+>在电路中，是电压。实际上，只要是 输出的拉普拉斯变换/输入的拉普拉斯变换=传递函数
 
 **符号说明**：
 - $T(s)$：传递函数，输出与输入之比
@@ -353,7 +385,40 @@ Notice the numerator has an $s$ term, indicating this filter passes high frequen
 
 ---
 
-### Understanding the Magnitude Response: Why -3 dB?（理解幅频响应：为什么是 -3 dB？）
+### 6. Understanding Decibels (dB)（理解分贝（dB））
+
+Decibels provide a logarithmic scale for expressing ratios, which is particularly useful when dealing with signals that span many orders of magnitude.
+（分贝用对数尺度表示比值，特别适合处理跨越多个数量级的信号。）
+
+For power ratios:
+（对功率比：）
+
+$$
+\text{Gain (dB)} = 10 \log_{10}\frac{P_{out}}{P_{in}} \tag{27}
+$$
+
+For voltage or current ratios:
+（对电压或电流比：）
+
+$$
+\text{Gain (dB)} = 20 \log_{10}\frac{V_{out}}{V_{in}} \tag{28}
+$$
+
+**Why use 20 log10 for voltages?**（为什么电压用 20 log10？）
+
+Since power is proportional to the square of voltage ($P \propto V^2$), we have:
+（由于功率正比于电压的平方（$P \propto V^2$），有：）
+
+$$
+10 \log_{10}\frac{V_{out}^2}{V_{in}^2} = 10 \cdot 2 \log_{10}\frac{V_{out}}{V_{in}} = 20 \log_{10}\frac{V_{out}}{V_{in}} \tag{29}
+$$
+
+This ensures that voltage gain in dB matches power gain in dB for a given circuit.
+（这样可保证同一电路的电压增益（dB）与功率增益（dB）一致。）
+
+---
+
+### 7. Understanding the Magnitude Response: Why -3 dB?（理解幅频响应：为什么是 -3 dB？）
 
 Now let's understand what happens at the cutoff frequency.
 （下面理解截止频率处发生了什么。）
@@ -450,40 +515,7 @@ This is why $\omega_c$ is also called the half-power frequency!
 
 ---
 
-### 6. Understanding Decibels (dB)（理解分贝（dB））
-
-Decibels provide a logarithmic scale for expressing ratios, which is particularly useful when dealing with signals that span many orders of magnitude.
-（分贝用对数尺度表示比值，特别适合处理跨越多个数量级的信号。）
-
-For power ratios:
-（对功率比：）
-
-$$
-\text{Gain (dB)} = 10 \log_{10}\frac{P_{out}}{P_{in}} \tag{27}
-$$
-
-For voltage or current ratios:
-（对电压或电流比：）
-
-$$
-\text{Gain (dB)} = 20 \log_{10}\frac{V_{out}}{V_{in}} \tag{28}
-$$
-
-**Why use 20 log10 for voltages?**（为什么电压用 20 log10？）
-
-Since power is proportional to the square of voltage ($P \propto V^2$), we have:
-（由于功率正比于电压的平方（$P \propto V^2$），有：）
-
-$$
-10 \log_{10}\frac{V_{out}^2}{V_{in}^2} = 10 \cdot 2 \log_{10}\frac{V_{out}}{V_{in}} = 20 \log_{10}\frac{V_{out}}{V_{in}} \tag{29}
-$$
-
-This ensures that voltage gain in dB matches power gain in dB for a given circuit.
-（这样可保证同一电路的电压增益（dB）与功率增益（dB）一致。）
-
----
-
-### 7. The Cut-Off Frequency and the -3 dB Point（截止频率与 -3 dB 点）
+### 8. The Cut-Off Frequency and the -3 dB Point（截止频率与 -3 dB 点）
 
 As we saw in the derivation above, the cut-off frequency $\omega_c$ (or $f_c$ in hertz) is defined as the frequency where the output voltage amplitude drops to $\frac{1}{\sqrt{2}} \approx 0.707$ (about 70.7%) of its maximum value.
 （如前推导，截止频率 $\omega_c$（以赫兹表示时记作 $f_c$）定义为输出电压幅度降到其最大值的 $\frac{1}{\sqrt{2}} \approx 0.707$（约 70.7%）处的频率。）
@@ -519,7 +551,7 @@ The -3 dB point is significant because:
 
 ---
 
-### 8. Understanding -6 dB and -20 dB（理解 -6 dB 与 -20 dB）
+### 9. Understanding -6 dB and -20 dB（理解 -6 dB 与 -20 dB）
 
 - **-6 dB:** Corresponds to a voltage reduction by a factor of 2:
   （**-6 dB：** 对应电压降为 $1/2$：）
@@ -546,7 +578,7 @@ These values describe the **roll-off rate** of the filter, which tells us how qu
 
 ---
 
-### 9. Converting Between Radians and Hertz（弧度与赫兹的换算）
+### 10. Converting Between Radians and Hertz（弧度与赫兹的换算）
 
 Angular frequency $\omega$ (in radians per second) and cyclic frequency $f$ (in hertz) are related by:
 （角频率 $\omega$（弧度每秒）与循环频率 $f$（赫兹）的关系为：）
@@ -567,7 +599,7 @@ $$
 
 ---
 
-### 10. What is a Bode Plot?（什么是 Bode 图？）
+### 11. What is a Bode Plot?（什么是 Bode 图？）
 
 A Bode plot is a graphical representation of a transfer function's frequency response.
 （Bode 图是传递函数频率响应的图形表示。）
@@ -604,7 +636,7 @@ Named after Hendrik Wade Bode, who developed this technique while working at Bel
 
 ---
 
-### 11. Logarithmic Scales for Bode Plots（Bode 图的对数刻度）
+### 12. Logarithmic Scales for Bode Plots（Bode 图的对数刻度）
 
 **Why do Bode plots use logarithmic scales for frequency?**（Bode 图为何对频率使用对数刻度？）
 
@@ -639,7 +671,7 @@ $$
 
 ---
 
-### 12. Important Features of Bode Plots（Bode 图的重要特征）
+### 13. Important Features of Bode Plots（Bode 图的重要特征）
 
 **Key features to identify in Bode plots:**（在 Bode 图中要识别的关键特征：）
 
@@ -663,7 +695,7 @@ $$
 
 ---
 
-### 13. Why We Learn to Sketch Bode Plots（为什么要学手绘 Bode 图）
+### 14. Why We Learn to Sketch Bode Plots（为什么要学手绘 Bode 图）
 
 While software tools like MATLAB can generate exact Bode plots instantly, learning to sketch them by hand is valuable because:
 （虽然 MATLAB 等软件能瞬间生成精确的 Bode 图，但学会手绘仍有价值，因为：）
@@ -800,6 +832,14 @@ What happens to the magnitude of the voltage output as the frequency doubles fro
 
 Explain what a 20 dB/decade roll-off means and why it is the same as a 6 dB/octave roll-off.
 （解释 20 dB/十倍频滚降的含义，以及它为何等同于 6 dB/倍频程滚降。）
+
+**解题思路**
+
+- **(a)** 在 s 域对 RC 串联分压，$T(s)=\dfrac{Z_C}{R+Z_C}$，再化为标准形式 $\dfrac{1}{1+s/\omega_c}$
+- **(b)** 从标准形式的分母直接读出 $\omega_c=1/(RC)$，再换算 $f_c=\omega_c/(2\pi)$
+- **(c)** 用 $|T|^2=T(s)T(-s)$、代入 $\omega^2=-s^2$ 求 $|T(j\omega)|$
+- **(d)(e)** MATLAB 画幅频、相频，与手算结果对照
+- **(f)** 从图上读增益与滚降，验证 $-20$ dB/dec 与 $-6$ dB/oct
 
 ### Solution:（解答：）
 
@@ -1372,6 +1412,12 @@ Difference: $-20.0 - (-3.0) = -17$ dB (close to $-20$ dB for higher frequencies)
 - This $-20$ dB/decade slope is characteristic of **first-order filters** (one reactive element)
   （该 $-20$ dB/十倍频的斜率是**一阶滤波器**（一个电抗元件）的特征）
 
+> [!success] 第 1 题关键结果
+> - 传递函数：$T(s)=\dfrac{1}{1+s/10^4}$
+> - 截止频率：$\omega_c=\dfrac{1}{RC}=10^4$ rad/s，$f_c=\dfrac{\omega_c}{2\pi}\approx1592$ Hz
+> - 幅频：低频 $0$ dB，高频以 $-20$ dB/dec 下降，$\omega_c$ 处 $-3$ dB
+> - 相频：低频 $0^\circ$，$\omega_c$ 处 $-45^\circ$，高频趋近 $-90^\circ$
+
 ---
 
 ## 2 Question 2（第 2 题）
@@ -1401,6 +1447,13 @@ $$
 
 write the steady-state expression for the output voltage $v_o(t)$ when $\omega = 4000$ rad/s, $\omega = 800$ rad/s, and $\omega = 20000$ rad/s.
 （写出 $\omega = 4000$ rad/s、$\omega = 800$ rad/s 和 $\omega = 20000$ rad/s 时输出电压 $v_o(t)$ 的稳态表达式。）
+
+**解题思路**
+
+- **(a)** CR 串联分压：$T(s)=\dfrac{Z_R}{Z_C+Z_R}=\dfrac{sRC}{1+sRC}$，化为标准形式 $\dfrac{s/\omega_c}{1+s/\omega_c}$
+- **(b)** 从标准形式读出 $\omega_c=1/(RC)$，再换算成 Hz
+- **(c)** 令 $s=j\omega$，分别求幅值 $|T(j\omega)|$ 与相角 $\angle T(j\omega)$，写成相量 $A\angle\theta$
+- **(d)** 正弦稳态下 $v_o(t)=500\,|T(j\omega)|\cos(\omega t+\angle T)$，逐频率代入
 
 ### Solution:（解答：）
 
@@ -1914,6 +1967,12 @@ Notice also that the phase shift decreases from $78.69^\circ$ at low frequency t
 
 This gradual phase transition is also characteristic of first-order high-pass filters.
 （这种渐变的相位过渡也是一阶高通滤波器的特征。）
+
+> [!success] 第 2 题关键结果
+> - 传递函数：$T(s)=\dfrac{s/4000}{1+s/4000}$
+> - 截止频率：$\omega_c=\dfrac{1}{RC}=4000$ rad/s，$f_c=\dfrac{\omega_c}{2\pi}\approx637$ Hz
+> - 三个频率处的相量：$0.1961\angle78.69^\circ$（$800$ rad/s）、$0.7071\angle45^\circ$（$4000$ rad/s）、$0.9806\angle11.31^\circ$（$20000$ rad/s）
+> - 高通特性：低频以 $-20$ dB/dec 衰减，高频接近 $0$ dB；相移从 $+90^\circ$ 降到 $0^\circ$
 
 ---
 

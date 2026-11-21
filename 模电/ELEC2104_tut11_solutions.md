@@ -73,7 +73,11 @@ This linearization enables us to create the MOSFET small-signal model—a linear
 
 
 > [!note] 两个小信号参数怎么来的
-> 因为 $I_D=f(V_{GS},V_{DS})$，在 Q 点做一阶展开：
+> 因为 $I_D=f(V_{GS},V_{DS})$，其中的原式是饱和区电流公式：
+>
+> $$I_D=\frac{1}{2}\mu_nC_{ox}\frac{W}{L}(V_{GS}-V_{TN})^2(1+\lambda V_{DS})$$
+>
+> 在 Q 点对它做一阶展开：
 >
 > $$i_d\approx\underbrace{\left.\frac{\partial I_D}{\partial V_{GS}}\right|_Q}_{g_m}v_{gs}+\underbrace{\left.\frac{\partial I_D}{\partial V_{DS}}\right|_Q}_{1/r_o}v_{ds}=g_mv_{gs}+\frac{v_{ds}}{r_o}$$
 >
